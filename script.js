@@ -248,8 +248,89 @@ if (title && frame && pencilLayer instanceof HTMLCanvasElement) {
   let lastPoint = null;
   let gameStarted = false;
   let activeModuleId = null;
+  let activeStepIndex = 0;
   let activeNodes = [];
   let sidePanelHidden = false;
+
+  const STORAGE_KEY = "kinemaths_progress";
+  const defaultProgress = () => ({
+    modules: Object.fromEntries(
+      Object.keys(MODULE_CONTENT).map(id => [id, { completed_steps: [], points: 0 }])
+    ),
+    total_points: 0,
+    badges: [],
+  });
+  const loadProgress = () => {
+    try {
+      const raw = localStorage.getItem(STORAGE_KEY);
+      if (raw) return { ...defaultProgress(), ...JSON.parse(raw) };
+    } catch {}
+    return defaultProgress();
+  };
+  const saveProgress = (progress) => {
+    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(progress)); } catch {}
+  };
+  let gameProgress = loadProgress();
+
+  const BADGES = {
+    first_step: { label: "Erster Schritt", desc: "Modul 0 gestartet." },
+    formelfuchs: { label: "Formelfuchs", desc: "Modul 0 abgeschlossen." },
+    hartnäckig: { label: "Hartnäckig", desc: "Nach Fehlversuch Aufgabe gelöst." },
+  };
+
+  const pointsDisplay = document.getElementById("km-points-display");
+  const updatePointsDisplay = () => {
+    if (pointsDisplay instanceof HTMLElement) {
+      pointsDisplay.textContent = `✦ ${gameProgress.total_points} Pts`;
+    }
+  };
+  updatePointsDisplay();
+
+  const awardPoints = (moduleId, points) => {
+    gameProgress.modules[moduleId] = gameProgress.modules[moduleId] || { completed_steps: [], points: 0 };
+    gameProgress.modules[moduleId].points = (gameProgress.modules[moduleId].points || 0) + points;
+    gameProgress.total_points = (gameProgress.total_points || 0) + points;
+    saveProgress(gameProgress);
+    updatePointsDisplay();
+  };
+
+  const markStepComplete = (moduleId, stepIndex) => {
+    const mod = gameProgress.modules[moduleId];
+    if (mod && !mod.completed_steps.includes(stepIndex)) {
+      mod.completed_steps.push(stepIndex);
+      saveProgress(gameProgress);
+    }
+  };
+
+  const checkModuleComplete = (moduleId) => {
+    const steps = MODULE_CONTENT[moduleId]?.steps?.length || 0;
+    const completed = gameProgress.modules[moduleId]?.completed_steps?.length || 0;
+    if (completed >= steps) {
+      if (moduleId === "0") awardBadge("formelfuchs");
+    }
+  };
+
+  const showBadgeNotification = (badgeId) => {
+    const badge = BADGES[badgeId];
+    if (!badge) return;
+    const el = document.createElement("div");
+    el.className = "km-badge-toast";
+    el.innerHTML = `<strong>🏅 Badge freigeschaltet!</strong><br>${badge.label}: ${badge.desc}`;
+    document.body.appendChild(el);
+    setTimeout(() => el.classList.add("km-badge-toast--visible"), 50);
+    setTimeout(() => {
+      el.classList.remove("km-badge-toast--visible");
+      setTimeout(() => el.remove(), 400);
+    }, 3500);
+  };
+
+  const awardBadge = (badgeId) => {
+    if (!gameProgress.badges.includes(badgeId)) {
+      gameProgress.badges.push(badgeId);
+      saveProgress(gameProgress);
+      showBadgeNotification(badgeId);
+    }
+  };
   const moduleFlashTimers = new WeakMap();
 
   const applySidePanelVisibility = () => {
@@ -2362,6 +2443,495 @@ if (title && frame && pencilLayer instanceof HTMLCanvasElement) {
     }
   };
 
+  // ── Module 0 Step 1: Koordinatensysteme ──────────────────────────────────
+  const renderCoordinatesGame = () => {
+    if (!(siGameStage instanceof HTMLElement)) return;
+    siGameStage.innerHTML = `
+      <section class="test-theory-page">
+        <div class="test-theory-copy">
+          <h3 class="test-theory-title">Koordinatensysteme & Funktionen</h3>
+          <p class="test-theory-text">Ein Koordinatensystem besteht aus zwei senkrechten Achsen: der <strong>x-Achse</strong> (horizontal) und der <strong>y-Achse</strong> (vertikal). In der Kinematik verwenden wir oft ein <strong>s-t-Diagramm</strong>, bei dem die Zeit auf der x-Achse und die Position auf der y-Achse aufgetragen wird.</p>
+        </div>
+        <div class="test-theory-formula">\\[s = f(t)\\]</div>
+        <div class="test-theory-example">
+          <p><strong>Beispiel:</strong> Im s-t-Diagramm zeigt die Steigung einer Linie die Geschwindigkeit an.</p>
+        </div>
+        <div class="si-tutorial-actions">
+          <button class="si-jumpgame-button" type="button" id="coord-to-question">Zur Frage →</button>
+        </div>
+      </section>
+    `;
+    const btn = siGameStage.querySelector("#coord-to-question");
+    if (btn instanceof HTMLButtonElement) {
+      btn.addEventListener("click", () => startCoordinatesQuestion());
+    }
+  };
+
+  let coordHadError = false;
+  const startCoordinatesQuestion = () => {
+    if (!(siGameStage instanceof HTMLElement)) return;
+    coordHadError = false;
+    const options = [
+      { label: "A) Zeit", correct: true },
+      { label: "B) Strecke", correct: false },
+      { label: "C) Geschwindigkeit", correct: false },
+      { label: "D) Masse", correct: false },
+    ];
+    siGameStage.innerHTML = `
+      <section class="test-motion-task">
+        <h3 class="test-motion-task-title">Frage: Koordinatensysteme</h3>
+        <p class="test-motion-task-desc">Was beschreibt die x-Achse in einem typischen s-t-Diagramm?</p>
+        <div class="test-motion-options" id="coord-options">
+          ${options.map((o, i) => `<button class="si-jumpgame-button test-mc-option" type="button" data-index="${i}">${o.label}</button>`).join("")}
+        </div>
+        <div class="test-motion-feedback" id="coord-feedback"></div>
+        <div id="coord-actions" style="display:none; margin-top:1rem;">
+          <button class="si-jumpgame-button" type="button" id="coord-back">Zurück zum Pfad</button>
+        </div>
+      </section>
+    `;
+    const optionEls = siGameStage.querySelectorAll(".test-mc-option");
+    optionEls.forEach((btn, i) => {
+      btn.addEventListener("click", () => {
+        optionEls.forEach(b => { b.disabled = true; });
+        const feedback = siGameStage.querySelector("#coord-feedback");
+        const actions = siGameStage.querySelector("#coord-actions");
+        if (options[i].correct) {
+          btn.style.background = "#22c55e";
+          btn.style.color = "#fff";
+          if (feedback instanceof HTMLElement) {
+            feedback.textContent = "Richtig! Die x-Achse im s-t-Diagramm zeigt die Zeit t.";
+            feedback.className = "test-motion-feedback is-correct";
+          }
+          awardPoints("0", 50);
+          if (coordHadError) awardBadge("hartnäckig");
+          markStepComplete("0", 1);
+          checkModuleComplete("0");
+        } else {
+          btn.style.background = "#ef4444";
+          btn.style.color = "#fff";
+          coordHadError = true;
+          if (feedback instanceof HTMLElement) {
+            feedback.textContent = "Nicht ganz. Im s-t-Diagramm ist die x-Achse die Zeit t.";
+            feedback.className = "test-motion-feedback is-hint";
+          }
+        }
+        if (actions instanceof HTMLElement && options[i].correct) {
+          actions.style.display = "block";
+          const backBtn = actions.querySelector("#coord-back");
+          if (backBtn instanceof HTMLButtonElement) {
+            backBtn.addEventListener("click", () => closeSIGame());
+          }
+        }
+      });
+    });
+  };
+
+  // ── Module 0 Step 2: Skalar und Vektoren ────────────────────────────────
+  const scalarVectorQuestions = [
+    { q: "Geschwindigkeit", answer: "Vektor", hint: "Geschwindigkeit hat Betrag und Richtung → Vektor." },
+    { q: "Masse", answer: "Skalar", hint: "Masse hat nur einen Betrag, keine Richtung → Skalar." },
+    { q: "Verschiebung", answer: "Vektor", hint: "Verschiebung hat Betrag und Richtung → Vektor." },
+    { q: "Temperatur", answer: "Skalar", hint: "Temperatur hat nur einen Betrag → Skalar." },
+  ];
+  let svQIndex = 0;
+  let svHadError = false;
+  let svFirstTry = true;
+
+  const renderScalarVectorGame = () => {
+    if (!(siGameStage instanceof HTMLElement)) return;
+    svQIndex = 0;
+    svHadError = false;
+    svFirstTry = true;
+    siGameStage.innerHTML = `
+      <section class="test-theory-page">
+        <div class="test-theory-copy">
+          <h3 class="test-theory-title">Skalare und Vektoren</h3>
+          <p class="test-theory-text">Eine physikalische Grösse ist entweder ein <strong>Skalar</strong> oder ein <strong>Vektor</strong>.</p>
+          <ul class="test-theory-list" style="margin:0.5rem 0 0 1rem;">
+            <li><strong>Skalar:</strong> nur Betrag (z.B. Masse, Temperatur, Zeit)</li>
+            <li><strong>Vektor:</strong> Betrag UND Richtung (z.B. Geschwindigkeit, Kraft, Verschiebung)</li>
+          </ul>
+        </div>
+        <div class="test-theory-formula">\\[\\vec{v} \\text{ (Vektor)} \\quad\\quad m \\text{ (Skalar)}\\]</div>
+        <div class="si-tutorial-actions">
+          <button class="si-jumpgame-button" type="button" id="sv-to-question">Zur Frage →</button>
+        </div>
+      </section>
+    `;
+    const btn = siGameStage.querySelector("#sv-to-question");
+    if (btn instanceof HTMLButtonElement) {
+      btn.addEventListener("click", () => startSVQuestion());
+    }
+  };
+
+  const startSVQuestion = () => {
+    if (!(siGameStage instanceof HTMLElement)) return;
+    if (svQIndex >= scalarVectorQuestions.length) {
+      siGameStage.innerHTML = `
+        <section class="test-motion-task">
+          <h3 class="test-motion-task-title">Alle Fragen beantwortet!</h3>
+          <p class="test-motion-task-desc">Du hast alle Skalar/Vektor-Fragen abgeschlossen.</p>
+          <div style="margin-top:1rem;">
+            <button class="si-jumpgame-button" type="button" id="sv-back-final">Zurück zum Pfad</button>
+          </div>
+        </section>
+      `;
+      markStepComplete("0", 2);
+      checkModuleComplete("0");
+      const backBtn = siGameStage.querySelector("#sv-back-final");
+      if (backBtn instanceof HTMLButtonElement) {
+        backBtn.addEventListener("click", () => closeSIGame());
+      }
+      return;
+    }
+    svFirstTry = true;
+    const qObj = scalarVectorQuestions[svQIndex];
+    const opts = ["Skalar", "Vektor"].sort(() => Math.random() - 0.5);
+    siGameStage.innerHTML = `
+      <section class="test-motion-task">
+        <h3 class="test-motion-task-title">Frage ${svQIndex + 1} / ${scalarVectorQuestions.length}: Skalar oder Vektor?</h3>
+        <p class="test-motion-task-desc">Ist <strong>${qObj.q}</strong> ein Skalar oder ein Vektor?</p>
+        <div class="test-motion-options" id="sv-options">
+          ${opts.map(o => `<button class="si-jumpgame-button test-mc-option" type="button" data-val="${o}">${o}</button>`).join("")}
+        </div>
+        <div class="test-motion-feedback" id="sv-feedback"></div>
+        <div id="sv-next-area" style="display:none; margin-top:1rem;">
+          <button class="si-jumpgame-button" type="button" id="sv-next">${svQIndex + 1 < scalarVectorQuestions.length ? "Nächste Frage →" : "Abschliessen →"}</button>
+        </div>
+      </section>
+    `;
+    const optionEls = siGameStage.querySelectorAll(".test-mc-option");
+    optionEls.forEach(btn => {
+      btn.addEventListener("click", () => {
+        const val = btn.getAttribute("data-val");
+        const feedback = siGameStage.querySelector("#sv-feedback");
+        const nextArea = siGameStage.querySelector("#sv-next-area");
+        if (val === qObj.answer) {
+          optionEls.forEach(b => { b.disabled = true; });
+          btn.style.background = "#22c55e";
+          btn.style.color = "#fff";
+          if (feedback instanceof HTMLElement) {
+            feedback.textContent = `Richtig! ${qObj.hint}`;
+            feedback.className = "test-motion-feedback is-correct";
+          }
+          const pts = svFirstTry ? 50 : 25;
+          awardPoints("0", pts);
+          if (svHadError) awardBadge("hartnäckig");
+          if (nextArea instanceof HTMLElement) {
+            nextArea.style.display = "block";
+            const nextBtn = nextArea.querySelector("#sv-next");
+            if (nextBtn instanceof HTMLButtonElement) {
+              nextBtn.addEventListener("click", () => {
+                svQIndex++;
+                svHadError = false;
+                startSVQuestion();
+              });
+            }
+          }
+        } else {
+          svFirstTry = false;
+          svHadError = true;
+          btn.style.background = "#ef4444";
+          btn.style.color = "#fff";
+          btn.disabled = true;
+          if (feedback instanceof HTMLElement) {
+            feedback.textContent = `Falsch. Versuche es nochmal. ${qObj.hint}`;
+            feedback.className = "test-motion-feedback is-hint";
+          }
+        }
+      });
+    });
+  };
+
+  // ── Module 0 Step 3: Bezugssystem ────────────────────────────────────────
+  const renderReferenceFrameGame = () => {
+    if (!(siGameStage instanceof HTMLElement)) return;
+    siGameStage.innerHTML = `
+      <section class="test-theory-page">
+        <div class="test-theory-copy">
+          <h3 class="test-theory-title">Bezugssystem</h3>
+          <p class="test-theory-text">Jede Bewegung wird <strong>relativ zu einem Bezugssystem</strong> gemessen. Ein Bezugssystem ist ein Koordinatensystem, das an einem bestimmten Beobachter oder Ort befestigt ist.</p>
+          <p class="test-theory-text">Die Relativgeschwindigkeit zweier entgegengesetzt fahrender Objekte ergibt sich aus der <strong>Addition</strong> ihrer Einzelgeschwindigkeiten.</p>
+        </div>
+        <div class="test-theory-formula">\\[v_{\\text{rel}} = v_A + v_B\\]</div>
+        <div class="test-theory-example">
+          <p><strong>Beispiel:</strong> Auto A fährt mit 60 km/h nach rechts, Auto B mit 40 km/h nach links. Relativgeschwindigkeit: 100 km/h.</p>
+        </div>
+        <div class="si-tutorial-actions">
+          <button class="si-jumpgame-button" type="button" id="ref-to-question">Zur Frage →</button>
+        </div>
+      </section>
+    `;
+    const btn = siGameStage.querySelector("#ref-to-question");
+    if (btn instanceof HTMLButtonElement) {
+      btn.addEventListener("click", () => startReferenceFrameQuestion());
+    }
+  };
+
+  let refHadError = false;
+  const startReferenceFrameQuestion = () => {
+    if (!(siGameStage instanceof HTMLElement)) return;
+    refHadError = false;
+    const options = [
+      { label: "A) 20 km/h", correct: false },
+      { label: "B) 80 km/h", correct: false },
+      { label: "C) 140 km/h", correct: true },
+      { label: "D) 60 km/h", correct: false },
+    ];
+    siGameStage.innerHTML = `
+      <section class="test-motion-task">
+        <h3 class="test-motion-task-title">Frage: Bezugssystem</h3>
+        <p class="test-motion-task-desc">Zwei Züge fahren aufeinander zu. Zug A fährt mit 80 km/h, Zug B mit 60 km/h. Wie gross ist die Relativgeschwindigkeit?</p>
+        <div class="test-motion-options" id="ref-options">
+          ${options.map((o, i) => `<button class="si-jumpgame-button test-mc-option" type="button" data-index="${i}">${o.label}</button>`).join("")}
+        </div>
+        <div class="test-motion-feedback" id="ref-feedback"></div>
+        <div id="ref-actions" style="display:none; margin-top:1rem;">
+          <button class="si-jumpgame-button" type="button" id="ref-back">Zurück zum Pfad</button>
+        </div>
+      </section>
+    `;
+    const optionEls = siGameStage.querySelectorAll(".test-mc-option");
+    optionEls.forEach((btn, i) => {
+      btn.addEventListener("click", () => {
+        optionEls.forEach(b => { b.disabled = true; });
+        const feedback = siGameStage.querySelector("#ref-feedback");
+        const actions = siGameStage.querySelector("#ref-actions");
+        if (options[i].correct) {
+          btn.style.background = "#22c55e";
+          btn.style.color = "#fff";
+          if (feedback instanceof HTMLElement) {
+            feedback.textContent = "Richtig! 80 + 60 = 140 km/h. Bei entgegengesetzter Fahrt addieren sich die Geschwindigkeiten.";
+            feedback.className = "test-motion-feedback is-correct";
+          }
+          awardPoints("0", 75);
+          if (refHadError) awardBadge("hartnäckig");
+          markStepComplete("0", 3);
+          checkModuleComplete("0");
+          if (actions instanceof HTMLElement) {
+            actions.style.display = "block";
+            const backBtn = actions.querySelector("#ref-back");
+            if (backBtn instanceof HTMLButtonElement) {
+              backBtn.addEventListener("click", () => closeSIGame());
+            }
+          }
+        } else {
+          btn.style.background = "#ef4444";
+          btn.style.color = "#fff";
+          refHadError = true;
+          if (feedback instanceof HTMLElement) {
+            feedback.textContent = "Nicht richtig. Bei entgegengesetzter Fahrt addiert man: 80 + 60 = 140 km/h.";
+            feedback.className = "test-motion-feedback is-hint";
+          }
+        }
+      });
+    });
+  };
+
+  // ── Module 0 Step 4: Position ────────────────────────────────────────────
+  const renderPositionGame = () => {
+    if (!(siGameStage instanceof HTMLElement)) return;
+    siGameStage.innerHTML = `
+      <section class="test-theory-page">
+        <div class="test-theory-copy">
+          <h3 class="test-theory-title">Position</h3>
+          <p class="test-theory-text">Die <strong>Position</strong> (auch Ort) eines Objektes gibt an, wo es sich im gewählten Bezugssystem befindet. Sie wird über eine Koordinate \\(s\\) (oder \\(x\\)) angegeben.</p>
+          <p class="test-theory-text">Wenn ein Objekt von der Startposition \\(s_0\\) eine Strecke \\(\\Delta s\\) zurücklegt, ist die neue Position:</p>
+        </div>
+        <div class="test-theory-formula">\\[s = s_0 + \\Delta s\\]</div>
+        <div class="test-theory-example">
+          <p><strong>Beispiel:</strong> Startposition \\(s_0 = 2\\,\\mathrm{m}\\), Verschiebung \\(\\Delta s = 5\\,\\mathrm{m}\\) → neue Position: \\(s = 7\\,\\mathrm{m}\\).</p>
+        </div>
+        <div class="si-tutorial-actions">
+          <button class="si-jumpgame-button" type="button" id="pos-to-question">Zur Frage →</button>
+        </div>
+      </section>
+    `;
+    const btn = siGameStage.querySelector("#pos-to-question");
+    if (btn instanceof HTMLButtonElement) {
+      btn.addEventListener("click", () => startPositionQuestion());
+    }
+  };
+
+  let posHadError = false;
+  const startPositionQuestion = () => {
+    if (!(siGameStage instanceof HTMLElement)) return;
+    posHadError = false;
+    siGameStage.innerHTML = `
+      <section class="test-motion-task">
+        <h3 class="test-motion-task-title">Frage: Position</h3>
+        <p class="test-motion-task-desc">Ein Auto startet bei Position \\(s_0 = 5\\,\\mathrm{m}\\) und fährt 8 m in positiver Richtung. An welcher Position befindet es sich jetzt?</p>
+        <div class="test-motion-input-row" style="margin-top:1rem; display:flex; gap:0.5rem; align-items:center; flex-wrap:wrap;">
+          <input class="test-motion-input" id="pos-input" type="number" placeholder="Antwort in m" style="padding:0.6rem 0.8rem; border-radius:8px; border:2px solid #ccc; font-size:1rem; width:160px;" />
+          <span style="font-size:1rem; font-weight:700;">m</span>
+          <button class="si-jumpgame-button" type="button" id="pos-check">Prüfen</button>
+        </div>
+        <div class="test-motion-feedback" id="pos-feedback" style="margin-top:0.75rem;"></div>
+        <div id="pos-actions" style="display:none; margin-top:1rem;">
+          <button class="si-jumpgame-button" type="button" id="pos-back">Zurück zum Pfad</button>
+        </div>
+      </section>
+    `;
+    const checkBtn = siGameStage.querySelector("#pos-check");
+    if (checkBtn instanceof HTMLButtonElement) {
+      checkBtn.addEventListener("click", () => {
+        const input = siGameStage.querySelector("#pos-input");
+        const feedback = siGameStage.querySelector("#pos-feedback");
+        const actions = siGameStage.querySelector("#pos-actions");
+        const val = parseFloat(input instanceof HTMLInputElement ? input.value : "");
+        if (isNaN(val)) {
+          if (feedback instanceof HTMLElement) {
+            feedback.textContent = "Bitte gib eine Zahl ein.";
+            feedback.className = "test-motion-feedback is-hint";
+          }
+          return;
+        }
+        if (Math.abs(val - 13) <= 0.1) {
+          if (feedback instanceof HTMLElement) {
+            feedback.textContent = "Richtig! s = 5 + 8 = 13 m.";
+            feedback.className = "test-motion-feedback is-correct";
+          }
+          if (checkBtn instanceof HTMLButtonElement) checkBtn.disabled = true;
+          awardPoints("0", 75);
+          if (posHadError) awardBadge("hartnäckig");
+          markStepComplete("0", 4);
+          checkModuleComplete("0");
+          if (actions instanceof HTMLElement) {
+            actions.style.display = "block";
+            const backBtn = actions.querySelector("#pos-back");
+            if (backBtn instanceof HTMLButtonElement) {
+              backBtn.addEventListener("click", () => closeSIGame());
+            }
+          }
+        } else {
+          posHadError = true;
+          if (feedback instanceof HTMLElement) {
+            feedback.textContent = "Nicht ganz. Hinweis: s = s₀ + Δs = 5 + 8 = ?";
+            feedback.className = "test-motion-feedback is-hint";
+          }
+        }
+      });
+    }
+  };
+
+  // ── Module 0 Step 5: Strecke und Verschiebung ────────────────────────────
+  const renderDisplacementGame = () => {
+    if (!(siGameStage instanceof HTMLElement)) return;
+    siGameStage.innerHTML = `
+      <section class="test-theory-page">
+        <div class="test-theory-copy">
+          <h3 class="test-theory-title">Strecke und Verschiebung</h3>
+          <p class="test-theory-text"><strong>Strecke</strong> (auch zurückgelegter Weg): die gesamte Länge des zurückgelegten Weges, unabhängig von der Richtung. Das ist ein <strong>Skalar</strong>.</p>
+          <p class="test-theory-text"><strong>Verschiebung</strong> \\(\\Delta s\\): die direkte Verbindung zwischen Start- und Endpunkt, mit Richtung. Das ist ein <strong>Vektor</strong>.</p>
+        </div>
+        <div class="test-theory-formula">\\[\\text{Strecke} = \\text{gesamter Weg} \\quad \\Delta s = s_{\\text{end}} - s_0\\]</div>
+        <div class="test-theory-example">
+          <p><strong>Beispiel:</strong> Jemand läuft 10 m vor und 4 m zurück → Strecke = 14 m, |Verschiebung| = 6 m.</p>
+        </div>
+        <div class="si-tutorial-actions">
+          <button class="si-jumpgame-button" type="button" id="disp-to-question">Zur Frage →</button>
+        </div>
+      </section>
+    `;
+    const btn = siGameStage.querySelector("#disp-to-question");
+    if (btn instanceof HTMLButtonElement) {
+      btn.addEventListener("click", () => startDisplacementQuestion());
+    }
+  };
+
+  let dispHadError = false;
+  let dispStreckeDone = false;
+  const startDisplacementQuestion = () => {
+    if (!(siGameStage instanceof HTMLElement)) return;
+    dispHadError = false;
+    dispStreckeDone = false;
+    siGameStage.innerHTML = `
+      <section class="test-motion-task">
+        <h3 class="test-motion-task-title">Frage: Strecke und Verschiebung</h3>
+        <p class="test-motion-task-desc">Ein Jogger läuft 400 m geradeaus und kehrt dann 150 m um.</p>
+        <div style="margin-top:1rem; display:flex; flex-direction:column; gap:0.8rem;">
+          <div style="display:flex; gap:0.5rem; align-items:center; flex-wrap:wrap;">
+            <label style="font-weight:700; min-width:180px;">(a) Strecke [m]:</label>
+            <input class="test-motion-input" id="disp-strecke" type="number" placeholder="z.B. 550" style="padding:0.6rem 0.8rem; border-radius:8px; border:2px solid #ccc; font-size:1rem; width:130px;" />
+            <button class="si-jumpgame-button" type="button" id="disp-check-strecke">Prüfen</button>
+          </div>
+          <div class="test-motion-feedback" id="disp-feedback-strecke"></div>
+          <div style="display:flex; gap:0.5rem; align-items:center; flex-wrap:wrap;">
+            <label style="font-weight:700; min-width:180px;">(b) |Verschiebung| [m]:</label>
+            <input class="test-motion-input" id="disp-verschie" type="number" placeholder="z.B. 250" style="padding:0.6rem 0.8rem; border-radius:8px; border:2px solid #ccc; font-size:1rem; width:130px;" />
+            <button class="si-jumpgame-button" type="button" id="disp-check-verschie">Prüfen</button>
+          </div>
+          <div class="test-motion-feedback" id="disp-feedback-verschie"></div>
+        </div>
+        <div id="disp-actions" style="display:none; margin-top:1rem;">
+          <button class="si-jumpgame-button" type="button" id="disp-back">Zurück zum Pfad</button>
+        </div>
+      </section>
+    `;
+    let streckeCorrect = false;
+    let verschieCorrect = false;
+    const checkComplete = () => {
+      if (streckeCorrect && verschieCorrect) {
+        markStepComplete("0", 5);
+        checkModuleComplete("0");
+        const actions = siGameStage.querySelector("#disp-actions");
+        if (actions instanceof HTMLElement) {
+          actions.style.display = "block";
+          const backBtn = actions.querySelector("#disp-back");
+          if (backBtn instanceof HTMLButtonElement) {
+            backBtn.addEventListener("click", () => closeSIGame());
+          }
+        }
+      }
+    };
+    const checkStrecke = siGameStage.querySelector("#disp-check-strecke");
+    if (checkStrecke instanceof HTMLButtonElement) {
+      checkStrecke.addEventListener("click", () => {
+        const input = siGameStage.querySelector("#disp-strecke");
+        const feedback = siGameStage.querySelector("#disp-feedback-strecke");
+        const val = parseFloat(input instanceof HTMLInputElement ? input.value : "");
+        if (isNaN(val)) {
+          if (feedback instanceof HTMLElement) { feedback.textContent = "Bitte eine Zahl eingeben."; feedback.className = "test-motion-feedback is-hint"; }
+          return;
+        }
+        if (Math.abs(val - 550) <= 0.5) {
+          if (feedback instanceof HTMLElement) { feedback.textContent = "Richtig! Strecke = 400 + 150 = 550 m."; feedback.className = "test-motion-feedback is-correct"; }
+          checkStrecke.disabled = true;
+          awardPoints("0", 50);
+          streckeCorrect = true;
+          checkComplete();
+        } else {
+          dispHadError = true;
+          if (feedback instanceof HTMLElement) { feedback.textContent = "Nicht ganz. Die Strecke ist der gesamte zurückgelegte Weg: 400 + 150 = ?"; feedback.className = "test-motion-feedback is-hint"; }
+        }
+      });
+    }
+    const checkVerschie = siGameStage.querySelector("#disp-check-verschie");
+    if (checkVerschie instanceof HTMLButtonElement) {
+      checkVerschie.addEventListener("click", () => {
+        const input = siGameStage.querySelector("#disp-verschie");
+        const feedback = siGameStage.querySelector("#disp-feedback-verschie");
+        const val = parseFloat(input instanceof HTMLInputElement ? input.value : "");
+        if (isNaN(val)) {
+          if (feedback instanceof HTMLElement) { feedback.textContent = "Bitte eine Zahl eingeben."; feedback.className = "test-motion-feedback is-hint"; }
+          return;
+        }
+        if (Math.abs(val - 250) <= 0.5) {
+          if (feedback instanceof HTMLElement) { feedback.textContent = "Richtig! |Verschiebung| = 400 - 150 = 250 m."; feedback.className = "test-motion-feedback is-correct"; }
+          checkVerschie.disabled = true;
+          awardPoints("0", 50);
+          if (dispHadError) awardBadge("hartnäckig");
+          verschieCorrect = true;
+          checkComplete();
+        } else {
+          dispHadError = true;
+          if (feedback instanceof HTMLElement) { feedback.textContent = "Nicht ganz. Die Verschiebung ist die direkte Strecke von Start zu End: 400 - 150 = ?"; feedback.className = "test-motion-feedback is-hint"; }
+        }
+      });
+    }
+  };
+
   const renderGenericGame = (step) => {
     if (!(siGameStage instanceof HTMLElement)) {
       return;
@@ -2843,6 +3413,8 @@ if (title && frame && pencilLayer instanceof HTMLCanvasElement) {
     const backButton = siGameStage.querySelector("#si-jump-back-final");
     if (backButton instanceof HTMLButtonElement) {
       backButton.addEventListener("click", () => {
+        markStepComplete("0", 0);
+        checkModuleComplete("0");
         closeSIGame();
       });
     }
@@ -3451,12 +4023,65 @@ if (title && frame && pencilLayer instanceof HTMLCanvasElement) {
       return;
     }
 
-    siSideContent.innerHTML = `
-      <article class="side-card">
-        <h3 class="side-title"><strong>${step.title}</strong></h3>
-        <p class="side-text">Zusammenfassung folgt hier.</p>
-      </article>
-    `;
+    const isCoordSide = moduleId === "0" && step.title === "Funktionen und Koordinatensysteme";
+    const isSVSide = moduleId === "0" && step.title === "Skalar und Vektoren";
+    const isRefSide = moduleId === "0" && step.title === "Bezugssystem";
+    const isPosSide = moduleId === "0" && step.title === "Position";
+    const isDispSide = moduleId === "0" && step.title === "Strecke und Verschiebung";
+
+    if (isCoordSide) {
+      siSideContent.innerHTML = `
+        <article class="side-card">
+          <h3 class="side-title"><strong>Koordinatensystem</strong></h3>
+          <p class="side-text">Im <strong>s-t-Diagramm</strong> steht t auf der x-Achse (Zeit) und s auf der y-Achse (Position).</p>
+          <p class="side-eq">\\[s = f(t)\\]</p>
+          <p class="side-text">Die Steigung der Kurve entspricht der Geschwindigkeit \\(v\\).</p>
+        </article>
+      `;
+    } else if (isSVSide) {
+      siSideContent.innerHTML = `
+        <article class="side-card">
+          <h3 class="side-title"><strong>Skalar vs. Vektor</strong></h3>
+          <p class="side-text"><strong>Skalar:</strong> nur Betrag (z.B. Masse \\(m\\), Zeit \\(t\\), Temperatur \\(T\\))</p>
+          <p class="side-text"><strong>Vektor:</strong> Betrag + Richtung (z.B. \\(\\vec{v}\\), \\(\\vec{F}\\), \\(\\vec{\\Delta s}\\))</p>
+          <p class="side-eq">\\[\\vec{v} = v \\cdot \\hat{e}\\]</p>
+        </article>
+      `;
+    } else if (isRefSide) {
+      siSideContent.innerHTML = `
+        <article class="side-card">
+          <h3 class="side-title"><strong>Bezugssystem</strong></h3>
+          <p class="side-text">Geschwindigkeiten von entgegengesetzt fahrenden Objekten addieren sich:</p>
+          <p class="side-eq">\\[v_{\\text{rel}} = v_A + v_B\\]</p>
+          <p class="side-text">Gleichgerichtete Objekte: \\(v_{\\text{rel}} = |v_A - v_B|\\)</p>
+        </article>
+      `;
+    } else if (isPosSide) {
+      siSideContent.innerHTML = `
+        <article class="side-card">
+          <h3 class="side-title"><strong>Position</strong></h3>
+          <p class="side-text">Die neue Position nach einer Verschiebung:</p>
+          <p class="side-eq">\\[s = s_0 + \\Delta s\\]</p>
+          <p class="side-text">Dabei ist \\(s_0\\) die Startposition und \\(\\Delta s\\) die Verschiebung.</p>
+        </article>
+      `;
+    } else if (isDispSide) {
+      siSideContent.innerHTML = `
+        <article class="side-card">
+          <h3 class="side-title"><strong>Strecke & Verschiebung</strong></h3>
+          <p class="side-text"><strong>Strecke</strong> = gesamter zurückgelegter Weg (Skalar)</p>
+          <p class="side-text"><strong>Verschiebung</strong> = Differenz zwischen End- und Startposition (Vektor)</p>
+          <p class="side-eq">\\[\\Delta s = s_{\\text{end}} - s_0\\]</p>
+        </article>
+      `;
+    } else {
+      siSideContent.innerHTML = `
+        <article class="side-card">
+          <h3 class="side-title"><strong>${step.title}</strong></h3>
+          <p class="side-text">Zusammenfassung folgt hier.</p>
+        </article>
+      `;
+    }
     typesetSidePanelMath();
   };
 
@@ -3471,13 +4096,25 @@ if (title && frame && pencilLayer instanceof HTMLCanvasElement) {
       return;
     }
 
+    activeStepIndex = stepIndex;
+
     if (siGameKicker instanceof HTMLElement) {
       siGameKicker.textContent = `Module ${activeModuleId} Game`;
     }
     if (siGameTitle instanceof HTMLElement) {
       siGameTitle.textContent = step.title;
     }
+
+    if (activeModuleId === "0" && stepIndex === 0 && !gameProgress.badges.includes("first_step")) {
+      awardBadge("first_step");
+    }
+
     const isSIUnits = activeModuleId === "0" && step.title === "SI-Einheiten";
+    const isCoordinates = activeModuleId === "0" && stepIndex === 1;
+    const isScalarVector = activeModuleId === "0" && stepIndex === 2;
+    const isReferenceFrame = activeModuleId === "0" && stepIndex === 3;
+    const isPosition = activeModuleId === "0" && stepIndex === 4;
+    const isDisplacement = activeModuleId === "0" && stepIndex === 5;
     const isTestUniformMotion = activeModuleId === "TEST" && step.title === "Gleichförmige Bewegung";
     const isCatchUpMotion = activeModuleId === "TEST" && step.title === "Aufholen";
     const isAccelerationMotion = activeModuleId === "TEST" && step.title === "Beschleunigung";
@@ -3485,6 +4122,21 @@ if (title && frame && pencilLayer instanceof HTMLCanvasElement) {
     const isOvertakeDuel = activeModuleId === "TEST" && step.title === "K2 - Überhol-Duell";
     if (isSIUnits) {
       renderSIUnitsTutorial();
+    } else if (isCoordinates) {
+      stopSIUnitsJumpGame();
+      renderCoordinatesGame();
+    } else if (isScalarVector) {
+      stopSIUnitsJumpGame();
+      renderScalarVectorGame();
+    } else if (isReferenceFrame) {
+      stopSIUnitsJumpGame();
+      renderReferenceFrameGame();
+    } else if (isPosition) {
+      stopSIUnitsJumpGame();
+      renderPositionGame();
+    } else if (isDisplacement) {
+      stopSIUnitsJumpGame();
+      renderDisplacementGame();
     } else if (isTestUniformMotion) {
       renderTestUniformMotionGame();
     } else if (isCatchUpMotion) {

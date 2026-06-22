@@ -2467,3 +2467,36 @@ body.si-game-open .side-frame-inner::-webkit-scrollbar {
     transition: none;
   }
 }
+
+.km-points-display {
+  border: 2px solid rgba(18, 20, 23, 0.7);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.88);
+  color: #171b21;
+  padding: 0.68rem 1.1rem;
+  font-size: 0.94rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+}
+.km-badge-toast {
+  position: fixed;
+  bottom: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  background: #171d25;
+  color: #f4f7fb;
+  border-radius: 999px;
+  padding: 0.8rem 1.6rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+  line-height: 1.4;
+  z-index: 99999;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 320ms ease, transform 320ms ease;
+  white-space: nowrap;
+}
+.km-badge-toast--visible {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
