@@ -85,6 +85,34 @@ const MODULE_CONTENT = {
         colorA: "#ff9c58",
         colorB: "#ffd58a",
       },
+      {
+        title: "v-t Diagramm lesen",
+        text: "Erkenne Bewegungsphasen direkt aus dem Geschwindigkeit-Zeit-Diagramm.",
+        icon: "chart",
+        colorA: "#3dd18d",
+        colorB: "#94ecb8",
+      },
+      {
+        title: "Bremsweg berechnen",
+        text: "Ein Auto bremst gleichmäßig. Berechne den Bremsweg aus Anfangsgeschwindigkeit und Bremsbeschleunigung.",
+        icon: "brake",
+        colorA: "#f86785",
+        colorB: "#f9a8bd",
+      },
+      {
+        title: "Fehler finden",
+        text: "Ein Schüler macht einen typischen Fehler beim Rechnen. Erkenne, wo der Denkfehler steckt.",
+        icon: "error",
+        colorA: "#ff8d47",
+        colorB: "#ffd164",
+      },
+      {
+        title: "Freier Fall",
+        text: "Ein Objekt fällt aus der Ruhe. Berechne Fallzeit und Aufprallgeschwindigkeit.",
+        icon: "fall",
+        colorA: "#8a73ff",
+        colorB: "#c3b8ff",
+      },
     ],
   },
   "0": {
@@ -2932,6 +2960,703 @@ if (title && frame && pencilLayer instanceof HTMLCanvasElement) {
     }
   };
 
+  // ── v-t Diagramm lesen ──────────────────────────────────────────────────────
+  const VT_QUESTIONS = [
+    {
+      label: "Gleichförmige Fahrt",
+      description: "Ein Auto fährt mit konstanter Geschwindigkeit 12 m/s für 6 Sekunden.",
+      segments: [{ v0: 12, v1: 12, t0: 0, t1: 6 }],
+      question: "Was zeigt die waagerechte Linie im v-t-Diagramm?",
+      options: [
+        { text: "Die Geschwindigkeit ist konstant — keine Beschleunigung.", correct: true, explanation: "Genau! Eine flache Linie bedeutet: Die Geschwindigkeit ändert sich nicht, also a = 0." },
+        { text: "Das Auto steht still.", correct: false, explanation: "Nein. Still stehen würde bedeuten, v = 0 — also die Linie liegt auf der Zeitachse." },
+        { text: "Das Auto beschleunigt gleichmäßig.", correct: false, explanation: "Nein. Beschleunigung siehst du als schräge Linie, nicht als flache." },
+        { text: "Die Strecke nimmt ab.", correct: false, explanation: "Nein. Im v-t-Diagramm liest du Geschwindigkeit — nicht direkt die Strecke." },
+      ],
+      xp: 75,
+    },
+    {
+      label: "Gleichmäßiges Bremsen",
+      description: "Ein Fahrzeug bremst von 20 m/s auf 0 m/s in 5 Sekunden.",
+      segments: [{ v0: 20, v1: 0, t0: 0, t1: 5 }],
+      question: "Was bedeutet die abfallende Gerade im v-t-Diagramm?",
+      options: [
+        { text: "Das Fahrzeug verzögert mit konstanter Bremsbeschleunigung.", correct: true, explanation: "Richtig! Eine fallende Gerade zeigt eine konstante negative Beschleunigung — also gleichmäßiges Bremsen." },
+        { text: "Das Fahrzeug fährt rückwärts.", correct: false, explanation: "Nicht unbedingt. Erst wenn v unter 0 sinkt, bewegt sich das Fahrzeug rückwärts." },
+        { text: "Die Geschwindigkeit ist konstant.", correct: false, explanation: "Nein. Konstante Geschwindigkeit wäre eine flache, waagerechte Linie." },
+        { text: "Das Fahrzeug bleibt stehen, sobald die Linie fällt.", correct: false, explanation: "Nein. Das Fahrzeug steht erst still, wenn v = 0 erreicht ist — am Ende der Linie." },
+      ],
+      xp: 75,
+    },
+    {
+      label: "Beschleunigung dann konstant",
+      description: "Ein Auto beschleunigt von 0 auf 15 m/s in 3 Sekunden, dann fährt es konstant.",
+      segments: [{ v0: 0, v1: 15, t0: 0, t1: 3 }, { v0: 15, v1: 15, t0: 3, t1: 7 }],
+      question: "Was passiert zwischen t = 3 s und t = 7 s?",
+      options: [
+        { text: "Das Auto fährt mit konstanter Geschwindigkeit von 15 m/s.", correct: true, explanation: "Genau! Die flache Linie ab t = 3 s zeigt: keine Beschleunigung mehr, gleichmäßige Fahrt." },
+        { text: "Das Auto bremst langsam ab.", correct: false, explanation: "Nein. Abbremsen wäre eine fallende Linie — hier bleibt die Linie flach." },
+        { text: "Das Auto beschleunigt weiterhin.", correct: false, explanation: "Nein. Weiter beschleunigen würde eine steigende Linie geben." },
+        { text: "Das Auto steht still.", correct: false, explanation: "Nein. Stillstand wäre v = 0, aber hier ist v = 15 m/s konstant." },
+      ],
+      xp: 100,
+    },
+  ];
+
+  let vtState = { questionIndex: 0, answered: false };
+
+  const drawVTDiagram = (canvas, segments, highlightPhase = -1) => {
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return;
+    const ratio = Math.min(window.devicePixelRatio || 1, 2);
+    const W = canvas.getBoundingClientRect().width;
+    const H = canvas.getBoundingClientRect().height;
+    canvas.width = Math.max(1, Math.floor(W * ratio));
+    canvas.height = Math.max(1, Math.floor(H * ratio));
+    ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
+
+    const pad = { top: 18, right: 18, bottom: 36, left: 44 };
+    const gW = W - pad.left - pad.right;
+    const gH = H - pad.top - pad.bottom;
+
+    const allT = segments.flatMap(s => [s.t0, s.t1]);
+    const allV = segments.flatMap(s => [s.v0, s.v1]);
+    const maxT = Math.max(...allT);
+    const maxV = Math.max(...allV, 1);
+
+    const tx = (t) => pad.left + (t / maxT) * gW;
+    const ty = (v) => pad.top + gH - (v / maxV) * gH;
+
+    ctx.fillStyle = "#f4f7fb";
+    ctx.fillRect(0, 0, W, H);
+
+    // grid
+    ctx.strokeStyle = "rgba(0,0,0,0.07)";
+    ctx.lineWidth = 1;
+    for (let i = 0; i <= 4; i++) {
+      const y = pad.top + (i / 4) * gH;
+      ctx.beginPath(); ctx.moveTo(pad.left, y); ctx.lineTo(pad.left + gW, y); ctx.stroke();
+    }
+    for (let i = 0; i <= maxT; i++) {
+      const x = tx(i);
+      ctx.beginPath(); ctx.moveTo(x, pad.top); ctx.lineTo(x, pad.top + gH); ctx.stroke();
+    }
+
+    // axes
+    ctx.strokeStyle = "#171b21";
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    ctx.moveTo(pad.left, pad.top); ctx.lineTo(pad.left, pad.top + gH); ctx.lineTo(pad.left + gW, pad.top + gH);
+    ctx.stroke();
+
+    // axis labels
+    ctx.fillStyle = "#555";
+    ctx.font = "600 10px Space Grotesk, sans-serif";
+    ctx.textAlign = "center";
+    ctx.fillText("t (s)", pad.left + gW / 2, H - 4);
+    ctx.save(); ctx.translate(11, pad.top + gH / 2); ctx.rotate(-Math.PI / 2);
+    ctx.fillText("v (m/s)", 0, 0); ctx.restore();
+
+    // tick labels
+    ctx.font = "500 9px Space Grotesk, sans-serif";
+    ctx.fillStyle = "#777";
+    for (let i = 0; i <= maxT; i++) {
+      ctx.textAlign = "center";
+      ctx.fillText(i, tx(i), pad.top + gH + 12);
+    }
+    const vStep = maxV / 4;
+    for (let i = 0; i <= 4; i++) {
+      ctx.textAlign = "right";
+      ctx.fillText(Math.round(vStep * (4 - i)), pad.left - 4, pad.top + (i / 4) * gH + 3);
+    }
+
+    // segments
+    segments.forEach((seg, idx) => {
+      const isHL = highlightPhase === idx;
+      ctx.strokeStyle = isHL ? "#ff6b35" : "#3b82f6";
+      ctx.lineWidth = isHL ? 3.5 : 2.5;
+      ctx.beginPath();
+      ctx.moveTo(tx(seg.t0), ty(seg.v0));
+      ctx.lineTo(tx(seg.t1), ty(seg.v1));
+      ctx.stroke();
+
+      // dots
+      [{ t: seg.t0, v: seg.v0 }, { t: seg.t1, v: seg.v1 }].forEach(pt => {
+        ctx.beginPath();
+        ctx.arc(tx(pt.t), ty(pt.v), 3.5, 0, Math.PI * 2);
+        ctx.fillStyle = isHL ? "#ff6b35" : "#3b82f6";
+        ctx.fill();
+      });
+    });
+  };
+
+  const renderVTDiagramGame = () => {
+    if (!(siGameStage instanceof HTMLElement)) return;
+    vtState.questionIndex = 0;
+    vtState.answered = false;
+
+    const showVTQuestion = () => {
+      const q = VT_QUESTIONS[vtState.questionIndex];
+      vtState.answered = false;
+      const isLast = vtState.questionIndex === VT_QUESTIONS.length - 1;
+
+      siGameStage.innerHTML = `
+        <section class="test-theory-page">
+          <div class="test-theory-copy" style="margin-bottom:0.5rem">
+            <p class="test-theory-kicker">v-t Diagramm · Frage ${vtState.questionIndex + 1} von ${VT_QUESTIONS.length} · ${q.xp} XP</p>
+            <h3>${q.label}</h3>
+            <p>${q.description}</p>
+          </div>
+          <canvas id="vt-canvas" style="width:100%;height:180px;border-radius:10px;display:block;margin:0.5rem 0 1rem"></canvas>
+          <p style="font-weight:700;margin-bottom:0.75rem">${q.question}</p>
+          <div id="vt-options" class="vt-options"></div>
+          <p class="test-motion-feedback" id="vt-feedback" aria-live="polite"></p>
+          <button class="si-jumpgame-button test-motion-next" id="vt-next" type="button" hidden>${isLast ? "Fertig" : "Nächste Frage"}</button>
+        </section>
+      `;
+
+      const canvas = siGameStage.querySelector("#vt-canvas");
+      if (canvas instanceof HTMLCanvasElement) {
+        window.requestAnimationFrame(() => drawVTDiagram(canvas, q.segments));
+      }
+
+      const optionsEl = siGameStage.querySelector("#vt-options");
+      const feedbackEl = siGameStage.querySelector("#vt-feedback");
+      const nextBtn = siGameStage.querySelector("#vt-next");
+
+      q.options.forEach((opt, i) => {
+        const btn = document.createElement("button");
+        btn.className = "vt-option-btn";
+        btn.textContent = opt.text;
+        btn.addEventListener("click", () => {
+          if (vtState.answered) return;
+          vtState.answered = true;
+          optionsEl?.querySelectorAll(".vt-option-btn").forEach(b => { b.disabled = true; });
+          if (opt.correct) {
+            btn.classList.add("is-correct");
+            if (feedbackEl) { feedbackEl.textContent = `✓ ${opt.explanation} +${q.xp} XP`; feedbackEl.className = "test-motion-feedback is-correct"; }
+            awardPoints(q.xp);
+          } else {
+            btn.classList.add("is-wrong");
+            const correctBtn = optionsEl?.querySelectorAll(".vt-option-btn")[q.options.findIndex(o => o.correct)];
+            if (correctBtn) correctBtn.classList.add("is-correct");
+            if (feedbackEl) { feedbackEl.textContent = `✗ ${opt.explanation}`; feedbackEl.className = "test-motion-feedback is-hint"; }
+          }
+          if (canvas instanceof HTMLCanvasElement) drawVTDiagram(canvas, q.segments);
+          if (nextBtn instanceof HTMLButtonElement) nextBtn.hidden = false;
+        });
+        optionsEl?.appendChild(btn);
+      });
+
+      if (nextBtn instanceof HTMLButtonElement) {
+        nextBtn.addEventListener("click", () => {
+          if (vtState.questionIndex >= VT_QUESTIONS.length - 1) {
+            markStepComplete("TEST", vtState.questionIndex + 2);
+            siGameStage.innerHTML = `
+              <section class="test-motion-complete">
+                <h3>Diagramm-Profi!</h3>
+                <p>Du kannst v-t-Diagramme sicher lesen und Bewegungsphasen erkennen.</p>
+                <button class="si-jumpgame-button" id="vt-back" type="button">Zurück zum Pfad</button>
+              </section>`;
+            siGameStage.querySelector("#vt-back")?.addEventListener("click", closeSIGame);
+            return;
+          }
+          vtState.questionIndex++;
+          showVTQuestion();
+        });
+      }
+    };
+
+    siGameStage.innerHTML = `
+      <section class="test-theory-page">
+        <div class="test-theory-copy">
+          <p class="test-theory-kicker">Theorie</p>
+          <h3>Das v-t-Diagramm verstehen</h3>
+          <p>Im v-t-Diagramm siehst du auf der y-Achse die <strong>Geschwindigkeit</strong> (in m/s) und auf der x-Achse die <strong>Zeit</strong> (in s).</p>
+          <p>Drei Muster sind entscheidend:</p>
+          <ul style="line-height:1.9;padding-left:1.2rem">
+            <li><strong>Waagerechte Linie:</strong> Gleichförmige Bewegung — v ist konstant, a = 0</li>
+            <li><strong>Steigende Gerade:</strong> Gleichmäßige Beschleunigung — v wächst linear</li>
+            <li><strong>Fallende Gerade:</strong> Gleichmäßige Verzögerung (Bremsen)</li>
+          </ul>
+          <p>Die <strong>Fläche</strong> unter dem Graphen gibt dir die zurückgelegte Strecke.</p>
+        </div>
+        <div class="test-theory-formula" aria-label="Merke">
+          <span>Steigung = a &nbsp;|&nbsp; Fläche = s</span>
+        </div>
+        <button class="si-jumpgame-button test-theory-start" id="vt-start" type="button">Zu den Fragen</button>
+      </section>`;
+    siGameStage.querySelector("#vt-start")?.addEventListener("click", showVTQuestion);
+  };
+
+  // ── Bremsweg berechnen ──────────────────────────────────────────────────────
+  const BRAKE_TASKS = [
+    { v0: 20, a: 4, answer: 50, xp: 100,
+      hint: "Nutze s = v₀² / (2a). Mit v₀ = 20 m/s und a = 4 m/s²: s = 400/8 = 50 m." },
+    { v0: 30, a: 6, answer: 75, xp: 100,
+      hint: "s = v₀² / (2a) = 900 / 12 = 75 m." },
+    { v0: 15, a: 3, answer: 37.5, xp: 125,
+      hint: "s = v₀² / (2a) = 225 / 6 = 37.5 m." },
+  ];
+  let brakeState = { index: 0, hadError: false };
+
+  const renderBrakeGame = () => {
+    if (!(siGameStage instanceof HTMLElement)) return;
+    brakeState.index = 0;
+    brakeState.hadError = false;
+
+    const showBrakeQuestion = () => {
+      const task = BRAKE_TASKS[brakeState.index];
+      const isLast = brakeState.index === BRAKE_TASKS.length - 1;
+
+      siGameStage.innerHTML = `
+        <section class="test-theory-page">
+          <div class="test-theory-copy" style="margin-bottom:0.5rem">
+            <p class="test-theory-kicker">Bremsweg · Aufgabe ${brakeState.index + 1} von ${BRAKE_TASKS.length} · ${task.xp} XP</p>
+            <h3>Notbremsung!</h3>
+            <p>Ein Fahrzeug fährt mit <strong>${task.v0} m/s</strong> und bremst mit einer konstanten Verzögerung von <strong>${task.a} m/s²</strong>.</p>
+            <p>Wie lang ist der Bremsweg bis zum Stillstand?</p>
+          </div>
+          <div class="test-theory-formula" style="font-size:1.1rem">
+            <span>s = v₀² / (2 · a)</span>
+          </div>
+          <div class="brake-car-visual" id="brake-visual" style="width:100%;height:80px;position:relative;margin:0.5rem 0">
+            <canvas id="brake-canvas" style="width:100%;height:80px;border-radius:10px;display:block"></canvas>
+          </div>
+          <label class="test-motion-answer-label" for="brake-answer">Bremsweg in Metern</label>
+          <div class="test-motion-answer-row">
+            <input id="brake-answer" type="number" inputmode="decimal" placeholder="Antwort in m" step="0.1">
+            <button class="si-jumpgame-button" id="brake-check" type="button">Prüfen</button>
+          </div>
+          <p class="test-motion-feedback" id="brake-feedback" aria-live="polite"></p>
+          <button class="si-jumpgame-button test-motion-next" id="brake-next" type="button" hidden>${isLast ? "Fertig" : "Nächste Frage"}</button>
+        </section>`;
+
+      // Draw simple brake animation
+      const bCanvas = siGameStage.querySelector("#brake-canvas");
+      if (bCanvas instanceof HTMLCanvasElement) {
+        window.requestAnimationFrame(() => {
+          const ctx = bCanvas.getContext("2d");
+          const ratio = Math.min(window.devicePixelRatio || 1, 2);
+          const W = bCanvas.getBoundingClientRect().width;
+          const H = 80;
+          bCanvas.width = Math.floor(W * ratio); bCanvas.height = Math.floor(H * ratio);
+          ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
+          ctx.fillStyle = "#eef2f8"; ctx.fillRect(0, 0, W, H);
+          // Road
+          ctx.fillStyle = "#d0d7e2"; ctx.fillRect(0, 55, W, 25);
+          // Skid marks
+          ctx.strokeStyle = "#b0aaa0"; ctx.lineWidth = 3; ctx.setLineDash([6, 4]);
+          ctx.beginPath(); ctx.moveTo(W * 0.3, 65); ctx.lineTo(W * 0.85, 65); ctx.stroke();
+          ctx.beginPath(); ctx.moveTo(W * 0.3, 71); ctx.lineTo(W * 0.85, 71); ctx.stroke();
+          ctx.setLineDash([]);
+          // Car body
+          const cx = W * 0.25;
+          ctx.fillStyle = "#ff6b35"; ctx.beginPath(); ctx.roundRect(cx - 28, 38, 56, 20, 4); ctx.fill();
+          ctx.fillStyle = "#c84a1a"; ctx.beginPath(); ctx.roundRect(cx - 18, 30, 36, 14, 3); ctx.fill();
+          // Wheels
+          ctx.fillStyle = "#222";
+          [[cx - 16, 58], [cx + 16, 58]].forEach(([wx, wy]) => {
+            ctx.beginPath(); ctx.arc(wx, wy, 6, 0, Math.PI * 2); ctx.fill();
+          });
+          // Stop sign
+          ctx.fillStyle = "#e53e3e"; ctx.beginPath(); ctx.arc(W * 0.88, 40, 14, 0, Math.PI * 2); ctx.fill();
+          ctx.fillStyle = "#fff"; ctx.font = "bold 10px sans-serif"; ctx.textAlign = "center"; ctx.textBaseline = "middle";
+          ctx.fillText("STOP", W * 0.88, 40);
+          // Arrow
+          ctx.strokeStyle = "#ff6b35"; ctx.lineWidth = 2; ctx.setLineDash([]);
+          ctx.beginPath(); ctx.moveTo(cx + 30, 48); ctx.lineTo(W * 0.73, 48); ctx.stroke();
+          ctx.beginPath(); ctx.moveTo(W * 0.73, 44); ctx.lineTo(W * 0.78, 48); ctx.lineTo(W * 0.73, 52); ctx.fillStyle = "#ff6b35"; ctx.fill();
+          // Label
+          ctx.fillStyle = "#555"; ctx.font = "600 10px Space Grotesk, sans-serif"; ctx.textAlign = "center";
+          ctx.fillText(`v₀ = ${task.v0} m/s → Bremsweg = ?`, W / 2, 18);
+        });
+      }
+
+      const answerInput = siGameStage.querySelector("#brake-answer");
+      const feedbackEl = siGameStage.querySelector("#brake-feedback");
+      const nextBtn = siGameStage.querySelector("#brake-next");
+      let solved = false;
+
+      const check = () => {
+        if (solved) return;
+        const val = Number(answerInput?.value);
+        if (!Number.isFinite(val) || val === 0) {
+          if (feedbackEl) { feedbackEl.textContent = "Gib eine Zahl ein (in Metern)."; feedbackEl.className = "test-motion-feedback is-hint"; }
+          return;
+        }
+        if (Math.abs(val - task.answer) <= 0.6) {
+          solved = true;
+          if (answerInput instanceof HTMLInputElement) answerInput.disabled = true;
+          if (feedbackEl) { feedbackEl.textContent = `✓ Richtig! Der Bremsweg ist ${task.answer} m. ${brakeState.hadError ? "" : `+${task.xp} XP`}`; feedbackEl.className = "test-motion-feedback is-correct"; }
+          if (!brakeState.hadError) awardPoints(task.xp);
+          if (nextBtn instanceof HTMLButtonElement) nextBtn.hidden = false;
+        } else {
+          brakeState.hadError = true;
+          if (feedbackEl) { feedbackEl.textContent = `Nicht ganz. Tipp: ${task.hint}`; feedbackEl.className = "test-motion-feedback is-hint"; }
+        }
+      };
+
+      siGameStage.querySelector("#brake-check")?.addEventListener("click", check);
+      if (answerInput instanceof HTMLInputElement) {
+        answerInput.addEventListener("keydown", e => { if (e.key === "Enter") check(); });
+        answerInput.focus();
+      }
+      if (nextBtn instanceof HTMLButtonElement) {
+        nextBtn.addEventListener("click", () => {
+          if (brakeState.index >= BRAKE_TASKS.length - 1) {
+            markStepComplete("TEST", brakeState.index + 3);
+            siGameStage.innerHTML = `
+              <section class="test-motion-complete">
+                <h3>Bremsexperte!</h3>
+                <p>Du beherrschst den Bremsweg mit s = v₀² / (2a).</p>
+                <button class="si-jumpgame-button" id="brake-back" type="button">Zurück zum Pfad</button>
+              </section>`;
+            siGameStage.querySelector("#brake-back")?.addEventListener("click", closeSIGame);
+            return;
+          }
+          brakeState.index++;
+          brakeState.hadError = false;
+          showBrakeQuestion();
+        });
+      }
+    };
+
+    siGameStage.innerHTML = `
+      <section class="test-theory-page">
+        <div class="test-theory-copy">
+          <p class="test-theory-kicker">Theorie</p>
+          <h3>Bremsweg berechnen</h3>
+          <p>Wenn ein Fahrzeug mit der Anfangsgeschwindigkeit <strong>v₀</strong> gleichmäßig bremst, bis es steht, gilt:</p>
+          <p>Das Fahrzeug hat keine Endgeschwindigkeit mehr (v = 0) und die Bremsbeschleunigung <strong>a</strong> wirkt entgegen der Fahrtrichtung.</p>
+          <p>Aus den Bewegungsgleichungen lässt sich ableiten:</p>
+        </div>
+        <div class="test-theory-formula">
+          <span>s = v₀² / (2 · a)</span>
+        </div>
+        <div class="test-theory-example">
+          <p><strong>Beispiel:</strong> v₀ = 10 m/s, a = 5 m/s² → s = 100 / 10 = <strong>10 m</strong></p>
+          <p>Verdoppelst du die Anfangsgeschwindigkeit, vervierfacht sich der Bremsweg!</p>
+        </div>
+        <button class="si-jumpgame-button test-theory-start" id="brake-theory-start" type="button">Zu den Aufgaben</button>
+      </section>`;
+    siGameStage.querySelector("#brake-theory-start")?.addEventListener("click", showBrakeQuestion);
+  };
+
+  // ── Fehler finden ──────────────────────────────────────────────────────────
+  const ERROR_QUESTIONS = [
+    {
+      kicker: "Fehler finden · Aufgabe 1 von 3 · 75 XP",
+      situation: "Ein Schüler berechnet, wie weit ein Auto in 5 Sekunden bei 8 m/s fährt.",
+      calculation: "s = v + t = 8 + 5 = 13 m",
+      question: "Wo steckt der Fehler?",
+      options: [
+        { text: "Man muss v und t multiplizieren, nicht addieren: s = v · t = 40 m.", correct: true, explanation: "Genau! Die Formel lautet s = v · t. Addition ergibt physikalisch keinen Sinn — Einheiten wären m/s + s, was keine gültige Einheit ist." },
+        { text: "Die Einheit der Geschwindigkeit fehlt.", correct: false, explanation: "Das wäre ein Formfehler, aber nicht der inhaltliche Denkfehler im Ergebnis." },
+        { text: "Die Zeit muss quadriert werden: s = v · t².", correct: false, explanation: "Nein. Das gilt bei der beschleunigten Bewegung mit s = ½ · a · t², nicht hier." },
+        { text: "Es gibt keinen Fehler — 13 m ist richtig.", correct: false, explanation: "Falsch. 8 m/s × 5 s = 40 m. Die Addition ist falsch." },
+      ],
+      xp: 75,
+    },
+    {
+      kicker: "Fehler finden · Aufgabe 2 von 3 · 100 XP",
+      situation: "Ein Schüler berechnet die Beschleunigung einer Rakete. Sie startet aus der Ruhe und erreicht nach 4 s eine Geschwindigkeit von 20 m/s.",
+      calculation: "a = v · t = 20 · 4 = 80 m/s²",
+      question: "Was hat der Schüler falsch gemacht?",
+      options: [
+        { text: "Man muss dividieren, nicht multiplizieren: a = v / t = 5 m/s².", correct: true, explanation: "Richtig! a = Δv / Δt = 20 / 4 = 5 m/s². Multiplizieren ergibt eine falsche Einheit (m/s · s = m)." },
+        { text: "Die Anfangsgeschwindigkeit wurde vergessen.", correct: false, explanation: "v₀ = 0, also gilt Δv = v − v₀ = 20 − 0 = 20 m/s. Das ist korrekt berücksichtigt." },
+        { text: "Das Ergebnis stimmt, nur die Einheit ist falsch.", correct: false, explanation: "Nein — sowohl Wert als auch Rechenoperation sind falsch." },
+        { text: "Zeit und Geschwindigkeit müssen addiert werden: a = 20 + 4 = 24 m/s².", correct: false, explanation: "Nein. Addition von Geschwindigkeit und Zeit ergibt keine physikalisch sinnvolle Einheit." },
+      ],
+      xp: 100,
+    },
+    {
+      kicker: "Fehler finden · Aufgabe 3 von 3 · 100 XP",
+      situation: "Ein Schüler berechnet die Fallzeit eines Objekts, das aus 45 m Höhe fällt (g = 10 m/s²).",
+      calculation: "h = ½ · g · t  →  t = h / (½ · g) = 45 / 5 = 9 s",
+      question: "Was ist der Denkfehler?",
+      options: [
+        { text: "Die richtige Formel ist h = ½ · g · t². Man muss die Wurzel ziehen: t = √(2h/g) = √9 = 3 s.", correct: true, explanation: "Genau! Die Zeit steht im Quadrat: h = ½gt². Umgeformt: t = √(2h/g) = √(90/10) = √9 = 3 s." },
+        { text: "g müsste 9.81 m/s² sein, dann stimmt das Ergebnis.", correct: false, explanation: "Der Wert g = 10 m/s² ist eine übliche Vereinfachung. Das Problem ist die fehlende Quadrat-Beziehung." },
+        { text: "Man darf beim freien Fall keine Formeln benutzen.", correct: false, explanation: "Natürlich darf man — und muss man. Die Formel ist nur falsch angewendet worden." },
+        { text: "Die Höhe muss durch g geteilt werden: t = h / g = 45 / 10 = 4.5 s.", correct: false, explanation: "Auch das ist falsch. Die korrekte Formel ist t = √(2h/g)." },
+      ],
+      xp: 100,
+    },
+  ];
+  let errorState = { index: 0 };
+
+  const renderErrorGame = () => {
+    if (!(siGameStage instanceof HTMLElement)) return;
+    errorState.index = 0;
+
+    const showErrorQuestion = () => {
+      const q = ERROR_QUESTIONS[errorState.index];
+      const isLast = errorState.index === ERROR_QUESTIONS.length - 1;
+
+      siGameStage.innerHTML = `
+        <section class="test-theory-page">
+          <div class="test-theory-copy" style="margin-bottom:0.5rem">
+            <p class="test-theory-kicker">${q.kicker}</p>
+            <h3>Finde den Fehler!</h3>
+            <p>${q.situation}</p>
+          </div>
+          <div class="test-theory-formula" style="font-size:1rem;text-align:left;padding:0.9rem 1.2rem;line-height:1.7">
+            <span style="font-family:monospace;white-space:pre-wrap">${q.calculation}</span>
+          </div>
+          <p style="font-weight:700;margin:0.8rem 0 0.5rem">${q.question}</p>
+          <div id="error-options" class="vt-options"></div>
+          <p class="test-motion-feedback" id="error-feedback" aria-live="polite"></p>
+          <button class="si-jumpgame-button test-motion-next" id="error-next" type="button" hidden>${isLast ? "Fertig" : "Nächste Frage"}</button>
+        </section>`;
+
+      const optionsEl = siGameStage.querySelector("#error-options");
+      const feedbackEl = siGameStage.querySelector("#error-feedback");
+      const nextBtn = siGameStage.querySelector("#error-next");
+      let answered = false;
+
+      q.options.forEach(opt => {
+        const btn = document.createElement("button");
+        btn.className = "vt-option-btn";
+        btn.textContent = opt.text;
+        btn.addEventListener("click", () => {
+          if (answered) return;
+          answered = true;
+          optionsEl?.querySelectorAll(".vt-option-btn").forEach(b => { b.disabled = true; });
+          if (opt.correct) {
+            btn.classList.add("is-correct");
+            if (feedbackEl) { feedbackEl.textContent = `✓ ${opt.explanation} +${q.xp} XP`; feedbackEl.className = "test-motion-feedback is-correct"; }
+            awardPoints(q.xp);
+          } else {
+            btn.classList.add("is-wrong");
+            const ci = q.options.findIndex(o => o.correct);
+            optionsEl?.querySelectorAll(".vt-option-btn")[ci]?.classList.add("is-correct");
+            if (feedbackEl) { feedbackEl.textContent = `✗ ${opt.explanation}`; feedbackEl.className = "test-motion-feedback is-hint"; }
+          }
+          if (nextBtn instanceof HTMLButtonElement) nextBtn.hidden = false;
+        });
+        optionsEl?.appendChild(btn);
+      });
+
+      if (nextBtn instanceof HTMLButtonElement) {
+        nextBtn.addEventListener("click", () => {
+          if (errorState.index >= ERROR_QUESTIONS.length - 1) {
+            markStepComplete("TEST", errorState.index + 4);
+            siGameStage.innerHTML = `
+              <section class="test-motion-complete">
+                <h3>Fehlerdetektiv!</h3>
+                <p>Du erkennst typische Rechenfehler in der Kinematik sicher.</p>
+                <button class="si-jumpgame-button" id="error-back" type="button">Zurück zum Pfad</button>
+              </section>`;
+            siGameStage.querySelector("#error-back")?.addEventListener("click", closeSIGame);
+            return;
+          }
+          errorState.index++;
+          showErrorQuestion();
+        });
+      }
+    };
+
+    siGameStage.innerHTML = `
+      <section class="test-theory-page">
+        <div class="test-theory-copy">
+          <p class="test-theory-kicker">Theorie</p>
+          <h3>Typische Rechenfehler erkennen</h3>
+          <p>In der Kinematik passieren immer wieder dieselben Denkfehler:</p>
+          <ul style="line-height:1.9;padding-left:1.2rem">
+            <li><strong>Addieren statt Multiplizieren</strong> bei s = v · t</li>
+            <li><strong>Multiplizieren statt Dividieren</strong> bei a = Δv / Δt</li>
+            <li><strong>t vergessen zu quadrieren</strong> bei s = ½ · a · t²</li>
+            <li><strong>Einheiten nicht prüfen</strong> — ein Einheitencheck deckt viele Fehler auf</li>
+          </ul>
+          <p>Ein guter Trick: Prüfe immer, ob die Einheiten beider Seiten übereinstimmen!</p>
+        </div>
+        <div class="test-theory-formula" style="font-size:0.95rem;text-align:left;padding:0.8rem 1.2rem">
+          <span>[s] = m &nbsp;·&nbsp; [v · t] = m/s · s = m ✓</span>
+        </div>
+        <button class="si-jumpgame-button test-theory-start" id="error-theory-start" type="button">Fehler jagen</button>
+      </section>`;
+    siGameStage.querySelector("#error-theory-start")?.addEventListener("click", showErrorQuestion);
+  };
+
+  // ── Freier Fall ─────────────────────────────────────────────────────────────
+  const FALL_TASKS = [
+    { h: 20, g: 10, answerT: 2, answerV: 20, xp: 100,
+      hintT: "t = √(2h/g) = √(40/10) = √4 = 2 s",
+      hintV: "v = g · t = 10 · 2 = 20 m/s" },
+    { h: 45, g: 10, answerT: 3, answerV: 30, xp: 125,
+      hintT: "t = √(2h/g) = √(90/10) = √9 = 3 s",
+      hintV: "v = g · t = 10 · 3 = 30 m/s" },
+    { h: 80, g: 10, answerT: 4, answerV: 40, xp: 150,
+      hintT: "t = √(2h/g) = √(160/10) = √16 = 4 s",
+      hintV: "v = g · t = 10 · 4 = 40 m/s" },
+  ];
+  let fallState = { index: 0, phase: "time", hadError: false };
+
+  const renderFallGame = () => {
+    if (!(siGameStage instanceof HTMLElement)) return;
+    fallState.index = 0;
+    fallState.hadError = false;
+
+    const showFallQuestion = () => {
+      const task = FALL_TASKS[fallState.index];
+      const isLastTask = fallState.index === FALL_TASKS.length - 1;
+      fallState.phase = "time";
+
+      const render = () => {
+        const isTimePhase = fallState.phase === "time";
+        siGameStage.innerHTML = `
+          <section class="test-theory-page">
+            <div class="test-theory-copy" style="margin-bottom:0.5rem">
+              <p class="test-theory-kicker">Freier Fall · Aufgabe ${fallState.index + 1} von ${FALL_TASKS.length} · ${task.xp} XP</p>
+              <h3>Fall aus ${task.h} m Höhe</h3>
+              <p>Ein Objekt fällt aus der Ruhe (v₀ = 0) aus einer Höhe von <strong>${task.h} m</strong>.</p>
+              <p>Die Erdbeschleunigung beträgt g = ${task.g} m/s² (Luftwiderstand vernachlässigt).</p>
+            </div>
+            <canvas id="fall-canvas" style="width:100%;height:130px;border-radius:10px;display:block;margin:0.5rem 0"></canvas>
+            <div class="test-theory-formula" style="font-size:0.95rem;text-align:left;padding:0.7rem 1.2rem">
+              <span>h = ½ · g · t² &nbsp;&nbsp;|&nbsp;&nbsp; v = g · t</span>
+            </div>
+            ${isTimePhase
+              ? `<p style="font-weight:700;margin:0.6rem 0 0.4rem">Frage 1: Wie lange fällt das Objekt? (in Sekunden)</p>`
+              : `<p style="font-weight:700;margin:0.6rem 0 0.4rem">Frage 2: Mit welcher Geschwindigkeit trifft es auf? (in m/s)</p>`
+            }
+            <div class="test-motion-answer-row">
+              <input id="fall-answer" type="number" inputmode="decimal" placeholder="${isTimePhase ? "Zeit in s" : "Geschwindigkeit in m/s"}" step="0.1">
+              <button class="si-jumpgame-button" id="fall-check" type="button">Prüfen</button>
+            </div>
+            <p class="test-motion-feedback" id="fall-feedback" aria-live="polite"></p>
+            <button class="si-jumpgame-button test-motion-next" id="fall-next" type="button" hidden>${!isTimePhase && isLastTask ? "Fertig" : "Weiter"}</button>
+          </section>`;
+
+        const fc = siGameStage.querySelector("#fall-canvas");
+        if (fc instanceof HTMLCanvasElement) {
+          window.requestAnimationFrame(() => {
+            const ctx = fc.getContext("2d");
+            const ratio = Math.min(window.devicePixelRatio || 1, 2);
+            const W = fc.getBoundingClientRect().width;
+            const H = 130;
+            fc.width = Math.floor(W * ratio); fc.height = Math.floor(H * ratio);
+            ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
+            ctx.fillStyle = "#e8f4fd"; ctx.fillRect(0, 0, W, H);
+            // Sky gradient
+            const grad = ctx.createLinearGradient(0, 0, 0, H);
+            grad.addColorStop(0, "#c8e6ff"); grad.addColorStop(1, "#eef2f8");
+            ctx.fillStyle = grad; ctx.fillRect(0, 0, W, H);
+            // Ground
+            ctx.fillStyle = "#8ab87d"; ctx.fillRect(0, H - 18, W, 18);
+            ctx.fillStyle = "#6a9460"; ctx.fillRect(0, H - 18, W, 4);
+            // Height marker
+            ctx.strokeStyle = "#aaa"; ctx.lineWidth = 1; ctx.setLineDash([4, 3]);
+            const objX = W * 0.3;
+            ctx.beginPath(); ctx.moveTo(objX, 22); ctx.lineTo(objX, H - 18); ctx.stroke();
+            ctx.setLineDash([]);
+            // Arrow
+            ctx.strokeStyle = "#3b82f6"; ctx.lineWidth = 2;
+            ctx.beginPath(); ctx.moveTo(objX + 18, 22); ctx.lineTo(objX + 18, H - 35); ctx.stroke();
+            ctx.beginPath(); ctx.moveTo(objX + 13, H - 38); ctx.lineTo(objX + 18, H - 30); ctx.lineTo(objX + 23, H - 38); ctx.fillStyle = "#3b82f6"; ctx.fill();
+            // Height label
+            ctx.fillStyle = "#3b82f6"; ctx.font = "700 12px Space Grotesk, sans-serif"; ctx.textAlign = "left";
+            ctx.fillText(`h = ${task.h} m`, objX + 25, H / 2 + 4);
+            // Ball
+            const ballY = isTimePhase ? 22 : H - 30;
+            ctx.beginPath(); ctx.arc(objX, ballY, 10, 0, Math.PI * 2);
+            const ballGrad = ctx.createRadialGradient(objX - 3, ballY - 3, 1, objX, ballY, 10);
+            ballGrad.addColorStop(0, "#ff9f5a"); ballGrad.addColorStop(1, "#e05a1a");
+            ctx.fillStyle = ballGrad; ctx.fill();
+            // Phase indicator
+            ctx.fillStyle = "#555"; ctx.font = "600 10px Space Grotesk, sans-serif"; ctx.textAlign = "center";
+            ctx.fillText(isTimePhase ? "Objekt am Start (oben)" : "Objekt kurz vor dem Aufprall", W * 0.65, H / 2);
+          });
+        }
+
+        const answerInput = siGameStage.querySelector("#fall-answer");
+        const feedbackEl = siGameStage.querySelector("#fall-feedback");
+        const nextBtn = siGameStage.querySelector("#fall-next");
+        let solved = false;
+
+        const check = () => {
+          if (solved) return;
+          const val = Number(answerInput?.value);
+          if (!Number.isFinite(val) || val <= 0) {
+            if (feedbackEl) { feedbackEl.textContent = "Gib eine positive Zahl ein."; feedbackEl.className = "test-motion-feedback is-hint"; }
+            return;
+          }
+          const correct = isTimePhase ? task.answerT : task.answerV;
+          const hint = isTimePhase ? task.hintT : task.hintV;
+          if (Math.abs(val - correct) <= 0.1) {
+            solved = true;
+            if (answerInput instanceof HTMLInputElement) answerInput.disabled = true;
+            const pts = Math.round(task.xp / 2);
+            if (!fallState.hadError) awardPoints(pts);
+            if (feedbackEl) {
+              feedbackEl.textContent = `✓ Richtig! ${isTimePhase ? `Fallzeit = ${task.answerT} s.` : `Aufprallgeschwindigkeit = ${task.answerV} m/s.`} ${!fallState.hadError ? `+${pts} XP` : ""}`;
+              feedbackEl.className = "test-motion-feedback is-correct";
+            }
+            if (nextBtn instanceof HTMLButtonElement) nextBtn.hidden = false;
+          } else {
+            fallState.hadError = true;
+            if (feedbackEl) { feedbackEl.textContent = `Nicht ganz. Tipp: ${hint}`; feedbackEl.className = "test-motion-feedback is-hint"; }
+          }
+        };
+
+        siGameStage.querySelector("#fall-check")?.addEventListener("click", check);
+        if (answerInput instanceof HTMLInputElement) {
+          answerInput.addEventListener("keydown", e => { if (e.key === "Enter") check(); });
+          answerInput.focus();
+        }
+        if (nextBtn instanceof HTMLButtonElement) {
+          nextBtn.addEventListener("click", () => {
+            if (isTimePhase) {
+              fallState.phase = "velocity";
+              fallState.hadError = false;
+              render();
+              return;
+            }
+            if (fallState.index >= FALL_TASKS.length - 1) {
+              markStepComplete("TEST", fallState.index + 5);
+              siGameStage.innerHTML = `
+                <section class="test-motion-complete">
+                  <h3>Schwerkraft-Kenner!</h3>
+                  <p>Du berechnest Fallzeit und Aufprallgeschwindigkeit sicher mit h = ½gt² und v = g·t.</p>
+                  <button class="si-jumpgame-button" id="fall-back" type="button">Zurück zum Pfad</button>
+                </section>`;
+              siGameStage.querySelector("#fall-back")?.addEventListener("click", closeSIGame);
+              return;
+            }
+            fallState.index++;
+            fallState.hadError = false;
+            showFallQuestion();
+          });
+        }
+      };
+
+      render();
+    };
+
+    siGameStage.innerHTML = `
+      <section class="test-theory-page">
+        <div class="test-theory-copy">
+          <p class="test-theory-kicker">Theorie</p>
+          <h3>Freier Fall</h3>
+          <p>Wenn ein Objekt aus der Ruhe (v₀ = 0) fällt und wir den Luftwiderstand ignorieren, wirkt nur die Erdbeschleunigung:</p>
+          <p style="text-align:center;font-size:1.1rem;font-weight:700;margin:0.4rem 0">g ≈ 9.81 m/s² &nbsp; (vereinfacht: 10 m/s²)</p>
+          <p>Da die Beschleunigung konstant ist, gelten die Formeln der gleichmäßig beschleunigten Bewegung:</p>
+          <ul style="line-height:1.9;padding-left:1.2rem">
+            <li><strong>Fallzeit:</strong> h = ½ · g · t² &nbsp;→&nbsp; t = √(2h / g)</li>
+            <li><strong>Aufprallgeschwindigkeit:</strong> v = g · t</li>
+          </ul>
+          <p>Der freie Fall ist ein Spezialfall der gleichmäßig beschleunigten Bewegung — nur in der Vertikalen!</p>
+        </div>
+        <div class="test-theory-formula">
+          <span>t = √(2h / g)</span>
+        </div>
+        <button class="si-jumpgame-button test-theory-start" id="fall-theory-start" type="button">Zu den Aufgaben</button>
+      </section>`;
+    siGameStage.querySelector("#fall-theory-start")?.addEventListener("click", showFallQuestion);
+  };
+
   const renderGenericGame = (step) => {
     if (!(siGameStage instanceof HTMLElement)) {
       return;
@@ -3804,6 +4529,10 @@ if (title && frame && pencilLayer instanceof HTMLCanvasElement) {
     const isAccelerationMotion = moduleId === "TEST" && step.title === "Beschleunigung";
     const isSprintScanner = moduleId === "TEST" && step.title === "K1 - Sprint-Scanner";
     const isOvertakeDuel = moduleId === "TEST" && step.title === "K2 - Überhol-Duell";
+    const isVTDiagramPanel = moduleId === "TEST" && step.title === "v-t Diagramm lesen";
+    const isBrakePanel = moduleId === "TEST" && step.title === "Bremsweg berechnen";
+    const isErrorPanel = moduleId === "TEST" && step.title === "Fehler finden";
+    const isFreeFallPanel = moduleId === "TEST" && step.title === "Freier Fall";
 
     if (isTestUniformMotion) {
       siSideContent.innerHTML = `
@@ -3889,6 +4618,82 @@ if (title && frame && pencilLayer instanceof HTMLCanvasElement) {
         <article class="side-card">
           <h3 class="side-title"><strong>Einbau ins Spiel</strong></h3>
           <p class="side-text">Der Spieler entscheidet, ob das Überholmanöver vor einer Kurve möglich ist. Die Simulation zeigt, wann beide Fahrzeuge gleichauf sind.</p>
+        </article>
+      `;
+      typesetSidePanelMath();
+      return;
+    }
+
+    if (isVTDiagramPanel) {
+      siSideContent.innerHTML = `
+        <article class="side-card">
+          <h3 class="side-title"><strong>v-t Diagramm</strong></h3>
+          <p class="side-text">Die <strong>Steigung</strong> der Linie gibt die Beschleunigung an:</p>
+          <p class="side-eq">\\[a = \\frac{\\Delta v}{\\Delta t}\\]</p>
+          <p class="side-text">Die <strong>Fläche</strong> unter dem Graphen ergibt die zurückgelegte Strecke:</p>
+          <p class="side-eq">\\[s = v \\cdot t \\quad \\text{(bei konst. } v\\text{)}\\]</p>
+        </article>
+        <article class="side-card">
+          <h3 class="side-title"><strong>Drei Muster</strong></h3>
+          <p class="side-text">Waagerecht → konstante Geschwindigkeit (a = 0)</p>
+          <p class="side-text">Steigend → positive Beschleunigung</p>
+          <p class="side-text">Fallend → Verzögerung (Bremsen)</p>
+        </article>
+      `;
+      typesetSidePanelMath();
+      return;
+    }
+
+    if (isBrakePanel) {
+      siSideContent.innerHTML = `
+        <article class="side-card">
+          <h3 class="side-title"><strong>Bremsweg</strong></h3>
+          <p class="side-text">Aus \\(v^2 = v_0^2 - 2as\\) mit \\(v = 0\\) folgt:</p>
+          <p class="side-eq">\\[s = \\frac{v_0^2}{2a}\\]</p>
+          <p class="side-text">Verdoppelst du \\(v_0\\), vervierfacht sich der Bremsweg!</p>
+        </article>
+        <article class="side-card">
+          <h3 class="side-title"><strong>Praxisbeispiel</strong></h3>
+          <p class="side-text">Bei Tempo 50 (≈ 14 m/s) und \\(a = 7\\,\\mathrm{m/s^2}\\) beträgt der Bremsweg nur ca. 14 m.</p>
+          <p class="side-text">Bei Tempo 100 sind es bereits 4× so viel — deshalb gilt im Straßenverkehr: Halber Abstand, doppeltes Risiko!</p>
+        </article>
+      `;
+      typesetSidePanelMath();
+      return;
+    }
+
+    if (isErrorPanel) {
+      siSideContent.innerHTML = `
+        <article class="side-card">
+          <h3 class="side-title"><strong>Einheitencheck</strong></h3>
+          <p class="side-text">Ein guter Trick: Prüfe die Einheiten auf beiden Seiten.</p>
+          <p class="side-eq">\\[s = v \\cdot t \\Rightarrow [\\mathrm{m}] = \\frac{\\mathrm{m}}{\\mathrm{s}} \\cdot \\mathrm{s} \\; ✓\\]</p>
+          <p class="side-text">Wenn die Einheiten nicht passen, ist die Formel falsch angewendet.</p>
+        </article>
+        <article class="side-card">
+          <h3 class="side-title"><strong>Häufige Fehler</strong></h3>
+          <p class="side-text">+ statt × bei \\(s = v \\cdot t\\)</p>
+          <p class="side-text">× statt ÷ bei \\(a = \\Delta v / \\Delta t\\)</p>
+          <p class="side-text">\\(t\\) nicht quadriert bei \\(s = \\frac{1}{2}at^2\\)</p>
+        </article>
+      `;
+      typesetSidePanelMath();
+      return;
+    }
+
+    if (isFreeFallPanel) {
+      siSideContent.innerHTML = `
+        <article class="side-card">
+          <h3 class="side-title"><strong>Freier Fall</strong></h3>
+          <p class="side-text">Spezialfall: \\(v_0 = 0\\), nur Schwerkraft wirkt.</p>
+          <p class="side-eq">\\[h = \\frac{1}{2} g t^2\\]</p>
+          <p class="side-eq">\\[t = \\sqrt{\\frac{2h}{g}}\\]</p>
+          <p class="side-eq">\\[v = g \\cdot t\\]</p>
+        </article>
+        <article class="side-card">
+          <h3 class="side-title"><strong>Merke</strong></h3>
+          <p class="side-text">\\(g \\approx 9{,}81\\,\\mathrm{m/s^2}\\) — vereinfacht oft \\(10\\,\\mathrm{m/s^2}\\)</p>
+          <p class="side-text">Masse spielt keine Rolle (Galilei)! Schwere und leichte Objekte fallen gleich schnell.</p>
         </article>
       `;
       typesetSidePanelMath();
@@ -4120,6 +4925,10 @@ if (title && frame && pencilLayer instanceof HTMLCanvasElement) {
     const isAccelerationMotion = activeModuleId === "TEST" && step.title === "Beschleunigung";
     const isSprintScanner = activeModuleId === "TEST" && step.title === "K1 - Sprint-Scanner";
     const isOvertakeDuel = activeModuleId === "TEST" && step.title === "K2 - Überhol-Duell";
+    const isVTDiagram = activeModuleId === "TEST" && step.title === "v-t Diagramm lesen";
+    const isBrakeCalc = activeModuleId === "TEST" && step.title === "Bremsweg berechnen";
+    const isErrorFind = activeModuleId === "TEST" && step.title === "Fehler finden";
+    const isFreeFall = activeModuleId === "TEST" && step.title === "Freier Fall";
     if (isSIUnits) {
       renderSIUnitsTutorial();
     } else if (isCoordinates) {
@@ -4147,6 +4956,14 @@ if (title && frame && pencilLayer instanceof HTMLCanvasElement) {
       renderSprintGame();
     } else if (isOvertakeDuel) {
       renderCatchUpGame(K2_OVERTAKE_TASK);
+    } else if (isVTDiagram) {
+      renderVTDiagramGame();
+    } else if (isBrakeCalc) {
+      renderBrakeGame();
+    } else if (isErrorFind) {
+      renderErrorGame();
+    } else if (isFreeFall) {
+      renderFallGame();
     } else {
       stopSIUnitsJumpGame();
       stopTestMotionGame();
