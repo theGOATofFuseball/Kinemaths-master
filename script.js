@@ -879,11 +879,13 @@ const STEP_CONTENT = {
       example: "Gerade von (0; 0) bis (5 s; 20 m/s) → a = 20/5 = 4 m/s². Fläche (Dreieck) = ½·20·5 = 50 m.",
     },
     question: {
-      type: "st-live",
-      v: 6,
-      s: 180,
+      type: "vt-live",
+      a: 4,
+      v0: 0,
+      maxT: 5,
       followUp: [
         { text: "Im v-t-Diagramm liegt eine steigende Gerade. Was sagt die Steigung aus?", options: ["Die Steigung = Beschleunigung a.", "Die Steigung = zurückgelegte Strecke.", "Die Steigung = Durchschnittsgeschwindigkeit.", "Die Steigung hat keine physikalische Bedeutung."], correct: 0, explanation: "Im v-t-Diagramm gilt: Steigung = Δv/Δt = a. Je steiler, desto grösser die Beschleunigung.", hint: "Was ist die Einheit der Steigung im v-t-Diagramm?" },
+        { text: "Was entspricht die Fläche unter dem v-t-Graphen?", options: ["Der zurückgelegte Weg s.", "Der Beschleunigung a.", "Der Durchschnittsgeschwindigkeit.", "Der Zeitdauer."], correct: 0, explanation: "Fläche unter v-t = zurückgelegter Weg. Dreieck: ½·v_max·t = ½·a·t² = s.", hint: "Fläche = ∫v dt = s" },
       ],
     },
   },
@@ -5795,6 +5797,159 @@ if (title && frame && pencilLayer instanceof HTMLCanvasElement) {
     });
   };
 
+  // ── v-t live diagram engine ───────────────────────────────────────────────
+  const runVTLiveEngine = (q, onComplete) => {
+    const accel = q.a   ?? 4;
+    const v0    = q.v0  ?? 0;
+    const maxT  = q.maxT ?? 5;
+    const vMax  = v0 + accel * maxT;
+
+    siGameStage.innerHTML = `
+      <div class="interact-page">
+        <p class="mod-q-meta theory-anim">Interaktiv · v-t-Diagramm live</p>
+        <h3 class="interact-heading theory-anim">v-t-Diagramm in Echtzeit</h3>
+        <p class="interact-sub theory-anim">Der Körper beschleunigt gleichmässig. Beobachte die <strong>konstante Steigung</strong> im v-t-Diagramm — das ist a!</p>
+        <div class="interact-canvas-wrap theory-anim"><canvas id="ivt-cv" height="290"></canvas></div>
+        <button class="si-jumpgame-button theory-anim" id="ivt-go" style="margin:1rem auto;display:block">▶ Animation starten</button>
+        <p class="test-motion-feedback" id="ivt-fb"></p>
+      </div>`;
+
+    animateModuleTheory();
+
+    const cv = document.getElementById('ivt-cv');
+    cv.width = cv.parentElement?.offsetWidth || 560;
+    const W = cv.width, H = cv.height, ctx = cv.getContext('2d');
+    const SPLIT = 104;
+    const TL = 24, TR = W - 24, TW = TR - TL, TY = SPLIT / 2 + 8;
+    const GP = { x0: 52, x1: W - 18, y0: SPLIT + 14, y1: H - 22 };
+    GP.w = GP.x1 - GP.x0; GP.h = GP.y1 - GP.y0;
+    const pts = [];
+
+    const paintAll = (elapsed, finished) => {
+      ctx.clearRect(0, 0, W, H);
+      const elClamped = Math.min(elapsed, maxT);
+      const currentV = v0 + accel * elClamped;
+
+      // ── Track section ──
+      ctx.fillStyle = '#2c3a4a'; ctx.fillRect(TL, TY - 18, TW, 36);
+      ctx.setLineDash([12, 10]); ctx.strokeStyle = 'rgba(255,255,255,0.22)'; ctx.lineWidth = 2;
+      ctx.beginPath(); ctx.moveTo(TL, TY); ctx.lineTo(TR, TY); ctx.stroke(); ctx.setLineDash([]);
+      ctx.fillStyle = 'rgba(255,255,255,0.55)'; ctx.fillRect(TL - 1, TY - 20, 2, 40);
+      for (let r = 0; r < 8; r++) {
+        ctx.fillStyle = r % 2 ? '#333' : '#fff'; ctx.fillRect(TR - 2, TY - 20 + r * 5, 4, 5);
+      }
+      ctx.fillStyle = '#fff'; ctx.font = '9px monospace'; ctx.textAlign = 'left';
+      ctx.fillText('v₀=' + v0 + ' m/s', TL, TY - 22);
+      ctx.textAlign = 'right'; ctx.fillStyle = '#4cffa0';
+      ctx.fillText('a=' + accel + ' m/s²', TR, TY - 22); ctx.textAlign = 'left';
+
+      // Car position (quadratic — s = v₀t + ½at²)
+      const dist    = v0 * elClamped + 0.5 * accel * elClamped * elClamped;
+      const maxDist = v0 * maxT      + 0.5 * accel * maxT      * maxT;
+      const carFrac = Math.min(dist / (maxDist || 1), 1);
+      const cx = TL + carFrac * TW;
+
+      ctx.fillStyle = 'rgba(255,135,83,0.2)'; ctx.fillRect(TL, TY + 20, TW, 3);
+      ctx.fillStyle = '#ff8753'; ctx.fillRect(TL, TY + 20, TW * carFrac, 3);
+      ctx.beginPath(); ctx.roundRect(cx - 20, TY - 25, 40, 18, 5); ctx.fill();
+      ctx.fillStyle = '#c85a1a'; ctx.beginPath(); ctx.roundRect(cx - 12, TY - 33, 24, 10, 3); ctx.fill();
+      ctx.fillStyle = 'rgba(255,255,255,0.55)';
+      ctx.beginPath(); ctx.roundRect(cx - 9, TY - 31, 8, 7, 2); ctx.fill();
+      ctx.beginPath(); ctx.roundRect(cx + 1, TY - 31, 8, 7, 2); ctx.fill();
+      [cx - 12, cx + 12].forEach(wx => {
+        ctx.fillStyle = '#111'; ctx.beginPath(); ctx.arc(wx, TY - 6, 6, 0, Math.PI * 2); ctx.fill();
+        ctx.fillStyle = '#555'; ctx.beginPath(); ctx.arc(wx, TY - 6, 3, 0, Math.PI * 2); ctx.fill();
+      });
+
+      // Velocity readout
+      if (elClamped > 0.05) {
+        ctx.fillStyle = 'rgba(20,24,40,0.88)'; ctx.beginPath();
+        ctx.roundRect(W / 2 - 64, 2, 128, 22, 4); ctx.fill();
+        ctx.fillStyle = '#ff8753'; ctx.font = 'bold 12px monospace'; ctx.textAlign = 'center';
+        ctx.fillText('v = ' + currentV.toFixed(1) + ' m/s', W / 2, 17); ctx.textAlign = 'left';
+      }
+
+      // Divider
+      ctx.fillStyle = 'rgba(0,0,0,0.1)'; ctx.fillRect(0, SPLIT, W, 1);
+
+      // Grid
+      const steps = 5;
+      ctx.setLineDash([3, 6]); ctx.strokeStyle = 'rgba(0,0,0,0.08)'; ctx.lineWidth = 1;
+      for (let i = 1; i <= steps; i++) {
+        const gx = GP.x0 + (GP.w / steps) * i;
+        const gy = GP.y1 - (GP.h / steps) * i;
+        ctx.beginPath(); ctx.moveTo(gx, GP.y0); ctx.lineTo(gx, GP.y1); ctx.stroke();
+        ctx.beginPath(); ctx.moveTo(GP.x0, gy); ctx.lineTo(GP.x1, gy); ctx.stroke();
+        ctx.fillStyle = '#4d6070'; ctx.font = '9px monospace'; ctx.textAlign = 'center';
+        ctx.fillText((maxT / steps * i).toFixed(1), gx, GP.y1 + 13);
+        ctx.textAlign = 'right';
+        ctx.fillText((vMax / steps * i).toFixed(1), GP.x0 - 3, GP.y1 - (GP.h / steps) * i + 4);
+      }
+      ctx.setLineDash([]); ctx.textAlign = 'left';
+
+      // Axes
+      ctx.strokeStyle = 'rgba(0,0,0,0.28)'; ctx.lineWidth = 1.5;
+      ctx.beginPath(); ctx.moveTo(GP.x0, GP.y0 - 6); ctx.lineTo(GP.x0, GP.y1); ctx.lineTo(GP.x1 + 6, GP.y1); ctx.stroke();
+      ctx.fillStyle = '#2d3a48'; ctx.font = '10px monospace';
+      ctx.fillText('v (m/s)', GP.x0 - 50, GP.y0 + 4);
+      ctx.fillText('t (s)', GP.x1 - 8, GP.y1 + 16);
+      ctx.fillText('0', GP.x0 - 10, GP.y1 + 13);
+
+      // Live v-t line
+      if (pts.length > 1) {
+        ctx.strokeStyle = '#ff8753'; ctx.lineWidth = 2.5; ctx.beginPath();
+        pts.forEach(({ t: pt, v: pv }, i) => {
+          const px = GP.x0 + (pt / maxT) * GP.w;
+          const py = GP.y1 - ((pv - v0) / (vMax - v0 || 1)) * GP.h;
+          i === 0 ? ctx.moveTo(px, py) : ctx.lineTo(px, py);
+        });
+        ctx.stroke();
+        const last = pts[pts.length - 1];
+        const lx = GP.x0 + (last.t / maxT) * GP.w;
+        const ly = GP.y1 - ((last.v - v0) / (vMax - v0 || 1)) * GP.h;
+        ctx.fillStyle = '#ff8753'; ctx.beginPath(); ctx.arc(lx, ly, 5, 0, Math.PI * 2); ctx.fill();
+      }
+
+      // Slope annotation when done
+      if (finished) {
+        const ax = GP.x0 + GP.w * 0.08, ay = GP.y1 - GP.h * 0.08;
+        const bx = GP.x0 + GP.w * 0.52, by = GP.y1 - GP.h * 0.52;
+        ctx.strokeStyle = '#ffd164'; ctx.lineWidth = 1.5; ctx.setLineDash([5, 5]);
+        ctx.beginPath(); ctx.moveTo(ax, ay); ctx.lineTo(bx, ay); ctx.lineTo(bx, by); ctx.stroke();
+        ctx.setLineDash([]);
+        const labelW = 196;
+        ctx.fillStyle = 'rgba(20,24,40,0.9)'; ctx.beginPath();
+        ctx.roundRect(bx + 6, (ay + by) / 2 - 14, labelW, 22, 4); ctx.fill();
+        ctx.fillStyle = '#ffd164'; ctx.font = 'bold 11px monospace';
+        ctx.fillText('Steigung = Δv/Δt = ' + accel + ' m/s² = a', bx + 10, (ay + by) / 2 + 3);
+      }
+    };
+
+    paintAll(0, false);
+    const fb = document.getElementById('ivt-fb');
+    let raf = null;
+
+    document.getElementById('ivt-go').addEventListener('click', function () {
+      if (raf) return;
+      this.disabled = true; pts.length = 0;
+      const t0 = performance.now();
+      const loop = (now) => {
+        const el = (now - t0) / 1000;
+        pts.push({ t: Math.min(el, maxT), v: v0 + accel * Math.min(el, maxT) });
+        const done = el >= maxT;
+        paintAll(el, done);
+        if (!done) { raf = requestAnimationFrame(loop); }
+        else {
+          raf = null;
+          fb.className = 'test-motion-feedback is-correct';
+          fb.textContent = 'Steigung = Δv/Δt = ' + vMax.toFixed(1) + '/' + maxT + ' = ' + accel + ' m/s²  →  Das ist die Beschleunigung a!';
+          if (q.followUp?.length) setTimeout(() => runMCEngine(q.followUp, onComplete), 2000);
+          else setTimeout(() => onComplete?.(), 2400);
+        }
+      };
+      raf = requestAnimationFrame(loop);
+    });
+  };
 
   const renderModuleGame = (step) => {
     if (!(siGameStage instanceof HTMLElement) || !step) return;
@@ -5823,6 +5978,7 @@ if (title && frame && pencilLayer instanceof HTMLCanvasElement) {
       if (q.type === "race")      { runRaceEngine(q, done);      return; }
       if (q.type === "st-live")   { runSTLiveEngine(q, done);    return; }
       if (q.type === "accel-lab") { runAccelLabEngine(q, done);  return; }
+      if (q.type === "vt-live")   { runVTLiveEngine(q, done);    return; }
 
       const runQ = (tasks) => {
         if (q.type === "mc") {
