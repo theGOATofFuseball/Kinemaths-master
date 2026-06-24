@@ -1,0 +1,293 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kinemaths</title>
+    <meta
+      name="description"
+      content="Kinemaths: learn motion with clear visuals, interactive challenges, and instant feedback."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&family=Space+Grotesk:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="home">
+      <section class="frame" aria-label="Kinemaths hero section">
+        <div class="frame-grid" aria-hidden="true"></div>
+        <canvas class="pencil-layer" id="pencil-layer" aria-hidden="true"></canvas>
+
+        <div class="content">
+          <h1 class="title" id="title">Kinemaths</h1>
+          <button class="cta" id="start-game" type="button">Start Game</button>
+        </div>
+
+        <section class="module-board" id="module-board" aria-label="Module selection">
+          <div class="module-tools">
+            <label class="debug-toggle" for="debug-toggle">
+              <span class="debug-label">dubug</span>
+              <input id="debug-toggle" type="checkbox" />
+              <span class="debug-switch" aria-hidden="true">
+                <span class="debug-knob"></span>
+              </span>
+            </label>
+          </div>
+
+          <div class="modules-scroll" id="modules-scroll">
+            <div class="modules-grid">
+              <button class="module-card" type="button" data-module="0" data-base-unlocked="true" data-progress="100">
+                <span class="module-id">Module 0</span>
+                <span class="module-name">Grundlagen der Bewegung</span>
+                <div class="module-progress-stack">
+                  <span class="module-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none">
+                      <circle cx="12" cy="12" r="7.2"></circle>
+                      <path d="M12 4.8V19.2M4.8 12H19.2"></path>
+                      <path d="M9.1 14.9L14.9 9.1"></path>
+                      <path d="M10 10L14 9L13 13Z" fill="currentColor" stroke="none"></path>
+                    </svg>
+                  </span>
+                  <span class="progress-label">18%</span>
+                </div>
+                <div class="module-meta">
+                  <span class="status-badge">Unlocked</span>
+                </div>
+                <div class="progress-track">
+                  <span class="progress-fill" style="width: 18%"></span>
+                </div>
+              </button>
+              <button class="module-card" type="button" data-module="TEST" data-base-unlocked="true" data-progress="0">
+                <span class="module-id">TEST</span>
+                <span class="module-name">Interaktive Test-Level</span>
+                <div class="module-progress-stack">
+                  <span class="module-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none">
+                      <path d="M4.8 14.8H19.2"></path>
+                      <rect x="5.6" y="9.5" width="8.8" height="4.4" rx="1"></rect>
+                      <path d="M8.1 9.5L10 7.4H13.2L15.1 9.5"></path>
+                      <circle cx="8" cy="15" r="1.4"></circle>
+                      <circle cx="15.4" cy="15" r="1.4"></circle>
+                    </svg>
+                  </span>
+                  <span class="progress-label">0%</span>
+                </div>
+                <div class="module-meta">
+                  <span class="status-badge">Unlocked</span>
+                </div>
+                <div class="progress-track">
+                  <span class="progress-fill" style="width: 0%"></span>
+                </div>
+              </button>
+              <button class="module-card" type="button" data-module="1" data-base-unlocked="false" data-progress="0">
+                <span class="module-id">Module 1</span>
+                <span class="module-name">Geradlinig gleichförmige Bewegung</span>
+                <div class="module-progress-stack">
+                  <span class="module-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none">
+                      <rect x="4.8" y="9.4" width="14.4" height="5.2" rx="1.2"></rect>
+                      <path d="M7 9.4V12M9.2 9.4V11.2M11.4 9.4V12M13.6 9.4V11.2M15.8 9.4V12M18 9.4V11.2"></path>
+                    </svg>
+                  </span>
+                  <span class="progress-label">0%</span>
+                </div>
+                <div class="module-meta">
+                  <span class="status-badge">Locked</span>
+                </div>
+                <div class="progress-track">
+                  <span class="progress-fill" style="width: 0%"></span>
+                </div>
+              </button>
+              <button class="module-card" type="button" data-module="2" data-base-unlocked="false" data-progress="0">
+                <span class="module-id">Module 2</span>
+                <span class="module-name">Gleichmäßig beschleunigte Bewegung</span>
+                <div class="module-progress-stack">
+                  <span class="module-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none">
+                      <path d="M5.2 16.2C7.3 13.8 9.3 12.9 11.6 12.2C14.2 11.4 16.2 10.2 18.8 7.8"></path>
+                      <path d="M15.8 7.9H18.9V11"></path>
+                      <circle cx="8" cy="16.2" r="1.15" fill="currentColor" stroke="none"></circle>
+                      <circle cx="12.2" cy="12.1" r="1.15" fill="currentColor" stroke="none"></circle>
+                      <circle cx="16.5" cy="9.4" r="1.15" fill="currentColor" stroke="none"></circle>
+                    </svg>
+                  </span>
+                  <span class="progress-label">0%</span>
+                </div>
+                <div class="module-meta">
+                  <span class="status-badge">Locked</span>
+                </div>
+                <div class="progress-track">
+                  <span class="progress-fill" style="width: 0%"></span>
+                </div>
+              </button>
+              <button class="module-card" type="button" data-module="3" data-base-unlocked="false" data-progress="0">
+                <span class="module-id">Module 3</span>
+                <span class="module-name">Freier Fall und vertikaler Wurf</span>
+                <div class="module-progress-stack">
+                  <span class="module-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none">
+                      <path d="M12 5.2C11.5 3.9 12.2 3 13.6 3"></path>
+                      <path d="M10.5 7.2C8.2 7.2 6.3 9.1 6.3 11.5C6.3 14.5 8.6 17.1 12 17.1C15.4 17.1 17.7 14.5 17.7 11.5C17.7 9.1 15.8 7.2 13.5 7.2C12.5 7.2 11.4 7.8 10.5 7.2Z"></path>
+                      <path d="M12 19.1V22"></path>
+                      <path d="M10.3 20.3L12 22L13.7 20.3"></path>
+                    </svg>
+                  </span>
+                  <span class="progress-label">0%</span>
+                </div>
+                <div class="module-meta">
+                  <span class="status-badge">Locked</span>
+                </div>
+                <div class="progress-track">
+                  <span class="progress-fill" style="width: 0%"></span>
+                </div>
+              </button>
+              <button class="module-card" type="button" data-module="4" data-base-unlocked="false" data-progress="0">
+                <span class="module-id">Module 4</span>
+                <span class="module-name">Bewegungsdiagramme</span>
+                <div class="module-progress-stack">
+                  <span class="module-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none">
+                      <path d="M5 5.2V18.8H19"></path>
+                      <path d="M7.2 15.6L10.1 12.4L12.8 13.4L16.8 8.4"></path>
+                      <path d="M14.9 8.4H16.8V10.3"></path>
+                    </svg>
+                  </span>
+                  <span class="progress-label">0%</span>
+                </div>
+                <div class="module-meta">
+                  <span class="status-badge">Locked</span>
+                </div>
+                <div class="progress-track">
+                  <span class="progress-fill" style="width: 0%"></span>
+                </div>
+              </button>
+              <button class="module-card" type="button" data-module="5" data-base-unlocked="false" data-progress="0">
+                <span class="module-id">Module 5</span>
+                <span class="module-name">Bewegungen in zwei Dimensionen</span>
+                <div class="module-progress-stack">
+                  <span class="module-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none">
+                      <path d="M4.9 15.8C7.2 10.5 11 8 18.9 8"></path>
+                      <path d="M16.8 6.2H18.9V8.3"></path>
+                      <circle cx="18.9" cy="8.3" r="2.2"></circle>
+                      <circle cx="18.9" cy="8.3" r="0.9" fill="currentColor" stroke="none"></circle>
+                    </svg>
+                  </span>
+                  <span class="progress-label">0%</span>
+                </div>
+                <div class="module-meta">
+                  <span class="status-badge">Locked</span>
+                </div>
+                <div class="progress-track">
+                  <span class="progress-fill" style="width: 0%"></span>
+                </div>
+              </button>
+              <button class="module-card" type="button" data-module="6" data-base-unlocked="false" data-progress="0">
+                <span class="module-id">Module 6</span>
+                <span class="module-name">Relative Bewegung und Bezugssysteme</span>
+                <div class="module-progress-stack">
+                  <span class="module-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none">
+                      <rect x="4.6" y="7.2" width="6.6" height="4.6" rx="1"></rect>
+                      <rect x="12.8" y="12.2" width="6.6" height="4.6" rx="1"></rect>
+                      <path d="M5.8 13.2H11.3"></path>
+                      <path d="M12.8 10.8H18.2"></path>
+                      <path d="M9.8 13.2L11.3 11.8L9.8 10.4"></path>
+                      <path d="M14.3 9.4L12.8 10.8L14.3 12.2"></path>
+                    </svg>
+                  </span>
+                  <span class="progress-label">0%</span>
+                </div>
+                <div class="module-meta">
+                  <span class="status-badge">Locked</span>
+                </div>
+                <div class="progress-track">
+                  <span class="progress-fill" style="width: 0%"></span>
+                </div>
+              </button>
+              <button class="module-card" type="button" data-module="7" data-base-unlocked="false" data-progress="0">
+                <span class="module-id">Module 7</span>
+                <span class="module-name">Messung, Modellierung und Grenzen</span>
+                <div class="module-progress-stack">
+                  <span class="module-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none">
+                      <path d="M9 5H15"></path>
+                      <path d="M10.2 5V9.8L7 15.7C6.2 17.2 7.2 19 8.9 19H15.1C16.8 19 17.8 17.2 17 15.7L13.8 9.8V5"></path>
+                      <path d="M8.7 14.6H15.3"></path>
+                      <circle cx="10.1" cy="12.9" r="0.75" fill="currentColor" stroke="none"></circle>
+                      <circle cx="13.6" cy="16.1" r="0.75" fill="currentColor" stroke="none"></circle>
+                    </svg>
+                  </span>
+                  <span class="progress-label">0%</span>
+                </div>
+                <div class="module-meta">
+                  <span class="status-badge">Locked</span>
+                </div>
+                <div class="progress-track">
+                  <span class="progress-fill" style="width: 0%"></span>
+                </div>
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <section class="module-view m0-view" id="m0-view" aria-label="Modul 0 Lernpfad">
+          <header class="m0-header">
+            <div class="m0-header-copy">
+              <p class="m0-kicker">Module 0</p>
+              <h2 class="m0-title">Grundlagen der Bewegung</h2>
+            </div>
+            <button class="m0-back" id="m0-back" type="button">Zurück zu Modulen</button>
+          </header>
+
+          <div class="m0-path" id="m0-path">
+            <span class="m0-line-bg" aria-hidden="true"></span>
+            <span class="m0-line-progress" id="m0-line-progress" aria-hidden="true"></span>
+            <div class="m0-steps" id="m0-steps"></div>
+          </div>
+        </section>
+
+        <section class="si-game-view" id="si-game-view" aria-label="SI-Einheiten Spiel">
+          <header class="si-game-header">
+            <div class="si-game-copy">
+              <p class="si-game-kicker" id="si-game-kicker">Module 0 Game</p>
+              <h2 class="si-game-title" id="si-game-title">SI-Einheiten</h2>
+            </div>
+            <div class="si-game-actions">
+              <button class="si-game-back si-side-toggle" id="si-side-toggle" type="button" aria-pressed="false">Panel ausblenden</button>
+              <button class="si-game-back" id="si-game-back" type="button">Zurück zum Pfad</button>
+            </div>
+          </header>
+
+          <div class="si-game-stage" id="si-game-stage"></div>
+        </section>
+      </section>
+
+      <aside class="side-frame" id="si-side-frame" aria-label="Rechter Zusatzbereich">
+        <div class="side-frame-grid" aria-hidden="true"></div>
+        <div class="side-frame-inner" id="si-side-content"></div>
+      </aside>
+    </main>
+
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [
+            ["\\(", "\\)"],
+            ["$", "$"],
+          ],
+          displayMath: [["\\[", "\\]"]],
+        },
+      };
+    </script>
+    <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+    <script src="./anime.min.js"></script>
+    <script src="./matter.min.js"></script>
+    <script src="./script.js"></script>
+  </body>
+</html>
