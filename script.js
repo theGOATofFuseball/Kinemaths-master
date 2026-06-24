@@ -47,156 +47,636 @@ const STEP_ICONS = {
 };
 
 const MODULE_CONTENT = {
-  TEST: {
-    title: "TEST",
-    steps: [
-      {
-        title: "Gleichförmige Bewegung",
-        text: "Auto fährt mit konstanter Geschwindigkeit auf einer geraden Strecke.",
-        icon: "car",
-        colorA: "#ff8d47",
-        colorB: "#ffd164",
-      },
-      {
-        title: "Aufholen",
-        text: "Ein Auto startet vorne. Berechne, wann der schnellere Läufer es einholt.",
-        icon: "encounter",
-        colorA: "#24b7d8",
-        colorB: "#84e1f1",
-      },
-      {
-        title: "Beschleunigung",
-        text: "Eine Rakete startet aus der Ruhe. Berechne ihre Geschwindigkeit nach einer bestimmten Zeit.",
-        icon: "acceleration",
-        colorA: "#7a62ff",
-        colorB: "#b7a7ff",
-      },
-      {
-        title: "K1 - Sprint-Scanner",
-        text: "Berechne die mittlere Geschwindigkeit eines 100-m-Sprints.",
-        icon: "speed",
-        colorA: "#59a3ff",
-        colorB: "#8ed0ff",
-      },
-      {
-        title: "K2 - Überhol-Duell",
-        text: "Ein schnelleres Fahrzeug startet dahinter und muss ein langsames Fahrzeug einholen.",
-        icon: "encounter",
-        colorA: "#ff9c58",
-        colorB: "#ffd58a",
-      },
-      {
-        title: "v-t Diagramm lesen",
-        text: "Erkenne Bewegungsphasen direkt aus dem Geschwindigkeit-Zeit-Diagramm.",
-        icon: "chart",
-        colorA: "#3dd18d",
-        colorB: "#94ecb8",
-      },
-      {
-        title: "Bremsweg berechnen",
-        text: "Ein Auto bremst gleichmäßig. Berechne den Bremsweg aus Anfangsgeschwindigkeit und Bremsbeschleunigung.",
-        icon: "brake",
-        colorA: "#f86785",
-        colorB: "#f9a8bd",
-      },
-      {
-        title: "Fehler finden",
-        text: "Ein Schüler macht einen typischen Fehler beim Rechnen. Erkenne, wo der Denkfehler steckt.",
-        icon: "error",
-        colorA: "#ff8d47",
-        colorB: "#ffd164",
-      },
-      {
-        title: "Freier Fall",
-        text: "Ein Objekt fällt aus der Ruhe. Berechne Fallzeit und Aufprallgeschwindigkeit.",
-        icon: "fall",
-        colorA: "#8a73ff",
-        colorB: "#c3b8ff",
-      },
-    ],
+  TEST: { title: "Test-Level", steps: [
+    { title: "Gleichförmige Bewegung", text: "Auto fährt mit konstanter Geschwindigkeit.", icon: "car",          colorA: "#ff8d47", colorB: "#ffd164" },
+    { title: "Aufholen",               text: "Wann holt der schnellere Körper den langsameren ein?",        icon: "encounter",  colorA: "#24b7d8", colorB: "#84e1f1" },
+    { title: "Beschleunigung",         text: "Rakete startet aus der Ruhe – Geschwindigkeit berechnen.",    icon: "acceleration",colorA: "#7a62ff", colorB: "#b7a7ff" },
+    { title: "K1 - Sprint-Scanner",    text: "Mittlere Geschwindigkeit eines 100-m-Sprints berechnen.",    icon: "speed",      colorA: "#59a3ff", colorB: "#8ed0ff" },
+    { title: "K2 - Überhol-Duell",     text: "Schnelleres Fahrzeug holt langsameres ein.",                 icon: "encounter",  colorA: "#ff9c58", colorB: "#ffd58a" },
+    { title: "K3 - Freier Fall",       text: "Ball fällt – Fallzeit mit g = 9,81 m/s² berechnen.",        icon: "fall",       colorA: "#3dd18d", colorB: "#94ecb8" },
+    { title: "K4 - Bremsweg",          text: "Auto bremst – wie weit bis zum Stillstand?",                 icon: "brake",      colorA: "#f86785", colorB: "#f9a8bd" },
+    { title: "K5 - Beschleunigungsweg",text: "Fahrzeug beschleunigt aus dem Stand.",                       icon: "acceleration",colorA: "#8f73ff", colorB: "#c2b6ff" },
+    { title: "K6 - Konzept-Quiz",      text: "Konzeptfragen zu Bewegungsdiagrammen und Grössen.",          icon: "chart",      colorA: "#21b7d8", colorB: "#7de1f2" },
+  ]},
+
+  "0": { title: "Bewegung verstehen", steps: [
+    { title: "Was ist Bewegung?",         text: "Ein Körper bewegt sich, wenn sich sein Ort mit der Zeit ändert.",        icon: "speed",        colorA: "#3f8efc", colorB: "#80c2ff" },
+    { title: "Das Bezugssystem",          text: "Ruhe und Bewegung hängen immer vom Bezug des Beobachters ab.",           icon: "frame",        colorA: "#8a73ff", colorB: "#c2b6ff" },
+    { title: "Ort und Position",          text: "Position als Zahl mit Vorzeichen auf einer Koordinatenachse.",            icon: "point",        colorA: "#ff8d47", colorB: "#ffd164" },
+    { title: "Zeit als Messgrösse",       text: "Zeitpunkte und Zeitintervalle klar unterscheiden.",                      icon: "units",        colorA: "#21b7d8", colorB: "#7de1f2" },
+    { title: "Strecke vs. Verschiebung",  text: "Zurückgelegter Weg und Netto-Ortsänderung sind verschieden.",            icon: "displacement", colorA: "#f86785", colorB: "#f9a8bd" },
+    { title: "Symbol s und Einheit m",    text: "Formelzeichen s für Strecke, SI-Einheit Meter.",                         icon: "formula",      colorA: "#3dd18d", colorB: "#94ecb8" },
+    { title: "Symbol t und Einheit s",    text: "Formelzeichen t für Zeit, SI-Einheit Sekunde – und die Verwechslungsfalle.", icon: "units",   colorA: "#ff9c58", colorB: "#ffd58a" },
+    { title: "Weg und Zeit",              text: "Bewegung braucht immer Ort UND Zeit – erste Idee der Geschwindigkeit.",  icon: "car",          colorA: "#59a3ff", colorB: "#8ed0ff" },
+    { title: "Bewegung im Alltag",        text: "Kinematik-Begriffe auf alltägliche Situationen korrekt anwenden.",        icon: "car",          colorA: "#7a62ff", colorB: "#b7a7ff" },
+    { title: "Boss – Bewegung",           text: "Alle Grundbegriffe aus Kapitel 1 in einer Boss-Aufgabe vernetzen.",       icon: "chart",        colorA: "#20b76b", colorB: "#69d78f" },
+  ]},
+
+  "1": { title: "Geschwindigkeit", steps: [
+    { title: "Was ist Geschwindigkeit?",    text: "Geschwindigkeit als Ortsänderung pro Zeit verstehen.",         icon: "speed",   colorA: "#5ea2ff", colorB: "#9bc8ff" },
+    { title: "Formel v = s / t",            text: "Die Grundformel der Durchschnittsgeschwindigkeit kennen.",     icon: "formula", colorA: "#65d78a", colorB: "#a4f0be" },
+    { title: "Einheit m/s",                 text: "SI-Einheit m/s und Alltagseinheit km/h unterscheiden.",        icon: "units",   colorA: "#7e74ff", colorB: "#c3bcff" },
+    { title: "v berechnen",                 text: "Geschwindigkeit aus Strecke und Zeit ausrechnen.",             icon: "formula", colorA: "#ff9c58", colorB: "#ffd58a" },
+    { title: "s und t berechnen",           text: "Formel nach s und t umstellen und anwenden.",                  icon: "formula", colorA: "#24b7d8", colorB: "#88e4f2" },
+    { title: "Gleichförmige Bewegung",      text: "Konstante Geschwindigkeit – Erkennungsmerkmale.",              icon: "car",     colorA: "#f86785", colorB: "#f9a8bd" },
+    { title: "Tabelle der Bewegung",        text: "Strecken-Zeit-Tabelle lesen und vervollständigen.",            icon: "chart",   colorA: "#3dd18d", colorB: "#94ecb8" },
+    { title: "s-t Diagramm",               text: "Lineares s-t Diagramm lesen und deuten.",                      icon: "graph",   colorA: "#8f73ff", colorB: "#c2b6ff" },
+    { title: "Durchschnittsgeschwindigkeit",text: "Mittlere Geschwindigkeit bei mehreren Abschnitten.",           icon: "speed",   colorA: "#ff8753", colorB: "#ffc173" },
+    { title: "Boss – Geschwindigkeit",      text: "Alle Geschwindigkeits-Konzepte in einer Boss-Aufgabe.",        icon: "chart",   colorA: "#20b76b", colorB: "#69d78f" },
+  ]},
+
+  "2": { title: "Beschleunigung", steps: [
+    { title: "Was ist Beschleunigung?",       text: "Beschleunigung als Geschwindigkeitsänderung pro Zeit.",      icon: "acceleration", colorA: "#5f9dff", colorB: "#9dc9ff" },
+    { title: "Formel a = Δv / Δt",            text: "Beschleunigung berechnen und interpretieren.",               icon: "formula",      colorA: "#60ce88", colorB: "#9ce7b6" },
+    { title: "Einheit m/s²",                  text: "Was m/s² bedeutet – sprachlich und rechnerisch.",            icon: "units",        colorA: "#8a73ff", colorB: "#cabdff" },
+    { title: "Positiv und negativ a",         text: "Schneller werden, langsamer werden, bremsen.",               icon: "sign",         colorA: "#ff8e5a", colorB: "#ffc981" },
+    { title: "Gleichmässig beschleunigt",     text: "Konstante Beschleunigung – was das bedeutet.",               icon: "acceleration", colorA: "#27b6d7", colorB: "#84dff0" },
+    { title: "v = v₀ + a·t",                 text: "Geschwindigkeit zu beliebigem Zeitpunkt berechnen.",         icon: "formula",      colorA: "#f66d93", colorB: "#f8acbf" },
+    { title: "s = ½·a·t² (Ruhe)",            text: "Weg bei Start aus Ruhe – quadratisches Wachstum.",           icon: "formula",      colorA: "#5f9dff", colorB: "#9dc9ff" },
+    { title: "Bremsen als Beschleunigung",    text: "Verzögerung ist negative Beschleunigung.",                   icon: "brake",        colorA: "#60ce88", colorB: "#9ce7b6" },
+    { title: "v-t Diagramm",                 text: "Steigung im v-t Diagramm = Beschleunigung.",                 icon: "chart",        colorA: "#8a73ff", colorB: "#cabdff" },
+    { title: "Boss – Beschleunigung",         text: "Alle Formeln und Diagramme zur Beschleunigung.",             icon: "chart",        colorA: "#20b76b", colorB: "#69d78f" },
+  ]},
+
+  "3": { title: "Bewegungsdiagramme", steps: [
+    { title: "Drei Diagrammtypen",           text: "s-t, v-t und a-t Diagramme unterscheiden.",                icon: "chart",  colorA: "#5fa4ff", colorB: "#9fcfff" },
+    { title: "s-t Diagramm lesen",           text: "Ort, Steigung und Phasen ablesen.",                       icon: "slope",  colorA: "#62d38a", colorB: "#9de9b8" },
+    { title: "v-t Diagramm lesen",           text: "Geschwindigkeit und Beschleunigung ablesen.",             icon: "speed",  colorA: "#8c76ff", colorB: "#c8beff" },
+    { title: "Fläche v-t = Weg",             text: "Zurückgelegter Weg als Fläche unter v-t.",                icon: "area",   colorA: "#ff9657", colorB: "#ffd182" },
+    { title: "a-t Diagramm lesen",           text: "Beschleunigungsabschnitte physikalisch deuten.",         icon: "acceleration",colorA: "#25b7d8",colorB: "#86e1f1"},
+    { title: "Text → Diagramm",              text: "Beschreibung in ein s-t oder v-t Diagramm übersetzen.",  icon: "graph",  colorA: "#f56e92", colorB: "#f7aec1" },
+    { title: "Diagramm → Beschreibung",      text: "Aus einem Graphen eine Bewegung in Worten beschreiben.", icon: "graph",  colorA: "#5fa4ff", colorB: "#9fcfff" },
+    { title: "Diagrammfehler finden",        text: "Typische Fehler in Diagrammen erkennen und korrigieren.",icon: "error",  colorA: "#62d38a", colorB: "#9de9b8" },
+    { title: "Mehrteilige Bewegung",         text: "Mehrere Phasen in einem Diagramm analysieren.",          icon: "chart",  colorA: "#8c76ff", colorB: "#c8beff" },
+    { title: "Boss – Diagramme",             text: "Alle drei Diagrammtypen in einer Boss-Aufgabe.",         icon: "chart",  colorA: "#20b76b", colorB: "#69d78f" },
+  ]},
+
+  "4": { title: "Reaktions- und Bremsweg", steps: [
+    { title: "Reaktionszeit",               text: "Zeit zwischen Wahrnehmen und Bremsen.",                   icon: "car",    colorA: "#5ea3ff", colorB: "#9acbff" },
+    { title: "Reaktionsweg berechnen",      text: "s_R = v · t_R – Weg während der Reaktion.",              icon: "formula",colorA: "#65d48a", colorB: "#a2edbe" },
+    { title: "Bremsweg als Verzögerung",    text: "Bremsen = negative Beschleunigung.",                     icon: "brake",  colorA: "#8573ff", colorB: "#c6bcff" },
+    { title: "Anhalteweg",                  text: "s_A = s_R + s_B – Gesamtweg bis zum Stillstand.",        icon: "formula",colorA: "#ff8f5b", colorB: "#ffd184" },
+    { title: "Doppelte Geschwindigkeit",    text: "Warum der Bremsweg überproportional wächst.",             icon: "sign",   colorA: "#2ab8d8", colorB: "#89e3f2" },
+    { title: "Sicherheitsabstand",          text: "Reicht der Abstand – Entscheidung mit Kinematik.",       icon: "encounter",colorA:"#f86785",colorB: "#f9a8bd" },
+    { title: "Einfluss von Müdigkeit",      text: "Grössere Reaktionszeit → längerer Reaktionsweg.",        icon: "sign",   colorA: "#3dd18d", colorB: "#94ecb8" },
+    { title: "Einfluss der Geschwindigkeit",text: "Daten zu 30 / 50 / 80 km/h analysieren.",               icon: "chart",  colorA: "#8f73ff", colorB: "#c2b6ff" },
+    { title: "Anhalteweg im Diagramm",      text: "Reaktions- und Bremsphase im v-t Diagramm.",             icon: "chart",  colorA: "#ff8753", colorB: "#ffc173" },
+    { title: "Boss – Hindernis",            text: "Vollständige Anhalteweganalyse in einem Szenario.",      icon: "chart",  colorA: "#20b76b", colorB: "#69d78f" },
+  ]},
+
+  "5": { title: "Freier Fall", steps: [
+    { title: "Freier Fall als Beschleunigung",text: "Fallbewegung ohne Luftwiderstand verstehen.",             icon: "fall",   colorA: "#5ea3ff", colorB: "#9ac9ff" },
+    { title: "Fallbeschleunigung g",          text: "g ≈ 9,81 m/s² – Bedeutung und Modell.",                   icon: "formula",colorA: "#65d48a", colorB: "#a2edbe" },
+    { title: "Fallgeschwindigkeit v = g·t",   text: "Wie schnell ist der Körper nach t Sekunden?",             icon: "formula",colorA: "#8573ff", colorB: "#c6bcff" },
+    { title: "Fallstrecke s = ½·g·t²",       text: "Wie weit fällt der Körper in t Sekunden?",                icon: "formula",colorA: "#ff8f5b", colorB: "#ffd184" },
+    { title: "Gleich schnell fallen",         text: "Masse ist egal – alle fallen gleich schnell.",             icon: "fall",   colorA: "#2ab8d8", colorB: "#89e3f2" },
+    { title: "Aufwärtswurf",                  text: "Anfangsgeschwindigkeit nach oben, g bremst ab.",          icon: "throw",  colorA: "#f86785", colorB: "#f9a8bd" },
+    { title: "Höchster Punkt",                text: "v = 0 oben, aber a = g ≠ 0 – klassische Fehlvorstellung.", icon: "point", colorA: "#3dd18d", colorB: "#94ecb8" },
+    { title: "Auf- und Abstieg",              text: "Symmetrie des Aufwärtswurfs erkennen.",                   icon: "throw",  colorA: "#8f73ff", colorB: "#c2b6ff" },
+    { title: "Freier Fall im Diagramm",       text: "s-t und v-t Kurven beim freien Fall.",                    icon: "chart",  colorA: "#ff8753", colorB: "#ffc173" },
+    { title: "Boss – Fallturm",               text: "Freier Fall und Aufwärtswurf in einer Aufgabe.",          icon: "chart",  colorA: "#20b76b", colorB: "#69d78f" },
+  ]},
+
+  "6": { title: "Analyse & Fehlvorstellungen", steps: [
+    { title: "Gesuchte Grösse finden",       text: "In Textaufgaben Gegebenes und Gesuchtes identifizieren.",   icon: "model",   colorA: "#5ca2ff", colorB: "#9bc9ff" },
+    { title: "Formel auswählen",             text: "Die passende Beziehung aus mehreren wählen.",               icon: "formula", colorA: "#64d38b", colorB: "#a2e9b9" },
+    { title: "Überflüssige Infos",           text: "Irrelevante Angaben in Aufgaben herausfiltern.",            icon: "error",   colorA: "#8a73ff", colorB: "#c6bcff" },
+    { title: "Einheitenkontrolle",           text: "Einheitenfehler finden und vermeiden.",                     icon: "units",   colorA: "#ff915a", colorB: "#ffd083" },
+    { title: "Ø-Geschwindigkeit komplex",    text: "Durchschnitt über mehrere Abschnitte korrekt berechnen.",   icon: "speed",   colorA: "#24b6d8", colorB: "#84dff1" },
+    { title: "Mehrphasige Bewegung",         text: "Phasen in gemischten Bewegungen sauber analysieren.",       icon: "chart",   colorA: "#5ca2ff", colorB: "#9bc9ff" },
+    { title: "Fehlvorstellungen a",          text: "Typische Denkfehler zur Beschleunigung erkennen.",          icon: "error",   colorA: "#64d38b", colorB: "#a2e9b9" },
+    { title: "Widersprüche erkennen",        text: "Wenn Text, Tabelle und Diagramm nicht übereinstimmen.",     icon: "error",   colorA: "#8a73ff", colorB: "#c6bcff" },
+    { title: "Lösungsstrategie",             text: "Schritte der physikalischen Problemlösung planen.",         icon: "model",   colorA: "#ff915a", colorB: "#ffd083" },
+    { title: "Boss – Analyse-Labor",         text: "Mehrschrittige Analyse und Fehlvorstellungen korrigieren.", icon: "chart",   colorA: "#20b76b", colorB: "#69d78f" },
+  ]},
+
+  "7": { title: "Boss-Kapitel", steps: [
+    { title: "Bewegungsmodell erkennen",    text: "Gleichförmig oder beschleunigt – aus Daten entscheiden.",  icon: "model",   colorA: "#5c9fff", colorB: "#9acfff" },
+    { title: "Ankunftszeit planen",         text: "Route und Zeit in einem Szenario kombinieren.",            icon: "car",     colorA: "#62d38b", colorB: "#9de9b9" },
+    { title: "Beschleunigungsphase",        text: "v = v₀ + at und Diagramm in einer Aufgabe.",              icon: "acceleration",colorA:"#8972ff",colorB:"#c5bbff"},
+    { title: "Verkehrsunfall vermeiden",    text: "Reaktionsweg + Bremsweg im Entscheidungs-Szenario.",      icon: "brake",   colorA: "#ff925a", colorB: "#ffd083" },
+    { title: "Freier Fall komplett",        text: "Alle Formeln des freien Falls in einer Aufgabe.",         icon: "fall",    colorA: "#24b7d8", colorB: "#84e1f1" },
+    { title: "Fehlerhafte Lösung",          text: "Komplette falsche Lösung analysieren und korrigieren.",   icon: "error",   colorA: "#f86785", colorB: "#f9a8bd" },
+    { title: "Bewegung rekonstruieren",     text: "Aus Messpunkten eine Bewegung rekonstruieren.",           icon: "chart",   colorA: "#3dd18d", colorB: "#94ecb8" },
+    { title: "Kinematik-Mix",              text: "Das passende Modell für verschiedene Situationen wählen.", icon: "model",   colorA: "#8f73ff", colorB: "#c2b6ff" },
+    { title: "Mega-Boss: Station",         text: "Alle Kinematik-Konzepte in einer Mission vernetzen.",      icon: "chart",   colorA: "#ff8753", colorB: "#ffc173" },
+    { title: "Final Boss",                 text: "5 Arenen – Meister der Kinematik beweisen.",              icon: "chart",   colorA: "#20b76b", colorB: "#69d78f" },
+  ]},
+};
+
+// ─── Step content (theory + questions) keyed by step title ─────────────────
+const STEP_CONTENT = {
+
+  // ── MODULE 0 · Bewegung verstehen (Level 1–10) ───────────────────────────
+
+  "Was ist Bewegung?": {
+    theory: {
+      kicker: "Modul 0 · Level 1",
+      heading: "Was ist Bewegung?",
+      paragraphs: [
+        "In der Physik ist Bewegung präzise definiert: Ein Körper bewegt sich, wenn er seinen Ort mit der Zeit ändert. Nicht Kraft, Lärm oder Energie entscheiden – nur die Ortsänderung.",
+        "Die Schlüsselfrage lautet: Hat sich die Position zwischen zwei Zeitpunkten verändert? Δs = s₂ − s₁. Wenn Δs ≠ 0, liegt Bewegung vor. Wenn Δs = 0, ruht der Körper.",
+        "Bewegung braucht immer zwei Angaben zusammen: Ort und Zeit. Nur ein Ort allein sagt nichts. Erst 'der Ort verändert sich mit der Zeit' macht Bewegung messbar.",
+      ],
+      formula: "Δs = s₂ − s₁  (Δs ≠ 0 → Bewegung)",
+      example: "Ball bei t₁ = 0 s an s₁ = 2 m. Bei t₂ = 3 s an s₂ = 11 m → Δs = 9 m → Bewegung.",
+    },
+    question: {
+      type: "mc",
+      basis: [
+        { text: "Wann bewegt sich ein Körper physikalisch?", options: ["Wenn sich sein Ort mit der Zeit ändert.", "Wenn er schnell ist.", "Wenn eine Kraft auf ihn wirkt.", "Wenn er laut ist."], correct: 0, explanation: "Bewegung = Ortsänderung in der Zeit. Δs = s₂ − s₁ ≠ 0.", hint: "Was ändert sich bei Bewegung?" },
+        { text: "Ein Auto steht 10 Minuten im Stau. Liegt physikalische Bewegung vor?", options: ["Nein – der Ort ändert sich nicht.", "Ja – der Motor läuft.", "Ja – die Zeit vergeht.", "Es kommt auf die Strecke an."], correct: 0, explanation: "Motorlaufen ≠ Bewegung. Nur die Ortsänderung entscheidet.", hint: "Ändert sich die Position des Autos?" },
+      ],
+      challenge: [
+        { text: "Welche Aussage beschreibt Bewegung physikalisch korrekt?", options: ["Δs = s₂ − s₁ ≠ 0 in einem Zeitintervall.", "Die wirkende Kraft ist > 0.", "Die Geschwindigkeit ist stets > 0 m/s.", "Der Körper gibt Energie ab."], correct: 0, explanation: "Kraft kann wirken ohne Bewegung (Haftreibung). Entscheidend: Ortsänderung.", hint: "Formale Definition: Δs = ?" },
+        { text: "Ein Pendel schwingt hin und her. Was gilt nach einer vollen Schwingung?", options: ["Es hat sich bewegt (Δs ≠ 0 während der Schwingung), Verschiebung gesamt = 0.", "Es hat sich nicht bewegt – es kehrt zurück.", "Nur die Hinbewegung zählt.", "Es kommt auf die Amplitude an."], correct: 0, explanation: "Während der Schwingung ändert sich der Ort ständig → Bewegung. Die Gesamtverschiebung = 0 bedeutet nicht, keine Bewegung stattgefunden hat.", hint: "Bewegung = Ortsänderung zu beliebigen Zeitpunkten." },
+      ],
+    },
   },
-  "0": {
-    title: "Grundlagen der Bewegung",
-    steps: [
-      { title: "SI-Einheiten", text: "Einheitensystem sicher lesen, umrechnen und korrekt notieren.", icon: "units", colorA: "#59a3ff", colorB: "#8ed0ff" },
-      { title: "Funktionen und Koordinatensysteme", text: "Punkte, Achsen und Funktionsverläufe sauber deuten.", icon: "graph", colorA: "#3dd18d", colorB: "#94ecb8" },
-      { title: "Skalar und Vektoren", text: "Größen mit Betrag und Richtung sicher unterscheiden.", icon: "vector", colorA: "#8f73ff", colorB: "#c2b6ff" },
-      { title: "Bezugssystem", text: "Bewegung immer relativ zu einem gewählten System interpretieren.", icon: "frame", colorA: "#ff8753", colorB: "#ffc173" },
-      { title: "Position", text: "Lage im Raum eindeutig über Koordinaten angeben.", icon: "point", colorA: "#21b7d8", colorB: "#7de1f2" },
-      { title: "Strecke und Verschiebung", text: "Zurückgelegten Weg und Ortsänderung präzise trennen.", icon: "displacement", colorA: "#f86785", colorB: "#f9a8bd" },
-    ],
+
+  "Das Bezugssystem": {
+    theory: {
+      kicker: "Modul 0 · Level 2",
+      heading: "Bezugssysteme",
+      paragraphs: [
+        "Ob ein Körper 'ruht' oder 'sich bewegt' hängt davon ab, von wo man beobachtet. Diese Perspektive heisst Bezugssystem. Physik beschreibt Bewegung immer relativ zu einem gewählten Bezugssystem.",
+        "Beispiel Zug: Jemand sitzt im fahrenden Zug und hält eine Tasse. Relativ zum Zug ruht die Tasse. Relativ zum Bahnhof bewegt sie sich mit 80 km/h. Beide Aussagen sind gleichzeitig korrekt.",
+        "In der Schulphysik wählt man meist die Erde als ruhendes Bezugssystem. Das ist bequem und für alltägliche Situationen genau genug.",
+      ],
+      formula: "v_rel = v_A − v_B  (Geschwindigkeit von A relativ zu B)",
+      example: "Auto A bei 10 m, Auto B bei 4 m. Im Bezugssystem von B: s_A = 10 − 4 = +6 m.",
+    },
+    question: {
+      type: "mc",
+      basis: [
+        { text: "Wozu dient ein Bezugssystem?", options: ["Um Orte und Geschwindigkeiten eindeutig messen zu können.", "Damit die Achse immer bei 0 beginnt.", "Um sicherzustellen, dass v > 0.", "Weil Vektoren nur für Punkte definiert sind."], correct: 0, explanation: "Ohne Bezugssystem ist jede Ortsangabe mehrdeutig.", hint: "Relativ zu was wird gemessen?" },
+        { text: "Du fährst im Zug. Deine Mitfahrerin sitzt dir gegenüber. Was siehst du?", options: ["Sie ruht – im Bezugssystem Zug ist ihr Δs = 0.", "Sie bewegt sich mit 80 km/h.", "Sie bewegt sich rückwärts.", "Es gibt keine eindeutige Antwort."], correct: 0, explanation: "Im gemeinsamen Bezugssystem Zug ruht sie relativ zu dir.", hint: "In welchem Bezugssystem beobachtest du?" },
+      ],
+      challenge: [
+        { text: "A läuft mit 4 m/s nach rechts, B radelt mit 10 m/s nach rechts. Wie schnell erscheint A aus Sicht von B?", options: ["−6 m/s (scheint rückwärts zu gehen)", "+14 m/s", "+6 m/s", "0 m/s"], correct: 0, explanation: "v_A relativ zu B = 4 − 10 = −6 m/s. Minus: A bleibt hinter B zurück.", hint: "v_rel = v_A − v_B" },
+        { text: "Welche Aussage über Bezugssysteme ist falsch?", options: ["Es gibt genau ein richtiges Bezugssystem.", "Ruhe und Bewegung sind relativ.", "Verschiedene Beobachter messen verschiedene Geschwindigkeiten.", "Das Bezugssystem muss zu Beginn festgelegt werden."], correct: 0, explanation: "Es gibt kein 'absolut richtiges' Bezugssystem. Alle Inertialsysteme sind gleichwertig.", hint: "Gibt es ein 'bevorzugtes' Bezugssystem?" },
+      ],
+    },
   },
-  "1": {
-    title: "Geradlinig gleichförmige Bewegung",
-    steps: [
-      { title: "Bewegung mit konstantem v", text: "Gleichförmige Bewegung in 1D erkennen und beschreiben.", icon: "speed", colorA: "#5ea2ff", colorB: "#9bc8ff" },
-      { title: "Formel s = s0 + v · t", text: "Weg-Zeit-Zusammenhang sicher in Aufgaben anwenden.", icon: "formula", colorA: "#65d78a", colorB: "#a4f0be" },
-      { title: "Durchschnittsgeschwindigkeit", text: "Zeit- und Wegintervalle korrekt auswerten.", icon: "speed", colorA: "#7e74ff", colorB: "#c3bcff" },
-      { title: "Begegnungsaufgaben", text: "Zwei Bewegungen im selben Bezugssystem rechnen.", icon: "encounter", colorA: "#ff9c58", colorB: "#ffd58a" },
-      { title: "s-t und v-t Diagramme", text: "Lineare Verläufe in beiden Diagrammen erkennen.", icon: "chart", colorA: "#24b7d8", colorB: "#88e4f2" },
-    ],
+
+  "Ort und Position": {
+    theory: {
+      kicker: "Modul 0 · Level 3",
+      heading: "Ort und Position",
+      paragraphs: [
+        "Der Ort eines Körpers gibt an, wo er sich im Koordinatensystem befindet. In einer Dimension genügt eine einzige Zahl: s = 3 m bedeutet '3 Meter vom Ursprung in positiver Richtung'.",
+        "Das Vorzeichen enthält die Richtungsinformation: s = +3 m und s = −3 m liegen gleich weit vom Ursprung entfernt, aber auf verschiedenen Seiten. Die positive Richtung wird zu Beginn der Aufgabe frei gewählt.",
+        "Wichtig: Ort ist eine Momentaufnahme. s(t₀) = 5 m sagt nur, wo der Körper zum Zeitpunkt t₀ ist. Wie er dorthin kam, zeigt erst die Funktion s(t).",
+      ],
+      formula: "s(t₀) = Ort zum Zeitpunkt t₀ | Δs = s₂ − s₁",
+      example: "Messung bei t = 2 s: s = −4 m → 4 Meter links vom Ursprung (wenn positiv = rechts).",
+    },
+    question: {
+      type: "mc",
+      basis: [
+        { text: "Was bedeutet s = −7 m, wenn positiv = rechts gewählt wurde?", options: ["7 m links vom Ursprung.", "7 m/s nach links.", "Negativer Zeitpunkt.", "7 m unterhalb."], correct: 0, explanation: "Vorzeichen gibt Richtung. s = −7 m = 7 m in negativer Richtung = links.", hint: "Was bedeutet das negative Vorzeichen?" },
+        { text: "Zwei Orte: s₁ = +5 m und s₂ = −5 m. Was ist gleich, was verschieden?", options: ["Gleicher Abstand, verschiedene Richtungen.", "Gleicher Ort.", "s₁ ist grösser als s₂.", "Beide liegen links."], correct: 0, explanation: "Betrag identisch (5 m), aber entgegengesetzte Richtungen vom Ursprung.", hint: "Vergleiche Betrag und Vorzeichen." },
+      ],
+      challenge: [
+        { text: "Ein Körper befindet sich zuerst bei s₁ = −3 m und dann bei s₂ = +2 m. Was ist seine Verschiebung Δs?", options: ["Δs = +5 m", "Δs = −5 m", "Δs = −1 m", "Δs = +1 m"], correct: 0, explanation: "Δs = s₂ − s₁ = 2 − (−3) = +5 m. Bewegung in positiver Richtung.", hint: "Δs = s₂ − s₁" },
+        { text: "s(t) = −2t + 6. Wo ist der Körper bei t = 3 s?", options: ["s = 0 m (am Ursprung)", "s = 6 m", "s = −2 m", "s = 3 m"], correct: 0, explanation: "s = −2·3 + 6 = −6 + 6 = 0. Der Körper befindet sich genau am Ursprung.", hint: "Setze t = 3 in die Gleichung ein." },
+      ],
+    },
   },
-  "2": {
-    title: "Geradlinig gleichmäßig beschleunigte Bewegung",
-    steps: [
-      { title: "Beschleunigung als Änderungsrate", text: "Bedeutung von a im Zeitverlauf klar deuten.", icon: "acceleration", colorA: "#5f9dff", colorB: "#9dc9ff" },
-      { title: "Formel v = v0 + a · t", text: "Geschwindigkeit unter konstanter Beschleunigung berechnen.", icon: "formula", colorA: "#60ce88", colorB: "#9ce7b6" },
-      { title: "Formel s = s0 + v0 t + 1/2 a t²", text: "Ortsänderung mit Startwerten sicher einsetzen.", icon: "formula", colorA: "#8a73ff", colorB: "#cabdff" },
-      { title: "Vorzeichen richtig deuten", text: "Negative Werte bei v und a korrekt interpretieren.", icon: "sign", colorA: "#ff8e5a", colorB: "#ffc981" },
-      { title: "Bremsen und Anfahren", text: "Typische Bewegungsphasen physikalisch modellieren.", icon: "brake", colorA: "#27b6d7", colorB: "#84dff0" },
-      { title: "Formel- und Diagrammlösung", text: "Zwischen Rechnung und Graphen sicher wechseln.", icon: "chart", colorA: "#f66d93", colorB: "#f8acbf" },
-    ],
+
+  "Zeit als Messgrösse": {
+    theory: {
+      kicker: "Modul 0 · Level 4",
+      heading: "Zeit als physikalische Grösse",
+      paragraphs: [
+        "Zeit ist in der Kinematik die zweite unverzichtbare Grösse neben dem Ort. Man unterscheidet Zeitpunkte (t₁, t₂) – bestimmte Momente – und Zeitintervalle (Δt = t₂ − t₁) – die Dauer dazwischen.",
+        "Die SI-Einheit der Zeit ist die Sekunde (Abkürzung: s). Häufige Umrechnungen: 1 min = 60 s, 1 h = 3600 s. In Formeln immer Sekunden verwenden, wenn die Geschwindigkeit in m/s gefragt ist.",
+        "Erst mit zwei Zeitpunkten kann man Bewegung beschreiben: Wie hat sich der Ort von t₁ zu t₂ verändert? Ohne Zeitbezug ist Kinematik unmöglich.",
+      ],
+      formula: "Δt = t₂ − t₁  (Zeitintervall, immer ≥ 0)",
+      example: "t₁ = 2 s, t₂ = 7 s → Δt = 5 s. In dieser Zeit legt das Auto eine Strecke zurück.",
+    },
+    question: {
+      type: "mc",
+      basis: [
+        { text: "Was ist ein Zeitintervall?", options: ["Die Dauer zwischen zwei Zeitpunkten: Δt = t₂ − t₁.", "Ein einzelner Moment.", "Die Geschwindigkeit geteilt durch die Zeit.", "Die Strecke pro Sekunde."], correct: 0, explanation: "Zeitintervall = Zeitspanne zwischen zwei Momenten.", hint: "Δt = ?" },
+        { text: "Wie viele Sekunden sind 3 Minuten?", options: ["180 s", "30 s", "300 s", "18 s"], correct: 0, explanation: "1 min = 60 s → 3 min = 3 × 60 = 180 s.", hint: "1 Minute = 60 Sekunden" },
+      ],
+      challenge: [
+        { text: "t₁ = 1,5 min und t₂ = 4 min. Wie gross ist Δt in Sekunden?", options: ["150 s", "5,5 s", "90 s", "240 s"], correct: 0, explanation: "Δt = (4 − 1,5) min = 2,5 min = 2,5 × 60 = 150 s.", hint: "Erst Differenz, dann umrechnen." },
+        { text: "An welchem einzigen Zeitpunkt kann man Bewegung nicht beschreiben?", options: ["Man braucht immer mindestens zwei Zeitpunkte.", "Bei t = 0.", "Wenn er sich rückwärts bewegt.", "Das ist nie ein Problem."], correct: 0, explanation: "Bewegung erfordert Δs über Δt. Ein einzelner Zeitpunkt gibt keine Ortsänderung.", hint: "Was braucht man für Δs = s₂ − s₁?" },
+      ],
+    },
   },
-  "3": {
-    title: "Freier Fall und vertikaler Wurf",
-    steps: [
-      { title: "Erdbeschleunigung g", text: "Richtung und Größe von g im Modell festlegen.", icon: "fall", colorA: "#5ea3ff", colorB: "#9acbff" },
-      { title: "Fallzeit berechnen", text: "Zeit bis zum Auftreffen aus Startbedingungen bestimmen.", icon: "formula", colorA: "#65d48a", colorB: "#a2edbe" },
-      { title: "Höhe und Ort", text: "Höhenwerte und Positionen über die Zeit berechnen.", icon: "point", colorA: "#8573ff", colorB: "#c6bcff" },
-      { title: "Aufwärts- und Abwärtsphase", text: "Phasenwechsel beim vertikalen Wurf sauber trennen.", icon: "throw", colorA: "#ff8f5b", colorB: "#ffd184" },
-      { title: "Spezialfall von Modul 2", text: "Freier Fall als beschleunigte Bewegung sicher anwenden.", icon: "acceleration", colorA: "#2ab8d8", colorB: "#89e3f2" },
-    ],
+
+  "Strecke vs. Verschiebung": {
+    theory: {
+      kicker: "Modul 0 · Level 5",
+      heading: "Strecke und Verschiebung",
+      paragraphs: [
+        "Die zurückgelegte Strecke ist der gesamte Weg, unabhängig von der Richtung: 5 m vor und 5 m zurück ergeben 10 m Strecke. Sie ist immer positiv (oder null).",
+        "Die Verschiebung Δs ist die Netto-Ortsänderung: Δs = s₂ − s₁. Wenn du am Startpunkt endest, ist Δs = 0 – egal wie weit du gelaufen bist. Verschiebung kann negativ sein.",
+        "Diese Unterscheidung ist fundamental: Formelgrösse s meint oft die Verschiebung (inkl. Vorzeichen). Umgangssprache 'Strecke' meint oft den Gesamtweg. Achte immer genau auf den Kontext.",
+      ],
+      formula: "Verschiebung: Δs = s₂ − s₁  |  Strecke = |Weg insgesamt|",
+      example: "Start s₁ = 0, läuft 8 m vor (s = 8), 3 m zurück (s₂ = 5). Strecke = 11 m. Δs = +5 m.",
+    },
+    question: {
+      type: "mc",
+      basis: [
+        { text: "Läufer: s₁ = 0, läuft 10 m vor, dreht, läuft 4 m zurück. Verschiebung?", options: ["Δs = +6 m", "Δs = 14 m", "Δs = −4 m", "Δs = 10 m"], correct: 0, explanation: "s₂ = 10 − 4 = 6 m. Δs = 6 − 0 = +6 m. Zurückgelegte Strecke wäre 14 m.", hint: "Wo endet der Läufer? Δs = s₂ − s₁" },
+        { text: "Welche Grösse kann NICHT negativ sein?", options: ["Zurückgelegte Strecke (Gesamtweg).", "Verschiebung Δs.", "Geschwindigkeit v.", "Beschleunigung a."], correct: 0, explanation: "Zurückgelegte Strecke ist immer ≥ 0. Alle anderen können negativ sein.", hint: "Kann man 'negative Wegstrecke' laufen?" },
+      ],
+      challenge: [
+        { text: "Körper: 6 m vorwärts, 9 m rückwärts, 3 m vorwärts. Strecke und Verschiebung?", options: ["Strecke = 18 m, Δs = 0 m", "Strecke = 18 m, Δs = −6 m", "Strecke = 0 m, Δs = 18 m", "Strecke = 6 m, Δs = 0 m"], correct: 0, explanation: "Strecke = 6 + 9 + 3 = 18 m. Endort = 6 − 9 + 3 = 0. Δs = 0 − 0 = 0 m.", hint: "Strecke = Summe aller Beträge. Δs = Endort − Startort." },
+        { text: "Finde den Fehler: 'Die Verschiebung eines Marathonläufers ist 42,2 km.'", options: ["Falsch – bei Rundkurs Start = Ziel, also Δs = 0 km.", "Richtig – er läuft 42,2 km.", "Hängt von der Route ab.", "Verschiebung hat keine Einheit."], correct: 0, explanation: "Bei Rundkurs Start = Ziel → Δs = 0. Zurückgelegte Strecke = 42,2 km.", hint: "Marathon: Endpunkt = Startpunkt?" },
+      ],
+    },
   },
-  "4": {
-    title: "Bewegungsdiagramme und Darstellungen",
-    steps: [
-      { title: "s-t Diagramm", text: "Ortsverlauf über die Zeit korrekt lesen.", icon: "chart", colorA: "#5fa4ff", colorB: "#9fcfff" },
-      { title: "v-t Diagramm", text: "Geschwindigkeitsverlauf in Intervallen interpretieren.", icon: "speed", colorA: "#62d38a", colorB: "#9de9b8" },
-      { title: "a-t Diagramm", text: "Beschleunigungsabschnitte physikalisch deuten.", icon: "acceleration", colorA: "#8c76ff", colorB: "#c8beff" },
-      { title: "Steigung", text: "Steigungen als Änderungsraten verwenden.", icon: "slope", colorA: "#ff9657", colorB: "#ffd182" },
-      { title: "Flächeninhalt", text: "Flächen unter Kurven physikalisch auswerten.", icon: "area", colorA: "#25b7d8", colorB: "#86e1f1" },
-      { title: "Darstellungen umwandeln", text: "Zwischen s-t, v-t und a-t sicher wechseln.", icon: "graph", colorA: "#f56e92", colorB: "#f7aec1" },
-    ],
+
+  "Symbol s und Einheit m": {
+    theory: {
+      kicker: "Modul 0 · Level 6",
+      heading: "Formelzeichen s und Einheit Meter",
+      paragraphs: [
+        "In der Physik trägt jede Grösse ein Formelzeichen. Für Strecke und Ort verwendet man meist s. Die SI-Einheit ist das Meter (m). Eine Angabe ohne Einheit ist physikalisch bedeutungslos.",
+        "Häufige Untereinheiten: 1 km = 1000 m, 1 dm = 0,1 m, 1 cm = 0,01 m, 1 mm = 0,001 m. Für Berechnungen immer zuerst in Meter umrechnen.",
+        "Beispiele vollständiger Angaben: s = 250 m (korrekt), s = 250 (falsch – Einheit fehlt), s = 0,25 km (korrekt – aber für Rechnungen umrechnen).",
+      ],
+      formula: "s [m]: 1 km = 1000 m | 1 cm = 0,01 m | 1 mm = 0,001 m",
+      example: "s = 2,4 km = 2400 m = 240 000 cm.",
+    },
+    question: {
+      type: "mc",
+      basis: [
+        { text: "Welche Angabe ist physikalisch vollständig?", options: ["s = 150 m", "s = 150", "150", "m = 150"], correct: 0, explanation: "Nur 'Zahlenwert + Einheit' ist eine vollständige Angabe.", hint: "Was braucht eine physikalische Grösse?" },
+        { text: "Wie viele Meter sind 3,5 km?", options: ["3500 m", "350 m", "35 m", "3,5 m"], correct: 0, explanation: "1 km = 1000 m → 3,5 × 1000 = 3500 m.", hint: "1 km = ? m" },
+      ],
+      challenge: [
+        { text: "Rechne 4800 mm in km um.", options: ["0,0048 km", "4,8 km", "0,48 km", "48 km"], correct: 0, explanation: "4800 mm ÷ 1000 = 4,8 m ÷ 1000 = 0,0048 km.", hint: "mm → m ÷ 1000, dann m → km ÷ 1000" },
+        { text: "Problem: Aufgabe gibt s ohne Einheit. Was ist das Problem?", options: ["Ohne Einheit ist das Ergebnis physikalisch bedeutungslos – 5 könnte 5 m, 5 km oder 5 cm sein.", "Kein Problem – der Zahlenwert reicht.", "Man nimmt automatisch Meter.", "Es fehlt das Formelzeichen."], correct: 0, explanation: "Physikalische Grössen brauchen Zahlenwert UND Einheit.", hint: "Was bedeutet '5' ohne Einheit?" },
+      ],
+    },
   },
-  "5": {
-    title: "Bewegungen in zwei Dimensionen",
-    steps: [
-      { title: "x- und y-Komponente", text: "Bewegung in unabhängige Richtungen zerlegen.", icon: "components", colorA: "#5ea3ff", colorB: "#9ac9ff" },
-      { title: "Komponenten getrennt lösen", text: "Zwei 1D-Probleme getrennt rechnen.", icon: "vector", colorA: "#65d489", colorB: "#a0ecb8" },
-      { title: "Wurf als Überlagerung", text: "Horizontale und vertikale Bewegung kombinieren.", icon: "throw", colorA: "#8972ff", colorB: "#c5bbff" },
-      { title: "Flugzeit und Reichweite", text: "Zentrale Größen aus den Komponenten bestimmen.", icon: "formula", colorA: "#ff8f5d", colorB: "#ffcf85" },
-      { title: "2D-Transferaufgaben", text: "Kontextaufgaben systematisch und sauber lösen.", icon: "chart", colorA: "#24b7d8", colorB: "#84e1f1" },
-    ],
+
+  "Symbol t und Einheit s": {
+    theory: {
+      kicker: "Modul 0 · Level 7",
+      heading: "Formelzeichen t und Einheit Sekunde",
+      paragraphs: [
+        "Zeit wird mit dem Formelzeichen t bezeichnet. Die SI-Einheit ist die Sekunde, abgekürzt s. Hier liegt eine klassische Verwechslungsfalle: s als Einheit (Sekunde) ist NICHT dasselbe wie s als Formelzeichen (Strecke).",
+        "Aus dem Kontext erkennt man den Unterschied: '20 s' bedeutet 20 Sekunden. 's = 20 m' bedeutet die Strecke beträgt 20 Meter. In Formeln steht s immer für die Strecke, in Einheiten immer für Sekunde.",
+        "Umrechnungen: 1 min = 60 s, 1 h = 3600 s. Für alle Kinematik-Rechnungen mit m/s immer zuerst in Sekunden umrechnen.",
+      ],
+      formula: "t [s]: 1 min = 60 s | 1 h = 3600 s  ⚠ s [m] ≠ s [Einheit Sekunde]",
+      example: "Formel v = s/t. Hier ist s die Strecke (m) und t die Zeit (s = Sekunden). v hat Einheit m/s.",
+    },
+    question: {
+      type: "mc",
+      basis: [
+        { text: "Was bedeutet '45 s' in der Physik?", options: ["45 Sekunden (Zeitangabe).", "45 Meter Strecke.", "45 m/s Geschwindigkeit.", "Formelzeichen für Strecke."], correct: 0, explanation: "'45 s' = 45 Sekunden. Das s ist die Abkürzung der Einheit Sekunde.", hint: "s als Einheit = Sekunde." },
+        { text: "Wie viele Sekunden sind 2,5 Minuten?", options: ["150 s", "250 s", "25 s", "2,5 s"], correct: 0, explanation: "2,5 × 60 = 150 s.", hint: "1 min = 60 s" },
+      ],
+      challenge: [
+        { text: "Finde die Verwechslung: 'v = s/t = 300 s / 60 s = 5 s'", options: ["Ergebnis hat falsche Einheit: muss m/s sein. Erstes s = Strecke [m], t = Zeit [s].", "Alles richtig.", "Der Zahlenwert ist falsch.", "Die Formel ist falsch."], correct: 0, explanation: "v = s[m] / t[s] = 300 m / 60 s = 5 m/s. Das Ergebnis ist Geschwindigkeit, keine Zeit.", hint: "Welche Einheit hat Geschwindigkeit?" },
+        { text: "Eine Aufgabe gibt 't = 0,5 h'. In Sekunden?", options: ["1800 s", "50 s", "30 s", "5400 s"], correct: 0, explanation: "0,5 h = 0,5 × 3600 = 1800 s.", hint: "1 h = 3600 s" },
+      ],
+    },
   },
-  "6": {
-    title: "Relative Bewegung und Bezugssysteme",
-    steps: [
-      { title: "Passendes Bezugssystem wählen", text: "Systemwahl begründet und zielgerichtet treffen.", icon: "frame", colorA: "#5ea3ff", colorB: "#9ccaff" },
-      { title: "Relativgeschwindigkeit", text: "Geschwindigkeiten abhängig vom Beobachter berechnen.", icon: "relative", colorA: "#63d48b", colorB: "#9feab9" },
-      { title: "Gegen- und Gleichrichtung", text: "Fälle korrekt unterscheiden und Vorzeichen prüfen.", icon: "sign", colorA: "#8a73ff", colorB: "#c3b8ff" },
-      { title: "Ergebnisse interpretieren", text: "Physikalische Aussage im gewählten System formulieren.", icon: "observer", colorA: "#ff925a", colorB: "#ffd083" },
-    ],
+
+  "Weg und Zeit": {
+    theory: {
+      kicker: "Modul 0 · Level 8",
+      heading: "Weg und Zeit zusammen denken",
+      paragraphs: [
+        "Nur den Weg zu kennen reicht nicht: 100 m in 10 s ist sehr verschieden von 100 m in 100 s. Erst die Kombination aus Weg und Zeit beschreibt eine Bewegung vollständig.",
+        "Das führt direkt zur Idee der Geschwindigkeit: Sie sagt, wie viel Weg pro Zeit zurückgelegt wird. Je grösser die Strecke in derselben Zeit, desto grösser die Geschwindigkeit.",
+        "Vergleiche: Auto A legt 200 m in 10 s zurück. Auto B legt 200 m in 20 s zurück. Gleiche Strecke, aber A braucht halb so lang → A ist doppelt so schnell.",
+      ],
+      formula: "Schneller = mehr Weg in gleicher Zeit  ODER  gleicher Weg in weniger Zeit",
+      example: "A: 200 m in 10 s → v = 20 m/s.  B: 200 m in 20 s → v = 10 m/s. A ist schneller.",
+    },
+    question: {
+      type: "mc",
+      basis: [
+        { text: "Auto A fährt 300 m in 30 s. Auto B fährt 300 m in 15 s. Welches ist schneller?", options: ["Auto B – gleiche Strecke in weniger Zeit.", "Auto A – es fährt länger.", "Beide gleich schnell – gleiche Strecke.", "Kann man nicht sagen."], correct: 0, explanation: "B braucht halb so lange für dieselbe Strecke → doppelt so schnell.", hint: "Gleiche Strecke, wer braucht weniger Zeit?" },
+        { text: "Gänger A geht 1000 m in 12 min. Gänger B geht 1500 m in 12 min. Wer ist schneller?", options: ["B – mehr Strecke in gleicher Zeit.", "A – weniger Strecke.", "Beide gleich – gleiche Zeit.", "Hängt von der Richtung ab."], correct: 0, explanation: "B legt in der gleichen Zeit mehr Weg zurück → B ist schneller.", hint: "Gleiche Zeit, wer legt mehr Strecke zurück?" },
+      ],
+      challenge: [
+        { text: "A: 80 m in 8 s. B: 150 m in 12,5 s. Wer ist schneller?", options: ["B – v_B = 12 m/s > v_A = 10 m/s.", "A – v_A = 10 m/s > v_B = 8 m/s.", "Beide gleich schnell.", "Kann man nicht vergleichen."], correct: 0, explanation: "v_A = 80/8 = 10 m/s. v_B = 150/12,5 = 12 m/s. B ist schneller.", hint: "v = s / t für beide berechnen." },
+        { text: "Welche Aussage ist FALSCH?", options: ["Mehr Zeit für die gleiche Strecke bedeutet höhere Geschwindigkeit.", "Weniger Zeit für die gleiche Strecke bedeutet höhere Geschwindigkeit.", "Mehr Strecke in gleicher Zeit bedeutet höhere Geschwindigkeit.", "v = s/t ist die Formel der Geschwindigkeit."], correct: 0, explanation: "Mehr Zeit für dieselbe Strecke = NIEDRIGERE Geschwindigkeit. v = s/t: Wenn t grösser wird, wird v kleiner.", hint: "Was passiert mit v, wenn t wächst und s gleich bleibt?" },
+      ],
+    },
   },
-  "7": {
-    title: "Messung, Modellierung, Grenzen",
-    steps: [
-      { title: "Datenerfassung", text: "Messreihen strukturiert aufnehmen und dokumentieren.", icon: "measure", colorA: "#5ca2ff", colorB: "#9bc9ff" },
-      { title: "Einfache Auswertung", text: "Messwerte tabellarisch und grafisch aufbereiten.", icon: "chart", colorA: "#64d38b", colorB: "#a2e9b9" },
-      { title: "Messfehler", text: "Absolute und relative Abweichungen bestimmen.", icon: "error", colorA: "#8a73ff", colorB: "#c6bcff" },
-      { title: "Modellannahmen", text: "Annahmen wie ohne Luftwiderstand bewusst einsetzen.", icon: "model", colorA: "#ff915a", colorB: "#ffd083" },
-      { title: "Modell und Realität", text: "Grenzen des Rechenmodells mit Daten reflektieren.", icon: "observer", colorA: "#24b6d8", colorB: "#84dff1" },
-    ],
+
+  "Bewegung im Alltag": {
+    theory: {
+      kicker: "Modul 0 · Level 9",
+      heading: "Bewegung in Alltagssituationen",
+      paragraphs: [
+        "Kinematik beginnt mit sauberem Beschreiben. Bevor man rechnet, muss man eine Situation physikalisch korrekt lesen: Wer bewegt sich? Relativ wozu? In welche Richtung? Wie lange?",
+        "Alltagssprache ist oft ungenau. 'Das Auto ist schnell' – relativ wozu? Physikalische Beschreibung ersetzt vage Worte durch Grössen: s, t, Δs, v.",
+        "Wichtige Grundtypen: Körper ruht (Δs = 0), Körper bewegt sich gleichförmig (konstante v), Körper wird schneller oder langsamer (Beschleunigung). Diese drei Typen sind der Anfang aller Kinematik.",
+      ],
+      formula: "Ruhe: Δs = 0 | Gleichförmig: v = konst. | Beschleunigt: v ändert sich",
+      example: "'Das Taxi steht 5 Minuten an der Ampel.' → Δs = 0, t = 300 s, v = 0.",
+    },
+    question: {
+      type: "mc",
+      basis: [
+        { text: "Welche Situation beschreibt Bewegung korrekt?", options: ["Δs ≠ 0 zwischen zwei Zeitpunkten.", "Das Objekt macht Lärm.", "Eine Kraft wirkt auf das Objekt.", "Das Objekt hat grosse Masse."], correct: 0, explanation: "Nur Ortsänderung = Bewegung.", hint: "Definition von Bewegung?" },
+        { text: "Person läuft 5 min, steht 2 min, läuft 3 min. Wann ist v = 0?", options: ["In den 2 Minuten Pause.", "In den ersten 5 Minuten.", "In den letzten 3 Minuten.", "Wenn sie schnell läuft."], correct: 0, explanation: "Stillstand: Δs = 0 → v = 0. Das ist die Pause.", hint: "Wann ist die Strecke = 0?" },
+      ],
+      challenge: [
+        { text: "Rolltreppe (v = 0,5 m/s): Beobachter auf Rolltreppe sieht dich als ruhend, Beobachter am Boden mit 0,5 m/s. Wer hat recht?", options: ["Beide – im eigenen Bezugssystem korrekt.", "Nur der Beobachter am Boden.", "Du bist immer ruhend, da du stehst.", "Deine Geschwindigkeit ist immer 0."], correct: 0, explanation: "Bewegung ist relativ zum Bezugssystem. Beide beschreiben korrekt.", hint: "Bezugssystem entscheidet!" },
+        { text: "Welcher Satz enthält einen physikalischen Fehler?", options: ["'Ein Körper beschleunigt immer dann, wenn er langsamer wird.' – Bremsen ist negative Beschleunigung, kein Widerspruch.", "'Der Ball ruht im Bezugssystem des Regals.'", "'Δs = 0 bedeutet: der Körper endet am Startpunkt.'", "'Strecke und Verschiebung können verschieden sein.'"], correct: 0, explanation: "Bremsen IST Beschleunigung (negativ). Der Satz klingt widersprüchlich, ist aber physikalisch korrekt.", hint: "Was bedeutet 'beschleunigen' in der Physik genau?" },
+      ],
+    },
   },
+
+  "Boss – Bewegung": {
+    theory: {
+      kicker: "Modul 0 · Boss-Level",
+      heading: "Boss: Bewegung verstehen",
+      paragraphs: [
+        "Du hast alle Grundbegriffe der Kinematik kennengelernt: Bewegung als Ortsänderung, Bezugssystem, Position und Ort, Zeit als Messgrösse, Strecke vs. Verschiebung, Symbole und Einheiten.",
+        "Jetzt kommen diese Konzepte zusammen. Der Boss prüft, ob du sie nicht nur einzeln, sondern auch vernetzt anwenden kannst – wie es in echten Physikaufgaben nötig ist.",
+        "Boss-Strategie: 1) Situation verstehen. 2) Gegeben/Gesucht aufschreiben. 3) Den richtigen Begriff wählen. 4) Rechnen oder begründen.",
+      ],
+      formula: "Δs = s₂ − s₁  |  Δt = t₂ − t₁  |  1 km = 1000 m  |  1 min = 60 s",
+      example: "Erst lesen, dann verstehen – erst dann rechnen. Kein blindes Formeleinsetzen!",
+    },
+    question: {
+      type: "mc",
+      basis: [
+        { text: "Arena 1 – Bezugssystem: Du fährst im Bus. Ein Kind auf der Strasse sieht dich. Wer hat recht über deine Bewegung?", options: ["Beide – im eigenen Bezugssystem korrekt.", "Nur das Kind.", "Nur du – du sitzt still.", "Niemand – Bewegung ist absolut."], correct: 0, explanation: "Beide beschreiben korrekt, was sie in ihrem Bezugssystem sehen.", hint: "Bezugssystem = Perspektive." },
+        { text: "Arena 2 – Strecke/Verschiebung: Läufer macht 2 Runden auf einer 400-m-Bahn. Verschiebung?", options: ["Δs = 0 m – wieder am Start.", "Δs = 800 m", "Δs = 400 m", "Δs = 1 Runde"], correct: 0, explanation: "Nach 2 Runden ist er wieder am Startpunkt. Δs = Endort − Startort = 0.", hint: "Wo endet er? Δs = s₂ − s₁." },
+        { text: "Arena 3 – Einheiten: s = 2 km und t = 4 min. Rechne um.", options: ["s = 2000 m, t = 240 s", "s = 2 m, t = 4 s", "s = 200 m, t = 40 s", "s = 2000 cm, t = 4 s"], correct: 0, explanation: "2 km = 2000 m. 4 min = 240 s.", hint: "1 km = 1000 m, 1 min = 60 s" },
+        { text: "Arena 4 – Bewegung: Δs = 0 nach 10 s. Kann der Körper sich bewegt haben?", options: ["Ja – er kann hin- und hergegangen sein.", "Nein – Δs = 0 beweist Ruhe.", "Nur wenn v = 0 war.", "Nur auf gerader Strecke."], correct: 0, explanation: "Δs = 0 bedeutet Endpunkt = Startpunkt, nicht zwingend Ruhe. Strecke kann > 0 sein.", hint: "Verwechsle Verschiebung und Strecke nicht." },
+      ],
+      challenge: [
+        { text: "Körper A: startet bei s = −3 m, endet nach 4 s bei s = +5 m. Was lässt sich sicher sagen?", options: ["Δs = +8 m sicher. Strecke ≥ 8 m, aber ohne Weginfo nicht genau bestimmbar.", "Strecke = 8 m und Δs = 8 m.", "Δs = −8 m.", "Ohne Richtung keine Aussage."], correct: 0, explanation: "Δs = 5 − (−3) = +8 m ist sicher. Strecke könnte 8 m sein (direkter Weg), bei Richtungswechsel mehr.", hint: "Strecke ≥ |Δs| immer." },
+        { text: "Fehler finden: 'Auto fährt 120 km in 2 h. Verschiebung = 120 km.' Was fehlt?", options: ["Verschiebung = Endort − Startort. Ohne Endpunkt unbestimmbar.", "Fehler: 120 km in 2 h ist unrealistisch.", "Strecke und Verschiebung sind immer gleich.", "Die Einheit km ist falsch."], correct: 0, explanation: "Δs = s₂ − s₁. Ohne Endpunkt kann man Δs nicht bestimmen.", hint: "Was braucht man für Δs = s₂ − s₁?" },
+      ],
+    },
+  },
+
+  // ── MODULE 1 · Geschwindigkeit (Level 1–10) ─────────────────────────────
+
+  "Was ist Geschwindigkeit?": {
+    theory: {
+      kicker: "Modul 1 · Level 1",
+      heading: "Was ist Geschwindigkeit?",
+      paragraphs: [
+        "Geschwindigkeit beschreibt, wie schnell ein Körper seinen Ort ändert. Umgangssprachlich sagt man 'schnell' oder 'langsam' – die Physik macht das messbar: Wie viel Weg legt ein Körper pro Zeiteinheit zurück?",
+        "Wichtig ist der Unterschied zwischen Durchschnittsgeschwindigkeit und Momentangeschwindigkeit. Die Durchschnittsgeschwindigkeit gilt für ein ganzes Zeitintervall: v = Δs / Δt. Die Momentangeschwindigkeit beschreibt den Augenblick.",
+        "Geschwindigkeit ist eine gerichtete Grösse (Vektor). In einer Dimension reicht aber oft ein Vorzeichen: positiv = vorwärts, negativ = rückwärts.",
+      ],
+      formula: "v = Δs / Δt  (Durchschnittsgeschwindigkeit)",
+      example: "Auto fährt 120 m in 8 s → v = 120 / 8 = 15 m/s.",
+    },
+    question: {
+      type: "mc",
+      basis: [
+        { text: "Was beschreibt die Durchschnittsgeschwindigkeit?", options: ["Den zurückgelegten Weg pro Zeitintervall.", "Die maximale Geschwindigkeit.", "Die Richtung der Bewegung.", "Den Abstand zum Startpunkt."], correct: 0, explanation: "v = Δs / Δt – Weg geteilt durch Zeit.", hint: "Welche Formel kennst du für v?" },
+        { text: "Ein Läufer braucht 50 s für 200 m. Welche Aussage ist richtig?", options: ["Seine Durchschnittsgeschwindigkeit ist 4 m/s.", "Er hat sich immer mit 4 m/s bewegt.", "Seine Momentangeschwindigkeit ist immer 4 m/s.", "Er ist 4 m in 50 s gelaufen."], correct: 0, explanation: "v = 200 / 50 = 4 m/s. Das ist die Durchschnitt, nicht die Momentangeschwindigkeit.", hint: "v = s / t" },
+      ],
+      challenge: [
+        { text: "Was ist der Unterschied zwischen Durchschnitts- und Momentangeschwindigkeit?", options: ["Durchschnitt: v = Δs/Δt über ein Intervall. Moment: Geschwindigkeit zu einem Zeitpunkt (Δt → 0).", "Beide sind identisch.", "Momentangeschwindigkeit ist immer grösser.", "Durchschnittsgeschwindigkeit gilt nur für gerade Strecken."], correct: 0, explanation: "Die Momentangeschwindigkeit ist der Grenzwert des Differenzenquotienten für Δt → 0.", hint: "Was passiert wenn Δt sehr klein wird?" },
+        { text: "Fahrzeug fährt 30 s mit 20 m/s, dann 30 s mit 10 m/s. Was ist die Durchschnittsgeschwindigkeit über 60 s?", options: ["15 m/s", "20 m/s", "10 m/s", "Nicht bestimmbar."], correct: 0, explanation: "Gesamt-s = 30·20 + 30·10 = 600 + 300 = 900 m. v = 900/60 = 15 m/s.", hint: "Erst Gesamtstrecke, dann v = s_ges / t_ges" },
+      ],
+    },
+  },
+
+  "Formel v = s / t": {
+    theory: {
+      kicker: "Modul 1 · Level 2",
+      heading: "Die Formel v = s / t",
+      paragraphs: [
+        "Die Grundformel der gleichförmigen Bewegung lautet: v = s / t. v ist die Geschwindigkeit, s die zurückgelegte Strecke und t das Zeitintervall. Alle drei Grössen hängen direkt zusammen.",
+        "Aus dieser Formel lassen sich die anderen Grössen durch Umstellen berechnen: s = v · t (Weg) und t = s / v (Zeit). Das sogenannte 'Dreiecks-Mnemonic' hilft beim Merken: decke die gesuchte Grösse ab.",
+        "Achtung: Die Formel gilt exakt nur für gleichförmige Bewegung. Bei nicht konstanter Geschwindigkeit liefert v = s/t nur den Durchschnittswert.",
+      ],
+      formula: "v = s / t  ↔  s = v · t  ↔  t = s / v",
+      example: "v = 25 m/s, t = 12 s → s = 25 · 12 = 300 m.",
+    },
+    question: {
+      type: "speed-lab",
+      s: 180,
+      minV: 5,
+      maxV: 30,
+      defaultV: 12,
+      followUp: [
+        { text: "Du hast gerade beobachtet: Auto legt 180 m zurück. Wenn es 9 Sekunden braucht – was ist v?", options: ["20 m/s", "9 m/s", "180 m/s", "0,05 m/s"], correct: 0, explanation: "v = s/t = 180/9 = 20 m/s. Die Formel v = s ÷ t gibt dir die Geschwindigkeit.", hint: "v = s / t" },
+      ],
+    },
+  },
+
+  "Einheit m/s": {
+    theory: {
+      kicker: "Modul 1 · Level 3",
+      heading: "Einheit m/s und km/h",
+      paragraphs: [
+        "Die SI-Einheit der Geschwindigkeit ist Meter pro Sekunde: m/s. Im Alltag ist Kilometer pro Stunde (km/h) gebräuchlicher – Tacho, Tempolimit, Wetterberichte nutzen km/h.",
+        "Umrechnungsfaktoren: 1 m/s = 3,6 km/h. Merkhilfe: 1 m/s bedeutet 1 Meter in 1 Sekunde. In 1 Stunde (3600 s) legt man damit 3600 m = 3,6 km zurück → 1 m/s = 3,6 km/h.",
+        "Für Berechnungen mit Formeln (v = s/t mit s in m, t in s) muss die Geschwindigkeit immer in m/s angegeben sein. Wenn km/h gegeben ist, zuerst umrechnen!",
+      ],
+      formula: "1 m/s = 3,6 km/h  |  v [km/h] ÷ 3,6 = v [m/s]",
+      example: "72 km/h ÷ 3,6 = 20 m/s.  |  5 m/s × 3,6 = 18 km/h.",
+    },
+    question: {
+      type: "mc",
+      basis: [
+        { text: "Wie viele km/h entsprechen 10 m/s?", options: ["36 km/h", "10 km/h", "100 km/h", "3,6 km/h"], correct: 0, explanation: "10 m/s × 3,6 = 36 km/h.", hint: "m/s × 3,6 = km/h" },
+        { text: "Ein Auto fährt 90 km/h. Wie viel ist das in m/s?", options: ["25 m/s", "90 m/s", "32,4 m/s", "9 m/s"], correct: 0, explanation: "90 ÷ 3,6 = 25 m/s.", hint: "km/h ÷ 3,6 = m/s" },
+      ],
+      challenge: [
+        { text: "Radfahrer: 15 m/s. Schülerin: 54 km/h. Wer ist schneller?", options: ["Schülerin: 54 km/h = 15 m/s – beide gleich schnell.", "Radfahrer – 15 m/s ist mehr.", "Schülerin – 54 km/h ist mehr.", "Kann man nicht vergleichen."], correct: 0, explanation: "54 ÷ 3,6 = 15 m/s. Exakt gleich schnell.", hint: "Erst beide in dieselbe Einheit umrechnen." },
+        { text: "Aufgabe: s = 3 km, t = 4 min. Berechne v in m/s.", options: ["12,5 m/s", "0,75 m/s", "750 m/s", "0,0125 m/s"], correct: 0, explanation: "s = 3000 m, t = 240 s. v = 3000/240 = 12,5 m/s.", hint: "Zuerst s in m und t in s umrechnen!" },
+      ],
+    },
+  },
+
+  "v berechnen": {
+    theory: {
+      kicker: "Modul 1 · Level 4",
+      heading: "Geschwindigkeit berechnen",
+      paragraphs: [
+        "Der erste Schritt jeder Aufgabe: Gegebene und gesuchte Grössen identifizieren. Bei v = s/t sind die Gegebenen Strecke (s) und Zeit (t), gesucht ist Geschwindigkeit (v).",
+        "Einheiten immer zuerst vereinheitlichen: s in Meter (m) und t in Sekunden (s), bevor man rechnet. Ergebnis trägt die Einheit m/s.",
+        "Typische Fehlerquellen: Einheit vergessen, km und m verwechseln, min statt s einsetzen. Checke am Ende: Ist das Ergebnis plausibel? Ein Fussgänger mit 500 m/s wäre unphysikalisch.",
+      ],
+      formula: "v = s / t  (s in m, t in s → v in m/s)",
+      example: "s = 5 km = 5000 m, t = 4 min = 240 s → v = 5000/240 ≈ 20,8 m/s.",
+    },
+    question: {
+      type: "mc",
+      basis: [
+        { text: "Fahrrad: s = 900 m, t = 3 min. Berechne v in m/s.", options: ["5 m/s", "300 m/s", "0,05 m/s", "180 m/s"], correct: 0, explanation: "t = 3·60 = 180 s. v = 900/180 = 5 m/s.", hint: "t in Sekunden umrechnen! v = s/t" },
+        { text: "Zug: s = 250 m, t = 10 s. Berechne v.", options: ["25 m/s", "2500 m/s", "0,04 m/s", "2,5 m/s"], correct: 0, explanation: "v = 250/10 = 25 m/s.", hint: "v = s / t" },
+      ],
+      challenge: [
+        { text: "Rennwagen: s = 4,5 km in 2,5 min. v in km/h?", options: ["108 km/h", "30 km/h", "1,8 km/h", "1800 km/h"], correct: 0, explanation: "v = 4,5 km / (2,5/60 h) = 4,5 / 0,04167 = 108 km/h. Oder: v = 4500/150 = 30 m/s = 108 km/h.", hint: "Weg in km, Zeit in Stunden → v in km/h. Oder m und s, dann × 3,6." },
+        { text: "Körper legt in 2 s den Weg von s₁ = 4 m bis s₂ = 20 m zurück. Berechne v.", options: ["8 m/s", "10 m/s", "12 m/s", "16 m/s"], correct: 0, explanation: "Δs = s₂ − s₁ = 20 − 4 = 16 m. v = 16/2 = 8 m/s.", hint: "Δs = s₂ − s₁, dann v = Δs / t" },
+      ],
+    },
+  },
+
+  "s und t berechnen": {
+    theory: {
+      kicker: "Modul 1 · Level 5",
+      heading: "Strecke und Zeit berechnen",
+      paragraphs: [
+        "Die Formel v = s/t lässt sich nach jeder der drei Grössen umstellen. Wenn v und t bekannt sind, berechnet man die Strecke: s = v · t. Wenn v und s bekannt sind, berechnet man die Zeit: t = s / v.",
+        "Schema der Umstellung: Gegebene Grössen identifizieren → unbekannte Grösse bestimmen → passende Formel wählen → Einheiten prüfen → rechnen → Plausibilitätscheck.",
+        "Merkhilfe: Im 'vst-Dreieck' decke die gesuchte Grösse ab. Was übrig bleibt, ist die Rechenoperation: v oben → dividieren. s und t unten → multiplizieren oder dividieren.",
+      ],
+      formula: "s = v · t  |  t = s / v  |  v = s / t",
+      example: "v = 30 m/s, t = 4 s → s = 30 · 4 = 120 m. | v = 20 m/s, s = 300 m → t = 300/20 = 15 s.",
+    },
+    question: {
+      type: "mc",
+      basis: [
+        { text: "v = 8 m/s, t = 15 s. Wie gross ist s?", options: ["120 m", "0,53 m", "23 m", "1,875 m"], correct: 0, explanation: "s = v · t = 8 · 15 = 120 m.", hint: "s = v · t" },
+        { text: "v = 6 m/s, s = 90 m. Wie lange dauert die Fahrt?", options: ["15 s", "540 s", "0,067 s", "84 s"], correct: 0, explanation: "t = s / v = 90 / 6 = 15 s.", hint: "t = s / v" },
+      ],
+      challenge: [
+        { text: "Zug fährt mit 54 km/h. Wie weit kommt er in 20 Minuten? (Antwort in m)", options: ["18 000 m", "1080 m", "300 m", "324 000 m"], correct: 0, explanation: "v = 54/3,6 = 15 m/s. t = 20·60 = 1200 s. s = 15 · 1200 = 18 000 m.", hint: "Zuerst km/h → m/s, dann s = v · t" },
+        { text: "Körper A mit v = 10 m/s muss 1,2 km zurücklegen. Wie lange dauert das in Minuten?", options: ["2 min", "120 min", "0,12 min", "12 min"], correct: 0, explanation: "s = 1200 m. t = 1200/10 = 120 s = 2 min.", hint: "t = s / v, dann Sekunden in Minuten umrechnen." },
+      ],
+    },
+  },
+
+  "Gleichförmige Bewegung": {
+    theory: {
+      kicker: "Modul 1 · Level 6",
+      heading: "Gleichförmige Bewegung",
+      paragraphs: [
+        "Bei der gleichförmigen Bewegung ist die Geschwindigkeit konstant: v = konst. Der Körper legt in gleichen Zeitintervallen immer gleich grosse Strecken zurück.",
+        "Erkennungszeichen: Im s-t-Diagramm ist die Kurve eine Gerade mit konstanter Steigung (Steigung = v). Im v-t-Diagramm ist die Kurve eine horizontale Gerade.",
+        "In der Natur gibt es keine perfekt gleichförmige Bewegung – Reibung und andere Kräfte ändern die Geschwindigkeit immer leicht. Aber als Modell ist sie unverzichtbar für die ersten Berechnungen.",
+      ],
+      formula: "v = konst.  →  s = v · t  (lineare Funktion von t)",
+      example: "Auto mit v = 20 m/s: nach 1 s → 20 m, nach 2 s → 40 m, nach 3 s → 60 m.",
+    },
+    question: {
+      type: "race",
+      carA: { v: 20, color: "#5ea3ff", label: "Auto A" },
+      carB: { v: 14, color: "#ff8753", label: "Auto B" },
+      s: 280,
+      followUp: [
+        { text: "Auto A braucht 14 s für 280 m. Auto B braucht 20 s für 280 m. Welche Geschwindigkeiten haben sie?", options: ["v_A = 20 m/s, v_B = 14 m/s", "v_A = 14 m/s, v_B = 20 m/s", "Beide 280 m/s", "Kann man nicht sagen."], correct: 0, explanation: "v = s/t: v_A = 280/14 = 20 m/s, v_B = 280/20 = 14 m/s. Bei gleichförmiger Bewegung ist v konstant.", hint: "v = s / t für jedes Auto" },
+      ],
+    },
+  },
+
+  "Tabelle der Bewegung": {
+    theory: {
+      kicker: "Modul 1 · Level 7",
+      heading: "Strecken-Zeit-Tabellen lesen",
+      paragraphs: [
+        "Eine Bewegungstabelle listet Zeitpunkte und dazugehörige Orte auf. Man kann daraus direkt die Geschwindigkeit ablesen: v = Δs / Δt zwischen je zwei Zeilen.",
+        "Bei gleichförmiger Bewegung ist Δs/Δt in jeder Zeile gleich. Bei nicht gleichförmiger Bewegung ändert sich v von Abschnitt zu Abschnitt – man berechnet dann Abschnittsgeschwindigkeiten.",
+        "Tabellen aufstellen: Für gegebene v und Start-s berechnet man s(t) = s₀ + v · t. Erst t-Werte in die erste Spalte schreiben, dann s-Werte berechnen und eintragen.",
+      ],
+      formula: "v = Δs / Δt  (aus benachbarten Tabellenzeilen)",
+      example: "t: 0 | 2 | 4 | 6 s  →  s: 0 | 10 | 20 | 30 m → v = 10/2 = 5 m/s (konstant).",
+    },
+    question: {
+      type: "mc",
+      basis: [
+        { text: "Tabelle: t = 0 s: s = 0 m; t = 3 s: s = 12 m; t = 6 s: s = 24 m. Ist das gleichförmig?", options: ["Ja – v = 12/3 = 4 m/s konstant.", "Nein – s wird grösser.", "Nein – v wäre 8 m/s.", "Kann man nicht bestimmen."], correct: 0, explanation: "v = Δs/Δt = 12/3 = 4 m/s in beiden Abschnitten → gleichförmig.", hint: "v = Δs / Δt in jedem Abschnitt berechnen." },
+        { text: "v = 7 m/s, s₀ = 0. Fülle die Tabelle: s bei t = 4 s?", options: ["28 m", "7 m", "4 m", "11 m"], correct: 0, explanation: "s = v · t = 7 · 4 = 28 m.", hint: "s = v · t" },
+      ],
+      challenge: [
+        { text: "Tabelle: t = 0 s: s = 5 m; t = 2 s: s = 15 m; t = 5 s: s = 30 m. Welche Aussage stimmt?", options: ["v₁ = 5 m/s (0→2 s), v₂ = 5 m/s (2→5 s) – gleichförmig mit v = 5 m/s.", "v₁ = 5 m/s, v₂ = 6 m/s – nicht gleichförmig.", "s₀ = 5 m bedeutet, der Körper ruht zuerst.", "v = 30/5 = 6 m/s konstant."], correct: 0, explanation: "v₁ = (15−5)/2 = 5 m/s. v₂ = (30−15)/3 = 5 m/s. Beide gleich → gleichförmig.", hint: "v = Δs/Δt für jeden Abschnitt berechnen." },
+        { text: "Körper: s₀ = 20 m, v = −3 m/s (rückwärts). s bei t = 6 s?", options: ["2 m", "38 m", "−18 m", "20 m"], correct: 0, explanation: "s = 20 + (−3) · 6 = 20 − 18 = 2 m.", hint: "s = s₀ + v · t, v ist negativ!" },
+      ],
+    },
+  },
+
+  "s-t Diagramm": {
+    theory: {
+      kicker: "Modul 1 · Level 8",
+      heading: "Das s-t-Diagramm",
+      paragraphs: [
+        "Im s-t-Diagramm (Ort-Zeit-Diagramm) trägt man auf der x-Achse die Zeit t und auf der y-Achse den Ort s auf. Jeder Punkt im Diagramm beschreibt: 'Zur Zeit t ist der Körper an Ort s.'",
+        "Die Steigung der Kurve im s-t-Diagramm ist die Geschwindigkeit: v = Δs / Δt = tan(α). Steilere Gerade = höhere Geschwindigkeit. Horizontale Linie = Ruhe (v = 0). Fallende Linie = Bewegung in negativer Richtung (v < 0).",
+        "Bei gleichförmiger Bewegung ist die s-t-Kurve eine Gerade. Schneidet die Gerade die s-Achse nicht im Ursprung, hat der Körper einen Startort s₀ ≠ 0.",
+      ],
+      formula: "Steigung im s-t-Diagramm = v = Δs / Δt",
+      example: "Gerade von (0; 0) bis (5; 25) → Steigung = 25/5 = 5 m/s.",
+    },
+    question: {
+      type: "st-live",
+      v: 10,
+      s: 200,
+      followUp: [
+        { text: "Das s-t-Diagramm zeigt eine Gerade von (0; 0) bis (20 s; 200 m). Was ist die Geschwindigkeit?", options: ["10 m/s – Steigung = Δs/Δt = 200/20", "20 m/s", "200 m/s", "0,1 m/s"], correct: 0, explanation: "Steigung im s-t-Diagramm = v = Δs/Δt = 200 m / 20 s = 10 m/s.", hint: "Steigung der Geraden = v = Δs / Δt" },
+      ],
+    },
+  },
+
+  "Durchschnittsgeschwindigkeit": {
+    theory: {
+      kicker: "Modul 1 · Level 9",
+      heading: "Durchschnittsgeschwindigkeit",
+      paragraphs: [
+        "Die Durchschnittsgeschwindigkeit über eine Strecke mit verschiedenen Abschnitten ist NICHT der Durchschnitt der einzelnen Geschwindigkeiten – das ist ein häufiger Fehler!",
+        "Richtige Formel: v_Ø = Gesamtstrecke / Gesamtzeit = (s₁ + s₂ + ...) / (t₁ + t₂ + ...). Zuerst Strecke und Zeit jedes Abschnitts berechnen, dann alles addieren.",
+        "Beispiel für den Fehler: Auto A fährt 1 km mit 10 m/s, dann 1 km mit 20 m/s. Durchschnitt ≠ 15 m/s! Korrekte Rechnung: t₁ = 100 s, t₂ = 50 s → v_Ø = 2000/150 ≈ 13,3 m/s.",
+      ],
+      formula: "v_Ø = s_ges / t_ges = (s₁+s₂) / (t₁+t₂)",
+      example: "s₁ = 300 m, v₁ = 15 m/s → t₁ = 20 s. s₂ = 200 m, v₂ = 10 m/s → t₂ = 20 s. v_Ø = 500/40 = 12,5 m/s.",
+    },
+    question: {
+      type: "mc",
+      basis: [
+        { text: "Person geht 500 m in 100 s, dann 300 m in 60 s. v_Ø?", options: ["5 m/s", "4 m/s", "4,5 m/s", "6 m/s"], correct: 0, explanation: "s_ges = 800 m, t_ges = 160 s. v = 800/160 = 5 m/s.", hint: "v_Ø = s_ges / t_ges" },
+        { text: "Was ist der häufigste Fehler bei der Durchschnittsgeschwindigkeit?", options: ["Die einzelnen v-Werte werden gemittelt statt s_ges/t_ges zu berechnen.", "Die Einheit wird vergessen.", "t und s werden verwechselt.", "Nur der höchste v-Wert wird genommen."], correct: 0, explanation: "Arithmetisches Mittel der v-Werte ist falsch, weil die Abschnitte gleich lange Zeit, nicht gleich lange Strecke dauern müssen.", hint: "Wie berechnet man v_Ø korrekt?" },
+      ],
+      challenge: [
+        { text: "Hin: 60 km mit 120 km/h. Zurück: 60 km mit 60 km/h. v_Ø für die gesamte Strecke?", options: ["80 km/h", "90 km/h", "75 km/h", "Nicht bestimmbar."], correct: 0, explanation: "t_hin = 60/120 = 0,5 h. t_rück = 60/60 = 1 h. v_Ø = 120/(0,5+1) = 120/1,5 = 80 km/h.", hint: "s_ges = 120 km. t_ges = t_hin + t_rück. v = s/t." },
+        { text: "Warum ist v_Ø bei gleichem Hin/Rück-Weg immer kleiner als das arithmetische Mittel der Geschwindigkeiten (ausser bei v₁ = v₂)?", options: ["Weil man bei niedrigerer v mehr Zeit braucht – der langsamere Abschnitt 'zieht' den Durchschnitt stärker runter.", "Weil die Strecken verschieden lang sind.", "Weil Zeit quadratisch eingeht.", "Das stimmt nicht – beide Methoden geben dasselbe Ergebnis."], correct: 0, explanation: "Bei v₁ ≠ v₂ und gleicher Strecke dauert der langsamere Abschnitt länger – er gewichtet den Durchschnitt stärker. Das harmonische Mittel liegt immer unter dem arithmetischen.", hint: "Wer verbraucht mehr Zeit: der schnelle oder langsame Abschnitt?" },
+      ],
+    },
+  },
+
+  "Boss – Geschwindigkeit": {
+    theory: {
+      kicker: "Modul 1 · Boss-Level",
+      heading: "Boss: Geschwindigkeit",
+      paragraphs: [
+        "Du hast alle Werkzeuge: v = s/t und Umstellungen, Einheitenumrechnung m/s ↔ km/h, gleichförmige Bewegung, s-t-Diagramme und Durchschnittsgeschwindigkeit.",
+        "Der Boss prüft, ob du diese Konzepte in ungewohnten Situationen richtig kombinierst. Lies jede Frage genau und entscheide, welches Werkzeug passt.",
+        "Strategie: 1) Gegeben/Gesucht. 2) Einheiten prüfen. 3) Richtige Formel. 4) Plausibilität.",
+      ],
+      formula: "v = s/t  |  s = v·t  |  t = s/v  |  v_Ø = s_ges/t_ges  |  m/s × 3,6 = km/h",
+      example: "Boss-Aufgaben verbinden mehrere Abschnitte, verschiedene Einheiten und Diagramm-Lesekompetenz.",
+    },
+    question: {
+      type: "mc",
+      basis: [
+        { text: "Arena 1: Zug fährt 3 km in 4 Minuten. v in km/h?", options: ["45 km/h", "0,75 km/h", "12 km/h", "720 km/h"], correct: 0, explanation: "t = 4/60 h. v = 3/(4/60) = 3·60/4 = 45 km/h.", hint: "t in Stunden, s in km → v in km/h." },
+        { text: "Arena 2: Im s-t-Diagramm haben zwei Geraden den selben Startpunkt. Gerade A hat Steigung 8, Gerade B Steigung 3. Welche Aussage stimmt?", options: ["A bewegt sich schneller (v_A = 8 m/s > v_B = 3 m/s) und legt nach 5 s 25 m mehr zurück.", "B ist schneller.", "Beide gleich schnell.", "Die Steigung gibt die Strecke an, nicht v."], correct: 0, explanation: "Steigung im s-t = v. A hat v = 8, B hat v = 3. Nach 5 s: Δs = (8−3)·5 = 25 m.", hint: "Steigung s-t = v. Mehr Steigung = mehr v." },
+        { text: "Arena 3: v_Ø-Falle. Hinweg: 200 m mit 10 m/s. Rückweg: 200 m mit 20 m/s. v_Ø = ?", options: ["13,3 m/s", "15 m/s", "10 m/s", "20 m/s"], correct: 0, explanation: "t₁ = 20 s, t₂ = 10 s. v_Ø = 400/30 ≈ 13,3 m/s. Nicht 15 m/s!", hint: "v_Ø = s_ges / t_ges. Nicht arithmetisches Mittel!" },
+        { text: "Arena 4: Einheit. Gib 130 km/h in m/s an.", options: ["36,1 m/s", "468 m/s", "130 m/s", "13 m/s"], correct: 0, explanation: "130 / 3,6 ≈ 36,1 m/s.", hint: "km/h ÷ 3,6 = m/s" },
+      ],
+      challenge: [
+        { text: "Boss-Challenge: A startet bei s₀ = 0 mit v = 5 m/s. B startet 20 s später bei s₀ = 0 mit v = 15 m/s. Nach wie vielen Sekunden (ab A's Start) holt B A ein?", options: ["30 s nach A's Start", "10 s nach B's Start", "20 s nach A's Start", "Nie"], correct: 0, explanation: "B startet bei t = 20 s. Gleichung: 15·(t−20) = 5·t → 15t−300 = 5t → 10t = 300 → t = 30 s.", hint: "Ansatz: s_A = s_B. 5t = 15(t−20). Löse nach t." },
+        { text: "Fehler korrigieren: 'v_Ø = (10 + 20 + 30) / 3 = 20 m/s'. Wann stimmt das – und wann nicht?", options: ["Stimmt nur wenn die Abschnitte gleich lang dauern (gleiche Zeit, verschiedene Wege). Stimmt nicht wenn alle dieselbe Strecke haben.", "Immer richtig.", "Nie richtig.", "Nur für km/h gültig."], correct: 0, explanation: "Arithmetisches Mittel der v-Werte gilt nur wenn alle Zeitintervalle gleich sind (gleiche Δt). Bei gleichen Streckenabschnitten muss s_ges/t_ges berechnet werden.", hint: "Wann darf man v-Werte einfach mitteln?" },
+      ],
+    },
+  },
+
+};
+
+
+// ─── merge step with STEP_CONTENT ──────────────────────────────────────────
+const getStepContent = (step) => {
+  const extra = STEP_CONTENT[step.title];
+  if (!extra) return step;
+  return { ...step, ...extra };
 };
 
 const moduleOrder = Object.keys(MODULE_CONTENT).sort((a, b) => {
@@ -276,89 +756,8 @@ if (title && frame && pencilLayer instanceof HTMLCanvasElement) {
   let lastPoint = null;
   let gameStarted = false;
   let activeModuleId = null;
-  let activeStepIndex = 0;
   let activeNodes = [];
   let sidePanelHidden = false;
-
-  const STORAGE_KEY = "kinemaths_progress";
-  const defaultProgress = () => ({
-    modules: Object.fromEntries(
-      Object.keys(MODULE_CONTENT).map(id => [id, { completed_steps: [], points: 0 }])
-    ),
-    total_points: 0,
-    badges: [],
-  });
-  const loadProgress = () => {
-    try {
-      const raw = localStorage.getItem(STORAGE_KEY);
-      if (raw) return { ...defaultProgress(), ...JSON.parse(raw) };
-    } catch {}
-    return defaultProgress();
-  };
-  const saveProgress = (progress) => {
-    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(progress)); } catch {}
-  };
-  let gameProgress = loadProgress();
-
-  const BADGES = {
-    first_step: { label: "Erster Schritt", desc: "Modul 0 gestartet." },
-    formelfuchs: { label: "Formelfuchs", desc: "Modul 0 abgeschlossen." },
-    hartnäckig: { label: "Hartnäckig", desc: "Nach Fehlversuch Aufgabe gelöst." },
-  };
-
-  const pointsDisplay = document.getElementById("km-points-display");
-  const updatePointsDisplay = () => {
-    if (pointsDisplay instanceof HTMLElement) {
-      pointsDisplay.textContent = `✦ ${gameProgress.total_points} Pts`;
-    }
-  };
-  updatePointsDisplay();
-
-  const awardPoints = (moduleId, points) => {
-    gameProgress.modules[moduleId] = gameProgress.modules[moduleId] || { completed_steps: [], points: 0 };
-    gameProgress.modules[moduleId].points = (gameProgress.modules[moduleId].points || 0) + points;
-    gameProgress.total_points = (gameProgress.total_points || 0) + points;
-    saveProgress(gameProgress);
-    updatePointsDisplay();
-  };
-
-  const markStepComplete = (moduleId, stepIndex) => {
-    const mod = gameProgress.modules[moduleId];
-    if (mod && !mod.completed_steps.includes(stepIndex)) {
-      mod.completed_steps.push(stepIndex);
-      saveProgress(gameProgress);
-    }
-  };
-
-  const checkModuleComplete = (moduleId) => {
-    const steps = MODULE_CONTENT[moduleId]?.steps?.length || 0;
-    const completed = gameProgress.modules[moduleId]?.completed_steps?.length || 0;
-    if (completed >= steps) {
-      if (moduleId === "0") awardBadge("formelfuchs");
-    }
-  };
-
-  const showBadgeNotification = (badgeId) => {
-    const badge = BADGES[badgeId];
-    if (!badge) return;
-    const el = document.createElement("div");
-    el.className = "km-badge-toast";
-    el.innerHTML = `<strong>🏅 Badge freigeschaltet!</strong><br>${badge.label}: ${badge.desc}`;
-    document.body.appendChild(el);
-    setTimeout(() => el.classList.add("km-badge-toast--visible"), 50);
-    setTimeout(() => {
-      el.classList.remove("km-badge-toast--visible");
-      setTimeout(() => el.remove(), 400);
-    }, 3500);
-  };
-
-  const awardBadge = (badgeId) => {
-    if (!gameProgress.badges.includes(badgeId)) {
-      gameProgress.badges.push(badgeId);
-      saveProgress(gameProgress);
-      showBadgeNotification(badgeId);
-    }
-  };
   const moduleFlashTimers = new WeakMap();
 
   const applySidePanelVisibility = () => {
@@ -542,6 +941,111 @@ if (title && frame && pencilLayer instanceof HTMLCanvasElement) {
     kmh: 37.6,
     xp: 100,
   };
+  const freeFallState = {
+    running: false,
+    rafId: 0,
+    canvas: null,
+    ctx: null,
+    heightInput: null,
+    heightValue: null,
+    timeValue: null,
+    answerInput: null,
+    feedbackEl: null,
+    taskMetaEl: null,
+    taskTextEl: null,
+    nextButton: null,
+    ballY: 0,
+    lastTime: 0,
+    flashTimer: 0,
+    questionIndex: 0,
+    questionSolved: false,
+  };
+  const FREE_FALL_TASKS = [
+    { height: 20, answer: 2.02, xp: 100 },
+    { height: 45, answer: 3.03, xp: 100 },
+    { height: 5, answer: 1.01, xp: 100 },
+    { height: 80, answer: 4.04, xp: 100 },
+  ];
+  const brakingState = {
+    running: false,
+    rafId: 0,
+    canvas: null,
+    ctx: null,
+    speedInput: null,
+    decelerationInput: null,
+    speedValue: null,
+    decelerationValue: null,
+    distanceValue: null,
+    answerInput: null,
+    feedbackEl: null,
+    taskMetaEl: null,
+    taskTextEl: null,
+    nextButton: null,
+    carX: 0,
+    lastTime: 0,
+    flashTimer: 0,
+    questionIndex: 0,
+    questionSolved: false,
+  };
+  const BRAKING_TASKS = [
+    { speed: 20, deceleration: 4, answer: 50, xp: 100 },
+    { speed: 15, deceleration: 3, answer: 37.5, xp: 100 },
+    { speed: 10, deceleration: 5, answer: 10, xp: 100 },
+    { speed: 25, deceleration: 5, answer: 62.5, xp: 100 },
+  ];
+  const distanceAccState = {
+    running: false,
+    rafId: 0,
+    canvas: null,
+    ctx: null,
+    accelerationInput: null,
+    timeInput: null,
+    accelerationValue: null,
+    timeValue: null,
+    distanceValue: null,
+    answerInput: null,
+    feedbackEl: null,
+    taskMetaEl: null,
+    taskTextEl: null,
+    nextButton: null,
+    carX: 0,
+    lastTime: 0,
+    flashTimer: 0,
+    questionIndex: 0,
+    questionSolved: false,
+  };
+  const DISTANCE_ACC_TASKS = [
+    { acceleration: 3, time: 6, answer: 54, xp: 100 },
+    { acceleration: 2, time: 5, answer: 25, xp: 100 },
+    { acceleration: 4, time: 3, answer: 18, xp: 100 },
+    { acceleration: 1.5, time: 4, answer: 12, xp: 100 },
+  ];
+  const MC_CONCEPT_QUESTIONS = [
+    {
+      text: "Was beschreibt die Steigung in einem v-t-Diagramm?",
+      options: ["Zurückgelegte Strecke", "Beschleunigung", "Zeit", "Kraft"],
+      correct: 1,
+      explanation: "Die Steigung im v-t-Diagramm gibt an, wie schnell sich die Geschwindigkeit ändert – das ist genau die Beschleunigung: a = Δv / Δt.",
+    },
+    {
+      text: "Ein Objekt bewegt sich gleichförmig. Welches Diagramm zeigt eine schräge Gerade?",
+      options: ["a-t-Diagramm", "v-t-Diagramm", "s-t-Diagramm", "Alle drei"],
+      correct: 2,
+      explanation: "Bei gleichförmiger Bewegung wächst der Ort proportional zur Zeit: s = v · t. Das ergibt im s-t-Diagramm eine schräge Gerade durch den Ursprung.",
+    },
+    {
+      text: "Was bedeutet negative Beschleunigung bei positiver Geschwindigkeit?",
+      options: ["Das Objekt steht still", "Das Objekt bewegt sich rückwärts", "Das Objekt wird langsamer", "Die Kraft hat keine Richtung"],
+      correct: 2,
+      explanation: "Negative Beschleunigung bei positiver Geschwindigkeit heißt: Das Objekt bremst und wird langsamer. Erst wenn v = 0 ist, steht es still.",
+    },
+    {
+      text: "Welche Formel beschreibt den Bremsweg (v₀ = Startgeschwindigkeit, a = Bremsbeschleunigung)?",
+      options: ["s = v₀ · a", "s = v₀ / a", "s = v₀² / (2a)", "s = ½ · a · t"],
+      correct: 2,
+      explanation: "Aus v² = v₀² − 2as folgt bei Stillstand (v = 0): s = v₀² / (2a). Der Bremsweg wächst quadratisch mit der Anfangsgeschwindigkeit.",
+    },
+  ];
 
   const getModulePercent = (moduleId) => {
     const state = moduleState[moduleId];
@@ -773,6 +1277,10 @@ if (title && frame && pencilLayer instanceof HTMLCanvasElement) {
     stopCatchUpGame();
     stopAccelerationGame();
     stopSprintGame();
+    stopFreeFallGame();
+    stopBrakingGame();
+    stopDistanceAccGame();
+    stopModuleGame();
     sidePanelHidden = false;
     applySidePanelVisibility();
     document.body.classList.remove("module0-open", "module0-zooming", "si-game-open");
@@ -852,6 +1360,39 @@ if (title && frame && pencilLayer instanceof HTMLCanvasElement) {
     if (siGameStage instanceof HTMLElement) {
       siGameStage.classList.remove("test-motion-flash");
     }
+    document.body.classList.remove("test-motion-page-flash");
+  };
+
+  const stopFreeFallGame = () => {
+    freeFallState.running = false;
+    if (freeFallState.rafId) { window.cancelAnimationFrame(freeFallState.rafId); }
+    if (freeFallState.flashTimer) { window.clearTimeout(freeFallState.flashTimer); }
+    freeFallState.rafId = 0;
+    freeFallState.flashTimer = 0;
+    freeFallState.lastTime = 0;
+    if (siGameStage instanceof HTMLElement) { siGameStage.classList.remove("test-motion-flash"); }
+    document.body.classList.remove("test-motion-page-flash");
+  };
+
+  const stopBrakingGame = () => {
+    brakingState.running = false;
+    if (brakingState.rafId) { window.cancelAnimationFrame(brakingState.rafId); }
+    if (brakingState.flashTimer) { window.clearTimeout(brakingState.flashTimer); }
+    brakingState.rafId = 0;
+    brakingState.flashTimer = 0;
+    brakingState.lastTime = 0;
+    if (siGameStage instanceof HTMLElement) { siGameStage.classList.remove("test-motion-flash"); }
+    document.body.classList.remove("test-motion-page-flash");
+  };
+
+  const stopDistanceAccGame = () => {
+    distanceAccState.running = false;
+    if (distanceAccState.rafId) { window.cancelAnimationFrame(distanceAccState.rafId); }
+    if (distanceAccState.flashTimer) { window.clearTimeout(distanceAccState.flashTimer); }
+    distanceAccState.rafId = 0;
+    distanceAccState.flashTimer = 0;
+    distanceAccState.lastTime = 0;
+    if (siGameStage instanceof HTMLElement) { siGameStage.classList.remove("test-motion-flash"); }
     document.body.classList.remove("test-motion-page-flash");
   };
 
@@ -2471,1191 +3012,1981 @@ if (title && frame && pencilLayer instanceof HTMLCanvasElement) {
     }
   };
 
-  // ── Module 0 Step 1: Koordinatensysteme ──────────────────────────────────
-  const renderCoordinatesGame = () => {
-    if (!(siGameStage instanceof HTMLElement)) return;
-    siGameStage.innerHTML = `
-      <section class="test-theory-page">
-        <div class="test-theory-copy">
-          <h3 class="test-theory-title">Koordinatensysteme & Funktionen</h3>
-          <p class="test-theory-text">Ein Koordinatensystem besteht aus zwei senkrechten Achsen: der <strong>x-Achse</strong> (horizontal) und der <strong>y-Achse</strong> (vertikal). In der Kinematik verwenden wir oft ein <strong>s-t-Diagramm</strong>, bei dem die Zeit auf der x-Achse und die Position auf der y-Achse aufgetragen wird.</p>
-        </div>
-        <div class="test-theory-formula">\\[s = f(t)\\]</div>
-        <div class="test-theory-example">
-          <p><strong>Beispiel:</strong> Im s-t-Diagramm zeigt die Steigung einer Linie die Geschwindigkeit an.</p>
-        </div>
-        <div class="si-tutorial-actions">
-          <button class="si-jumpgame-button" type="button" id="coord-to-question">Zur Frage →</button>
-        </div>
-      </section>
-    `;
-    const btn = siGameStage.querySelector("#coord-to-question");
-    if (btn instanceof HTMLButtonElement) {
-      btn.addEventListener("click", () => startCoordinatesQuestion());
-    }
+  // ─── K3: Freier Fall ─────────────────────────────────────────────────────
+
+  const getFreeFallValues = () => {
+    const height = Number(freeFallState.heightInput?.value || 0);
+    return { height, time: height > 0 ? Math.sqrt(2 * height / 9.81) : 0 };
   };
 
-  let coordHadError = false;
-  const startCoordinatesQuestion = () => {
+  const updateFreeFallLabels = () => {
+    const { height, time } = getFreeFallValues();
+    if (freeFallState.heightValue instanceof HTMLElement) freeFallState.heightValue.textContent = `${formatTestDecimal(height)} m`;
+    if (freeFallState.timeValue instanceof HTMLElement) freeFallState.timeValue.textContent = `${formatTestDecimal(time)} s`;
+  };
+
+  const resizeFreeFallCanvas = () => {
+    const canvas = freeFallState.canvas;
+    if (!(canvas instanceof HTMLCanvasElement)) return;
+    const rect = canvas.getBoundingClientRect();
+    const ratio = Math.min(window.devicePixelRatio || 1, 2);
+    canvas.width = Math.max(1, Math.floor(rect.width * ratio));
+    canvas.height = Math.max(1, Math.floor(rect.height * ratio));
+    if (freeFallState.ctx) freeFallState.ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
+  };
+
+  const drawFreeFallGame = (now = 0) => {
+    if (!freeFallState.running || !(freeFallState.canvas instanceof HTMLCanvasElement) || !freeFallState.ctx) return;
+    const canvas = freeFallState.canvas;
+    const context = freeFallState.ctx;
+    const rect = canvas.getBoundingClientRect();
+    const width = rect.width;
+    const height = rect.height;
+    const { height: h } = getFreeFallValues();
+    const maxHeight = Number(freeFallState.heightInput?.max || 100);
+    const left = 62;
+    const groundY = height - 42;
+    const topY = 28;
+    const deltaSeconds = freeFallState.lastTime ? Math.min(0.05, (now - freeFallState.lastTime) / 1000) : 0.016;
+    const smoothing = 1 - Math.pow(0.001, deltaSeconds);
+    freeFallState.lastTime = now;
+
+    const targetBallY = topY + (1 - Math.min(h, maxHeight) / maxHeight) * (groundY - topY);
+    if (!freeFallState.ballY) freeFallState.ballY = groundY;
+    freeFallState.ballY += (targetBallY - freeFallState.ballY) * smoothing;
+
+    context.clearRect(0, 0, width, height);
+    context.fillStyle = "rgba(255, 255, 255, 0.96)";
+    context.fillRect(0, 0, width, height);
+
+    context.strokeStyle = "rgba(96, 111, 128, 0.22)";
+    context.lineWidth = 1;
+    const gridStep = (groundY - topY) / 10;
+    for (let x = left; x <= width - 28; x += gridStep) {
+      context.beginPath(); context.moveTo(x, topY); context.lineTo(x, groundY); context.stroke();
+    }
+    for (let y = topY; y <= groundY + 0.5; y += gridStep) {
+      context.beginPath(); context.moveTo(left, y); context.lineTo(width - 28, y); context.stroke();
+    }
+
+    context.strokeStyle = "#171b21";
+    context.lineWidth = 4;
+    context.beginPath();
+    context.moveTo(left, topY);
+    context.lineTo(left, groundY);
+    context.lineTo(width - 28, groundY);
+    context.stroke();
+
+    context.fillStyle = "#384858";
+    context.font = "700 12px Space Grotesk, sans-serif";
+    context.textAlign = "right";
+    context.textBaseline = "middle";
+    const labelStep = maxHeight > 60 ? 20 : 10;
+    for (let m = 0; m <= maxHeight; m += labelStep) {
+      const y = groundY - (m / maxHeight) * (groundY - topY);
+      context.fillText(`${m} m`, left - 8, y);
+      context.strokeStyle = "rgba(23, 27, 33, 0.38)";
+      context.lineWidth = 1.5;
+      context.beginPath(); context.moveTo(left - 4, y); context.lineTo(left + 8, y); context.stroke();
+    }
+
+    context.fillStyle = "#3dd18d";
+    context.strokeStyle = "#171b21";
+    context.lineWidth = 2.5;
+    context.beginPath();
+    context.roundRect(left + 4, topY - 8, 50, 10, 3);
+    context.fill(); context.stroke();
+
+    context.strokeStyle = "#ff8d47";
+    context.lineWidth = 2.5;
+    context.setLineDash([5, 5]);
+    context.beginPath();
+    context.moveTo(left + 29, topY + 2);
+    context.lineTo(left + 29, freeFallState.ballY - 14);
+    context.stroke();
+    context.setLineDash([]);
+
+    context.strokeStyle = "rgba(100, 120, 140, 0.35)";
+    context.lineWidth = 1;
+    context.beginPath();
+    context.moveTo(left, freeFallState.ballY);
+    context.lineTo(width - 28, freeFallState.ballY);
+    context.stroke();
+
+    context.fillStyle = "#ff8d47";
+    context.strokeStyle = "#171b21";
+    context.lineWidth = 2.5;
+    context.beginPath();
+    context.arc(left + 29, freeFallState.ballY, 13, 0, Math.PI * 2);
+    context.fill(); context.stroke();
+
+    context.fillStyle = "#101418";
+    context.font = "800 13px Space Grotesk, sans-serif";
+    context.textAlign = "left";
+    context.textBaseline = "middle";
+    context.fillText(`${formatTestDecimal(h)} m`, left + 50, freeFallState.ballY);
+
+    context.fillStyle = "#101418";
+    context.textBaseline = "top";
+    context.fillText("Freier Fall  (g = 9,81 m/s²)", left + 18, topY + 10);
+
+    freeFallState.rafId = window.requestAnimationFrame(drawFreeFallGame);
+  };
+
+  const flashFreeFallSuccess = () => {
     if (!(siGameStage instanceof HTMLElement)) return;
-    coordHadError = false;
-    const options = [
-      { label: "A) Zeit", correct: true },
-      { label: "B) Strecke", correct: false },
-      { label: "C) Geschwindigkeit", correct: false },
-      { label: "D) Masse", correct: false },
-    ];
-    siGameStage.innerHTML = `
-      <section class="test-motion-task">
-        <h3 class="test-motion-task-title">Frage: Koordinatensysteme</h3>
-        <p class="test-motion-task-desc">Was beschreibt die x-Achse in einem typischen s-t-Diagramm?</p>
-        <div class="test-motion-options" id="coord-options">
-          ${options.map((o, i) => `<button class="si-jumpgame-button test-mc-option" type="button" data-index="${i}">${o.label}</button>`).join("")}
-        </div>
-        <div class="test-motion-feedback" id="coord-feedback"></div>
-        <div id="coord-actions" style="display:none; margin-top:1rem;">
-          <button class="si-jumpgame-button" type="button" id="coord-back">Zurück zum Pfad</button>
-        </div>
-      </section>
-    `;
-    const optionEls = siGameStage.querySelectorAll(".test-mc-option");
-    optionEls.forEach((btn, i) => {
-      btn.addEventListener("click", () => {
-        optionEls.forEach(b => { b.disabled = true; });
-        const feedback = siGameStage.querySelector("#coord-feedback");
-        const actions = siGameStage.querySelector("#coord-actions");
-        if (options[i].correct) {
-          btn.style.background = "#22c55e";
-          btn.style.color = "#fff";
-          if (feedback instanceof HTMLElement) {
-            feedback.textContent = "Richtig! Die x-Achse im s-t-Diagramm zeigt die Zeit t.";
-            feedback.className = "test-motion-feedback is-correct";
-          }
-          awardPoints("0", 50);
-          if (coordHadError) awardBadge("hartnäckig");
-          markStepComplete("0", 1);
-          checkModuleComplete("0");
-        } else {
-          btn.style.background = "#ef4444";
-          btn.style.color = "#fff";
-          coordHadError = true;
-          if (feedback instanceof HTMLElement) {
-            feedback.textContent = "Nicht ganz. Im s-t-Diagramm ist die x-Achse die Zeit t.";
-            feedback.className = "test-motion-feedback is-hint";
-          }
-        }
-        if (actions instanceof HTMLElement && options[i].correct) {
-          actions.style.display = "block";
-          const backBtn = actions.querySelector("#coord-back");
-          if (backBtn instanceof HTMLButtonElement) {
-            backBtn.addEventListener("click", () => closeSIGame());
-          }
-        }
-      });
+    siGameStage.classList.remove("test-motion-flash");
+    window.requestAnimationFrame(() => {
+      siGameStage.classList.add("test-motion-flash");
+      document.body.classList.add("test-motion-page-flash");
     });
+    if (freeFallState.flashTimer) window.clearTimeout(freeFallState.flashTimer);
+    freeFallState.flashTimer = window.setTimeout(() => {
+      siGameStage.classList.remove("test-motion-flash");
+      document.body.classList.remove("test-motion-page-flash");
+      freeFallState.flashTimer = 0;
+    }, 760);
   };
 
-  // ── Module 0 Step 2: Skalar und Vektoren ────────────────────────────────
-  const scalarVectorQuestions = [
-    { q: "Geschwindigkeit", answer: "Vektor", hint: "Geschwindigkeit hat Betrag und Richtung → Vektor." },
-    { q: "Masse", answer: "Skalar", hint: "Masse hat nur einen Betrag, keine Richtung → Skalar." },
-    { q: "Verschiebung", answer: "Vektor", hint: "Verschiebung hat Betrag und Richtung → Vektor." },
-    { q: "Temperatur", answer: "Skalar", hint: "Temperatur hat nur einen Betrag → Skalar." },
-  ];
-  let svQIndex = 0;
-  let svHadError = false;
-  let svFirstTry = true;
+  const getCurrentFreeFallTask = () => FREE_FALL_TASKS[freeFallState.questionIndex] || FREE_FALL_TASKS[0];
 
-  const renderScalarVectorGame = () => {
-    if (!(siGameStage instanceof HTMLElement)) return;
-    svQIndex = 0;
-    svHadError = false;
-    svFirstTry = true;
-    siGameStage.innerHTML = `
-      <section class="test-theory-page">
-        <div class="test-theory-copy">
-          <h3 class="test-theory-title">Skalare und Vektoren</h3>
-          <p class="test-theory-text">Eine physikalische Grösse ist entweder ein <strong>Skalar</strong> oder ein <strong>Vektor</strong>.</p>
-          <ul class="test-theory-list" style="margin:0.5rem 0 0 1rem;">
-            <li><strong>Skalar:</strong> nur Betrag (z.B. Masse, Temperatur, Zeit)</li>
-            <li><strong>Vektor:</strong> Betrag UND Richtung (z.B. Geschwindigkeit, Kraft, Verschiebung)</li>
-          </ul>
-        </div>
-        <div class="test-theory-formula">\\[\\vec{v} \\text{ (Vektor)} \\quad\\quad m \\text{ (Skalar)}\\]</div>
-        <div class="si-tutorial-actions">
-          <button class="si-jumpgame-button" type="button" id="sv-to-question">Zur Frage →</button>
-        </div>
-      </section>
-    `;
-    const btn = siGameStage.querySelector("#sv-to-question");
-    if (btn instanceof HTMLButtonElement) {
-      btn.addEventListener("click", () => startSVQuestion());
+  const renderCurrentFreeFallTask = () => {
+    const task = getCurrentFreeFallTask();
+    freeFallState.questionSolved = false;
+    if (freeFallState.heightInput instanceof HTMLInputElement) freeFallState.heightInput.value = "0";
+    freeFallState.ballY = 0;
+    freeFallState.lastTime = 0;
+    updateFreeFallLabels();
+
+    if (freeFallState.taskMetaEl instanceof HTMLElement) {
+      freeFallState.taskMetaEl.innerHTML = `
+        <span>Aufgabe ${freeFallState.questionIndex + 1} von ${FREE_FALL_TASKS.length}</span>
+        <strong>Mittel · ${task.xp} XP</strong>
+      `;
+    }
+    if (freeFallState.taskTextEl instanceof HTMLElement) {
+      freeFallState.taskTextEl.innerHTML = `
+        Ein Ball fällt aus einer Höhe von <strong>${formatTestDecimal(task.height)} m</strong>
+        aus der Ruhe. Wie lange dauert der Fall? (g = 9,81 m/s²)
+      `;
+    }
+    if (freeFallState.answerInput instanceof HTMLInputElement) {
+      freeFallState.answerInput.value = "";
+      freeFallState.answerInput.disabled = false;
+      freeFallState.answerInput.focus();
+    }
+    if (freeFallState.feedbackEl instanceof HTMLElement) {
+      freeFallState.feedbackEl.className = "test-motion-feedback";
+      freeFallState.feedbackEl.textContent = "";
+    }
+    if (freeFallState.nextButton instanceof HTMLButtonElement) {
+      freeFallState.nextButton.hidden = true;
+      freeFallState.nextButton.textContent =
+        freeFallState.questionIndex === FREE_FALL_TASKS.length - 1 ? "Fertig" : "Nächste Frage";
     }
   };
 
-  const startSVQuestion = () => {
-    if (!(siGameStage instanceof HTMLElement)) return;
-    if (svQIndex >= scalarVectorQuestions.length) {
-      siGameStage.innerHTML = `
-        <section class="test-motion-task">
-          <h3 class="test-motion-task-title">Alle Fragen beantwortet!</h3>
-          <p class="test-motion-task-desc">Du hast alle Skalar/Vektor-Fragen abgeschlossen.</p>
-          <div style="margin-top:1rem;">
-            <button class="si-jumpgame-button" type="button" id="sv-back-final">Zurück zum Pfad</button>
-          </div>
-        </section>
-      `;
-      markStepComplete("0", 2);
-      checkModuleComplete("0");
-      const backBtn = siGameStage.querySelector("#sv-back-final");
-      if (backBtn instanceof HTMLButtonElement) {
-        backBtn.addEventListener("click", () => closeSIGame());
+  const goToNextFreeFallTask = () => {
+    if (!freeFallState.questionSolved) return;
+    if (freeFallState.questionIndex >= FREE_FALL_TASKS.length - 1) {
+      stopFreeFallGame();
+      if (siGameStage instanceof HTMLElement) {
+        siGameStage.innerHTML = `
+          <section class="test-motion-complete">
+            <h3>Freier Fall – geschafft!</h3>
+            <p>Du hast alle Fallzeit-Aufgaben korrekt gelöst.</p>
+            <div class="test-motion-complete-actions">
+              <button class="si-jumpgame-button" id="freefall-back-final" type="button">Zurück zum Pfad</button>
+              <button class="si-jumpgame-button" id="freefall-repeat-final" type="button">Nochmal spielen</button>
+            </div>
+          </section>
+        `;
+        siGameStage.querySelector("#freefall-back-final")?.addEventListener("click", closeSIGame);
+        siGameStage.querySelector("#freefall-repeat-final")?.addEventListener("click", () => renderFreeFallGame());
       }
       return;
     }
-    svFirstTry = true;
-    const qObj = scalarVectorQuestions[svQIndex];
-    const opts = ["Skalar", "Vektor"].sort(() => Math.random() - 0.5);
-    siGameStage.innerHTML = `
-      <section class="test-motion-task">
-        <h3 class="test-motion-task-title">Frage ${svQIndex + 1} / ${scalarVectorQuestions.length}: Skalar oder Vektor?</h3>
-        <p class="test-motion-task-desc">Ist <strong>${qObj.q}</strong> ein Skalar oder ein Vektor?</p>
-        <div class="test-motion-options" id="sv-options">
-          ${opts.map(o => `<button class="si-jumpgame-button test-mc-option" type="button" data-val="${o}">${o}</button>`).join("")}
-        </div>
-        <div class="test-motion-feedback" id="sv-feedback"></div>
-        <div id="sv-next-area" style="display:none; margin-top:1rem;">
-          <button class="si-jumpgame-button" type="button" id="sv-next">${svQIndex + 1 < scalarVectorQuestions.length ? "Nächste Frage →" : "Abschliessen →"}</button>
-        </div>
-      </section>
-    `;
-    const optionEls = siGameStage.querySelectorAll(".test-mc-option");
-    optionEls.forEach(btn => {
-      btn.addEventListener("click", () => {
-        const val = btn.getAttribute("data-val");
-        const feedback = siGameStage.querySelector("#sv-feedback");
-        const nextArea = siGameStage.querySelector("#sv-next-area");
-        if (val === qObj.answer) {
-          optionEls.forEach(b => { b.disabled = true; });
-          btn.style.background = "#22c55e";
-          btn.style.color = "#fff";
-          if (feedback instanceof HTMLElement) {
-            feedback.textContent = `Richtig! ${qObj.hint}`;
-            feedback.className = "test-motion-feedback is-correct";
-          }
-          const pts = svFirstTry ? 50 : 25;
-          awardPoints("0", pts);
-          if (svHadError) awardBadge("hartnäckig");
-          if (nextArea instanceof HTMLElement) {
-            nextArea.style.display = "block";
-            const nextBtn = nextArea.querySelector("#sv-next");
-            if (nextBtn instanceof HTMLButtonElement) {
-              nextBtn.addEventListener("click", () => {
-                svQIndex++;
-                svHadError = false;
-                startSVQuestion();
-              });
-            }
-          }
-        } else {
-          svFirstTry = false;
-          svHadError = true;
-          btn.style.background = "#ef4444";
-          btn.style.color = "#fff";
-          btn.disabled = true;
-          if (feedback instanceof HTMLElement) {
-            feedback.textContent = `Falsch. Versuche es nochmal. ${qObj.hint}`;
-            feedback.className = "test-motion-feedback is-hint";
-          }
-        }
-      });
-    });
+    freeFallState.questionIndex += 1;
+    renderCurrentFreeFallTask();
   };
 
-  // ── Module 0 Step 3: Bezugssystem ────────────────────────────────────────
-  const renderReferenceFrameGame = () => {
-    if (!(siGameStage instanceof HTMLElement)) return;
-    siGameStage.innerHTML = `
-      <section class="test-theory-page">
-        <div class="test-theory-copy">
-          <h3 class="test-theory-title">Bezugssystem</h3>
-          <p class="test-theory-text">Jede Bewegung wird <strong>relativ zu einem Bezugssystem</strong> gemessen. Ein Bezugssystem ist ein Koordinatensystem, das an einem bestimmten Beobachter oder Ort befestigt ist.</p>
-          <p class="test-theory-text">Die Relativgeschwindigkeit zweier entgegengesetzt fahrender Objekte ergibt sich aus der <strong>Addition</strong> ihrer Einzelgeschwindigkeiten.</p>
-        </div>
-        <div class="test-theory-formula">\\[v_{\\text{rel}} = v_A + v_B\\]</div>
-        <div class="test-theory-example">
-          <p><strong>Beispiel:</strong> Auto A fährt mit 60 km/h nach rechts, Auto B mit 40 km/h nach links. Relativgeschwindigkeit: 100 km/h.</p>
-        </div>
-        <div class="si-tutorial-actions">
-          <button class="si-jumpgame-button" type="button" id="ref-to-question">Zur Frage →</button>
-        </div>
-      </section>
-    `;
-    const btn = siGameStage.querySelector("#ref-to-question");
-    if (btn instanceof HTMLButtonElement) {
-      btn.addEventListener("click", () => startReferenceFrameQuestion());
+  const checkFreeFallAnswer = () => {
+    const feedbackEl = freeFallState.feedbackEl;
+    if (!(feedbackEl instanceof HTMLElement)) return;
+    const answer = freeFallState.answerInput instanceof HTMLInputElement ? freeFallState.answerInput.valueAsNumber : Number.NaN;
+    const task = getCurrentFreeFallTask();
+    feedbackEl.className = "test-motion-feedback";
+
+    if (!Number.isFinite(answer)) {
+      feedbackEl.textContent = "Gib zuerst eine Zahl ein.";
+      feedbackEl.classList.add("is-hint");
+      return;
     }
-  };
-
-  let refHadError = false;
-  const startReferenceFrameQuestion = () => {
-    if (!(siGameStage instanceof HTMLElement)) return;
-    refHadError = false;
-    const options = [
-      { label: "A) 20 km/h", correct: false },
-      { label: "B) 80 km/h", correct: false },
-      { label: "C) 140 km/h", correct: true },
-      { label: "D) 60 km/h", correct: false },
-    ];
-    siGameStage.innerHTML = `
-      <section class="test-motion-task">
-        <h3 class="test-motion-task-title">Frage: Bezugssystem</h3>
-        <p class="test-motion-task-desc">Zwei Züge fahren aufeinander zu. Zug A fährt mit 80 km/h, Zug B mit 60 km/h. Wie gross ist die Relativgeschwindigkeit?</p>
-        <div class="test-motion-options" id="ref-options">
-          ${options.map((o, i) => `<button class="si-jumpgame-button test-mc-option" type="button" data-index="${i}">${o.label}</button>`).join("")}
-        </div>
-        <div class="test-motion-feedback" id="ref-feedback"></div>
-        <div id="ref-actions" style="display:none; margin-top:1rem;">
-          <button class="si-jumpgame-button" type="button" id="ref-back">Zurück zum Pfad</button>
-        </div>
-      </section>
-    `;
-    const optionEls = siGameStage.querySelectorAll(".test-mc-option");
-    optionEls.forEach((btn, i) => {
-      btn.addEventListener("click", () => {
-        optionEls.forEach(b => { b.disabled = true; });
-        const feedback = siGameStage.querySelector("#ref-feedback");
-        const actions = siGameStage.querySelector("#ref-actions");
-        if (options[i].correct) {
-          btn.style.background = "#22c55e";
-          btn.style.color = "#fff";
-          if (feedback instanceof HTMLElement) {
-            feedback.textContent = "Richtig! 80 + 60 = 140 km/h. Bei entgegengesetzter Fahrt addieren sich die Geschwindigkeiten.";
-            feedback.className = "test-motion-feedback is-correct";
-          }
-          awardPoints("0", 75);
-          if (refHadError) awardBadge("hartnäckig");
-          markStepComplete("0", 3);
-          checkModuleComplete("0");
-          if (actions instanceof HTMLElement) {
-            actions.style.display = "block";
-            const backBtn = actions.querySelector("#ref-back");
-            if (backBtn instanceof HTMLButtonElement) {
-              backBtn.addEventListener("click", () => closeSIGame());
-            }
-          }
-        } else {
-          btn.style.background = "#ef4444";
-          btn.style.color = "#fff";
-          refHadError = true;
-          if (feedback instanceof HTMLElement) {
-            feedback.textContent = "Nicht richtig. Bei entgegengesetzter Fahrt addiert man: 80 + 60 = 140 km/h.";
-            feedback.className = "test-motion-feedback is-hint";
-          }
-        }
-      });
-    });
-  };
-
-  // ── Module 0 Step 4: Position ────────────────────────────────────────────
-  const renderPositionGame = () => {
-    if (!(siGameStage instanceof HTMLElement)) return;
-    siGameStage.innerHTML = `
-      <section class="test-theory-page">
-        <div class="test-theory-copy">
-          <h3 class="test-theory-title">Position</h3>
-          <p class="test-theory-text">Die <strong>Position</strong> (auch Ort) eines Objektes gibt an, wo es sich im gewählten Bezugssystem befindet. Sie wird über eine Koordinate \\(s\\) (oder \\(x\\)) angegeben.</p>
-          <p class="test-theory-text">Wenn ein Objekt von der Startposition \\(s_0\\) eine Strecke \\(\\Delta s\\) zurücklegt, ist die neue Position:</p>
-        </div>
-        <div class="test-theory-formula">\\[s = s_0 + \\Delta s\\]</div>
-        <div class="test-theory-example">
-          <p><strong>Beispiel:</strong> Startposition \\(s_0 = 2\\,\\mathrm{m}\\), Verschiebung \\(\\Delta s = 5\\,\\mathrm{m}\\) → neue Position: \\(s = 7\\,\\mathrm{m}\\).</p>
-        </div>
-        <div class="si-tutorial-actions">
-          <button class="si-jumpgame-button" type="button" id="pos-to-question">Zur Frage →</button>
-        </div>
-      </section>
-    `;
-    const btn = siGameStage.querySelector("#pos-to-question");
-    if (btn instanceof HTMLButtonElement) {
-      btn.addEventListener("click", () => startPositionQuestion());
+    if (Math.abs(answer - task.answer) <= 0.05) {
+      freeFallState.questionSolved = true;
+      feedbackEl.textContent = `Richtig! Die Fallzeit beträgt ${formatTestDecimal(task.answer)} s. +${task.xp} XP`;
+      feedbackEl.classList.add("is-correct");
+      if (freeFallState.answerInput instanceof HTMLInputElement) freeFallState.answerInput.disabled = true;
+      if (freeFallState.nextButton instanceof HTMLButtonElement) freeFallState.nextButton.hidden = false;
+      if (freeFallState.heightInput instanceof HTMLInputElement) freeFallState.heightInput.value = String(task.height);
+      updateFreeFallLabels();
+      flashFreeFallSuccess();
+      return;
     }
+    feedbackEl.textContent = `Fast: Forme h = ½ · g · t² um: t = √(2h / g). Mit h = ${formatTestDecimal(task.height)} m und g = 9,81 m/s².`;
+    feedbackEl.classList.add("is-hint");
   };
 
-  let posHadError = false;
-  const startPositionQuestion = () => {
+  const startFreeFallQuestion = () => {
     if (!(siGameStage instanceof HTMLElement)) return;
-    posHadError = false;
-    siGameStage.innerHTML = `
-      <section class="test-motion-task">
-        <h3 class="test-motion-task-title">Frage: Position</h3>
-        <p class="test-motion-task-desc">Ein Auto startet bei Position \\(s_0 = 5\\,\\mathrm{m}\\) und fährt 8 m in positiver Richtung. An welcher Position befindet es sich jetzt?</p>
-        <div class="test-motion-input-row" style="margin-top:1rem; display:flex; gap:0.5rem; align-items:center; flex-wrap:wrap;">
-          <input class="test-motion-input" id="pos-input" type="number" placeholder="Antwort in m" style="padding:0.6rem 0.8rem; border-radius:8px; border:2px solid #ccc; font-size:1rem; width:160px;" />
-          <span style="font-size:1rem; font-weight:700;">m</span>
-          <button class="si-jumpgame-button" type="button" id="pos-check">Prüfen</button>
-        </div>
-        <div class="test-motion-feedback" id="pos-feedback" style="margin-top:0.75rem;"></div>
-        <div id="pos-actions" style="display:none; margin-top:1rem;">
-          <button class="si-jumpgame-button" type="button" id="pos-back">Zurück zum Pfad</button>
-        </div>
-      </section>
-    `;
-    const checkBtn = siGameStage.querySelector("#pos-check");
-    if (checkBtn instanceof HTMLButtonElement) {
-      checkBtn.addEventListener("click", () => {
-        const input = siGameStage.querySelector("#pos-input");
-        const feedback = siGameStage.querySelector("#pos-feedback");
-        const actions = siGameStage.querySelector("#pos-actions");
-        const val = parseFloat(input instanceof HTMLInputElement ? input.value : "");
-        if (isNaN(val)) {
-          if (feedback instanceof HTMLElement) {
-            feedback.textContent = "Bitte gib eine Zahl ein.";
-            feedback.className = "test-motion-feedback is-hint";
-          }
-          return;
-        }
-        if (Math.abs(val - 13) <= 0.1) {
-          if (feedback instanceof HTMLElement) {
-            feedback.textContent = "Richtig! s = 5 + 8 = 13 m.";
-            feedback.className = "test-motion-feedback is-correct";
-          }
-          if (checkBtn instanceof HTMLButtonElement) checkBtn.disabled = true;
-          awardPoints("0", 75);
-          if (posHadError) awardBadge("hartnäckig");
-          markStepComplete("0", 4);
-          checkModuleComplete("0");
-          if (actions instanceof HTMLElement) {
-            actions.style.display = "block";
-            const backBtn = actions.querySelector("#pos-back");
-            if (backBtn instanceof HTMLButtonElement) {
-              backBtn.addEventListener("click", () => closeSIGame());
-            }
-          }
-        } else {
-          posHadError = true;
-          if (feedback instanceof HTMLElement) {
-            feedback.textContent = "Nicht ganz. Hinweis: s = s₀ + Δs = 5 + 8 = ?";
-            feedback.className = "test-motion-feedback is-hint";
-          }
-        }
-      });
-    }
-  };
+    stopFreeFallGame();
 
-  // ── Module 0 Step 5: Strecke und Verschiebung ────────────────────────────
-  const renderDisplacementGame = () => {
-    if (!(siGameStage instanceof HTMLElement)) return;
     siGameStage.innerHTML = `
-      <section class="test-theory-page">
-        <div class="test-theory-copy">
-          <h3 class="test-theory-title">Strecke und Verschiebung</h3>
-          <p class="test-theory-text"><strong>Strecke</strong> (auch zurückgelegter Weg): die gesamte Länge des zurückgelegten Weges, unabhängig von der Richtung. Das ist ein <strong>Skalar</strong>.</p>
-          <p class="test-theory-text"><strong>Verschiebung</strong> \\(\\Delta s\\): die direkte Verbindung zwischen Start- und Endpunkt, mit Richtung. Das ist ein <strong>Vektor</strong>.</p>
+      <section class="test-motion-game">
+        <div class="test-motion-sim">
+          <canvas class="test-motion-canvas" id="freefall-canvas" aria-label="Ball fällt aus einer Höhe"></canvas>
         </div>
-        <div class="test-theory-formula">\\[\\text{Strecke} = \\text{gesamter Weg} \\quad \\Delta s = s_{\\text{end}} - s_0\\]</div>
-        <div class="test-theory-example">
-          <p><strong>Beispiel:</strong> Jemand läuft 10 m vor und 4 m zurück → Strecke = 14 m, |Verschiebung| = 6 m.</p>
-        </div>
-        <div class="si-tutorial-actions">
-          <button class="si-jumpgame-button" type="button" id="disp-to-question">Zur Frage →</button>
-        </div>
-      </section>
-    `;
-    const btn = siGameStage.querySelector("#disp-to-question");
-    if (btn instanceof HTMLButtonElement) {
-      btn.addEventListener("click", () => startDisplacementQuestion());
-    }
-  };
-
-  let dispHadError = false;
-  let dispStreckeDone = false;
-  const startDisplacementQuestion = () => {
-    if (!(siGameStage instanceof HTMLElement)) return;
-    dispHadError = false;
-    dispStreckeDone = false;
-    siGameStage.innerHTML = `
-      <section class="test-motion-task">
-        <h3 class="test-motion-task-title">Frage: Strecke und Verschiebung</h3>
-        <p class="test-motion-task-desc">Ein Jogger läuft 400 m geradeaus und kehrt dann 150 m um.</p>
-        <div style="margin-top:1rem; display:flex; flex-direction:column; gap:0.8rem;">
-          <div style="display:flex; gap:0.5rem; align-items:center; flex-wrap:wrap;">
-            <label style="font-weight:700; min-width:180px;">(a) Strecke [m]:</label>
-            <input class="test-motion-input" id="disp-strecke" type="number" placeholder="z.B. 550" style="padding:0.6rem 0.8rem; border-radius:8px; border:2px solid #ccc; font-size:1rem; width:130px;" />
-            <button class="si-jumpgame-button" type="button" id="disp-check-strecke">Prüfen</button>
+        <div class="test-motion-controls">
+          <label class="test-motion-control">
+            <span>Höhe erkunden</span>
+            <input id="freefall-height" type="range" min="0" max="100" step="1" value="0">
+            <strong id="freefall-height-value">0 m</strong>
+          </label>
+          <div class="test-motion-readout">
+            <span>Fallzeit</span>
+            <strong id="freefall-time-value">0 s</strong>
           </div>
-          <div class="test-motion-feedback" id="disp-feedback-strecke"></div>
-          <div style="display:flex; gap:0.5rem; align-items:center; flex-wrap:wrap;">
-            <label style="font-weight:700; min-width:180px;">(b) |Verschiebung| [m]:</label>
-            <input class="test-motion-input" id="disp-verschie" type="number" placeholder="z.B. 250" style="padding:0.6rem 0.8rem; border-radius:8px; border:2px solid #ccc; font-size:1rem; width:130px;" />
-            <button class="si-jumpgame-button" type="button" id="disp-check-verschie">Prüfen</button>
-          </div>
-          <div class="test-motion-feedback" id="disp-feedback-verschie"></div>
         </div>
-        <div id="disp-actions" style="display:none; margin-top:1rem;">
-          <button class="si-jumpgame-button" type="button" id="disp-back">Zurück zum Pfad</button>
-        </div>
-      </section>
-    `;
-    let streckeCorrect = false;
-    let verschieCorrect = false;
-    const checkComplete = () => {
-      if (streckeCorrect && verschieCorrect) {
-        markStepComplete("0", 5);
-        checkModuleComplete("0");
-        const actions = siGameStage.querySelector("#disp-actions");
-        if (actions instanceof HTMLElement) {
-          actions.style.display = "block";
-          const backBtn = actions.querySelector("#disp-back");
-          if (backBtn instanceof HTMLButtonElement) {
-            backBtn.addEventListener("click", () => closeSIGame());
-          }
-        }
-      }
-    };
-    const checkStrecke = siGameStage.querySelector("#disp-check-strecke");
-    if (checkStrecke instanceof HTMLButtonElement) {
-      checkStrecke.addEventListener("click", () => {
-        const input = siGameStage.querySelector("#disp-strecke");
-        const feedback = siGameStage.querySelector("#disp-feedback-strecke");
-        const val = parseFloat(input instanceof HTMLInputElement ? input.value : "");
-        if (isNaN(val)) {
-          if (feedback instanceof HTMLElement) { feedback.textContent = "Bitte eine Zahl eingeben."; feedback.className = "test-motion-feedback is-hint"; }
-          return;
-        }
-        if (Math.abs(val - 550) <= 0.5) {
-          if (feedback instanceof HTMLElement) { feedback.textContent = "Richtig! Strecke = 400 + 150 = 550 m."; feedback.className = "test-motion-feedback is-correct"; }
-          checkStrecke.disabled = true;
-          awardPoints("0", 50);
-          streckeCorrect = true;
-          checkComplete();
-        } else {
-          dispHadError = true;
-          if (feedback instanceof HTMLElement) { feedback.textContent = "Nicht ganz. Die Strecke ist der gesamte zurückgelegte Weg: 400 + 150 = ?"; feedback.className = "test-motion-feedback is-hint"; }
-        }
-      });
-    }
-    const checkVerschie = siGameStage.querySelector("#disp-check-verschie");
-    if (checkVerschie instanceof HTMLButtonElement) {
-      checkVerschie.addEventListener("click", () => {
-        const input = siGameStage.querySelector("#disp-verschie");
-        const feedback = siGameStage.querySelector("#disp-feedback-verschie");
-        const val = parseFloat(input instanceof HTMLInputElement ? input.value : "");
-        if (isNaN(val)) {
-          if (feedback instanceof HTMLElement) { feedback.textContent = "Bitte eine Zahl eingeben."; feedback.className = "test-motion-feedback is-hint"; }
-          return;
-        }
-        if (Math.abs(val - 250) <= 0.5) {
-          if (feedback instanceof HTMLElement) { feedback.textContent = "Richtig! |Verschiebung| = 400 - 150 = 250 m."; feedback.className = "test-motion-feedback is-correct"; }
-          checkVerschie.disabled = true;
-          awardPoints("0", 50);
-          if (dispHadError) awardBadge("hartnäckig");
-          verschieCorrect = true;
-          checkComplete();
-        } else {
-          dispHadError = true;
-          if (feedback instanceof HTMLElement) { feedback.textContent = "Nicht ganz. Die Verschiebung ist die direkte Strecke von Start zu End: 400 - 150 = ?"; feedback.className = "test-motion-feedback is-hint"; }
-        }
-      });
-    }
-  };
-
-  // ── v-t Diagramm lesen ──────────────────────────────────────────────────────
-  const VT_QUESTIONS = [
-    {
-      label: "Gleichförmige Fahrt",
-      description: "Ein Auto fährt mit konstanter Geschwindigkeit 12 m/s für 6 Sekunden.",
-      segments: [{ v0: 12, v1: 12, t0: 0, t1: 6 }],
-      question: "Was zeigt die waagerechte Linie im v-t-Diagramm?",
-      options: [
-        { text: "Die Geschwindigkeit ist konstant — keine Beschleunigung.", correct: true, explanation: "Genau! Eine flache Linie bedeutet: Die Geschwindigkeit ändert sich nicht, also a = 0." },
-        { text: "Das Auto steht still.", correct: false, explanation: "Nein. Still stehen würde bedeuten, v = 0 — also die Linie liegt auf der Zeitachse." },
-        { text: "Das Auto beschleunigt gleichmäßig.", correct: false, explanation: "Nein. Beschleunigung siehst du als schräge Linie, nicht als flache." },
-        { text: "Die Strecke nimmt ab.", correct: false, explanation: "Nein. Im v-t-Diagramm liest du Geschwindigkeit — nicht direkt die Strecke." },
-      ],
-      xp: 75,
-    },
-    {
-      label: "Gleichmäßiges Bremsen",
-      description: "Ein Fahrzeug bremst von 20 m/s auf 0 m/s in 5 Sekunden.",
-      segments: [{ v0: 20, v1: 0, t0: 0, t1: 5 }],
-      question: "Was bedeutet die abfallende Gerade im v-t-Diagramm?",
-      options: [
-        { text: "Das Fahrzeug verzögert mit konstanter Bremsbeschleunigung.", correct: true, explanation: "Richtig! Eine fallende Gerade zeigt eine konstante negative Beschleunigung — also gleichmäßiges Bremsen." },
-        { text: "Das Fahrzeug fährt rückwärts.", correct: false, explanation: "Nicht unbedingt. Erst wenn v unter 0 sinkt, bewegt sich das Fahrzeug rückwärts." },
-        { text: "Die Geschwindigkeit ist konstant.", correct: false, explanation: "Nein. Konstante Geschwindigkeit wäre eine flache, waagerechte Linie." },
-        { text: "Das Fahrzeug bleibt stehen, sobald die Linie fällt.", correct: false, explanation: "Nein. Das Fahrzeug steht erst still, wenn v = 0 erreicht ist — am Ende der Linie." },
-      ],
-      xp: 75,
-    },
-    {
-      label: "Beschleunigung dann konstant",
-      description: "Ein Auto beschleunigt von 0 auf 15 m/s in 3 Sekunden, dann fährt es konstant.",
-      segments: [{ v0: 0, v1: 15, t0: 0, t1: 3 }, { v0: 15, v1: 15, t0: 3, t1: 7 }],
-      question: "Was passiert zwischen t = 3 s und t = 7 s?",
-      options: [
-        { text: "Das Auto fährt mit konstanter Geschwindigkeit von 15 m/s.", correct: true, explanation: "Genau! Die flache Linie ab t = 3 s zeigt: keine Beschleunigung mehr, gleichmäßige Fahrt." },
-        { text: "Das Auto bremst langsam ab.", correct: false, explanation: "Nein. Abbremsen wäre eine fallende Linie — hier bleibt die Linie flach." },
-        { text: "Das Auto beschleunigt weiterhin.", correct: false, explanation: "Nein. Weiter beschleunigen würde eine steigende Linie geben." },
-        { text: "Das Auto steht still.", correct: false, explanation: "Nein. Stillstand wäre v = 0, aber hier ist v = 15 m/s konstant." },
-      ],
-      xp: 100,
-    },
-  ];
-
-  let vtState = { questionIndex: 0, answered: false };
-
-  const drawVTDiagram = (canvas, segments, highlightPhase = -1) => {
-    const ctx = canvas.getContext("2d");
-    if (!ctx) return;
-    const ratio = Math.min(window.devicePixelRatio || 1, 2);
-    const W = canvas.getBoundingClientRect().width;
-    const H = canvas.getBoundingClientRect().height;
-    canvas.width = Math.max(1, Math.floor(W * ratio));
-    canvas.height = Math.max(1, Math.floor(H * ratio));
-    ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
-
-    const pad = { top: 18, right: 18, bottom: 36, left: 44 };
-    const gW = W - pad.left - pad.right;
-    const gH = H - pad.top - pad.bottom;
-
-    const allT = segments.flatMap(s => [s.t0, s.t1]);
-    const allV = segments.flatMap(s => [s.v0, s.v1]);
-    const maxT = Math.max(...allT);
-    const maxV = Math.max(...allV, 1);
-
-    const tx = (t) => pad.left + (t / maxT) * gW;
-    const ty = (v) => pad.top + gH - (v / maxV) * gH;
-
-    ctx.fillStyle = "#f4f7fb";
-    ctx.fillRect(0, 0, W, H);
-
-    // grid
-    ctx.strokeStyle = "rgba(0,0,0,0.07)";
-    ctx.lineWidth = 1;
-    for (let i = 0; i <= 4; i++) {
-      const y = pad.top + (i / 4) * gH;
-      ctx.beginPath(); ctx.moveTo(pad.left, y); ctx.lineTo(pad.left + gW, y); ctx.stroke();
-    }
-    for (let i = 0; i <= maxT; i++) {
-      const x = tx(i);
-      ctx.beginPath(); ctx.moveTo(x, pad.top); ctx.lineTo(x, pad.top + gH); ctx.stroke();
-    }
-
-    // axes
-    ctx.strokeStyle = "#171b21";
-    ctx.lineWidth = 2;
-    ctx.beginPath();
-    ctx.moveTo(pad.left, pad.top); ctx.lineTo(pad.left, pad.top + gH); ctx.lineTo(pad.left + gW, pad.top + gH);
-    ctx.stroke();
-
-    // axis labels
-    ctx.fillStyle = "#555";
-    ctx.font = "600 10px Space Grotesk, sans-serif";
-    ctx.textAlign = "center";
-    ctx.fillText("t (s)", pad.left + gW / 2, H - 4);
-    ctx.save(); ctx.translate(11, pad.top + gH / 2); ctx.rotate(-Math.PI / 2);
-    ctx.fillText("v (m/s)", 0, 0); ctx.restore();
-
-    // tick labels
-    ctx.font = "500 9px Space Grotesk, sans-serif";
-    ctx.fillStyle = "#777";
-    for (let i = 0; i <= maxT; i++) {
-      ctx.textAlign = "center";
-      ctx.fillText(i, tx(i), pad.top + gH + 12);
-    }
-    const vStep = maxV / 4;
-    for (let i = 0; i <= 4; i++) {
-      ctx.textAlign = "right";
-      ctx.fillText(Math.round(vStep * (4 - i)), pad.left - 4, pad.top + (i / 4) * gH + 3);
-    }
-
-    // segments
-    segments.forEach((seg, idx) => {
-      const isHL = highlightPhase === idx;
-      ctx.strokeStyle = isHL ? "#ff6b35" : "#3b82f6";
-      ctx.lineWidth = isHL ? 3.5 : 2.5;
-      ctx.beginPath();
-      ctx.moveTo(tx(seg.t0), ty(seg.v0));
-      ctx.lineTo(tx(seg.t1), ty(seg.v1));
-      ctx.stroke();
-
-      // dots
-      [{ t: seg.t0, v: seg.v0 }, { t: seg.t1, v: seg.v1 }].forEach(pt => {
-        ctx.beginPath();
-        ctx.arc(tx(pt.t), ty(pt.v), 3.5, 0, Math.PI * 2);
-        ctx.fillStyle = isHL ? "#ff6b35" : "#3b82f6";
-        ctx.fill();
-      });
-    });
-  };
-
-  const renderVTDiagramGame = () => {
-    if (!(siGameStage instanceof HTMLElement)) return;
-    vtState.questionIndex = 0;
-    vtState.answered = false;
-
-    const showVTQuestion = () => {
-      const q = VT_QUESTIONS[vtState.questionIndex];
-      vtState.answered = false;
-      const isLast = vtState.questionIndex === VT_QUESTIONS.length - 1;
-
-      siGameStage.innerHTML = `
-        <section class="test-theory-page">
-          <div class="test-theory-copy" style="margin-bottom:0.5rem">
-            <p class="test-theory-kicker">v-t Diagramm · Frage ${vtState.questionIndex + 1} von ${VT_QUESTIONS.length} · ${q.xp} XP</p>
-            <h3>${q.label}</h3>
-            <p>${q.description}</p>
-          </div>
-          <canvas id="vt-canvas" style="width:100%;height:180px;border-radius:10px;display:block;margin:0.5rem 0 1rem"></canvas>
-          <p style="font-weight:700;margin-bottom:0.75rem">${q.question}</p>
-          <div id="vt-options" class="vt-options"></div>
-          <p class="test-motion-feedback" id="vt-feedback" aria-live="polite"></p>
-          <button class="si-jumpgame-button test-motion-next" id="vt-next" type="button" hidden>${isLast ? "Fertig" : "Nächste Frage"}</button>
-        </section>
-      `;
-
-      const canvas = siGameStage.querySelector("#vt-canvas");
-      if (canvas instanceof HTMLCanvasElement) {
-        window.requestAnimationFrame(() => drawVTDiagram(canvas, q.segments));
-      }
-
-      const optionsEl = siGameStage.querySelector("#vt-options");
-      const feedbackEl = siGameStage.querySelector("#vt-feedback");
-      const nextBtn = siGameStage.querySelector("#vt-next");
-
-      q.options.forEach((opt, i) => {
-        const btn = document.createElement("button");
-        btn.className = "vt-option-btn";
-        btn.textContent = opt.text;
-        btn.addEventListener("click", () => {
-          if (vtState.answered) return;
-          vtState.answered = true;
-          optionsEl?.querySelectorAll(".vt-option-btn").forEach(b => { b.disabled = true; });
-          if (opt.correct) {
-            btn.classList.add("is-correct");
-            if (feedbackEl) { feedbackEl.textContent = `✓ ${opt.explanation} +${q.xp} XP`; feedbackEl.className = "test-motion-feedback is-correct"; }
-            awardPoints(q.xp);
-          } else {
-            btn.classList.add("is-wrong");
-            const correctBtn = optionsEl?.querySelectorAll(".vt-option-btn")[q.options.findIndex(o => o.correct)];
-            if (correctBtn) correctBtn.classList.add("is-correct");
-            if (feedbackEl) { feedbackEl.textContent = `✗ ${opt.explanation}`; feedbackEl.className = "test-motion-feedback is-hint"; }
-          }
-          if (canvas instanceof HTMLCanvasElement) drawVTDiagram(canvas, q.segments);
-          if (nextBtn instanceof HTMLButtonElement) nextBtn.hidden = false;
-        });
-        optionsEl?.appendChild(btn);
-      });
-
-      if (nextBtn instanceof HTMLButtonElement) {
-        nextBtn.addEventListener("click", () => {
-          if (vtState.questionIndex >= VT_QUESTIONS.length - 1) {
-            markStepComplete("TEST", vtState.questionIndex + 2);
-            siGameStage.innerHTML = `
-              <section class="test-motion-complete">
-                <h3>Diagramm-Profi!</h3>
-                <p>Du kannst v-t-Diagramme sicher lesen und Bewegungsphasen erkennen.</p>
-                <button class="si-jumpgame-button" id="vt-back" type="button">Zurück zum Pfad</button>
-              </section>`;
-            siGameStage.querySelector("#vt-back")?.addEventListener("click", closeSIGame);
-            return;
-          }
-          vtState.questionIndex++;
-          showVTQuestion();
-        });
-      }
-    };
-
-    siGameStage.innerHTML = `
-      <section class="test-theory-page">
-        <div class="test-theory-copy">
-          <p class="test-theory-kicker">Theorie</p>
-          <h3>Das v-t-Diagramm verstehen</h3>
-          <p>Im v-t-Diagramm siehst du auf der y-Achse die <strong>Geschwindigkeit</strong> (in m/s) und auf der x-Achse die <strong>Zeit</strong> (in s).</p>
-          <p>Drei Muster sind entscheidend:</p>
-          <ul style="line-height:1.9;padding-left:1.2rem">
-            <li><strong>Waagerechte Linie:</strong> Gleichförmige Bewegung — v ist konstant, a = 0</li>
-            <li><strong>Steigende Gerade:</strong> Gleichmäßige Beschleunigung — v wächst linear</li>
-            <li><strong>Fallende Gerade:</strong> Gleichmäßige Verzögerung (Bremsen)</li>
-          </ul>
-          <p>Die <strong>Fläche</strong> unter dem Graphen gibt dir die zurückgelegte Strecke.</p>
-        </div>
-        <div class="test-theory-formula" aria-label="Merke">
-          <span>Steigung = a &nbsp;|&nbsp; Fläche = s</span>
-        </div>
-        <button class="si-jumpgame-button test-theory-start" id="vt-start" type="button">Zu den Fragen</button>
-      </section>`;
-    siGameStage.querySelector("#vt-start")?.addEventListener("click", showVTQuestion);
-  };
-
-  // ── Bremsweg berechnen ──────────────────────────────────────────────────────
-  const BRAKE_TASKS = [
-    { v0: 20, a: 4, answer: 50, xp: 100,
-      hint: "Nutze s = v₀² / (2a). Mit v₀ = 20 m/s und a = 4 m/s²: s = 400/8 = 50 m." },
-    { v0: 30, a: 6, answer: 75, xp: 100,
-      hint: "s = v₀² / (2a) = 900 / 12 = 75 m." },
-    { v0: 15, a: 3, answer: 37.5, xp: 125,
-      hint: "s = v₀² / (2a) = 225 / 6 = 37.5 m." },
-  ];
-  let brakeState = { index: 0, hadError: false };
-
-  const renderBrakeGame = () => {
-    if (!(siGameStage instanceof HTMLElement)) return;
-    brakeState.index = 0;
-    brakeState.hadError = false;
-
-    const showBrakeQuestion = () => {
-      const task = BRAKE_TASKS[brakeState.index];
-      const isLast = brakeState.index === BRAKE_TASKS.length - 1;
-
-      siGameStage.innerHTML = `
-        <section class="test-theory-page">
-          <div class="test-theory-copy" style="margin-bottom:0.5rem">
-            <p class="test-theory-kicker">Bremsweg · Aufgabe ${brakeState.index + 1} von ${BRAKE_TASKS.length} · ${task.xp} XP</p>
-            <h3>Notbremsung!</h3>
-            <p>Ein Fahrzeug fährt mit <strong>${task.v0} m/s</strong> und bremst mit einer konstanten Verzögerung von <strong>${task.a} m/s²</strong>.</p>
-            <p>Wie lang ist der Bremsweg bis zum Stillstand?</p>
-          </div>
-          <div class="test-theory-formula" style="font-size:1.1rem">
-            <span>s = v₀² / (2 · a)</span>
-          </div>
-          <div class="brake-car-visual" id="brake-visual" style="width:100%;height:80px;position:relative;margin:0.5rem 0">
-            <canvas id="brake-canvas" style="width:100%;height:80px;border-radius:10px;display:block"></canvas>
-          </div>
-          <label class="test-motion-answer-label" for="brake-answer">Bremsweg in Metern</label>
+        <article class="test-motion-task">
+          <div class="test-motion-task-meta" id="freefall-task-meta"></div>
+          <h3>Freier Fall</h3>
+          <p id="freefall-task-text"></p>
+          <label class="test-motion-answer-label" for="freefall-answer">Antwort in Sekunden</label>
           <div class="test-motion-answer-row">
-            <input id="brake-answer" type="number" inputmode="decimal" placeholder="Antwort in m" step="0.1">
-            <button class="si-jumpgame-button" id="brake-check" type="button">Prüfen</button>
+            <input id="freefall-answer" type="number" inputmode="decimal" placeholder="Antwort">
+            <button class="si-jumpgame-button" id="freefall-check" type="button">Prüfen</button>
           </div>
-          <p class="test-motion-feedback" id="brake-feedback" aria-live="polite"></p>
-          <button class="si-jumpgame-button test-motion-next" id="brake-next" type="button" hidden>${isLast ? "Fertig" : "Nächste Frage"}</button>
-        </section>`;
+          <p class="test-motion-feedback" id="freefall-feedback" aria-live="polite"></p>
+          <button class="si-jumpgame-button test-motion-next" id="freefall-next" type="button" hidden>Nächste Frage</button>
+        </article>
+      </section>
+    `;
 
-      // Draw simple brake animation
-      const bCanvas = siGameStage.querySelector("#brake-canvas");
-      if (bCanvas instanceof HTMLCanvasElement) {
-        window.requestAnimationFrame(() => {
-          const ctx = bCanvas.getContext("2d");
-          const ratio = Math.min(window.devicePixelRatio || 1, 2);
-          const W = bCanvas.getBoundingClientRect().width;
-          const H = 80;
-          bCanvas.width = Math.floor(W * ratio); bCanvas.height = Math.floor(H * ratio);
-          ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
-          ctx.fillStyle = "#eef2f8"; ctx.fillRect(0, 0, W, H);
-          // Road
-          ctx.fillStyle = "#d0d7e2"; ctx.fillRect(0, 55, W, 25);
-          // Skid marks
-          ctx.strokeStyle = "#b0aaa0"; ctx.lineWidth = 3; ctx.setLineDash([6, 4]);
-          ctx.beginPath(); ctx.moveTo(W * 0.3, 65); ctx.lineTo(W * 0.85, 65); ctx.stroke();
-          ctx.beginPath(); ctx.moveTo(W * 0.3, 71); ctx.lineTo(W * 0.85, 71); ctx.stroke();
-          ctx.setLineDash([]);
-          // Car body
-          const cx = W * 0.25;
-          ctx.fillStyle = "#ff6b35"; ctx.beginPath(); ctx.roundRect(cx - 28, 38, 56, 20, 4); ctx.fill();
-          ctx.fillStyle = "#c84a1a"; ctx.beginPath(); ctx.roundRect(cx - 18, 30, 36, 14, 3); ctx.fill();
-          // Wheels
-          ctx.fillStyle = "#222";
-          [[cx - 16, 58], [cx + 16, 58]].forEach(([wx, wy]) => {
-            ctx.beginPath(); ctx.arc(wx, wy, 6, 0, Math.PI * 2); ctx.fill();
-          });
-          // Stop sign
-          ctx.fillStyle = "#e53e3e"; ctx.beginPath(); ctx.arc(W * 0.88, 40, 14, 0, Math.PI * 2); ctx.fill();
-          ctx.fillStyle = "#fff"; ctx.font = "bold 10px sans-serif"; ctx.textAlign = "center"; ctx.textBaseline = "middle";
-          ctx.fillText("STOP", W * 0.88, 40);
-          // Arrow
-          ctx.strokeStyle = "#ff6b35"; ctx.lineWidth = 2; ctx.setLineDash([]);
-          ctx.beginPath(); ctx.moveTo(cx + 30, 48); ctx.lineTo(W * 0.73, 48); ctx.stroke();
-          ctx.beginPath(); ctx.moveTo(W * 0.73, 44); ctx.lineTo(W * 0.78, 48); ctx.lineTo(W * 0.73, 52); ctx.fillStyle = "#ff6b35"; ctx.fill();
-          // Label
-          ctx.fillStyle = "#555"; ctx.font = "600 10px Space Grotesk, sans-serif"; ctx.textAlign = "center";
-          ctx.fillText(`v₀ = ${task.v0} m/s → Bremsweg = ?`, W / 2, 18);
-        });
-      }
+    freeFallState.canvas = siGameStage.querySelector("#freefall-canvas");
+    freeFallState.ctx = freeFallState.canvas instanceof HTMLCanvasElement ? freeFallState.canvas.getContext("2d") : null;
+    freeFallState.heightInput = siGameStage.querySelector("#freefall-height");
+    freeFallState.heightValue = siGameStage.querySelector("#freefall-height-value");
+    freeFallState.timeValue = siGameStage.querySelector("#freefall-time-value");
+    freeFallState.answerInput = siGameStage.querySelector("#freefall-answer");
+    freeFallState.feedbackEl = siGameStage.querySelector("#freefall-feedback");
+    freeFallState.taskMetaEl = siGameStage.querySelector("#freefall-task-meta");
+    freeFallState.taskTextEl = siGameStage.querySelector("#freefall-task-text");
+    freeFallState.nextButton = siGameStage.querySelector("#freefall-next");
+    freeFallState.ballY = 0;
+    freeFallState.lastTime = 0;
+    freeFallState.questionIndex = 0;
+    freeFallState.questionSolved = false;
 
-      const answerInput = siGameStage.querySelector("#brake-answer");
-      const feedbackEl = siGameStage.querySelector("#brake-feedback");
-      const nextBtn = siGameStage.querySelector("#brake-next");
-      let solved = false;
+    if (freeFallState.heightInput instanceof HTMLInputElement) {
+      freeFallState.heightInput.addEventListener("input", updateFreeFallLabels);
+    }
+    siGameStage.querySelector("#freefall-check")?.addEventListener("click", checkFreeFallAnswer);
+    if (freeFallState.answerInput instanceof HTMLInputElement) {
+      freeFallState.answerInput.addEventListener("keydown", (e) => { if (e.key === "Enter") checkFreeFallAnswer(); });
+      freeFallState.answerInput.focus();
+    }
+    if (freeFallState.nextButton instanceof HTMLButtonElement) {
+      freeFallState.nextButton.addEventListener("click", goToNextFreeFallTask);
+    }
 
-      const check = () => {
-        if (solved) return;
-        const val = Number(answerInput?.value);
-        if (!Number.isFinite(val) || val === 0) {
-          if (feedbackEl) { feedbackEl.textContent = "Gib eine Zahl ein (in Metern)."; feedbackEl.className = "test-motion-feedback is-hint"; }
-          return;
-        }
-        if (Math.abs(val - task.answer) <= 0.6) {
-          solved = true;
-          if (answerInput instanceof HTMLInputElement) answerInput.disabled = true;
-          if (feedbackEl) { feedbackEl.textContent = `✓ Richtig! Der Bremsweg ist ${task.answer} m. ${brakeState.hadError ? "" : `+${task.xp} XP`}`; feedbackEl.className = "test-motion-feedback is-correct"; }
-          if (!brakeState.hadError) awardPoints(task.xp);
-          if (nextBtn instanceof HTMLButtonElement) nextBtn.hidden = false;
-        } else {
-          brakeState.hadError = true;
-          if (feedbackEl) { feedbackEl.textContent = `Nicht ganz. Tipp: ${task.hint}`; feedbackEl.className = "test-motion-feedback is-hint"; }
-        }
-      };
+    renderCurrentFreeFallTask();
+    resizeFreeFallCanvas();
+    freeFallState.running = true;
+    freeFallState.rafId = window.requestAnimationFrame(drawFreeFallGame);
+  };
 
-      siGameStage.querySelector("#brake-check")?.addEventListener("click", check);
-      if (answerInput instanceof HTMLInputElement) {
-        answerInput.addEventListener("keydown", e => { if (e.key === "Enter") check(); });
-        answerInput.focus();
-      }
-      if (nextBtn instanceof HTMLButtonElement) {
-        nextBtn.addEventListener("click", () => {
-          if (brakeState.index >= BRAKE_TASKS.length - 1) {
-            markStepComplete("TEST", brakeState.index + 3);
-            siGameStage.innerHTML = `
-              <section class="test-motion-complete">
-                <h3>Bremsexperte!</h3>
-                <p>Du beherrschst den Bremsweg mit s = v₀² / (2a).</p>
-                <button class="si-jumpgame-button" id="brake-back" type="button">Zurück zum Pfad</button>
-              </section>`;
-            siGameStage.querySelector("#brake-back")?.addEventListener("click", closeSIGame);
-            return;
-          }
-          brakeState.index++;
-          brakeState.hadError = false;
-          showBrakeQuestion();
-        });
-      }
-    };
+  const renderFreeFallGame = () => {
+    if (!(siGameStage instanceof HTMLElement)) return;
+    stopSIUnitsJumpGame(); stopTestMotionGame(); stopCatchUpGame();
+    stopAccelerationGame(); stopSprintGame(); stopFreeFallGame();
+    stopBrakingGame(); stopDistanceAccGame();
 
     siGameStage.innerHTML = `
       <section class="test-theory-page">
         <div class="test-theory-copy">
-          <p class="test-theory-kicker">Theorie</p>
-          <h3>Bremsweg berechnen</h3>
-          <p>Wenn ein Fahrzeug mit der Anfangsgeschwindigkeit <strong>v₀</strong> gleichmäßig bremst, bis es steht, gilt:</p>
-          <p>Das Fahrzeug hat keine Endgeschwindigkeit mehr (v = 0) und die Bremsbeschleunigung <strong>a</strong> wirkt entgegen der Fahrtrichtung.</p>
-          <p>Aus den Bewegungsgleichungen lässt sich ableiten:</p>
+          <p class="test-theory-kicker">K3 · Freier Fall</p>
+          <h3>Was ist freier Fall?</h3>
+          <p>Wenn ein Objekt nur durch die Schwerkraft fällt – ohne Luftwiderstand, ohne Antrieb – spricht man von freiem Fall. Die Erde beschleunigt alles gleich stark, egal ob schwer oder leicht.</p>
+          <p>Die Fallbeschleunigung ist überall auf der Erde annähernd gleich: <strong>g ≈ 9,81 m/s²</strong>. Jede Sekunde nimmt die Fallgeschwindigkeit um 9,81 m/s zu.</p>
+          <p>Fällt ein Objekt aus der Ruhe, wächst der Weg quadratisch mit der Zeit – deshalb fällt man die letzten Meter viel schneller als die ersten.</p>
         </div>
-        <div class="test-theory-formula">
+        <div class="test-theory-formula" aria-label="Wichtige Formel">
+          <span>t = √(2h / g)</span>
+        </div>
+        <div class="test-theory-example">
+          <p><strong>Beispiel:</strong> Ball fällt aus h = 20 m.</p>
+          <p>t = √(2 · 20 / 9,81) = √(4,08) ≈ 2,02 s</p>
+        </div>
+        <button class="si-jumpgame-button test-theory-start" id="freefall-start" type="button">Zur Frage</button>
+      </section>
+    `;
+
+    siGameStage.querySelector("#freefall-start")?.addEventListener("click", startFreeFallQuestion);
+  };
+
+
+  // ─── K4: Bremsweg ────────────────────────────────────────────────────────
+
+  const getBrakingValues = () => {
+    const speed = Number(brakingState.speedInput?.value || 0);
+    const deceleration = Number(brakingState.decelerationInput?.value || 1);
+    return {
+      speed,
+      deceleration,
+      distance: deceleration > 0 ? (speed * speed) / (2 * deceleration) : 0,
+    };
+  };
+
+  const updateBrakingLabels = () => {
+    const { speed, deceleration, distance } = getBrakingValues();
+    if (brakingState.speedValue instanceof HTMLElement) brakingState.speedValue.textContent = `${formatTestDecimal(speed)} m/s`;
+    if (brakingState.decelerationValue instanceof HTMLElement) brakingState.decelerationValue.textContent = `${formatTestDecimal(deceleration)} m/s²`;
+    if (brakingState.distanceValue instanceof HTMLElement) brakingState.distanceValue.textContent = `${formatTestDecimal(distance)} m`;
+  };
+
+  const resizeBrakingCanvas = () => {
+    const canvas = brakingState.canvas;
+    if (!(canvas instanceof HTMLCanvasElement)) return;
+    const rect = canvas.getBoundingClientRect();
+    const ratio = Math.min(window.devicePixelRatio || 1, 2);
+    canvas.width = Math.max(1, Math.floor(rect.width * ratio));
+    canvas.height = Math.max(1, Math.floor(rect.height * ratio));
+    if (brakingState.ctx) brakingState.ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
+  };
+
+  const drawBrakingGame = (now = 0) => {
+    if (!brakingState.running || !(brakingState.canvas instanceof HTMLCanvasElement) || !brakingState.ctx) return;
+    const canvas = brakingState.canvas;
+    const context = brakingState.ctx;
+    const rect = canvas.getBoundingClientRect();
+    const width = rect.width;
+    const height = rect.height;
+    const { distance } = getBrakingValues();
+    const maxDistance = 80;
+    const left = 54;
+    const right = width - 58;
+    const trackY = height * 0.63;
+    const deltaSeconds = brakingState.lastTime ? Math.min(0.05, (now - brakingState.lastTime) / 1000) : 0.016;
+    const smoothing = 1 - Math.pow(0.001, deltaSeconds);
+    brakingState.lastTime = now;
+
+    const targetX = left + Math.min(distance, maxDistance) / maxDistance * (right - left);
+    if (!brakingState.carX) brakingState.carX = left;
+    brakingState.carX += (targetX - brakingState.carX) * smoothing;
+
+    context.clearRect(0, 0, width, height);
+    context.fillStyle = "rgba(255, 255, 255, 0.96)";
+    context.fillRect(0, 0, width, height);
+
+    const gridStep = (right - left) / (maxDistance / 10);
+    context.strokeStyle = "rgba(96, 111, 128, 0.22)";
+    context.lineWidth = 1;
+    for (let x = left; x <= right + 0.5; x += gridStep) {
+      context.beginPath(); context.moveTo(x, 18); context.lineTo(x, height - 30); context.stroke();
+    }
+    for (let y = trackY; y >= 22; y -= gridStep) {
+      context.beginPath(); context.moveTo(left, y); context.lineTo(right, y); context.stroke();
+    }
+
+    context.strokeStyle = "#171b21";
+    context.lineWidth = 4;
+    context.lineCap = "round";
+    context.beginPath(); context.moveTo(left, trackY); context.lineTo(right, trackY); context.stroke();
+
+    context.strokeStyle = "#f86785";
+    context.lineWidth = 7;
+    context.beginPath(); context.moveTo(left, trackY); context.lineTo(brakingState.carX, trackY); context.stroke();
+
+    context.fillStyle = "#384858";
+    context.font = "700 12px Space Grotesk, sans-serif";
+    context.textAlign = "center";
+    context.textBaseline = "top";
+    for (let m = 0; m <= maxDistance; m += 10) {
+      const x = left + (m / maxDistance) * (right - left);
+      context.strokeStyle = "rgba(23, 27, 33, 0.42)";
+      context.lineWidth = m % 20 === 0 ? 2 : 1;
+      context.beginPath(); context.moveTo(x, trackY - 8); context.lineTo(x, trackY + 8); context.stroke();
+      if (m % 20 === 0) context.fillText(`${m} m`, x, trackY + 16);
+    }
+
+    context.strokeStyle = "#171b21";
+    context.lineWidth = 2;
+    context.setLineDash([4, 4]);
+    context.beginPath(); context.moveTo(left, trackY - 44); context.lineTo(left, trackY + 4); context.stroke();
+    context.setLineDash([]);
+    context.fillStyle = "#384858";
+    context.font = "700 11px Space Grotesk, sans-serif";
+    context.textAlign = "center";
+    context.textBaseline = "bottom";
+    context.fillText("Start", left, trackY - 46);
+
+    const carX = brakingState.carX;
+    const carY = trackY - 24;
+    context.fillStyle = "#f86785";
+    context.strokeStyle = "#171b21";
+    context.lineWidth = 2.2;
+    context.beginPath();
+    context.roundRect(carX - 31, carY - 15, 62, 26, 7);
+    context.fill(); context.stroke();
+    context.fillStyle = "#f9a8bd";
+    context.beginPath();
+    context.roundRect(carX - 14, carY - 33, 31, 20, 5);
+    context.fill(); context.stroke();
+    context.fillStyle = "#171b21";
+    context.beginPath();
+    context.arc(carX - 20, carY + 12, 8, 0, Math.PI * 2);
+    context.arc(carX + 20, carY + 12, 8, 0, Math.PI * 2);
+    context.fill();
+    context.fillStyle = "#f8fbff";
+    context.beginPath();
+    context.arc(carX - 20, carY + 12, 3.2, 0, Math.PI * 2);
+    context.arc(carX + 20, carY + 12, 3.2, 0, Math.PI * 2);
+    context.fill();
+
+    context.fillStyle = "#101418";
+    context.font = "800 13px Space Grotesk, sans-serif";
+    context.textAlign = "left";
+    context.textBaseline = "top";
+    context.fillText("Bremsweg-Analyse", left, 18);
+
+    brakingState.rafId = window.requestAnimationFrame(drawBrakingGame);
+  };
+
+  const flashBrakingSuccess = () => {
+    if (!(siGameStage instanceof HTMLElement)) return;
+    siGameStage.classList.remove("test-motion-flash");
+    window.requestAnimationFrame(() => {
+      siGameStage.classList.add("test-motion-flash");
+      document.body.classList.add("test-motion-page-flash");
+    });
+    if (brakingState.flashTimer) window.clearTimeout(brakingState.flashTimer);
+    brakingState.flashTimer = window.setTimeout(() => {
+      siGameStage.classList.remove("test-motion-flash");
+      document.body.classList.remove("test-motion-page-flash");
+      brakingState.flashTimer = 0;
+    }, 760);
+  };
+
+  const getCurrentBrakingTask = () => BRAKING_TASKS[brakingState.questionIndex] || BRAKING_TASKS[0];
+
+  const renderCurrentBrakingTask = () => {
+    const task = getCurrentBrakingTask();
+    brakingState.questionSolved = false;
+    if (brakingState.speedInput instanceof HTMLInputElement) brakingState.speedInput.value = "0";
+    if (brakingState.decelerationInput instanceof HTMLInputElement) brakingState.decelerationInput.value = "1";
+    brakingState.carX = 0;
+    brakingState.lastTime = 0;
+    updateBrakingLabels();
+
+    if (brakingState.taskMetaEl instanceof HTMLElement) {
+      brakingState.taskMetaEl.innerHTML = `
+        <span>Aufgabe ${brakingState.questionIndex + 1} von ${BRAKING_TASKS.length}</span>
+        <strong>Mittel · ${task.xp} XP</strong>
+      `;
+    }
+    if (brakingState.taskTextEl instanceof HTMLElement) {
+      brakingState.taskTextEl.innerHTML = `
+        Ein Auto fährt mit <strong>${formatTestDecimal(task.speed)} m/s</strong>
+        und bremst mit <strong>${formatTestDecimal(task.deceleration)} m/s²</strong>.
+        Wie lang ist der Bremsweg bis zum Stillstand?
+      `;
+    }
+    if (brakingState.answerInput instanceof HTMLInputElement) {
+      brakingState.answerInput.value = "";
+      brakingState.answerInput.disabled = false;
+      brakingState.answerInput.focus();
+    }
+    if (brakingState.feedbackEl instanceof HTMLElement) {
+      brakingState.feedbackEl.className = "test-motion-feedback";
+      brakingState.feedbackEl.textContent = "";
+    }
+    if (brakingState.nextButton instanceof HTMLButtonElement) {
+      brakingState.nextButton.hidden = true;
+      brakingState.nextButton.textContent =
+        brakingState.questionIndex === BRAKING_TASKS.length - 1 ? "Fertig" : "Nächste Frage";
+    }
+  };
+
+  const goToNextBrakingTask = () => {
+    if (!brakingState.questionSolved) return;
+    if (brakingState.questionIndex >= BRAKING_TASKS.length - 1) {
+      stopBrakingGame();
+      if (siGameStage instanceof HTMLElement) {
+        siGameStage.innerHTML = `
+          <section class="test-motion-complete">
+            <h3>Bremsweg – geschafft!</h3>
+            <p>Du hast alle Bremsweg-Aufgaben korrekt gelöst.</p>
+            <div class="test-motion-complete-actions">
+              <button class="si-jumpgame-button" id="braking-back-final" type="button">Zurück zum Pfad</button>
+              <button class="si-jumpgame-button" id="braking-repeat-final" type="button">Nochmal spielen</button>
+            </div>
+          </section>
+        `;
+        siGameStage.querySelector("#braking-back-final")?.addEventListener("click", closeSIGame);
+        siGameStage.querySelector("#braking-repeat-final")?.addEventListener("click", () => renderBrakingGame());
+      }
+      return;
+    }
+    brakingState.questionIndex += 1;
+    renderCurrentBrakingTask();
+  };
+
+  const checkBrakingAnswer = () => {
+    const feedbackEl = brakingState.feedbackEl;
+    if (!(feedbackEl instanceof HTMLElement)) return;
+    const answer = brakingState.answerInput instanceof HTMLInputElement ? brakingState.answerInput.valueAsNumber : Number.NaN;
+    const task = getCurrentBrakingTask();
+    feedbackEl.className = "test-motion-feedback";
+
+    if (!Number.isFinite(answer)) {
+      feedbackEl.textContent = "Gib zuerst eine Zahl ein.";
+      feedbackEl.classList.add("is-hint");
+      return;
+    }
+    if (Math.abs(answer - task.answer) <= 0.1) {
+      brakingState.questionSolved = true;
+      feedbackEl.textContent = `Richtig! Der Bremsweg beträgt ${formatTestDecimal(task.answer)} m. +${task.xp} XP`;
+      feedbackEl.classList.add("is-correct");
+      if (brakingState.answerInput instanceof HTMLInputElement) brakingState.answerInput.disabled = true;
+      if (brakingState.nextButton instanceof HTMLButtonElement) brakingState.nextButton.hidden = false;
+      if (brakingState.speedInput instanceof HTMLInputElement) brakingState.speedInput.value = String(task.speed);
+      if (brakingState.decelerationInput instanceof HTMLInputElement) brakingState.decelerationInput.value = String(task.deceleration);
+      updateBrakingLabels();
+      flashBrakingSuccess();
+      return;
+    }
+    feedbackEl.textContent = `Fast: Nutze s = v₀² / (2 · a). Mit v₀ = ${formatTestDecimal(task.speed)} m/s und a = ${formatTestDecimal(task.deceleration)} m/s².`;
+    feedbackEl.classList.add("is-hint");
+  };
+
+  const startBrakingQuestion = () => {
+    if (!(siGameStage instanceof HTMLElement)) return;
+    stopBrakingGame();
+
+    siGameStage.innerHTML = `
+      <section class="test-motion-game">
+        <div class="test-motion-sim">
+          <canvas class="test-motion-canvas" id="braking-canvas" aria-label="Auto bremst auf einer Strecke"></canvas>
+        </div>
+        <div class="test-motion-controls">
+          <label class="test-motion-control">
+            <span>Startgeschwindigkeit</span>
+            <input id="braking-speed" type="range" min="0" max="30" step="1" value="0">
+            <strong id="braking-speed-value">0 m/s</strong>
+          </label>
+          <label class="test-motion-control">
+            <span>Bremsbeschleunigung</span>
+            <input id="braking-deceleration" type="range" min="1" max="10" step="0.5" value="1">
+            <strong id="braking-deceleration-value">1 m/s²</strong>
+          </label>
+          <div class="test-motion-readout">
+            <span>Bremsweg</span>
+            <strong id="braking-distance-value">0 m</strong>
+          </div>
+        </div>
+        <article class="test-motion-task">
+          <div class="test-motion-task-meta" id="braking-task-meta"></div>
+          <h3>Bremsweg</h3>
+          <p id="braking-task-text"></p>
+          <label class="test-motion-answer-label" for="braking-answer">Antwort in Metern</label>
+          <div class="test-motion-answer-row">
+            <input id="braking-answer" type="number" inputmode="decimal" placeholder="Antwort">
+            <button class="si-jumpgame-button" id="braking-check" type="button">Prüfen</button>
+          </div>
+          <p class="test-motion-feedback" id="braking-feedback" aria-live="polite"></p>
+          <button class="si-jumpgame-button test-motion-next" id="braking-next" type="button" hidden>Nächste Frage</button>
+        </article>
+      </section>
+    `;
+
+    brakingState.canvas = siGameStage.querySelector("#braking-canvas");
+    brakingState.ctx = brakingState.canvas instanceof HTMLCanvasElement ? brakingState.canvas.getContext("2d") : null;
+    brakingState.speedInput = siGameStage.querySelector("#braking-speed");
+    brakingState.decelerationInput = siGameStage.querySelector("#braking-deceleration");
+    brakingState.speedValue = siGameStage.querySelector("#braking-speed-value");
+    brakingState.decelerationValue = siGameStage.querySelector("#braking-deceleration-value");
+    brakingState.distanceValue = siGameStage.querySelector("#braking-distance-value");
+    brakingState.answerInput = siGameStage.querySelector("#braking-answer");
+    brakingState.feedbackEl = siGameStage.querySelector("#braking-feedback");
+    brakingState.taskMetaEl = siGameStage.querySelector("#braking-task-meta");
+    brakingState.taskTextEl = siGameStage.querySelector("#braking-task-text");
+    brakingState.nextButton = siGameStage.querySelector("#braking-next");
+    brakingState.carX = 0;
+    brakingState.lastTime = 0;
+    brakingState.questionIndex = 0;
+    brakingState.questionSolved = false;
+
+    [brakingState.speedInput, brakingState.decelerationInput].forEach((input) => {
+      if (input instanceof HTMLInputElement) input.addEventListener("input", updateBrakingLabels);
+    });
+    siGameStage.querySelector("#braking-check")?.addEventListener("click", checkBrakingAnswer);
+    if (brakingState.answerInput instanceof HTMLInputElement) {
+      brakingState.answerInput.addEventListener("keydown", (e) => { if (e.key === "Enter") checkBrakingAnswer(); });
+      brakingState.answerInput.focus();
+    }
+    if (brakingState.nextButton instanceof HTMLButtonElement) {
+      brakingState.nextButton.addEventListener("click", goToNextBrakingTask);
+    }
+
+    renderCurrentBrakingTask();
+    resizeBrakingCanvas();
+    brakingState.running = true;
+    brakingState.rafId = window.requestAnimationFrame(drawBrakingGame);
+  };
+
+  const renderBrakingGame = () => {
+    if (!(siGameStage instanceof HTMLElement)) return;
+    stopSIUnitsJumpGame(); stopTestMotionGame(); stopCatchUpGame();
+    stopAccelerationGame(); stopSprintGame(); stopFreeFallGame();
+    stopBrakingGame(); stopDistanceAccGame();
+
+    siGameStage.innerHTML = `
+      <section class="test-theory-page">
+        <div class="test-theory-copy">
+          <p class="test-theory-kicker">K4 · Bremsweg</p>
+          <h3>Wie weit bremst ein Auto?</h3>
+          <p>Beim Bremsen verzögert ein Fahrzeug gleichmäßig – das ist eine gleichmäßig gebremste Bewegung mit negativer Beschleunigung.</p>
+          <p>Entscheidend ist: Doppelte Anfangsgeschwindigkeit bedeutet <strong>viermal längeren Bremsweg</strong>, weil v₀ im Quadrat in die Formel eingeht.</p>
+          <p>Das erklärt, warum auf Autobahnen die Unfallgefahr bei höheren Geschwindigkeiten so dramatisch ansteigt.</p>
+        </div>
+        <div class="test-theory-formula" aria-label="Wichtige Formel">
           <span>s = v₀² / (2 · a)</span>
         </div>
         <div class="test-theory-example">
-          <p><strong>Beispiel:</strong> v₀ = 10 m/s, a = 5 m/s² → s = 100 / 10 = <strong>10 m</strong></p>
-          <p>Verdoppelst du die Anfangsgeschwindigkeit, vervierfacht sich der Bremsweg!</p>
+          <p><strong>Beispiel:</strong> v₀ = 20 m/s, a = 4 m/s²</p>
+          <p>s = 20² / (2 · 4) = 400 / 8 = 50 m</p>
         </div>
-        <button class="si-jumpgame-button test-theory-start" id="brake-theory-start" type="button">Zu den Aufgaben</button>
-      </section>`;
-    siGameStage.querySelector("#brake-theory-start")?.addEventListener("click", showBrakeQuestion);
+        <button class="si-jumpgame-button test-theory-start" id="braking-start" type="button">Zur Frage</button>
+      </section>
+    `;
+
+    siGameStage.querySelector("#braking-start")?.addEventListener("click", startBrakingQuestion);
   };
 
-  // ── Fehler finden ──────────────────────────────────────────────────────────
-  const ERROR_QUESTIONS = [
-    {
-      kicker: "Fehler finden · Aufgabe 1 von 3 · 75 XP",
-      situation: "Ein Schüler berechnet, wie weit ein Auto in 5 Sekunden bei 8 m/s fährt.",
-      calculation: "s = v + t = 8 + 5 = 13 m",
-      question: "Wo steckt der Fehler?",
-      options: [
-        { text: "Man muss v und t multiplizieren, nicht addieren: s = v · t = 40 m.", correct: true, explanation: "Genau! Die Formel lautet s = v · t. Addition ergibt physikalisch keinen Sinn — Einheiten wären m/s + s, was keine gültige Einheit ist." },
-        { text: "Die Einheit der Geschwindigkeit fehlt.", correct: false, explanation: "Das wäre ein Formfehler, aber nicht der inhaltliche Denkfehler im Ergebnis." },
-        { text: "Die Zeit muss quadriert werden: s = v · t².", correct: false, explanation: "Nein. Das gilt bei der beschleunigten Bewegung mit s = ½ · a · t², nicht hier." },
-        { text: "Es gibt keinen Fehler — 13 m ist richtig.", correct: false, explanation: "Falsch. 8 m/s × 5 s = 40 m. Die Addition ist falsch." },
-      ],
-      xp: 75,
-    },
-    {
-      kicker: "Fehler finden · Aufgabe 2 von 3 · 100 XP",
-      situation: "Ein Schüler berechnet die Beschleunigung einer Rakete. Sie startet aus der Ruhe und erreicht nach 4 s eine Geschwindigkeit von 20 m/s.",
-      calculation: "a = v · t = 20 · 4 = 80 m/s²",
-      question: "Was hat der Schüler falsch gemacht?",
-      options: [
-        { text: "Man muss dividieren, nicht multiplizieren: a = v / t = 5 m/s².", correct: true, explanation: "Richtig! a = Δv / Δt = 20 / 4 = 5 m/s². Multiplizieren ergibt eine falsche Einheit (m/s · s = m)." },
-        { text: "Die Anfangsgeschwindigkeit wurde vergessen.", correct: false, explanation: "v₀ = 0, also gilt Δv = v − v₀ = 20 − 0 = 20 m/s. Das ist korrekt berücksichtigt." },
-        { text: "Das Ergebnis stimmt, nur die Einheit ist falsch.", correct: false, explanation: "Nein — sowohl Wert als auch Rechenoperation sind falsch." },
-        { text: "Zeit und Geschwindigkeit müssen addiert werden: a = 20 + 4 = 24 m/s².", correct: false, explanation: "Nein. Addition von Geschwindigkeit und Zeit ergibt keine physikalisch sinnvolle Einheit." },
-      ],
-      xp: 100,
-    },
-    {
-      kicker: "Fehler finden · Aufgabe 3 von 3 · 100 XP",
-      situation: "Ein Schüler berechnet die Fallzeit eines Objekts, das aus 45 m Höhe fällt (g = 10 m/s²).",
-      calculation: "h = ½ · g · t  →  t = h / (½ · g) = 45 / 5 = 9 s",
-      question: "Was ist der Denkfehler?",
-      options: [
-        { text: "Die richtige Formel ist h = ½ · g · t². Man muss die Wurzel ziehen: t = √(2h/g) = √9 = 3 s.", correct: true, explanation: "Genau! Die Zeit steht im Quadrat: h = ½gt². Umgeformt: t = √(2h/g) = √(90/10) = √9 = 3 s." },
-        { text: "g müsste 9.81 m/s² sein, dann stimmt das Ergebnis.", correct: false, explanation: "Der Wert g = 10 m/s² ist eine übliche Vereinfachung. Das Problem ist die fehlende Quadrat-Beziehung." },
-        { text: "Man darf beim freien Fall keine Formeln benutzen.", correct: false, explanation: "Natürlich darf man — und muss man. Die Formel ist nur falsch angewendet worden." },
-        { text: "Die Höhe muss durch g geteilt werden: t = h / g = 45 / 10 = 4.5 s.", correct: false, explanation: "Auch das ist falsch. Die korrekte Formel ist t = √(2h/g)." },
-      ],
-      xp: 100,
-    },
-  ];
-  let errorState = { index: 0 };
 
-  const renderErrorGame = () => {
+  // ─── K5: Beschleunigungsweg ───────────────────────────────────────────────
+
+  const getDistanceAccValues = () => {
+    const acceleration = Number(distanceAccState.accelerationInput?.value || 0);
+    const time = Number(distanceAccState.timeInput?.value || 0);
+    return { acceleration, time, distance: 0.5 * acceleration * time * time };
+  };
+
+  const updateDistanceAccLabels = () => {
+    const { acceleration, time, distance } = getDistanceAccValues();
+    if (distanceAccState.accelerationValue instanceof HTMLElement) distanceAccState.accelerationValue.textContent = `${formatTestDecimal(acceleration)} m/s²`;
+    if (distanceAccState.timeValue instanceof HTMLElement) distanceAccState.timeValue.textContent = `${formatTestDecimal(time)} s`;
+    if (distanceAccState.distanceValue instanceof HTMLElement) distanceAccState.distanceValue.textContent = `${formatTestDecimal(distance)} m`;
+  };
+
+  const resizeDistanceAccCanvas = () => {
+    const canvas = distanceAccState.canvas;
+    if (!(canvas instanceof HTMLCanvasElement)) return;
+    const rect = canvas.getBoundingClientRect();
+    const ratio = Math.min(window.devicePixelRatio || 1, 2);
+    canvas.width = Math.max(1, Math.floor(rect.width * ratio));
+    canvas.height = Math.max(1, Math.floor(rect.height * ratio));
+    if (distanceAccState.ctx) distanceAccState.ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
+  };
+
+  const drawDistanceAccGame = (now = 0) => {
+    if (!distanceAccState.running || !(distanceAccState.canvas instanceof HTMLCanvasElement) || !distanceAccState.ctx) return;
+    const canvas = distanceAccState.canvas;
+    const context = distanceAccState.ctx;
+    const rect = canvas.getBoundingClientRect();
+    const width = rect.width;
+    const height = rect.height;
+    const { distance } = getDistanceAccValues();
+    const maxDistance = 80;
+    const left = 54;
+    const right = width - 58;
+    const trackY = height * 0.63;
+    const deltaSeconds = distanceAccState.lastTime ? Math.min(0.05, (now - distanceAccState.lastTime) / 1000) : 0.016;
+    const smoothing = 1 - Math.pow(0.001, deltaSeconds);
+    distanceAccState.lastTime = now;
+
+    const targetX = left + Math.min(distance, maxDistance) / maxDistance * (right - left);
+    if (!distanceAccState.carX) distanceAccState.carX = left;
+    distanceAccState.carX += (targetX - distanceAccState.carX) * smoothing;
+
+    context.clearRect(0, 0, width, height);
+    context.fillStyle = "rgba(255, 255, 255, 0.96)";
+    context.fillRect(0, 0, width, height);
+
+    const gridStep = (right - left) / (maxDistance / 10);
+    context.strokeStyle = "rgba(96, 111, 128, 0.22)";
+    context.lineWidth = 1;
+    for (let x = left; x <= right + 0.5; x += gridStep) {
+      context.beginPath(); context.moveTo(x, 18); context.lineTo(x, height - 30); context.stroke();
+    }
+    for (let y = trackY; y >= 22; y -= gridStep) {
+      context.beginPath(); context.moveTo(left, y); context.lineTo(right, y); context.stroke();
+    }
+
+    context.strokeStyle = "#171b21";
+    context.lineWidth = 4;
+    context.lineCap = "round";
+    context.beginPath(); context.moveTo(left, trackY); context.lineTo(right, trackY); context.stroke();
+
+    context.strokeStyle = "#8f73ff";
+    context.lineWidth = 7;
+    context.beginPath(); context.moveTo(left, trackY); context.lineTo(distanceAccState.carX, trackY); context.stroke();
+
+    context.fillStyle = "#384858";
+    context.font = "700 12px Space Grotesk, sans-serif";
+    context.textAlign = "center";
+    context.textBaseline = "top";
+    for (let m = 0; m <= maxDistance; m += 10) {
+      const x = left + (m / maxDistance) * (right - left);
+      context.strokeStyle = "rgba(23, 27, 33, 0.42)";
+      context.lineWidth = m % 20 === 0 ? 2 : 1;
+      context.beginPath(); context.moveTo(x, trackY - 8); context.lineTo(x, trackY + 8); context.stroke();
+      if (m % 20 === 0) context.fillText(`${m} m`, x, trackY + 16);
+    }
+
+    const carX = distanceAccState.carX;
+    const carY = trackY - 24;
+    context.fillStyle = "#8f73ff";
+    context.strokeStyle = "#171b21";
+    context.lineWidth = 2.2;
+    context.beginPath();
+    context.roundRect(carX - 31, carY - 15, 62, 26, 7);
+    context.fill(); context.stroke();
+    context.fillStyle = "#c2b6ff";
+    context.beginPath();
+    context.roundRect(carX - 14, carY - 33, 31, 20, 5);
+    context.fill(); context.stroke();
+    context.fillStyle = "#171b21";
+    context.beginPath();
+    context.arc(carX - 20, carY + 12, 8, 0, Math.PI * 2);
+    context.arc(carX + 20, carY + 12, 8, 0, Math.PI * 2);
+    context.fill();
+    context.fillStyle = "#f8fbff";
+    context.beginPath();
+    context.arc(carX - 20, carY + 12, 3.2, 0, Math.PI * 2);
+    context.arc(carX + 20, carY + 12, 3.2, 0, Math.PI * 2);
+    context.fill();
+
+    context.fillStyle = "#101418";
+    context.font = "800 13px Space Grotesk, sans-serif";
+    context.textAlign = "left";
+    context.textBaseline = "top";
+    context.fillText("Beschleunigungsweg (Start aus Ruhe)", left, 18);
+
+    distanceAccState.rafId = window.requestAnimationFrame(drawDistanceAccGame);
+  };
+
+  const flashDistanceAccSuccess = () => {
     if (!(siGameStage instanceof HTMLElement)) return;
-    errorState.index = 0;
+    siGameStage.classList.remove("test-motion-flash");
+    window.requestAnimationFrame(() => {
+      siGameStage.classList.add("test-motion-flash");
+      document.body.classList.add("test-motion-page-flash");
+    });
+    if (distanceAccState.flashTimer) window.clearTimeout(distanceAccState.flashTimer);
+    distanceAccState.flashTimer = window.setTimeout(() => {
+      siGameStage.classList.remove("test-motion-flash");
+      document.body.classList.remove("test-motion-page-flash");
+      distanceAccState.flashTimer = 0;
+    }, 760);
+  };
 
-    const showErrorQuestion = () => {
-      const q = ERROR_QUESTIONS[errorState.index];
-      const isLast = errorState.index === ERROR_QUESTIONS.length - 1;
+  const getCurrentDistanceAccTask = () => DISTANCE_ACC_TASKS[distanceAccState.questionIndex] || DISTANCE_ACC_TASKS[0];
+
+  const renderCurrentDistanceAccTask = () => {
+    const task = getCurrentDistanceAccTask();
+    distanceAccState.questionSolved = false;
+    if (distanceAccState.accelerationInput instanceof HTMLInputElement) distanceAccState.accelerationInput.value = "0";
+    if (distanceAccState.timeInput instanceof HTMLInputElement) distanceAccState.timeInput.value = "0";
+    distanceAccState.carX = 0;
+    distanceAccState.lastTime = 0;
+    updateDistanceAccLabels();
+
+    if (distanceAccState.taskMetaEl instanceof HTMLElement) {
+      distanceAccState.taskMetaEl.innerHTML = `
+        <span>Aufgabe ${distanceAccState.questionIndex + 1} von ${DISTANCE_ACC_TASKS.length}</span>
+        <strong>Mittel · ${task.xp} XP</strong>
+      `;
+    }
+    if (distanceAccState.taskTextEl instanceof HTMLElement) {
+      distanceAccState.taskTextEl.innerHTML = `
+        Ein Fahrzeug startet aus der Ruhe und beschleunigt gleichmäßig mit
+        <strong>a = ${formatTestDecimal(task.acceleration)} m/s²</strong>
+        für <strong>t = ${formatTestDecimal(task.time)} s</strong>.
+        Wie weit ist es gefahren?
+      `;
+    }
+    if (distanceAccState.answerInput instanceof HTMLInputElement) {
+      distanceAccState.answerInput.value = "";
+      distanceAccState.answerInput.disabled = false;
+      distanceAccState.answerInput.focus();
+    }
+    if (distanceAccState.feedbackEl instanceof HTMLElement) {
+      distanceAccState.feedbackEl.className = "test-motion-feedback";
+      distanceAccState.feedbackEl.textContent = "";
+    }
+    if (distanceAccState.nextButton instanceof HTMLButtonElement) {
+      distanceAccState.nextButton.hidden = true;
+      distanceAccState.nextButton.textContent =
+        distanceAccState.questionIndex === DISTANCE_ACC_TASKS.length - 1 ? "Fertig" : "Nächste Frage";
+    }
+  };
+
+  const goToNextDistanceAccTask = () => {
+    if (!distanceAccState.questionSolved) return;
+    if (distanceAccState.questionIndex >= DISTANCE_ACC_TASKS.length - 1) {
+      stopDistanceAccGame();
+      if (siGameStage instanceof HTMLElement) {
+        siGameStage.innerHTML = `
+          <section class="test-motion-complete">
+            <h3>Beschleunigungsweg – geschafft!</h3>
+            <p>Du hast alle Aufgaben zum Weg beim Anfahren korrekt gelöst.</p>
+            <div class="test-motion-complete-actions">
+              <button class="si-jumpgame-button" id="distacc-back-final" type="button">Zurück zum Pfad</button>
+              <button class="si-jumpgame-button" id="distacc-repeat-final" type="button">Nochmal spielen</button>
+            </div>
+          </section>
+        `;
+        siGameStage.querySelector("#distacc-back-final")?.addEventListener("click", closeSIGame);
+        siGameStage.querySelector("#distacc-repeat-final")?.addEventListener("click", () => renderDistanceAccGame());
+      }
+      return;
+    }
+    distanceAccState.questionIndex += 1;
+    renderCurrentDistanceAccTask();
+  };
+
+  const checkDistanceAccAnswer = () => {
+    const feedbackEl = distanceAccState.feedbackEl;
+    if (!(feedbackEl instanceof HTMLElement)) return;
+    const answer = distanceAccState.answerInput instanceof HTMLInputElement ? distanceAccState.answerInput.valueAsNumber : Number.NaN;
+    const task = getCurrentDistanceAccTask();
+    feedbackEl.className = "test-motion-feedback";
+
+    if (!Number.isFinite(answer)) {
+      feedbackEl.textContent = "Gib zuerst eine Zahl ein.";
+      feedbackEl.classList.add("is-hint");
+      return;
+    }
+    if (Math.abs(answer - task.answer) <= 0.5) {
+      distanceAccState.questionSolved = true;
+      feedbackEl.textContent = `Richtig! Das Fahrzeug hat ${formatTestDecimal(task.answer)} m zurückgelegt. +${task.xp} XP`;
+      feedbackEl.classList.add("is-correct");
+      if (distanceAccState.answerInput instanceof HTMLInputElement) distanceAccState.answerInput.disabled = true;
+      if (distanceAccState.nextButton instanceof HTMLButtonElement) distanceAccState.nextButton.hidden = false;
+      if (distanceAccState.accelerationInput instanceof HTMLInputElement) distanceAccState.accelerationInput.value = String(task.acceleration);
+      if (distanceAccState.timeInput instanceof HTMLInputElement) distanceAccState.timeInput.value = String(task.time);
+      updateDistanceAccLabels();
+      flashDistanceAccSuccess();
+      return;
+    }
+    feedbackEl.textContent = `Fast: Bei Start aus der Ruhe gilt s = ½ · a · t². Mit a = ${formatTestDecimal(task.acceleration)} m/s² und t = ${formatTestDecimal(task.time)} s.`;
+    feedbackEl.classList.add("is-hint");
+  };
+
+  const startDistanceAccQuestion = () => {
+    if (!(siGameStage instanceof HTMLElement)) return;
+    stopDistanceAccGame();
+
+    siGameStage.innerHTML = `
+      <section class="test-motion-game">
+        <div class="test-motion-sim">
+          <canvas class="test-motion-canvas" id="distacc-canvas" aria-label="Fahrzeug beschleunigt aus dem Stand"></canvas>
+        </div>
+        <div class="test-motion-controls">
+          <label class="test-motion-control">
+            <span>Beschleunigung</span>
+            <input id="distacc-acceleration" type="range" min="0" max="6" step="0.5" value="0">
+            <strong id="distacc-acceleration-value">0 m/s²</strong>
+          </label>
+          <label class="test-motion-control">
+            <span>Zeit</span>
+            <input id="distacc-time" type="range" min="0" max="8" step="0.5" value="0">
+            <strong id="distacc-time-value">0 s</strong>
+          </label>
+          <div class="test-motion-readout">
+            <span>Zurückgelegter Weg</span>
+            <strong id="distacc-distance-value">0 m</strong>
+          </div>
+        </div>
+        <article class="test-motion-task">
+          <div class="test-motion-task-meta" id="distacc-task-meta"></div>
+          <h3>Beschleunigungsweg</h3>
+          <p id="distacc-task-text"></p>
+          <label class="test-motion-answer-label" for="distacc-answer">Antwort in Metern</label>
+          <div class="test-motion-answer-row">
+            <input id="distacc-answer" type="number" inputmode="decimal" placeholder="Antwort">
+            <button class="si-jumpgame-button" id="distacc-check" type="button">Prüfen</button>
+          </div>
+          <p class="test-motion-feedback" id="distacc-feedback" aria-live="polite"></p>
+          <button class="si-jumpgame-button test-motion-next" id="distacc-next" type="button" hidden>Nächste Frage</button>
+        </article>
+      </section>
+    `;
+
+    distanceAccState.canvas = siGameStage.querySelector("#distacc-canvas");
+    distanceAccState.ctx = distanceAccState.canvas instanceof HTMLCanvasElement ? distanceAccState.canvas.getContext("2d") : null;
+    distanceAccState.accelerationInput = siGameStage.querySelector("#distacc-acceleration");
+    distanceAccState.timeInput = siGameStage.querySelector("#distacc-time");
+    distanceAccState.accelerationValue = siGameStage.querySelector("#distacc-acceleration-value");
+    distanceAccState.timeValue = siGameStage.querySelector("#distacc-time-value");
+    distanceAccState.distanceValue = siGameStage.querySelector("#distacc-distance-value");
+    distanceAccState.answerInput = siGameStage.querySelector("#distacc-answer");
+    distanceAccState.feedbackEl = siGameStage.querySelector("#distacc-feedback");
+    distanceAccState.taskMetaEl = siGameStage.querySelector("#distacc-task-meta");
+    distanceAccState.taskTextEl = siGameStage.querySelector("#distacc-task-text");
+    distanceAccState.nextButton = siGameStage.querySelector("#distacc-next");
+    distanceAccState.carX = 0;
+    distanceAccState.lastTime = 0;
+    distanceAccState.questionIndex = 0;
+    distanceAccState.questionSolved = false;
+
+    [distanceAccState.accelerationInput, distanceAccState.timeInput].forEach((input) => {
+      if (input instanceof HTMLInputElement) input.addEventListener("input", updateDistanceAccLabels);
+    });
+    siGameStage.querySelector("#distacc-check")?.addEventListener("click", checkDistanceAccAnswer);
+    if (distanceAccState.answerInput instanceof HTMLInputElement) {
+      distanceAccState.answerInput.addEventListener("keydown", (e) => { if (e.key === "Enter") checkDistanceAccAnswer(); });
+      distanceAccState.answerInput.focus();
+    }
+    if (distanceAccState.nextButton instanceof HTMLButtonElement) {
+      distanceAccState.nextButton.addEventListener("click", goToNextDistanceAccTask);
+    }
+
+    renderCurrentDistanceAccTask();
+    resizeDistanceAccCanvas();
+    distanceAccState.running = true;
+    distanceAccState.rafId = window.requestAnimationFrame(drawDistanceAccGame);
+  };
+
+  const renderDistanceAccGame = () => {
+    if (!(siGameStage instanceof HTMLElement)) return;
+    stopSIUnitsJumpGame(); stopTestMotionGame(); stopCatchUpGame();
+    stopAccelerationGame(); stopSprintGame(); stopFreeFallGame();
+    stopBrakingGame(); stopDistanceAccGame();
+
+    siGameStage.innerHTML = `
+      <section class="test-theory-page">
+        <div class="test-theory-copy">
+          <p class="test-theory-kicker">K5 · Beschleunigungsweg</p>
+          <h3>Wie weit kommt man beim Anfahren?</h3>
+          <p>Ein Fahrzeug, das aus der Ruhe gleichmäßig beschleunigt, legt in den ersten Sekunden wenig zurück – aber der Weg wächst sehr schnell, weil die Geschwindigkeit zunimmt.</p>
+          <p>Der zurückgelegte Weg hängt vom <strong>Quadrat der Zeit</strong> ab: Doppelte Zeit bedeutet viermal mehr Weg. Das nennt man quadratisches Wachstum.</p>
+          <p>Diese Formel gilt nur, wenn das Fahrzeug aus der Ruhe startet (v₀ = 0). Ansonsten kommt noch ein v₀ · t-Term hinzu.</p>
+        </div>
+        <div class="test-theory-formula" aria-label="Wichtige Formel">
+          <span>s = ½ · a · t²</span>
+        </div>
+        <div class="test-theory-example">
+          <p><strong>Beispiel:</strong> a = 3 m/s², t = 6 s</p>
+          <p>s = ½ · 3 · 6² = ½ · 3 · 36 = 54 m</p>
+        </div>
+        <button class="si-jumpgame-button test-theory-start" id="distacc-start" type="button">Zur Frage</button>
+      </section>
+    `;
+
+    siGameStage.querySelector("#distacc-start")?.addEventListener("click", startDistanceAccQuestion);
+  };
+
+
+  // ─── K6: Konzept-Quiz (Multiple Choice) ──────────────────────────────────
+
+  const startMCConceptQuestion = (index) => {
+    if (!(siGameStage instanceof HTMLElement)) return;
+    const question = MC_CONCEPT_QUESTIONS[index];
+
+    if (!question) {
+      siGameStage.innerHTML = `
+        <section class="test-motion-complete">
+          <h3>Konzept-Quiz geschafft!</h3>
+          <p>Du hast alle vier Konzeptfragen beantwortet. Sehr gut!</p>
+          <div class="test-motion-complete-actions">
+            <button class="si-jumpgame-button" id="mc-back-final" type="button">Zurück zum Pfad</button>
+            <button class="si-jumpgame-button" id="mc-repeat-final" type="button">Nochmal spielen</button>
+          </div>
+        </section>
+      `;
+      siGameStage.querySelector("#mc-back-final")?.addEventListener("click", closeSIGame);
+      siGameStage.querySelector("#mc-repeat-final")?.addEventListener("click", () => renderMCConceptGame());
+      return;
+    }
+
+    const optionsHTML = question.options.map((option, i) => `
+      <button class="mc-option-btn" type="button" data-index="${i}">${option}</button>
+    `).join("");
+
+    siGameStage.innerHTML = `
+      <section class="test-theory-page mc-quiz-page">
+        <div class="test-theory-copy">
+          <p class="test-theory-kicker">Frage ${index + 1} von ${MC_CONCEPT_QUESTIONS.length}</p>
+          <h3>${question.text}</h3>
+        </div>
+        <div class="mc-options-grid" id="mc-options-grid">
+          ${optionsHTML}
+        </div>
+        <p class="test-motion-feedback mc-feedback" id="mc-feedback" aria-live="polite"></p>
+        <button class="si-jumpgame-button test-motion-next" id="mc-next" type="button" hidden>
+          ${index + 1 < MC_CONCEPT_QUESTIONS.length ? "Nächste Frage" : "Fertig"}
+        </button>
+      </section>
+    `;
+
+    const optionsGrid = siGameStage.querySelector("#mc-options-grid");
+    const feedbackEl = siGameStage.querySelector("#mc-feedback");
+    const nextBtn = siGameStage.querySelector("#mc-next");
+
+    optionsGrid?.querySelectorAll(".mc-option-btn").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const chosen = Number(btn.getAttribute("data-index"));
+        optionsGrid.querySelectorAll(".mc-option-btn").forEach((b) => {
+          b.disabled = true;
+          const idx = Number(b.getAttribute("data-index"));
+          if (idx === question.correct) b.classList.add("mc-correct");
+          else if (idx === chosen && chosen !== question.correct) b.classList.add("mc-wrong");
+        });
+
+        if (feedbackEl instanceof HTMLElement) {
+          feedbackEl.className = "test-motion-feedback mc-feedback";
+          if (chosen === question.correct) {
+            feedbackEl.textContent = `Richtig! ${question.explanation}`;
+            feedbackEl.classList.add("is-correct");
+          } else {
+            feedbackEl.textContent = `Nicht ganz. ${question.explanation}`;
+            feedbackEl.classList.add("is-hint");
+          }
+        }
+        if (nextBtn instanceof HTMLButtonElement) nextBtn.hidden = false;
+      });
+    });
+
+    if (nextBtn instanceof HTMLButtonElement) {
+      nextBtn.addEventListener("click", () => startMCConceptQuestion(index + 1));
+    }
+  };
+
+  const renderMCConceptGame = () => {
+    if (!(siGameStage instanceof HTMLElement)) return;
+    stopSIUnitsJumpGame(); stopTestMotionGame(); stopCatchUpGame();
+    stopAccelerationGame(); stopSprintGame(); stopFreeFallGame();
+    stopBrakingGame(); stopDistanceAccGame();
+
+    siGameStage.innerHTML = `
+      <section class="test-theory-page">
+        <div class="test-theory-copy">
+          <p class="test-theory-kicker">K6 · Konzept-Quiz</p>
+          <h3>Was hast du wirklich verstanden?</h3>
+          <p>Rechenaufgaben lösen ist wichtig – aber genauso wichtig ist das konzeptuelle Verständnis. Kannst du erklären, was die Physik bedeutet?</p>
+          <p>In diesem Quiz gibt es <strong>vier Konzeptfragen</strong> mit je vier Antwortmöglichkeiten. Genau eine Antwort ist richtig. Nach deiner Wahl siehst du sofort eine Erklärung.</p>
+          <p>Lies alle Optionen, bevor du klickst – oft klingt mehr als eine Antwort plausibel.</p>
+        </div>
+        <div class="test-theory-formula" aria-label="Tipp">
+          <span>Denk – dann klick!</span>
+        </div>
+        <div class="test-theory-example">
+          <p><strong>Themen:</strong> v-t-Diagramm, gleichförmige Bewegung, Bremsbeschleunigung, Bremsweg.</p>
+        </div>
+        <button class="si-jumpgame-button test-theory-start" id="mc-concept-start" type="button">Quiz starten</button>
+      </section>
+    `;
+
+    siGameStage.querySelector("#mc-concept-start")?.addEventListener("click", () => startMCConceptQuestion(0));
+  };
+
+
+  // ─── Module Game Engine ─────────────────────────────────────────────────────
+
+  let _matterEngine = null;
+  let _matterRender = null;
+  let _matterRunner = null;
+  let _activeChart = null;
+
+  const stopModuleGame = () => {
+    if (_matterRunner) { try { Matter.Runner.stop(_matterRunner); } catch (_) {} _matterRunner = null; }
+    if (_matterRender) { try { Matter.Render.stop(_matterRender); } catch (_) {} _matterRender = null; }
+    if (_matterEngine) { try { Matter.Engine.clear(_matterEngine); } catch (_) {} _matterEngine = null; }
+    if (_activeChart) { try { _activeChart.destroy(); } catch (_) {} _activeChart = null; }
+    if (siGameStage instanceof HTMLElement) {
+      siGameStage.classList.remove("test-motion-flash");
+    }
+    document.body.classList.remove("test-motion-page-flash");
+  };
+
+  const _flashCorrect = () => {
+    if (!(siGameStage instanceof HTMLElement)) return;
+    siGameStage.classList.remove("test-motion-flash");
+    requestAnimationFrame(() => {
+      siGameStage.classList.add("test-motion-flash");
+      document.body.classList.add("test-motion-page-flash");
+    });
+    setTimeout(() => {
+      siGameStage.classList.remove("test-motion-flash");
+      document.body.classList.remove("test-motion-page-flash");
+    }, 760);
+  };
+
+  // Anime.js entrance for theory page
+  const animateModuleTheory = () => {
+    if (typeof anime === "undefined" || !(siGameStage instanceof HTMLElement)) return;
+    const items = siGameStage.querySelectorAll(".theory-anim");
+    anime({
+      targets: items,
+      opacity: [0, 1],
+      translateY: [20, 0],
+      delay: anime.stagger(80, { start: 60 }),
+      duration: 440,
+      easing: "easeOutCubic",
+    });
+  };
+
+  // Show theory page then hand off to question
+  const showModuleTheory = (step, onStart) => {
+    if (!(siGameStage instanceof HTMLElement)) return;
+    const t = step.theory;
+    if (!t) { onStart(); return; }
+    const accent = step.colorA || "#59a3ff";
+
+    siGameStage.innerHTML = `
+      <section class="mod-theory-page">
+        <div class="mod-theory-body">
+          <p class="theory-anim mod-theory-kicker" style="color:${accent}">${t.kicker}</p>
+          <h3 class="theory-anim mod-theory-heading">${t.heading}</h3>
+          ${t.paragraphs.map(p => `<p class="theory-anim mod-theory-para">${p}</p>`).join("")}
+          ${t.formula ? `<div class="theory-anim mod-theory-formula"><span>${t.formula}</span></div>` : ""}
+          ${t.example ? `<div class="theory-anim mod-theory-example">${t.example}</div>` : ""}
+          <button class="theory-anim si-jumpgame-button mod-theory-cta" type="button">Zur Aufgabe →</button>
+        </div>
+      </section>
+    `;
+    siGameStage.querySelector(".mod-theory-cta")?.addEventListener("click", onStart);
+    animateModuleTheory();
+  };
+
+  // Multiple-Choice engine
+  const runMCEngine = (tasks, onComplete) => {
+    if (!(siGameStage instanceof HTMLElement)) return;
+    let idx = 0;
+
+    const render = () => {
+      const task = tasks[idx];
+      if (!task) { onComplete?.(); return; }
 
       siGameStage.innerHTML = `
-        <section class="test-theory-page">
-          <div class="test-theory-copy" style="margin-bottom:0.5rem">
-            <p class="test-theory-kicker">${q.kicker}</p>
-            <h3>Finde den Fehler!</h3>
-            <p>${q.situation}</p>
+        <section class="mod-question-page mc-page">
+          <p class="mod-q-meta">Frage ${idx + 1} von ${tasks.length}</p>
+          <h3 class="mod-q-text">${task.text}</h3>
+          <div class="mc-options-grid" id="eng-mc-grid">
+            ${task.options.map((o, i) => `<button class="mc-option-btn" type="button" data-i="${i}">${o}</button>`).join("")}
           </div>
-          <div class="test-theory-formula" style="font-size:1rem;text-align:left;padding:0.9rem 1.2rem;line-height:1.7">
-            <span style="font-family:monospace;white-space:pre-wrap">${q.calculation}</span>
-          </div>
-          <p style="font-weight:700;margin:0.8rem 0 0.5rem">${q.question}</p>
-          <div id="error-options" class="vt-options"></div>
-          <p class="test-motion-feedback" id="error-feedback" aria-live="polite"></p>
-          <button class="si-jumpgame-button test-motion-next" id="error-next" type="button" hidden>${isLast ? "Fertig" : "Nächste Frage"}</button>
-        </section>`;
+          <p class="test-motion-feedback" id="eng-mc-fb" aria-live="polite"></p>
+          ${task.hint ? `<button class="mc-hint-btn" id="eng-mc-hint" type="button">💡 Tipp anzeigen</button><p class="mc-hint-text" id="eng-mc-hint-text" hidden>${task.hint}</p>` : ""}
+          <button class="si-jumpgame-button mod-q-next" id="eng-mc-next" type="button" hidden>
+            ${idx === tasks.length - 1 ? "Fertig →" : "Weiter →"}
+          </button>
+        </section>
+      `;
 
-      const optionsEl = siGameStage.querySelector("#error-options");
-      const feedbackEl = siGameStage.querySelector("#error-feedback");
-      const nextBtn = siGameStage.querySelector("#error-next");
-      let answered = false;
+      if (typeof anime !== "undefined") {
+        anime({ targets: "#eng-mc-grid .mc-option-btn", opacity:[0,1], translateY:[12,0], delay: anime.stagger(55), duration: 300, easing:"easeOutCubic" });
+      }
 
-      q.options.forEach(opt => {
-        const btn = document.createElement("button");
-        btn.className = "vt-option-btn";
-        btn.textContent = opt.text;
-        btn.addEventListener("click", () => {
-          if (answered) return;
-          answered = true;
-          optionsEl?.querySelectorAll(".vt-option-btn").forEach(b => { b.disabled = true; });
-          if (opt.correct) {
-            btn.classList.add("is-correct");
-            if (feedbackEl) { feedbackEl.textContent = `✓ ${opt.explanation} +${q.xp} XP`; feedbackEl.className = "test-motion-feedback is-correct"; }
-            awardPoints(q.xp);
-          } else {
-            btn.classList.add("is-wrong");
-            const ci = q.options.findIndex(o => o.correct);
-            optionsEl?.querySelectorAll(".vt-option-btn")[ci]?.classList.add("is-correct");
-            if (feedbackEl) { feedbackEl.textContent = `✗ ${opt.explanation}`; feedbackEl.className = "test-motion-feedback is-hint"; }
-          }
-          if (nextBtn instanceof HTMLButtonElement) nextBtn.hidden = false;
-        });
-        optionsEl?.appendChild(btn);
+      const grid = siGameStage.querySelector("#eng-mc-grid");
+      const fb = siGameStage.querySelector("#eng-mc-fb");
+      const next = siGameStage.querySelector("#eng-mc-next");
+      const hintBtn = siGameStage.querySelector("#eng-mc-hint");
+      const hintText = siGameStage.querySelector("#eng-mc-hint-text");
+      let done = false;
+      hintBtn?.addEventListener("click", () => {
+        if (hintText) { hintText.hidden = false; hintBtn.hidden = true; }
       });
 
-      if (nextBtn instanceof HTMLButtonElement) {
-        nextBtn.addEventListener("click", () => {
-          if (errorState.index >= ERROR_QUESTIONS.length - 1) {
-            markStepComplete("TEST", errorState.index + 4);
-            siGameStage.innerHTML = `
-              <section class="test-motion-complete">
-                <h3>Fehlerdetektiv!</h3>
-                <p>Du erkennst typische Rechenfehler in der Kinematik sicher.</p>
-                <button class="si-jumpgame-button" id="error-back" type="button">Zurück zum Pfad</button>
-              </section>`;
-            siGameStage.querySelector("#error-back")?.addEventListener("click", closeSIGame);
-            return;
+      grid?.querySelectorAll(".mc-option-btn").forEach(btn => {
+        btn.addEventListener("click", () => {
+          if (done) return;
+          done = true;
+          const chosen = Number(btn.getAttribute("data-i"));
+          grid.querySelectorAll(".mc-option-btn").forEach(b => {
+            b.disabled = true;
+            const i = Number(b.getAttribute("data-i"));
+            if (i === task.correct) b.classList.add("mc-correct");
+            else if (i === chosen) b.classList.add("mc-wrong");
+          });
+          if (fb) {
+            fb.className = `test-motion-feedback ${chosen === task.correct ? "is-correct" : "is-hint"}`;
+            fb.textContent = chosen === task.correct
+              ? `Richtig! ${task.explanation}`
+              : `Nicht ganz. ${task.explanation}`;
           }
-          errorState.index++;
-          showErrorQuestion();
+          if (next) next.hidden = false;
+          if (chosen === task.correct) _flashCorrect();
         });
+      });
+
+      next?.addEventListener("click", () => { idx++; render(); });
+    };
+    render();
+  };
+
+  // Calculation engine
+  const runCalcEngine = (tasks, cfg, onComplete) => {
+    if (!(siGameStage instanceof HTMLElement)) return;
+    let idx = 0;
+
+    const render = () => {
+      const task = tasks[idx];
+      if (!task) { onComplete?.(); return; }
+
+      siGameStage.innerHTML = `
+        <section class="mod-question-page calc-page">
+          <div class="mod-q-meta">
+            <span>Aufgabe ${idx + 1} von ${tasks.length}</span>
+            <strong>${task.xp ?? 100} XP</strong>
+          </div>
+          <h3 class="mod-q-heading">${cfg.questionTitle ?? "Berechne"}</h3>
+          <p class="mod-q-text">${task.description}</p>
+          <div class="calc-formula-chip"><span>${cfg.formulaDisplay ?? cfg.formula ?? ""}</span></div>
+          <label class="test-motion-answer-label" for="eng-calc-input">Antwort in ${cfg.answerUnit}</label>
+          <div class="test-motion-answer-row">
+            <input id="eng-calc-input" type="number" inputmode="decimal" placeholder="…" autocomplete="off">
+            <button class="si-jumpgame-button" id="eng-calc-check">Prüfen</button>
+          </div>
+          <p class="test-motion-feedback" id="eng-calc-fb" aria-live="polite"></p>
+          <button class="si-jumpgame-button test-motion-next" id="eng-calc-next" hidden>
+            ${idx === tasks.length - 1 ? "Fertig →" : "Nächste Aufgabe →"}
+          </button>
+        </section>
+      `;
+
+      const inp = siGameStage.querySelector("#eng-calc-input");
+      const fb  = siGameStage.querySelector("#eng-calc-fb");
+      const nxt = siGameStage.querySelector("#eng-calc-next");
+      inp?.focus();
+
+      const check = () => {
+        const val = inp instanceof HTMLInputElement ? inp.valueAsNumber : NaN;
+        if (!Number.isFinite(val)) { fb.textContent = "Gib zuerst eine Zahl ein."; fb.className = "test-motion-feedback is-hint"; return; }
+        const tol = cfg.tolerance ?? 0.05;
+        const ok = Math.abs(val - task.answer) <= Math.max(tol, Math.abs(task.answer) * tol);
+        if (ok) {
+          fb.className = "test-motion-feedback is-correct";
+          fb.textContent = task.successFeedback ?? `Richtig! Ergebnis: ${task.answer} ${cfg.answerUnit}. +${task.xp ?? 100} XP`;
+          if (inp) inp.disabled = true;
+          if (nxt) nxt.hidden = false;
+          _flashCorrect();
+        } else {
+          fb.className = "test-motion-feedback is-hint";
+          fb.textContent = task.hint ?? `Überprüfe deine Rechnung. Formel: ${cfg.formula}`;
+        }
+      };
+      siGameStage.querySelector("#eng-calc-check")?.addEventListener("click", check);
+      inp?.addEventListener("keydown", e => { if (e.key === "Enter") check(); });
+      nxt?.addEventListener("click", () => { idx++; render(); });
+    };
+    render();
+  };
+
+  // Chart.js engine
+  const runChartEngine = (chartCfg, tasks, onComplete) => {
+    if (!(siGameStage instanceof HTMLElement)) return;
+
+    siGameStage.innerHTML = `
+      <section class="mod-question-page chart-page">
+        <div class="mod-chart-wrap">
+          <canvas id="eng-chart-canvas" class="mod-chart-canvas"></canvas>
+        </div>
+        <div class="mod-chart-questions" id="eng-chart-q"></div>
+      </section>
+    `;
+
+    const canvas = siGameStage.querySelector("#eng-chart-canvas");
+    if (canvas instanceof HTMLCanvasElement && typeof Chart !== "undefined") {
+      _activeChart = new Chart(canvas.getContext("2d"), {
+        type: chartCfg.chartType ?? "line",
+        data: {
+          labels: chartCfg.xData,
+          datasets: chartCfg.datasets.map(d => ({
+            label: d.label,
+            data: d.data,
+            borderColor: d.color,
+            backgroundColor: d.color + "22",
+            borderWidth: 2.5,
+            pointRadius: 3,
+            tension: d.tension ?? 0,
+            fill: d.fill ?? false,
+          })),
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          animation: { duration: 600, easing: "easeOutQuart" },
+          plugins: {
+            legend: { labels: { font: { family: "Space Grotesk", size: 13 }, color: "#17212b" } },
+            tooltip: { bodyFont: { family: "Space Grotesk" }, titleFont: { family: "Space Grotesk" } },
+          },
+          scales: {
+            x: {
+              title: { display: true, text: chartCfg.xLabel ?? "Zeit t (s)", color: "#384858", font: { family: "Space Grotesk", size: 12 } },
+              grid: { color: "rgba(96,111,128,0.14)" },
+              ticks: { color: "#384858", font: { family: "Space Grotesk" } },
+            },
+            y: {
+              title: { display: true, text: chartCfg.yLabel ?? "s (m)", color: "#384858", font: { family: "Space Grotesk", size: 12 } },
+              grid: { color: "rgba(96,111,128,0.14)" },
+              ticks: { color: "#384858", font: { family: "Space Grotesk" } },
+            },
+          },
+        },
+      });
+    }
+
+    const qContainer = siGameStage.querySelector("#eng-chart-q");
+    let taskIdx = 0;
+
+    const renderQ = () => {
+      const task = tasks[taskIdx];
+      if (!task || !qContainer) { onComplete?.(); return; }
+
+      if (task.type === "calc") {
+        qContainer.innerHTML = `
+          <p class="mod-q-meta">Frage ${taskIdx + 1} von ${tasks.length}</p>
+          <p class="mod-q-text">${task.text}</p>
+          <div class="test-motion-answer-row">
+            <input id="eng-cq-input" type="number" inputmode="decimal" placeholder="Antwort in ${task.unit}">
+            <button class="si-jumpgame-button" id="eng-cq-check">Prüfen</button>
+          </div>
+          <p class="test-motion-feedback" id="eng-cq-fb" aria-live="polite"></p>
+          <button class="si-jumpgame-button mod-q-next" id="eng-cq-next" hidden>${taskIdx === tasks.length - 1 ? "Fertig →" : "Weiter →"}</button>
+        `;
+        const inp = qContainer.querySelector("#eng-cq-input");
+        const fb = qContainer.querySelector("#eng-cq-fb");
+        const nxt = qContainer.querySelector("#eng-cq-next");
+        inp?.focus();
+        const check = () => {
+          const v = inp instanceof HTMLInputElement ? inp.valueAsNumber : NaN;
+          if (!Number.isFinite(v)) return;
+          const tol = task.tolerance ?? 0.1;
+          if (Math.abs(v - task.answer) <= Math.max(tol, Math.abs(task.answer) * tol)) {
+            fb.className = "test-motion-feedback is-correct";
+            fb.textContent = `Richtig! ${task.explanation ?? ""}`;
+            inp.disabled = true; nxt.hidden = false; _flashCorrect();
+          } else {
+            fb.className = "test-motion-feedback is-hint";
+            fb.textContent = task.hint ?? "Lies den Graphen nochmals sorgfältig ab.";
+          }
+        };
+        qContainer.querySelector("#eng-cq-check")?.addEventListener("click", check);
+        inp?.addEventListener("keydown", e => { if (e.key === "Enter") check(); });
+        nxt?.addEventListener("click", () => { taskIdx++; renderQ(); });
+      } else {
+        qContainer.innerHTML = `
+          <p class="mod-q-meta">Frage ${taskIdx + 1} von ${tasks.length}</p>
+          <p class="mod-q-text">${task.text}</p>
+          <div class="mc-options-grid" id="eng-cq-grid">
+            ${task.options.map((o, i) => `<button class="mc-option-btn" type="button" data-i="${i}">${o}</button>`).join("")}
+          </div>
+          <p class="test-motion-feedback" id="eng-cq-fb" aria-live="polite"></p>
+          <button class="si-jumpgame-button mod-q-next" id="eng-cq-next" hidden>${taskIdx === tasks.length - 1 ? "Fertig →" : "Weiter →"}</button>
+        `;
+        const grid = qContainer.querySelector("#eng-cq-grid");
+        const fb = qContainer.querySelector("#eng-cq-fb");
+        const nxt = qContainer.querySelector("#eng-cq-next");
+        let done = false;
+        grid?.querySelectorAll(".mc-option-btn").forEach(btn => {
+          btn.addEventListener("click", () => {
+            if (done) return; done = true;
+            const chosen = Number(btn.getAttribute("data-i"));
+            grid.querySelectorAll(".mc-option-btn").forEach(b => {
+              b.disabled = true;
+              const i = Number(b.getAttribute("data-i"));
+              if (i === task.correct) b.classList.add("mc-correct");
+              else if (i === chosen) b.classList.add("mc-wrong");
+            });
+            fb.className = `test-motion-feedback ${chosen === task.correct ? "is-correct" : "is-hint"}`;
+            fb.textContent = chosen === task.correct ? `Richtig! ${task.explanation}` : `Nicht ganz. ${task.explanation}`;
+            nxt.hidden = false;
+            if (chosen === task.correct) _flashCorrect();
+          });
+        });
+        nxt?.addEventListener("click", () => { taskIdx++; renderQ(); });
+      }
+    };
+    renderQ();
+  };
+
+  // Matter.js engine (free-fall simulation)
+  const runMatterEngine = (scene, tasks, onComplete) => {
+    if (!(siGameStage instanceof HTMLElement)) return;
+    siGameStage.innerHTML = `
+      <section class="mod-question-page matter-page">
+        <div class="mod-matter-wrap">
+          <canvas id="eng-matter-canvas" class="mod-matter-canvas"></canvas>
+          <div class="mod-matter-controls">
+            <button class="si-jumpgame-button" id="eng-matter-drop" type="button">Fallen lassen</button>
+            <button class="si-jumpgame-button mod-matter-reset" id="eng-matter-reset" type="button">Nochmal</button>
+          </div>
+        </div>
+        <div class="mod-matter-questions" id="eng-matter-q"></div>
+      </section>
+    `;
+
+    const canvas = siGameStage.querySelector("#eng-matter-canvas");
+    if (!(canvas instanceof HTMLCanvasElement) || typeof Matter === "undefined") {
+      runMCEngine(tasks, onComplete); return;
+    }
+
+    const W = canvas.offsetWidth || 420;
+    const H = canvas.offsetHeight || 280;
+
+    const engine = Matter.Engine.create({ gravity: { y: 1.8 } });
+    const render = Matter.Render.create({
+      canvas,
+      engine,
+      options: { width: W, height: H, wireframes: false, background: "#f4f8ff" },
+    });
+
+    const ballColors = ["#59a3ff", "#f86785", "#3dd18d"];
+    const ballSizes = scene === "freeFall" ? [16, 10, 24] : [14, 14, 14];
+    const positions = [W * 0.25, W * 0.5, W * 0.75];
+
+    const balls = positions.map((x, i) => Matter.Bodies.circle(x, 40, ballSizes[i], {
+      restitution: 0.25,
+      isStatic: true,
+      render: { fillStyle: ballColors[i], strokeStyle: "#17212b", lineWidth: 2 },
+    }));
+
+    const ground = Matter.Bodies.rectangle(W / 2, H - 10, W, 20, {
+      isStatic: true,
+      render: { fillStyle: "#c8d8ea" },
+    });
+
+    Matter.Composite.add(engine.world, [...balls, ground]);
+    const runner = Matter.Runner.create();
+    Matter.Runner.run(runner, engine);
+    Matter.Render.run(render);
+
+    _matterEngine = engine;
+    _matterRender = render;
+    _matterRunner = runner;
+
+    const dropBtn = siGameStage.querySelector("#eng-matter-drop");
+    const resetBtn = siGameStage.querySelector("#eng-matter-reset");
+    let dropped = false;
+
+    const dropAll = () => {
+      if (dropped) return;
+      dropped = true;
+      balls.forEach(b => Matter.Body.setStatic(b, false));
+      if (dropBtn) dropBtn.disabled = true;
+      setTimeout(() => {
+        const qContainer = siGameStage.querySelector("#eng-matter-q");
+        if (!qContainer) return;
+        runMCEngineInEl(qContainer, tasks, onComplete);
+      }, 2200);
+    };
+
+    dropBtn?.addEventListener("click", dropAll);
+    resetBtn?.addEventListener("click", () => {
+      dropped = false;
+      if (dropBtn) dropBtn.disabled = false;
+      balls.forEach((b, i) => {
+        Matter.Body.setStatic(b, true);
+        Matter.Body.setPosition(b, { x: positions[i], y: 40 });
+        Matter.Body.setVelocity(b, { x: 0, y: 0 });
+      });
+    });
+  };
+
+  // MC rendered inside a given container element (used by matter engine)
+  const runMCEngineInEl = (container, tasks, onComplete) => {
+    let idx = 0;
+    const render = () => {
+      const task = tasks[idx];
+      if (!task) { onComplete?.(); return; }
+      container.innerHTML = `
+        <p class="mod-q-meta">Frage ${idx + 1} von ${tasks.length}</p>
+        <p class="mod-q-text">${task.text}</p>
+        <div class="mc-options-grid" id="eng-mel-grid">
+          ${task.options.map((o, i) => `<button class="mc-option-btn" type="button" data-i="${i}">${o}</button>`).join("")}
+        </div>
+        <p class="test-motion-feedback" id="eng-mel-fb" aria-live="polite"></p>
+        <button class="si-jumpgame-button mod-q-next" id="eng-mel-next" hidden>${idx === tasks.length - 1 ? "Fertig →" : "Weiter →"}</button>
+      `;
+      const grid = container.querySelector("#eng-mel-grid");
+      const fb = container.querySelector("#eng-mel-fb");
+      const nxt = container.querySelector("#eng-mel-next");
+      let done = false;
+      grid?.querySelectorAll(".mc-option-btn").forEach(btn => {
+        btn.addEventListener("click", () => {
+          if (done) return; done = true;
+          const chosen = Number(btn.getAttribute("data-i"));
+          grid.querySelectorAll(".mc-option-btn").forEach(b => {
+            b.disabled = true;
+            const i = Number(b.getAttribute("data-i"));
+            if (i === task.correct) b.classList.add("mc-correct");
+            else if (i === chosen) b.classList.add("mc-wrong");
+          });
+          fb.className = `test-motion-feedback ${chosen === task.correct ? "is-correct" : "is-hint"}`;
+          fb.textContent = chosen === task.correct ? `Richtig! ${task.explanation}` : `Nicht ganz. ${task.explanation}`;
+          nxt.hidden = false;
+          if (chosen === task.correct) _flashCorrect();
+        });
+      });
+      nxt?.addEventListener("click", () => { idx++; render(); });
+    };
+    render();
+  };
+
+  // Completion screen
+  const showModuleComplete = (step) => {
+    if (!(siGameStage instanceof HTMLElement)) return;
+    const accent = step.colorA || "#59a3ff";
+    siGameStage.innerHTML = `
+      <section class="mod-complete-page">
+        <div class="mod-complete-icon" style="color:${accent}">
+          <svg viewBox="0 0 48 48" fill="none" width="64" height="64">
+            <circle cx="24" cy="24" r="20" stroke="currentColor" stroke-width="3"/>
+            <path d="M14 24l7 7 13-14" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <h3>${step.title} gemeistert!</h3>
+        <p>Du hast alle Aufgaben zu <strong>${step.title}</strong> erfolgreich abgeschlossen.</p>
+        <div class="mod-complete-actions">
+          <button class="si-jumpgame-button" id="mod-comp-back">Zurück zum Pfad</button>
+          <button class="si-jumpgame-button" id="mod-comp-retry">Nochmal üben</button>
+        </div>
+      </section>
+    `;
+    if (typeof anime !== "undefined") {
+      anime({ targets: ".mod-complete-icon", scale:[0.4,1], opacity:[0,1], duration:560, easing:"easeOutBack" });
+      anime({ targets: ".mod-complete-page h3, .mod-complete-page p, .mod-complete-actions", opacity:[0,1], translateY:[16,0], delay: anime.stagger(80, {start:300}), duration:380, easing:"easeOutCubic" });
+    }
+    siGameStage.querySelector("#mod-comp-back")?.addEventListener("click", closeSIGame);
+    siGameStage.querySelector("#mod-comp-retry")?.addEventListener("click", () => renderModuleGame(step));
+  };
+
+  // Main dispatcher
+  const showDifficultyPicker = (q, onSelect) => {
+    siGameStage.innerHTML = `
+      <div class="diff-picker-page theory-anim">
+        <p class="diff-picker-label">Wähle deinen Schwierigkeitsgrad</p>
+        <div class="diff-picker-grid">
+          <button class="diff-card diff-card-basis" id="diff-basis">
+            <span class="diff-card-icon">⭐</span>
+            <span class="diff-card-title">Basis</span>
+            <span class="diff-card-desc">Grundlegende Fragen – perfekt zum Einstieg</span>
+          </button>
+          <button class="diff-card diff-card-challenge" id="diff-challenge">
+            <span class="diff-card-icon">🔥</span>
+            <span class="diff-card-title">Challenge</span>
+            <span class="diff-card-desc">Anspruchsvollere Fragen – für Profis</span>
+          </button>
+        </div>
+      </div>`;
+    siGameStage.querySelector("#diff-basis").addEventListener("click", () => onSelect(q.basis));
+    siGameStage.querySelector("#diff-challenge").addEventListener("click", () => onSelect(q.challenge));
+    if (typeof anime !== "undefined") {
+      anime({ targets: ".diff-picker-page", opacity: [0, 1], translateY: [16, 0], duration: 400, easing: "easeOutQuart" });
+    }
+  };
+
+
+  // ── roundRect polyfill for browsers that don't support it ────────────────
+  if (!CanvasRenderingContext2D.prototype.roundRect) {
+    CanvasRenderingContext2D.prototype.roundRect = function (x, y, w, h, r) {
+      const R = Math.min(+r || 0, w / 2, h / 2);
+      this.moveTo(x + R, y);
+      this.lineTo(x + w - R, y);   this.arcTo(x + w, y,     x + w, y + R,     R);
+      this.lineTo(x + w, y + h - R); this.arcTo(x + w, y + h, x + w - R, y + h, R);
+      this.lineTo(x + R, y + h);   this.arcTo(x,     y + h, x,     y + h - R, R);
+      this.lineTo(x, y + R);       this.arcTo(x,     y,     x + R, y,         R);
+      this.closePath();
+    };
+  }
+
+  // ── Interactive Engine 1: Speed Lab (v = s/t) ──────────────────────────
+  const runSpeedLabEngine = (q, onComplete) => {
+    const trackS = q.s ?? 160;
+    const minV = q.minV ?? 5, maxV = q.maxV ?? 30, defV = q.defaultV ?? 12;
+
+    siGameStage.innerHTML = `
+      <div class="interact-page">
+        <p class="mod-q-meta">Interaktiv · Geschwindigkeits-Labor</p>
+        <h3 class="interact-heading">v = s ÷ t – selbst erleben</h3>
+        <p class="interact-sub">Stelle die Geschwindigkeit ein, starte das Auto und beobachte, wie v = s/t live berechnet wird.</p>
+        <div class="interact-canvas-wrap"><canvas id="ilab-cv" height="110"></canvas></div>
+        <div class="interact-ctrl-row">
+          <span class="interact-v-label">v = <strong id="ilab-vv">${defV}</strong> m/s</span>
+          <input class="interact-slider" id="ilab-sl" type="range" min="${minV}" max="${maxV}" value="${defV}" step="1">
+          <button class="si-jumpgame-button" id="ilab-go">▶ Start</button>
+        </div>
+        <div class="interact-formula-box">
+          v = <span class="ilab-hl" id="ilab-fs">${trackS}</span> m ÷
+          <span class="ilab-hl" id="ilab-ft">—</span> s =
+          <span class="ilab-hl ilab-result" id="ilab-fv">—</span> m/s
+        </div>
+        <p class="test-motion-feedback" id="ilab-fb"></p>
+        <button class="si-jumpgame-button mod-q-next" id="ilab-nx" hidden>Weiter →</button>
+      </div>`;
+
+    const cv = document.getElementById('ilab-cv');
+    cv.width = cv.parentElement.offsetWidth || cv.parentElement.clientWidth || 560;
+    const W = cv.width, H = cv.height, ctx = cv.getContext('2d');
+    const TL = 30, TR = W - 30, TW = TR - TL, TY = 60;
+
+    const paint = (prog, elapsed) => {
+      ctx.clearRect(0, 0, W, H);
+      // road (dark on white page bg)
+      ctx.fillStyle = '#2c3a4a'; ctx.fillRect(TL, TY - 16, TW, 32);
+      ctx.setLineDash([14, 10]); ctx.strokeStyle = 'rgba(255,255,255,0.25)'; ctx.lineWidth = 2;
+      ctx.beginPath(); ctx.moveTo(TL, TY); ctx.lineTo(TR, TY); ctx.stroke(); ctx.setLineDash([]);
+      // start post
+      ctx.fillStyle = 'rgba(255,255,255,0.6)'; ctx.fillRect(TL - 1, TY - 20, 2, 40);
+      ctx.fillStyle = '#2d3a48'; ctx.font = 'bold 10px monospace';
+      ctx.fillText('0', TL - 2, TY - 24);
+      // finish (checkered)
+      for (let r = 0; r < 8; r++) {
+        ctx.fillStyle = r % 2 ? '#333' : '#fff'; ctx.fillRect(TR - 1, TY - 20 + r * 5, 3, 5);
+      }
+      ctx.fillStyle = '#1a7a50'; ctx.font = 'bold 10px monospace';
+      ctx.fillText(trackS + ' m', TR - 26, TY - 24);
+      // progress bar
+      ctx.fillStyle = 'rgba(63,142,252,0.15)'; ctx.fillRect(TL, TY + 18, TW, 3);
+      ctx.fillStyle = '#3f8efc'; ctx.fillRect(TL, TY + 18, TW * Math.min(prog, 1), 3);
+      // car
+      const cx = TL + Math.min(prog, 1) * TW;
+      ctx.fillStyle = '#3f8efc'; ctx.beginPath(); ctx.roundRect(cx - 22, TY - 23, 44, 16, 5); ctx.fill();
+      ctx.fillStyle = '#1a62d4'; ctx.beginPath(); ctx.roundRect(cx - 13, TY - 32, 26, 11, 3); ctx.fill();
+      ctx.fillStyle = 'rgba(255,255,255,0.5)';
+      ctx.beginPath(); ctx.roundRect(cx - 10, TY - 30, 8, 7, 2); ctx.fill();
+      ctx.beginPath(); ctx.roundRect(cx + 2, TY - 30, 8, 7, 2); ctx.fill();
+      [cx - 14, cx + 14].forEach(wx => {
+        ctx.fillStyle = '#111'; ctx.beginPath(); ctx.arc(wx, TY - 7, 6, 0, Math.PI * 2); ctx.fill();
+        ctx.fillStyle = '#555'; ctx.beginPath(); ctx.arc(wx, TY - 7, 3, 0, Math.PI * 2); ctx.fill();
+      });
+      // timer overlay (dark pill, white text — visible on both backgrounds)
+      if (elapsed !== null) {
+        ctx.fillStyle = 'rgba(20,24,40,0.88)'; ctx.beginPath();
+        ctx.roundRect(W / 2 - 46, 4, 92, 22, 4); ctx.fill();
+        ctx.fillStyle = '#fff'; ctx.font = 'bold 13px monospace'; ctx.textAlign = 'center';
+        ctx.fillText('t = ' + elapsed.toFixed(1) + ' s', W / 2, 19); ctx.textAlign = 'left';
       }
     };
 
-    siGameStage.innerHTML = `
-      <section class="test-theory-page">
-        <div class="test-theory-copy">
-          <p class="test-theory-kicker">Theorie</p>
-          <h3>Typische Rechenfehler erkennen</h3>
-          <p>In der Kinematik passieren immer wieder dieselben Denkfehler:</p>
-          <ul style="line-height:1.9;padding-left:1.2rem">
-            <li><strong>Addieren statt Multiplizieren</strong> bei s = v · t</li>
-            <li><strong>Multiplizieren statt Dividieren</strong> bei a = Δv / Δt</li>
-            <li><strong>t vergessen zu quadrieren</strong> bei s = ½ · a · t²</li>
-            <li><strong>Einheiten nicht prüfen</strong> — ein Einheitencheck deckt viele Fehler auf</li>
-          </ul>
-          <p>Ein guter Trick: Prüfe immer, ob die Einheiten beider Seiten übereinstimmen!</p>
-        </div>
-        <div class="test-theory-formula" style="font-size:0.95rem;text-align:left;padding:0.8rem 1.2rem">
-          <span>[s] = m &nbsp;·&nbsp; [v · t] = m/s · s = m ✓</span>
-        </div>
-        <button class="si-jumpgame-button test-theory-start" id="error-theory-start" type="button">Fehler jagen</button>
-      </section>`;
-    siGameStage.querySelector("#error-theory-start")?.addEventListener("click", showErrorQuestion);
+    paint(0, null);
+
+    const sl = document.getElementById('ilab-sl'), vv = document.getElementById('ilab-vv');
+    const ftEl = document.getElementById('ilab-ft'), fvEl = document.getElementById('ilab-fv');
+    const fb = document.getElementById('ilab-fb'), nx = document.getElementById('ilab-nx');
+    let raf = null;
+
+    sl.addEventListener('input', () => { vv.textContent = sl.value; });
+
+    document.getElementById('ilab-go').addEventListener('click', function () {
+      if (raf) return;
+      this.disabled = true; sl.disabled = true;
+      const v = Number(sl.value), totalT = trackS / v;
+      const t0 = performance.now();
+      const loop = (now) => {
+        const el = Math.min((now - t0) / 1000, totalT);
+        paint(el / totalT, el);
+        ftEl.textContent = el.toFixed(1);
+        fvEl.textContent = (trackS / Math.max(el, 0.01)).toFixed(1);
+        if (el < totalT) { raf = requestAnimationFrame(loop); }
+        else {
+          raf = null; ftEl.textContent = totalT.toFixed(1); fvEl.textContent = String(v);
+          fb.className = 'test-motion-feedback is-correct';
+          fb.textContent = '✓  v = ' + trackS + ' m ÷ ' + totalT.toFixed(1) + ' s = ' + v + ' m/s';
+          nx.hidden = false; _flashCorrect?.();
+        }
+      };
+      raf = requestAnimationFrame(loop);
+    });
+
+    nx.addEventListener('click', () => {
+      if (raf) { cancelAnimationFrame(raf); raf = null; }
+      q.followUp?.length ? runMCEngine(q.followUp, onComplete) : onComplete?.();
+    });
   };
 
-  // ── Freier Fall ─────────────────────────────────────────────────────────────
-  const FALL_TASKS = [
-    { h: 20, g: 10, answerT: 2, answerV: 20, xp: 100,
-      hintT: "t = √(2h/g) = √(40/10) = √4 = 2 s",
-      hintV: "v = g · t = 10 · 2 = 20 m/s" },
-    { h: 45, g: 10, answerT: 3, answerV: 30, xp: 125,
-      hintT: "t = √(2h/g) = √(90/10) = √9 = 3 s",
-      hintV: "v = g · t = 10 · 3 = 30 m/s" },
-    { h: 80, g: 10, answerT: 4, answerV: 40, xp: 150,
-      hintT: "t = √(2h/g) = √(160/10) = √16 = 4 s",
-      hintV: "v = g · t = 10 · 4 = 40 m/s" },
-  ];
-  let fallState = { index: 0, phase: "time", hadError: false };
 
-  const renderFallGame = () => {
-    if (!(siGameStage instanceof HTMLElement)) return;
-    fallState.index = 0;
-    fallState.hadError = false;
+  // ── Interactive Engine 2: Two-Car Race ──────────────────────────────────
+  const runRaceEngine = (q, onComplete) => {
+    const cA = q.carA ?? { v: 20, color: '#5ea3ff', label: 'Auto A' };
+    const cB = q.carB ?? { v: 14, color: '#ff8753', label: 'Auto B' };
+    const trackS = q.s ?? 280;
+    const totalT = Math.max(trackS / cA.v, trackS / cB.v);
 
-    const showFallQuestion = () => {
-      const task = FALL_TASKS[fallState.index];
-      const isLastTask = fallState.index === FALL_TASKS.length - 1;
-      fallState.phase = "time";
+    siGameStage.innerHTML = `
+      <div class="interact-page">
+        <p class="mod-q-meta">Interaktiv · Gleichförmige Bewegung</p>
+        <h3 class="interact-heading">Das Rennen – wer ist schneller?</h3>
+        <p class="interact-sub">Beide Autos starten gleichzeitig mit konstanter Geschwindigkeit. Beobachte genau!</p>
+        <div class="interact-canvas-wrap"><canvas id="irace-cv" height="150"></canvas></div>
+        <div class="interact-race-info">
+          <span style="color:${cA.color}">■ ${cA.label}</span><span id="ira-sa">0 m</span>
+          <span style="color:${cB.color}">■ ${cB.label}</span><span id="ira-sb">0 m</span>
+          <span class="interact-timer">⏱ <span id="ira-t">0,0</span> s</span>
+        </div>
+        <button class="si-jumpgame-button" id="irace-go" style="margin:1rem auto;display:block">▶ Rennen starten</button>
+        <p class="test-motion-feedback" id="irace-fb"></p>
+      </div>`;
 
-      const render = () => {
-        const isTimePhase = fallState.phase === "time";
-        siGameStage.innerHTML = `
-          <section class="test-theory-page">
-            <div class="test-theory-copy" style="margin-bottom:0.5rem">
-              <p class="test-theory-kicker">Freier Fall · Aufgabe ${fallState.index + 1} von ${FALL_TASKS.length} · ${task.xp} XP</p>
-              <h3>Fall aus ${task.h} m Höhe</h3>
-              <p>Ein Objekt fällt aus der Ruhe (v₀ = 0) aus einer Höhe von <strong>${task.h} m</strong>.</p>
-              <p>Die Erdbeschleunigung beträgt g = ${task.g} m/s² (Luftwiderstand vernachlässigt).</p>
-            </div>
-            <canvas id="fall-canvas" style="width:100%;height:130px;border-radius:10px;display:block;margin:0.5rem 0"></canvas>
-            <div class="test-theory-formula" style="font-size:0.95rem;text-align:left;padding:0.7rem 1.2rem">
-              <span>h = ½ · g · t² &nbsp;&nbsp;|&nbsp;&nbsp; v = g · t</span>
-            </div>
-            ${isTimePhase
-              ? `<p style="font-weight:700;margin:0.6rem 0 0.4rem">Frage 1: Wie lange fällt das Objekt? (in Sekunden)</p>`
-              : `<p style="font-weight:700;margin:0.6rem 0 0.4rem">Frage 2: Mit welcher Geschwindigkeit trifft es auf? (in m/s)</p>`
-            }
-            <div class="test-motion-answer-row">
-              <input id="fall-answer" type="number" inputmode="decimal" placeholder="${isTimePhase ? "Zeit in s" : "Geschwindigkeit in m/s"}" step="0.1">
-              <button class="si-jumpgame-button" id="fall-check" type="button">Prüfen</button>
-            </div>
-            <p class="test-motion-feedback" id="fall-feedback" aria-live="polite"></p>
-            <button class="si-jumpgame-button test-motion-next" id="fall-next" type="button" hidden>${!isTimePhase && isLastTask ? "Fertig" : "Weiter"}</button>
-          </section>`;
+    const cv = document.getElementById('irace-cv');
+    cv.width = cv.parentElement.offsetWidth || cv.parentElement.clientWidth || 560;
+    const W = cv.width, H = cv.height, ctx = cv.getContext('2d');
+    const TL = 28, TR = W - 28, TW = TR - TL;
+    const LA = 46, LB = 104;
 
-        const fc = siGameStage.querySelector("#fall-canvas");
-        if (fc instanceof HTMLCanvasElement) {
-          window.requestAnimationFrame(() => {
-            const ctx = fc.getContext("2d");
-            const ratio = Math.min(window.devicePixelRatio || 1, 2);
-            const W = fc.getBoundingClientRect().width;
-            const H = 130;
-            fc.width = Math.floor(W * ratio); fc.height = Math.floor(H * ratio);
-            ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
-            ctx.fillStyle = "#e8f4fd"; ctx.fillRect(0, 0, W, H);
-            // Sky gradient
-            const grad = ctx.createLinearGradient(0, 0, 0, H);
-            grad.addColorStop(0, "#c8e6ff"); grad.addColorStop(1, "#eef2f8");
-            ctx.fillStyle = grad; ctx.fillRect(0, 0, W, H);
-            // Ground
-            ctx.fillStyle = "#8ab87d"; ctx.fillRect(0, H - 18, W, 18);
-            ctx.fillStyle = "#6a9460"; ctx.fillRect(0, H - 18, W, 4);
-            // Height marker
-            ctx.strokeStyle = "#aaa"; ctx.lineWidth = 1; ctx.setLineDash([4, 3]);
-            const objX = W * 0.3;
-            ctx.beginPath(); ctx.moveTo(objX, 22); ctx.lineTo(objX, H - 18); ctx.stroke();
-            ctx.setLineDash([]);
-            // Arrow
-            ctx.strokeStyle = "#3b82f6"; ctx.lineWidth = 2;
-            ctx.beginPath(); ctx.moveTo(objX + 18, 22); ctx.lineTo(objX + 18, H - 35); ctx.stroke();
-            ctx.beginPath(); ctx.moveTo(objX + 13, H - 38); ctx.lineTo(objX + 18, H - 30); ctx.lineTo(objX + 23, H - 38); ctx.fillStyle = "#3b82f6"; ctx.fill();
-            // Height label
-            ctx.fillStyle = "#3b82f6"; ctx.font = "700 12px Space Grotesk, sans-serif"; ctx.textAlign = "left";
-            ctx.fillText(`h = ${task.h} m`, objX + 25, H / 2 + 4);
-            // Ball
-            const ballY = isTimePhase ? 22 : H - 30;
-            ctx.beginPath(); ctx.arc(objX, ballY, 10, 0, Math.PI * 2);
-            const ballGrad = ctx.createRadialGradient(objX - 3, ballY - 3, 1, objX, ballY, 10);
-            ballGrad.addColorStop(0, "#ff9f5a"); ballGrad.addColorStop(1, "#e05a1a");
-            ctx.fillStyle = ballGrad; ctx.fill();
-            // Phase indicator
-            ctx.fillStyle = "#555"; ctx.font = "600 10px Space Grotesk, sans-serif"; ctx.textAlign = "center";
-            ctx.fillText(isTimePhase ? "Objekt am Start (oben)" : "Objekt kurz vor dem Aufprall", W * 0.65, H / 2);
-          });
+    const drawLane = (ly, car, prog) => {
+      ctx.fillStyle = '#2c3a4a'; ctx.fillRect(TL, ly - 20, TW, 40);
+      ctx.setLineDash([14, 10]); ctx.strokeStyle = 'rgba(255,255,255,0.25)'; ctx.lineWidth = 2;
+      ctx.beginPath(); ctx.moveTo(TL, ly); ctx.lineTo(TR, ly); ctx.stroke(); ctx.setLineDash([]);
+      ctx.fillStyle = car.color; ctx.font = 'bold 11px monospace'; ctx.fillText(car.label, TL + 2, ly - 25);
+      for (let r = 0; r < 8; r++) {
+        ctx.fillStyle = r % 2 ? '#333' : '#fff'; ctx.fillRect(TR - 2, ly - 18 + r * 4.5, 4, 4.5);
+      }
+      const p = Math.min(prog, 1);
+      ctx.fillStyle = car.color + '33'; ctx.fillRect(TL, ly + 21, TW, 3);
+      ctx.fillStyle = car.color; ctx.fillRect(TL, ly + 21, TW * p, 3);
+      const cx = TL + p * TW;
+      ctx.fillStyle = car.color; ctx.beginPath(); ctx.roundRect(cx - 20, ly - 20, 40, 15, 4); ctx.fill();
+      ctx.fillStyle = car.color + 'cc'; ctx.beginPath(); ctx.roundRect(cx - 12, ly - 28, 24, 10, 3); ctx.fill();
+      [cx - 11, cx + 11].forEach(wx => {
+        ctx.fillStyle = '#111'; ctx.beginPath(); ctx.arc(wx, ly - 5, 5, 0, Math.PI * 2); ctx.fill();
+        ctx.fillStyle = '#666'; ctx.beginPath(); ctx.arc(wx, ly - 5, 2.5, 0, Math.PI * 2); ctx.fill();
+      });
+    };
+
+    const paint = (el) => {
+      ctx.clearRect(0, 0, W, H);
+      // finish line
+      ctx.strokeStyle = '#1a7a50'; ctx.lineWidth = 2.5;
+      ctx.beginPath(); ctx.moveTo(TR, 4); ctx.lineTo(TR, H - 4); ctx.stroke();
+      ctx.fillStyle = '#1a7a50'; ctx.font = 'bold 11px monospace'; ctx.textAlign = 'center';
+      ctx.fillText(trackS + ' m', TR, H - 6); ctx.textAlign = 'left';
+      drawLane(LA, cA, cA.v * el / trackS);
+      drawLane(LB, cB, cB.v * el / trackS);
+      // timer pill
+      ctx.fillStyle = 'rgba(20,24,40,0.88)'; ctx.beginPath();
+      ctx.roundRect(W / 2 - 42, H / 2 - 13, 84, 22, 4); ctx.fill();
+      ctx.fillStyle = '#fff'; ctx.font = 'bold 12px monospace'; ctx.textAlign = 'center';
+      ctx.fillText('t = ' + el.toFixed(1) + ' s', W / 2, H / 2 + 3); ctx.textAlign = 'left';
+    };
+
+    paint(0);
+
+    const saEl = document.getElementById('ira-sa'), sbEl = document.getElementById('ira-sb');
+    const tEl = document.getElementById('ira-t'), fb = document.getElementById('irace-fb');
+    let raf = null;
+
+    document.getElementById('irace-go').addEventListener('click', function () {
+      if (raf) return; this.disabled = true;
+      const t0 = performance.now();
+      const loop = (now) => {
+        const el = Math.min((now - t0) / 1000, totalT);
+        paint(el);
+        saEl.textContent = Math.min(cA.v * el, trackS).toFixed(0) + ' m';
+        sbEl.textContent = Math.min(cB.v * el, trackS).toFixed(0) + ' m';
+        tEl.textContent = el.toFixed(1);
+        if (el < totalT) { raf = requestAnimationFrame(loop); }
+        else {
+          raf = null;
+          const winner = cA.v > cB.v ? cA : cB, loser = cA.v > cB.v ? cB : cA;
+          fb.className = 'test-motion-feedback is-correct';
+          fb.textContent = '🏁 ' + winner.label + ' gewinnt! Ankunft nach ' +
+            (trackS / winner.v).toFixed(1) + ' s vs. ' + (trackS / loser.v).toFixed(1) + ' s.';
+          if (q.followUp?.length) setTimeout(() => runMCEngine(q.followUp, onComplete), 1600);
+          else setTimeout(() => onComplete?.(), 1800);
         }
+      };
+      raf = requestAnimationFrame(loop);
+    });
+  };
 
-        const answerInput = siGameStage.querySelector("#fall-answer");
-        const feedbackEl = siGameStage.querySelector("#fall-feedback");
-        const nextBtn = siGameStage.querySelector("#fall-next");
-        let solved = false;
 
-        const check = () => {
-          if (solved) return;
-          const val = Number(answerInput?.value);
-          if (!Number.isFinite(val) || val <= 0) {
-            if (feedbackEl) { feedbackEl.textContent = "Gib eine positive Zahl ein."; feedbackEl.className = "test-motion-feedback is-hint"; }
-            return;
-          }
-          const correct = isTimePhase ? task.answerT : task.answerV;
-          const hint = isTimePhase ? task.hintT : task.hintV;
-          if (Math.abs(val - correct) <= 0.1) {
-            solved = true;
-            if (answerInput instanceof HTMLInputElement) answerInput.disabled = true;
-            const pts = Math.round(task.xp / 2);
-            if (!fallState.hadError) awardPoints(pts);
-            if (feedbackEl) {
-              feedbackEl.textContent = `✓ Richtig! ${isTimePhase ? `Fallzeit = ${task.answerT} s.` : `Aufprallgeschwindigkeit = ${task.answerV} m/s.`} ${!fallState.hadError ? `+${pts} XP` : ""}`;
-              feedbackEl.className = "test-motion-feedback is-correct";
-            }
-            if (nextBtn instanceof HTMLButtonElement) nextBtn.hidden = false;
-          } else {
-            fallState.hadError = true;
-            if (feedbackEl) { feedbackEl.textContent = `Nicht ganz. Tipp: ${hint}`; feedbackEl.className = "test-motion-feedback is-hint"; }
-          }
-        };
+  // ── Interactive Engine 3: Live s-t Graph ────────────────────────────────
+  const runSTLiveEngine = (q, onComplete) => {
+    const movV = q.v ?? 8, movS = q.s ?? 160;
+    const dur = movS / movV;
 
-        siGameStage.querySelector("#fall-check")?.addEventListener("click", check);
-        if (answerInput instanceof HTMLInputElement) {
-          answerInput.addEventListener("keydown", e => { if (e.key === "Enter") check(); });
-          answerInput.focus();
+    siGameStage.innerHTML = `
+      <div class="interact-page">
+        <p class="mod-q-meta">Interaktiv · s-t-Diagramm live</p>
+        <h3 class="interact-heading">s-t-Diagramm in Echtzeit</h3>
+        <p class="interact-sub">Oben bewegt sich der Körper. Unten entsteht simultan das s-t-Diagramm. Achte auf die Steigung!</p>
+        <div class="interact-canvas-wrap"><canvas id="ist-cv" height="260"></canvas></div>
+        <button class="si-jumpgame-button" id="ist-go" style="margin:1rem auto;display:block">▶ Animation starten</button>
+        <p class="test-motion-feedback" id="ist-fb"></p>
+      </div>`;
+
+    const cv = document.getElementById('ist-cv');
+    cv.width = cv.parentElement.offsetWidth || cv.parentElement.clientWidth || 560;
+    const W = cv.width, H = cv.height, ctx = cv.getContext('2d');
+    const SPLIT = 100, TL = 22, TR = W - 22, TW = TR - TL, TY = SPLIT / 2 + 8;
+    const GP = { x0: 46, x1: W - 18, y0: SPLIT + 16, y1: H - 18 };
+    GP.w = GP.x1 - GP.x0; GP.h = GP.y1 - GP.y0;
+    const pts = [];
+
+    const paintAll = (elapsed, finished) => {
+      ctx.clearRect(0, 0, W, H);
+      const prog = Math.min(elapsed / dur, 1);
+
+      // Track
+      ctx.fillStyle = '#2c3a4a'; ctx.fillRect(TL, TY - 16, TW, 32);
+      ctx.setLineDash([12, 10]); ctx.strokeStyle = 'rgba(255,255,255,0.25)'; ctx.lineWidth = 2;
+      ctx.beginPath(); ctx.moveTo(TL, TY); ctx.lineTo(TR, TY); ctx.stroke(); ctx.setLineDash([]);
+      ctx.fillStyle = 'rgba(255,255,255,0.6)'; ctx.fillRect(TL - 1, TY - 18, 2, 36);
+      ctx.fillStyle = '#2d3a48'; ctx.font = 'bold 10px monospace'; ctx.fillText('s=0', TL, TY - 22);
+      for (let r = 0; r < 8; r++) {
+        ctx.fillStyle = r % 2 ? '#333' : '#fff'; ctx.fillRect(TR - 2, TY - 18 + r * 4.5, 4, 4.5);
+      }
+      ctx.fillStyle = '#1a7a50'; ctx.font = 'bold 10px monospace'; ctx.fillText(movS + ' m', TR - 22, TY - 22);
+      ctx.fillStyle = 'rgba(138,115,255,0.2)'; ctx.fillRect(TL, TY + 18, TW, 3);
+      ctx.fillStyle = '#7c5cf5'; ctx.fillRect(TL, TY + 18, TW * prog, 3);
+      const cx = TL + prog * TW;
+      ctx.fillStyle = '#7c5cf5'; ctx.beginPath(); ctx.roundRect(cx - 20, TY - 23, 40, 16, 5); ctx.fill();
+      ctx.fillStyle = '#5a3fd4'; ctx.beginPath(); ctx.roundRect(cx - 12, TY - 31, 24, 10, 3); ctx.fill();
+      ctx.fillStyle = 'rgba(255,255,255,0.55)';
+      ctx.beginPath(); ctx.roundRect(cx - 9, TY - 29, 8, 7, 2); ctx.fill();
+      ctx.beginPath(); ctx.roundRect(cx + 1, TY - 29, 8, 7, 2); ctx.fill();
+      [cx - 12, cx + 12].forEach(wx => {
+        ctx.fillStyle = '#111'; ctx.beginPath(); ctx.arc(wx, TY - 6, 6, 0, Math.PI * 2); ctx.fill();
+        ctx.fillStyle = '#555'; ctx.beginPath(); ctx.arc(wx, TY - 6, 3, 0, Math.PI * 2); ctx.fill();
+      });
+      // divider
+      ctx.fillStyle = 'rgba(0,0,0,0.08)'; ctx.fillRect(0, SPLIT, W, 1);
+
+      // Graph grid
+      ctx.strokeStyle = 'rgba(0,0,0,0.08)'; ctx.lineWidth = 1; ctx.setLineDash([3, 6]);
+      for (let i = 1; i <= 4; i++) {
+        const gx = GP.x0 + (GP.w / 4) * i, gy = GP.y1 - (GP.h / 4) * i;
+        ctx.beginPath(); ctx.moveTo(gx, GP.y0); ctx.lineTo(gx, GP.y1); ctx.stroke();
+        ctx.beginPath(); ctx.moveTo(GP.x0, gy); ctx.lineTo(GP.x1, gy); ctx.stroke();
+        ctx.fillStyle = '#4d6070'; ctx.font = '10px monospace';
+        ctx.textAlign = 'center'; ctx.fillText((dur / 4 * i).toFixed(1), gx, GP.y1 + 14);
+        ctx.textAlign = 'right'; ctx.fillText((movS / 4 * i).toFixed(0), GP.x0 - 4, gy + 4);
+      }
+      ctx.setLineDash([]); ctx.textAlign = 'left';
+      ctx.strokeStyle = 'rgba(0,0,0,0.3)'; ctx.lineWidth = 1.5;
+      ctx.beginPath(); ctx.moveTo(GP.x0, GP.y0 - 6); ctx.lineTo(GP.x0, GP.y1); ctx.lineTo(GP.x1 + 6, GP.y1); ctx.stroke();
+      ctx.fillStyle = '#2d3a48'; ctx.font = '11px monospace';
+      ctx.fillText('s (m)', GP.x0 - 40, GP.y0 + 2);
+      ctx.fillText('t (s)', GP.x1, GP.y1 + 14);
+      ctx.fillText('0', GP.x0 - 8, GP.y1 + 14);
+
+      // Plotted line
+      if (pts.length > 1) {
+        ctx.strokeStyle = '#8a73ff'; ctx.lineWidth = 2.5; ctx.beginPath();
+        pts.forEach(({ t, s: ps }, i) => {
+          const px = GP.x0 + (t / dur) * GP.w, py = GP.y1 - (ps / movS) * GP.h;
+          i === 0 ? ctx.moveTo(px, py) : ctx.lineTo(px, py);
+        });
+        ctx.stroke();
+        const last = pts[pts.length - 1];
+        const lx = GP.x0 + (last.t / dur) * GP.w, ly = GP.y1 - (last.s / movS) * GP.h;
+        ctx.fillStyle = '#8a73ff'; ctx.beginPath(); ctx.arc(lx, ly, 5, 0, Math.PI * 2); ctx.fill();
+      }
+
+      // Slope annotation when done
+      if (finished) {
+        const ax = GP.x0 + GP.w * 0.1, ay = GP.y1 - GP.h * 0.1;
+        const bx = GP.x0 + GP.w * 0.5, by = GP.y1 - GP.h * 0.5;
+        ctx.strokeStyle = '#ffd164'; ctx.lineWidth = 1.5; ctx.setLineDash([5, 5]);
+        ctx.beginPath(); ctx.moveTo(ax, ay); ctx.lineTo(bx, ay); ctx.lineTo(bx, by); ctx.stroke();
+        ctx.setLineDash([]);
+        ctx.fillStyle = 'rgba(20,24,40,0.85)'; ctx.beginPath();
+        ctx.roundRect(bx + 5, (ay + by) / 2 - 14, 162, 22, 4); ctx.fill();
+        ctx.fillStyle = '#ffd164'; ctx.font = 'bold 11px monospace';
+        ctx.fillText('Steigung = ' + movV + ' m/s', bx + 9, (ay + by) / 2 + 3);
+      }
+    };
+
+    paintAll(0, false);
+    const fb = document.getElementById('ist-fb');
+    let raf = null;
+
+    document.getElementById('ist-go').addEventListener('click', function () {
+      if (raf) return; this.disabled = true; pts.length = 0;
+      const t0 = performance.now();
+      const loop = (now) => {
+        const el = Math.min((now - t0) / 1000, dur);
+        pts.push({ t: el, s: Math.min(movV * el, movS) });
+        const done = el >= dur;
+        paintAll(el, done);
+        if (!done) { raf = requestAnimationFrame(loop); }
+        else {
+          raf = null;
+          fb.className = 'test-motion-feedback is-correct';
+          fb.textContent = 'Steigung = Δs/Δt = ' + movS + ' m / ' + dur.toFixed(1) + ' s = ' + movV + ' m/s';
+          if (q.followUp?.length) setTimeout(() => runMCEngine(q.followUp, onComplete), 1800);
+          else setTimeout(() => onComplete?.(), 2200);
         }
-        if (nextBtn instanceof HTMLButtonElement) {
-          nextBtn.addEventListener("click", () => {
-            if (isTimePhase) {
-              fallState.phase = "velocity";
-              fallState.hadError = false;
-              render();
-              return;
-            }
-            if (fallState.index >= FALL_TASKS.length - 1) {
-              markStepComplete("TEST", fallState.index + 5);
-              siGameStage.innerHTML = `
-                <section class="test-motion-complete">
-                  <h3>Schwerkraft-Kenner!</h3>
-                  <p>Du berechnest Fallzeit und Aufprallgeschwindigkeit sicher mit h = ½gt² und v = g·t.</p>
-                  <button class="si-jumpgame-button" id="fall-back" type="button">Zurück zum Pfad</button>
-                </section>`;
-              siGameStage.querySelector("#fall-back")?.addEventListener("click", closeSIGame);
-              return;
-            }
-            fallState.index++;
-            fallState.hadError = false;
-            showFallQuestion();
-          });
+      };
+      raf = requestAnimationFrame(loop);
+    });
+  };
+
+
+  const renderModuleGame = (step) => {
+    if (!(siGameStage instanceof HTMLElement) || !step) return;
+    stopModuleGame();
+    stopSIUnitsJumpGame(); stopTestMotionGame(); stopCatchUpGame();
+    stopAccelerationGame(); stopSprintGame(); stopFreeFallGame();
+    stopBrakingGame(); stopDistanceAccGame();
+
+    // Enrich step with STEP_CONTENT data
+    const enriched = getStepContent(step);
+
+    if (!enriched.theory && !enriched.question) {
+      renderGenericGame(step); return;
+    }
+
+    step = enriched;
+
+    const startQuestion = () => {
+      stopModuleGame();
+      if (!step.question) { showModuleComplete(step); return; }
+      const q = step.question;
+      const done = () => showModuleComplete(step);
+
+      // Interactive engines bypass the difficulty picker
+      if (q.type === "speed-lab") { runSpeedLabEngine(q, done); return; }
+      if (q.type === "race")      { runRaceEngine(q, done);      return; }
+      if (q.type === "st-live")   { runSTLiveEngine(q, done);    return; }
+
+      const runQ = (tasks) => {
+        if (q.type === "mc") {
+          runMCEngine(tasks, done);
+        } else if (q.type === "calc") {
+          runCalcEngine(tasks, q.config, done);
+        } else if (q.type === "chart") {
+          runChartEngine(q.chartConfig, tasks, done);
+        } else if (q.type === "matter") {
+          runMatterEngine(q.scene, tasks, done);
+        } else {
+          showModuleComplete(step);
         }
       };
 
-      render();
+      if (q.basis && q.challenge) {
+        showDifficultyPicker(q, runQ);
+      } else {
+        runQ(q.tasks || []);
+      }
     };
 
-    siGameStage.innerHTML = `
-      <section class="test-theory-page">
-        <div class="test-theory-copy">
-          <p class="test-theory-kicker">Theorie</p>
-          <h3>Freier Fall</h3>
-          <p>Wenn ein Objekt aus der Ruhe (v₀ = 0) fällt und wir den Luftwiderstand ignorieren, wirkt nur die Erdbeschleunigung:</p>
-          <p style="text-align:center;font-size:1.1rem;font-weight:700;margin:0.4rem 0">g ≈ 9.81 m/s² &nbsp; (vereinfacht: 10 m/s²)</p>
-          <p>Da die Beschleunigung konstant ist, gelten die Formeln der gleichmäßig beschleunigten Bewegung:</p>
-          <ul style="line-height:1.9;padding-left:1.2rem">
-            <li><strong>Fallzeit:</strong> h = ½ · g · t² &nbsp;→&nbsp; t = √(2h / g)</li>
-            <li><strong>Aufprallgeschwindigkeit:</strong> v = g · t</li>
-          </ul>
-          <p>Der freie Fall ist ein Spezialfall der gleichmäßig beschleunigten Bewegung — nur in der Vertikalen!</p>
-        </div>
-        <div class="test-theory-formula">
-          <span>t = √(2h / g)</span>
-        </div>
-        <button class="si-jumpgame-button test-theory-start" id="fall-theory-start" type="button">Zu den Aufgaben</button>
-      </section>`;
-    siGameStage.querySelector("#fall-theory-start")?.addEventListener("click", showFallQuestion);
+    showModuleTheory(step, startQuestion);
   };
+
 
   const renderGenericGame = (step) => {
     if (!(siGameStage instanceof HTMLElement)) {
@@ -4138,8 +5469,6 @@ if (title && frame && pencilLayer instanceof HTMLCanvasElement) {
     const backButton = siGameStage.querySelector("#si-jump-back-final");
     if (backButton instanceof HTMLButtonElement) {
       backButton.addEventListener("click", () => {
-        markStepComplete("0", 0);
-        checkModuleComplete("0");
         closeSIGame();
       });
     }
@@ -4529,10 +5858,6 @@ if (title && frame && pencilLayer instanceof HTMLCanvasElement) {
     const isAccelerationMotion = moduleId === "TEST" && step.title === "Beschleunigung";
     const isSprintScanner = moduleId === "TEST" && step.title === "K1 - Sprint-Scanner";
     const isOvertakeDuel = moduleId === "TEST" && step.title === "K2 - Überhol-Duell";
-    const isVTDiagramPanel = moduleId === "TEST" && step.title === "v-t Diagramm lesen";
-    const isBrakePanel = moduleId === "TEST" && step.title === "Bremsweg berechnen";
-    const isErrorPanel = moduleId === "TEST" && step.title === "Fehler finden";
-    const isFreeFallPanel = moduleId === "TEST" && step.title === "Freier Fall";
 
     if (isTestUniformMotion) {
       siSideContent.innerHTML = `
@@ -4618,82 +5943,6 @@ if (title && frame && pencilLayer instanceof HTMLCanvasElement) {
         <article class="side-card">
           <h3 class="side-title"><strong>Einbau ins Spiel</strong></h3>
           <p class="side-text">Der Spieler entscheidet, ob das Überholmanöver vor einer Kurve möglich ist. Die Simulation zeigt, wann beide Fahrzeuge gleichauf sind.</p>
-        </article>
-      `;
-      typesetSidePanelMath();
-      return;
-    }
-
-    if (isVTDiagramPanel) {
-      siSideContent.innerHTML = `
-        <article class="side-card">
-          <h3 class="side-title"><strong>v-t Diagramm</strong></h3>
-          <p class="side-text">Die <strong>Steigung</strong> der Linie gibt die Beschleunigung an:</p>
-          <p class="side-eq">\\[a = \\frac{\\Delta v}{\\Delta t}\\]</p>
-          <p class="side-text">Die <strong>Fläche</strong> unter dem Graphen ergibt die zurückgelegte Strecke:</p>
-          <p class="side-eq">\\[s = v \\cdot t \\quad \\text{(bei konst. } v\\text{)}\\]</p>
-        </article>
-        <article class="side-card">
-          <h3 class="side-title"><strong>Drei Muster</strong></h3>
-          <p class="side-text">Waagerecht → konstante Geschwindigkeit (a = 0)</p>
-          <p class="side-text">Steigend → positive Beschleunigung</p>
-          <p class="side-text">Fallend → Verzögerung (Bremsen)</p>
-        </article>
-      `;
-      typesetSidePanelMath();
-      return;
-    }
-
-    if (isBrakePanel) {
-      siSideContent.innerHTML = `
-        <article class="side-card">
-          <h3 class="side-title"><strong>Bremsweg</strong></h3>
-          <p class="side-text">Aus \\(v^2 = v_0^2 - 2as\\) mit \\(v = 0\\) folgt:</p>
-          <p class="side-eq">\\[s = \\frac{v_0^2}{2a}\\]</p>
-          <p class="side-text">Verdoppelst du \\(v_0\\), vervierfacht sich der Bremsweg!</p>
-        </article>
-        <article class="side-card">
-          <h3 class="side-title"><strong>Praxisbeispiel</strong></h3>
-          <p class="side-text">Bei Tempo 50 (≈ 14 m/s) und \\(a = 7\\,\\mathrm{m/s^2}\\) beträgt der Bremsweg nur ca. 14 m.</p>
-          <p class="side-text">Bei Tempo 100 sind es bereits 4× so viel — deshalb gilt im Straßenverkehr: Halber Abstand, doppeltes Risiko!</p>
-        </article>
-      `;
-      typesetSidePanelMath();
-      return;
-    }
-
-    if (isErrorPanel) {
-      siSideContent.innerHTML = `
-        <article class="side-card">
-          <h3 class="side-title"><strong>Einheitencheck</strong></h3>
-          <p class="side-text">Ein guter Trick: Prüfe die Einheiten auf beiden Seiten.</p>
-          <p class="side-eq">\\[s = v \\cdot t \\Rightarrow [\\mathrm{m}] = \\frac{\\mathrm{m}}{\\mathrm{s}} \\cdot \\mathrm{s} \\; ✓\\]</p>
-          <p class="side-text">Wenn die Einheiten nicht passen, ist die Formel falsch angewendet.</p>
-        </article>
-        <article class="side-card">
-          <h3 class="side-title"><strong>Häufige Fehler</strong></h3>
-          <p class="side-text">+ statt × bei \\(s = v \\cdot t\\)</p>
-          <p class="side-text">× statt ÷ bei \\(a = \\Delta v / \\Delta t\\)</p>
-          <p class="side-text">\\(t\\) nicht quadriert bei \\(s = \\frac{1}{2}at^2\\)</p>
-        </article>
-      `;
-      typesetSidePanelMath();
-      return;
-    }
-
-    if (isFreeFallPanel) {
-      siSideContent.innerHTML = `
-        <article class="side-card">
-          <h3 class="side-title"><strong>Freier Fall</strong></h3>
-          <p class="side-text">Spezialfall: \\(v_0 = 0\\), nur Schwerkraft wirkt.</p>
-          <p class="side-eq">\\[h = \\frac{1}{2} g t^2\\]</p>
-          <p class="side-eq">\\[t = \\sqrt{\\frac{2h}{g}}\\]</p>
-          <p class="side-eq">\\[v = g \\cdot t\\]</p>
-        </article>
-        <article class="side-card">
-          <h3 class="side-title"><strong>Merke</strong></h3>
-          <p class="side-text">\\(g \\approx 9{,}81\\,\\mathrm{m/s^2}\\) — vereinfacht oft \\(10\\,\\mathrm{m/s^2}\\)</p>
-          <p class="side-text">Masse spielt keine Rolle (Galilei)! Schwere und leichte Objekte fallen gleich schnell.</p>
         </article>
       `;
       typesetSidePanelMath();
@@ -4828,65 +6077,12 @@ if (title && frame && pencilLayer instanceof HTMLCanvasElement) {
       return;
     }
 
-    const isCoordSide = moduleId === "0" && step.title === "Funktionen und Koordinatensysteme";
-    const isSVSide = moduleId === "0" && step.title === "Skalar und Vektoren";
-    const isRefSide = moduleId === "0" && step.title === "Bezugssystem";
-    const isPosSide = moduleId === "0" && step.title === "Position";
-    const isDispSide = moduleId === "0" && step.title === "Strecke und Verschiebung";
-
-    if (isCoordSide) {
-      siSideContent.innerHTML = `
-        <article class="side-card">
-          <h3 class="side-title"><strong>Koordinatensystem</strong></h3>
-          <p class="side-text">Im <strong>s-t-Diagramm</strong> steht t auf der x-Achse (Zeit) und s auf der y-Achse (Position).</p>
-          <p class="side-eq">\\[s = f(t)\\]</p>
-          <p class="side-text">Die Steigung der Kurve entspricht der Geschwindigkeit \\(v\\).</p>
-        </article>
-      `;
-    } else if (isSVSide) {
-      siSideContent.innerHTML = `
-        <article class="side-card">
-          <h3 class="side-title"><strong>Skalar vs. Vektor</strong></h3>
-          <p class="side-text"><strong>Skalar:</strong> nur Betrag (z.B. Masse \\(m\\), Zeit \\(t\\), Temperatur \\(T\\))</p>
-          <p class="side-text"><strong>Vektor:</strong> Betrag + Richtung (z.B. \\(\\vec{v}\\), \\(\\vec{F}\\), \\(\\vec{\\Delta s}\\))</p>
-          <p class="side-eq">\\[\\vec{v} = v \\cdot \\hat{e}\\]</p>
-        </article>
-      `;
-    } else if (isRefSide) {
-      siSideContent.innerHTML = `
-        <article class="side-card">
-          <h3 class="side-title"><strong>Bezugssystem</strong></h3>
-          <p class="side-text">Geschwindigkeiten von entgegengesetzt fahrenden Objekten addieren sich:</p>
-          <p class="side-eq">\\[v_{\\text{rel}} = v_A + v_B\\]</p>
-          <p class="side-text">Gleichgerichtete Objekte: \\(v_{\\text{rel}} = |v_A - v_B|\\)</p>
-        </article>
-      `;
-    } else if (isPosSide) {
-      siSideContent.innerHTML = `
-        <article class="side-card">
-          <h3 class="side-title"><strong>Position</strong></h3>
-          <p class="side-text">Die neue Position nach einer Verschiebung:</p>
-          <p class="side-eq">\\[s = s_0 + \\Delta s\\]</p>
-          <p class="side-text">Dabei ist \\(s_0\\) die Startposition und \\(\\Delta s\\) die Verschiebung.</p>
-        </article>
-      `;
-    } else if (isDispSide) {
-      siSideContent.innerHTML = `
-        <article class="side-card">
-          <h3 class="side-title"><strong>Strecke & Verschiebung</strong></h3>
-          <p class="side-text"><strong>Strecke</strong> = gesamter zurückgelegter Weg (Skalar)</p>
-          <p class="side-text"><strong>Verschiebung</strong> = Differenz zwischen End- und Startposition (Vektor)</p>
-          <p class="side-eq">\\[\\Delta s = s_{\\text{end}} - s_0\\]</p>
-        </article>
-      `;
-    } else {
-      siSideContent.innerHTML = `
-        <article class="side-card">
-          <h3 class="side-title"><strong>${step.title}</strong></h3>
-          <p class="side-text">Zusammenfassung folgt hier.</p>
-        </article>
-      `;
-    }
+    siSideContent.innerHTML = `
+      <article class="side-card">
+        <h3 class="side-title"><strong>${step.title}</strong></h3>
+        <p class="side-text">Zusammenfassung folgt hier.</p>
+      </article>
+    `;
     typesetSidePanelMath();
   };
 
@@ -4901,51 +6097,24 @@ if (title && frame && pencilLayer instanceof HTMLCanvasElement) {
       return;
     }
 
-    activeStepIndex = stepIndex;
-
     if (siGameKicker instanceof HTMLElement) {
       siGameKicker.textContent = `Module ${activeModuleId} Game`;
     }
     if (siGameTitle instanceof HTMLElement) {
       siGameTitle.textContent = step.title;
     }
-
-    if (activeModuleId === "0" && stepIndex === 0 && !gameProgress.badges.includes("first_step")) {
-      awardBadge("first_step");
-    }
-
     const isSIUnits = activeModuleId === "0" && step.title === "SI-Einheiten";
-    const isCoordinates = activeModuleId === "0" && stepIndex === 1;
-    const isScalarVector = activeModuleId === "0" && stepIndex === 2;
-    const isReferenceFrame = activeModuleId === "0" && stepIndex === 3;
-    const isPosition = activeModuleId === "0" && stepIndex === 4;
-    const isDisplacement = activeModuleId === "0" && stepIndex === 5;
     const isTestUniformMotion = activeModuleId === "TEST" && step.title === "Gleichförmige Bewegung";
     const isCatchUpMotion = activeModuleId === "TEST" && step.title === "Aufholen";
     const isAccelerationMotion = activeModuleId === "TEST" && step.title === "Beschleunigung";
     const isSprintScanner = activeModuleId === "TEST" && step.title === "K1 - Sprint-Scanner";
     const isOvertakeDuel = activeModuleId === "TEST" && step.title === "K2 - Überhol-Duell";
-    const isVTDiagram = activeModuleId === "TEST" && step.title === "v-t Diagramm lesen";
-    const isBrakeCalc = activeModuleId === "TEST" && step.title === "Bremsweg berechnen";
-    const isErrorFind = activeModuleId === "TEST" && step.title === "Fehler finden";
-    const isFreeFall = activeModuleId === "TEST" && step.title === "Freier Fall";
+    const isFreeFall = activeModuleId === "TEST" && step.title === "K3 - Freier Fall";
+    const isBraking = activeModuleId === "TEST" && step.title === "K4 - Bremsweg";
+    const isDistanceAcc = activeModuleId === "TEST" && step.title === "K5 - Beschleunigungsweg";
+    const isMCConcept = activeModuleId === "TEST" && step.title === "K6 - Konzept-Quiz";
     if (isSIUnits) {
       renderSIUnitsTutorial();
-    } else if (isCoordinates) {
-      stopSIUnitsJumpGame();
-      renderCoordinatesGame();
-    } else if (isScalarVector) {
-      stopSIUnitsJumpGame();
-      renderScalarVectorGame();
-    } else if (isReferenceFrame) {
-      stopSIUnitsJumpGame();
-      renderReferenceFrameGame();
-    } else if (isPosition) {
-      stopSIUnitsJumpGame();
-      renderPositionGame();
-    } else if (isDisplacement) {
-      stopSIUnitsJumpGame();
-      renderDisplacementGame();
     } else if (isTestUniformMotion) {
       renderTestUniformMotionGame();
     } else if (isCatchUpMotion) {
@@ -4956,20 +6125,26 @@ if (title && frame && pencilLayer instanceof HTMLCanvasElement) {
       renderSprintGame();
     } else if (isOvertakeDuel) {
       renderCatchUpGame(K2_OVERTAKE_TASK);
-    } else if (isVTDiagram) {
-      renderVTDiagramGame();
-    } else if (isBrakeCalc) {
-      renderBrakeGame();
-    } else if (isErrorFind) {
-      renderErrorGame();
     } else if (isFreeFall) {
-      renderFallGame();
+      renderFreeFallGame();
+    } else if (isBraking) {
+      renderBrakingGame();
+    } else if (isDistanceAcc) {
+      renderDistanceAccGame();
+    } else if (isMCConcept) {
+      renderMCConceptGame();
+    } else if (step.theory || step.question || STEP_CONTENT[step.title]) {
+      renderModuleGame(step);
     } else {
       stopSIUnitsJumpGame();
       stopTestMotionGame();
       stopCatchUpGame();
       stopAccelerationGame();
       stopSprintGame();
+      stopFreeFallGame();
+      stopBrakingGame();
+      stopDistanceAccGame();
+      stopModuleGame();
       renderGenericGame(step);
     }
     renderSidePanel(activeModuleId, step);
@@ -4983,6 +6158,10 @@ if (title && frame && pencilLayer instanceof HTMLCanvasElement) {
     stopCatchUpGame();
     stopAccelerationGame();
     stopSprintGame();
+    stopFreeFallGame();
+    stopBrakingGame();
+    stopDistanceAccGame();
+    stopModuleGame();
     sidePanelHidden = false;
     applySidePanelVisibility();
     document.body.classList.remove("si-game-open");
@@ -5168,6 +6347,15 @@ if (title && frame && pencilLayer instanceof HTMLCanvasElement) {
     }
     if (sprintState.running) {
       resizeSprintCanvas();
+    }
+    if (freeFallState.running) {
+      resizeFreeFallCanvas();
+    }
+    if (brakingState.running) {
+      resizeBrakingCanvas();
+    }
+    if (distanceAccState.running) {
+      resizeDistanceAccCanvas();
     }
     if (siJumpState.running) {
       layoutSIJumpWorld();

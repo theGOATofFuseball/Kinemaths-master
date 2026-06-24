@@ -2449,6 +2449,310 @@ body.si-game-open .side-frame-inner::-webkit-scrollbar {
   }
 }
 
+/* ─── Module Game Engine ─────────────────────────────────────── */
+
+.mod-theory-page {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  min-height: 100%;
+  padding: clamp(1.4rem, 4vw, 3.2rem) clamp(1.2rem, 4vw, 3rem);
+}
+
+.mod-theory-body {
+  width: 100%;
+  max-width: 680px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.mod-theory-kicker {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  opacity: 0;
+}
+
+.mod-theory-heading {
+  font-family: "Nunito", sans-serif;
+  font-size: clamp(1.5rem, 3vw, 2.3rem);
+  font-weight: 900;
+  line-height: 1.2;
+  color: #101418;
+  opacity: 0;
+}
+
+.mod-theory-para {
+  font-size: clamp(0.9rem, 1.1vw, 1.02rem);
+  line-height: 1.72;
+  color: #2d3a48;
+  opacity: 0;
+}
+
+.mod-theory-formula {
+  background: rgba(89, 163, 255, 0.10);
+  border: 2px solid rgba(89, 163, 255, 0.30);
+  border-radius: 18px;
+  padding: 1rem 1.4rem;
+  text-align: center;
+  opacity: 0;
+}
+
+.mod-theory-formula span {
+  font-family: "Space Grotesk", monospace;
+  font-size: clamp(1.1rem, 2vw, 1.5rem);
+  font-weight: 700;
+  color: #17212b;
+}
+
+.mod-theory-example {
+  background: rgba(61, 209, 141, 0.10);
+  border: 2px solid rgba(61, 209, 141, 0.28);
+  border-radius: 14px;
+  padding: 0.9rem 1.2rem;
+  font-size: 0.93rem;
+  color: #1a3a2a;
+  line-height: 1.6;
+  opacity: 0;
+}
+
+.mod-theory-cta {
+  align-self: flex-start;
+  margin-top: 0.6rem;
+  opacity: 0;
+}
+
+/* Question pages */
+.mod-question-page {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: clamp(1.2rem, 3.5vw, 2.6rem) clamp(1.2rem, 4vw, 3rem);
+  min-height: 100%;
+}
+
+.mc-page, .calc-page {
+  max-width: 680px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.mod-q-meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #4d6070;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.mod-q-text {
+  font-size: clamp(0.98rem, 1.3vw, 1.15rem);
+  line-height: 1.6;
+  color: #17212b;
+  font-weight: 600;
+}
+
+.mod-q-heading {
+  font-family: "Nunito", sans-serif;
+  font-size: clamp(1.1rem, 2vw, 1.5rem);
+  font-weight: 800;
+  color: #101418;
+}
+
+.mod-q-next {
+  align-self: flex-start;
+  margin-top: 0.4rem;
+}
+
+.calc-formula-chip {
+  display: inline-flex;
+  background: rgba(23, 33, 43, 0.07);
+  border: 1.5px solid rgba(23, 33, 43, 0.18);
+  border-radius: 10px;
+  padding: 0.5rem 1rem;
+  align-self: flex-start;
+}
+
+.calc-formula-chip span {
+  font-family: "Space Grotesk", monospace;
+  font-size: 0.97rem;
+  font-weight: 700;
+  color: #2d3a48;
+}
+
+/* Chart page */
+.chart-page {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto auto;
+  gap: 1.2rem;
+  padding: 1.4rem;
+}
+
+.mod-chart-wrap {
+  position: relative;
+  height: clamp(200px, 38vh, 340px);
+  background: #fff;
+  border: 2px solid rgba(23, 33, 43, 0.10);
+  border-radius: 18px;
+  overflow: hidden;
+  padding: 0.6rem;
+}
+
+.mod-chart-canvas {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.mod-chart-questions {
+  max-width: 640px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+/* Matter.js page */
+.matter-page {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.2rem;
+  padding: 1.4rem;
+}
+
+.mod-matter-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.mod-matter-canvas {
+  width: 100%;
+  height: clamp(180px, 34vh, 300px);
+  border-radius: 18px;
+  border: 2px solid rgba(23, 33, 43, 0.10);
+  display: block;
+}
+
+.mod-matter-controls {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.mod-matter-reset {
+  background: transparent;
+  border: 2px solid rgba(23, 33, 43, 0.38);
+  color: #2d3a48;
+}
+
+.mod-matter-questions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+/* Completion page */
+.mod-complete-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 1rem;
+  padding: 3rem 2rem;
+  min-height: 70%;
+}
+
+.mod-complete-icon svg {
+  display: block;
+}
+
+.mod-complete-page h3 {
+  font-family: "Nunito", sans-serif;
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  font-weight: 900;
+  color: #101418;
+}
+
+.mod-complete-page p {
+  font-size: 0.98rem;
+  color: #384858;
+  max-width: 440px;
+}
+
+.mod-complete-actions {
+  display: flex;
+  gap: 0.7rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 0.4rem;
+}
+
+.mc-quiz-page h3 {
+  font-size: clamp(1.3rem, 2.6vw, 2rem);
+}
+
+.mc-options-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.62rem;
+}
+
+@media (max-width: 560px) {
+  .mc-options-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.mc-option-btn {
+  appearance: none;
+  border: 2.5px solid rgba(21, 27, 34, 0.76);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.94);
+  color: #17212b;
+  padding: 0.82rem 1rem;
+  font-family: inherit;
+  font-size: clamp(0.88rem, 1.1vw, 0.98rem);
+  font-weight: 700;
+  line-height: 1.35;
+  text-align: left;
+  cursor: pointer;
+  transition: background 0.14s, border-color 0.14s, transform 0.1s;
+}
+
+.mc-option-btn:hover:not(:disabled) {
+  background: rgba(240, 246, 255, 0.98);
+  border-color: rgba(21, 27, 34, 0.9);
+  transform: translateY(-1px);
+}
+
+.mc-option-btn:disabled {
+  cursor: default;
+  opacity: 0.72;
+}
+
+.mc-option-btn.mc-correct {
+  border-color: rgba(20, 115, 68, 0.72);
+  background: rgba(219, 247, 230, 0.96);
+  color: #164327;
+  opacity: 1;
+}
+
+.mc-option-btn.mc-wrong {
+  border-color: rgba(190, 40, 60, 0.58);
+  background: rgba(255, 228, 230, 0.96);
+  color: #7a1a22;
+  opacity: 1;
+}
+
+.mc-feedback {
+  margin-top: 0;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .title,
   .cta,
@@ -2468,81 +2772,210 @@ body.si-game-open .side-frame-inner::-webkit-scrollbar {
   }
 }
 
-.km-points-display {
-  border: 2px solid rgba(18, 20, 23, 0.7);
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.88);
-  color: #171b21;
-  padding: 0.68rem 1.1rem;
-  font-size: 0.94rem;
-  font-weight: 800;
-  letter-spacing: 0.02em;
-}
-.km-badge-toast {
-  position: fixed;
-  bottom: 1.5rem;
-  left: 50%;
-  transform: translateX(-50%) translateY(20px);
-  background: #171d25;
-  color: #f4f7fb;
-  border-radius: 999px;
-  padding: 0.8rem 1.6rem;
-  font-size: 0.95rem;
-  font-weight: 700;
-  line-height: 1.4;
-  z-index: 99999;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 320ms ease, transform 320ms ease;
-  white-space: nowrap;
-}
-.km-badge-toast--visible {
-  opacity: 1;
-  transform: translateX(-50%) translateY(0);
-}
-
-/* ── MC option buttons (v-t diagram & error finder) ── */
-.vt-options {
+/* ── Binnendifferenzierung: Difficulty Picker ───────────────────────────── */
+.diff-picker-page {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
-  margin-bottom: 0.75rem;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  padding: 3rem 1.5rem;
+  opacity: 0;
 }
-.vt-option-btn {
-  display: block;
+.diff-picker-label {
+  font-family: var(--font-head);
+  font-size: 1.25rem;
+  color: var(--c-text);
+  text-align: center;
+  letter-spacing: 0.01em;
+}
+.diff-picker-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
   width: 100%;
-  text-align: left;
-  background: rgba(255,255,255,0.9);
-  border: 2px solid rgba(18,20,23,0.12);
-  border-radius: 10px;
-  padding: 0.75rem 1rem;
-  font-size: 0.93rem;
-  font-weight: 600;
-  font-family: "Space Grotesk", sans-serif;
-  color: #171b21;
+  max-width: 520px;
+}
+.diff-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1.75rem 1rem;
+  border-radius: 1.25rem;
+  border: 2px solid transparent;
   cursor: pointer;
-  transition: border-color 160ms, background 160ms, transform 80ms;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+  background: var(--c-surface, #1e2235);
+  color: var(--c-text);
+  font-family: var(--font-body);
+}
+.diff-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.35);
+}
+.diff-card-icon {
+  font-size: 2rem;
+  line-height: 1;
+}
+.diff-card-title {
+  font-family: var(--font-head);
+  font-size: 1.1rem;
+  font-weight: 800;
+}
+.diff-card-desc {
+  font-size: 0.8rem;
+  opacity: 0.75;
+  text-align: center;
   line-height: 1.4;
 }
-.vt-option-btn:hover:not(:disabled) {
-  border-color: rgba(18,20,23,0.3);
-  background: #fff;
-  transform: translateY(-1px);
+.diff-card-basis {
+  border-color: #3dd18d;
+  background: linear-gradient(135deg, rgba(61,209,141,0.12), rgba(61,209,141,0.04));
 }
-.vt-option-btn:active:not(:disabled) {
-  transform: translateY(0);
+.diff-card-basis .diff-card-title { color: #3dd18d; }
+.diff-card-challenge {
+  border-color: #ff8753;
+  background: linear-gradient(135deg, rgba(255,135,83,0.12), rgba(255,135,83,0.04));
 }
-.vt-option-btn.is-correct {
-  border-color: #22c55e;
-  background: #f0fdf4;
-  color: #15803d;
+.diff-card-challenge .diff-card-title { color: #ff8753; }
+@media (max-width: 480px) {
+  .diff-picker-grid { grid-template-columns: 1fr; max-width: 280px; }
 }
-.vt-option-btn.is-wrong {
-  border-color: #ef4444;
-  background: #fef2f2;
-  color: #b91c1c;
+
+/* ── MC Hint button ─────────────────────────────────────────────────────── */
+.mc-hint-btn {
+  margin-top: 0.75rem;
+  background: none;
+  border: 1.5px solid rgba(255,255,255,0.2);
+  border-radius: 0.6rem;
+  color: rgba(255,255,255,0.6);
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  padding: 0.4rem 0.9rem;
+  cursor: pointer;
+  transition: border-color 0.15s, color 0.15s;
 }
-.vt-option-btn:disabled {
-  cursor: default;
-  opacity: 0.75;
+.mc-hint-btn:hover { border-color: #ffd164; color: #ffd164; }
+.mc-hint-text {
+  margin-top: 0.5rem;
+  font-size: 0.85rem;
+  color: #ffd164;
+  background: rgba(255,209,100,0.1);
+  border-left: 3px solid #ffd164;
+  border-radius: 0.4rem;
+  padding: 0.5rem 0.75rem;
+  line-height: 1.5;
+}
+
+/* ── Interactive question pages ─────────────────────────────────────────── */
+/* Stage background is white, so all text uses dark colours */
+.interact-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.5rem 1rem 2rem;
+}
+.interact-heading {
+  font-family: "Nunito", sans-serif;
+  font-size: 1.25rem;
+  font-weight: 900;
+  color: #101418;
+  text-align: center;
+  margin: 0;
+}
+.interact-sub {
+  font-size: 0.87rem;
+  color: #4d6070;
+  text-align: center;
+  max-width: 480px;
+  line-height: 1.55;
+  margin: 0;
+}
+.interact-canvas-wrap {
+  width: 100%;
+  max-width: 600px;
+  border-radius: 1rem;
+  overflow: hidden;
+  border: 2px solid rgba(0,0,0,0.08);
+  background: #f0f4f8;
+}
+.interact-canvas-wrap canvas {
+  display: block;
+  width: 100%;
+}
+.interact-ctrl-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.interact-v-label {
+  font-family: "Nunito", sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #17212b;
+  min-width: 90px;
+}
+.interact-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 180px;
+  height: 6px;
+  border-radius: 3px;
+  background: rgba(0,0,0,0.12);
+  outline: none;
+  cursor: pointer;
+}
+.interact-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 20px; height: 20px;
+  border-radius: 50%;
+  background: #3f8efc;
+  cursor: pointer;
+  box-shadow: 0 0 8px rgba(63,142,252,0.5);
+}
+.interact-slider::-moz-range-thumb {
+  width: 20px; height: 20px;
+  border-radius: 50%;
+  background: #3f8efc;
+  border: none;
+  cursor: pointer;
+}
+.interact-formula-box {
+  font-family: "Nunito", sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  background: rgba(63,142,252,0.07);
+  border: 1.5px solid rgba(63,142,252,0.25);
+  border-radius: 0.75rem;
+  padding: 0.75rem 1.5rem;
+  letter-spacing: 0.02em;
+  color: #17212b;
+}
+.ilab-hl {
+  color: #1a62d4;
+  font-weight: 800;
+}
+.ilab-result {
+  color: #1a8f56;
+  font-size: 1.2em;
+}
+.interact-race-info {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-family: "Nunito", sans-serif;
+  font-size: 0.9rem;
+  font-weight: 700;
+  flex-wrap: wrap;
+  justify-content: center;
+  color: #2d3a48;
+}
+.interact-timer {
+  color: #4d6070;
+  font-family: monospace;
+  font-weight: 400;
 }
