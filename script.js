@@ -1689,6 +1689,265 @@ const STEP_CONTENT = {
     },
   },
 
+  // ── MODULE 6 · Analyse & Fehlvorstellungen ───────────────────────────────
+
+  "Gesuchte Grösse finden": {
+    theory: {
+      kicker: "Modul 6 · Level 1",
+      heading: "Gegebenes und Gesuchtes erkennen",
+      paragraphs: [
+        "Der erste Schritt jeder Physikaufgabe: Was ist bekannt (gegeben)? Was soll berechnet werden (gesucht)? Notiere alle gegebenen Grössen mit Symbol, Zahlenwert und Einheit – z. B. v₀ = 15 m/s, t = 4 s.",
+        "Wichtige kinematische Symbole: s = Weg/Ort, v = Geschwindigkeit (mit v₀ = Anfangs-, v = Endgeschwindigkeit), a = Beschleunigung, t = Zeit. Auch t_R = Reaktionszeit und |a| = Betrag der Verzögerung kommen vor.",
+        "Wenn du weisst, was gegeben und was gesucht ist, findest du die passende Formel viel schneller. Aufgaben geben manchmal mehr Daten als nötig – dann musst du die relevanten herausfiltern.",
+      ],
+      formula: "Schritt 1: Gegeben: … | Schritt 2: Gesucht: … | Schritt 3: Formel wählen",
+      example: "'Auto fährt 120 km in 2 h.' → Gegeben: s=120 km, t=2 h. Gesucht: v. → v = s/t = 60 km/h.",
+    },
+    question: {
+      type: "mc",
+      basis: [
+        { text: "'Ein Körper: v₀=0, a=3 m/s², t=5 s. Gesucht: Weg.' Welche Formel passt?", options: ["s = ½·a·t² (v₀=0, a bekannt, t bekannt)", "v = v₀ + a·t", "s = v·t", "a = Δv/Δt"], correct: 0, explanation: "Gegeben: v₀=0, a, t. Gesucht: s. Formel s = ½·a·t² verbindet genau diese Grössen.", hint: "Welche Formel enthält a, t und s – aber kein v?" },
+        { text: "'Auto: v₀=20 m/s, bremst mit |a|=4 m/s². Wie lange bis Stillstand?' Was ist gesucht?", options: ["Zeit t (bis v=0).", "Weg s.", "Beschleunigung a.", "Anfangsgeschwindigkeit v₀."], correct: 0, explanation: "v = 0 am Ende. Gesucht: t. Formel: 0 = v₀ + a·t → t = v₀/|a| = 20/4 = 5 s.", hint: "Was ist das Zielzustand? v=? am Ende. Was ist noch unbekannt?" },
+      ],
+      challenge: [
+        { text: "Ball nach oben: v₀=15 m/s, g=9,81 m/s². Am höchsten Punkt gilt v=0. Welche Bedingung findet t?", options: ["v = v₀ − g·t = 0 → t = v₀/g = 15/9,81 ≈ 1,53 s", "s = ½·g·t²", "v = g·t", "t = s/v₀"], correct: 0, explanation: "Am höchsten Punkt: v=0. Formel v = v₀−g·t → 0=15−9,81t → t=1,53 s. Danach Höhe berechnen.", hint: "Was ist v am höchsten Punkt? Setze in v = v₀−g·t ein und löse nach t." },
+        { text: "'Auto fährt 30 s bei v=20 m/s, dann bremst es mit a=−5 m/s² bis zum Stillstand. Wann steht es still?' Was ist die Gesamtzeit?", options: ["34 s (30 s + 4 s Bremsen)", "34,5 s", "35 s", "30 s"], correct: 0, explanation: "Bremszeit: t_B = v/|a| = 20/5 = 4 s. Gesamtzeit = 30 + 4 = 34 s.", hint: "Erst t_B berechnen (v=0), dann zur Fahrzeit addieren." },
+      ],
+    },
+  },
+
+  "Formel auswählen": {
+    theory: {
+      kicker: "Modul 6 · Level 2",
+      heading: "Die richtige Formel wählen",
+      paragraphs: [
+        "Für verschiedene Situationen gibt es verschiedene Formeln. Entscheidungsfragen: 1. Ist die Bewegung gleichförmig (a=0) oder beschleunigt (a≠0)? 2. Startet der Körper aus der Ruhe (v₀=0)? 3. Welche Grössen sind gegeben – welche gesucht?",
+        "Formeln der Kinematik im Überblick: s = v·t (gleichförmig) | v = v₀+a·t (Endgeschwindigkeit) | s = v₀·t + ½·a·t² (allgemeiner Weg) | s = ½·a·t² (Weg aus Ruhe) | s_B = v₀²/(2·|a|) (Bremsweg) | v² = v₀² + 2·a·s (ohne Zeit).",
+        "Tipp: Wenn du zwei verschiedene Formeln beide anwenden kannst, ist das eine Kontrolle! Stimmen die Ergebnisse überein? Wenn nicht – Fehler suchen.",
+      ],
+      formula: "a=0: s=v·t | a≠0: v=v₀+at, s=v₀t+½at² | Bremsen: s_B=v₀²/2a",
+      example: "Gegeben: v₀=0, s=100m, a=2m/s². Gesucht: t → s=½at² → t=√(2s/a)=√100=10 s.",
+    },
+    question: {
+      type: "mc",
+      basis: [
+        { text: "Körper bewegt sich gleichförmig. Formel für den Weg in Zeit t?", options: ["s = v · t", "s = ½ · a · t²", "v = v₀ + a·t", "s_B = v₀²/(2·a)"], correct: 0, explanation: "Gleichförmig: a=0, v=const. → s = v·t. Die anderen Formeln enthalten a und gelten nur für a≠0.", hint: "Gleichförmig = a=0, v=const. Welche Formel braucht kein a?" },
+        { text: "v₀=5 m/s, a=2 m/s². Gesucht: v nach 4 s. Welche Formel?", options: ["v = v₀ + a·t", "s = v₀·t + ½·a·t²", "s_B = v₀²/(2·a)", "v = s / t"], correct: 0, explanation: "v = v₀ + a·t = 5 + 2·4 = 13 m/s. Diese Formel verbindet v₀, a, t und v.", hint: "Gegeben: v₀, a, t. Gesucht: v. Welche Formel hat genau diese Grössen?" },
+      ],
+      challenge: [
+        { text: "Auto bremst von v₀ bis Stillstand. Formel für den Bremsweg?", options: ["s_B = v₀² / (2·|a|)", "s = v₀·t + ½·a·t²", "v = v₀ + a·t", "s = ½·a·t²"], correct: 0, explanation: "s_B = v₀²/(2·|a|) – direkt ohne Zeit t. Die allgemeine Formel s = v₀t+½at² geht auch, braucht aber erst t_B = v₀/|a|.", hint: "Bremsweg: Zeit ist nicht gegeben. Welche Formel braucht keine Zeit?" },
+        { text: "v₀=0, t=6 s, s=54 m. Welche Beschleunigung? Formel und Rechnung.", options: ["a = 2s/t² = 108/36 = 3 m/s²", "a = s/t = 9 m/s²", "a = s/t² = 1,5 m/s²", "a = 2·s·t = 648 m/s²"], correct: 0, explanation: "s = ½·a·t² → a = 2s/t² = 2·54/36 = 3 m/s².", hint: "Forme s = ½·a·t² nach a um." },
+      ],
+    },
+  },
+
+  "Überflüssige Infos": {
+    theory: {
+      kicker: "Modul 6 · Level 3",
+      heading: "Überflüssige Informationen herausfiltern",
+      paragraphs: [
+        "Aufgaben enthalten manchmal mehr Daten als nötig. Das ist kein Fehler – es ist eine Prüfung, ob du weisst, welche Grössen in deine Formel eingehen. Irrelevante Angaben: Masse, Farbe, Marke, Form, Material (wenn keine Kraft gefragt ist).",
+        "Für kinematische Formeln (s, v, a, t) braucht man keine Masse! s = v·t, v = v₀+at, s_B = v₀²/(2a) – Masse taucht nirgends auf. Die Masse wird erst bei Newton (Kraft = Masse × Beschleunigung) relevant.",
+        "Beim Lesen einer Aufgabe: Unterstreiche zuerst die physikalisch relevanten Grössen (mit Symbol). Streiche irrelevante durch. So wird das Wesentliche sichtbar.",
+      ],
+      formula: "Kinematik: s, v, a, t. Masse m ist überflüssig (für reine Kinematik).",
+      example: "'PKW (1500 kg, blau) fährt 90 km/h für 3 min.' → Relevant: v=25 m/s, t=180 s. Überflüssig: 1500 kg, blau.",
+    },
+    question: {
+      type: "mc",
+      basis: [
+        { text: "'Auto (1500 kg) fährt v=25 m/s für 3 min = 180 s. Zurückgelegter Weg?' Welche Info ist überflüssig?", options: ["Die Masse (1500 kg) – Kinematik braucht keine Masse.", "Die Zeit (180 s).", "Die Geschwindigkeit (25 m/s).", "Keine Info ist überflüssig."], correct: 0, explanation: "s = v·t = 25·180 = 4500 m. Masse wird für s = v·t nicht gebraucht.", hint: "Welche Grössen kommen in s = v·t vor?" },
+        { text: "'Ball (rot, Durchmesser 8 cm, 200 g): v₀=0, g=9,81 m/s², t=3 s. v nach 3 s?' Überflüssig?", options: ["Farbe (rot) und Durchmesser (8 cm) und Masse (200 g).", "Nur die Farbe.", "Die Fallbeschleunigung g.", "Die Zeit t."], correct: 0, explanation: "v = g·t = 9,81·3 = 29,43 m/s. Farbe, Grösse und Masse: alle irrelevant für freien Fall.", hint: "v = g·t. Welche Grössen stehen darin?" },
+      ],
+      challenge: [
+        { text: "'Zug (80 m lang) fährt 200 km/h = 55,6 m/s in Tunnel (2 km lang). Wann ist er vollständig durch?' Overflüssig?", options: ["Nichts – Zuglänge und Tunnellänge sind beide relevant!", "Die Zuglänge (80 m).", "Die Tunnellänge (2 km).", "Die Geschwindigkeit."], correct: 0, explanation: "Der Zug muss Tunnel + eigene Länge zurücklegen: s = 2000 + 80 = 2080 m. t = 2080/55,6 ≈ 37,4 s. Zuglänge ist relevant!", hint: "Wann ist der Zug 'vollständig' durch? Letzte Achse muss aus dem Tunnel sein." },
+        { text: "Formel s_B = v₀²/(2·|a|). Welche Angaben braucht man zwingend?", options: ["v₀ und |a|.", "v₀, |a| und Fahrzeugmasse.", "v₀, |a| und Fahrbahnreibung.", "Nur |a|."], correct: 0, explanation: "s_B = v₀²/(2·|a|) enthält nur v₀ und a. Masse, Reibungskoeffizient: irrelevant (solange |a| schon gegeben ist).", hint: "Welche Symbole stehen in der Formel?" },
+      ],
+    },
+  },
+
+  "Einheitenkontrolle": {
+    theory: {
+      kicker: "Modul 6 · Level 4",
+      heading: "Einheiten prüfen und umrechnen",
+      paragraphs: [
+        "Einheiten sind ein Teil der physikalischen Grössen – nicht nur Dekoration. Wenn Einheiten nicht passen, ist die Rechnung falsch. Wichtigste Umrechnungen: 1 km/h = 1/3,6 m/s ≈ 0,278 m/s. 1 m/s = 3,6 km/h. 1 min = 60 s. 1 km = 1000 m.",
+        "Tipps: Immer in SI-Einheiten (m, m/s, m/s², s) umrechnen bevor du rechnest. Nach der Berechnung: Welche Einheit hat das Ergebnis? Einheitencheck: m/s² × s = m/s (Beschleunigung × Zeit = Geschwindigkeit). ✓",
+        "Typischer Fehler: km/h direkt in s = v·t einsetzen, t in Minuten. Dann erhält man km/h · min – eine falsche Mischeinheit, kein Weg in m oder km.",
+      ],
+      formula: "1 km/h = 1/3,6 m/s | 1 m/s = 3,6 km/h | 1 min = 60 s | 1 km = 1000 m",
+      example: "v = 72 km/h = 72/3,6 = 20 m/s. In 15 s: s = 20·15 = 300 m.",
+    },
+    question: {
+      type: "mc",
+      basis: [
+        { text: "v = 108 km/h in m/s?", options: ["30 m/s", "108 m/s", "3 m/s", "388 m/s"], correct: 0, explanation: "108 / 3,6 = 30 m/s. Oder: 108 km/h = 108 000 m / 3600 s = 30 m/s.", hint: "1 km/h = 1/3,6 m/s. Also: v(m/s) = v(km/h) / 3,6." },
+        { text: "Schüler rechnet: s = 50 km/h · 30 min. Was ist falsch?", options: ["Einheiten passen nicht: km/h · min ≠ km. t muss in h umgerechnet werden.", "v ist falsch.", "Die Formel s = v·t ist falsch.", "30 min ist zu kurz."], correct: 0, explanation: "t muss in h: 30 min = 0,5 h. s = 50 · 0,5 = 25 km. Oder v in km/min und t in min.", hint: "v in km/h, t in min: Einheiten sind inkompatibel. Was muss umgerechnet werden?" },
+      ],
+      challenge: [
+        { text: "a = 1,8 km/min² in m/s² umrechnen.", options: ["a = 0,5 m/s²", "a = 1,8 m/s²", "a = 108 m/s²", "a = 0,03 m/s²"], correct: 0, explanation: "1 km = 1000 m. 1 min = 60 s. a = 1,8·1000/(60²) = 1800/3600 = 0,5 m/s².", hint: "km → m (×1000), min² → s² (×3600). Also: km/min² × 1000/3600." },
+        { text: "s = ½·a·t². Schüler nimmt a = 2 m/s², t = 30 s und rechnet s = ½·2·30 = 30 m. Fehler?", options: ["Ja – t wurde nicht quadriert: t² = 900, s = ½·2·900 = 900 m.", "Nein, korrekt.", "Ja – a muss durch 2 dividiert werden.", "Ja – t muss in km/s umgerechnet werden."], correct: 0, explanation: "s = ½·2·t² = t² = 30² = 900. s = 900 m. Schüler vergass t zu quadrieren.", hint: "s = ½·a·t². Was ist t²? t=30 s → t²=?" },
+      ],
+    },
+  },
+
+  "Ø-Geschwindigkeit komplex": {
+    theory: {
+      kicker: "Modul 6 · Level 5",
+      heading: "Durchschnittsgeschwindigkeit richtig berechnen",
+      paragraphs: [
+        "Die Durchschnittsgeschwindigkeit ist definiert als Gesamtweg geteilt durch Gesamtzeit: v̄ = s_gesamt / t_gesamt. Das ist nicht dasselbe wie der Mittelwert der Einzelgeschwindigkeiten! Der Unterschied tritt auf, wenn die Zeitabschnitte unterschiedlich lang sind.",
+        "Beispiel: 100 km bei 100 km/h, dann 100 km bei 50 km/h. t₁ = 1 h, t₂ = 2 h. v̄ = 200/3 ≈ 66,7 km/h. Nicht (100+50)/2 = 75 km/h! Weil der zweite Abschnitt länger dauert, zieht er den Mittelwert nach unten.",
+        "Sonderfall: Hin- und Rückweg gleicher Länge, verschiedene Geschwindigkeiten v₁ und v₂: v̄ = 2·v₁·v₂ / (v₁+v₂). Das ist das harmonische Mittel – immer kleiner als das arithmetische Mittel!",
+      ],
+      formula: "v̄ = s_gesamt / t_gesamt  (NICHT (v₁+v₂)/2 bei ungleichen Zeiten!)",
+      example: "50 km bei 50 km/h (1 h) + 50 km bei 25 km/h (2 h): v̄ = 100/3 ≈ 33,3 km/h (nicht 37,5!).",
+    },
+    question: {
+      type: "mc",
+      basis: [
+        { text: "Auto: 120 km in 2 h, dann 80 km in 1 h. Durchschnittliche v?", options: ["v̄ = 200/3 ≈ 66,7 km/h", "v̄ = (60+80)/2 = 70 km/h", "v̄ = 80 km/h", "v̄ = 60 km/h"], correct: 0, explanation: "v̄ = s_total/t_total = 200/3 ≈ 66,7 km/h. v₁=60 km/h, v₂=80 km/h. Mittelwert wäre 70 – aber falsch!", hint: "v̄ = Gesamtweg / Gesamtzeit. Erst s_total und t_total berechnen." },
+        { text: "Warum gilt v̄ ≠ (v₁+v₂)/2 wenn Abschnitte unterschiedlich lang dauern?", options: ["Weil längere Zeitabschnitte stärker gewichtet werden.", "Weil v₁ und v₂ sich gegenseitig aufheben.", "Weil die Formel v̄=s/t falsch ist.", "Weil Geschwindigkeiten nicht addiert werden dürfen."], correct: 0, explanation: "Arithmetischer Mittelwert gewichtet alle Werte gleich. Aber langsame Abschnitte dauern länger – sie müssen stärker gewichtet werden.", hint: "Welcher Abschnitt dauert länger – und damit mehr Zeit? Welchen Einfluss hat das?" },
+      ],
+      challenge: [
+        { text: "Person: 6 km/h für 3 km, dann 3 km/h für 3 km. v̄?", options: ["4 km/h", "4,5 km/h", "5 km/h", "3 km/h"], correct: 0, explanation: "t₁ = 3/6 = 0,5 h, t₂ = 3/3 = 1 h. v̄ = 6/(0,5+1) = 6/1,5 = 4 km/h.", hint: "Erst t₁ und t₂ berechnen, dann v̄ = (s₁+s₂)/(t₁+t₂)." },
+        { text: "Hin: 60 km/h. Rück: 40 km/h (gleiche Strecke). v̄?", options: ["48 km/h (harmonisches Mittel)", "50 km/h (arithmetisches Mittel)", "60 km/h", "40 km/h"], correct: 0, explanation: "v̄ = 2·v₁·v₂/(v₁+v₂) = 2·60·40/100 = 4800/100 = 48 km/h. Harmonisches Mittel – immer kleiner als 50!", hint: "Für gleiche Strecke hin/zurück: v̄ = 2v₁v₂/(v₁+v₂). Oder: Zahlen einsetzen mit konkreter Strecke." },
+      ],
+    },
+  },
+
+  "Mehrphasige Bewegung": {
+    theory: {
+      kicker: "Modul 6 · Level 6",
+      heading: "Mehrphasige Bewegungen analysieren",
+      paragraphs: [
+        "Viele reale Bewegungen bestehen aus mehreren Phasen: Phase 1 – Beschleunigung, Phase 2 – gleichförmig, Phase 3 – Bremsung. Jede Phase wird einzeln mit der passenden Formel berechnet, dann addiert man die Teilergebnisse.",
+        "Im v-t-Diagramm erkennst du die Phasen an Knickpunkten. Phase 1: steigende Gerade. Phase 2: horizontale Linie. Phase 3: fallende Gerade. Die Fläche jeder Phase ergibt den Teilweg.",
+        "Wichtig: Am Phasenübergang ist die Endgeschwindigkeit von Phase 1 gleich der Anfangsgeschwindigkeit von Phase 2. Die Zeiten addieren sich zur Gesamtzeit.",
+      ],
+      formula: "s_total = s₁ + s₂ + s₃  |  t_total = t₁ + t₂ + t₃  |  v am Übergang stetig",
+      example: "a=2 m/s² für 4 s → v=8 m/s | gleichförmig 4 s | Bremsung 4 s. s = 16+32+16 = 64 m.",
+    },
+    question: {
+      type: "chart",
+      chartConfig: {
+        chartType: "line",
+        xLabel: "Zeit t (s)",
+        yLabel: "Geschwindigkeit v (m/s)",
+        xData: [0, 2, 4, 6, 8, 10, 12],
+        datasets: [
+          { label: "v(t)", data: [0, 4, 8, 8, 8, 4, 0], color: "#5ca2ff", tension: 0, fill: false },
+        ],
+      },
+      tasks: [
+        { text: "Was ist die Beschleunigung in Phase 1 (t = 0 bis 4 s)?", options: ["a = 2 m/s²", "a = 4 m/s²", "a = 8 m/s²", "a = 0 m/s²"], correct: 0, explanation: "a = Δv/Δt = 8/4 = 2 m/s². Phase 1: steigende Gerade im v-t-Diagramm.", hint: "a = Δv/Δt = (v_end − v_start) / Δt" },
+        { type: "calc", text: "Wie weit fährt der Körper in Phase 1 (Dreieck: 0→4 s)?", answer: 16, unit: "m", tolerance: 0.5, explanation: "Fläche Dreieck: s₁ = ½·4·8 = 16 m.", hint: "Phase 1: Dreieck. Fläche = ½ · Basis · Höhe = ½ · 4 s · 8 m/s." },
+        { type: "calc", text: "Wie weit in Phase 2 (Rechteck: 4→8 s)?", answer: 32, unit: "m", tolerance: 0.5, explanation: "Fläche Rechteck: s₂ = 8·4 = 32 m.", hint: "Phase 2: v=8 m/s konstant über 4 s. Fläche = v·Δt." },
+        { type: "calc", text: "Gesamtweg in allen drei Phasen (0–12 s)?", answer: 64, unit: "m", tolerance: 0.5, explanation: "Phase 3 = Dreieck wie Phase 1: s₃ = 16 m. Total = 16+32+16 = 64 m.", hint: "Gesamtweg = s₁ + s₂ + s₃. Phase 3 ist symmetrisch zu Phase 1." },
+      ],
+    },
+  },
+
+  "Fehlvorstellungen a": {
+    theory: {
+      kicker: "Modul 6 · Level 7",
+      heading: "Typische Fehlvorstellungen zur Beschleunigung",
+      paragraphs: [
+        "Fehlvorstellung 1: 'Am höchsten Punkt eines Wurfes ist a = 0.' FALSCH! a = g = 9,81 m/s² immer (nach unten). Nur v = 0 am höchsten Punkt – nicht a. Beschleunigung und Geschwindigkeit sind unabhängig.",
+        "Fehlvorstellung 2: 'Beschleunigung bedeutet immer schneller werden.' FALSCH! a < 0 bedeutet Verlangsamung (wenn Körper in positive Richtung fährt). a kann auch entgegengesetzt zu v zeigen.",
+        "Fehlvorstellung 3: 'Wenn v gross ist, muss a gross sein.' FALSCH! Flugzeug bei 800 km/h im Reiseflug: a = 0 (gleichförmig). Fussgänger beim Anfahren: a > 0 bei v ≈ 0.",
+      ],
+      formula: "v = 0 ≠ a = 0 | Beschleunigung und Geschwindigkeit sind unabhängige Grössen!",
+      example: "Ball am höchsten Punkt: v=0, aber a=g=9,81 m/s² (fällt direkt danach wieder nach unten).",
+    },
+    question: {
+      type: "mc",
+      basis: [
+        { text: "Ball wird senkrecht nach oben geworfen. Was gilt am höchsten Punkt?", options: ["v = 0, aber a = g = 9,81 m/s² (nach unten).", "v = 0 und a = 0.", "v > 0 und a = 0.", "v = 0 und a = 0 kurz, dann a > 0."], correct: 0, explanation: "v = 0 am höchsten Punkt (Umkehr). Aber a = g = 9,81 m/s² immer! Die Schwerkraft wirkt konstant.", hint: "Ändert sich die Schwerkraft am höchsten Punkt? Was bewirkt sie?" },
+        { text: "Fehlvorstellung: 'Ein Auto bei v=100 km/h hat mehr Beschleunigung als eines bei v=30 km/h.' Richtig?", options: ["Falsch – v und a sind unabhängig. a = 0 möglich bei 100 km/h.", "Richtig – grössere v → grössere a.", "Richtig – a und v sind proportional.", "Teils – nur wenn das Auto beschleunigt."], correct: 0, explanation: "Auf der Autobahn bei v=100 km/h gleichförmig: a=0. Beim Anfahren bei v=0: a>0. v und a sind unabhängig.", hint: "Was ist a bei gleichförmiger Fahrt, egal wie hoch v ist?" },
+      ],
+      challenge: [
+        { text: "Auto: v=30 m/s, konstant. Was ist a? Dann: Auto bremst von v=0,5 m/s auf 0 in 0,1 s. Was ist |a|?", options: ["a=0 bei v=30; |a|=5 m/s² beim Bremsen", "a=30 m/s²; |a|=5 m/s²", "a=0; |a|=0,05 m/s²", "Beide: a=0"], correct: 0, explanation: "Konstante v=30 → a=0. Bremsen: |a|=Δv/Δt=0,5/0,1=5 m/s². Kleines v ≠ kleine Beschleunigung!", hint: "Welche Bedingung gilt für a=0? Dann a für die Bremsung berechnen." },
+        { text: "Körper: v₀=−5 m/s (rückwärts), a=+3 m/s². Was passiert physikalisch?", options: ["Körper verlangsamt sich (bremst ab) zuerst, dann kehrt um und beschleunigt vorwärts.", "Körper beschleunigt rückwärts.", "Körper bleibt stehen.", "Nichts – entgegengesetzte Vorzeichen aufheben sich."], correct: 0, explanation: "v₀=−5, a=+3: v(t) = −5+3t. Bei t=5/3≈1,67 s: v=0 (Umkehrpunkt). Danach v>0 → vorwärts.", hint: "v(t) = v₀ + a·t. Wann wird v = 0? Was passiert danach?" },
+      ],
+    },
+  },
+
+  "Widersprüche erkennen": {
+    theory: {
+      kicker: "Modul 6 · Level 8",
+      heading: "Widersprüche in Aufgaben erkennen",
+      paragraphs: [
+        "Manchmal stimmen Text, Tabelle und Diagramm in einer Aufgabe nicht überein – entweder als absichtliche Prüfaufgabe ('Wo liegt der Fehler?') oder versehentlich. Lerntipp: Prüfe alle Darstellungen gegenseitig!",
+        "Text vs. Tabelle: Sagt der Text 'gleichförmig', aber die Tabelle zeigt ungleichmässige s-Zuwächse? Dann stimmt etwas nicht. Gleichförmig → s wächst in gleichen Zeitschritten um gleich viel.",
+        "Tabelle vs. Formel: Berechne a aus den Tabellenwerten (a = Δv/Δt) und vergleiche mit der Behauptung. Tabelle vs. Diagramm: Entsprechen die Kurvenform und die Tabellenwerte einander?",
+      ],
+      formula: "Kontrollformel: a = Δv/Δt aus Tabelle berechnen, mit Behauptung vergleichen",
+      example: "Tabelle: v = 5, 10, 15, 20 bei t = 0, 1, 2, 3. Behauptung: 'a = 3 m/s²'. Kontrolle: Δv/Δt = 5 m/s². Widerspruch!",
+    },
+    question: {
+      type: "mc",
+      basis: [
+        { text: "Text: 'Körper steht still'. Tabelle: t=0,1,2,3 s; s=0,5,10,15 m. Widerspruch?", options: ["Ja – s steigt → Körper bewegt sich. Text ist falsch.", "Nein – s=5 m bleibt konstant.", "Ja – s müsste sinken.", "Kein Widerspruch."], correct: 0, explanation: "Körper steht still → s = const. Tabelle zeigt s steigt (+5 m/s) → gleichförmige Bewegung mit v=5 m/s. Widerspruch!", hint: "Was bedeutet 'steht still' für s? Was zeigt die Tabelle?" },
+        { text: "Text: 'gleichmässige Beschleunigung'. v-t-Diagramm zeigt eine Parabel (v steigt schneller am Anfang, flacher am Ende). Widerspruch?", options: ["Ja – gleichmässige Beschleunigung ergibt lineare v(t), nicht Parabel.", "Nein – Parabel ist normal.", "Nein – das ist dasselbe.", "Ja – a müsste 0 sein."], correct: 0, explanation: "Gleichmässige Beschleunigung: a=const. → v(t) = v₀+at ist linear (Gerade). Parabel: a ändert sich (nicht konstant). Widerspruch.", hint: "a=const. → welche Funktion ist v(t)? Linear oder quadratisch?" },
+      ],
+      challenge: [
+        { text: "Tabelle: t=0,1,2,3 s; v=3,7,11,15 m/s. Behauptung: a=4 m/s². Stimmt das?", options: ["Ja – Δv/Δt = 4 m/s² überall (7−3=4, 11−7=4, 15−11=4).", "Nein – a=3 m/s².", "Nein – a ändert sich.", "Ja – a=4 ist der Mittelwert."], correct: 0, explanation: "Δv/Δt: (7-3)/1=4, (11-7)/1=4, (15-11)/1=4. Konstante Δv=4 → a=4 m/s²= konstant. Stimmt!", hint: "Bilde Δv/Δt für jeden Schritt. Sind alle gleich?" },
+        { text: "Text: v₀=0, a=2 m/s², t=4 s. Diagramm zeigt s=20 m am Ende. Widerspruch?", options: ["Ja – s = ½·2·16 = 16 m ≠ 20 m.", "Nein – 20 m ist korrekt.", "Ja – s sollte 8 m sein.", "Nein – t muss quadriert werden: 4²=16, s=16 m. Korrekt."], correct: 0, explanation: "s = ½·a·t² = ½·2·16 = 16 m. Diagramm zeigt 20 m → Widerspruch! Das Diagramm enthält einen Fehler.", hint: "s = ½·a·t². Berechne s und vergleiche mit Diagramm." },
+      ],
+    },
+  },
+
+  "Lösungsstrategie": {
+    theory: {
+      kicker: "Modul 6 · Level 9",
+      heading: "Systematisch vorgehen – die 5-Schritte-Strategie",
+      paragraphs: [
+        "Physikaufgaben löst man am besten mit einer festen Strategie: 1. Skizze und Lesen – Was passiert? 2. Grössen identifizieren – Gegeben/Gesucht. 3. Formel wählen – welche Grössen verknüpft sie? 4. Berechnen – in SI-Einheiten. 5. Plausibilitätscheck – ist das Ergebnis realistisch?",
+        "Plausibilitätscheck: Überprüfe Grössenordnung und Einheit. Beispiele für Richtwerte: Auto auf Landstrasse ≈ 50–100 km/h. Bremsweg bei 50 km/h ≈ 12 m (trockene Strasse). Freier Fall 3 s → v ≈ 29 m/s. Mensch geht ≈ 1,5 m/s.",
+        "Kontrolle durch zweite Methode: Oft gibt es zwei Wege zur Lösung. Wenn beide dasselbe Ergebnis geben, ist die Wahrscheinlichkeit eines Fehlers sehr gering.",
+      ],
+      formula: "5 Schritte: Skizze → Gegeben/Gesucht → Formel → Rechnen → Prüfen",
+      example: "Ergebnis: v = 450 m/s. Plausibel? Auto? Nein (zu schnell). Flugzeug? Möglich. Bullet? Ja (~350 m/s). Kontext entscheidet!",
+    },
+    question: {
+      type: "mc",
+      basis: [
+        { text: "Schüler erhält als Bremsweg 's_B = 2500 m bei v = 50 km/h'. Plausibel?", options: ["Nein – bei 50 km/h ≈ 13,9 m/s und normalem a≈8 m/s²: s_B ≈ 12 m.", "Ja – passt.", "Ja – bei Eis möglich.", "Kann nicht beurteilt werden."], correct: 0, explanation: "s_B = 13,9²/16 ≈ 12 m. 2500 m wäre über 200-mal zu gross. Klarer Rechenfehler.", hint: "Berechne s_B für v=13,9 m/s und |a|=8 m/s². Vergleiche mit 2500 m." },
+        { text: "Was ist der erste sinnvolle Schritt beim Lösen einer Kinematik-Aufgabe?", options: ["Alle gegebenen Grössen mit Symbol und Einheit notieren.", "Direkt die erste Formel einsetzen.", "Ergebnis schätzen.", "Einheiten ignorieren."], correct: 0, explanation: "Systematisch: zuerst Grössen identifizieren, dann Formel wählen. 'Direkt berechnen' führt oft zu Fehlern.", hint: "Was muss man wissen, bevor man eine Formel wählen kann?" },
+      ],
+      challenge: [
+        { text: "v₀=10 m/s, a=3 m/s², t=5 s. Schüler: v=10+3·5=25 m/s; s=10·5+½·3·25=50+37,5=87,5 m. Kontrollrechnung: s=½(v₀+v)·t=½·35·5=87,5 m. Korrekt?", options: ["Ja – beide Methoden geben 87,5 m. v=25 m/s und s=87,5 m sind korrekt.", "Nein – v=10+15=25 m/s stimmt, aber s ist falsch.", "Nein – Kontrollrechnung nicht anwendbar.", "Nein – t muss quadriert werden."], correct: 0, explanation: "Beide Formeln (s = v₀t+½at² und s = ½(v₀+v)t) liefern 87,5 m. Korrekt!", hint: "Vergleiche beide Rechnungen. Stimmen sie überein?" },
+        { text: "Schüler: 'v₀=0, a=4 m/s², t=10 s → s=½·4·10=20 m.' Fehler? Korrekte Antwort?", options: ["Ja – t nicht quadriert. Richtig: s=½·4·100=200 m.", "Korrekt – s=20 m.", "Ja – a muss durch 2 geteilt werden. s=10·10=100 m.", "Ja – v₀=0 ist zu ignorieren."], correct: 0, explanation: "s = ½·a·t² = ½·4·100 = 200 m. Schüler hat t=10 statt t²=100 eingesetzt.", hint: "In s=½·a·t²: was ist t²? 10² = ?" },
+      ],
+    },
+  },
+
+  "Boss – Analyse-Labor": {
+    theory: {
+      kicker: "Modul 6 · Boss",
+      heading: "Boss: Analyse und Fehlvorstellungen korrigieren",
+      paragraphs: [
+        "Der Boss kombiniert alle Analyse-Fähigkeiten: Formeln wählen, Einheiten prüfen, Überflüssiges ignorieren, Widersprüche erkennen und Fehlvorstellungen korrigieren. Mehrschrittige Aufgaben, bei denen du alle Schritte allein durchführen musst.",
+        "Typische Boss-Fragen: 'Wo liegt der Fehler in dieser Lösung?', 'Welche Formel passt und welche nicht?', 'Ist dieses Ergebnis physikalisch sinnvoll?'. Du musst argumentieren, nicht nur rechnen.",
+        "Strategie: Erst lesen, dann skizzieren, dann systematisch analysieren. Nicht auf den ersten Blick antworten – bei Boss-Fragen lauert der Fehler meistens genau da, wo man schnell übersehen würde.",
+      ],
+      formula: "Analyse-Checkliste: Gegeben? | Formel? | Einheiten? | Plausibel? | Widerspruch?",
+      example: "Fehleraufgabe: v=144 km/h=40 m/s, t=5 s → s=40·5=200 m. Prüfung: Einheiten ok. Formel ok. Korrekt!",
+    },
+    question: {
+      type: "mc",
+      basis: [
+        { text: "'a=2 m/s², t=6 s, v₀=0. Schüler schreibt: v = a/t = 2/6 ≈ 0,33 m/s.' Fehler?", options: ["Ja – Formel falsch. Richtig: v = v₀ + a·t = 0 + 2·6 = 12 m/s.", "Nein – korrekt.", "Ja – t muss quadriert werden.", "Ja – a und t vertauscht."], correct: 0, explanation: "a/t wäre Jerk (Ruck), nicht Geschwindigkeit! Richtig: v = v₀+a·t = 12 m/s.", hint: "Was ist die korrekte Formel für v bei bekanntem a und t?" },
+        { text: "'Auto: 90 km/h, t_R=1 s, |a|=8 m/s². s_A?' Schüler nimmt v=90 in Formel. Fehler?", options: ["Ja – 90 km/h muss in m/s umgerechnet werden: 25 m/s.", "Nein – km/h geht auch.", "Ja – t_R ist irrelevant.", "Nein – die Formel funktioniert mit km/h wenn t in h."], correct: 0, explanation: "s_A = v·t_R + v²/(2·|a|) braucht v in m/s, t in s, a in m/s². v=90/3,6=25 m/s.", hint: "Welche Einheit für v braucht die Formel s_A = v·t_R + v²/(2·a)?" },
+      ],
+      challenge: [
+        { text: "Lösung: 'v₀=15 m/s, bremst mit a=−5 m/s² → t_B=v₀/a=15/(−5)=−3 s.' Ist −3 s korrekt?", options: ["Nein – Zeit ist immer positiv. t_B = v₀/|a| = 3 s.", "Ja – negatives Vorzeichen zeigt Richtung.", "Ja – a ist negativ, also t negativ.", "Nein – t_B = v₀·|a| = 75 s."], correct: 0, explanation: "t_B = v₀/|a| = 15/5 = 3 s (positiv). Das Vorzeichen von a zeigt Richtung, nicht Zeitvorzeichen.", hint: "Zeit ist immer positiv. Wie wird t aus v=v₀+a·t mit v=0 korrekt berechnet?" },
+        { text: "'Person geht 3 km mit 6 km/h, dann 3 km mit 4 km/h. Durchschnitt = (6+4)/2 = 5 km/h.' Korrekt?", options: ["Nein – v̄ = 6/(0,5+0,75) ≈ 4,8 km/h. Arithmetisches Mittel gilt nicht bei gleichen Strecken.", "Ja – 5 km/h stimmt.", "Nein – v̄ = 4 km/h.", "Ja – Mittelwert von 2 Werten ist immer korrekt."], correct: 0, explanation: "t₁=3/6=0,5 h, t₂=3/4=0,75 h. v̄=6/1,25=4,8 km/h. Arithmetisches Mittel 5 gilt nur bei gleichen Zeiten.", hint: "v̄ = Gesamtstrecke / Gesamtzeit. Berechne t₁ und t₂ zuerst." },
+      ],
+    },
+  },
+
 };
 
 
