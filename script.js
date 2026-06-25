@@ -915,6 +915,289 @@ const STEP_CONTENT = {
     },
   },
 
+  // ── MODULE 3 · Bewegungsdiagramme ────────────────────────────────────────
+
+  "Drei Diagrammtypen": {
+    theory: {
+      kicker: "Modul 3 · Level 1",
+      heading: "Drei Diagrammtypen im Überblick",
+      paragraphs: [
+        "In der Kinematik gibt es drei zentrale Diagramme: das s-t-Diagramm (Ort über Zeit), das v-t-Diagramm (Geschwindigkeit über Zeit) und das a-t-Diagramm (Beschleunigung über Zeit). Jeder Punkt in einem solchen Diagramm beschreibt den Zustand des Körpers zu einem bestimmten Zeitpunkt.",
+        "Die Diagramme sind mathematisch verknüpft: Die Steigung des s-t-Diagramms ergibt v. Die Steigung des v-t-Diagramms ergibt a. Umgekehrt ist die Fläche unter dem v-t-Graphen der zurückgelegte Weg s, und die Fläche unter dem a-t-Graphen ergibt die Geschwindigkeitsänderung Δv.",
+        "Zusammenfassung: s-t → Steigung = v | v-t → Steigung = a, Fläche = s | a-t → Fläche = Δv. Diese Zusammenhänge gelten immer – egal wie die Bewegung aussieht.",
+      ],
+      formula: "Steigung s-t = v  |  Steigung v-t = a  |  Fläche v-t = s  |  Fläche a-t = Δv",
+      example: "Gleichförmige Bewegung v=5 m/s: s-t ist Gerade (Steigung=5), v-t ist horizontale Linie bei 5, a-t liegt auf 0.",
+    },
+    question: {
+      type: "mc",
+      basis: [
+        { text: "Was gibt die Steigung im s-t-Diagramm an?", options: ["Die Geschwindigkeit v.", "Die Beschleunigung a.", "Den zurückgelegten Weg.", "Die Zeit."], correct: 0, explanation: "Steigung = Δs/Δt = v. Steilere Kurve = höhere Geschwindigkeit.", hint: "Steigung = Δy/Δx. Was steht auf y- und x-Achse im s-t-Diagramm?" },
+        { text: "Im v-t-Diagramm liegt eine horizontale Linie. Was bedeutet das?", options: ["Konstante Geschwindigkeit, a = 0.", "Der Körper steht still.", "Der Körper beschleunigt.", "Steigung ist unendlich."], correct: 0, explanation: "Horizontal = Steigung 0 = a=0. Die Geschwindigkeit ändert sich nicht → gleichförmige Bewegung.", hint: "Steigung im v-t-Diagramm = Beschleunigung. Horizontal = welche Steigung?" },
+      ],
+      challenge: [
+        { text: "Welche Grösse ergibt die Fläche unter dem v-t-Graphen?", options: ["Den zurückgelegten Weg s.", "Die Beschleunigung a.", "Die Anfangsgeschwindigkeit v₀.", "Die Zeit t."], correct: 0, explanation: "Fläche unter v-t = ∫v dt = s. Bei gleichförmiger Bewegung: Rechteck = v · t = s.", hint: "Fläche unter Geschwindigkeit-Zeit = zurückgelegter Weg." },
+        { text: "In welchem Diagramm liest man die Beschleunigung direkt auf der y-Achse ab?", options: ["a-t-Diagramm.", "s-t-Diagramm.", "v-t-Diagramm.", "In keinem."], correct: 0, explanation: "Im a-t-Diagramm steht a auf der y-Achse. Man liest a direkt ab. Im v-t-Diagramm ist a die Steigung.", hint: "Welches Diagramm hat a direkt als y-Grösse?" },
+      ],
+    },
+  },
+
+  "s-t Diagramm lesen": {
+    theory: {
+      kicker: "Modul 3 · Level 2",
+      heading: "Das s-t-Diagramm lesen",
+      paragraphs: [
+        "Im s-t-Diagramm zeigt die Steigung die Momentangeschwindigkeit: v = Δs / Δt. Eine steile Gerade bedeutet hohe Geschwindigkeit; eine flache Gerade bedeutet geringe Geschwindigkeit. Eine horizontale Gerade (Steigung 0) bedeutet: der Körper steht still.",
+        "Negative Steigung bedeutet, dass der Körper sich in die negative Richtung bewegt – er kehrt zum Startpunkt zurück oder bewegt sich rückwärts. Das ist kein Fehler, sondern Physik: s kann sinken, wenn der Körper zurückgeht.",
+        "Eine Parabel im s-t-Diagramm (gleichmässig steigende Steigung) entspricht gleichmässiger Beschleunigung. Die Steigung wird mit der Zeit immer grösser, weil v zunimmt.",
+      ],
+      formula: "v = Δs / Δt  (Steigung im s-t-Diagramm)",
+      example: "s geht von 0 auf 20 m in 5 s → v = 20/5 = 4 m/s. Dann bleibt s=20 m → Körper steht still.",
+    },
+    question: {
+      type: "chart",
+      chartConfig: {
+        chartType: "line",
+        xLabel: "Zeit t (s)",
+        yLabel: "Ort s (m)",
+        xData: [0, 1, 2, 3, 4, 5, 6, 7],
+        datasets: [
+          { label: "s(t)", data: [0, 4, 8, 12, 12, 12, 9, 6], color: "#5fa4ff", tension: 0, fill: false },
+        ],
+      },
+      tasks: [
+        { text: "Was ist die Geschwindigkeit zwischen t = 0 und t = 3 s?", options: ["4 m/s (Steigung = 12/3)", "12 m/s", "3 m/s", "0 m/s"], correct: 0, explanation: "v = Δs/Δt = (12−0)/(3−0) = 4 m/s. Steigung des Graphen abgelesen." },
+        { text: "Was passiert zwischen t = 3 s und t = 5 s?", options: ["Der Körper steht still (s = const.).", "Der Körper kehrt um.", "Der Körper beschleunigt.", "Der Körper verlangsamt sich."], correct: 0, explanation: "s = 12 m = konstant → Steigung = 0 → v = 0 → Körper steht still.", hint: "Steigung im s-t = v. Was ist die Steigung einer horizontalen Linie?" },
+        { text: "In welche Richtung bewegt sich der Körper zwischen t = 5 s und t = 7 s?", options: ["Rückwärts (negative Richtung), da s sinkt.", "Vorwärts, da t steigt.", "Der Körper steht still.", "Die Richtung ist unbekannt."], correct: 0, explanation: "Negative Steigung im s-t-Diagramm bedeutet: Körper bewegt sich in negativer Richtung (rückwärts). v = (6−12)/2 = −3 m/s.", hint: "Steigung = v. Wenn s sinkt (Gerade fällt) – was ist das Vorzeichen von v?" },
+      ],
+    },
+  },
+
+  "v-t Diagramm lesen": {
+    theory: {
+      kicker: "Modul 3 · Level 3",
+      heading: "Das v-t-Diagramm lesen",
+      paragraphs: [
+        "Im v-t-Diagramm liest man direkt die Momentangeschwindigkeit ab. Die Steigung der Kurve ergibt die Beschleunigung: a = Δv / Δt. Eine positive Steigung bedeutet Beschleunigung (a > 0), eine negative Steigung bedeutet Verzögerung (a < 0).",
+        "Eine horizontale Linie im v-t-Diagramm (Steigung 0) bedeutet a = 0 – der Körper bewegt sich gleichförmig. Der y-Achsenabschnitt (bei t = 0) ist die Anfangsgeschwindigkeit v₀.",
+        "Wichtige Ablese-Technik: Zwei Punkte auf der Geraden wählen, Steigung = Δv / Δt berechnen. Das ist die Beschleunigung im gewählten Abschnitt.",
+      ],
+      formula: "a = Δv / Δt  (Steigung im v-t-Diagramm)",
+      example: "Gerade von (2 s; 4 m/s) bis (6 s; 12 m/s) → a = (12−4)/(6−2) = 8/4 = 2 m/s².",
+    },
+    question: {
+      type: "chart",
+      chartConfig: {
+        chartType: "line",
+        xLabel: "Zeit t (s)",
+        yLabel: "Geschwindigkeit v (m/s)",
+        xData: [0, 1, 2, 3, 4, 5, 6, 7, 8],
+        datasets: [
+          { label: "v(t)", data: [8, 8, 8, 8, 8, 10, 12, 14, 16], color: "#8c76ff", tension: 0, fill: false },
+        ],
+      },
+      tasks: [
+        { text: "Was ist die Beschleunigung von t = 0 bis t = 4 s?", options: ["a = 0 m/s² (gleichförmige Bewegung)", "a = 8 m/s²", "a = 2 m/s²", "a = 4 m/s²"], correct: 0, explanation: "v = 8 m/s = konstant → Steigung = 0 → a = 0. Das ist gleichförmige Bewegung.", hint: "Horizontale Linie = welche Steigung = welche Beschleunigung?" },
+        { text: "Was ist die Beschleunigung von t = 4 bis t = 8 s?", options: ["a = 2 m/s² (Steigung = Δv/Δt = 8/4)", "a = 0 m/s²", "a = 16 m/s²", "a = 8 m/s²"], correct: 0, explanation: "a = Δv/Δt = (16−8)/(8−4) = 8/4 = 2 m/s². Positive Steigung → Beschleunigung.", hint: "a = Δv/Δt. Zwei Punkte ablesen und Steigung berechnen." },
+        { text: "Welchen Wert hat v bei t = 6 s?", options: ["12 m/s", "8 m/s", "10 m/s", "16 m/s"], correct: 0, explanation: "Bei t=6 s: auf der y-Achse ablesen → v = 12 m/s. (Oder: v = 8 + 2·(6−4) = 12.)", hint: "Einfach ablesen: bei t=6 auf die Kurve schauen und v auf der y-Achse lesen." },
+      ],
+    },
+  },
+
+  "Fläche v-t = Weg": {
+    theory: {
+      kicker: "Modul 3 · Level 4",
+      heading: "Fläche unter v-t = zurückgelegter Weg",
+      paragraphs: [
+        "Die Fläche zwischen dem v-t-Graphen und der t-Achse ist gleich dem zurückgelegten Weg. Physikalisch: Weg = Geschwindigkeit × Zeit. Bei konstanter Geschwindigkeit ist das ein Rechteck (s = v · t). Bei gleichmässiger Beschleunigung aus v₀ = 0 ist es ein Dreieck (s = ½ · v_max · t).",
+        "Bei beliebiger Kurve ist es das Integral ∫v dt. Für den Schulgebrauch reichen Dreiecke und Rechtecke: Die Gesamtfläche kann in einfache geometrische Formen zerlegt werden – das ist die Grundidee der Integralrechnung.",
+        "Achtung: Die Fläche unter der t-Achse (wenn v < 0) entspricht einem negativen Weg – der Körper bewegt sich rückwärts. Für den Gesamtweg (Pfadlänge) wird der Betrag genommen.",
+      ],
+      formula: "s = Fläche unter v-t  |  Dreieck: s = ½ · v_max · t  |  Rechteck: s = v · t",
+      example: "v-t: Gerade von (0; 0) nach (6 s; 18 m/s). Fläche = ½ · 6 · 18 = 54 m.",
+    },
+    question: {
+      type: "chart",
+      chartConfig: {
+        chartType: "line",
+        xLabel: "Zeit t (s)",
+        yLabel: "Geschwindigkeit v (m/s)",
+        xData: [0, 1, 2, 3, 4, 5, 6],
+        datasets: [
+          { label: "v(t)", data: [0, 3, 6, 9, 12, 15, 18], color: "#ff9657", tension: 0, fill: true },
+        ],
+      },
+      tasks: [
+        { type: "calc", text: "Berechne den zurückgelegten Weg in 6 s. (Fläche des Dreiecks: ½ · Basis · Höhe)", answer: 54, unit: "m", tolerance: 0.5, explanation: "s = ½ · t · v_max = ½ · 6 · 18 = 54 m. Die Fläche unter dem Graphen ist ein Dreieck.", hint: "Fläche eines Dreiecks = ½ · Basis · Höhe. Basis = 6 s, Höhe = 18 m/s." },
+        { text: "Welche geometrische Form hat die Fläche unter einem v-t-Graphen bei Beschleunigung aus v₀ = 0?", options: ["Ein Dreieck (½ · v_max · t).", "Ein Rechteck (v · t).", "Ein Trapez.", "Ein Kreis."], correct: 0, explanation: "v₀=0 → Gerade durch Ursprung → Dreieck. s = ½·v_max·t = ½·a·t².", hint: "Die Linie startet bei 0 und steigt linear – was für eine Fläche entsteht?" },
+        { text: "Bei t = 0 bis 3 s ist v = 6 m/s konstant. Welcher Weg wird zurückgelegt?", options: ["18 m (Rechteck: 6 · 3)", "9 m", "36 m", "3 m"], correct: 0, explanation: "Konstanty v → Rechteck: s = v · t = 6 · 3 = 18 m.", hint: "Fläche eines Rechtecks = Breite · Höhe = t · v." },
+      ],
+    },
+  },
+
+  "a-t Diagramm lesen": {
+    theory: {
+      kicker: "Modul 3 · Level 5",
+      heading: "Das a-t-Diagramm lesen",
+      paragraphs: [
+        "Im a-t-Diagramm trägt man die Beschleunigung a über der Zeit t auf. Bei gleichmässiger Beschleunigung ist die Kurve eine horizontale Linie – a ist konstant. Ein Sprung auf a = 0 bedeutet: Die Beschleunigung hört auf, der Körper bewegt sich danach gleichförmig.",
+        "Die Fläche unter dem a-t-Graphen ergibt die Geschwindigkeitsänderung Δv. Zum Beispiel: a = 3 m/s² für 4 Sekunden → Fläche = Rechteck: 3 · 4 = 12 m/s → Δv = 12 m/s. War v₀ = 0, so ist v nach 4 s = 12 m/s.",
+        "Im a-t-Diagramm kann man direkt erkennen, wann ein Körper beschleunigt (a > 0), verzögert (a < 0) oder gleichförmig fährt (a = 0). Es ist das einfachste Diagramm zu lesen – aber das seltenste im Alltag.",
+      ],
+      formula: "Fläche unter a-t = Δv  |  a = konst. → horizontale Linie im a-t-Diagramm",
+      example: "a = 5 m/s² für 4 s → Δv = 5·4 = 20 m/s. Danach a = 0 → v bleibt konstant.",
+    },
+    question: {
+      type: "chart",
+      chartConfig: {
+        chartType: "line",
+        xLabel: "Zeit t (s)",
+        yLabel: "Beschleunigung a (m/s²)",
+        xData: [0, 1, 2, 3, 4, 5, 6, 7, 8],
+        datasets: [
+          { label: "a(t)", data: [5, 5, 5, 5, 0, 0, 0, 0, 0], color: "#25b7d8", tension: 0, fill: true },
+        ],
+      },
+      tasks: [
+        { text: "Was gibt die Fläche unter dem a-t-Graphen an?", options: ["Die Geschwindigkeitsänderung Δv.", "Den zurückgelegten Weg s.", "Die Durchschnittsgeschwindigkeit.", "Die Endposition."], correct: 0, explanation: "Fläche unter a-t = Δv. Fläche unter v-t = s. Das sind die zwei Integrations-Stufen.", hint: "Eine Stufe über a liegt v, eine Stufe über v liegt s. Fläche 'bringt uns eine Stufe hoch'." },
+        { type: "calc", text: "Wie gross ist Δv von t = 0 bis t = 4 s? (Fläche des Rechtecks)", answer: 20, unit: "m/s", tolerance: 0.5, explanation: "Fläche = Rechteck: a · t = 5 · 4 = 20 m/s = Δv. War v₀=0, dann v(4 s) = 20 m/s.", hint: "Fläche Rechteck = Breite · Höhe = 4 s · 5 m/s²" },
+        { text: "Was passiert zwischen t = 4 und t = 8 s (a = 0)?", options: ["Gleichförmige Bewegung – v bleibt konstant.", "Körper steht still.", "Körper verzögert.", "v = 0."], correct: 0, explanation: "a = 0 → keine Beschleunigung → v = konstant. Die Geschwindigkeit bleibt bei dem Wert, den sie bei t=4 s hatte.", hint: "a = 0 heisst: v ändert sich nicht mehr." },
+      ],
+    },
+  },
+
+  "Text → Diagramm": {
+    theory: {
+      kicker: "Modul 3 · Level 6",
+      heading: "Textbeschreibung in Diagramm übersetzen",
+      paragraphs: [
+        "Jede Textbeschreibung einer Bewegung lässt sich in ein Diagramm übersetzen. Schlüsselwörter: 'steht still' → horizontale Linie im s-t; 'gleichförmig' → Gerade im s-t und horizontale Linie im v-t; 'gleichmässig beschleunigt' → Parabel im s-t, Gerade im v-t.",
+        "Strategie: 1. Welche Grössen werden beschrieben (s, v, a)? 2. Wie ändern sie sich mit der Zeit? 3. Welche geometrische Form ergibt das? Konstant → Horizontale. Linear zunehmend → Gerade. Quadratisch zunehmend → Parabel.",
+        "Häufiger Fehler: Im s-t-Diagramm für gleichmässige Beschleunigung eine Gerade einzeichnen. Aber s = ½at² ist quadratisch – das ergibt eine Parabel, keine Gerade!",
+      ],
+      formula: "Stehenbleiben → s=const | Gleichförmig → s-t: Gerade | Beschleunigt → s-t: Parabel",
+      example: "Text: 'Körper startet aus Ruhe und beschleunigt 4 s lang.' → s-t: nach oben öffnende Parabel. v-t: Gerade durch Ursprung.",
+    },
+    question: {
+      type: "mc",
+      basis: [
+        { text: "'Ein Körper steht still.' – Wie sieht das s-t-Diagramm aus?", options: ["Horizontale Linie (s = konstant).", "Gerade mit positiver Steigung.", "Parabel.", "Senkrechte Linie."], correct: 0, explanation: "Stillstand = v=0 = keine Ortsänderung → s = const. → horizontale Linie im s-t-Diagramm.", hint: "Steillstand = v = 0 = keine Ortsänderung. Was ist die Steigung?" },
+        { text: "'Auto beschleunigt gleichmässig aus dem Stand.' – Wie sieht das v-t-Diagramm aus?", options: ["Gerade durch den Ursprung (v₀=0, steigt linear).", "Horizontale Linie.", "Parabel.", "Senkrechte Linie."], correct: 0, explanation: "a = const., v₀ = 0: v = a·t ist linear in t → Gerade durch Ursprung im v-t-Diagramm.", hint: "v = v₀ + a·t. Bei v₀=0 und a=const.: welche Funktion ist das?" },
+      ],
+      challenge: [
+        { text: "'Körper: erst 3 s gleichförmig, dann 3 s gleichmässig beschleunigt.' – s-t-Diagramm?", options: ["Erst gerade (lineare Steigung), dann Parabel (nach oben krümmend).", "Erst horizontal, dann Gerade.", "Gerade durch den ganzen Bereich.", "Erst Parabel, dann Gerade."], correct: 0, explanation: "Phase 1: a=0, v=const. → s wächst linear (Gerade). Phase 2: a=const. → s ~ t² → Parabel. Die Steigung wird steiler.", hint: "Was ergibt s = v·t (linear)? Was ergibt s = ½·a·t² (quadratisch)?" },
+        { text: "'Auto bremst gleichmässig bis zum Stillstand.' – v-t-Diagramm?", options: ["Fallende Gerade bis v = 0.", "Horizontale Linie.", "Parabel nach unten.", "Steigende Gerade."], correct: 0, explanation: "Gleichmässige Bremsung: a = const. < 0. v = v₀ + a·t sinkt linear → fallende Gerade bis v=0.", hint: "Gleichmässige Bremsung = konstante negative Beschleunigung → v sinkt linear." },
+      ],
+    },
+  },
+
+  "Diagramm → Beschreibung": {
+    theory: {
+      kicker: "Modul 3 · Level 7",
+      heading: "Diagramm in Worten beschreiben",
+      paragraphs: [
+        "Beim Lesen eines Diagramms übersetzt man visuelle Merkmale in physikalische Aussagen. Steigende Gerade im v-t → 'gleichmässige Beschleunigung'. Horizontale Linie im v-t → 'gleichförmige Bewegung'. Fallende Gerade im v-t → 'gleichmässige Verzögerung'. Linie bei v=0 → 'Körper steht still'.",
+        "Bei s-t-Diagrammen: Steigung ablesen = Geschwindigkeit. Steigende Steigung (Parabel) = Beschleunigung. Konstante Steigung = konstante Geschwindigkeit. Nullsteigung = Stillstand. Negative Steigung = Rückwärtsbewegung.",
+        "Mehrphasige Bewegungen: Ein Diagramm kann mehrere Phasen enthalten. Jede Phase wird separat beschrieben. Wichtig: die Übergangspunkte (Knickstellen) markieren Änderungen in der Bewegung.",
+      ],
+      formula: "Gerade im v-t: a = const. | Horizontal im v-t: v = const. | Negative Steigung im v-t: Bremsung",
+      example: "v-t: steigt 3 s von 0 auf 6 m/s → bleibt 2 s bei 6 m/s → fällt 3 s auf 0. Beschreibung: erst gleichmässig beschleunigt, dann gleichförmig, dann gleichmässig gebremst.",
+    },
+    question: {
+      type: "mc",
+      basis: [
+        { text: "v-t-Diagramm: steigende Gerade von v=0 auf v=10 m/s in 5 s. Was beschreibt das?", options: ["Gleichmässige Beschleunigung (a = 2 m/s²).", "Gleichförmige Bewegung.", "Körper steht still.", "Körper bremst."], correct: 0, explanation: "Steigende Gerade im v-t = a = const. a = Δv/Δt = 10/5 = 2 m/s² → gleichmässige Beschleunigung.", hint: "Steigende Gerade im v-t → positive konstante Steigung → a > 0 = ?" },
+        { text: "s-t-Diagramm: horizontale Linie bei s=15 m. Was beschreibt das?", options: ["Körper steht still bei s = 15 m.", "Körper bewegt sich mit v = 15 m/s.", "Körper beschleunigt.", "Körper kehrt um."], correct: 0, explanation: "Horizontal im s-t: s = const. = 15 m → Steigung = 0 → v = 0 → Stillstand.", hint: "Horizontale Linie: Steigung = 0 → v = Steigung im s-t-Diagramm = 0 → ?" },
+      ],
+      challenge: [
+        { text: "v-t-Diagramm: erst horizontal bei v=8 m/s (3 s), dann fallende Gerade bis v=0 (5 s). Textbeschreibung?", options: ["Erst gleichförmig, dann gleichmässig gebremst bis Stillstand.", "Erst beschleunigt, dann gleichförmig.", "Erst Stillstand, dann Beschleunigung.", "Immer gleichmässige Beschleunigung."], correct: 0, explanation: "Horizontal = a=0 = gleichförmig (v=8 m/s). Fallend = a<0 = Bremsung → Stillstand bei v=0.", hint: "Phase 1: Steigung? Phase 2: Steigung? Positiv, negativ oder null?" },
+        { text: "s-t-Diagramm: erst lineare Steigung (2 s), dann stärkere Krümmung nach oben (3 s). Beschreibung?", options: ["Erst gleichförmig, dann gleichmässig beschleunigt (Steigung nimmt zu).", "Erst beschleunigt, dann gleichförmig.", "Gleichförmig die ganze Zeit.", "Erst schnell, dann langsamer."], correct: 0, explanation: "Lineare Steigung = v=const. Zunehmende Steigung (Parabel) = v steigt = a>0 = gleichmässige Beschleunigung.", hint: "Was bedeutet 'stärkere Krümmung nach oben' für die Steigung (= v)?" },
+      ],
+    },
+  },
+
+  "Diagrammfehler finden": {
+    theory: {
+      kicker: "Modul 3 · Level 8",
+      heading: "Typische Fehler in Diagrammen erkennen",
+      paragraphs: [
+        "Es gibt einige physikalisch unmögliche oder falsche Darstellungen in Diagrammen. Die häufigsten: 1. Senkrechte Linie im s-t-Diagramm – das würde unendliche Geschwindigkeit bedeuten. 2. Senkrechte Linie im v-t-Diagramm – das würde unendliche Beschleunigung bedeuten (unphysikalisch). Beide sind in der Realität unmöglich.",
+        "Weiterer Fehler: Im s-t-Diagramm eine Gerade zeichnen für gleichmässige Beschleunigung. Korrekt wäre eine Parabel – denn s = ½at² ist quadratisch. Die Steigung einer Parabel nimmt zu, die einer Geraden ist konstant.",
+        "Auch häufig: Im v-t-Diagramm negative Werte für v einzeichnen, obwohl der Körper laut Text 'vorwärts fährt'. Negative v bedeutet Bewegung in die entgegengesetzte Richtung – das ist kein 'Fehler' per se, aber eine Fehlinterpretation der Aufgabe.",
+      ],
+      formula: "Senkrechte Linie im s-t oder v-t = unphysikalisch | Gerade statt Parabel bei Beschleunigung = falsch",
+      example: "Fehler: s-t zeigt Gerade, obwohl Körper gleichmässig aus Ruhe beschleunigt. Korrekt: Parabel (s ~ t²).",
+    },
+    question: {
+      type: "mc",
+      basis: [
+        { text: "Im s-t-Diagramm ist eine senkrechte (vertikale) Linie eingezeichnet. Was ist das Problem?", options: ["Senkrechte Linie = unendliche Geschwindigkeit → physikalisch unmöglich.", "Die Linie fehlt eine Einheit.", "Die Zeit muss negativ sein.", "Das s-t-Diagramm kann keine senkrechten Linien haben."], correct: 0, explanation: "Senkrecht im s-t: Δt = 0, Δs > 0 → v = Δs/Δt → unendlich. Kein Körper kann unendlich schnell sein.", hint: "Steigung = Δs/Δt. Was passiert wenn Δt → 0?" },
+        { text: "Körper beschleunigt gleichmässig aus dem Stand. Das s-t-Diagramm zeigt eine Gerade. Warum ist das falsch?", options: ["s = ½at² ist quadratisch → Parabel, nicht Gerade.", "Geraden sind im s-t immer falsch.", "Die Steigung müsste null sein.", "s kann nicht wachsen."], correct: 0, explanation: "s = ½at² → quadratische Funktion → Parabel. Eine Gerade würde konstante Geschwindigkeit bedeuten (s = v·t).", hint: "Welche Kurvenform hat s = ½at²? Linear oder quadratisch?" },
+      ],
+      challenge: [
+        { text: "v-t-Diagramm: Die Linie springt von v=6 m/s auf v=0 m/s in 0 Sekunden. Warum ist das unphysikalisch?", options: ["Das bedeutet unendliche Beschleunigung (a = Δv/Δt = 6/0).", "v darf nicht sinken.", "t darf nicht 0 sein.", "Das Diagramm ist korrekt."], correct: 0, explanation: "a = Δv/Δt = −6/0 → unendlich. Keine endliche Kraft kann unendliche Beschleunigung erzeugen.", hint: "a = Δv/Δt. Was ist Δt? Was ergibt das?" },
+        { text: "Im v-t-Diagramm für eine Bremsung bis zum Stillstand geht die Linie nach t_stop weiter und zeigt negative v-Werte. Was stimmt nicht?", options: ["Nach dem Stillstand (v=0) bleibt der Körper stehen – v kann nicht negativ werden, es sei denn, er fährt rückwärts.", "Negative v sind immer falsch.", "Das Diagramm muss bei t=0 enden.", "v muss immer positiv sein."], correct: 0, explanation: "Eine Bremsung bis zum Stillstand endet bei v=0. Danach bewegt sich der Körper nicht mehr (ohne weitere Kraft). Negative v würde bedeuten: der Körper fährt rückwärts – nur möglich wenn er angetrieben wird.", hint: "Was passiert physikalisch, wenn ein Körper 'bis zum Stillstand' bremst? Was fehlt für weitere Bewegung?" },
+      ],
+    },
+  },
+
+  "Mehrteilige Bewegung": {
+    theory: {
+      kicker: "Modul 3 · Level 9",
+      heading: "Mehrteilige Bewegungen im Diagramm",
+      paragraphs: [
+        "Reale Bewegungen bestehen oft aus mehreren Phasen. Im Diagramm erkennt man Phasenwechsel an Knickpunkten (im v-t) oder Krümmungsänderungen (im s-t). Jede Phase wird getrennt analysiert: Welche Bewegung? Welche Grössen?",
+        "Beim v-t-Diagramm lassen sich alle Phasen direkt ablesen: Rechteck-Flächen (v = const.) und Dreieck-Flächen (Bremsen oder Beschleunigen) zusammenaddieren ergibt den Gesamtweg.",
+        "Typisches Beispiel: Phase 1 – gleichförmig (Rechteck). Phase 2 – Bremsung (Dreieck). Phase 3 – Stillstand (Linie auf v=0). Phase 4 – erneute Beschleunigung (neues Dreieck).",
+      ],
+      formula: "Gesamtweg = Summe aller Flächen unter v-t (Rechtecke + Dreiecke)",
+      example: "v=8 m/s für 3 s (Rechteck: 24 m) → bremst in 3 s auf 0 (Dreieck: ½·3·8=12 m) → Gesamtweg: 36 m.",
+    },
+    question: {
+      type: "chart",
+      chartConfig: {
+        chartType: "line",
+        xLabel: "Zeit t (s)",
+        yLabel: "Geschwindigkeit v (m/s)",
+        xData: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+        datasets: [
+          { label: "v(t)", data: [6, 6, 6, 6, 4, 2, 0, 0, 0, 2, 4], color: "#f56e92", tension: 0, fill: false },
+        ],
+      },
+      tasks: [
+        { text: "Was ist die Beschleunigung von t = 3 bis t = 6 s?", options: ["a = −2 m/s² (Bremsung)", "a = 0 m/s²", "a = +2 m/s²", "a = −6 m/s²"], correct: 0, explanation: "a = Δv/Δt = (0−6)/(6−3) = −6/3 = −2 m/s². Negative Steigung → Verzögerung.", hint: "a = Δv/Δt = (v_end − v_start) / (t_end − t_start)" },
+        { type: "calc", text: "Wie weit fährt der Körper in Phase 1 (t = 0 bis 3 s)?", answer: 18, unit: "m", tolerance: 0.5, explanation: "Rechteck: s = v · t = 6 · 3 = 18 m.", hint: "Phase 1: v = const. → Fläche = Rechteck: v · t" },
+        { type: "calc", text: "Wie weit in Phase 2 (Bremsung, t = 3 bis 6 s)?", answer: 9, unit: "m", tolerance: 0.5, explanation: "Dreieck: s = ½ · v₀ · t = ½ · 6 · 3 = 9 m.", hint: "Phase 2: v geht von 6 auf 0 → Fläche = Dreieck: ½ · Basis · Höhe" },
+        { type: "calc", text: "Was ist der Gesamtweg von t = 0 bis t = 6 s?", answer: 27, unit: "m", tolerance: 0.5, explanation: "Gesamtweg = Phase 1 + Phase 2 = 18 + 9 = 27 m.", hint: "Gesamtweg = Summe aller Teilflächen unter v-t." },
+      ],
+    },
+  },
+
+  "Boss – Diagramme": {
+    theory: {
+      kicker: "Modul 3 · Boss",
+      heading: "Boss: Alle drei Diagrammtypen",
+      paragraphs: [
+        "Jetzt werden alle drei Diagrammtypen kombiniert. Du musst zwischen s-t, v-t und a-t wechseln und die Zusammenhänge kennen: Steigung s-t = v, Steigung v-t = a, Fläche v-t = s, Fläche a-t = Δv.",
+        "Strategie: 1. Welche Grössen sind gesucht? 2. In welchem Diagramm lese ich was ab? 3. Einheiten kontrollieren. 4. Phasen einzeln analysieren, dann addieren.",
+        "Besonders tückisch: Verwechseln von s-t und v-t. Im s-t zeigt die Steigung v; im v-t zeigt die Steigung a. Ein 'steiles s-t' heisst schnell – ein 'steiles v-t' heisst hohe Beschleunigung.",
+      ],
+      formula: "s-t: Stg=v | v-t: Stg=a, Fl=s | a-t: Fl=Δv",
+      example: "v-t: Dreieck mit Basis 5 s, Höhe 20 m/s → s = ½·5·20 = 50 m, a = 20/5 = 4 m/s².",
+    },
+    question: {
+      type: "mc",
+      basis: [
+        { text: "s-t: konstante positive Steigung. v-t: horizontal. a-t: auf 0. Welche Bewegung liegt vor?", options: ["Gleichförmige Bewegung (v=const., a=0).", "Gleichmässige Beschleunigung.", "Körper steht still.", "Körper bremst."], correct: 0, explanation: "Alle drei Diagramme zeigen: v konstant, a=0 → Gleichförmige Bewegung. Klassiker!", hint: "Konstante Steigung im s-t = v=const. Was ist dann a?" },
+        { text: "v-t: Rechteck, 4 s breit, 5 m/s hoch. Welchen Weg legt der Körper zurück?", options: ["20 m (Fläche: 4 · 5)", "9 m", "10 m", "40 m"], correct: 0, explanation: "Fläche Rechteck = Breite · Höhe = 4 s · 5 m/s = 20 m. s = v · t.", hint: "Fläche Rechteck = Länge · Breite. Hier: t · v." },
+      ],
+      challenge: [
+        { text: "v-t: Dreieck, Basis t=6 s, Höhe v=12 m/s. Welchen Weg und welche Beschleunigung zeigt das?", options: ["s = 36 m, a = 2 m/s²", "s = 72 m, a = 2 m/s²", "s = 36 m, a = 12 m/s²", "s = 18 m, a = 2 m/s²"], correct: 0, explanation: "s = ½ · 6 · 12 = 36 m. a = Steigung = 12/6 = 2 m/s².", hint: "Fläche Dreieck = ½·b·h. Steigung = Δv/Δt = Höhe/Basis." },
+        { text: "Körper: 2 s bei v=4 m/s, dann 3 s mit a=2 m/s² (v₀=4). Gesamtweg?", options: ["29 m", "8 m", "21 m", "50 m"], correct: 0, explanation: "Phase 1: s₁ = 4·2 = 8 m. Phase 2: s₂ = v₀·t + ½·a·t² = 4·3 + ½·2·9 = 12 + 9 = 21 m. Total = 8 + 21 = 29 m.", hint: "Phase 1: s=v·t. Phase 2: s=v₀·t+½·a·t². Dann addieren." },
+      ],
+    },
+  },
+
   // ── MODULE 4 · Reaktions- und Bremsweg ────────────────────────────────────
 
   "Reaktionszeit": {
