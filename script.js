@@ -47,128 +47,2208 @@ const STEP_ICONS = {
 };
 
 const MODULE_CONTENT = {
-  TEST: {
-    title: "TEST",
-    steps: [
-      {
-        title: "Gleichförmige Bewegung",
-        text: "Auto fährt mit konstanter Geschwindigkeit auf einer geraden Strecke.",
-        icon: "car",
-        colorA: "#ff8d47",
-        colorB: "#ffd164",
+  TEST: { title: "Test-Level", steps: [
+    { title: "Gleichförmige Bewegung", text: "Auto fährt mit konstanter Geschwindigkeit.", icon: "car",          colorA: "#ff8d47", colorB: "#ffd164" },
+    { title: "Aufholen",               text: "Wann holt der schnellere Körper den langsameren ein?",        icon: "encounter",  colorA: "#24b7d8", colorB: "#84e1f1" },
+    { title: "Beschleunigung",         text: "Rakete startet aus der Ruhe – Geschwindigkeit berechnen.",    icon: "acceleration",colorA: "#7a62ff", colorB: "#b7a7ff" },
+    { title: "K1 – Sprint-Scanner",    text: "Mittlere Geschwindigkeit eines 100-m-Sprints berechnen.",    icon: "speed",      colorA: "#59a3ff", colorB: "#8ed0ff" },
+    { title: "K2 – Überhol-Duell",     text: "Schnelleres Fahrzeug holt langsameres ein.",                 icon: "encounter",  colorA: "#ff9c58", colorB: "#ffd58a" },
+    { title: "K3 – Freier Fall",       text: "Ball fällt – Fallzeit mit g = 9,81 m/s² berechnen.",        icon: "fall",       colorA: "#3dd18d", colorB: "#94ecb8" },
+    { title: "K4 – Bremsweg",          text: "Auto bremst – wie weit bis zum Stillstand?",                 icon: "brake",      colorA: "#f86785", colorB: "#f9a8bd" },
+    { title: "K5 – Beschleunigungsweg",text: "Fahrzeug beschleunigt aus dem Stand.",                       icon: "acceleration",colorA: "#8f73ff", colorB: "#c2b6ff" },
+    { title: "K6 – Konzept-Quiz",      text: "Konzeptfragen zu Bewegungsdiagrammen und Grössen.",          icon: "chart",      colorA: "#21b7d8", colorB: "#7de1f2" },
+  ]},
+
+  "0": { title: "Bewegung verstehen", steps: [
+    { title: "Was ist Bewegung?",         text: "Ein Körper bewegt sich, wenn sich sein Ort mit der Zeit ändert.",        icon: "speed",        colorA: "#3f8efc", colorB: "#80c2ff" },
+    { title: "Das Bezugssystem",          text: "Ruhe und Bewegung hängen immer vom Bezug des Beobachters ab.",           icon: "frame",        colorA: "#8a73ff", colorB: "#c2b6ff" },
+    { title: "Ort und Position",          text: "Position als Zahl mit Vorzeichen auf einer Koordinatenachse.",            icon: "point",        colorA: "#ff8d47", colorB: "#ffd164" },
+    { title: "Zeit als Messgrösse",       text: "Zeitpunkte und Zeitintervalle klar unterscheiden.",                      icon: "units",        colorA: "#21b7d8", colorB: "#7de1f2" },
+    { title: "Strecke vs. Verschiebung",  text: "Zurückgelegter Weg und Netto-Ortsänderung sind verschieden.",            icon: "displacement", colorA: "#f86785", colorB: "#f9a8bd" },
+    { title: "Symbol s und Einheit m",    text: "Formelzeichen s für Strecke, SI-Einheit Meter.",                         icon: "formula",      colorA: "#3dd18d", colorB: "#94ecb8" },
+    { title: "Symbol t und Einheit s",    text: "Formelzeichen t für Zeit, SI-Einheit Sekunde – und die Verwechslungsfalle.", icon: "units",   colorA: "#ff9c58", colorB: "#ffd58a" },
+    { title: "Weg und Zeit",              text: "Bewegung braucht immer Ort UND Zeit – erste Idee der Geschwindigkeit.",  icon: "car",          colorA: "#59a3ff", colorB: "#8ed0ff" },
+    { title: "Bewegung im Alltag",        text: "Kinematik-Begriffe auf alltägliche Situationen korrekt anwenden.",        icon: "car",          colorA: "#7a62ff", colorB: "#b7a7ff" },
+    { title: "Boss – Bewegung",           text: "Alle Grundbegriffe aus Kapitel 1 in einer Boss-Aufgabe vernetzen.",       icon: "chart",        colorA: "#20b76b", colorB: "#69d78f" },
+  ]},
+
+  "1": { title: "Geschwindigkeit", steps: [
+    { title: "Was ist Geschwindigkeit?",    text: "Geschwindigkeit als Ortsänderung pro Zeit verstehen.",         icon: "speed",   colorA: "#5ea2ff", colorB: "#9bc8ff" },
+    { title: "Formel v = s / t",            text: "Die Grundformel der Durchschnittsgeschwindigkeit kennen.",     icon: "formula", colorA: "#65d78a", colorB: "#a4f0be" },
+    { title: "Einheit m/s",                 text: "SI-Einheit m/s und Alltagseinheit km/h unterscheiden.",        icon: "units",   colorA: "#7e74ff", colorB: "#c3bcff" },
+    { title: "v berechnen",                 text: "Geschwindigkeit aus Strecke und Zeit ausrechnen.",             icon: "formula", colorA: "#ff9c58", colorB: "#ffd58a" },
+    { title: "s und t berechnen",           text: "Formel nach s und t umstellen und anwenden.",                  icon: "formula", colorA: "#24b7d8", colorB: "#88e4f2" },
+    { title: "Gleichförmige Bewegung",      text: "Konstante Geschwindigkeit – Erkennungsmerkmale.",              icon: "car",     colorA: "#f86785", colorB: "#f9a8bd" },
+    { title: "Tabelle der Bewegung",        text: "Strecken-Zeit-Tabelle lesen und vervollständigen.",            icon: "chart",   colorA: "#3dd18d", colorB: "#94ecb8" },
+    { title: "s-t Diagramm",               text: "Lineares s-t Diagramm lesen und deuten.",                      icon: "graph",   colorA: "#8f73ff", colorB: "#c2b6ff" },
+    { title: "Durchschnittsgeschwindigkeit",text: "Mittlere Geschwindigkeit bei mehreren Abschnitten.",           icon: "speed",   colorA: "#ff8753", colorB: "#ffc173" },
+    { title: "Boss – Geschwindigkeit",      text: "Alle Geschwindigkeits-Konzepte in einer Boss-Aufgabe.",        icon: "chart",   colorA: "#20b76b", colorB: "#69d78f" },
+  ]},
+
+  "2": { title: "Beschleunigung", steps: [
+    { title: "Was ist Beschleunigung?",       text: "Beschleunigung als Geschwindigkeitsänderung pro Zeit.",      icon: "acceleration", colorA: "#5f9dff", colorB: "#9dc9ff" },
+    { title: "Formel a = Δv / Δt",            text: "Beschleunigung berechnen und interpretieren.",               icon: "formula",      colorA: "#60ce88", colorB: "#9ce7b6" },
+    { title: "Einheit m/s²",                  text: "Was m/s² bedeutet – sprachlich und rechnerisch.",            icon: "units",        colorA: "#8a73ff", colorB: "#cabdff" },
+    { title: "Positiv und negativ a",         text: "Schneller werden, langsamer werden, bremsen.",               icon: "sign",         colorA: "#ff8e5a", colorB: "#ffc981" },
+    { title: "Gleichmässig beschleunigt",     text: "Konstante Beschleunigung – was das bedeutet.",               icon: "acceleration", colorA: "#27b6d7", colorB: "#84dff0" },
+    { title: "v = v₀ + a·t",                 text: "Geschwindigkeit zu beliebigem Zeitpunkt berechnen.",         icon: "formula",      colorA: "#f66d93", colorB: "#f8acbf" },
+    { title: "s = ½·a·t² (Ruhe)",            text: "Weg bei Start aus Ruhe – quadratisches Wachstum.",           icon: "formula",      colorA: "#5f9dff", colorB: "#9dc9ff" },
+    { title: "Bremsen als Beschleunigung",    text: "Verzögerung ist negative Beschleunigung.",                   icon: "brake",        colorA: "#60ce88", colorB: "#9ce7b6" },
+    { title: "v-t Diagramm",                 text: "Steigung im v-t Diagramm = Beschleunigung.",                 icon: "chart",        colorA: "#8a73ff", colorB: "#cabdff" },
+    { title: "Boss – Beschleunigung",         text: "Alle Formeln und Diagramme zur Beschleunigung.",             icon: "chart",        colorA: "#20b76b", colorB: "#69d78f" },
+  ]},
+
+  "3": { title: "Bewegungsdiagramme", steps: [
+    { title: "Drei Diagrammtypen",           text: "s-t, v-t und a-t Diagramme unterscheiden.",                icon: "chart",  colorA: "#5fa4ff", colorB: "#9fcfff" },
+    { title: "s-t Diagramm lesen",           text: "Ort, Steigung und Phasen ablesen.",                       icon: "slope",  colorA: "#62d38a", colorB: "#9de9b8" },
+    { title: "v-t Diagramm lesen",           text: "Geschwindigkeit und Beschleunigung ablesen.",             icon: "speed",  colorA: "#8c76ff", colorB: "#c8beff" },
+    { title: "Fläche v-t = Weg",             text: "Zurückgelegter Weg als Fläche unter v-t.",                icon: "area",   colorA: "#ff9657", colorB: "#ffd182" },
+    { title: "a-t Diagramm lesen",           text: "Beschleunigungsabschnitte physikalisch deuten.",         icon: "acceleration",colorA: "#25b7d8",colorB: "#86e1f1"},
+    { title: "Text → Diagramm",              text: "Beschreibung in ein s-t oder v-t Diagramm übersetzen.",  icon: "graph",  colorA: "#f56e92", colorB: "#f7aec1" },
+    { title: "Diagramm → Beschreibung",      text: "Aus einem Graphen eine Bewegung in Worten beschreiben.", icon: "graph",  colorA: "#5fa4ff", colorB: "#9fcfff" },
+    { title: "Diagrammfehler finden",        text: "Typische Fehler in Diagrammen erkennen und korrigieren.",icon: "error",  colorA: "#62d38a", colorB: "#9de9b8" },
+    { title: "Mehrteilige Bewegung",         text: "Mehrere Phasen in einem Diagramm analysieren.",          icon: "chart",  colorA: "#8c76ff", colorB: "#c8beff" },
+    { title: "Boss – Diagramme",             text: "Alle drei Diagrammtypen in einer Boss-Aufgabe.",         icon: "chart",  colorA: "#20b76b", colorB: "#69d78f" },
+  ]},
+
+  "4": { title: "Reaktions- und Bremsweg", steps: [
+    { title: "Reaktionszeit",               text: "Zeit zwischen Wahrnehmen und Bremsen.",                   icon: "car",    colorA: "#5ea3ff", colorB: "#9acbff" },
+    { title: "Reaktionsweg berechnen",      text: "s_R = v · t_R – Weg während der Reaktion.",              icon: "formula",colorA: "#65d48a", colorB: "#a2edbe" },
+    { title: "Bremsweg als Verzögerung",    text: "Bremsen = negative Beschleunigung.",                     icon: "brake",  colorA: "#8573ff", colorB: "#c6bcff" },
+    { title: "Anhalteweg",                  text: "s_A = s_R + s_B – Gesamtweg bis zum Stillstand.",        icon: "formula",colorA: "#ff8f5b", colorB: "#ffd184" },
+    { title: "Doppelte Geschwindigkeit",    text: "Warum der Bremsweg überproportional wächst.",             icon: "sign",   colorA: "#2ab8d8", colorB: "#89e3f2" },
+    { title: "Sicherheitsabstand",          text: "Reicht der Abstand – Entscheidung mit Kinematik.",       icon: "encounter",colorA:"#f86785",colorB: "#f9a8bd" },
+    { title: "Einfluss von Müdigkeit",      text: "Grössere Reaktionszeit → längerer Reaktionsweg.",        icon: "sign",   colorA: "#3dd18d", colorB: "#94ecb8" },
+    { title: "Einfluss der Geschwindigkeit",text: "Daten zu 30 / 50 / 80 km/h analysieren.",               icon: "chart",  colorA: "#8f73ff", colorB: "#c2b6ff" },
+    { title: "Anhalteweg im Diagramm",      text: "Reaktions- und Bremsphase im v-t Diagramm.",             icon: "chart",  colorA: "#ff8753", colorB: "#ffc173" },
+    { title: "Boss – Hindernis",            text: "Vollständige Anhalteweganalyse in einem Szenario.",      icon: "chart",  colorA: "#20b76b", colorB: "#69d78f" },
+  ]},
+
+  "5": { title: "Freier Fall", steps: [
+    { title: "Freier Fall als Beschleunigung",text: "Fallbewegung ohne Luftwiderstand verstehen.",             icon: "fall",   colorA: "#5ea3ff", colorB: "#9ac9ff" },
+    { title: "Fallbeschleunigung g",          text: "g ≈ 9,81 m/s² – Bedeutung und Modell.",                   icon: "formula",colorA: "#65d48a", colorB: "#a2edbe" },
+    { title: "Fallgeschwindigkeit v = g·t",   text: "Wie schnell ist der Körper nach t Sekunden?",             icon: "formula",colorA: "#8573ff", colorB: "#c6bcff" },
+    { title: "Fallstrecke s = ½·g·t²",       text: "Wie weit fällt der Körper in t Sekunden?",                icon: "formula",colorA: "#ff8f5b", colorB: "#ffd184" },
+    { title: "Gleich schnell fallen",         text: "Masse ist egal – alle fallen gleich schnell.",             icon: "fall",   colorA: "#2ab8d8", colorB: "#89e3f2" },
+    { title: "Aufwärtswurf",                  text: "Anfangsgeschwindigkeit nach oben, g bremst ab.",          icon: "throw",  colorA: "#f86785", colorB: "#f9a8bd" },
+    { title: "Höchster Punkt",                text: "v = 0 oben, aber a = g ≠ 0 – klassische Fehlvorstellung.", icon: "point", colorA: "#3dd18d", colorB: "#94ecb8" },
+    { title: "Auf- und Abstieg",              text: "Symmetrie des Aufwärtswurfs erkennen.",                   icon: "throw",  colorA: "#8f73ff", colorB: "#c2b6ff" },
+    { title: "Freier Fall im Diagramm",       text: "s-t und v-t Kurven beim freien Fall.",                    icon: "chart",  colorA: "#ff8753", colorB: "#ffc173" },
+    { title: "Boss – Fallturm",               text: "Freier Fall und Aufwärtswurf in einer Aufgabe.",          icon: "chart",  colorA: "#20b76b", colorB: "#69d78f" },
+  ]},
+
+  "6": { title: "Analyse & Fehlvorstellungen", steps: [
+    { title: "Gesuchte Grösse finden",       text: "In Textaufgaben Gegebenes und Gesuchtes identifizieren.",   icon: "model",   colorA: "#5ca2ff", colorB: "#9bc9ff" },
+    { title: "Formel auswählen",             text: "Die passende Beziehung aus mehreren wählen.",               icon: "formula", colorA: "#64d38b", colorB: "#a2e9b9" },
+    { title: "Überflüssige Infos",           text: "Irrelevante Angaben in Aufgaben herausfiltern.",            icon: "error",   colorA: "#8a73ff", colorB: "#c6bcff" },
+    { title: "Einheitenkontrolle",           text: "Einheitenfehler finden und vermeiden.",                     icon: "units",   colorA: "#ff915a", colorB: "#ffd083" },
+    { title: "Ø-Geschwindigkeit komplex",    text: "Durchschnitt über mehrere Abschnitte korrekt berechnen.",   icon: "speed",   colorA: "#24b6d8", colorB: "#84dff1" },
+    { title: "Mehrphasige Bewegung",         text: "Phasen in gemischten Bewegungen sauber analysieren.",       icon: "chart",   colorA: "#5ca2ff", colorB: "#9bc9ff" },
+    { title: "Fehlvorstellungen a",          text: "Typische Denkfehler zur Beschleunigung erkennen.",          icon: "error",   colorA: "#64d38b", colorB: "#a2e9b9" },
+    { title: "Widersprüche erkennen",        text: "Wenn Text, Tabelle und Diagramm nicht übereinstimmen.",     icon: "error",   colorA: "#8a73ff", colorB: "#c6bcff" },
+    { title: "Lösungsstrategie",             text: "Schritte der physikalischen Problemlösung planen.",         icon: "model",   colorA: "#ff915a", colorB: "#ffd083" },
+    { title: "Boss – Analyse-Labor",         text: "Mehrschrittige Analyse und Fehlvorstellungen korrigieren.", icon: "chart",   colorA: "#20b76b", colorB: "#69d78f" },
+  ]},
+
+  "7": { title: "Boss-Kapitel", steps: [
+    { title: "Bewegungsmodell erkennen",    text: "Gleichförmig oder beschleunigt – aus Daten entscheiden.",  icon: "model",   colorA: "#5c9fff", colorB: "#9acfff" },
+    { title: "Ankunftszeit planen",         text: "Route und Zeit in einem Szenario kombinieren.",            icon: "car",     colorA: "#62d38b", colorB: "#9de9b9" },
+    { title: "Beschleunigungsphase",        text: "v = v₀ + at und Diagramm in einer Aufgabe.",              icon: "acceleration",colorA:"#8972ff",colorB:"#c5bbff"},
+    { title: "Verkehrsunfall vermeiden",    text: "Reaktionsweg + Bremsweg im Entscheidungs-Szenario.",      icon: "brake",   colorA: "#ff925a", colorB: "#ffd083" },
+    { title: "Freier Fall komplett",        text: "Alle Formeln des freien Falls in einer Aufgabe.",         icon: "fall",    colorA: "#24b7d8", colorB: "#84e1f1" },
+    { title: "Fehlerhafte Lösung",          text: "Komplette falsche Lösung analysieren und korrigieren.",   icon: "error",   colorA: "#f86785", colorB: "#f9a8bd" },
+    { title: "Bewegung rekonstruieren",     text: "Aus Messpunkten eine Bewegung rekonstruieren.",           icon: "chart",   colorA: "#3dd18d", colorB: "#94ecb8" },
+    { title: "Kinematik-Mix",              text: "Das passende Modell für verschiedene Situationen wählen.", icon: "model",   colorA: "#8f73ff", colorB: "#c2b6ff" },
+    { title: "Mega-Boss: Station",         text: "Alle Kinematik-Konzepte in einer Mission vernetzen.",      icon: "chart",   colorA: "#ff8753", colorB: "#ffc173" },
+    { title: "Final Boss",                 text: "5 Arenen – Meister der Kinematik beweisen.",              icon: "chart",   colorA: "#20b76b", colorB: "#69d78f" },
+  ]},
+};
+
+// ─── Step content (theory + questions) keyed by step title ─────────────────
+const STEP_CONTENT = {
+
+  // ── MODULE 0 · Bewegung verstehen (Level 1–10) ───────────────────────────
+
+  "Was ist Bewegung?": {
+    theory: {
+      kicker: "Modul 0 · Level 1",
+      heading: "Was ist Bewegung?",
+      paragraphs: [
+        "In der Physik ist Bewegung präzise definiert: Ein Körper bewegt sich, wenn er seinen Ort mit der Zeit ändert. Nicht Kraft, Lärm oder Energie entscheiden – nur die Ortsänderung.",
+        "Die Schlüsselfrage lautet: Hat sich die Position zwischen zwei Zeitpunkten verändert? Δs = s₂ − s₁. Wenn Δs ≠ 0, liegt Bewegung vor. Wenn Δs = 0, ruht der Körper.",
+        "Bewegung braucht immer zwei Angaben zusammen: Ort und Zeit. Nur ein Ort allein sagt nichts. Erst 'der Ort verändert sich mit der Zeit' macht Bewegung messbar.",
+      ],
+      formula: "Δs = s₂ − s₁  (Δs ≠ 0 → Bewegung)",
+      example: "Ball bei t₁ = 0 s an s₁ = 2 m. Bei t₂ = 3 s an s₂ = 11 m → Δs = 9 m → Bewegung.",
+    },
+    question: {
+      type: "mc",
+      basis: [
+        { text: "Wann bewegt sich ein Körper physikalisch?", options: ["Wenn sich sein Ort mit der Zeit ändert.", "Wenn er schnell ist.", "Wenn eine Kraft auf ihn wirkt.", "Wenn er laut ist."], correct: 0, explanation: "Bewegung = Ortsänderung in der Zeit. Δs = s₂ − s₁ ≠ 0.", hint: "Was ändert sich bei Bewegung?" },
+        { text: "Ein Auto steht 10 Minuten im Stau. Liegt physikalische Bewegung vor?", options: ["Nein – der Ort ändert sich nicht.", "Ja – der Motor läuft.", "Ja – die Zeit vergeht.", "Es kommt auf die Strecke an."], correct: 0, explanation: "Motorlaufen ≠ Bewegung. Nur die Ortsänderung entscheidet.", hint: "Ändert sich die Position des Autos?" },
+      ],
+      challenge: [
+        { text: "Welche Aussage beschreibt Bewegung physikalisch korrekt?", options: ["Δs = s₂ − s₁ ≠ 0 in einem Zeitintervall.", "Die wirkende Kraft ist > 0.", "Die Geschwindigkeit ist stets > 0 m/s.", "Der Körper gibt Energie ab."], correct: 0, explanation: "Kraft kann wirken ohne Bewegung (Haftreibung). Entscheidend: Ortsänderung.", hint: "Formale Definition: Δs = ?" },
+        { text: "Ein Pendel schwingt hin und her. Was gilt nach einer vollen Schwingung?", options: ["Es hat sich bewegt (Δs ≠ 0 während der Schwingung), Verschiebung gesamt = 0.", "Es hat sich nicht bewegt – es kehrt zurück.", "Nur die Hinbewegung zählt.", "Es kommt auf die Amplitude an."], correct: 0, explanation: "Während der Schwingung ändert sich der Ort ständig → Bewegung. Die Gesamtverschiebung = 0 bedeutet nicht, keine Bewegung stattgefunden hat.", hint: "Bewegung = Ortsänderung zu beliebigen Zeitpunkten." },
+      ],
+    },
+  },
+
+  "Das Bezugssystem": {
+    theory: {
+      kicker: "Modul 0 · Level 2",
+      heading: "Bezugssysteme",
+      paragraphs: [
+        "Ob ein Körper 'ruht' oder 'sich bewegt' hängt davon ab, von wo man beobachtet. Diese Perspektive heisst Bezugssystem. Physik beschreibt Bewegung immer relativ zu einem gewählten Bezugssystem.",
+        "Beispiel Zug: Jemand sitzt im fahrenden Zug und hält eine Tasse. Relativ zum Zug ruht die Tasse. Relativ zum Bahnhof bewegt sie sich mit 80 km/h. Beide Aussagen sind gleichzeitig korrekt.",
+        "In der Schulphysik wählt man meist die Erde als ruhendes Bezugssystem. Das ist bequem und für alltägliche Situationen genau genug.",
+      ],
+      formula: "v_rel = v_A − v_B  (Geschwindigkeit von A relativ zu B)",
+      example: "Auto A bei 10 m, Auto B bei 4 m. Im Bezugssystem von B: s_A = 10 − 4 = +6 m.",
+    },
+    question: {
+      type: "mc",
+      basis: [
+        { text: "Wozu dient ein Bezugssystem?", options: ["Um Orte und Geschwindigkeiten eindeutig messen zu können.", "Damit die Achse immer bei 0 beginnt.", "Um sicherzustellen, dass v > 0.", "Weil Vektoren nur für Punkte definiert sind."], correct: 0, explanation: "Ohne Bezugssystem ist jede Ortsangabe mehrdeutig.", hint: "Relativ zu was wird gemessen?" },
+        { text: "Du fährst im Zug. Deine Mitfahrerin sitzt dir gegenüber. Was siehst du?", options: ["Sie ruht – im Bezugssystem Zug ist ihr Δs = 0.", "Sie bewegt sich mit 80 km/h.", "Sie bewegt sich rückwärts.", "Es gibt keine eindeutige Antwort."], correct: 0, explanation: "Im gemeinsamen Bezugssystem Zug ruht sie relativ zu dir.", hint: "In welchem Bezugssystem beobachtest du?" },
+      ],
+      challenge: [
+        { text: "A läuft mit 4 m/s nach rechts, B radelt mit 10 m/s nach rechts. Wie schnell erscheint A aus Sicht von B?", options: ["−6 m/s (scheint rückwärts zu gehen)", "+14 m/s", "+6 m/s", "0 m/s"], correct: 0, explanation: "v_A relativ zu B = 4 − 10 = −6 m/s. Minus: A bleibt hinter B zurück.", hint: "v_rel = v_A − v_B" },
+        { text: "Welche Aussage über Bezugssysteme ist falsch?", options: ["Es gibt genau ein richtiges Bezugssystem.", "Ruhe und Bewegung sind relativ.", "Verschiedene Beobachter messen verschiedene Geschwindigkeiten.", "Das Bezugssystem muss zu Beginn festgelegt werden."], correct: 0, explanation: "Es gibt kein 'absolut richtiges' Bezugssystem. Alle Inertialsysteme sind gleichwertig.", hint: "Gibt es ein 'bevorzugtes' Bezugssystem?" },
+      ],
+    },
+  },
+
+  "Ort und Position": {
+    theory: {
+      kicker: "Modul 0 · Level 3",
+      heading: "Ort und Position",
+      paragraphs: [
+        "Der Ort eines Körpers gibt an, wo er sich im Koordinatensystem befindet. In einer Dimension genügt eine einzige Zahl: s = 3 m bedeutet '3 Meter vom Ursprung in positiver Richtung'.",
+        "Das Vorzeichen enthält die Richtungsinformation: s = +3 m und s = −3 m liegen gleich weit vom Ursprung entfernt, aber auf verschiedenen Seiten. Die positive Richtung wird zu Beginn der Aufgabe frei gewählt.",
+        "Wichtig: Ort ist eine Momentaufnahme. s(t₀) = 5 m sagt nur, wo der Körper zum Zeitpunkt t₀ ist. Wie er dorthin kam, zeigt erst die Funktion s(t).",
+      ],
+      formula: "s(t₀) = Ort zum Zeitpunkt t₀ | Δs = s₂ − s₁",
+      example: "Messung bei t = 2 s: s = −4 m → 4 Meter links vom Ursprung (wenn positiv = rechts).",
+    },
+    question: {
+      type: "mc",
+      basis: [
+        { text: "Was bedeutet s = −7 m, wenn positiv = rechts gewählt wurde?", options: ["7 m links vom Ursprung.", "7 m/s nach links.", "Negativer Zeitpunkt.", "7 m unterhalb."], correct: 0, explanation: "Vorzeichen gibt Richtung. s = −7 m = 7 m in negativer Richtung = links.", hint: "Was bedeutet das negative Vorzeichen?" },
+        { text: "Zwei Orte: s₁ = +5 m und s₂ = −5 m. Was ist gleich, was verschieden?", options: ["Gleicher Abstand, verschiedene Richtungen.", "Gleicher Ort.", "s₁ ist grösser als s₂.", "Beide liegen links."], correct: 0, explanation: "Betrag identisch (5 m), aber entgegengesetzte Richtungen vom Ursprung.", hint: "Vergleiche Betrag und Vorzeichen." },
+      ],
+      challenge: [
+        { text: "Ein Körper befindet sich zuerst bei s₁ = −3 m und dann bei s₂ = +2 m. Was ist seine Verschiebung Δs?", options: ["Δs = +5 m", "Δs = −5 m", "Δs = −1 m", "Δs = +1 m"], correct: 0, explanation: "Δs = s₂ − s₁ = 2 − (−3) = +5 m. Bewegung in positiver Richtung.", hint: "Δs = s₂ − s₁" },
+        { text: "s(t) = −2t + 6. Wo ist der Körper bei t = 3 s?", options: ["s = 0 m (am Ursprung)", "s = 6 m", "s = −2 m", "s = 3 m"], correct: 0, explanation: "s = −2·3 + 6 = −6 + 6 = 0. Der Körper befindet sich genau am Ursprung.", hint: "Setze t = 3 in die Gleichung ein." },
+      ],
+    },
+  },
+
+  "Zeit als Messgrösse": {
+    theory: {
+      kicker: "Modul 0 · Level 4",
+      heading: "Zeit als physikalische Grösse",
+      paragraphs: [
+        "Zeit ist in der Kinematik die zweite unverzichtbare Grösse neben dem Ort. Man unterscheidet Zeitpunkte (t₁, t₂) – bestimmte Momente – und Zeitintervalle (Δt = t₂ − t₁) – die Dauer dazwischen.",
+        "Die SI-Einheit der Zeit ist die Sekunde (Abkürzung: s). Häufige Umrechnungen: 1 min = 60 s, 1 h = 3600 s. In Formeln immer Sekunden verwenden, wenn die Geschwindigkeit in m/s gefragt ist.",
+        "Erst mit zwei Zeitpunkten kann man Bewegung beschreiben: Wie hat sich der Ort von t₁ zu t₂ verändert? Ohne Zeitbezug ist Kinematik unmöglich.",
+      ],
+      formula: "Δt = t₂ − t₁  (Zeitintervall, immer ≥ 0)",
+      example: "t₁ = 2 s, t₂ = 7 s → Δt = 5 s. In dieser Zeit legt das Auto eine Strecke zurück.",
+    },
+    question: {
+      type: "mc",
+      basis: [
+        { text: "Was ist ein Zeitintervall?", options: ["Die Dauer zwischen zwei Zeitpunkten: Δt = t₂ − t₁.", "Ein einzelner Moment.", "Die Geschwindigkeit geteilt durch die Zeit.", "Die Strecke pro Sekunde."], correct: 0, explanation: "Zeitintervall = Zeitspanne zwischen zwei Momenten.", hint: "Δt = ?" },
+        { text: "Wie viele Sekunden sind 3 Minuten?", options: ["180 s", "30 s", "300 s", "18 s"], correct: 0, explanation: "1 min = 60 s → 3 min = 3 × 60 = 180 s.", hint: "1 Minute = 60 Sekunden" },
+      ],
+      challenge: [
+        { text: "t₁ = 1,5 min und t₂ = 4 min. Wie gross ist Δt in Sekunden?", options: ["150 s", "5,5 s", "90 s", "240 s"], correct: 0, explanation: "Δt = (4 − 1,5) min = 2,5 min = 2,5 × 60 = 150 s.", hint: "Erst Differenz, dann umrechnen." },
+        { text: "An welchem einzigen Zeitpunkt kann man Bewegung nicht beschreiben?", options: ["Man braucht immer mindestens zwei Zeitpunkte.", "Bei t = 0.", "Wenn er sich rückwärts bewegt.", "Das ist nie ein Problem."], correct: 0, explanation: "Bewegung erfordert Δs über Δt. Ein einzelner Zeitpunkt gibt keine Ortsänderung.", hint: "Was braucht man für Δs = s₂ − s₁?" },
+      ],
+    },
+  },
+
+  "Strecke vs. Verschiebung": {
+    theory: {
+      kicker: "Modul 0 · Level 5",
+      heading: "Strecke und Verschiebung",
+      paragraphs: [
+        "Die zurückgelegte Strecke ist der gesamte Weg, unabhängig von der Richtung: 5 m vor und 5 m zurück ergeben 10 m Strecke. Sie ist immer positiv (oder null).",
+        "Die Verschiebung Δs ist die Netto-Ortsänderung: Δs = s₂ − s₁. Wenn du am Startpunkt endest, ist Δs = 0 – egal wie weit du gelaufen bist. Verschiebung kann negativ sein.",
+        "Diese Unterscheidung ist fundamental: Formelgrösse s meint oft die Verschiebung (inkl. Vorzeichen). Umgangssprache 'Strecke' meint oft den Gesamtweg. Achte immer genau auf den Kontext.",
+      ],
+      formula: "Verschiebung: Δs = s₂ − s₁  |  Strecke = |Weg insgesamt|",
+      example: "Start s₁ = 0, läuft 8 m vor (s = 8), 3 m zurück (s₂ = 5). Strecke = 11 m. Δs = +5 m.",
+    },
+    question: {
+      type: "mc",
+      basis: [
+        { text: "Läufer: s₁ = 0, läuft 10 m vor, dreht, läuft 4 m zurück. Verschiebung?", options: ["Δs = +6 m", "Δs = 14 m", "Δs = −4 m", "Δs = 10 m"], correct: 0, explanation: "s₂ = 10 − 4 = 6 m. Δs = 6 − 0 = +6 m. Zurückgelegte Strecke wäre 14 m.", hint: "Wo endet der Läufer? Δs = s₂ − s₁" },
+        { text: "Welche Grösse kann NICHT negativ sein?", options: ["Zurückgelegte Strecke (Gesamtweg).", "Verschiebung Δs.", "Geschwindigkeit v.", "Beschleunigung a."], correct: 0, explanation: "Zurückgelegte Strecke ist immer ≥ 0. Alle anderen können negativ sein.", hint: "Kann man 'negative Wegstrecke' laufen?" },
+      ],
+      challenge: [
+        { text: "Körper: 6 m vorwärts, 9 m rückwärts, 3 m vorwärts. Strecke und Verschiebung?", options: ["Strecke = 18 m, Δs = 0 m", "Strecke = 18 m, Δs = −6 m", "Strecke = 0 m, Δs = 18 m", "Strecke = 6 m, Δs = 0 m"], correct: 0, explanation: "Strecke = 6 + 9 + 3 = 18 m. Endort = 6 − 9 + 3 = 0. Δs = 0 − 0 = 0 m.", hint: "Strecke = Summe aller Beträge. Δs = Endort − Startort." },
+        { text: "Finde den Fehler: 'Die Verschiebung eines Marathonläufers ist 42,2 km.'", options: ["Falsch – bei Rundkurs Start = Ziel, also Δs = 0 km.", "Richtig – er läuft 42,2 km.", "Hängt von der Route ab.", "Verschiebung hat keine Einheit."], correct: 0, explanation: "Bei Rundkurs Start = Ziel → Δs = 0. Zurückgelegte Strecke = 42,2 km.", hint: "Marathon: Endpunkt = Startpunkt?" },
+      ],
+    },
+  },
+
+  "Symbol s und Einheit m": {
+    theory: {
+      kicker: "Modul 0 · Level 6",
+      heading: "Formelzeichen s und Einheit Meter",
+      paragraphs: [
+        "In der Physik trägt jede Grösse ein Formelzeichen. Für Strecke und Ort verwendet man meist s. Die SI-Einheit ist das Meter (m). Eine Angabe ohne Einheit ist physikalisch bedeutungslos.",
+        "Häufige Untereinheiten: 1 km = 1000 m, 1 dm = 0,1 m, 1 cm = 0,01 m, 1 mm = 0,001 m. Für Berechnungen immer zuerst in Meter umrechnen.",
+        "Beispiele vollständiger Angaben: s = 250 m (korrekt), s = 250 (falsch – Einheit fehlt), s = 0,25 km (korrekt – aber für Rechnungen umrechnen).",
+      ],
+      formula: "s [m]: 1 km = 1000 m | 1 cm = 0,01 m | 1 mm = 0,001 m",
+      example: "s = 2,4 km = 2400 m = 240 000 cm.",
+    },
+    question: {
+      type: "mc",
+      basis: [
+        { text: "Welche Angabe ist physikalisch vollständig?", options: ["s = 150 m", "s = 150", "150", "m = 150"], correct: 0, explanation: "Nur 'Zahlenwert + Einheit' ist eine vollständige Angabe.", hint: "Was braucht eine physikalische Grösse?" },
+        { text: "Wie viele Meter sind 3,5 km?", options: ["3500 m", "350 m", "35 m", "3,5 m"], correct: 0, explanation: "1 km = 1000 m → 3,5 × 1000 = 3500 m.", hint: "1 km = ? m" },
+      ],
+      challenge: [
+        { text: "Rechne 4800 mm in km um.", options: ["0,0048 km", "4,8 km", "0,48 km", "48 km"], correct: 0, explanation: "4800 mm ÷ 1000 = 4,8 m ÷ 1000 = 0,0048 km.", hint: "mm → m ÷ 1000, dann m → km ÷ 1000" },
+        { text: "Problem: Aufgabe gibt s ohne Einheit. Was ist das Problem?", options: ["Ohne Einheit ist das Ergebnis physikalisch bedeutungslos – 5 könnte 5 m, 5 km oder 5 cm sein.", "Kein Problem – der Zahlenwert reicht.", "Man nimmt automatisch Meter.", "Es fehlt das Formelzeichen."], correct: 0, explanation: "Physikalische Grössen brauchen Zahlenwert UND Einheit.", hint: "Was bedeutet '5' ohne Einheit?" },
+      ],
+    },
+  },
+
+  "Symbol t und Einheit s": {
+    theory: {
+      kicker: "Modul 0 · Level 7",
+      heading: "Formelzeichen t und Einheit Sekunde",
+      paragraphs: [
+        "Zeit wird mit dem Formelzeichen t bezeichnet. Die SI-Einheit ist die Sekunde, abgekürzt s. Hier liegt eine klassische Verwechslungsfalle: s als Einheit (Sekunde) ist NICHT dasselbe wie s als Formelzeichen (Strecke).",
+        "Aus dem Kontext erkennt man den Unterschied: '20 s' bedeutet 20 Sekunden. 's = 20 m' bedeutet die Strecke beträgt 20 Meter. In Formeln steht s immer für die Strecke, in Einheiten immer für Sekunde.",
+        "Umrechnungen: 1 min = 60 s, 1 h = 3600 s. Für alle Kinematik-Rechnungen mit m/s immer zuerst in Sekunden umrechnen.",
+      ],
+      formula: "t [s]: 1 min = 60 s | 1 h = 3600 s  ⚠ s [m] ≠ s [Einheit Sekunde]",
+      example: "Formel v = s/t. Hier ist s die Strecke (m) und t die Zeit (s = Sekunden). v hat Einheit m/s.",
+    },
+    question: {
+      type: "mc",
+      basis: [
+        { text: "Was bedeutet '45 s' in der Physik?", options: ["45 Sekunden (Zeitangabe).", "45 Meter Strecke.", "45 m/s Geschwindigkeit.", "Formelzeichen für Strecke."], correct: 0, explanation: "'45 s' = 45 Sekunden. Das s ist die Abkürzung der Einheit Sekunde.", hint: "s als Einheit = Sekunde." },
+        { text: "Wie viele Sekunden sind 2,5 Minuten?", options: ["150 s", "250 s", "25 s", "2,5 s"], correct: 0, explanation: "2,5 × 60 = 150 s.", hint: "1 min = 60 s" },
+      ],
+      challenge: [
+        { text: "Finde die Verwechslung: 'v = s/t = 300 s / 60 s = 5 s'", options: ["Ergebnis hat falsche Einheit: muss m/s sein. Erstes s = Strecke [m], t = Zeit [s].", "Alles richtig.", "Der Zahlenwert ist falsch.", "Die Formel ist falsch."], correct: 0, explanation: "v = s[m] / t[s] = 300 m / 60 s = 5 m/s. Das Ergebnis ist Geschwindigkeit, keine Zeit.", hint: "Welche Einheit hat Geschwindigkeit?" },
+        { text: "Eine Aufgabe gibt 't = 0,5 h'. In Sekunden?", options: ["1800 s", "50 s", "30 s", "5400 s"], correct: 0, explanation: "0,5 h = 0,5 × 3600 = 1800 s.", hint: "1 h = 3600 s" },
+      ],
+    },
+  },
+
+  "Weg und Zeit": {
+    theory: {
+      kicker: "Modul 0 · Level 8",
+      heading: "Weg und Zeit zusammen denken",
+      paragraphs: [
+        "Nur den Weg zu kennen reicht nicht: 100 m in 10 s ist sehr verschieden von 100 m in 100 s. Erst die Kombination aus Weg und Zeit beschreibt eine Bewegung vollständig.",
+        "Das führt direkt zur Idee der Geschwindigkeit: Sie sagt, wie viel Weg pro Zeit zurückgelegt wird. Je grösser die Strecke in derselben Zeit, desto grösser die Geschwindigkeit.",
+        "Vergleiche: Auto A legt 200 m in 10 s zurück. Auto B legt 200 m in 20 s zurück. Gleiche Strecke, aber A braucht halb so lang → A ist doppelt so schnell.",
+      ],
+      formula: "Schneller = mehr Weg in gleicher Zeit  ODER  gleicher Weg in weniger Zeit",
+      example: "A: 200 m in 10 s → v = 20 m/s.  B: 200 m in 20 s → v = 10 m/s. A ist schneller.",
+    },
+    question: {
+      type: "mc",
+      basis: [
+        { text: "Auto A fährt 300 m in 30 s. Auto B fährt 300 m in 15 s. Welches ist schneller?", options: ["Auto B – gleiche Strecke in weniger Zeit.", "Auto A – es fährt länger.", "Beide gleich schnell – gleiche Strecke.", "Kann man nicht sagen."], correct: 0, explanation: "B braucht halb so lange für dieselbe Strecke → doppelt so schnell.", hint: "Gleiche Strecke, wer braucht weniger Zeit?" },
+        { text: "Gänger A geht 1000 m in 12 min. Gänger B geht 1500 m in 12 min. Wer ist schneller?", options: ["B – mehr Strecke in gleicher Zeit.", "A – weniger Strecke.", "Beide gleich – gleiche Zeit.", "Hängt von der Richtung ab."], correct: 0, explanation: "B legt in der gleichen Zeit mehr Weg zurück → B ist schneller.", hint: "Gleiche Zeit, wer legt mehr Strecke zurück?" },
+      ],
+      challenge: [
+        { text: "A: 80 m in 8 s. B: 150 m in 12,5 s. Wer ist schneller?", options: ["B – v_B = 12 m/s > v_A = 10 m/s.", "A – v_A = 10 m/s > v_B = 8 m/s.", "Beide gleich schnell.", "Kann man nicht vergleichen."], correct: 0, explanation: "v_A = 80/8 = 10 m/s. v_B = 150/12,5 = 12 m/s. B ist schneller.", hint: "v = s / t für beide berechnen." },
+        { text: "Welche Aussage ist FALSCH?", options: ["Mehr Zeit für die gleiche Strecke bedeutet höhere Geschwindigkeit.", "Weniger Zeit für die gleiche Strecke bedeutet höhere Geschwindigkeit.", "Mehr Strecke in gleicher Zeit bedeutet höhere Geschwindigkeit.", "v = s/t ist die Formel der Geschwindigkeit."], correct: 0, explanation: "Mehr Zeit für dieselbe Strecke = NIEDRIGERE Geschwindigkeit. v = s/t: Wenn t grösser wird, wird v kleiner.", hint: "Was passiert mit v, wenn t wächst und s gleich bleibt?" },
+      ],
+    },
+  },
+
+  "Bewegung im Alltag": {
+    theory: {
+      kicker: "Modul 0 · Level 9",
+      heading: "Bewegung in Alltagssituationen",
+      paragraphs: [
+        "Kinematik beginnt mit sauberem Beschreiben. Bevor man rechnet, muss man eine Situation physikalisch korrekt lesen: Wer bewegt sich? Relativ wozu? In welche Richtung? Wie lange?",
+        "Alltagssprache ist oft ungenau. 'Das Auto ist schnell' – relativ wozu? Physikalische Beschreibung ersetzt vage Worte durch Grössen: s, t, Δs, v.",
+        "Wichtige Grundtypen: Körper ruht (Δs = 0), Körper bewegt sich gleichförmig (konstante v), Körper wird schneller oder langsamer (Beschleunigung). Diese drei Typen sind der Anfang aller Kinematik.",
+      ],
+      formula: "Ruhe: Δs = 0 | Gleichförmig: v = konst. | Beschleunigt: v ändert sich",
+      example: "'Das Taxi steht 5 Minuten an der Ampel.' → Δs = 0, t = 300 s, v = 0.",
+    },
+    question: {
+      type: "mc",
+      basis: [
+        { text: "Welche Situation beschreibt Bewegung korrekt?", options: ["Δs ≠ 0 zwischen zwei Zeitpunkten.", "Das Objekt macht Lärm.", "Eine Kraft wirkt auf das Objekt.", "Das Objekt hat grosse Masse."], correct: 0, explanation: "Nur Ortsänderung = Bewegung.", hint: "Definition von Bewegung?" },
+        { text: "Person läuft 5 min, steht 2 min, läuft 3 min. Wann ist v = 0?", options: ["In den 2 Minuten Pause.", "In den ersten 5 Minuten.", "In den letzten 3 Minuten.", "Wenn sie schnell läuft."], correct: 0, explanation: "Stillstand: Δs = 0 → v = 0. Das ist die Pause.", hint: "Wann ist die Strecke = 0?" },
+      ],
+      challenge: [
+        { text: "Rolltreppe (v = 0,5 m/s): Beobachter auf Rolltreppe sieht dich als ruhend, Beobachter am Boden mit 0,5 m/s. Wer hat recht?", options: ["Beide – im eigenen Bezugssystem korrekt.", "Nur der Beobachter am Boden.", "Du bist immer ruhend, da du stehst.", "Deine Geschwindigkeit ist immer 0."], correct: 0, explanation: "Bewegung ist relativ zum Bezugssystem. Beide beschreiben korrekt.", hint: "Bezugssystem entscheidet!" },
+        { text: "Welcher Satz enthält einen physikalischen Fehler?", options: ["'Ein Körper beschleunigt immer dann, wenn er langsamer wird.' – Bremsen ist negative Beschleunigung, kein Widerspruch.", "'Der Ball ruht im Bezugssystem des Regals.'", "'Δs = 0 bedeutet: der Körper endet am Startpunkt.'", "'Strecke und Verschiebung können verschieden sein.'"], correct: 0, explanation: "Bremsen IST Beschleunigung (negativ). Der Satz klingt widersprüchlich, ist aber physikalisch korrekt.", hint: "Was bedeutet 'beschleunigen' in der Physik genau?" },
+      ],
+    },
+  },
+
+  "Boss – Bewegung": {
+    theory: {
+      kicker: "Modul 0 · Boss-Level",
+      heading: "Boss: Bewegung verstehen",
+      paragraphs: [
+        "Du hast alle Grundbegriffe der Kinematik kennengelernt: Bewegung als Ortsänderung, Bezugssystem, Position und Ort, Zeit als Messgrösse, Strecke vs. Verschiebung, Symbole und Einheiten.",
+        "Jetzt kommen diese Konzepte zusammen. Der Boss prüft, ob du sie nicht nur einzeln, sondern auch vernetzt anwenden kannst – wie es in echten Physikaufgaben nötig ist.",
+        "Boss-Strategie: 1) Situation verstehen. 2) Gegeben/Gesucht aufschreiben. 3) Den richtigen Begriff wählen. 4) Rechnen oder begründen.",
+      ],
+      formula: "Δs = s₂ − s₁  |  Δt = t₂ − t₁  |  1 km = 1000 m  |  1 min = 60 s",
+      example: "Erst lesen, dann verstehen – erst dann rechnen. Kein blindes Formeleinsetzen!",
+    },
+    question: {
+      type: "mc",
+      basis: [
+        { text: "Arena 1 – Bezugssystem: Du fährst im Bus. Ein Kind auf der Strasse sieht dich. Wer hat recht über deine Bewegung?", options: ["Beide – im eigenen Bezugssystem korrekt.", "Nur das Kind.", "Nur du – du sitzt still.", "Niemand – Bewegung ist absolut."], correct: 0, explanation: "Beide beschreiben korrekt, was sie in ihrem Bezugssystem sehen.", hint: "Bezugssystem = Perspektive." },
+        { text: "Arena 2 – Strecke/Verschiebung: Läufer macht 2 Runden auf einer 400-m-Bahn. Verschiebung?", options: ["Δs = 0 m – wieder am Start.", "Δs = 800 m", "Δs = 400 m", "Δs = 1 Runde"], correct: 0, explanation: "Nach 2 Runden ist er wieder am Startpunkt. Δs = Endort − Startort = 0.", hint: "Wo endet er? Δs = s₂ − s₁." },
+        { text: "Arena 3 – Einheiten: s = 2 km und t = 4 min. Rechne um.", options: ["s = 2000 m, t = 240 s", "s = 2 m, t = 4 s", "s = 200 m, t = 40 s", "s = 2000 cm, t = 4 s"], correct: 0, explanation: "2 km = 2000 m. 4 min = 240 s.", hint: "1 km = 1000 m, 1 min = 60 s" },
+        { text: "Arena 4 – Bewegung: Δs = 0 nach 10 s. Kann der Körper sich bewegt haben?", options: ["Ja – er kann hin- und hergegangen sein.", "Nein – Δs = 0 beweist Ruhe.", "Nur wenn v = 0 war.", "Nur auf gerader Strecke."], correct: 0, explanation: "Δs = 0 bedeutet Endpunkt = Startpunkt, nicht zwingend Ruhe. Strecke kann > 0 sein.", hint: "Verwechsle Verschiebung und Strecke nicht." },
+      ],
+      challenge: [
+        { text: "Körper A: startet bei s = −3 m, endet nach 4 s bei s = +5 m. Was lässt sich sicher sagen?", options: ["Δs = +8 m sicher. Strecke ≥ 8 m, aber ohne Weginfo nicht genau bestimmbar.", "Strecke = 8 m und Δs = 8 m.", "Δs = −8 m.", "Ohne Richtung keine Aussage."], correct: 0, explanation: "Δs = 5 − (−3) = +8 m ist sicher. Strecke könnte 8 m sein (direkter Weg), bei Richtungswechsel mehr.", hint: "Strecke ≥ |Δs| immer." },
+        { text: "Fehler finden: 'Auto fährt 120 km in 2 h. Verschiebung = 120 km.' Was fehlt?", options: ["Verschiebung = Endort − Startort. Ohne Endpunkt unbestimmbar.", "Fehler: 120 km in 2 h ist unrealistisch.", "Strecke und Verschiebung sind immer gleich.", "Die Einheit km ist falsch."], correct: 0, explanation: "Δs = s₂ − s₁. Ohne Endpunkt kann man Δs nicht bestimmen.", hint: "Was braucht man für Δs = s₂ − s₁?" },
+      ],
+    },
+  },
+
+  // ── MODULE 1 · Geschwindigkeit (Level 1–10) ─────────────────────────────
+
+  "Was ist Geschwindigkeit?": {
+    theory: {
+      kicker: "Modul 1 · Level 1",
+      heading: "Was ist Geschwindigkeit?",
+      paragraphs: [
+        "Geschwindigkeit beschreibt, wie schnell ein Körper seinen Ort ändert. Umgangssprachlich sagt man 'schnell' oder 'langsam' – die Physik macht das messbar: Wie viel Weg legt ein Körper pro Zeiteinheit zurück?",
+        "Wichtig ist der Unterschied zwischen Durchschnittsgeschwindigkeit und Momentangeschwindigkeit. Die Durchschnittsgeschwindigkeit gilt für ein ganzes Zeitintervall: v = Δs / Δt. Die Momentangeschwindigkeit beschreibt den Augenblick.",
+        "Geschwindigkeit ist eine gerichtete Grösse (Vektor). In einer Dimension reicht aber oft ein Vorzeichen: positiv = vorwärts, negativ = rückwärts.",
+      ],
+      formula: "v = Δs / Δt  (Durchschnittsgeschwindigkeit)",
+      example: "Auto fährt 120 m in 8 s → v = 120 / 8 = 15 m/s.",
+    },
+    question: {
+      type: "mc",
+      basis: [
+        { text: "Was beschreibt die Durchschnittsgeschwindigkeit?", options: ["Den zurückgelegten Weg pro Zeitintervall.", "Die maximale Geschwindigkeit.", "Die Richtung der Bewegung.", "Den Abstand zum Startpunkt."], correct: 0, explanation: "v = Δs / Δt – Weg geteilt durch Zeit.", hint: "Welche Formel kennst du für v?" },
+        { text: "Ein Läufer braucht 50 s für 200 m. Welche Aussage ist richtig?", options: ["Seine Durchschnittsgeschwindigkeit ist 4 m/s.", "Er hat sich immer mit 4 m/s bewegt.", "Seine Momentangeschwindigkeit ist immer 4 m/s.", "Er ist 4 m in 50 s gelaufen."], correct: 0, explanation: "v = 200 / 50 = 4 m/s. Das ist die Durchschnitt, nicht die Momentangeschwindigkeit.", hint: "v = s / t" },
+      ],
+      challenge: [
+        { text: "Was ist der Unterschied zwischen Durchschnitts- und Momentangeschwindigkeit?", options: ["Durchschnitt: v = Δs/Δt über ein Intervall. Moment: Geschwindigkeit zu einem Zeitpunkt (Δt → 0).", "Beide sind identisch.", "Momentangeschwindigkeit ist immer grösser.", "Durchschnittsgeschwindigkeit gilt nur für gerade Strecken."], correct: 0, explanation: "Die Momentangeschwindigkeit ist der Grenzwert des Differenzenquotienten für Δt → 0.", hint: "Was passiert wenn Δt sehr klein wird?" },
+        { text: "Fahrzeug fährt 30 s mit 20 m/s, dann 30 s mit 10 m/s. Was ist die Durchschnittsgeschwindigkeit über 60 s?", options: ["15 m/s", "20 m/s", "10 m/s", "Nicht bestimmbar."], correct: 0, explanation: "Gesamt-s = 30·20 + 30·10 = 600 + 300 = 900 m. v = 900/60 = 15 m/s.", hint: "Erst Gesamtstrecke, dann v = s_ges / t_ges" },
+      ],
+    },
+  },
+
+  "Formel v = s / t": {
+    theory: {
+      kicker: "Modul 1 · Level 2",
+      heading: "Die Formel v = s / t",
+      paragraphs: [
+        "Die Grundformel der gleichförmigen Bewegung lautet: v = s / t. v ist die Geschwindigkeit, s die zurückgelegte Strecke und t das Zeitintervall. Alle drei Grössen hängen direkt zusammen.",
+        "Aus dieser Formel lassen sich die anderen Grössen durch Umstellen berechnen: s = v · t (Weg) und t = s / v (Zeit). Das sogenannte 'Dreiecks-Mnemonic' hilft beim Merken: decke die gesuchte Grösse ab.",
+        "Achtung: Die Formel gilt exakt nur für gleichförmige Bewegung. Bei nicht konstanter Geschwindigkeit liefert v = s/t nur den Durchschnittswert.",
+      ],
+      formula: "v = s / t  ↔  s = v · t  ↔  t = s / v",
+      example: "v = 25 m/s, t = 12 s → s = 25 · 12 = 300 m.",
+    },
+    question: {
+      type: "speed-lab",
+      s: 180,
+      targetV: 20,
+      defT: 9,
+      followUp: [
+        { text: "Du hast gerade beobachtet: Auto legt 180 m zurück. Wenn es 9 Sekunden braucht – was ist v?", options: ["20 m/s", "9 m/s", "180 m/s", "0,05 m/s"], correct: 0, explanation: "v = s/t = 180/9 = 20 m/s. Die Formel v = s ÷ t gibt dir die Geschwindigkeit.", hint: "v = s / t" },
+      ],
+    },
+  },
+
+  "Einheit m/s": {
+    theory: {
+      kicker: "Modul 1 · Level 3",
+      heading: "Einheit m/s und km/h",
+      paragraphs: [
+        "Die SI-Einheit der Geschwindigkeit ist Meter pro Sekunde: m/s. Im Alltag ist Kilometer pro Stunde (km/h) gebräuchlicher – Tacho, Tempolimit, Wetterberichte nutzen km/h.",
+        "Umrechnungsfaktoren: 1 m/s = 3,6 km/h. Merkhilfe: 1 m/s bedeutet 1 Meter in 1 Sekunde. In 1 Stunde (3600 s) legt man damit 3600 m = 3,6 km zurück → 1 m/s = 3,6 km/h.",
+        "Für Berechnungen mit Formeln (v = s/t mit s in m, t in s) muss die Geschwindigkeit immer in m/s angegeben sein. Wenn km/h gegeben ist, zuerst umrechnen!",
+      ],
+      formula: "1 m/s = 3,6 km/h  |  v [km/h] ÷ 3,6 = v [m/s]",
+      example: "72 km/h ÷ 3,6 = 20 m/s.  |  5 m/s × 3,6 = 18 km/h.",
+    },
+    question: {
+      type: "mc",
+      basis: [
+        { text: "Wie viele km/h entsprechen 10 m/s?", options: ["36 km/h", "10 km/h", "100 km/h", "3,6 km/h"], correct: 0, explanation: "10 m/s × 3,6 = 36 km/h.", hint: "m/s × 3,6 = km/h" },
+        { text: "Ein Auto fährt 90 km/h. Wie viel ist das in m/s?", options: ["25 m/s", "90 m/s", "32,4 m/s", "9 m/s"], correct: 0, explanation: "90 ÷ 3,6 = 25 m/s.", hint: "km/h ÷ 3,6 = m/s" },
+      ],
+      challenge: [
+        { text: "Radfahrer: 15 m/s. Schülerin: 54 km/h. Wer ist schneller?", options: ["Schülerin: 54 km/h = 15 m/s – beide gleich schnell.", "Radfahrer – 15 m/s ist mehr.", "Schülerin – 54 km/h ist mehr.", "Kann man nicht vergleichen."], correct: 0, explanation: "54 ÷ 3,6 = 15 m/s. Exakt gleich schnell.", hint: "Erst beide in dieselbe Einheit umrechnen." },
+        { text: "Aufgabe: s = 3 km, t = 4 min. Berechne v in m/s.", options: ["12,5 m/s", "0,75 m/s", "750 m/s", "0,0125 m/s"], correct: 0, explanation: "s = 3000 m, t = 240 s. v = 3000/240 = 12,5 m/s.", hint: "Zuerst s in m und t in s umrechnen!" },
+      ],
+    },
+  },
+
+  "v berechnen": {
+    theory: {
+      kicker: "Modul 1 · Level 4",
+      heading: "Geschwindigkeit berechnen",
+      paragraphs: [
+        "Der erste Schritt jeder Aufgabe: Gegebene und gesuchte Grössen identifizieren. Bei v = s/t sind die Gegebenen Strecke (s) und Zeit (t), gesucht ist Geschwindigkeit (v).",
+        "Einheiten immer zuerst vereinheitlichen: s in Meter (m) und t in Sekunden (s), bevor man rechnet. Ergebnis trägt die Einheit m/s.",
+        "Typische Fehlerquellen: Einheit vergessen, km und m verwechseln, min statt s einsetzen. Checke am Ende: Ist das Ergebnis plausibel? Ein Fussgänger mit 500 m/s wäre unphysikalisch.",
+      ],
+      formula: "v = s / t  (s in m, t in s → v in m/s)",
+      example: "s = 5 km = 5000 m, t = 4 min = 240 s → v = 5000/240 ≈ 20,8 m/s.",
+    },
+    question: {
+      type: "mc",
+      basis: [
+        { text: "Fahrrad: s = 900 m, t = 3 min. Berechne v in m/s.", options: ["5 m/s", "300 m/s", "0,05 m/s", "180 m/s"], correct: 0, explanation: "t = 3·60 = 180 s. v = 900/180 = 5 m/s.", hint: "t in Sekunden umrechnen! v = s/t" },
+        { text: "Zug: s = 250 m, t = 10 s. Berechne v.", options: ["25 m/s", "2500 m/s", "0,04 m/s", "2,5 m/s"], correct: 0, explanation: "v = 250/10 = 25 m/s.", hint: "v = s / t" },
+      ],
+      challenge: [
+        { text: "Rennwagen: s = 4,5 km in 2,5 min. v in km/h?", options: ["108 km/h", "30 km/h", "1,8 km/h", "1800 km/h"], correct: 0, explanation: "v = 4,5 km / (2,5/60 h) = 4,5 / 0,04167 = 108 km/h. Oder: v = 4500/150 = 30 m/s = 108 km/h.", hint: "Weg in km, Zeit in Stunden → v in km/h. Oder m und s, dann × 3,6." },
+        { text: "Körper legt in 2 s den Weg von s₁ = 4 m bis s₂ = 20 m zurück. Berechne v.", options: ["8 m/s", "10 m/s", "12 m/s", "16 m/s"], correct: 0, explanation: "Δs = s₂ − s₁ = 20 − 4 = 16 m. v = 16/2 = 8 m/s.", hint: "Δs = s₂ − s₁, dann v = Δs / t" },
+      ],
+    },
+  },
+
+  "s und t berechnen": {
+    theory: {
+      kicker: "Modul 1 · Level 5",
+      heading: "Strecke und Zeit berechnen",
+      paragraphs: [
+        "Die Formel v = s/t lässt sich nach jeder der drei Grössen umstellen. Wenn v und t bekannt sind, berechnet man die Strecke: s = v · t. Wenn v und s bekannt sind, berechnet man die Zeit: t = s / v.",
+        "Schema der Umstellung: Gegebene Grössen identifizieren → unbekannte Grösse bestimmen → passende Formel wählen → Einheiten prüfen → rechnen → Plausibilitätscheck.",
+        "Merkhilfe: Im 'vst-Dreieck' decke die gesuchte Grösse ab. Was übrig bleibt, ist die Rechenoperation: v oben → dividieren. s und t unten → multiplizieren oder dividieren.",
+      ],
+      formula: "s = v · t  |  t = s / v  |  v = s / t",
+      example: "v = 30 m/s, t = 4 s → s = 30 · 4 = 120 m. | v = 20 m/s, s = 300 m → t = 300/20 = 15 s.",
+    },
+    question: {
+      type: "mc",
+      basis: [
+        { text: "v = 8 m/s, t = 15 s. Wie gross ist s?", options: ["120 m", "0,53 m", "23 m", "1,875 m"], correct: 0, explanation: "s = v · t = 8 · 15 = 120 m.", hint: "s = v · t" },
+        { text: "v = 6 m/s, s = 90 m. Wie lange dauert die Fahrt?", options: ["15 s", "540 s", "0,067 s", "84 s"], correct: 0, explanation: "t = s / v = 90 / 6 = 15 s.", hint: "t = s / v" },
+      ],
+      challenge: [
+        { text: "Zug fährt mit 54 km/h. Wie weit kommt er in 20 Minuten? (Antwort in m)", options: ["18 000 m", "1080 m", "300 m", "324 000 m"], correct: 0, explanation: "v = 54/3,6 = 15 m/s. t = 20·60 = 1200 s. s = 15 · 1200 = 18 000 m.", hint: "Zuerst km/h → m/s, dann s = v · t" },
+        { text: "Körper A mit v = 10 m/s muss 1,2 km zurücklegen. Wie lange dauert das in Minuten?", options: ["2 min", "120 min", "0,12 min", "12 min"], correct: 0, explanation: "s = 1200 m. t = 1200/10 = 120 s = 2 min.", hint: "t = s / v, dann Sekunden in Minuten umrechnen." },
+      ],
+    },
+  },
+
+  "Gleichförmige Bewegung": {
+    theory: {
+      kicker: "Modul 1 · Level 6",
+      heading: "Gleichförmige Bewegung",
+      paragraphs: [
+        "Bei der gleichförmigen Bewegung ist die Geschwindigkeit konstant: v = konst. Der Körper legt in gleichen Zeitintervallen immer gleich grosse Strecken zurück.",
+        "Erkennungszeichen: Im s-t-Diagramm ist die Kurve eine Gerade mit konstanter Steigung (Steigung = v). Im v-t-Diagramm ist die Kurve eine horizontale Gerade.",
+        "In der Natur gibt es keine perfekt gleichförmige Bewegung – Reibung und andere Kräfte ändern die Geschwindigkeit immer leicht. Aber als Modell ist sie unverzichtbar für die ersten Berechnungen.",
+      ],
+      formula: "v = konst.  →  s = v · t  (lineare Funktion von t)",
+      example: "Auto mit v = 20 m/s: nach 1 s → 20 m, nach 2 s → 40 m, nach 3 s → 60 m.",
+    },
+    question: {
+      type: "race",
+      carA: { v: 20, color: "#5ea3ff", label: "Auto A" },
+      carB: { v: 14, color: "#ff8753", label: "Auto B" },
+      s: 280,
+      followUp: [
+        { text: "Auto A braucht 14 s für 280 m. Auto B braucht 20 s für 280 m. Welche Geschwindigkeiten haben sie?", options: ["v_A = 20 m/s, v_B = 14 m/s", "v_A = 14 m/s, v_B = 20 m/s", "Beide 280 m/s", "Kann man nicht sagen."], correct: 0, explanation: "v = s/t: v_A = 280/14 = 20 m/s, v_B = 280/20 = 14 m/s. Bei gleichförmiger Bewegung ist v konstant.", hint: "v = s / t für jedes Auto" },
+      ],
+    },
+  },
+
+  "Tabelle der Bewegung": {
+    theory: {
+      kicker: "Modul 1 · Level 7",
+      heading: "Strecken-Zeit-Tabellen lesen",
+      paragraphs: [
+        "Eine Bewegungstabelle listet Zeitpunkte und dazugehörige Orte auf. Man kann daraus direkt die Geschwindigkeit ablesen: v = Δs / Δt zwischen je zwei Zeilen.",
+        "Bei gleichförmiger Bewegung ist Δs/Δt in jeder Zeile gleich. Bei nicht gleichförmiger Bewegung ändert sich v von Abschnitt zu Abschnitt – man berechnet dann Abschnittsgeschwindigkeiten.",
+        "Tabellen aufstellen: Für gegebene v und Start-s berechnet man s(t) = s₀ + v · t. Erst t-Werte in die erste Spalte schreiben, dann s-Werte berechnen und eintragen.",
+      ],
+      formula: "v = Δs / Δt  (aus benachbarten Tabellenzeilen)",
+      example: "t: 0 | 2 | 4 | 6 s  →  s: 0 | 10 | 20 | 30 m → v = 10/2 = 5 m/s (konstant).",
+    },
+    question: {
+      type: "mc",
+      basis: [
+        { text: "Tabelle: t = 0 s: s = 0 m; t = 3 s: s = 12 m; t = 6 s: s = 24 m. Ist das gleichförmig?", options: ["Ja – v = 12/3 = 4 m/s konstant.", "Nein – s wird grösser.", "Nein – v wäre 8 m/s.", "Kann man nicht bestimmen."], correct: 0, explanation: "v = Δs/Δt = 12/3 = 4 m/s in beiden Abschnitten → gleichförmig.", hint: "v = Δs / Δt in jedem Abschnitt berechnen." },
+        { text: "v = 7 m/s, s₀ = 0. Fülle die Tabelle: s bei t = 4 s?", options: ["28 m", "7 m", "4 m", "11 m"], correct: 0, explanation: "s = v · t = 7 · 4 = 28 m.", hint: "s = v · t" },
+      ],
+      challenge: [
+        { text: "Tabelle: t = 0 s: s = 5 m; t = 2 s: s = 15 m; t = 5 s: s = 30 m. Welche Aussage stimmt?", options: ["v₁ = 5 m/s (0→2 s), v₂ = 5 m/s (2→5 s) – gleichförmig mit v = 5 m/s.", "v₁ = 5 m/s, v₂ = 6 m/s – nicht gleichförmig.", "s₀ = 5 m bedeutet, der Körper ruht zuerst.", "v = 30/5 = 6 m/s konstant."], correct: 0, explanation: "v₁ = (15−5)/2 = 5 m/s. v₂ = (30−15)/3 = 5 m/s. Beide gleich → gleichförmig.", hint: "v = Δs/Δt für jeden Abschnitt berechnen." },
+        { text: "Körper: s₀ = 20 m, v = −3 m/s (rückwärts). s bei t = 6 s?", options: ["2 m", "38 m", "−18 m", "20 m"], correct: 0, explanation: "s = 20 + (−3) · 6 = 20 − 18 = 2 m.", hint: "s = s₀ + v · t, v ist negativ!" },
+      ],
+    },
+  },
+
+  "s-t Diagramm": {
+    theory: {
+      kicker: "Modul 1 · Level 8",
+      heading: "Das s-t-Diagramm",
+      paragraphs: [
+        "Im s-t-Diagramm (Ort-Zeit-Diagramm) trägt man auf der x-Achse die Zeit t und auf der y-Achse den Ort s auf. Jeder Punkt im Diagramm beschreibt: 'Zur Zeit t ist der Körper an Ort s.'",
+        "Die Steigung der Kurve im s-t-Diagramm ist die Geschwindigkeit: v = Δs / Δt = tan(α). Steilere Gerade = höhere Geschwindigkeit. Horizontale Linie = Ruhe (v = 0). Fallende Linie = Bewegung in negativer Richtung (v < 0).",
+        "Bei gleichförmiger Bewegung ist die s-t-Kurve eine Gerade. Schneidet die Gerade die s-Achse nicht im Ursprung, hat der Körper einen Startort s₀ ≠ 0.",
+      ],
+      formula: "Steigung im s-t-Diagramm = v = Δs / Δt",
+      example: "Gerade von (0; 0) bis (5; 25) → Steigung = 25/5 = 5 m/s.",
+    },
+    question: {
+      type: "st-live",
+      v: 10,
+      s: 200,
+      followUp: [
+        { text: "Das s-t-Diagramm zeigt eine Gerade von (0; 0) bis (20 s; 200 m). Was ist die Geschwindigkeit?", options: ["10 m/s – Steigung = Δs/Δt = 200/20", "20 m/s", "200 m/s", "0,1 m/s"], correct: 0, explanation: "Steigung im s-t-Diagramm = v = Δs/Δt = 200 m / 20 s = 10 m/s.", hint: "Steigung der Geraden = v = Δs / Δt" },
+      ],
+    },
+  },
+
+  "Durchschnittsgeschwindigkeit": {
+    theory: {
+      kicker: "Modul 1 · Level 9",
+      heading: "Durchschnittsgeschwindigkeit",
+      paragraphs: [
+        "Die Durchschnittsgeschwindigkeit über eine Strecke mit verschiedenen Abschnitten ist NICHT der Durchschnitt der einzelnen Geschwindigkeiten – das ist ein häufiger Fehler!",
+        "Richtige Formel: v_Ø = Gesamtstrecke / Gesamtzeit = (s₁ + s₂ + ...) / (t₁ + t₂ + ...). Zuerst Strecke und Zeit jedes Abschnitts berechnen, dann alles addieren.",
+        "Beispiel für den Fehler: Auto A fährt 1 km mit 10 m/s, dann 1 km mit 20 m/s. Durchschnitt ≠ 15 m/s! Korrekte Rechnung: t₁ = 100 s, t₂ = 50 s → v_Ø = 2000/150 ≈ 13,3 m/s.",
+      ],
+      formula: "v_Ø = s_ges / t_ges = (s₁+s₂) / (t₁+t₂)",
+      example: "s₁ = 300 m, v₁ = 15 m/s → t₁ = 20 s. s₂ = 200 m, v₂ = 10 m/s → t₂ = 20 s. v_Ø = 500/40 = 12,5 m/s.",
+    },
+    question: {
+      type: "mc",
+      basis: [
+        { text: "Person geht 500 m in 100 s, dann 300 m in 60 s. v_Ø?", options: ["5 m/s", "4 m/s", "4,5 m/s", "6 m/s"], correct: 0, explanation: "s_ges = 800 m, t_ges = 160 s. v = 800/160 = 5 m/s.", hint: "v_Ø = s_ges / t_ges" },
+        { text: "Was ist der häufigste Fehler bei der Durchschnittsgeschwindigkeit?", options: ["Die einzelnen v-Werte werden gemittelt statt s_ges/t_ges zu berechnen.", "Die Einheit wird vergessen.", "t und s werden verwechselt.", "Nur der höchste v-Wert wird genommen."], correct: 0, explanation: "Arithmetisches Mittel der v-Werte ist falsch, weil die Abschnitte gleich lange Zeit, nicht gleich lange Strecke dauern müssen.", hint: "Wie berechnet man v_Ø korrekt?" },
+      ],
+      challenge: [
+        { text: "Hin: 60 km mit 120 km/h. Zurück: 60 km mit 60 km/h. v_Ø für die gesamte Strecke?", options: ["80 km/h", "90 km/h", "75 km/h", "Nicht bestimmbar."], correct: 0, explanation: "t_hin = 60/120 = 0,5 h. t_rück = 60/60 = 1 h. v_Ø = 120/(0,5+1) = 120/1,5 = 80 km/h.", hint: "s_ges = 120 km. t_ges = t_hin + t_rück. v = s/t." },
+        { text: "Warum ist v_Ø bei gleichem Hin/Rück-Weg immer kleiner als das arithmetische Mittel der Geschwindigkeiten (ausser bei v₁ = v₂)?", options: ["Weil man bei niedrigerer v mehr Zeit braucht – der langsamere Abschnitt 'zieht' den Durchschnitt stärker runter.", "Weil die Strecken verschieden lang sind.", "Weil Zeit quadratisch eingeht.", "Das stimmt nicht – beide Methoden geben dasselbe Ergebnis."], correct: 0, explanation: "Bei v₁ ≠ v₂ und gleicher Strecke dauert der langsamere Abschnitt länger – er gewichtet den Durchschnitt stärker. Das harmonische Mittel liegt immer unter dem arithmetischen.", hint: "Wer verbraucht mehr Zeit: der schnelle oder langsame Abschnitt?" },
+      ],
+    },
+  },
+
+  "Boss – Geschwindigkeit": {
+
+    theory: {
+      kicker: "Modul 1 · Boss-Level",
+      heading: "Boss: Geschwindigkeit",
+      paragraphs: [
+        "Du hast alle Werkzeuge: v = s/t und Umstellungen, Einheitenumrechnung m/s ↔ km/h, gleichförmige Bewegung, s-t-Diagramme und Durchschnittsgeschwindigkeit.",
+        "Der Boss prüft, ob du diese Konzepte in ungewohnten Situationen richtig kombinierst. Lies jede Frage genau und entscheide, welches Werkzeug passt.",
+        "Strategie: 1) Gegeben/Gesucht. 2) Einheiten prüfen. 3) Richtige Formel. 4) Plausibilität.",
+      ],
+      formula: "v = s/t  |  s = v·t  |  t = s/v  |  v_Ø = s_ges/t_ges  |  m/s × 3,6 = km/h",
+      example: "Boss-Aufgaben verbinden mehrere Abschnitte, verschiedene Einheiten und Diagramm-Lesekompetenz.",
+    },
+    question: {
+      type: "mc",
+      basis: [
+        { text: "Arena 1: Zug fährt 3 km in 4 Minuten. v in km/h?", options: ["45 km/h", "0,75 km/h", "12 km/h", "720 km/h"], correct: 0, explanation: "t = 4/60 h. v = 3/(4/60) = 3·60/4 = 45 km/h.", hint: "t in Stunden, s in km → v in km/h." },
+        { text: "Arena 2: Im s-t-Diagramm haben zwei Geraden den selben Startpunkt. Gerade A hat Steigung 8, Gerade B Steigung 3. Welche Aussage stimmt?", options: ["A bewegt sich schneller (v_A = 8 m/s > v_B = 3 m/s) und legt nach 5 s 25 m mehr zurück.", "B ist schneller.", "Beide gleich schnell.", "Die Steigung gibt die Strecke an, nicht v."], correct: 0, explanation: "Steigung im s-t = v. A hat v = 8, B hat v = 3. Nach 5 s: Δs = (8−3)·5 = 25 m.", hint: "Steigung s-t = v. Mehr Steigung = mehr v." },
+        { text: "Arena 3: v_Ø-Falle. Hinweg: 200 m mit 10 m/s. Rückweg: 200 m mit 20 m/s. v_Ø = ?", options: ["13,3 m/s", "15 m/s", "10 m/s", "20 m/s"], correct: 0, explanation: "t₁ = 20 s, t₂ = 10 s. v_Ø = 400/30 ≈ 13,3 m/s. Nicht 15 m/s!", hint: "v_Ø = s_ges / t_ges. Nicht arithmetisches Mittel!" },
+        { text: "Arena 4: Einheit. Gib 130 km/h in m/s an.", options: ["36,1 m/s", "468 m/s", "130 m/s", "13 m/s"], correct: 0, explanation: "130 / 3,6 ≈ 36,1 m/s.", hint: "km/h ÷ 3,6 = m/s" },
+      ],
+      challenge: [
+        { text: "Boss-Challenge: A startet bei s₀ = 0 mit v = 5 m/s. B startet 20 s später bei s₀ = 0 mit v = 15 m/s. Nach wie vielen Sekunden (ab A's Start) holt B A ein?", options: ["30 s nach A's Start", "10 s nach B's Start", "20 s nach A's Start", "Nie"], correct: 0, explanation: "B startet bei t = 20 s. Gleichung: 15·(t−20) = 5·t → 15t−300 = 5t → 10t = 300 → t = 30 s.", hint: "Ansatz: s_A = s_B. 5t = 15(t−20). Löse nach t." },
+        { text: "Fehler korrigieren: 'v_Ø = (10 + 20 + 30) / 3 = 20 m/s'. Wann stimmt das – und wann nicht?", options: ["Stimmt nur wenn die Abschnitte gleich lang dauern (gleiche Zeit, verschiedene Wege). Stimmt nicht wenn alle dieselbe Strecke haben.", "Immer richtig.", "Nie richtig.", "Nur für km/h gültig."], correct: 0, explanation: "Arithmetisches Mittel der v-Werte gilt nur wenn alle Zeitintervalle gleich sind (gleiche Δt). Bei gleichen Streckenabschnitten muss s_ges/t_ges berechnet werden.", hint: "Wann darf man v-Werte einfach mitteln?" },
+      ],
+    },
+  },
+
+  // ── MODULE 2 · Beschleunigung ─────────────────────────────────────────────
+
+  "Was ist Beschleunigung?": {
+    theory: {
+      kicker: "Modul 2 · Level 1",
+      heading: "Was ist Beschleunigung?",
+      paragraphs: [
+        "Beschleunigung beschreibt, wie sich die Geschwindigkeit in der Zeit ändert. Wenn ein Auto von 0 auf 60 km/h anzieht, wird es schneller – das ist positive Beschleunigung. Wenn es bremst, nimmt die Geschwindigkeit ab – das ist negative Beschleunigung (Verzögerung).",
+        "Die Formel lautet: a = Δv / Δt. Das Δ-Zeichen bedeutet 'Änderung von'. Also: Beschleunigung = Geschwindigkeitsänderung geteilt durch die dafür benötigte Zeit.",
+        "Entscheidend ist: Beschleunigung erfordert keine hohe Geschwindigkeit – nur eine Änderung. Ein Körper, der mit 100 m/s gleichförmig fährt, hat a = 0. Ein Körper der von 0 auf 2 m/s hochfährt, beschleunigt.",
+      ],
+      formula: "a = Δv / Δt = (v₂ − v₁) / (t₂ − t₁)  [m/s²]",
+      example: "Auto: v₁ = 0, v₂ = 20 m/s, Δt = 4 s → a = 20/4 = 5 m/s².",
+    },
+    question: {
+      type: "mc",
+      basis: [
+        { text: "Was bedeutet a = 3 m/s²?", options: ["Die Geschwindigkeit wächst um 3 m/s pro Sekunde.", "Das Objekt bewegt sich mit 3 m/s.", "Der Körper legt 3 m pro Sekunde zurück.", "Die Kraft beträgt 3 Newton."], correct: 0, explanation: "a = 3 m/s² heisst: jede Sekunde steigt v um 3 m/s. Nach 1 s → +3 m/s, nach 2 s → +6 m/s.", hint: "Beschleunigung = Geschwindigkeitsänderung pro Zeit." },
+        { text: "Auto fährt mit konstanten 80 km/h. Wie gross ist a?", options: ["a = 0 m/s²", "a = 80 m/s²", "a = 22,2 m/s²", "Nicht bestimmbar."], correct: 0, explanation: "Konstante Geschwindigkeit → keine Geschwindigkeitsänderung → a = 0.", hint: "Was ändert sich bei gleichförmiger Bewegung?" },
+      ],
+      challenge: [
+        { text: "Körper beschleunigt: v₁ = 4 m/s bei t₁ = 2 s, v₂ = 10 m/s bei t₂ = 5 s. Berechne a.", options: ["2 m/s²", "3 m/s²", "5 m/s²", "1,5 m/s²"], correct: 0, explanation: "a = Δv/Δt = (10−4)/(5−2) = 6/3 = 2 m/s².", hint: "a = (v₂−v₁)/(t₂−t₁)" },
+        { text: "Warum hat ein Körper, der sich mit 200 m/s gleichförmig bewegt, die gleiche Beschleunigung wie ein ruhender Körper?", options: ["Weil in beiden Fällen Δv = 0 → a = 0.", "Weil 200 m/s = 0 m/s im richtigen Bezugssystem.", "Weil Beschleunigung nur für Starts gilt.", "Die Aussage ist falsch."], correct: 0, explanation: "Beschleunigung = Änderung von v. Keine Änderung → a = 0. Egal wie hoch v ist.", hint: "Liegt eine Geschwindigkeitsänderung vor?" },
+      ],
+    },
+  },
+
+  "Formel a = Δv / Δt": {
+    theory: {
+      kicker: "Modul 2 · Level 2",
+      heading: "Die Beschleunigungsformel",
+      paragraphs: [
+        "Die Formel a = Δv / Δt verbindet drei Grössen: Beschleunigung a, Geschwindigkeitsänderung Δv und Zeitintervall Δt. Kennt man zwei davon, berechnet man die dritte durch Umstellen.",
+        "Umstellungen: Δv = a · Δt (Geschwindigkeitsänderung berechnen) und Δt = Δv / a (Zeit berechnen). Das 'Beschleunigungs-Dreieck' hilft: decke die gesuchte Grösse ab.",
+        "Wichtig: a ist die Durchschnittsbeschleunigung über das Intervall Δt. Bei gleichmässiger Beschleunigung ist das gleichzeitig die momentane Beschleunigung an jedem Zeitpunkt.",
+      ],
+      formula: "a = Δv / Δt  |  Δv = a · Δt  |  Δt = Δv / a",
+      example: "Fahrrad: von 0 auf 6 m/s in 3 s → a = 6/3 = 2 m/s². | a = 4 m/s², Δt = 5 s → Δv = 4·5 = 20 m/s.",
+    },
+    question: {
+      type: "accel-lab",
+      v0: 0,
+      minA: 1, maxA: 10, defA: 3,
+      maxT: 8, defT: 4,
+      followUp: [
+        { text: "Du siehst: a = 3 m/s², t = 4 s, v₀ = 0. Berechne die Endgeschwindigkeit.", options: ["12 m/s", "7 m/s", "0,75 m/s", "3 m/s"], correct: 0, explanation: "v = v₀ + a·t = 0 + 3·4 = 12 m/s. Die Formel a = Δv/Δt umgestellt nach Δv = a·t.", hint: "Δv = a · t, dann v = v₀ + Δv." },
+      ],
+    },
+  },
+
+  "Einheit m/s²": {
+    theory: {
+      kicker: "Modul 2 · Level 3",
+      heading: "Die Einheit m/s²",
+      paragraphs: [
+        "Die Einheit m/s² bedeutet: Meter pro Sekunde pro Sekunde. Das klingt kompliziert, ist aber einfach: Die Geschwindigkeit ändert sich um X Meter pro Sekunde, und das jede Sekunde.",
+        "Beispiel a = 5 m/s²: Nach 1 s hat sich v um 5 m/s erhöht. Nach 2 s um 10 m/s. Nach 3 s um 15 m/s. Die Geschwindigkeit wächst linear mit der Zeit.",
+        "Vergleich: g ≈ 9,81 m/s² ist die Fallbeschleunigung. Ein starkes Auto erreicht 0–100 km/h in 3 s → a ≈ 9,3 m/s². Ein Formel-1-Auto: bis zu 30 m/s²!",
+      ],
+      formula: "1 m/s² = 1 (m/s) / s = Geschwindigkeitszunahme von 1 m/s pro Sekunde",
+      example: "a = 2 m/s²: nach 1 s → v = 2 m/s, nach 3 s → v = 6 m/s, nach 5 s → v = 10 m/s.",
+    },
+    question: {
+      type: "mc",
+      basis: [
+        { text: "a = 4 m/s². Wie gross ist v nach 3 Sekunden (Startgeschwindigkeit 0)?", options: ["12 m/s", "4 m/s", "3 m/s", "7 m/s"], correct: 0, explanation: "v = a · t = 4 · 3 = 12 m/s. Jede Sekunde wächst v um 4 m/s.", hint: "v = a · t (bei v₀ = 0)" },
+        { text: "Was bedeutet a = 9,81 m/s² beim freien Fall?", options: ["Jede Sekunde steigt die Fallgeschwindigkeit um 9,81 m/s.", "Der Körper fällt 9,81 m pro Sekunde.", "Die Kraft ist 9,81 N.", "Die Fallzeit beträgt 9,81 s."], correct: 0, explanation: "g = 9,81 m/s² heisst: jede Sekunde nimmt v um 9,81 m/s zu. Nach 2 s: v = 19,62 m/s.", hint: "Einheit m/s² = Geschwindigkeitszunahme pro Sekunde." },
+      ],
+      challenge: [
+        { text: "Körper startet bei v₀ = 5 m/s und hat a = 3 m/s². Welche Geschwindigkeit hat er nach 4 s?", options: ["17 m/s", "12 m/s", "60 m/s", "15 m/s"], correct: 0, explanation: "v = v₀ + a·t = 5 + 3·4 = 17 m/s.", hint: "v = v₀ + a · t" },
+        { text: "Auto: v₀ = 0, a = 2 m/s². Wann erreicht es 80 km/h? (in s)", options: ["≈ 11,1 s", "40 s", "160 s", "22,2 s"], correct: 0, explanation: "80 km/h = 22,2 m/s. t = Δv/a = 22,2/2 = 11,1 s.", hint: "80 km/h in m/s umrechnen, dann t = Δv / a." },
+      ],
+    },
+  },
+
+  "Positiv und negativ a": {
+    theory: {
+      kicker: "Modul 2 · Level 4",
+      heading: "Positive und negative Beschleunigung",
+      paragraphs: [
+        "Das Vorzeichen von a gibt die Richtung der Geschwindigkeitsänderung an – relativ zur gewählten positiven Richtung. a > 0: Körper wird in positiver Richtung schneller. a < 0: Körper wird in positiver Richtung langsamer (Verzögerung).",
+        "Achtung: a < 0 bedeutet nicht immer 'bremsen'! Wenn ein Körper in negativer Richtung fährt (v < 0) und a < 0 ist, wird er rückwärts immer schneller. Vorzeichen von a und v zusammen bestimmen, ob der Körper beschleunigt oder verzögert.",
+        "Alltagssprache vs. Physik: 'Verzögerung' oder 'Abbremsung' ist im Alltag üblich. In der Physik sagt man präziser: negative Beschleunigung a < 0 (in der gewählten Richtung).",
+      ],
+      formula: "a > 0: schneller in positiver Richtung | a < 0: langsamer (oder rückwärts schneller)",
+      example: "Auto bremst: v von 20 m/s auf 0 in 4 s → a = (0−20)/4 = −5 m/s².",
+    },
+    question: {
+      type: "mc",
+      basis: [
+        { text: "Auto fährt nach rechts (+) und bremst. Was gilt für a?", options: ["a < 0 (entgegen der Bewegungsrichtung)", "a > 0", "a = 0", "a = −∞"], correct: 0, explanation: "Bremsen = Verzögerung = Beschleunigung entgegen der Bewegung. Bei Bewegung nach rechts → a negativ.", hint: "Bremsen = Geschwindigkeit nimmt ab → a und v haben entgegengesetztes Vorzeichen." },
+        { text: "v₀ = −8 m/s (nach links), a = −2 m/s². Was passiert?", options: ["Körper wird schneller nach links (|v| steigt).", "Körper bremst ab.", "Körper bleibt stehen.", "Körper kehrt um."], correct: 0, explanation: "v und a sind beide negativ (gleiche Richtung) → Körper beschleunigt in negativer Richtung, wird also schneller rückwärts.", hint: "Gleiche Vorzeichen von v und a → Betrag von v nimmt zu." },
+      ],
+      challenge: [
+        { text: "v₀ = 12 m/s, a = −4 m/s². Wann stoppt der Körper?", options: ["t = 3 s", "t = 4 s", "t = 8 s", "t = 12 s"], correct: 0, explanation: "0 = v₀ + a·t → 0 = 12 − 4t → t = 3 s.", hint: "Setze v = 0: t = −v₀ / a" },
+        { text: "Körper: v₀ = −5 m/s, a = +2 m/s². Was ist v nach 4 s?", options: ["+3 m/s", "−13 m/s", "−3 m/s", "+10 m/s"], correct: 0, explanation: "v = v₀ + a·t = −5 + 2·4 = −5 + 8 = +3 m/s. Der Körper kehrt um und fährt nach rechts.", hint: "v = v₀ + a·t – Vorzeichen beachten!" },
+      ],
+    },
+  },
+
+  "Gleichmässig beschleunigt": {
+    theory: {
+      kicker: "Modul 2 · Level 5",
+      heading: "Gleichmässig beschleunigte Bewegung",
+      paragraphs: [
+        "Bei gleichmässig beschleunigter Bewegung ist die Beschleunigung a konstant. Das bedeutet: Die Geschwindigkeit nimmt in gleichen Zeitintervallen um gleich viel zu (oder ab).",
+        "Im v-t-Diagramm ist gleichmässige Beschleunigung eine Gerade mit der Steigung a. Je steiler die Gerade, desto grösser die Beschleunigung. Eine horizontale Gerade (Steigung 0) bedeutet: keine Beschleunigung, also gleichförmige Bewegung.",
+        "Wichtige Eigenschaft: Der zurückgelegte Weg wächst quadratisch mit der Zeit (s ~ t²). In der zweiten Sekunde legt man 3-mal mehr zurück als in der ersten, in der dritten 5-mal mehr – dieses Muster stammt von Galileo Galilei.",
+      ],
+      formula: "a = konst. → v(t) = v₀ + a·t (lineare Funktion der Zeit)",
+      example: "a = 2 m/s², v₀ = 0: t=1 → v=2, t=2 → v=4, t=3 → v=6 m/s. Zunahme konstant: +2 m/s pro Sekunde.",
+    },
+    question: {
+      type: "accel-lab",
+      v0: 0,
+      minA: 1, maxA: 8, defA: 2,
+      maxT: 8, defT: 5,
+      followUp: [
+        { text: "Bei gleichmässiger Beschleunigung mit a = 2 m/s² – um wie viel m/s steigt v pro Sekunde?", options: ["Um 2 m/s pro Sekunde.", "Um 2 m/s insgesamt.", "Um 4 m/s pro Sekunde.", "Hängt von v ab."], correct: 0, explanation: "a = konst. = 2 m/s² heisst: jede Sekunde steigt v um exakt 2 m/s. Das ist die Definition von 'gleichmässig'.", hint: "Konstante Beschleunigung = konstante Zunahme von v pro Sekunde." },
+      ],
+    },
+  },
+
+  "v = v₀ + a·t": {
+    theory: {
+      kicker: "Modul 2 · Level 6",
+      heading: "Formel v = v₀ + a · t",
+      paragraphs: [
+        "Die Formel v = v₀ + a·t berechnet die Geschwindigkeit zu einem beliebigen Zeitpunkt t. v₀ ist die Anfangsgeschwindigkeit, a die (konstante) Beschleunigung, t die vergangene Zeit.",
+        "Die Formel stammt direkt aus a = Δv/Δt: Wenn a konstant ist und bei t=0 die Geschwindigkeit v₀ war, dann ist v nach Zeit t: v = v₀ + a·t. Man kann sie als 'Startgeschwindigkeit + Zuwachs durch Beschleunigung' lesen.",
+        "Umstellungen: t = (v − v₀) / a (wie lange bis zu Geschwindigkeit v?) und a = (v − v₀) / t (welche Beschleunigung war nötig?).",
+      ],
+      formula: "v = v₀ + a · t  (gilt nur bei konstanter Beschleunigung!)",
+      example: "v₀ = 5 m/s, a = 3 m/s², t = 4 s → v = 5 + 3·4 = 17 m/s.",
+    },
+    question: {
+      type: "accel-lab",
+      v0: 5,
+      minA: 1, maxA: 8, defA: 3,
+      maxT: 6, defT: 4,
+      followUp: [
+        { text: "Rakete: v₀ = 0, a = 50 m/s², t = 10 s. Wie schnell ist sie? (in km/h)", options: ["1800 km/h", "500 km/h", "50 km/h", "180 km/h"], correct: 0, explanation: "v = 0 + 50·10 = 500 m/s = 500·3,6 = 1800 km/h. Beeindruckend!", hint: "v = a·t, dann m/s × 3,6 = km/h." },
+        { text: "Auto: v₀ = 20 m/s, bremst mit a = −4 m/s². Nach wie vielen Sekunden steht es?", options: ["5 s", "4 s", "20 s", "80 s"], correct: 0, explanation: "0 = 20 + (−4)·t → 4t = 20 → t = 5 s.", hint: "Setze v = 0: 0 = v₀ + a·t, löse nach t." },
+      ],
+    },
+  },
+
+  "s = ½·a·t² (Ruhe)": {
+    theory: {
+      kicker: "Modul 2 · Level 7",
+      heading: "Weg bei gleichmässiger Beschleunigung",
+      paragraphs: [
+        "Wenn ein Körper aus der Ruhe (v₀ = 0) gleichmässig beschleunigt, legt er keinen konstanten Weg pro Zeiteinheit zurück – sondern immer mehr. Der Weg wächst quadratisch: s = ½ · a · t².",
+        "Warum quadratisch? Weil v selbst mit der Zeit steigt (v = a·t), und der Weg die 'Fläche unter v' ist. Die Fläche unter einer linear steigenden Geraden ist ein Dreieck: ½ · Basis · Höhe = ½ · t · (a·t) = ½·a·t².",
+        "Wichtig: Diese Formel gilt nur für Start aus der Ruhe (v₀ = 0). Bei v₀ ≠ 0 lautet die allgemeine Formel: s = v₀·t + ½·a·t².",
+      ],
+      formula: "s = ½ · a · t²  (nur für v₀ = 0)",
+      example: "a = 4 m/s², t = 3 s → s = ½ · 4 · 9 = 18 m.",
+    },
+    question: {
+      type: "accel-lab",
+      v0: 0,
+      minA: 1, maxA: 6, defA: 2,
+      maxT: 8, defT: 4,
+      followUp: [
+        { text: "a = 2 m/s², t = 4 s, v₀ = 0. Welcher Weg wird zurückgelegt?", options: ["16 m", "8 m", "32 m", "4 m"], correct: 0, explanation: "s = ½ · a · t² = ½ · 2 · 16 = 16 m. Wichtig: t² = 16, nicht t = 16!", hint: "s = ½ · a · t². Achtung: t wird quadriert!" },
+        { text: "Doppelte Zeit bei gleicher Beschleunigung – wie ändert sich s?", options: ["s wird 4-mal grösser (quadratisch).", "s wird 2-mal grösser.", "s bleibt gleich.", "s wird 8-mal grösser."], correct: 0, explanation: "s = ½·a·t². Wenn t → 2t, dann s → ½·a·(2t)² = 4·½·a·t². Viermal mehr!", hint: "t kommt im Quadrat vor. Verdopplung von t → 2² = 4-facher Weg." },
+      ],
+    },
+  },
+
+  "Bremsen als Beschleunigung": {
+    theory: {
+      kicker: "Modul 2 · Level 8",
+      heading: "Bremsen ist negative Beschleunigung",
+      paragraphs: [
+        "Bremsen ist physikalisch keine eigene Erscheinung – es ist einfach eine Beschleunigung in entgegengesetzter Richtung zur Bewegung. In der Formelsprache: a < 0 (wenn die Bewegung in positiver Richtung erfolgt).",
+        "Der Bremsweg folgt aus s = v₀² / (2·|a|). Je höher die Ausgangsgeschwindigkeit v₀ oder je schwächer die Bremsverzögerung |a|, desto länger der Bremsweg. Das v₀² erklärt, warum doppelte Geschwindigkeit zu viermal längerem Bremsweg führt.",
+        "Praktische Richtwerte: PKW auf trockener Strasse: |a| ≈ 7−9 m/s². Auf nasser Fahrbahn: |a| ≈ 4−5 m/s². Auf Eis: |a| ≈ 1−2 m/s².",
+      ],
+      formula: "s_B = v₀² / (2 · |a|)  (Bremsweg aus v₀, Verzögerung |a|)",
+      example: "v₀ = 20 m/s, |a| = 5 m/s² → s_B = 400/10 = 40 m.",
+    },
+    question: {
+      type: "mc",
+      basis: [
+        { text: "Auto: v₀ = 15 m/s, Bremsverzögerung 5 m/s². Wie lang ist der Bremsweg?", options: ["22,5 m", "75 m", "3 m", "45 m"], correct: 0, explanation: "s_B = v₀²/(2·a) = 225/10 = 22,5 m.", hint: "s_B = v₀² / (2 · a)" },
+        { text: "Was gilt physikalisch korrekt für Bremsen?", options: ["Bremsen ist negative Beschleunigung (a < 0 in Bewegungsrichtung).", "Bremsen ist keine Beschleunigung.", "Beim Bremsen gilt keine Beschleunigungsformel.", "Bremsen hebt die Geschwindigkeit auf sofort."], correct: 0, explanation: "Physikalisch ist Bremsen = Beschleunigung entgegen der Bewegungsrichtung, also a < 0.", hint: "In der Physik gibt es keine 'Bremsbeschleunigung' – nur negative Beschleunigung." },
+      ],
+      challenge: [
+        { text: "Fahrrad bremst: v₀ = 10 m/s, a = −2 m/s². Welcher Weg bis zum Stillstand?", options: ["25 m", "5 m", "20 m", "50 m"], correct: 0, explanation: "s_B = v₀²/(2·|a|) = 100/4 = 25 m.", hint: "s_B = v₀² / (2 · |a|)" },
+        { text: "Gleicher Bremsweg bei doppelter Geschwindigkeit – welche Bremskraft wäre nötig?", options: ["4-fache Bremsverzögerung.", "2-fache Bremsverzögerung.", "Halbe Bremsverzögerung.", "Gleiche Bremsverzögerung."], correct: 0, explanation: "s_B = v²/2a. Wenn v verdoppelt → v² vervierfacht. Um s_B gleich zu halten: a muss auch vervierfacht werden.", hint: "s_B ~ v². Wenn v → 2v und s_B konstant bleiben soll: was muss a tun?" },
+      ],
+    },
+  },
+
+  "v-t Diagramm": {
+    theory: {
+      kicker: "Modul 2 · Level 9",
+      heading: "Das v-t-Diagramm",
+      paragraphs: [
+        "Im v-t-Diagramm (Geschwindigkeit-Zeit-Diagramm) trägt man auf der x-Achse die Zeit t und auf der y-Achse die Geschwindigkeit v auf. Jeder Punkt beschreibt: 'Zur Zeit t hat der Körper die Geschwindigkeit v.'",
+        "Die Steigung im v-t-Diagramm ist die Beschleunigung: a = Δv / Δt = tan(α). Steigende Gerade → a > 0. Fallende Gerade → a < 0 (Bremsen). Horizontale Linie → a = 0 (gleichförmig).",
+        "Die Fläche unter dem v-t-Graphen (zwischen Kurve und t-Achse) entspricht dem zurückgelegten Weg. Dreieck bei Beschleunigung aus v₀ = 0: Fläche = ½·v_max·t = ½·a·t².",
+      ],
+      formula: "Steigung v-t = a | Fläche unter v-t = s",
+      example: "Gerade von (0; 0) bis (5 s; 20 m/s) → a = 20/5 = 4 m/s². Fläche (Dreieck) = ½·20·5 = 50 m.",
+    },
+    question: {
+      type: "vt-live",
+      a: 4,
+      v0: 0,
+      maxT: 5,
+      followUp: [
+        { text: "Im v-t-Diagramm liegt eine steigende Gerade. Was sagt die Steigung aus?", options: ["Die Steigung = Beschleunigung a.", "Die Steigung = zurückgelegte Strecke.", "Die Steigung = Durchschnittsgeschwindigkeit.", "Die Steigung hat keine physikalische Bedeutung."], correct: 0, explanation: "Im v-t-Diagramm gilt: Steigung = Δv/Δt = a. Je steiler, desto grösser die Beschleunigung.", hint: "Was ist die Einheit der Steigung im v-t-Diagramm?" },
+        { text: "Was entspricht die Fläche unter dem v-t-Graphen?", options: ["Der zurückgelegte Weg s.", "Der Beschleunigung a.", "Der Durchschnittsgeschwindigkeit.", "Der Zeitdauer."], correct: 0, explanation: "Fläche unter v-t = zurückgelegter Weg. Dreieck: ½·v_max·t = ½·a·t² = s.", hint: "Fläche = ∫v dt = s" },
+      ],
+    },
+  },
+
+  "Boss – Beschleunigung": {
+    theory: {
+      kicker: "Modul 2 · Boss",
+      heading: "Boss: Alle Beschleunigungs-Formeln",
+      paragraphs: [
+        "Jetzt werden alle Formeln aus Modul 2 eingesetzt. Du kennst: a = Δv/Δt, v = v₀ + a·t, s = ½·a·t² (für v₀ = 0) und s_B = v₀²/(2·a). In komplexen Aufgaben musst du entscheiden, welche Formel zutrifft.",
+        "Strategie: 1. Was ist gegeben? 2. Was ist gesucht? 3. Welche Formel verbindet diese Grössen? 4. Einheiten prüfen! 5. Plausibilitäts-Check (ist das Ergebnis physikalisch sinnvoll?).",
+        "Besonders tückisch: Die Formel s = ½·a·t² gilt nur für v₀ = 0. Bei v₀ ≠ 0 lautet sie s = v₀·t + ½·a·t². Und der Bremsweg s_B = v₀²/(2·a) gilt nur für gleichmässige Verzögerung bis zum Stillstand.",
+      ],
+      formula: "v = v₀+a·t | s = v₀·t+½·a·t² | a = Δv/Δt | s_B = v₀²/(2·a)",
+      example: "Gegeben: v₀=10 m/s, a=2 m/s², t=3 s → v=16 m/s, s=10·3+½·2·9=30+9=39 m.",
+    },
+    question: {
+      type: "mc",
+      basis: [
+        { text: "v₀ = 0, a = 3 m/s², t = 6 s. Wie gross ist v und s?", options: ["v = 18 m/s, s = 54 m", "v = 18 m/s, s = 108 m", "v = 9 m/s, s = 54 m", "v = 18 m/s, s = 27 m"], correct: 0, explanation: "v = 0 + 3·6 = 18 m/s. s = ½·3·36 = 54 m.", hint: "v = v₀+a·t und s = ½·a·t²" },
+        { text: "Auto bremst: v₀ = 25 m/s, |a| = 5 m/s². Bremsweg?", options: ["62,5 m", "125 m", "5 m", "25 m"], correct: 0, explanation: "s_B = 625/10 = 62,5 m.", hint: "s_B = v₀² / (2·a)" },
+      ],
+      challenge: [
+        { text: "Körper: v₀ = 4 m/s, a = 2 m/s², t = 5 s. Berechne v und s.", options: ["v = 14 m/s, s = 45 m", "v = 14 m/s, s = 50 m", "v = 10 m/s, s = 45 m", "v = 14 m/s, s = 25 m"], correct: 0, explanation: "v = 4 + 2·5 = 14 m/s. s = 4·5 + ½·2·25 = 20 + 25 = 45 m.", hint: "v = v₀+a·t | s = v₀·t + ½·a·t²" },
+        { text: "Welche Beschleunigung braucht ein Auto, um von 0 auf 100 km/h in 8 s zu kommen?", options: ["≈ 3,5 m/s²", "≈ 12,5 m/s²", "≈ 1,25 m/s²", "≈ 100 m/s²"], correct: 0, explanation: "v = 100/3,6 ≈ 27,8 m/s. a = Δv/Δt = 27,8/8 ≈ 3,5 m/s².", hint: "100 km/h in m/s umrechnen, dann a = v/t." },
+      ],
+    },
+  },
+
+  // ── MODULE 3 · Bewegungsdiagramme ────────────────────────────────────────
+
+  "Drei Diagrammtypen": {
+    theory: {
+      kicker: "Modul 3 · Level 1",
+      heading: "Drei Diagrammtypen im Überblick",
+      paragraphs: [
+        "In der Kinematik gibt es drei zentrale Diagramme: das s-t-Diagramm (Ort über Zeit), das v-t-Diagramm (Geschwindigkeit über Zeit) und das a-t-Diagramm (Beschleunigung über Zeit). Jeder Punkt in einem solchen Diagramm beschreibt den Zustand des Körpers zu einem bestimmten Zeitpunkt.",
+        "Die Diagramme sind mathematisch verknüpft: Die Steigung des s-t-Diagramms ergibt v. Die Steigung des v-t-Diagramms ergibt a. Umgekehrt ist die Fläche unter dem v-t-Graphen der zurückgelegte Weg s, und die Fläche unter dem a-t-Graphen ergibt die Geschwindigkeitsänderung Δv.",
+        "Zusammenfassung: s-t → Steigung = v | v-t → Steigung = a, Fläche = s | a-t → Fläche = Δv. Diese Zusammenhänge gelten immer – egal wie die Bewegung aussieht.",
+      ],
+      formula: "Steigung s-t = v  |  Steigung v-t = a  |  Fläche v-t = s  |  Fläche a-t = Δv",
+      example: "Gleichförmige Bewegung v=5 m/s: s-t ist Gerade (Steigung=5), v-t ist horizontale Linie bei 5, a-t liegt auf 0.",
+    },
+    question: {
+      type: "mc",
+      basis: [
+        { text: "Was gibt die Steigung im s-t-Diagramm an?", options: ["Die Geschwindigkeit v.", "Die Beschleunigung a.", "Den zurückgelegten Weg.", "Die Zeit."], correct: 0, explanation: "Steigung = Δs/Δt = v. Steilere Kurve = höhere Geschwindigkeit.", hint: "Steigung = Δy/Δx. Was steht auf y- und x-Achse im s-t-Diagramm?" },
+        { text: "Im v-t-Diagramm liegt eine horizontale Linie. Was bedeutet das?", options: ["Konstante Geschwindigkeit, a = 0.", "Der Körper steht still.", "Der Körper beschleunigt.", "Steigung ist unendlich."], correct: 0, explanation: "Horizontal = Steigung 0 = a=0. Die Geschwindigkeit ändert sich nicht → gleichförmige Bewegung.", hint: "Steigung im v-t-Diagramm = Beschleunigung. Horizontal = welche Steigung?" },
+      ],
+      challenge: [
+        { text: "Welche Grösse ergibt die Fläche unter dem v-t-Graphen?", options: ["Den zurückgelegten Weg s.", "Die Beschleunigung a.", "Die Anfangsgeschwindigkeit v₀.", "Die Zeit t."], correct: 0, explanation: "Fläche unter v-t = ∫v dt = s. Bei gleichförmiger Bewegung: Rechteck = v · t = s.", hint: "Fläche unter Geschwindigkeit-Zeit = zurückgelegter Weg." },
+        { text: "In welchem Diagramm liest man die Beschleunigung direkt auf der y-Achse ab?", options: ["a-t-Diagramm.", "s-t-Diagramm.", "v-t-Diagramm.", "In keinem."], correct: 0, explanation: "Im a-t-Diagramm steht a auf der y-Achse. Man liest a direkt ab. Im v-t-Diagramm ist a die Steigung.", hint: "Welches Diagramm hat a direkt als y-Grösse?" },
+      ],
+    },
+  },
+
+  "s-t Diagramm lesen": {
+    theory: {
+      kicker: "Modul 3 · Level 2",
+      heading: "Das s-t-Diagramm lesen",
+      paragraphs: [
+        "Im s-t-Diagramm zeigt die Steigung die Momentangeschwindigkeit: v = Δs / Δt. Eine steile Gerade bedeutet hohe Geschwindigkeit; eine flache Gerade bedeutet geringe Geschwindigkeit. Eine horizontale Gerade (Steigung 0) bedeutet: der Körper steht still.",
+        "Negative Steigung bedeutet, dass der Körper sich in die negative Richtung bewegt – er kehrt zum Startpunkt zurück oder bewegt sich rückwärts. Das ist kein Fehler, sondern Physik: s kann sinken, wenn der Körper zurückgeht.",
+        "Eine Parabel im s-t-Diagramm (gleichmässig steigende Steigung) entspricht gleichmässiger Beschleunigung. Die Steigung wird mit der Zeit immer grösser, weil v zunimmt.",
+      ],
+      formula: "v = Δs / Δt  (Steigung im s-t-Diagramm)",
+      example: "s geht von 0 auf 20 m in 5 s → v = 20/5 = 4 m/s. Dann bleibt s=20 m → Körper steht still.",
+    },
+    question: {
+      type: "chart",
+      chartConfig: {
+        chartType: "line",
+        xLabel: "Zeit t (s)",
+        yLabel: "Ort s (m)",
+        xData: [0, 1, 2, 3, 4, 5, 6, 7],
+        datasets: [
+          { label: "s(t)", data: [0, 4, 8, 12, 12, 12, 9, 6], color: "#5fa4ff", tension: 0, fill: false },
+        ],
       },
-      {
-        title: "Aufholen",
-        text: "Ein Auto startet vorne. Berechne, wann der schnellere Läufer es einholt.",
-        icon: "encounter",
-        colorA: "#24b7d8",
-        colorB: "#84e1f1",
+      tasks: [
+        { text: "Was ist die Geschwindigkeit zwischen t = 0 und t = 3 s?", options: ["4 m/s (Steigung = 12/3)", "12 m/s", "3 m/s", "0 m/s"], correct: 0, explanation: "v = Δs/Δt = (12−0)/(3−0) = 4 m/s. Steigung des Graphen abgelesen." },
+        { text: "Was passiert zwischen t = 3 s und t = 5 s?", options: ["Der Körper steht still (s = const.).", "Der Körper kehrt um.", "Der Körper beschleunigt.", "Der Körper verlangsamt sich."], correct: 0, explanation: "s = 12 m = konstant → Steigung = 0 → v = 0 → Körper steht still.", hint: "Steigung im s-t = v. Was ist die Steigung einer horizontalen Linie?" },
+        { text: "In welche Richtung bewegt sich der Körper zwischen t = 5 s und t = 7 s?", options: ["Rückwärts (negative Richtung), da s sinkt.", "Vorwärts, da t steigt.", "Der Körper steht still.", "Die Richtung ist unbekannt."], correct: 0, explanation: "Negative Steigung im s-t-Diagramm bedeutet: Körper bewegt sich in negativer Richtung (rückwärts). v = (6−12)/2 = −3 m/s.", hint: "Steigung = v. Wenn s sinkt (Gerade fällt) – was ist das Vorzeichen von v?" },
+      ],
+    },
+  },
+
+  "v-t Diagramm lesen": {
+    theory: {
+      kicker: "Modul 3 · Level 3",
+      heading: "Das v-t-Diagramm lesen",
+      paragraphs: [
+        "Im v-t-Diagramm liest man direkt die Momentangeschwindigkeit ab. Die Steigung der Kurve ergibt die Beschleunigung: a = Δv / Δt. Eine positive Steigung bedeutet Beschleunigung (a > 0), eine negative Steigung bedeutet Verzögerung (a < 0).",
+        "Eine horizontale Linie im v-t-Diagramm (Steigung 0) bedeutet a = 0 – der Körper bewegt sich gleichförmig. Der y-Achsenabschnitt (bei t = 0) ist die Anfangsgeschwindigkeit v₀.",
+        "Wichtige Ablese-Technik: Zwei Punkte auf der Geraden wählen, Steigung = Δv / Δt berechnen. Das ist die Beschleunigung im gewählten Abschnitt.",
+      ],
+      formula: "a = Δv / Δt  (Steigung im v-t-Diagramm)",
+      example: "Gerade von (2 s; 4 m/s) bis (6 s; 12 m/s) → a = (12−4)/(6−2) = 8/4 = 2 m/s².",
+    },
+    question: {
+      type: "chart",
+      chartConfig: {
+        chartType: "line",
+        xLabel: "Zeit t (s)",
+        yLabel: "Geschwindigkeit v (m/s)",
+        xData: [0, 1, 2, 3, 4, 5, 6, 7, 8],
+        datasets: [
+          { label: "v(t)", data: [8, 8, 8, 8, 8, 10, 12, 14, 16], color: "#8c76ff", tension: 0, fill: false },
+        ],
       },
-      {
-        title: "Beschleunigung",
-        text: "Eine Rakete startet aus der Ruhe. Berechne ihre Geschwindigkeit nach einer bestimmten Zeit.",
-        icon: "acceleration",
-        colorA: "#7a62ff",
-        colorB: "#b7a7ff",
+      tasks: [
+        { text: "Was ist die Beschleunigung von t = 0 bis t = 4 s?", options: ["a = 0 m/s² (gleichförmige Bewegung)", "a = 8 m/s²", "a = 2 m/s²", "a = 4 m/s²"], correct: 0, explanation: "v = 8 m/s = konstant → Steigung = 0 → a = 0. Das ist gleichförmige Bewegung.", hint: "Horizontale Linie = welche Steigung = welche Beschleunigung?" },
+        { text: "Was ist die Beschleunigung von t = 4 bis t = 8 s?", options: ["a = 2 m/s² (Steigung = Δv/Δt = 8/4)", "a = 0 m/s²", "a = 16 m/s²", "a = 8 m/s²"], correct: 0, explanation: "a = Δv/Δt = (16−8)/(8−4) = 8/4 = 2 m/s². Positive Steigung → Beschleunigung.", hint: "a = Δv/Δt. Zwei Punkte ablesen und Steigung berechnen." },
+        { text: "Welchen Wert hat v bei t = 6 s?", options: ["12 m/s", "8 m/s", "10 m/s", "16 m/s"], correct: 0, explanation: "Bei t=6 s: auf der y-Achse ablesen → v = 12 m/s. (Oder: v = 8 + 2·(6−4) = 12.)", hint: "Einfach ablesen: bei t=6 auf die Kurve schauen und v auf der y-Achse lesen." },
+      ],
+    },
+  },
+
+  "Fläche v-t = Weg": {
+    theory: {
+      kicker: "Modul 3 · Level 4",
+      heading: "Fläche unter v-t = zurückgelegter Weg",
+      paragraphs: [
+        "Die Fläche zwischen dem v-t-Graphen und der t-Achse ist gleich dem zurückgelegten Weg. Physikalisch: Weg = Geschwindigkeit × Zeit. Bei konstanter Geschwindigkeit ist das ein Rechteck (s = v · t). Bei gleichmässiger Beschleunigung aus v₀ = 0 ist es ein Dreieck (s = ½ · v_max · t).",
+        "Bei beliebiger Kurve ist es das Integral ∫v dt. Für den Schulgebrauch reichen Dreiecke und Rechtecke: Die Gesamtfläche kann in einfache geometrische Formen zerlegt werden – das ist die Grundidee der Integralrechnung.",
+        "Achtung: Die Fläche unter der t-Achse (wenn v < 0) entspricht einem negativen Weg – der Körper bewegt sich rückwärts. Für den Gesamtweg (Pfadlänge) wird der Betrag genommen.",
+      ],
+      formula: "s = Fläche unter v-t  |  Dreieck: s = ½ · v_max · t  |  Rechteck: s = v · t",
+      example: "v-t: Gerade von (0; 0) nach (6 s; 18 m/s). Fläche = ½ · 6 · 18 = 54 m.",
+    },
+    question: {
+      type: "chart",
+      chartConfig: {
+        chartType: "line",
+        xLabel: "Zeit t (s)",
+        yLabel: "Geschwindigkeit v (m/s)",
+        xData: [0, 1, 2, 3, 4, 5, 6],
+        datasets: [
+          { label: "v(t)", data: [0, 3, 6, 9, 12, 15, 18], color: "#ff9657", tension: 0, fill: true },
+        ],
       },
-      {
-        title: "K1 - Sprint-Scanner",
-        text: "Berechne die mittlere Geschwindigkeit eines 100-m-Sprints.",
-        icon: "speed",
-        colorA: "#59a3ff",
-        colorB: "#8ed0ff",
+      tasks: [
+        { type: "calc", text: "Berechne den zurückgelegten Weg in 6 s. (Fläche des Dreiecks: ½ · Basis · Höhe)", answer: 54, unit: "m", tolerance: 0.5, explanation: "s = ½ · t · v_max = ½ · 6 · 18 = 54 m. Die Fläche unter dem Graphen ist ein Dreieck.", hint: "Fläche eines Dreiecks = ½ · Basis · Höhe. Basis = 6 s, Höhe = 18 m/s." },
+        { text: "Welche geometrische Form hat die Fläche unter einem v-t-Graphen bei Beschleunigung aus v₀ = 0?", options: ["Ein Dreieck (½ · v_max · t).", "Ein Rechteck (v · t).", "Ein Trapez.", "Ein Kreis."], correct: 0, explanation: "v₀=0 → Gerade durch Ursprung → Dreieck. s = ½·v_max·t = ½·a·t².", hint: "Die Linie startet bei 0 und steigt linear – was für eine Fläche entsteht?" },
+        { text: "Bei t = 0 bis 3 s ist v = 6 m/s konstant. Welcher Weg wird zurückgelegt?", options: ["18 m (Rechteck: 6 · 3)", "9 m", "36 m", "3 m"], correct: 0, explanation: "Konstanty v → Rechteck: s = v · t = 6 · 3 = 18 m.", hint: "Fläche eines Rechtecks = Breite · Höhe = t · v." },
+      ],
+    },
+  },
+
+  "a-t Diagramm lesen": {
+    theory: {
+      kicker: "Modul 3 · Level 5",
+      heading: "Das a-t-Diagramm lesen",
+      paragraphs: [
+        "Im a-t-Diagramm trägt man die Beschleunigung a über der Zeit t auf. Bei gleichmässiger Beschleunigung ist die Kurve eine horizontale Linie – a ist konstant. Ein Sprung auf a = 0 bedeutet: Die Beschleunigung hört auf, der Körper bewegt sich danach gleichförmig.",
+        "Die Fläche unter dem a-t-Graphen ergibt die Geschwindigkeitsänderung Δv. Zum Beispiel: a = 3 m/s² für 4 Sekunden → Fläche = Rechteck: 3 · 4 = 12 m/s → Δv = 12 m/s. War v₀ = 0, so ist v nach 4 s = 12 m/s.",
+        "Im a-t-Diagramm kann man direkt erkennen, wann ein Körper beschleunigt (a > 0), verzögert (a < 0) oder gleichförmig fährt (a = 0). Es ist das einfachste Diagramm zu lesen – aber das seltenste im Alltag.",
+      ],
+      formula: "Fläche unter a-t = Δv  |  a = konst. → horizontale Linie im a-t-Diagramm",
+      example: "a = 5 m/s² für 4 s → Δv = 5·4 = 20 m/s. Danach a = 0 → v bleibt konstant.",
+    },
+    question: {
+      type: "chart",
+      chartConfig: {
+        chartType: "line",
+        xLabel: "Zeit t (s)",
+        yLabel: "Beschleunigung a (m/s²)",
+        xData: [0, 1, 2, 3, 4, 5, 6, 7, 8],
+        datasets: [
+          { label: "a(t)", data: [5, 5, 5, 5, 0, 0, 0, 0, 0], color: "#25b7d8", tension: 0, fill: true },
+        ],
       },
-      {
-        title: "K2 - Überhol-Duell",
-        text: "Ein schnelleres Fahrzeug startet dahinter und muss ein langsames Fahrzeug einholen.",
-        icon: "encounter",
-        colorA: "#ff9c58",
-        colorB: "#ffd58a",
+      tasks: [
+        { text: "Was gibt die Fläche unter dem a-t-Graphen an?", options: ["Die Geschwindigkeitsänderung Δv.", "Den zurückgelegten Weg s.", "Die Durchschnittsgeschwindigkeit.", "Die Endposition."], correct: 0, explanation: "Fläche unter a-t = Δv. Fläche unter v-t = s. Das sind die zwei Integrations-Stufen.", hint: "Eine Stufe über a liegt v, eine Stufe über v liegt s. Fläche 'bringt uns eine Stufe hoch'." },
+        { type: "calc", text: "Wie gross ist Δv von t = 0 bis t = 4 s? (Fläche des Rechtecks)", answer: 20, unit: "m/s", tolerance: 0.5, explanation: "Fläche = Rechteck: a · t = 5 · 4 = 20 m/s = Δv. War v₀=0, dann v(4 s) = 20 m/s.", hint: "Fläche Rechteck = Breite · Höhe = 4 s · 5 m/s²" },
+        { text: "Was passiert zwischen t = 4 und t = 8 s (a = 0)?", options: ["Gleichförmige Bewegung – v bleibt konstant.", "Körper steht still.", "Körper verzögert.", "v = 0."], correct: 0, explanation: "a = 0 → keine Beschleunigung → v = konstant. Die Geschwindigkeit bleibt bei dem Wert, den sie bei t=4 s hatte.", hint: "a = 0 heisst: v ändert sich nicht mehr." },
+      ],
+    },
+  },
+
+  "Text → Diagramm": {
+    theory: {
+      kicker: "Modul 3 · Level 6",
+      heading: "Textbeschreibung in Diagramm übersetzen",
+      paragraphs: [
+        "Jede Textbeschreibung einer Bewegung lässt sich in ein Diagramm übersetzen. Schlüsselwörter: 'steht still' → horizontale Linie im s-t; 'gleichförmig' → Gerade im s-t und horizontale Linie im v-t; 'gleichmässig beschleunigt' → Parabel im s-t, Gerade im v-t.",
+        "Strategie: 1. Welche Grössen werden beschrieben (s, v, a)? 2. Wie ändern sie sich mit der Zeit? 3. Welche geometrische Form ergibt das? Konstant → Horizontale. Linear zunehmend → Gerade. Quadratisch zunehmend → Parabel.",
+        "Häufiger Fehler: Im s-t-Diagramm für gleichmässige Beschleunigung eine Gerade einzeichnen. Aber s = ½at² ist quadratisch – das ergibt eine Parabel, keine Gerade!",
+      ],
+      formula: "Stehenbleiben → s=const | Gleichförmig → s-t: Gerade | Beschleunigt → s-t: Parabel",
+      example: "Text: 'Körper startet aus Ruhe und beschleunigt 4 s lang.' → s-t: nach oben öffnende Parabel. v-t: Gerade durch Ursprung.",
+    },
+    question: {
+      type: "mc",
+      basis: [
+        { text: "'Ein Körper steht still.' – Wie sieht das s-t-Diagramm aus?", options: ["Horizontale Linie (s = konstant).", "Gerade mit positiver Steigung.", "Parabel.", "Senkrechte Linie."], correct: 0, explanation: "Stillstand = v=0 = keine Ortsänderung → s = const. → horizontale Linie im s-t-Diagramm.", hint: "Steillstand = v = 0 = keine Ortsänderung. Was ist die Steigung?" },
+        { text: "'Auto beschleunigt gleichmässig aus dem Stand.' – Wie sieht das v-t-Diagramm aus?", options: ["Gerade durch den Ursprung (v₀=0, steigt linear).", "Horizontale Linie.", "Parabel.", "Senkrechte Linie."], correct: 0, explanation: "a = const., v₀ = 0: v = a·t ist linear in t → Gerade durch Ursprung im v-t-Diagramm.", hint: "v = v₀ + a·t. Bei v₀=0 und a=const.: welche Funktion ist das?" },
+      ],
+      challenge: [
+        { text: "'Körper: erst 3 s gleichförmig, dann 3 s gleichmässig beschleunigt.' – s-t-Diagramm?", options: ["Erst gerade (lineare Steigung), dann Parabel (nach oben krümmend).", "Erst horizontal, dann Gerade.", "Gerade durch den ganzen Bereich.", "Erst Parabel, dann Gerade."], correct: 0, explanation: "Phase 1: a=0, v=const. → s wächst linear (Gerade). Phase 2: a=const. → s ~ t² → Parabel. Die Steigung wird steiler.", hint: "Was ergibt s = v·t (linear)? Was ergibt s = ½·a·t² (quadratisch)?" },
+        { text: "'Auto bremst gleichmässig bis zum Stillstand.' – v-t-Diagramm?", options: ["Fallende Gerade bis v = 0.", "Horizontale Linie.", "Parabel nach unten.", "Steigende Gerade."], correct: 0, explanation: "Gleichmässige Bremsung: a = const. < 0. v = v₀ + a·t sinkt linear → fallende Gerade bis v=0.", hint: "Gleichmässige Bremsung = konstante negative Beschleunigung → v sinkt linear." },
+      ],
+    },
+  },
+
+  "Diagramm → Beschreibung": {
+    theory: {
+      kicker: "Modul 3 · Level 7",
+      heading: "Diagramm in Worten beschreiben",
+      paragraphs: [
+        "Beim Lesen eines Diagramms übersetzt man visuelle Merkmale in physikalische Aussagen. Steigende Gerade im v-t → 'gleichmässige Beschleunigung'. Horizontale Linie im v-t → 'gleichförmige Bewegung'. Fallende Gerade im v-t → 'gleichmässige Verzögerung'. Linie bei v=0 → 'Körper steht still'.",
+        "Bei s-t-Diagrammen: Steigung ablesen = Geschwindigkeit. Steigende Steigung (Parabel) = Beschleunigung. Konstante Steigung = konstante Geschwindigkeit. Nullsteigung = Stillstand. Negative Steigung = Rückwärtsbewegung.",
+        "Mehrphasige Bewegungen: Ein Diagramm kann mehrere Phasen enthalten. Jede Phase wird separat beschrieben. Wichtig: die Übergangspunkte (Knickstellen) markieren Änderungen in der Bewegung.",
+      ],
+      formula: "Gerade im v-t: a = const. | Horizontal im v-t: v = const. | Negative Steigung im v-t: Bremsung",
+      example: "v-t: steigt 3 s von 0 auf 6 m/s → bleibt 2 s bei 6 m/s → fällt 3 s auf 0. Beschreibung: erst gleichmässig beschleunigt, dann gleichförmig, dann gleichmässig gebremst.",
+    },
+    question: {
+      type: "mc",
+      basis: [
+        { text: "v-t-Diagramm: steigende Gerade von v=0 auf v=10 m/s in 5 s. Was beschreibt das?", options: ["Gleichmässige Beschleunigung (a = 2 m/s²).", "Gleichförmige Bewegung.", "Körper steht still.", "Körper bremst."], correct: 0, explanation: "Steigende Gerade im v-t = a = const. a = Δv/Δt = 10/5 = 2 m/s² → gleichmässige Beschleunigung.", hint: "Steigende Gerade im v-t → positive konstante Steigung → a > 0 = ?" },
+        { text: "s-t-Diagramm: horizontale Linie bei s=15 m. Was beschreibt das?", options: ["Körper steht still bei s = 15 m.", "Körper bewegt sich mit v = 15 m/s.", "Körper beschleunigt.", "Körper kehrt um."], correct: 0, explanation: "Horizontal im s-t: s = const. = 15 m → Steigung = 0 → v = 0 → Stillstand.", hint: "Horizontale Linie: Steigung = 0 → v = Steigung im s-t-Diagramm = 0 → ?" },
+      ],
+      challenge: [
+        { text: "v-t-Diagramm: erst horizontal bei v=8 m/s (3 s), dann fallende Gerade bis v=0 (5 s). Textbeschreibung?", options: ["Erst gleichförmig, dann gleichmässig gebremst bis Stillstand.", "Erst beschleunigt, dann gleichförmig.", "Erst Stillstand, dann Beschleunigung.", "Immer gleichmässige Beschleunigung."], correct: 0, explanation: "Horizontal = a=0 = gleichförmig (v=8 m/s). Fallend = a<0 = Bremsung → Stillstand bei v=0.", hint: "Phase 1: Steigung? Phase 2: Steigung? Positiv, negativ oder null?" },
+        { text: "s-t-Diagramm: erst lineare Steigung (2 s), dann stärkere Krümmung nach oben (3 s). Beschreibung?", options: ["Erst gleichförmig, dann gleichmässig beschleunigt (Steigung nimmt zu).", "Erst beschleunigt, dann gleichförmig.", "Gleichförmig die ganze Zeit.", "Erst schnell, dann langsamer."], correct: 0, explanation: "Lineare Steigung = v=const. Zunehmende Steigung (Parabel) = v steigt = a>0 = gleichmässige Beschleunigung.", hint: "Was bedeutet 'stärkere Krümmung nach oben' für die Steigung (= v)?" },
+      ],
+    },
+  },
+
+  "Diagrammfehler finden": {
+    theory: {
+      kicker: "Modul 3 · Level 8",
+      heading: "Typische Fehler in Diagrammen erkennen",
+      paragraphs: [
+        "Es gibt einige physikalisch unmögliche oder falsche Darstellungen in Diagrammen. Die häufigsten: 1. Senkrechte Linie im s-t-Diagramm – das würde unendliche Geschwindigkeit bedeuten. 2. Senkrechte Linie im v-t-Diagramm – das würde unendliche Beschleunigung bedeuten (unphysikalisch). Beide sind in der Realität unmöglich.",
+        "Weiterer Fehler: Im s-t-Diagramm eine Gerade zeichnen für gleichmässige Beschleunigung. Korrekt wäre eine Parabel – denn s = ½at² ist quadratisch. Die Steigung einer Parabel nimmt zu, die einer Geraden ist konstant.",
+        "Auch häufig: Im v-t-Diagramm negative Werte für v einzeichnen, obwohl der Körper laut Text 'vorwärts fährt'. Negative v bedeutet Bewegung in die entgegengesetzte Richtung – das ist kein 'Fehler' per se, aber eine Fehlinterpretation der Aufgabe.",
+      ],
+      formula: "Senkrechte Linie im s-t oder v-t = unphysikalisch | Gerade statt Parabel bei Beschleunigung = falsch",
+      example: "Fehler: s-t zeigt Gerade, obwohl Körper gleichmässig aus Ruhe beschleunigt. Korrekt: Parabel (s ~ t²).",
+    },
+    question: {
+      type: "mc",
+      basis: [
+        { text: "Im s-t-Diagramm ist eine senkrechte (vertikale) Linie eingezeichnet. Was ist das Problem?", options: ["Senkrechte Linie = unendliche Geschwindigkeit → physikalisch unmöglich.", "Die Linie fehlt eine Einheit.", "Die Zeit muss negativ sein.", "Das s-t-Diagramm kann keine senkrechten Linien haben."], correct: 0, explanation: "Senkrecht im s-t: Δt = 0, Δs > 0 → v = Δs/Δt → unendlich. Kein Körper kann unendlich schnell sein.", hint: "Steigung = Δs/Δt. Was passiert wenn Δt → 0?" },
+        { text: "Körper beschleunigt gleichmässig aus dem Stand. Das s-t-Diagramm zeigt eine Gerade. Warum ist das falsch?", options: ["s = ½at² ist quadratisch → Parabel, nicht Gerade.", "Geraden sind im s-t immer falsch.", "Die Steigung müsste null sein.", "s kann nicht wachsen."], correct: 0, explanation: "s = ½at² → quadratische Funktion → Parabel. Eine Gerade würde konstante Geschwindigkeit bedeuten (s = v·t).", hint: "Welche Kurvenform hat s = ½at²? Linear oder quadratisch?" },
+      ],
+      challenge: [
+        { text: "v-t-Diagramm: Die Linie springt von v=6 m/s auf v=0 m/s in 0 Sekunden. Warum ist das unphysikalisch?", options: ["Das bedeutet unendliche Beschleunigung (a = Δv/Δt = 6/0).", "v darf nicht sinken.", "t darf nicht 0 sein.", "Das Diagramm ist korrekt."], correct: 0, explanation: "a = Δv/Δt = −6/0 → unendlich. Keine endliche Kraft kann unendliche Beschleunigung erzeugen.", hint: "a = Δv/Δt. Was ist Δt? Was ergibt das?" },
+        { text: "Im v-t-Diagramm für eine Bremsung bis zum Stillstand geht die Linie nach t_stop weiter und zeigt negative v-Werte. Was stimmt nicht?", options: ["Nach dem Stillstand (v=0) bleibt der Körper stehen – v kann nicht negativ werden, es sei denn, er fährt rückwärts.", "Negative v sind immer falsch.", "Das Diagramm muss bei t=0 enden.", "v muss immer positiv sein."], correct: 0, explanation: "Eine Bremsung bis zum Stillstand endet bei v=0. Danach bewegt sich der Körper nicht mehr (ohne weitere Kraft). Negative v würde bedeuten: der Körper fährt rückwärts – nur möglich wenn er angetrieben wird.", hint: "Was passiert physikalisch, wenn ein Körper 'bis zum Stillstand' bremst? Was fehlt für weitere Bewegung?" },
+      ],
+    },
+  },
+
+  "Mehrteilige Bewegung": {
+    theory: {
+      kicker: "Modul 3 · Level 9",
+      heading: "Mehrteilige Bewegungen im Diagramm",
+      paragraphs: [
+        "Reale Bewegungen bestehen oft aus mehreren Phasen. Im Diagramm erkennt man Phasenwechsel an Knickpunkten (im v-t) oder Krümmungsänderungen (im s-t). Jede Phase wird getrennt analysiert: Welche Bewegung? Welche Grössen?",
+        "Beim v-t-Diagramm lassen sich alle Phasen direkt ablesen: Rechteck-Flächen (v = const.) und Dreieck-Flächen (Bremsen oder Beschleunigen) zusammenaddieren ergibt den Gesamtweg.",
+        "Typisches Beispiel: Phase 1 – gleichförmig (Rechteck). Phase 2 – Bremsung (Dreieck). Phase 3 – Stillstand (Linie auf v=0). Phase 4 – erneute Beschleunigung (neues Dreieck).",
+      ],
+      formula: "Gesamtweg = Summe aller Flächen unter v-t (Rechtecke + Dreiecke)",
+      example: "v=8 m/s für 3 s (Rechteck: 24 m) → bremst in 3 s auf 0 (Dreieck: ½·3·8=12 m) → Gesamtweg: 36 m.",
+    },
+    question: {
+      type: "chart",
+      chartConfig: {
+        chartType: "line",
+        xLabel: "Zeit t (s)",
+        yLabel: "Geschwindigkeit v (m/s)",
+        xData: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+        datasets: [
+          { label: "v(t)", data: [6, 6, 6, 6, 4, 2, 0, 0, 0, 2, 4], color: "#f56e92", tension: 0, fill: false },
+        ],
       },
-    ],
+      tasks: [
+        { text: "Was ist die Beschleunigung von t = 3 bis t = 6 s?", options: ["a = −2 m/s² (Bremsung)", "a = 0 m/s²", "a = +2 m/s²", "a = −6 m/s²"], correct: 0, explanation: "a = Δv/Δt = (0−6)/(6−3) = −6/3 = −2 m/s². Negative Steigung → Verzögerung.", hint: "a = Δv/Δt = (v_end − v_start) / (t_end − t_start)" },
+        { type: "calc", text: "Wie weit fährt der Körper in Phase 1 (t = 0 bis 3 s)?", answer: 18, unit: "m", tolerance: 0.5, explanation: "Rechteck: s = v · t = 6 · 3 = 18 m.", hint: "Phase 1: v = const. → Fläche = Rechteck: v · t" },
+        { type: "calc", text: "Wie weit in Phase 2 (Bremsung, t = 3 bis 6 s)?", answer: 9, unit: "m", tolerance: 0.5, explanation: "Dreieck: s = ½ · v₀ · t = ½ · 6 · 3 = 9 m.", hint: "Phase 2: v geht von 6 auf 0 → Fläche = Dreieck: ½ · Basis · Höhe" },
+        { type: "calc", text: "Was ist der Gesamtweg von t = 0 bis t = 6 s?", answer: 27, unit: "m", tolerance: 0.5, explanation: "Gesamtweg = Phase 1 + Phase 2 = 18 + 9 = 27 m.", hint: "Gesamtweg = Summe aller Teilflächen unter v-t." },
+      ],
+    },
   },
-  "0": {
-    title: "Grundlagen der Bewegung",
-    steps: [
-      { title: "SI-Einheiten", text: "Einheitensystem sicher lesen, umrechnen und korrekt notieren.", icon: "units", colorA: "#59a3ff", colorB: "#8ed0ff" },
-      { title: "Funktionen und Koordinatensysteme", text: "Punkte, Achsen und Funktionsverläufe sauber deuten.", icon: "graph", colorA: "#3dd18d", colorB: "#94ecb8" },
-      { title: "Skalar und Vektoren", text: "Größen mit Betrag und Richtung sicher unterscheiden.", icon: "vector", colorA: "#8f73ff", colorB: "#c2b6ff" },
-      { title: "Bezugssystem", text: "Bewegung immer relativ zu einem gewählten System interpretieren.", icon: "frame", colorA: "#ff8753", colorB: "#ffc173" },
-      { title: "Position", text: "Lage im Raum eindeutig über Koordinaten angeben.", icon: "point", colorA: "#21b7d8", colorB: "#7de1f2" },
-      { title: "Strecke und Verschiebung", text: "Zurückgelegten Weg und Ortsänderung präzise trennen.", icon: "displacement", colorA: "#f86785", colorB: "#f9a8bd" },
-    ],
+
+  "Boss – Diagramme": {
+    theory: {
+      kicker: "Modul 3 · Boss",
+      heading: "Boss: Alle drei Diagrammtypen",
+      paragraphs: [
+        "Jetzt werden alle drei Diagrammtypen kombiniert. Du musst zwischen s-t, v-t und a-t wechseln und die Zusammenhänge kennen: Steigung s-t = v, Steigung v-t = a, Fläche v-t = s, Fläche a-t = Δv.",
+        "Strategie: 1. Welche Grössen sind gesucht? 2. In welchem Diagramm lese ich was ab? 3. Einheiten kontrollieren. 4. Phasen einzeln analysieren, dann addieren.",
+        "Besonders tückisch: Verwechseln von s-t und v-t. Im s-t zeigt die Steigung v; im v-t zeigt die Steigung a. Ein 'steiles s-t' heisst schnell – ein 'steiles v-t' heisst hohe Beschleunigung.",
+      ],
+      formula: "s-t: Stg=v | v-t: Stg=a, Fl=s | a-t: Fl=Δv",
+      example: "v-t: Dreieck mit Basis 5 s, Höhe 20 m/s → s = ½·5·20 = 50 m, a = 20/5 = 4 m/s².",
+    },
+    question: {
+      type: "mc",
+      basis: [
+        { text: "s-t: konstante positive Steigung. v-t: horizontal. a-t: auf 0. Welche Bewegung liegt vor?", options: ["Gleichförmige Bewegung (v=const., a=0).", "Gleichmässige Beschleunigung.", "Körper steht still.", "Körper bremst."], correct: 0, explanation: "Alle drei Diagramme zeigen: v konstant, a=0 → Gleichförmige Bewegung. Klassiker!", hint: "Konstante Steigung im s-t = v=const. Was ist dann a?" },
+        { text: "v-t: Rechteck, 4 s breit, 5 m/s hoch. Welchen Weg legt der Körper zurück?", options: ["20 m (Fläche: 4 · 5)", "9 m", "10 m", "40 m"], correct: 0, explanation: "Fläche Rechteck = Breite · Höhe = 4 s · 5 m/s = 20 m. s = v · t.", hint: "Fläche Rechteck = Länge · Breite. Hier: t · v." },
+      ],
+      challenge: [
+        { text: "v-t: Dreieck, Basis t=6 s, Höhe v=12 m/s. Welchen Weg und welche Beschleunigung zeigt das?", options: ["s = 36 m, a = 2 m/s²", "s = 72 m, a = 2 m/s²", "s = 36 m, a = 12 m/s²", "s = 18 m, a = 2 m/s²"], correct: 0, explanation: "s = ½ · 6 · 12 = 36 m. a = Steigung = 12/6 = 2 m/s².", hint: "Fläche Dreieck = ½·b·h. Steigung = Δv/Δt = Höhe/Basis." },
+        { text: "Körper: 2 s bei v=4 m/s, dann 3 s mit a=2 m/s² (v₀=4). Gesamtweg?", options: ["29 m", "8 m", "21 m", "50 m"], correct: 0, explanation: "Phase 1: s₁ = 4·2 = 8 m. Phase 2: s₂ = v₀·t + ½·a·t² = 4·3 + ½·2·9 = 12 + 9 = 21 m. Total = 8 + 21 = 29 m.", hint: "Phase 1: s=v·t. Phase 2: s=v₀·t+½·a·t². Dann addieren." },
+      ],
+    },
   },
-  "1": {
-    title: "Geradlinig gleichförmige Bewegung",
-    steps: [
-      { title: "Bewegung mit konstantem v", text: "Gleichförmige Bewegung in 1D erkennen und beschreiben.", icon: "speed", colorA: "#5ea2ff", colorB: "#9bc8ff" },
-      { title: "Formel s = s0 + v · t", text: "Weg-Zeit-Zusammenhang sicher in Aufgaben anwenden.", icon: "formula", colorA: "#65d78a", colorB: "#a4f0be" },
-      { title: "Durchschnittsgeschwindigkeit", text: "Zeit- und Wegintervalle korrekt auswerten.", icon: "speed", colorA: "#7e74ff", colorB: "#c3bcff" },
-      { title: "Begegnungsaufgaben", text: "Zwei Bewegungen im selben Bezugssystem rechnen.", icon: "encounter", colorA: "#ff9c58", colorB: "#ffd58a" },
-      { title: "s-t und v-t Diagramme", text: "Lineare Verläufe in beiden Diagrammen erkennen.", icon: "chart", colorA: "#24b7d8", colorB: "#88e4f2" },
-    ],
+
+  // ── MODULE 4 · Reaktions- und Bremsweg ────────────────────────────────────
+
+  "Reaktionszeit": {
+    theory: {
+      kicker: "Modul 4 · Level 1",
+      heading: "Die Reaktionszeit",
+      paragraphs: [
+        "Zwischen dem Wahrnehmen einer Gefahr und dem Beginn der Bremsung vergeht Zeit: die Reaktionszeit t_R. In dieser Zeit fährt das Auto ungebremst mit konstanter Geschwindigkeit weiter.",
+        "Typische Reaktionszeiten: Ausgeruhter Fahrer ≈ 0,5–0,8 s. Normaler Verkehr ≈ 1 s. Müdigkeit, Ablenkung, Alkohol können t_R auf über 2 s erhöhen – eine Verdopplung bedeutet doppelten Reaktionsweg!",
+        "Wichtig: Während der Reaktionszeit ändert sich die Geschwindigkeit nicht. Das Fahrzeug bewegt sich gleichförmig. Erst danach beginnt die Bremsung.",
+      ],
+      formula: "s_R = v · t_R  (Reaktionsweg; v = konstant während t_R)",
+      example: "v = 20 m/s (72 km/h), t_R = 1 s → s_R = 20 · 1 = 20 m.",
+    },
+    question: {
+      type: "mc",
+      basis: [
+        { text: "Warum ist die Reaktionszeit gefährlich beim Fahren?", options: ["Weil das Auto in dieser Zeit ungebremst weiterfährt.", "Weil die Bremsen in dieser Zeit nicht funktionieren.", "Weil die Geschwindigkeit in dieser Zeit steigt.", "Weil der Fahrer schläft."], correct: 0, explanation: "Während t_R: v = const., keine Bremsung. Je höher die Geschwindigkeit, desto mehr Weg in t_R.", hint: "Was passiert mit der Bewegung während der Reaktionszeit?" },
+        { text: "t_R = 0,8 s, v = 50 km/h = 13,9 m/s. Wie gross ist der Reaktionsweg?", options: ["≈ 11 m", "≈ 40 m", "≈ 0,8 m", "≈ 62,5 m"], correct: 0, explanation: "s_R = v · t_R = 13,9 · 0,8 ≈ 11 m.", hint: "s_R = v · t_R (v in m/s!)" },
+      ],
+      challenge: [
+        { text: "Müdigkeit verdoppelt t_R von 0,8 s auf 1,6 s bei 80 km/h = 22,2 m/s. Wie viel länger ist s_R?", options: ["s_R verdoppelt sich (um ≈ 17,8 m länger).", "s_R vervierfacht sich.", "s_R bleibt gleich.", "s_R steigt um 50%."], correct: 0, explanation: "s_R = v · t_R. t_R verdoppelt → s_R verdoppelt. Δs_R = 22,2·0,8 ≈ 17,8 m mehr.", hint: "s_R = v · t_R ist linear in t_R. Doppeltes t_R → doppeltes s_R." },
+        { text: "Bei welcher Geschwindigkeit ist der Reaktionsweg in 1 s genau 25 m?", options: ["25 m/s = 90 km/h", "25 km/h", "2,5 m/s", "250 m/s"], correct: 0, explanation: "s_R = v · t_R → 25 = v · 1 → v = 25 m/s = 90 km/h.", hint: "s_R = v · t_R → v = s_R / t_R" },
+      ],
+    },
   },
-  "2": {
-    title: "Geradlinig gleichmäßig beschleunigte Bewegung",
-    steps: [
-      { title: "Beschleunigung als Änderungsrate", text: "Bedeutung von a im Zeitverlauf klar deuten.", icon: "acceleration", colorA: "#5f9dff", colorB: "#9dc9ff" },
-      { title: "Formel v = v0 + a · t", text: "Geschwindigkeit unter konstanter Beschleunigung berechnen.", icon: "formula", colorA: "#60ce88", colorB: "#9ce7b6" },
-      { title: "Formel s = s0 + v0 t + 1/2 a t²", text: "Ortsänderung mit Startwerten sicher einsetzen.", icon: "formula", colorA: "#8a73ff", colorB: "#cabdff" },
-      { title: "Vorzeichen richtig deuten", text: "Negative Werte bei v und a korrekt interpretieren.", icon: "sign", colorA: "#ff8e5a", colorB: "#ffc981" },
-      { title: "Bremsen und Anfahren", text: "Typische Bewegungsphasen physikalisch modellieren.", icon: "brake", colorA: "#27b6d7", colorB: "#84dff0" },
-      { title: "Formel- und Diagrammlösung", text: "Zwischen Rechnung und Graphen sicher wechseln.", icon: "chart", colorA: "#f66d93", colorB: "#f8acbf" },
-    ],
+
+  "Reaktionsweg berechnen": {
+    theory: {
+      kicker: "Modul 4 · Level 2",
+      heading: "Reaktionsweg berechnen",
+      paragraphs: [
+        "Der Reaktionsweg s_R ist der Weg, den das Fahrzeug während der Reaktionszeit zurücklegt. Da in dieser Phase keine Bremsung erfolgt, gilt gleichförmige Bewegung: s_R = v · t_R.",
+        "Die Formel s_R = v · t_R ist die gleiche wie s = v · t aus der gleichförmigen Bewegung – angewendet auf das Zeitintervall der Reaktion. Alle drei Grössen lassen sich berechnen, wenn zwei bekannt sind.",
+        "Praxistipp: Bei 50 km/h (≈ 14 m/s) und t_R = 1 s beträgt s_R ≈ 14 m – fast die Länge dreier PKW! In diesem Abstand muss das Auto bereits vollständig gestoppt haben, wenn ein Hindernis auftaucht.",
+      ],
+      formula: "s_R = v · t_R  |  t_R = s_R / v  |  v = s_R / t_R",
+      example: "v = 30 m/s (108 km/h), t_R = 1,2 s → s_R = 36 m (fast zwei Buslängen!).",
+    },
+    question: {
+      type: "speed-lab",
+      s: 140,
+      targetV: 14,
+      defT: 10,
+      followUp: [
+        { text: "Auto fährt 14 m/s (50 km/h). Reaktionszeit 1 s. Welcher Reaktionsweg?", options: ["14 m", "50 m", "1 m", "7 m"], correct: 0, explanation: "s_R = v · t_R = 14 · 1 = 14 m. Gleichförmige Bewegung während t_R.", hint: "s_R = v · t_R" },
+      ],
+    },
   },
-  "3": {
-    title: "Freier Fall und vertikaler Wurf",
-    steps: [
-      { title: "Erdbeschleunigung g", text: "Richtung und Größe von g im Modell festlegen.", icon: "fall", colorA: "#5ea3ff", colorB: "#9acbff" },
-      { title: "Fallzeit berechnen", text: "Zeit bis zum Auftreffen aus Startbedingungen bestimmen.", icon: "formula", colorA: "#65d48a", colorB: "#a2edbe" },
-      { title: "Höhe und Ort", text: "Höhenwerte und Positionen über die Zeit berechnen.", icon: "point", colorA: "#8573ff", colorB: "#c6bcff" },
-      { title: "Aufwärts- und Abwärtsphase", text: "Phasenwechsel beim vertikalen Wurf sauber trennen.", icon: "throw", colorA: "#ff8f5b", colorB: "#ffd184" },
-      { title: "Spezialfall von Modul 2", text: "Freier Fall als beschleunigte Bewegung sicher anwenden.", icon: "acceleration", colorA: "#2ab8d8", colorB: "#89e3f2" },
-    ],
+
+  "Bremsweg als Verzögerung": {
+    theory: {
+      kicker: "Modul 4 · Level 3",
+      heading: "Bremsweg berechnen",
+      paragraphs: [
+        "Nach der Reaktionszeit beginnt die eigentliche Bremsung. Das Fahrzeug verzögert gleichmässig – das ist eine gleichmässig gebremste Bewegung mit negativer Beschleunigung a < 0.",
+        "Der Bremsweg s_B ist der Weg vom Beginn der Bremsung bis zum Stillstand. Er hängt quadratisch von der Ausgangsgeschwindigkeit ab: s_B = v₀² / (2 · |a|). Das bedeutet: doppelte Geschwindigkeit → vierfacher Bremsweg!",
+        "Typische Bremsverzögerungen: Trockene Strasse: |a| ≈ 8 m/s². Nasse Strasse: |a| ≈ 4 m/s². Eis: |a| ≈ 1,5 m/s². Werte schwanken je nach Fahrzeug, Reifen und Belag.",
+      ],
+      formula: "s_B = v₀² / (2 · |a|)  (Bremsweg; Stillstand am Ende)",
+      example: "v₀ = 20 m/s, |a| = 8 m/s² → s_B = 400/16 = 25 m.",
+    },
+    question: {
+      type: "mc",
+      basis: [
+        { text: "v₀ = 10 m/s, |a| = 5 m/s². Wie lang ist der Bremsweg?", options: ["10 m", "100 m", "20 m", "2 m"], correct: 0, explanation: "s_B = v₀²/(2·|a|) = 100/10 = 10 m.", hint: "s_B = v₀² / (2 · a)" },
+        { text: "Auto verdoppelt seine Geschwindigkeit. Um wie viel steigt der Bremsweg?", options: ["4-mal länger", "2-mal länger", "8-mal länger", "Gleich lang"], correct: 0, explanation: "s_B = v₀². Wenn v₀ → 2v₀: s_B → (2v₀)² / 2a = 4·s_B. Viermal länger!", hint: "s_B ~ v₀². Was passiert wenn v₀ verdoppelt wird?" },
+      ],
+      challenge: [
+        { text: "v₀ = 30 m/s, |a| = 6 m/s². Berechne s_B.", options: ["75 m", "5 m", "180 m", "150 m"], correct: 0, explanation: "s_B = 900/12 = 75 m.", hint: "s_B = v₀²/(2·|a|) = 30²/(2·6)" },
+        { text: "s_B = 50 m, |a| = 5 m/s². Wie gross war v₀?", options: ["≈ 22,4 m/s ≈ 80,6 km/h", "50 m/s", "10 m/s", "250 m/s"], correct: 0, explanation: "50 = v₀²/10 → v₀² = 500 → v₀ = √500 ≈ 22,4 m/s = 80,6 km/h.", hint: "s_B = v₀²/2a → v₀ = √(2·a·s_B)" },
+      ],
+    },
   },
-  "4": {
-    title: "Bewegungsdiagramme und Darstellungen",
-    steps: [
-      { title: "s-t Diagramm", text: "Ortsverlauf über die Zeit korrekt lesen.", icon: "chart", colorA: "#5fa4ff", colorB: "#9fcfff" },
-      { title: "v-t Diagramm", text: "Geschwindigkeitsverlauf in Intervallen interpretieren.", icon: "speed", colorA: "#62d38a", colorB: "#9de9b8" },
-      { title: "a-t Diagramm", text: "Beschleunigungsabschnitte physikalisch deuten.", icon: "acceleration", colorA: "#8c76ff", colorB: "#c8beff" },
-      { title: "Steigung", text: "Steigungen als Änderungsraten verwenden.", icon: "slope", colorA: "#ff9657", colorB: "#ffd182" },
-      { title: "Flächeninhalt", text: "Flächen unter Kurven physikalisch auswerten.", icon: "area", colorA: "#25b7d8", colorB: "#86e1f1" },
-      { title: "Darstellungen umwandeln", text: "Zwischen s-t, v-t und a-t sicher wechseln.", icon: "graph", colorA: "#f56e92", colorB: "#f7aec1" },
-    ],
+
+  "Anhalteweg": {
+    theory: {
+      kicker: "Modul 4 · Level 4",
+      heading: "Anhalteweg = Reaktionsweg + Bremsweg",
+      paragraphs: [
+        "Der Anhalteweg s_A ist der Gesamtweg vom Erkennen der Gefahr bis zum vollständigen Stillstand. Er setzt sich zusammen aus Reaktionsweg s_R und Bremsweg s_B: s_A = s_R + s_B.",
+        "Formel vollständig: s_A = v·t_R + v²/(2·|a|). In dieser Formel kommt v linear vor (im Reaktionsweg) und quadratisch (im Bremsweg). Bei hohen Geschwindigkeiten dominiert der quadratische Term.",
+        "Faustregel (ungenau, aber praktisch): Anhalteweg in m ≈ (v in km/h) / 10 · ((v in km/h) / 10 + 1). Genauer: Nutz die Formel mit t_R = 1 s und |a| = 8 m/s².",
+      ],
+      formula: "s_A = s_R + s_B = v·t_R + v²/(2·|a|)",
+      example: "v = 20 m/s, t_R = 1 s, |a| = 8 m/s² → s_A = 20·1 + 400/16 = 20 + 25 = 45 m.",
+    },
+    question: {
+      type: "mc",
+      basis: [
+        { text: "v = 15 m/s, t_R = 1 s, |a| = 5 m/s². Berechne s_A.", options: ["37,5 m", "22,5 m", "52,5 m", "15 m"], correct: 0, explanation: "s_R = 15·1 = 15 m. s_B = 225/10 = 22,5 m. s_A = 15 + 22,5 = 37,5 m.", hint: "s_A = v·t_R + v²/(2·a). Erst Teile, dann addieren." },
+        { text: "Welches Teilstück wächst bei hohen Geschwindigkeiten überproportional?", options: ["Der Bremsweg (s_B ~ v²).", "Der Reaktionsweg (s_R ~ v).", "Beide gleich.", "Keiner."], correct: 0, explanation: "s_R ~ v (linear), s_B ~ v² (quadratisch). Bei grossen v dominiert s_B.", hint: "Welche Formel hat v im Quadrat?" },
+      ],
+      challenge: [
+        { text: "v = 25 m/s, t_R = 0,8 s, |a| = 8 m/s². Anhalteweg?", options: ["59,1 m", "49 m", "78,1 m", "25 m"], correct: 0, explanation: "s_R = 25·0,8 = 20 m. s_B = 625/16 ≈ 39,1 m. s_A ≈ 59,1 m.", hint: "s_A = v·t_R + v²/(2·a)" },
+        { text: "v = 10 m/s vs. v = 20 m/s (je t_R=1s, |a|=8m/s²). Wie vergleichen sich s_A?", options: ["s_A(10) ≈ 16,3 m; s_A(20) ≈ 45 m (fast 3×)", "Beide gleich.", "s_A(20) ist genau 2× s_A(10).", "s_A(20) ist 4× s_A(10)."], correct: 0, explanation: "s_A(10) = 10 + 100/16 = 16,3 m. s_A(20) = 20 + 400/16 = 45 m. Verhältnis ≈ 2,76.", hint: "Berechne beide s_A und vergleiche." },
+      ],
+    },
   },
-  "5": {
-    title: "Bewegungen in zwei Dimensionen",
-    steps: [
-      { title: "x- und y-Komponente", text: "Bewegung in unabhängige Richtungen zerlegen.", icon: "components", colorA: "#5ea3ff", colorB: "#9ac9ff" },
-      { title: "Komponenten getrennt lösen", text: "Zwei 1D-Probleme getrennt rechnen.", icon: "vector", colorA: "#65d489", colorB: "#a0ecb8" },
-      { title: "Wurf als Überlagerung", text: "Horizontale und vertikale Bewegung kombinieren.", icon: "throw", colorA: "#8972ff", colorB: "#c5bbff" },
-      { title: "Flugzeit und Reichweite", text: "Zentrale Größen aus den Komponenten bestimmen.", icon: "formula", colorA: "#ff8f5d", colorB: "#ffcf85" },
-      { title: "2D-Transferaufgaben", text: "Kontextaufgaben systematisch und sauber lösen.", icon: "chart", colorA: "#24b7d8", colorB: "#84e1f1" },
-    ],
+
+  "Doppelte Geschwindigkeit": {
+    theory: {
+      kicker: "Modul 4 · Level 5",
+      heading: "Doppelte Geschwindigkeit – vierfacher Bremsweg",
+      paragraphs: [
+        "Die gefährlichste Eigenschaft des Bremswegs: Er steigt mit dem Quadrat der Geschwindigkeit. Das bedeutet: Doppelte Geschwindigkeit → 4-facher Bremsweg. Dreifache Geschwindigkeit → 9-facher Bremsweg!",
+        "Dieser Effekt kommt allein aus der Physik, unabhängig von Fahrstil oder Fahrzeug. Er ist der Hauptgrund, warum Tempolimits Leben retten: 30 km/h statt 50 km/h reduziert den Bremsweg um den Faktor 50²/30² ≈ 2,8.",
+        "Der Reaktionsweg steigt dagegen nur linear mit v. Bei hohen Geschwindigkeiten ist der Bremsweg der dominant gefährliche Teil des Anhaltewegs.",
+      ],
+      formula: "s_B = v²/(2·a) → doppeltes v → 4-faches s_B",
+      example: "30 km/h = 8,3 m/s: s_B ≈ 4,3 m. 60 km/h = 16,7 m/s: s_B ≈ 17,4 m (4×!).",
+    },
+    question: {
+      type: "mc",
+      basis: [
+        { text: "v₁ = 10 m/s → s_B1. v₂ = 30 m/s → s_B2. Verhältnis s_B2 / s_B1?", options: ["9 (neunfacher Bremsweg)", "3 (dreifacher Bremsweg)", "6", "27"], correct: 0, explanation: "s_B ~ v². v₂/v₁ = 3 → s_B2/s_B1 = 9.", hint: "s_B ~ v². (v₂/v₁)² = (30/10)² = 9." },
+        { text: "Auf Eis: |a| = 1,5 m/s². v = 14 m/s (50 km/h). Bremsweg?", options: ["65,3 m", "9,3 m", "21 m", "196 m"], correct: 0, explanation: "s_B = 196/(2·1,5) = 196/3 ≈ 65,3 m – auf Eis ist selbst Tempo 50 extrem gefährlich!", hint: "s_B = v²/(2·|a|). Eis: kleines a → riesiger s_B!" },
+      ],
+      challenge: [
+        { text: "Bei v = 20 m/s ist s_B = 25 m. Was ist |a|? Bei v = 40 m/s: neues s_B?", options: ["a = 8 m/s²; s_B(40) = 100 m", "a = 8 m/s²; s_B(40) = 50 m", "a = 4 m/s²; s_B(40) = 100 m", "a = 8 m/s²; s_B(40) = 200 m"], correct: 0, explanation: "25 = 400/(2a) → a = 8 m/s². s_B(40) = 1600/16 = 100 m (4× mehr).", hint: "Erst a ausrechnen, dann s_B für v=40 m/s." },
+        { text: "Geschwindigkeit wird von 50 auf 70 km/h erhöht. Faktor Bremsweg?", options: ["≈ 1,96 (fast doppelt)", "≈ 1,4", "≈ 4", "= 70/50 = 1,4"], correct: 0, explanation: "(70/50)² = 1,96. Also fast doppelter Bremsweg für 20 km/h mehr!", hint: "s_B ~ v². Faktor = (v₂/v₁)²." },
+      ],
+    },
   },
-  "6": {
-    title: "Relative Bewegung und Bezugssysteme",
-    steps: [
-      { title: "Passendes Bezugssystem wählen", text: "Systemwahl begründet und zielgerichtet treffen.", icon: "frame", colorA: "#5ea3ff", colorB: "#9ccaff" },
-      { title: "Relativgeschwindigkeit", text: "Geschwindigkeiten abhängig vom Beobachter berechnen.", icon: "relative", colorA: "#63d48b", colorB: "#9feab9" },
-      { title: "Gegen- und Gleichrichtung", text: "Fälle korrekt unterscheiden und Vorzeichen prüfen.", icon: "sign", colorA: "#8a73ff", colorB: "#c3b8ff" },
-      { title: "Ergebnisse interpretieren", text: "Physikalische Aussage im gewählten System formulieren.", icon: "observer", colorA: "#ff925a", colorB: "#ffd083" },
-    ],
+
+  "Sicherheitsabstand": {
+    theory: {
+      kicker: "Modul 4 · Level 6",
+      heading: "Sicherheitsabstand im Strassenverkehr",
+      paragraphs: [
+        "Der Sicherheitsabstand zum Vorausfahrenden muss mindestens so gross sein, dass man bei dessen Notbremsung noch rechtzeitig anhält. Mindestabstand: s_A (Anhalteweg des Folgefahrzeugs).",
+        "Faustregel: 2-Sekunden-Regel – der Abstand soll mindestens so gross sein, dass man 2 Sekunden braucht, um den Punkt zu erreichen, wo das Vorausfahrzeug gerade war. Bei 50 km/h ≈ 28 m.",
+        "Auf der Autobahn (120 km/h = 33,3 m/s): 2-Sekunden-Abstand = 66,7 m. Viele Unfälle entstehen durch zu geringen Abstand – das Unfallrisiko steigt mit der zweiten Potenz der Geschwindigkeit.",
+      ],
+      formula: "Mindestabstand ≥ s_A = v·t_R + v²/(2·|a|)",
+      example: "v = 33,3 m/s (120 km/h), t_R = 1 s, |a| = 8 m/s² → s_A ≈ 33,3 + 69,4 ≈ 103 m.",
+    },
+    question: {
+      type: "mc",
+      basis: [
+        { text: "2-Sekunden-Regel bei 90 km/h = 25 m/s. Welcher Mindestabstand?", options: ["50 m", "90 m", "25 m", "180 m"], correct: 0, explanation: "Abstand = v · 2 s = 25 · 2 = 50 m.", hint: "Abstand = v × 2 Sekunden." },
+        { text: "Ist s_A immer gleich dem sicheren Abstand?", options: ["Nein – der Abstand muss s_A des Folgefahrzeugs betragen, plus Reaktionsweg.", "Ja.", "Nein – der Abstand muss kleiner sein.", "Nur bei Tempo 50."], correct: 0, explanation: "Der nötige Abstand = s_A des Folgefahrers, weil dieser nach der Reaktion noch bremsen muss.", hint: "Was passiert wenn das Vorausauto sofort stoppt?" },
+      ],
+      challenge: [
+        { text: "v = 20 m/s, t_R = 1 s, |a| = 5 m/s². Genügt ein Abstand von 50 m?", options: ["Nein – s_A = 60 m > 50 m.", "Ja – 50 m > 40 m.", "Ja – s_A = 40 m.", "Knapp, s_A = 50 m."], correct: 0, explanation: "s_A = 20·1 + 400/10 = 20 + 40 = 60 m. 50 m genügt nicht!", hint: "s_A = v·t_R + v²/(2·a). Dann vergleichen." },
+        { text: "Bei Tempo 30 (8,3 m/s) und Tempo 50 (13,9 m/s), t_R=1s, |a|=8m/s². Um wie viel ist s_A bei Tempo 50 grösser?", options: ["Um ≈ 17,6 m (≈ 75% mehr)", "Um genau 20 m", "Um 50% mehr", "Um 100% mehr"], correct: 0, explanation: "s_A(30) ≈ 8,3 + 4,3 = 12,6 m. s_A(50) ≈ 13,9 + 12,1 = 26 m. Differenz ≈ 13,4 m ≈ 106% mehr.", hint: "Berechne beide s_A und bilde die Differenz." },
+      ],
+    },
   },
-  "7": {
-    title: "Messung, Modellierung, Grenzen",
-    steps: [
-      { title: "Datenerfassung", text: "Messreihen strukturiert aufnehmen und dokumentieren.", icon: "measure", colorA: "#5ca2ff", colorB: "#9bc9ff" },
-      { title: "Einfache Auswertung", text: "Messwerte tabellarisch und grafisch aufbereiten.", icon: "chart", colorA: "#64d38b", colorB: "#a2e9b9" },
-      { title: "Messfehler", text: "Absolute und relative Abweichungen bestimmen.", icon: "error", colorA: "#8a73ff", colorB: "#c6bcff" },
-      { title: "Modellannahmen", text: "Annahmen wie ohne Luftwiderstand bewusst einsetzen.", icon: "model", colorA: "#ff915a", colorB: "#ffd083" },
-      { title: "Modell und Realität", text: "Grenzen des Rechenmodells mit Daten reflektieren.", icon: "observer", colorA: "#24b6d8", colorB: "#84dff1" },
-    ],
+
+  "Einfluss von Müdigkeit": {
+    theory: {
+      kicker: "Modul 4 · Level 7",
+      heading: "Müdigkeit und Reaktionszeit",
+      paragraphs: [
+        "Müdigkeit verdoppelt oder verdreifacht die Reaktionszeit. Aus t_R = 0,8 s werden schnell t_R = 2 s oder mehr. Da s_R = v · t_R linear von t_R abhängt, verdoppelt oder verdreifacht sich entsprechend der Reaktionsweg.",
+        "Bei 80 km/h (22,2 m/s): t_R = 0,8 s → s_R ≈ 18 m. t_R = 2 s → s_R = 44,4 m. Allein durch Müdigkeit werden 26 m mehr Weg zurückgelegt, bevor die Bremse betätigt wird!",
+        "Andere Faktoren die t_R erhöhen: Alkohol und Drogen, Ablenkung (Handy), hohe Umgebungstemperaturen, monotone Strecken (Autobahn). Jede Sekunde mehr Reaktionszeit bedeutet bei 100 km/h = 27,8 m mehr Reaktionsweg.",
+      ],
+      formula: "s_R = v · t_R → Müdigkeit erhöht t_R → s_R steigt proportional",
+      example: "22,2 m/s, t_R verdoppelt von 1 auf 2 s → s_R verdoppelt von 22,2 auf 44,4 m.",
+    },
+    question: {
+      type: "mc",
+      basis: [
+        { text: "t_R von 1 s auf 1,5 s erhöht. v = 20 m/s. Um wie viel m länger ist s_R?", options: ["10 m länger", "5 m länger", "20 m länger", "1,5 m länger"], correct: 0, explanation: "s_R_neu = 20·1,5 = 30 m. s_R_alt = 20·1 = 20 m. Differenz = 10 m.", hint: "Δs_R = v · Δt_R = 20 · 0,5 = 10 m." },
+        { text: "Was erhöht die Reaktionszeit? (Mehrere möglich – wähle die physikalisch korrekte Antwort)", options: ["Alkohol, Müdigkeit, Ablenkung – alle erhöhen t_R.", "Nur Alkohol.", "Nur Müdigkeit.", "Nichts ausser mangelnde Übung."], correct: 0, explanation: "Alle drei Faktoren (Alkohol, Müdigkeit, Ablenkung) verlängern die Reaktionszeit nachweislich.", hint: "Was beeinflusst die Zeit zwischen Wahrnehmen und Reagieren?" },
+      ],
+      challenge: [
+        { text: "v = 100 km/h = 27,8 m/s. Jede 0,1 s Reaktionszeit kostet wie viel Reaktionsweg?", options: ["2,78 m", "0,1 m", "10 m", "27,8 m"], correct: 0, explanation: "Δs_R = v · Δt_R = 27,8 · 0,1 = 2,78 m. Jede Zehntelsekunde = knapp 3 m mehr.", hint: "Δs_R = v · Δt_R" },
+        { text: "Autofahrer: t_R = 2 s (müde) vs. t_R = 0,8 s (ausgeruht), v = 25 m/s. Zusätzlicher Reaktionsweg?", options: ["30 m", "1,2 m", "50 m", "20 m"], correct: 0, explanation: "Δs_R = 25 · (2 − 0,8) = 25 · 1,2 = 30 m. Fast zwei Fahrzeuglängen mehr!", hint: "Δs_R = v · Δt_R" },
+      ],
+    },
   },
+
+  "Einfluss der Geschwindigkeit": {
+    theory: {
+      kicker: "Modul 4 · Level 8",
+      heading: "Geschwindigkeit und Anhalteweg im Vergleich",
+      paragraphs: [
+        "Je höher die Geschwindigkeit, desto überproportional länger der Anhalteweg. Ursache: Der Bremsweg steigt quadratisch mit v. Bei 30 km/h sind Hindernisse noch gut zu vermeiden – bei 80 km/h kann ein plötzliches Hindernis tödlich sein.",
+        "Zahlen (t_R = 1 s, |a| = 8 m/s²): 30 km/h → s_A ≈ 21 m. 50 km/h → s_A ≈ 38 m. 80 km/h → s_A ≈ 82 m. 120 km/h → s_A ≈ 103 m. Die Verdopplung von 30 auf 60 km/h verdreifacht den Anhalteweg.",
+        "Fussgas vs. Bremspedal: Die einzige Möglichkeit, den Anhalteweg zu reduzieren, ist niedrigere Geschwindigkeit. Bessere Bremsen helfen kaum – der Reaktionsweg dominiert im Stadtverkehr.",
+      ],
+      formula: "s_A = v·t_R + v²/(2·a). Bei 30 vs. 50 km/h: Faktor s_A ≈ 1,8",
+      example: "50 km/h = 13,9 m/s: s_A = 13,9 + 9,6 = 23,5 m. 80 km/h = 22,2 m/s: s_A = 22,2 + 30,9 = 53,1 m.",
+    },
+    question: {
+      type: "mc",
+      basis: [
+        { text: "Warum sind 30-km/h-Zonen in der Nähe von Schulen sinnvoll?", options: ["Weil der Anhalteweg deutlich kürzer ist und Fussgänger rechtzeitig wahrgenommen werden.", "Weil Autos bei 30 km/h keine Energie haben.", "Weil bei 30 km/h keine Unfälle möglich sind.", "Nur aus Lärmschutzgründen."], correct: 0, explanation: "Bei 30 statt 50 km/h: s_B von 12 m auf 4,3 m – fast dreifach kürzer. Das rettet Leben.", hint: "s_B ~ v². Was bedeutet das für 30 vs. 50 km/h?" },
+        { text: "Von 30 km/h auf 60 km/h. Bremsweg-Faktor?", options: ["4 (viermal länger)", "2 (doppelt)", "3", "1,5"], correct: 0, explanation: "s_B ~ v². (60/30)² = 4. Doppeltes Tempo → vierfacher Bremsweg.", hint: "s_B ~ v² → Faktor = (v₂/v₁)²" },
+      ],
+      challenge: [
+        { text: "t_R = 1 s, |a| = 8 m/s². Berechne s_A für v = 50 km/h = 13,9 m/s.", options: ["≈ 25,9 m", "≈ 50 m", "≈ 13,9 m", "≈ 39,1 m"], correct: 0, explanation: "s_R = 13,9 m. s_B = 193/16 ≈ 12 m. s_A ≈ 25,9 m.", hint: "s_A = v·t_R + v²/(2·a)" },
+        { text: "v = 120 km/h = 33,3 m/s. Wieviele Meter fährt man in der Reaktionszeit (t_R=1s)?", options: ["33,3 m", "120 m", "3,3 m", "10 m"], correct: 0, explanation: "s_R = v · t_R = 33,3 · 1 = 33,3 m – mehr als eine Hauslänge!", hint: "s_R = v · t_R" },
+      ],
+    },
+  },
+
+  "Anhalteweg im Diagramm": {
+    theory: {
+      kicker: "Modul 4 · Level 9",
+      heading: "Anhalteweg im v-t-Diagramm",
+      paragraphs: [
+        "Im v-t-Diagramm zeigt der Anhalteweg zwei deutlich unterschiedliche Phasen: Phase 1 – Reaktionsphase: v = const. (horizontale Linie). Phase 2 – Bremsphase: v sinkt linear auf 0 (fallende Gerade).",
+        "Die Fläche unter dem v-t-Graphen entspricht dem zurückgelegten Weg. Reaktionsphase: Rechteck (Fläche = v · t_R = s_R). Bremsphase: Dreieck (Fläche = ½ · v · t_B = s_B). Gesamt: s_A = s_R + s_B.",
+        "Bremszeit t_B berechnen: t_B = v₀ / |a| (Zeit bis v = 0 bei gleichmässiger Verzögerung). Diese Zeit ist das 'Dreieck' im v-t-Diagramm.",
+      ],
+      formula: "Rechteck (Reaktion): s_R = v·t_R | Dreieck (Bremsung): s_B = ½·v·t_B = v²/(2·a)",
+      example: "v=20 m/s, t_R=1s, |a|=5m/s²: t_B=4s. s_R=20m (Rechteck), s_B=40m (Dreieck), s_A=60m.",
+    },
+    question: {
+      type: "st-live",
+      v: 8,
+      s: 160,
+      followUp: [
+        { text: "Im v-t-Diagramm des Anhaltevorgangs: Was zeigt das Rechteck und was zeigt das Dreieck?", options: ["Rechteck = s_R (Reaktion), Dreieck = s_B (Bremsung).", "Rechteck = s_B, Dreieck = s_R.", "Beide Flächen = s_B.", "Nur das Dreieck zählt für s_A."], correct: 0, explanation: "Während der Reaktion: v=const. → Rechteck mit Fläche s_R. Bremsung: v→0 → Dreieck mit Fläche s_B.", hint: "Fläche unter v-t = Weg. Welche Form hat jede Phase?" },
+      ],
+    },
+  },
+
+  "Boss – Hindernis": {
+    theory: {
+      kicker: "Modul 4 · Boss",
+      heading: "Boss: Vollständige Anhalteweganalyse",
+      paragraphs: [
+        "In der Boss-Aufgabe werden alle Formeln kombiniert. Du berechnest Reaktionsweg, Bremsweg und Anhalteweg für verschiedene Szenarien und ziehst physikalisch korrekte Schlussfolgerungen.",
+        "Checkliste: 1. Geschwindigkeit in m/s umrechnen. 2. s_R = v·t_R. 3. s_B = v²/(2·|a|). 4. s_A = s_R + s_B. 5. Mit dem Hindernis-Abstand vergleichen – wenn s_A > Abstand: Kollision!",
+        "Varianten: Was wenn t_R grösser wird? Was wenn |a| kleiner wird (nasse Strasse)? Was wenn v 20% höher war? Diese Fragen prüfen ob du die Zusammenhänge wirklich verstehst.",
+      ],
+      formula: "s_A = v·t_R + v²/(2·|a|)",
+      example: "v=25 m/s, t_R=1s, |a|=8m/s²: s_A = 25 + 39 = 64 m. Hindernis in 60 m → Kollision!",
+    },
+    question: {
+      type: "mc",
+      basis: [
+        { text: "v=20 m/s, t_R=1s, |a|=5m/s². Hindernis bei 55 m. Kollision?", options: ["Ja – s_A = 60 m > 55 m.", "Nein – s_A = 50 m < 55 m.", "Gerade so – s_A = 55 m.", "Kann nicht bestimmt werden."], correct: 0, explanation: "s_A = 20·1 + 400/10 = 20 + 40 = 60 m. 60 > 55 → Kollision!", hint: "s_A = v·t_R + v²/(2·a). Dann mit Hindernisabstand vergleichen." },
+        { text: "Gleiche Szene, aber nasse Strasse: |a| = 3 m/s². Neues s_A?", options: ["≈ 86,7 m – viel zu lang!", "60 m", "40 m", "≈ 53,3 m"], correct: 0, explanation: "s_A = 20 + 400/6 ≈ 20 + 66,7 = 86,7 m. Nasse Strasse ist deutlich gefährlicher!", hint: "Neues s_A berechnen mit a = 3 m/s²." },
+      ],
+      challenge: [
+        { text: "v = 30 m/s, t_R = 1,5 s (müde), |a| = 7 m/s². Sicher mit Abstand 80 m?", options: ["Nein – s_A ≈ 109 m > 80 m.", "Ja – s_A ≈ 75 m.", "Gerade so – s_A ≈ 80 m.", "Ja – s_A ≈ 50 m."], correct: 0, explanation: "s_R = 30·1,5 = 45 m. s_B = 900/14 ≈ 64 m. s_A ≈ 109 m >> 80 m. Nicht sicher!", hint: "s_A = v·t_R + v²/(2·a)" },
+        { text: "Bei welcher Maximalgeschwindigkeit kann man bei Hindernis in 40 m sicher stoppen? (t_R=1s, |a|=8m/s²)", options: ["≈ 14,9 m/s ≈ 53,7 km/h", "≈ 20 m/s", "≈ 8 m/s", "≈ 40 m/s"], correct: 0, explanation: "v·1 + v²/16 = 40 → v²/16 + v − 40 = 0. v ≈ 14,9 m/s (quadratische Gleichung).", hint: "v + v²/16 = 40. Quadratische Gleichung lösen oder Werte ausprobieren." },
+      ],
+    },
+  },
+
+  // ── MODULE 5 · Freier Fall ─────────────────────────────────────────────────
+
+  "Freier Fall als Beschleunigung": {
+    theory: {
+      kicker: "Modul 5 · Level 1",
+      heading: "Freier Fall – eine Beschleunigung",
+      paragraphs: [
+        "Freier Fall ist die Bewegung eines Körpers unter dem alleinigen Einfluss der Schwerkraft – ohne Luftwiderstand, ohne Auftrieb, ohne jeden anderen Einfluss. In der Physik ist das ein ideales Modell.",
+        "Entscheidend: Alle Körper fallen gleich schnell, unabhängig von ihrer Masse! Galileo bewies das durch Experimente. Das Geheimnis: Grössere Masse → grössere Schwerkraft, aber auch grössere Trägheit – beides hebt sich auf.",
+        "Die Fallbeschleunigung g ≈ 9,81 m/s² ist überall auf der Erdoberfläche annähernd konstant (kleine Schwankungen je nach Breite und Höhe). Auf dem Mond: g_Mond ≈ 1,62 m/s².",
+      ],
+      formula: "g ≈ 9,81 m/s²  (Fallbeschleunigung an der Erdoberfläche)",
+      example: "Ball und Stein fallen aus gleicher Höhe → kommen gleichzeitig an (ohne Luftwiderstand).",
+    },
+    question: {
+      type: "matter",
+      scene: "freeFall",
+      tasks: [
+        { text: "Drei Kugeln verschiedener Grösse fallen gleichzeitig los. Was beobachtest du?", options: ["Alle kommen gleichzeitig unten an – Masse ist egal.", "Die grösste Kugel landet zuerst.", "Die kleinste Kugel landet zuerst.", "Sie fallen mit verschiedenen Geschwindigkeiten."], correct: 0, explanation: "Im freien Fall (ohne Luftwiderstand) ist a = g für alle Massen. Alle Kugeln kommen gleichzeitig an.", hint: "Galileos Erkenntnis: Masse beeinflusst freien Fall nicht." },
+      ],
+    },
+  },
+
+  "Fallbeschleunigung g": {
+    theory: {
+      kicker: "Modul 5 · Level 2",
+      heading: "Die Fallbeschleunigung g",
+      paragraphs: [
+        "Die Fallbeschleunigung g = 9,81 m/s² bedeutet: Jede Sekunde steigt die Fallgeschwindigkeit um 9,81 m/s. Nach 1 s: v = 9,81 m/s. Nach 2 s: v = 19,62 m/s. Nach 3 s: v = 29,43 m/s ≈ 106 km/h!",
+        "g ist eine Naturkonstante auf der Erdoberfläche, die von der Schwerkraft der Erde bestimmt wird. Für Berechnungen in der Schule wird oft g = 10 m/s² als Näherung verwendet – das vereinfacht Rechnungen ohne grosse Ungenauigkeit.",
+        "Auf dem Mond (g_M ≈ 1,62 m/s²) fiele ein Körper nach 3 s nur etwa 7,3 m weit statt 44 m auf der Erde. Das zeigt: g bestimmt direkt alle Bewegungsgrössen beim freien Fall.",
+      ],
+      formula: "g ≈ 9,81 m/s² ≈ 10 m/s² (Näherung)",
+      example: "Nach 4 s: v = g·t = 9,81·4 = 39,24 m/s ≈ 141 km/h. Das ist fast Autobahngeschwindigkeit!",
+    },
+    question: {
+      type: "mc",
+      basis: [
+        { text: "Was bedeutet g = 9,81 m/s² physikalisch?", options: ["Die Fallgeschwindigkeit steigt jede Sekunde um 9,81 m/s.", "Der Körper fällt 9,81 m pro Sekunde.", "Die Schwerkraft hat 9,81 N.", "Der Körper dreht sich mit 9,81 rad/s."], correct: 0, explanation: "g ist Beschleunigung, nicht Geschwindigkeit. Jede Sekunde +9,81 m/s in der Fallgeschwindigkeit.", hint: "g hat die Einheit m/s² – was sagt das?" },
+        { text: "Stein fällt auf der Erde und auf dem Mond aus gleicher Höhe. Wo landet er schneller?", options: ["Auf der Erde (g_Erde > g_Mond).", "Auf dem Mond (weniger Schwerkraft → schneller).", "Gleichzeitig (Masse ist egal).", "Kommt auf die Masse an."], correct: 0, explanation: "g_Erde ≈ 9,81 m/s² >> g_Mond ≈ 1,62 m/s². Grösseres g → grössere Beschleunigung → schneller am Boden.", hint: "Welcher Planet hat die grössere Fallbeschleunigung?" },
+      ],
+      challenge: [
+        { text: "Ball fällt 5 Sekunden frei. Welche Geschwindigkeit hat er? (g = 9,81 m/s²)", options: ["49,05 m/s ≈ 177 km/h", "5 m/s", "9,81 m/s", "24,5 m/s"], correct: 0, explanation: "v = g·t = 9,81·5 = 49,05 m/s. Nach nur 5 Sekunden Autobahn-Speed!", hint: "v = g · t" },
+        { text: "Warum ist g auf dem Äquator etwas kleiner als an den Polen?", options: ["Äquator ist weiter vom Erdmittelpunkt entfernt + Fliehkraft.", "Äquator hat mehr Luftwiderstand.", "Am Pol ist die Erde wärmer.", "g ist überall gleich gross."], correct: 0, explanation: "Am Äquator: Erde ist leicht abgeflacht (grösserer Radius → schwächere Anziehung) und die Erdrotation erzeugt eine Fliehkraft.", hint: "Schwerkraft hängt vom Abstand zum Erdmittelpunkt ab." },
+      ],
+    },
+  },
+
+  "Fallgeschwindigkeit v = g·t": {
+    theory: {
+      kicker: "Modul 5 · Level 3",
+      heading: "Fallgeschwindigkeit berechnen",
+      paragraphs: [
+        "Beim freien Fall aus der Ruhe (v₀ = 0) gilt: Die Geschwindigkeit steigt linear mit der Zeit. Die Formel ist ein Spezialfall von v = v₀ + a·t mit v₀ = 0 und a = g: v = g · t.",
+        "Da g eine Konstante ist, wächst v proportional zu t. Die Geschwindigkeit ist nach 1 s: g m/s, nach 2 s: 2g m/s, nach t Sekunden: g·t m/s. Im v-t-Diagramm ist das eine Gerade durch den Ursprung mit Steigung g.",
+        "Wichtig: Diese Formel gilt nur ohne Luftwiderstand. In der Realität begrenzt der Luftwiderstand die Fallgeschwindigkeit (Endgeschwindigkeit / Terminal velocity). Ein Fallschirmspringer erreicht etwa 50–60 m/s.",
+      ],
+      formula: "v = g · t = 9,81 · t  (bei v₀ = 0, kein Luftwiderstand)",
+      example: "t = 3 s → v = 9,81 · 3 = 29,43 m/s ≈ 106 km/h.",
+    },
+    question: {
+      type: "accel-lab",
+      v0: 0,
+      minA: 5, maxA: 12, defA: 10,
+      maxT: 6, defT: 3,
+      followUp: [
+        { text: "Ball fällt 4 s lang frei (g = 9,81 m/s²). Welche Geschwindigkeit?", options: ["39,24 m/s", "4 m/s", "9,81 m/s", "20 m/s"], correct: 0, explanation: "v = g·t = 9,81·4 = 39,24 m/s ≈ 141 km/h. Freier Fall ist schnell!", hint: "v = g · t" },
+      ],
+    },
+  },
+
+  "Fallstrecke s = ½·g·t²": {
+    theory: {
+      kicker: "Modul 5 · Level 4",
+      heading: "Fallstrecke berechnen",
+      paragraphs: [
+        "Die zurückgelegte Fallstrecke wächst quadratisch mit der Zeit: s = ½ · g · t². Dieser Ausdruck ist ein Spezialfall von s = ½·a·t² (für a = g, v₀ = 0). Das quadratische Wachstum erklärt, warum ein Körper in der letzten Sekunde viel mehr zurücklegt als in der ersten.",
+        "Vergleich: In der ersten Sekunde: s(1) = ½·9,81·1 ≈ 4,9 m. In der zweiten Sekunde: s(2)−s(1) = ½·9,81·4 − 4,9 ≈ 14,7 m. In der dritten: s(3)−s(2) ≈ 24,5 m. Verhältnis: 1 : 3 : 5 – Galileos Zahlen!",
+        "Umkehrformel: Aus der Fallstrecke h berechnet man die Fallzeit t = √(2h/g). Das ist die Formel, die im Sprint-Test (K3 – Freier Fall) benutzt wird.",
+      ],
+      formula: "s = ½ · g · t²  |  t = √(2s / g)",
+      example: "t = 3 s → s = ½·9,81·9 ≈ 44 m. | h = 80 m → t = √(160/9,81) ≈ 4 s.",
+    },
+    question: {
+      type: "mc",
+      basis: [
+        { text: "Ball fällt 2 Sekunden. Fallstrecke? (g = 9,81 m/s²)", options: ["≈ 19,6 m", "≈ 9,8 m", "≈ 39,2 m", "≈ 4,9 m"], correct: 0, explanation: "s = ½·9,81·4 = 19,62 m.", hint: "s = ½ · g · t². Achtung: t² = 4!" },
+        { text: "h = 45 m. Wie lange fällt der Körper? (g = 9,81 m/s²)", options: ["≈ 3,03 s", "≈ 45 s", "≈ 9 s", "≈ 1,5 s"], correct: 0, explanation: "t = √(2·45/9,81) = √(9,17) ≈ 3,03 s.", hint: "t = √(2h/g)" },
+      ],
+      challenge: [
+        { text: "In welcher Sekunde legt ein frei fallender Körper am meisten zurück – der 1., 3. oder 5.?", options: ["5. Sekunde (mehr Weg je später).", "1. Sekunde.", "Alle Sekunden gleich.", "3. Sekunde ist Maximum."], correct: 0, explanation: "s nimmt quadratisch zu → in jeder späteren Sekunde legt man mehr zurück. Die 5. Sekunde hat den grössten Zuwachs.", hint: "s ~ t² → Zuwachs pro Sekunde wird immer grösser." },
+        { text: "Doppelte Fallzeit → wie viel grösser ist die Fallstrecke?", options: ["4-mal grösser", "2-mal grösser", "8-mal grösser", "Gleich"], correct: 0, explanation: "s = ½·g·t². t → 2t: s → ½·g·(2t)² = 4·s. Viermal mehr!", hint: "t wird quadriert. (2t)² = 4t²." },
+      ],
+    },
+  },
+
+  "Gleich schnell fallen": {
+    theory: {
+      kicker: "Modul 5 · Level 5",
+      heading: "Alle Körper fallen gleich schnell",
+      paragraphs: [
+        "Galileo Galilei (1564–1642) widerlegte die aristotelische Vorstellung, dass schwere Körper schneller fallen. Sein berühmtes (vielleicht legendäres) Experiment am Schiefen Turm von Pisa: Zwei Kugeln verschiedener Masse – beide landen gleichzeitig.",
+        "Physikalische Erklärung: Grössere Masse → grössere Schwerkraft F_g = m·g. Aber auch grössere Trägheit (F = m·a). Beide Faktoren heben sich in a = F_g/m = g genau auf. Ergebnis: a = g für jede Masse.",
+        "Demonstration: Apollo 15 (1971) – Astronaut David Scott liess auf dem Mond einen Hammer und eine Feder fallen. Ohne Atmosphäre landen beide gleichzeitig. Das Experiment beweist Galileos Erkenntnis eindrucksvoll.",
+      ],
+      formula: "a = g für alle Massen (im Vakuum)",
+      example: "1 kg Ball und 10 kg Ball aus 20 m Höhe: t = √(2·20/9,81) ≈ 2,02 s – beide gleichzeitig!",
+    },
+    question: {
+      type: "mc",
+      basis: [
+        { text: "Warum fallen Feder und Eisenkugel in der Realität unterschiedlich schnell?", options: ["Luftwiderstand bremst die Feder stärker – nicht unterschiedliche g.", "Weil die Feder leichter ist.", "Weil die Schwerkraft stärker wirkt auf Eisen.", "Weil die Beschleunigung massenabhängig ist."], correct: 0, explanation: "Im Vakuum fallen beide gleich. Im Freien: Luftwiderstand hängt von Form und Masse ab – die Feder hat viel mehr Widerstand pro Kilogramm.", hint: "Was fehlt beim idealen freien Fall?" },
+        { text: "Was hat Galileo durch seine Fallexperimente bewiesen?", options: ["Alle Körper haben dieselbe Fallbeschleunigung g (unabhängig von der Masse).", "Schwerere Körper fallen schneller.", "Nur im Vakuum fällt alles gleich schnell.", "Fallen hängt von der Form ab."], correct: 0, explanation: "Galileos Erkenntnis: a = g für alle Massen. Moderne Experimente bestätigen das mit riesiger Genauigkeit.", hint: "Was ist Galileos berühmteste Erkenntnis?" },
+      ],
+      challenge: [
+        { text: "a = F/m = m·g/m = g. Warum kürzt sich die Masse heraus?", options: ["Weil Schwerkraft und Trägheit beide proportional zu m sind – beides hebt sich auf.", "Weil Schwerkraft nicht von m abhängt.", "Weil g eine universelle Konstante für alle Kräfte ist.", "Weil m bei kleinen Körpern null wird."], correct: 0, explanation: "F_g = m·g (Schwerkraft proportional zu m). F = m·a (Trägheit proportional zu m). → a = F_g/m = g. Masse kürzt sich weg!", hint: "Schreibe a = F_g / m auf und setze F_g = m·g ein." },
+        { text: "Auf dem Mond (g_M ≈ 1,62 m/s²): Fallstrecke nach 3 s?", options: ["≈ 7,3 m", "≈ 44 m", "≈ 29,4 m", "≈ 14,7 m"], correct: 0, explanation: "s = ½·1,62·9 ≈ 7,3 m. Auf der Erde wären es ≈ 44 m!", hint: "s = ½ · g_Mond · t²" },
+      ],
+    },
+  },
+
+  "Aufwärtswurf": {
+    theory: {
+      kicker: "Modul 5 · Level 6",
+      heading: "Der senkrechte Aufwärtswurf",
+      paragraphs: [
+        "Beim Aufwärtswurf wird ein Körper mit einer Anfangsgeschwindigkeit v₀ nach oben geworfen. Die Schwerkraft (g nach unten) bremst ihn gleichmässig ab. Die Bewegung teilt sich in zwei Phasen: Aufstieg (v > 0) und Abstieg (v < 0, nach unten).",
+        "Am höchsten Punkt ist momentan v = 0 – aber die Beschleunigung ist immer noch g = 9,81 m/s² nach unten! Das ist eine klassische Fehlvorstellung: Oben hört die Schwerkraft nicht auf.",
+        "Formeln: t_oben = v₀ / g (Zeit bis zum höchsten Punkt). h_max = v₀² / (2·g) (maximale Höhe). Für den vollständigen Flug (zurück zum Startpunkt): t_gesamt = 2·v₀ / g.",
+      ],
+      formula: "v(t) = v₀ − g·t | t_top = v₀/g | h_max = v₀²/(2g)",
+      example: "v₀ = 20 m/s → t_top = 20/9,81 ≈ 2,04 s. h_max = 400/19,62 ≈ 20,4 m.",
+    },
+    question: {
+      type: "mc",
+      basis: [
+        { text: "Ball wird mit v₀ = 15 m/s nach oben geworfen. Nach wie vielen Sekunden ist v = 0?", options: ["t ≈ 1,53 s", "t = 15 s", "t ≈ 3,06 s", "t ≈ 0,77 s"], correct: 0, explanation: "t_top = v₀/g = 15/9,81 ≈ 1,53 s.", hint: "Am höchsten Punkt: v = 0 = v₀ − g·t → t = v₀/g." },
+        { text: "Was ist a am höchsten Punkt des Aufwärtswurfs?", options: ["a = g = 9,81 m/s² nach unten.", "a = 0 (weil v = 0).", "a = g nach oben.", "a hängt von v₀ ab."], correct: 0, explanation: "Die Schwerkraft hört nicht auf, wenn v = 0 wird. a = g nach unten – immer, im ganzen Flug.", hint: "Ändert sich die Schwerkraft wenn v = 0 erreicht wird?" },
+      ],
+      challenge: [
+        { text: "v₀ = 25 m/s. Maximale Höhe?", options: ["≈ 31,9 m", "≈ 25 m", "≈ 63,7 m", "≈ 12,7 m"], correct: 0, explanation: "h_max = v₀²/(2g) = 625/19,62 ≈ 31,9 m.", hint: "h_max = v₀² / (2·g)" },
+        { text: "Ball wird mit v₀ = 10 m/s geworfen. Wann kommt er zurück auf Ausgangshöhe?", options: ["t ≈ 2,04 s", "t ≈ 1,02 s", "t ≈ 4,08 s", "t ≈ 0,5 s"], correct: 0, explanation: "t_gesamt = 2·v₀/g = 2·10/9,81 ≈ 2,04 s. Aufstieg und Abstieg brauchen gleich lang.", hint: "t_gesamt = 2 · v₀ / g (Symmetrie des Aufwärtswurfs)" },
+      ],
+    },
+  },
+
+  "Höchster Punkt": {
+    theory: {
+      kicker: "Modul 5 · Level 7",
+      heading: "Am höchsten Punkt: v = 0, aber a = g!",
+      paragraphs: [
+        "Am höchsten Punkt des Aufwärtswurfs gilt: v = 0. Das stimmt. Aber a = 0? Nein! Die Schwerkraft wirkt immer – auch wenn der Körper momentan still steht. a = g = 9,81 m/s² nach unten.",
+        "Diese Fehlvorstellung ist extrem häufig: 'Wenn v = 0, dann a = 0.' Das verwechselt Geschwindigkeit und Beschleunigung. Beschleunigung ist die Änderung der Geschwindigkeit – und die ändert sich am höchsten Punkt von 'positiv' zu 'negativ'.",
+        "Analogie: Ein Ball, den du hochwirfst, kehrt um, weil g ihn die ganze Zeit nach unten zieht – auch im Moment wo er kurz 'steht'. Wenn g am höchsten Punkt null wäre, würde der Ball dort für immer schweben.",
+      ],
+      formula: "Am höchsten Punkt: v = 0, aber a = g ≠ 0",
+      example: "Ball mit v₀=10 m/s: bei t≈1,02s ist v=0 und a=−9,81 m/s² (nach unten). Dann beginnt Abstieg.",
+    },
+    question: {
+      type: "mc",
+      basis: [
+        { text: "Ball am höchsten Punkt: v = 0. Was ist a?", options: ["a = g ≈ 9,81 m/s² (nach unten)", "a = 0", "a = g nach oben", "a ist unbestimmt"], correct: 0, explanation: "Schwerkraft hört nicht auf. a = g = 9,81 m/s² nach unten – auch wenn v momentan null ist.", hint: "Hört die Schwerkraft auf zu wirken wenn v = 0?" },
+        { text: "Wenn am höchsten Punkt a = 0 wäre, was würde passieren?", options: ["Der Ball würde dort für immer schweben (keine Kraft = keine Richtungsänderung).", "Der Ball würde langsam sinken.", "Der Ball würde schnell fallen.", "Nichts – a = 0 passiert nie."], correct: 0, explanation: "Ohne Kraft (a = 0) und ohne Geschwindigkeit würde kein Newton-Gesetz eine Bewegung auslösen. Der Ball schwebte ewig.", hint: "Was sagt Newtons 1. Gesetz? Ohne Kraft: keine Änderung der Bewegung." },
+      ],
+      challenge: [
+        { text: "v₀ = 15 m/s (nach oben). Was ist v nach 2 s?", options: ["−4,62 m/s (nach unten)", "+4,62 m/s", "0 m/s", "−15 m/s"], correct: 0, explanation: "v = v₀ − g·t = 15 − 9,81·2 = 15 − 19,62 = −4,62 m/s. Minus bedeutet: Körper fällt bereits.", hint: "v = v₀ − g·t. Nach t_top ≈ 1,53 s wird v negativ." },
+        { text: "Wo liegt der höchste Punkt bei v₀ = 12 m/s?", options: ["h_max ≈ 7,34 m", "h_max = 12 m", "h_max ≈ 3,67 m", "h_max ≈ 24 m"], correct: 0, explanation: "h_max = v₀²/(2g) = 144/19,62 ≈ 7,34 m.", hint: "h_max = v₀² / (2 · g)" },
+      ],
+    },
+  },
+
+  "Auf- und Abstieg": {
+    theory: {
+      kicker: "Modul 5 · Level 8",
+      heading: "Symmetrie des Aufwärtswurfs",
+      paragraphs: [
+        "Der Aufwärtswurf ist zeitlich symmetrisch: Aufstieg und Abstieg dauern gleich lang. Die Geschwindigkeit beim Zurückkehren zur Ausgangshöhe hat den gleichen Betrag wie v₀, aber entgegengesetztes Vorzeichen (nach unten).",
+        "Warum Symmetrie? Weil a = −g (konstant) ist. Das v-t-Diagramm ist eine Gerade mit negativer Steigung g. Der Nulldurchgang (v = 0) liegt exakt in der Mitte des Zeitintervalls. Auf beiden Seiten des Nulldurchgangs sind Betrag und Verlauf spiegelbildlich.",
+        "Wichtig: Symmetrie gilt nur für Start und Rückkehr zur gleichen Höhe ohne Luftwiderstand. Mit Luftwiderstand ist der Abstieg langsamer als der Aufstieg (Energie geht verloren).",
+      ],
+      formula: "t_auf = t_ab = v₀/g | |v_start| = |v_rückkehr| = v₀",
+      example: "v₀ = 20 m/s → t_top = 2,04 s (Aufstieg). t_rückkehr = 4,08 s. |v_rückkehr| = 20 m/s (nach unten).",
+    },
+    question: {
+      type: "mc",
+      basis: [
+        { text: "Ball mit v₀ = 18 m/s geworfen. Wann ist er auf halber Höhe im Abstieg?", options: ["t ≈ 2,76 s (Aufstieg t_top ≈ 1,84 s; nochmal ≈ 0,92 s für halbe Höhe Abstieg)", "t ≈ 1,84 s (am höchsten Punkt)", "t ≈ 3,67 s (Rückkehr)", "t ≈ 0,92 s (halbe Aufstiegszeit)"], correct: 0, explanation: "t_top = 18/9,81 ≈ 1,83 s. Dann nochmal 0,92 s für die untere Hälfte des Abstiegs. (Parabelrechnung: ½·h_max ist nicht bei halber Zeit.)", hint: "Diese Aufgabe ist komplex – h(t) = v₀·t − ½·g·t² auflösen." },
+        { text: "Welche Geschwindigkeit hat der Ball bei der Rückkehr zur Wurfhöhe?", options: ["v₀ nach unten (betragsmässig gleich wie Abwurf).", "v = 0 (er kommt zur Ruhe).", "v = 2·v₀ nach unten.", "Kleiner als v₀ (Energie geht verloren)."], correct: 0, explanation: "Ohne Luftwiderstand: Energieerhaltung → |v_rückkehr| = v₀. Nur Richtung kehrt sich um.", hint: "Energieerhaltung ohne Reibung: kinetische Energie beim Abwurf = kinetische Energie bei Rückkehr." },
+      ],
+      challenge: [
+        { text: "v₀ = 10 m/s (nach oben). Welche Höhe nach 1,5 s? (g = 9,81 m/s²)", options: ["≈ 3,95 m", "≈ 15 m", "≈ 7,36 m", "≈ −1,05 m"], correct: 0, explanation: "h = v₀·t − ½·g·t² = 10·1,5 − ½·9,81·2,25 = 15 − 11,04 ≈ 3,96 m. Körper ist noch in der Luft.", hint: "h(t) = v₀·t − ½·g·t²" },
+        { text: "v₀ = 8 m/s. Gesamtflugdauer bis Rückkehr?", options: ["≈ 1,63 s", "≈ 3,26 s", "≈ 0,82 s", "≈ 0,48 s"], correct: 0, explanation: "t_gesamt = 2·v₀/g = 16/9,81 ≈ 1,63 s.", hint: "t_gesamt = 2 · v₀ / g" },
+      ],
+    },
+  },
+
+  "Freier Fall im Diagramm": {
+    theory: {
+      kicker: "Modul 5 · Level 9",
+      heading: "s-t und v-t beim freien Fall",
+      paragraphs: [
+        "Der freie Fall im s-t-Diagramm ergibt eine Parabel (s = ½·g·t²), weil s quadratisch mit t wächst. Die Kurve beginnt flach und wird immer steiler – der Körper fällt in den letzten Metern viel schneller als am Anfang.",
+        "Im v-t-Diagramm ist der freie Fall eine Gerade durch den Ursprung mit der Steigung g: v = g·t. Das ist typisch für gleichmässige Beschleunigung mit v₀ = 0.",
+        "Beim Aufwärtswurf: v-t ist eine Gerade mit Steigung −g (fallend, Nulldurchgang beim höchsten Punkt). Das s-t-Diagramm zeigt eine nach unten geöffnete Parabel.",
+      ],
+      formula: "Freier Fall: s(t) = ½·g·t² (Parabel) | v(t) = g·t (Gerade)",
+      example: "Bei t=0: s=0, v=0. Bei t=2: s≈19,6 m, v≈19,6 m/s. Bei t=4: s≈78,5 m, v≈39,2 m/s.",
+    },
+    question: {
+      type: "st-live",
+      v: 9,
+      s: 162,
+      followUp: [
+        { text: "Im s-t-Diagramm des freien Falls sieht man eine Parabel. Was bedeutet das?", options: ["Der zurückgelegte Weg wächst quadratisch – immer schnellerer Zuwachs.", "Der Körper bewegt sich in einem Bogen.", "Die Fallzeit verdoppelt sich jede Sekunde.", "Die Geschwindigkeit ist konstant."], correct: 0, explanation: "Parabel im s-t: s = ½·g·t². Quadratisches Wachstum bedeutet: in jeder späteren Sekunde fällt man weiter.", hint: "s ~ t². Was bedeutet ein quadratischer Zusammenhang für den Graphen?" },
+      ],
+    },
+  },
+
+  "Boss – Fallturm": {
+    theory: {
+      kicker: "Modul 5 · Boss",
+      heading: "Boss: Freier Fall und Aufwärtswurf",
+      paragraphs: [
+        "Die Boss-Aufgabe kombiniert alle Formeln des freien Falls. Freier Fall: v = g·t, s = ½·g·t², t = √(2s/g). Aufwärtswurf: v(t) = v₀ − g·t, h_max = v₀²/(2g), t_top = v₀/g.",
+        "Strategie für Textaufgaben: Skizze zeichnen! Koordinatensystem festlegen (positive Richtung = nach oben). Dann v₀, g, t und s/h klar beschriften. Vorzeichen von g beachten (−g wenn positiv = oben).",
+        "Typische Aufgabentypen: Ball fällt von einem Turm (h gegeben → t und v berechnen). Ball wird von Turm geworfen (v₀ und h gegeben → Flugzeit, Landegeschwindigkeit).",
+      ],
+      formula: "Freier Fall: t = √(2h/g) | Aufwärtswurf: h_max = v₀²/(2g), t_top = v₀/g",
+      example: "Turm h = 122,5 m: t = √(245/9,81) ≈ 5 s. v_Landung = g·t = 49,1 m/s ≈ 177 km/h!",
+    },
+    question: {
+      type: "mc",
+      basis: [
+        { text: "Ball fällt von 44,1 m Höhe. Fallzeit und Landegeschwindigkeit? (g = 9,81 m/s²)", options: ["t ≈ 3 s, v ≈ 29,4 m/s", "t = 44,1 s, v = 9,81 m/s", "t ≈ 6 s, v ≈ 9,81 m/s", "t ≈ 3 s, v ≈ 44 m/s"], correct: 0, explanation: "t = √(2·44,1/9,81) = √9 = 3 s. v = g·t = 9,81·3 = 29,4 m/s.", hint: "t = √(2h/g), dann v = g·t." },
+        { text: "Ball mit v₀ = 14,7 m/s geworfen. h_max?", options: ["≈ 11 m", "≈ 22 m", "≈ 5,5 m", "≈ 44 m"], correct: 0, explanation: "h_max = v₀²/(2g) = 216,09/19,62 ≈ 11 m.", hint: "h_max = v₀² / (2·g)" },
+      ],
+      challenge: [
+        { text: "Ball von Turm mit v₀ = 10 m/s nach oben geworfen. Turm ist 30 m hoch. Wann trifft Ball den Boden? (g≈10 m/s²)", options: ["t ≈ 4 s", "t ≈ 3 s", "t ≈ 5 s", "t ≈ 2 s"], correct: 0, explanation: "h(t) = v₀·t − ½·g·t² + 30 = 0. 10t − 5t² + 30 = 0. 5t² − 10t − 30 = 0. t² − 2t − 6 = 0. t = (2 + √28)/2 ≈ 4 s.", hint: "Position = v₀·t − ½g·t² + h_Turm = 0. Quadratische Gleichung!" },
+        { text: "Zwei Bälle: Ball A fällt frei aus h=20m. Ball B wird aus h=20m mit v₀=5m/s nach oben geworfen. Welcher landet zuerst?", options: ["Ball A landet zuerst (Ball B muss erst hochfliegen).", "Ball B landet zuerst.", "Beide gleichzeitig.", "Kommt auf die Masse an."], correct: 0, explanation: "Ball B fliegt erst hoch (verliert Zeit) und landet daher später als A. Ball A landet früher.", hint: "Ball B muss erst den Höchstpunkt erreichen, bevor er fällt." },
+      ],
+    },
+  },
+
+  // ── MODULE 6 · Analyse & Fehlvorstellungen ───────────────────────────────
+
+  "Gesuchte Grösse finden": {
+    theory: {
+      kicker: "Modul 6 · Level 1",
+      heading: "Gegebenes und Gesuchtes erkennen",
+      paragraphs: [
+        "Der erste Schritt jeder Physikaufgabe: Was ist bekannt (gegeben)? Was soll berechnet werden (gesucht)? Notiere alle gegebenen Grössen mit Symbol, Zahlenwert und Einheit – z. B. v₀ = 15 m/s, t = 4 s.",
+        "Wichtige kinematische Symbole: s = Weg/Ort, v = Geschwindigkeit (mit v₀ = Anfangs-, v = Endgeschwindigkeit), a = Beschleunigung, t = Zeit. Auch t_R = Reaktionszeit und |a| = Betrag der Verzögerung kommen vor.",
+        "Wenn du weisst, was gegeben und was gesucht ist, findest du die passende Formel viel schneller. Aufgaben geben manchmal mehr Daten als nötig – dann musst du die relevanten herausfiltern.",
+      ],
+      formula: "Schritt 1: Gegeben: … | Schritt 2: Gesucht: … | Schritt 3: Formel wählen",
+      example: "'Auto fährt 120 km in 2 h.' → Gegeben: s=120 km, t=2 h. Gesucht: v. → v = s/t = 60 km/h.",
+    },
+    question: {
+      type: "mc",
+      basis: [
+        { text: "'Ein Körper: v₀=0, a=3 m/s², t=5 s. Gesucht: Weg.' Welche Formel passt?", options: ["s = ½·a·t² (v₀=0, a bekannt, t bekannt)", "v = v₀ + a·t", "s = v·t", "a = Δv/Δt"], correct: 0, explanation: "Gegeben: v₀=0, a, t. Gesucht: s. Formel s = ½·a·t² verbindet genau diese Grössen.", hint: "Welche Formel enthält a, t und s – aber kein v?" },
+        { text: "'Auto: v₀=20 m/s, bremst mit |a|=4 m/s². Wie lange bis Stillstand?' Was ist gesucht?", options: ["Zeit t (bis v=0).", "Weg s.", "Beschleunigung a.", "Anfangsgeschwindigkeit v₀."], correct: 0, explanation: "v = 0 am Ende. Gesucht: t. Formel: 0 = v₀ + a·t → t = v₀/|a| = 20/4 = 5 s.", hint: "Was ist das Zielzustand? v=? am Ende. Was ist noch unbekannt?" },
+      ],
+      challenge: [
+        { text: "Ball nach oben: v₀=15 m/s, g=9,81 m/s². Am höchsten Punkt gilt v=0. Welche Bedingung findet t?", options: ["v = v₀ − g·t = 0 → t = v₀/g = 15/9,81 ≈ 1,53 s", "s = ½·g·t²", "v = g·t", "t = s/v₀"], correct: 0, explanation: "Am höchsten Punkt: v=0. Formel v = v₀−g·t → 0=15−9,81t → t=1,53 s. Danach Höhe berechnen.", hint: "Was ist v am höchsten Punkt? Setze in v = v₀−g·t ein und löse nach t." },
+        { text: "'Auto fährt 30 s bei v=20 m/s, dann bremst es mit a=−5 m/s² bis zum Stillstand. Wann steht es still?' Was ist die Gesamtzeit?", options: ["34 s (30 s + 4 s Bremsen)", "34,5 s", "35 s", "30 s"], correct: 0, explanation: "Bremszeit: t_B = v/|a| = 20/5 = 4 s. Gesamtzeit = 30 + 4 = 34 s.", hint: "Erst t_B berechnen (v=0), dann zur Fahrzeit addieren." },
+      ],
+    },
+  },
+
+  "Formel auswählen": {
+    theory: {
+      kicker: "Modul 6 · Level 2",
+      heading: "Die richtige Formel wählen",
+      paragraphs: [
+        "Für verschiedene Situationen gibt es verschiedene Formeln. Entscheidungsfragen: 1. Ist die Bewegung gleichförmig (a=0) oder beschleunigt (a≠0)? 2. Startet der Körper aus der Ruhe (v₀=0)? 3. Welche Grössen sind gegeben – welche gesucht?",
+        "Formeln der Kinematik im Überblick: s = v·t (gleichförmig) | v = v₀+a·t (Endgeschwindigkeit) | s = v₀·t + ½·a·t² (allgemeiner Weg) | s = ½·a·t² (Weg aus Ruhe) | s_B = v₀²/(2·|a|) (Bremsweg) | v² = v₀² + 2·a·s (ohne Zeit).",
+        "Tipp: Wenn du zwei verschiedene Formeln beide anwenden kannst, ist das eine Kontrolle! Stimmen die Ergebnisse überein? Wenn nicht – Fehler suchen.",
+      ],
+      formula: "a=0: s=v·t | a≠0: v=v₀+at, s=v₀t+½at² | Bremsen: s_B=v₀²/2a",
+      example: "Gegeben: v₀=0, s=100m, a=2m/s². Gesucht: t → s=½at² → t=√(2s/a)=√100=10 s.",
+    },
+    question: {
+      type: "mc",
+      basis: [
+        { text: "Körper bewegt sich gleichförmig. Formel für den Weg in Zeit t?", options: ["s = v · t", "s = ½ · a · t²", "v = v₀ + a·t", "s_B = v₀²/(2·a)"], correct: 0, explanation: "Gleichförmig: a=0, v=const. → s = v·t. Die anderen Formeln enthalten a und gelten nur für a≠0.", hint: "Gleichförmig = a=0, v=const. Welche Formel braucht kein a?" },
+        { text: "v₀=5 m/s, a=2 m/s². Gesucht: v nach 4 s. Welche Formel?", options: ["v = v₀ + a·t", "s = v₀·t + ½·a·t²", "s_B = v₀²/(2·a)", "v = s / t"], correct: 0, explanation: "v = v₀ + a·t = 5 + 2·4 = 13 m/s. Diese Formel verbindet v₀, a, t und v.", hint: "Gegeben: v₀, a, t. Gesucht: v. Welche Formel hat genau diese Grössen?" },
+      ],
+      challenge: [
+        { text: "Auto bremst von v₀ bis Stillstand. Formel für den Bremsweg?", options: ["s_B = v₀² / (2·|a|)", "s = v₀·t + ½·a·t²", "v = v₀ + a·t", "s = ½·a·t²"], correct: 0, explanation: "s_B = v₀²/(2·|a|) – direkt ohne Zeit t. Die allgemeine Formel s = v₀t+½at² geht auch, braucht aber erst t_B = v₀/|a|.", hint: "Bremsweg: Zeit ist nicht gegeben. Welche Formel braucht keine Zeit?" },
+        { text: "v₀=0, t=6 s, s=54 m. Welche Beschleunigung? Formel und Rechnung.", options: ["a = 2s/t² = 108/36 = 3 m/s²", "a = s/t = 9 m/s²", "a = s/t² = 1,5 m/s²", "a = 2·s·t = 648 m/s²"], correct: 0, explanation: "s = ½·a·t² → a = 2s/t² = 2·54/36 = 3 m/s².", hint: "Forme s = ½·a·t² nach a um." },
+      ],
+    },
+  },
+
+  "Überflüssige Infos": {
+    theory: {
+      kicker: "Modul 6 · Level 3",
+      heading: "Überflüssige Informationen herausfiltern",
+      paragraphs: [
+        "Aufgaben enthalten manchmal mehr Daten als nötig. Das ist kein Fehler – es ist eine Prüfung, ob du weisst, welche Grössen in deine Formel eingehen. Irrelevante Angaben: Masse, Farbe, Marke, Form, Material (wenn keine Kraft gefragt ist).",
+        "Für kinematische Formeln (s, v, a, t) braucht man keine Masse! s = v·t, v = v₀+at, s_B = v₀²/(2a) – Masse taucht nirgends auf. Die Masse wird erst bei Newton (Kraft = Masse × Beschleunigung) relevant.",
+        "Beim Lesen einer Aufgabe: Unterstreiche zuerst die physikalisch relevanten Grössen (mit Symbol). Streiche irrelevante durch. So wird das Wesentliche sichtbar.",
+      ],
+      formula: "Kinematik: s, v, a, t. Masse m ist überflüssig (für reine Kinematik).",
+      example: "'PKW (1500 kg, blau) fährt 90 km/h für 3 min.' → Relevant: v=25 m/s, t=180 s. Überflüssig: 1500 kg, blau.",
+    },
+    question: {
+      type: "mc",
+      basis: [
+        { text: "'Auto (1500 kg) fährt v=25 m/s für 3 min = 180 s. Zurückgelegter Weg?' Welche Info ist überflüssig?", options: ["Die Masse (1500 kg) – Kinematik braucht keine Masse.", "Die Zeit (180 s).", "Die Geschwindigkeit (25 m/s).", "Keine Info ist überflüssig."], correct: 0, explanation: "s = v·t = 25·180 = 4500 m. Masse wird für s = v·t nicht gebraucht.", hint: "Welche Grössen kommen in s = v·t vor?" },
+        { text: "'Ball (rot, Durchmesser 8 cm, 200 g): v₀=0, g=9,81 m/s², t=3 s. v nach 3 s?' Überflüssig?", options: ["Farbe (rot) und Durchmesser (8 cm) und Masse (200 g).", "Nur die Farbe.", "Die Fallbeschleunigung g.", "Die Zeit t."], correct: 0, explanation: "v = g·t = 9,81·3 = 29,43 m/s. Farbe, Grösse und Masse: alle irrelevant für freien Fall.", hint: "v = g·t. Welche Grössen stehen darin?" },
+      ],
+      challenge: [
+        { text: "'Zug (80 m lang) fährt 200 km/h = 55,6 m/s in Tunnel (2 km lang). Wann ist er vollständig durch?' Overflüssig?", options: ["Nichts – Zuglänge und Tunnellänge sind beide relevant!", "Die Zuglänge (80 m).", "Die Tunnellänge (2 km).", "Die Geschwindigkeit."], correct: 0, explanation: "Der Zug muss Tunnel + eigene Länge zurücklegen: s = 2000 + 80 = 2080 m. t = 2080/55,6 ≈ 37,4 s. Zuglänge ist relevant!", hint: "Wann ist der Zug 'vollständig' durch? Letzte Achse muss aus dem Tunnel sein." },
+        { text: "Formel s_B = v₀²/(2·|a|). Welche Angaben braucht man zwingend?", options: ["v₀ und |a|.", "v₀, |a| und Fahrzeugmasse.", "v₀, |a| und Fahrbahnreibung.", "Nur |a|."], correct: 0, explanation: "s_B = v₀²/(2·|a|) enthält nur v₀ und a. Masse, Reibungskoeffizient: irrelevant (solange |a| schon gegeben ist).", hint: "Welche Symbole stehen in der Formel?" },
+      ],
+    },
+  },
+
+  "Einheitenkontrolle": {
+    theory: {
+      kicker: "Modul 6 · Level 4",
+      heading: "Einheiten prüfen und umrechnen",
+      paragraphs: [
+        "Einheiten sind ein Teil der physikalischen Grössen – nicht nur Dekoration. Wenn Einheiten nicht passen, ist die Rechnung falsch. Wichtigste Umrechnungen: 1 km/h = 1/3,6 m/s ≈ 0,278 m/s. 1 m/s = 3,6 km/h. 1 min = 60 s. 1 km = 1000 m.",
+        "Tipps: Immer in SI-Einheiten (m, m/s, m/s², s) umrechnen bevor du rechnest. Nach der Berechnung: Welche Einheit hat das Ergebnis? Einheitencheck: m/s² × s = m/s (Beschleunigung × Zeit = Geschwindigkeit). ✓",
+        "Typischer Fehler: km/h direkt in s = v·t einsetzen, t in Minuten. Dann erhält man km/h · min – eine falsche Mischeinheit, kein Weg in m oder km.",
+      ],
+      formula: "1 km/h = 1/3,6 m/s | 1 m/s = 3,6 km/h | 1 min = 60 s | 1 km = 1000 m",
+      example: "v = 72 km/h = 72/3,6 = 20 m/s. In 15 s: s = 20·15 = 300 m.",
+    },
+    question: {
+      type: "mc",
+      basis: [
+        { text: "v = 108 km/h in m/s?", options: ["30 m/s", "108 m/s", "3 m/s", "388 m/s"], correct: 0, explanation: "108 / 3,6 = 30 m/s. Oder: 108 km/h = 108 000 m / 3600 s = 30 m/s.", hint: "1 km/h = 1/3,6 m/s. Also: v(m/s) = v(km/h) / 3,6." },
+        { text: "Schüler rechnet: s = 50 km/h · 30 min. Was ist falsch?", options: ["Einheiten passen nicht: km/h · min ≠ km. t muss in h umgerechnet werden.", "v ist falsch.", "Die Formel s = v·t ist falsch.", "30 min ist zu kurz."], correct: 0, explanation: "t muss in h: 30 min = 0,5 h. s = 50 · 0,5 = 25 km. Oder v in km/min und t in min.", hint: "v in km/h, t in min: Einheiten sind inkompatibel. Was muss umgerechnet werden?" },
+      ],
+      challenge: [
+        { text: "a = 1,8 km/min² in m/s² umrechnen.", options: ["a = 0,5 m/s²", "a = 1,8 m/s²", "a = 108 m/s²", "a = 0,03 m/s²"], correct: 0, explanation: "1 km = 1000 m. 1 min = 60 s. a = 1,8·1000/(60²) = 1800/3600 = 0,5 m/s².", hint: "km → m (×1000), min² → s² (×3600). Also: km/min² × 1000/3600." },
+        { text: "s = ½·a·t². Schüler nimmt a = 2 m/s², t = 30 s und rechnet s = ½·2·30 = 30 m. Fehler?", options: ["Ja – t wurde nicht quadriert: t² = 900, s = ½·2·900 = 900 m.", "Nein, korrekt.", "Ja – a muss durch 2 dividiert werden.", "Ja – t muss in km/s umgerechnet werden."], correct: 0, explanation: "s = ½·2·t² = t² = 30² = 900. s = 900 m. Schüler vergass t zu quadrieren.", hint: "s = ½·a·t². Was ist t²? t=30 s → t²=?" },
+      ],
+    },
+  },
+
+  "Ø-Geschwindigkeit komplex": {
+    theory: {
+      kicker: "Modul 6 · Level 5",
+      heading: "Durchschnittsgeschwindigkeit richtig berechnen",
+      paragraphs: [
+        "Die Durchschnittsgeschwindigkeit ist definiert als Gesamtweg geteilt durch Gesamtzeit: v̄ = s_gesamt / t_gesamt. Das ist nicht dasselbe wie der Mittelwert der Einzelgeschwindigkeiten! Der Unterschied tritt auf, wenn die Zeitabschnitte unterschiedlich lang sind.",
+        "Beispiel: 100 km bei 100 km/h, dann 100 km bei 50 km/h. t₁ = 1 h, t₂ = 2 h. v̄ = 200/3 ≈ 66,7 km/h. Nicht (100+50)/2 = 75 km/h! Weil der zweite Abschnitt länger dauert, zieht er den Mittelwert nach unten.",
+        "Sonderfall: Hin- und Rückweg gleicher Länge, verschiedene Geschwindigkeiten v₁ und v₂: v̄ = 2·v₁·v₂ / (v₁+v₂). Das ist das harmonische Mittel – immer kleiner als das arithmetische Mittel!",
+      ],
+      formula: "v̄ = s_gesamt / t_gesamt  (NICHT (v₁+v₂)/2 bei ungleichen Zeiten!)",
+      example: "50 km bei 50 km/h (1 h) + 50 km bei 25 km/h (2 h): v̄ = 100/3 ≈ 33,3 km/h (nicht 37,5!).",
+    },
+    question: {
+      type: "mc",
+      basis: [
+        { text: "Auto: 120 km in 2 h, dann 80 km in 1 h. Durchschnittliche v?", options: ["v̄ = 200/3 ≈ 66,7 km/h", "v̄ = (60+80)/2 = 70 km/h", "v̄ = 80 km/h", "v̄ = 60 km/h"], correct: 0, explanation: "v̄ = s_total/t_total = 200/3 ≈ 66,7 km/h. v₁=60 km/h, v₂=80 km/h. Mittelwert wäre 70 – aber falsch!", hint: "v̄ = Gesamtweg / Gesamtzeit. Erst s_total und t_total berechnen." },
+        { text: "Warum gilt v̄ ≠ (v₁+v₂)/2 wenn Abschnitte unterschiedlich lang dauern?", options: ["Weil längere Zeitabschnitte stärker gewichtet werden.", "Weil v₁ und v₂ sich gegenseitig aufheben.", "Weil die Formel v̄=s/t falsch ist.", "Weil Geschwindigkeiten nicht addiert werden dürfen."], correct: 0, explanation: "Arithmetischer Mittelwert gewichtet alle Werte gleich. Aber langsame Abschnitte dauern länger – sie müssen stärker gewichtet werden.", hint: "Welcher Abschnitt dauert länger – und damit mehr Zeit? Welchen Einfluss hat das?" },
+      ],
+      challenge: [
+        { text: "Person: 6 km/h für 3 km, dann 3 km/h für 3 km. v̄?", options: ["4 km/h", "4,5 km/h", "5 km/h", "3 km/h"], correct: 0, explanation: "t₁ = 3/6 = 0,5 h, t₂ = 3/3 = 1 h. v̄ = 6/(0,5+1) = 6/1,5 = 4 km/h.", hint: "Erst t₁ und t₂ berechnen, dann v̄ = (s₁+s₂)/(t₁+t₂)." },
+        { text: "Hin: 60 km/h. Rück: 40 km/h (gleiche Strecke). v̄?", options: ["48 km/h (harmonisches Mittel)", "50 km/h (arithmetisches Mittel)", "60 km/h", "40 km/h"], correct: 0, explanation: "v̄ = 2·v₁·v₂/(v₁+v₂) = 2·60·40/100 = 4800/100 = 48 km/h. Harmonisches Mittel – immer kleiner als 50!", hint: "Für gleiche Strecke hin/zurück: v̄ = 2v₁v₂/(v₁+v₂). Oder: Zahlen einsetzen mit konkreter Strecke." },
+      ],
+    },
+  },
+
+  "Mehrphasige Bewegung": {
+    theory: {
+      kicker: "Modul 6 · Level 6",
+      heading: "Mehrphasige Bewegungen analysieren",
+      paragraphs: [
+        "Viele reale Bewegungen bestehen aus mehreren Phasen: Phase 1 – Beschleunigung, Phase 2 – gleichförmig, Phase 3 – Bremsung. Jede Phase wird einzeln mit der passenden Formel berechnet, dann addiert man die Teilergebnisse.",
+        "Im v-t-Diagramm erkennst du die Phasen an Knickpunkten. Phase 1: steigende Gerade. Phase 2: horizontale Linie. Phase 3: fallende Gerade. Die Fläche jeder Phase ergibt den Teilweg.",
+        "Wichtig: Am Phasenübergang ist die Endgeschwindigkeit von Phase 1 gleich der Anfangsgeschwindigkeit von Phase 2. Die Zeiten addieren sich zur Gesamtzeit.",
+      ],
+      formula: "s_total = s₁ + s₂ + s₃  |  t_total = t₁ + t₂ + t₃  |  v am Übergang stetig",
+      example: "a=2 m/s² für 4 s → v=8 m/s | gleichförmig 4 s | Bremsung 4 s. s = 16+32+16 = 64 m.",
+    },
+    question: {
+      type: "chart",
+      chartConfig: {
+        chartType: "line",
+        xLabel: "Zeit t (s)",
+        yLabel: "Geschwindigkeit v (m/s)",
+        xData: [0, 2, 4, 6, 8, 10, 12],
+        datasets: [
+          { label: "v(t)", data: [0, 4, 8, 8, 8, 4, 0], color: "#5ca2ff", tension: 0, fill: false },
+        ],
+      },
+      tasks: [
+        { text: "Was ist die Beschleunigung in Phase 1 (t = 0 bis 4 s)?", options: ["a = 2 m/s²", "a = 4 m/s²", "a = 8 m/s²", "a = 0 m/s²"], correct: 0, explanation: "a = Δv/Δt = 8/4 = 2 m/s². Phase 1: steigende Gerade im v-t-Diagramm.", hint: "a = Δv/Δt = (v_end − v_start) / Δt" },
+        { type: "calc", text: "Wie weit fährt der Körper in Phase 1 (Dreieck: 0→4 s)?", answer: 16, unit: "m", tolerance: 0.5, explanation: "Fläche Dreieck: s₁ = ½·4·8 = 16 m.", hint: "Phase 1: Dreieck. Fläche = ½ · Basis · Höhe = ½ · 4 s · 8 m/s." },
+        { type: "calc", text: "Wie weit in Phase 2 (Rechteck: 4→8 s)?", answer: 32, unit: "m", tolerance: 0.5, explanation: "Fläche Rechteck: s₂ = 8·4 = 32 m.", hint: "Phase 2: v=8 m/s konstant über 4 s. Fläche = v·Δt." },
+        { type: "calc", text: "Gesamtweg in allen drei Phasen (0–12 s)?", answer: 64, unit: "m", tolerance: 0.5, explanation: "Phase 3 = Dreieck wie Phase 1: s₃ = 16 m. Total = 16+32+16 = 64 m.", hint: "Gesamtweg = s₁ + s₂ + s₃. Phase 3 ist symmetrisch zu Phase 1." },
+      ],
+    },
+  },
+
+  "Fehlvorstellungen a": {
+    theory: {
+      kicker: "Modul 6 · Level 7",
+      heading: "Typische Fehlvorstellungen zur Beschleunigung",
+      paragraphs: [
+        "Fehlvorstellung 1: 'Am höchsten Punkt eines Wurfes ist a = 0.' FALSCH! a = g = 9,81 m/s² immer (nach unten). Nur v = 0 am höchsten Punkt – nicht a. Beschleunigung und Geschwindigkeit sind unabhängig.",
+        "Fehlvorstellung 2: 'Beschleunigung bedeutet immer schneller werden.' FALSCH! a < 0 bedeutet Verlangsamung (wenn Körper in positive Richtung fährt). a kann auch entgegengesetzt zu v zeigen.",
+        "Fehlvorstellung 3: 'Wenn v gross ist, muss a gross sein.' FALSCH! Flugzeug bei 800 km/h im Reiseflug: a = 0 (gleichförmig). Fussgänger beim Anfahren: a > 0 bei v ≈ 0.",
+      ],
+      formula: "v = 0 ≠ a = 0 | Beschleunigung und Geschwindigkeit sind unabhängige Grössen!",
+      example: "Ball am höchsten Punkt: v=0, aber a=g=9,81 m/s² (fällt direkt danach wieder nach unten).",
+    },
+    question: {
+      type: "mc",
+      basis: [
+        { text: "Ball wird senkrecht nach oben geworfen. Was gilt am höchsten Punkt?", options: ["v = 0, aber a = g = 9,81 m/s² (nach unten).", "v = 0 und a = 0.", "v > 0 und a = 0.", "v = 0 und a = 0 kurz, dann a > 0."], correct: 0, explanation: "v = 0 am höchsten Punkt (Umkehr). Aber a = g = 9,81 m/s² immer! Die Schwerkraft wirkt konstant.", hint: "Ändert sich die Schwerkraft am höchsten Punkt? Was bewirkt sie?" },
+        { text: "Fehlvorstellung: 'Ein Auto bei v=100 km/h hat mehr Beschleunigung als eines bei v=30 km/h.' Richtig?", options: ["Falsch – v und a sind unabhängig. a = 0 möglich bei 100 km/h.", "Richtig – grössere v → grössere a.", "Richtig – a und v sind proportional.", "Teils – nur wenn das Auto beschleunigt."], correct: 0, explanation: "Auf der Autobahn bei v=100 km/h gleichförmig: a=0. Beim Anfahren bei v=0: a>0. v und a sind unabhängig.", hint: "Was ist a bei gleichförmiger Fahrt, egal wie hoch v ist?" },
+      ],
+      challenge: [
+        { text: "Auto: v=30 m/s, konstant. Was ist a? Dann: Auto bremst von v=0,5 m/s auf 0 in 0,1 s. Was ist |a|?", options: ["a=0 bei v=30; |a|=5 m/s² beim Bremsen", "a=30 m/s²; |a|=5 m/s²", "a=0; |a|=0,05 m/s²", "Beide: a=0"], correct: 0, explanation: "Konstante v=30 → a=0. Bremsen: |a|=Δv/Δt=0,5/0,1=5 m/s². Kleines v ≠ kleine Beschleunigung!", hint: "Welche Bedingung gilt für a=0? Dann a für die Bremsung berechnen." },
+        { text: "Körper: v₀=−5 m/s (rückwärts), a=+3 m/s². Was passiert physikalisch?", options: ["Körper verlangsamt sich (bremst ab) zuerst, dann kehrt um und beschleunigt vorwärts.", "Körper beschleunigt rückwärts.", "Körper bleibt stehen.", "Nichts – entgegengesetzte Vorzeichen aufheben sich."], correct: 0, explanation: "v₀=−5, a=+3: v(t) = −5+3t. Bei t=5/3≈1,67 s: v=0 (Umkehrpunkt). Danach v>0 → vorwärts.", hint: "v(t) = v₀ + a·t. Wann wird v = 0? Was passiert danach?" },
+      ],
+    },
+  },
+
+  "Widersprüche erkennen": {
+    theory: {
+      kicker: "Modul 6 · Level 8",
+      heading: "Widersprüche in Aufgaben erkennen",
+      paragraphs: [
+        "Manchmal stimmen Text, Tabelle und Diagramm in einer Aufgabe nicht überein – entweder als absichtliche Prüfaufgabe ('Wo liegt der Fehler?') oder versehentlich. Lerntipp: Prüfe alle Darstellungen gegenseitig!",
+        "Text vs. Tabelle: Sagt der Text 'gleichförmig', aber die Tabelle zeigt ungleichmässige s-Zuwächse? Dann stimmt etwas nicht. Gleichförmig → s wächst in gleichen Zeitschritten um gleich viel.",
+        "Tabelle vs. Formel: Berechne a aus den Tabellenwerten (a = Δv/Δt) und vergleiche mit der Behauptung. Tabelle vs. Diagramm: Entsprechen die Kurvenform und die Tabellenwerte einander?",
+      ],
+      formula: "Kontrollformel: a = Δv/Δt aus Tabelle berechnen, mit Behauptung vergleichen",
+      example: "Tabelle: v = 5, 10, 15, 20 bei t = 0, 1, 2, 3. Behauptung: 'a = 3 m/s²'. Kontrolle: Δv/Δt = 5 m/s². Widerspruch!",
+    },
+    question: {
+      type: "mc",
+      basis: [
+        { text: "Text: 'Körper steht still'. Tabelle: t=0,1,2,3 s; s=0,5,10,15 m. Widerspruch?", options: ["Ja – s steigt → Körper bewegt sich. Text ist falsch.", "Nein – s=5 m bleibt konstant.", "Ja – s müsste sinken.", "Kein Widerspruch."], correct: 0, explanation: "Körper steht still → s = const. Tabelle zeigt s steigt (+5 m/s) → gleichförmige Bewegung mit v=5 m/s. Widerspruch!", hint: "Was bedeutet 'steht still' für s? Was zeigt die Tabelle?" },
+        { text: "Text: 'gleichmässige Beschleunigung'. v-t-Diagramm zeigt eine Parabel (v steigt schneller am Anfang, flacher am Ende). Widerspruch?", options: ["Ja – gleichmässige Beschleunigung ergibt lineare v(t), nicht Parabel.", "Nein – Parabel ist normal.", "Nein – das ist dasselbe.", "Ja – a müsste 0 sein."], correct: 0, explanation: "Gleichmässige Beschleunigung: a=const. → v(t) = v₀+at ist linear (Gerade). Parabel: a ändert sich (nicht konstant). Widerspruch.", hint: "a=const. → welche Funktion ist v(t)? Linear oder quadratisch?" },
+      ],
+      challenge: [
+        { text: "Tabelle: t=0,1,2,3 s; v=3,7,11,15 m/s. Behauptung: a=4 m/s². Stimmt das?", options: ["Ja – Δv/Δt = 4 m/s² überall (7−3=4, 11−7=4, 15−11=4).", "Nein – a=3 m/s².", "Nein – a ändert sich.", "Ja – a=4 ist der Mittelwert."], correct: 0, explanation: "Δv/Δt: (7-3)/1=4, (11-7)/1=4, (15-11)/1=4. Konstante Δv=4 → a=4 m/s²= konstant. Stimmt!", hint: "Bilde Δv/Δt für jeden Schritt. Sind alle gleich?" },
+        { text: "Text: v₀=0, a=2 m/s², t=4 s. Diagramm zeigt s=20 m am Ende. Widerspruch?", options: ["Ja – s = ½·2·16 = 16 m ≠ 20 m.", "Nein – 20 m ist korrekt.", "Ja – s sollte 8 m sein.", "Nein – t muss quadriert werden: 4²=16, s=16 m. Korrekt."], correct: 0, explanation: "s = ½·a·t² = ½·2·16 = 16 m. Diagramm zeigt 20 m → Widerspruch! Das Diagramm enthält einen Fehler.", hint: "s = ½·a·t². Berechne s und vergleiche mit Diagramm." },
+      ],
+    },
+  },
+
+  "Lösungsstrategie": {
+    theory: {
+      kicker: "Modul 6 · Level 9",
+      heading: "Systematisch vorgehen – die 5-Schritte-Strategie",
+      paragraphs: [
+        "Physikaufgaben löst man am besten mit einer festen Strategie: 1. Skizze und Lesen – Was passiert? 2. Grössen identifizieren – Gegeben/Gesucht. 3. Formel wählen – welche Grössen verknüpft sie? 4. Berechnen – in SI-Einheiten. 5. Plausibilitätscheck – ist das Ergebnis realistisch?",
+        "Plausibilitätscheck: Überprüfe Grössenordnung und Einheit. Beispiele für Richtwerte: Auto auf Landstrasse ≈ 50–100 km/h. Bremsweg bei 50 km/h ≈ 12 m (trockene Strasse). Freier Fall 3 s → v ≈ 29 m/s. Mensch geht ≈ 1,5 m/s.",
+        "Kontrolle durch zweite Methode: Oft gibt es zwei Wege zur Lösung. Wenn beide dasselbe Ergebnis geben, ist die Wahrscheinlichkeit eines Fehlers sehr gering.",
+      ],
+      formula: "5 Schritte: Skizze → Gegeben/Gesucht → Formel → Rechnen → Prüfen",
+      example: "Ergebnis: v = 450 m/s. Plausibel? Auto? Nein (zu schnell). Flugzeug? Möglich. Bullet? Ja (~350 m/s). Kontext entscheidet!",
+    },
+    question: {
+      type: "mc",
+      basis: [
+        { text: "Schüler erhält als Bremsweg 's_B = 2500 m bei v = 50 km/h'. Plausibel?", options: ["Nein – bei 50 km/h ≈ 13,9 m/s und normalem a≈8 m/s²: s_B ≈ 12 m.", "Ja – passt.", "Ja – bei Eis möglich.", "Kann nicht beurteilt werden."], correct: 0, explanation: "s_B = 13,9²/16 ≈ 12 m. 2500 m wäre über 200-mal zu gross. Klarer Rechenfehler.", hint: "Berechne s_B für v=13,9 m/s und |a|=8 m/s². Vergleiche mit 2500 m." },
+        { text: "Was ist der erste sinnvolle Schritt beim Lösen einer Kinematik-Aufgabe?", options: ["Alle gegebenen Grössen mit Symbol und Einheit notieren.", "Direkt die erste Formel einsetzen.", "Ergebnis schätzen.", "Einheiten ignorieren."], correct: 0, explanation: "Systematisch: zuerst Grössen identifizieren, dann Formel wählen. 'Direkt berechnen' führt oft zu Fehlern.", hint: "Was muss man wissen, bevor man eine Formel wählen kann?" },
+      ],
+      challenge: [
+        { text: "v₀=10 m/s, a=3 m/s², t=5 s. Schüler: v=10+3·5=25 m/s; s=10·5+½·3·25=50+37,5=87,5 m. Kontrollrechnung: s=½(v₀+v)·t=½·35·5=87,5 m. Korrekt?", options: ["Ja – beide Methoden geben 87,5 m. v=25 m/s und s=87,5 m sind korrekt.", "Nein – v=10+15=25 m/s stimmt, aber s ist falsch.", "Nein – Kontrollrechnung nicht anwendbar.", "Nein – t muss quadriert werden."], correct: 0, explanation: "Beide Formeln (s = v₀t+½at² und s = ½(v₀+v)t) liefern 87,5 m. Korrekt!", hint: "Vergleiche beide Rechnungen. Stimmen sie überein?" },
+        { text: "Schüler: 'v₀=0, a=4 m/s², t=10 s → s=½·4·10=20 m.' Fehler? Korrekte Antwort?", options: ["Ja – t nicht quadriert. Richtig: s=½·4·100=200 m.", "Korrekt – s=20 m.", "Ja – a muss durch 2 geteilt werden. s=10·10=100 m.", "Ja – v₀=0 ist zu ignorieren."], correct: 0, explanation: "s = ½·a·t² = ½·4·100 = 200 m. Schüler hat t=10 statt t²=100 eingesetzt.", hint: "In s=½·a·t²: was ist t²? 10² = ?" },
+      ],
+    },
+  },
+
+  "Boss – Analyse-Labor": {
+    theory: {
+      kicker: "Modul 6 · Boss",
+      heading: "Boss: Analyse und Fehlvorstellungen korrigieren",
+      paragraphs: [
+        "Der Boss kombiniert alle Analyse-Fähigkeiten: Formeln wählen, Einheiten prüfen, Überflüssiges ignorieren, Widersprüche erkennen und Fehlvorstellungen korrigieren. Mehrschrittige Aufgaben, bei denen du alle Schritte allein durchführen musst.",
+        "Typische Boss-Fragen: 'Wo liegt der Fehler in dieser Lösung?', 'Welche Formel passt und welche nicht?', 'Ist dieses Ergebnis physikalisch sinnvoll?'. Du musst argumentieren, nicht nur rechnen.",
+        "Strategie: Erst lesen, dann skizzieren, dann systematisch analysieren. Nicht auf den ersten Blick antworten – bei Boss-Fragen lauert der Fehler meistens genau da, wo man schnell übersehen würde.",
+      ],
+      formula: "Analyse-Checkliste: Gegeben? | Formel? | Einheiten? | Plausibel? | Widerspruch?",
+      example: "Fehleraufgabe: v=144 km/h=40 m/s, t=5 s → s=40·5=200 m. Prüfung: Einheiten ok. Formel ok. Korrekt!",
+    },
+    question: {
+      type: "mc",
+      basis: [
+        { text: "'a=2 m/s², t=6 s, v₀=0. Schüler schreibt: v = a/t = 2/6 ≈ 0,33 m/s.' Fehler?", options: ["Ja – Formel falsch. Richtig: v = v₀ + a·t = 0 + 2·6 = 12 m/s.", "Nein – korrekt.", "Ja – t muss quadriert werden.", "Ja – a und t vertauscht."], correct: 0, explanation: "a/t wäre Jerk (Ruck), nicht Geschwindigkeit! Richtig: v = v₀+a·t = 12 m/s.", hint: "Was ist die korrekte Formel für v bei bekanntem a und t?" },
+        { text: "'Auto: 90 km/h, t_R=1 s, |a|=8 m/s². s_A?' Schüler nimmt v=90 in Formel. Fehler?", options: ["Ja – 90 km/h muss in m/s umgerechnet werden: 25 m/s.", "Nein – km/h geht auch.", "Ja – t_R ist irrelevant.", "Nein – die Formel funktioniert mit km/h wenn t in h."], correct: 0, explanation: "s_A = v·t_R + v²/(2·|a|) braucht v in m/s, t in s, a in m/s². v=90/3,6=25 m/s.", hint: "Welche Einheit für v braucht die Formel s_A = v·t_R + v²/(2·a)?" },
+      ],
+      challenge: [
+        { text: "Lösung: 'v₀=15 m/s, bremst mit a=−5 m/s² → t_B=v₀/a=15/(−5)=−3 s.' Ist −3 s korrekt?", options: ["Nein – Zeit ist immer positiv. t_B = v₀/|a| = 3 s.", "Ja – negatives Vorzeichen zeigt Richtung.", "Ja – a ist negativ, also t negativ.", "Nein – t_B = v₀·|a| = 75 s."], correct: 0, explanation: "t_B = v₀/|a| = 15/5 = 3 s (positiv). Das Vorzeichen von a zeigt Richtung, nicht Zeitvorzeichen.", hint: "Zeit ist immer positiv. Wie wird t aus v=v₀+a·t mit v=0 korrekt berechnet?" },
+        { text: "'Person geht 3 km mit 6 km/h, dann 3 km mit 4 km/h. Durchschnitt = (6+4)/2 = 5 km/h.' Korrekt?", options: ["Nein – v̄ = 6/(0,5+0,75) ≈ 4,8 km/h. Arithmetisches Mittel gilt nicht bei gleichen Strecken.", "Ja – 5 km/h stimmt.", "Nein – v̄ = 4 km/h.", "Ja – Mittelwert von 2 Werten ist immer korrekt."], correct: 0, explanation: "t₁=3/6=0,5 h, t₂=3/4=0,75 h. v̄=6/1,25=4,8 km/h. Arithmetisches Mittel 5 gilt nur bei gleichen Zeiten.", hint: "v̄ = Gesamtstrecke / Gesamtzeit. Berechne t₁ und t₂ zuerst." },
+      ],
+    },
+  },
+
+  // ── MODULE 7 · Boss-Kapitel ──────────────────────────────────────────────
+
+  "Bewegungsmodell erkennen": {
+    theory: {
+      kicker: "Modul 7 · Level 1",
+      heading: "Bewegungsmodell aus Daten erkennen",
+      paragraphs: [
+        "Der erste Schritt jeder Analyse: Welches Modell liegt vor? Im s-t-Diagramm verrät die Kurvenform alles. Eine Gerade zeigt gleichförmige Bewegung (v = konst., a = 0). Eine Parabel zeigt gleichmässig beschleunigte Bewegung (a = konst.).",
+        "Im v-t-Diagramm gilt: Eine horizontale Gerade bedeutet v = konst. (a = 0). Eine schräge Gerade bedeutet konstante Beschleunigung \\(a = \\Delta v / \\Delta t\\) – die Steigung der Geraden.",
+        "Aus einer Tabelle: Berechne \\(\\Delta s / \\Delta t\\) für jedes Intervall. Sind alle \\(\\Delta s\\) gleich, liegt gleichförmige Bewegung vor. Wachsen sie, liegt Beschleunigung vor.",
+      ],
+      formula: "\\(v = \\text{konst.}\\) → Gerade im s-t  ·  \\(a = \\text{konst.}\\) → Parabel im s-t  ·  \\(a = \\dfrac{\\Delta v}{\\Delta t}\\) = Steigung im v-t",
+      example: "Tabelle: v = 0, 3, 6, 9 m/s bei t = 0, 1, 2, 3 s → \\(\\Delta v / \\Delta t = 3\\) m/s² = konst. → gleichmässig beschleunigt.",
+    },
+    question: {
+      type: "chart",
+      chartConfig: {
+        chartType: "line",
+        xLabel: "Zeit t (s)",
+        yLabel: "Ort s (m)",
+        xData: [0, 1, 2, 3, 4, 5],
+        datasets: [
+          { label: "Objekt A", data: [0, 5, 10, 15, 20, 25], color: "#5ca2ff", tension: 0, fill: false },
+          { label: "Objekt B", data: [0, 0.5, 2, 4.5, 8, 12.5], color: "#f86785", tension: 0.3, fill: false },
+        ],
+      },
+      tasks: [
+        { text: "Welches Objekt zeigt gleichförmige Bewegung?", options: ["Objekt A – gerade Linie bedeutet v = konst.", "Objekt B – die Kurve beschreibt gleichförmige Bewegung.", "Beide – beide ändern ihren Ort.", "Keines – Ruhe ist das Standardmodell."], correct: 0, explanation: "Eine gerade Linie im s-t-Diagramm bedeutet konstante Steigung = konstante Geschwindigkeit = gleichförmige Bewegung.", hint: "Was bedeutet eine gerade Linie im s-t-Diagramm?" },
+        { text: "Was beschreibt die Kurve von Objekt B?", options: ["Gleichmässig beschleunigte Bewegung – Parabelform zeigt s ∝ t².", "Gleichförmige Bewegung – B ist schnell.", "Unregelmässige Bewegung.", "Freier Fall mit Luftwiderstand."], correct: 0, explanation: "Die Parabelform im s-t zeigt: s wächst quadratisch mit t → s = ½·a·t². Das kennzeichnet gleichmässige Beschleunigung.", hint: "s wächst schneller als linear – welche Formel hat t²?" },
+        { type: "calc", text: "Berechne v von Objekt A: Von t = 0 bis t = 5 s legt es s = 25 m zurück.", answer: 5, unit: "m/s", tolerance: 0.1, explanation: "v = s/t = 25/5 = 5 m/s. Gleichförmig → v bleibt konstant.", hint: "v = s / t" },
+        { type: "calc", text: "Objekt B: Bei t = 4 s ist s = 8 m. Berechne a mit s = ½·a·t².", answer: 1, unit: "m/s²", tolerance: 0.05, explanation: "a = 2s/t² = 2·8/(4²) = 16/16 = 1 m/s².", hint: "Forme s = ½·a·t² nach a um: a = 2·s / t²" },
+      ],
+    },
+  },
+
+  "Ankunftszeit planen": {
+    theory: {
+      kicker: "Modul 7 · Level 2",
+      heading: "Routen und Ankunftszeiten berechnen",
+      paragraphs: [
+        "Reale Bewegungen bestehen aus mehreren Phasen: Beschleunigung, gleichförmige Fahrt, Bremsung. Jede Phase wird mit ihrer eigenen Formel berechnet – dann summiert man Wege und Zeiten.",
+        "Wichtig: Die Endgeschwindigkeit einer Phase ist die Startgeschwindigkeit der nächsten. Phasenübergänge müssen stimmig sein. Plane deshalb Strecken und Zeiten immer Schritt für Schritt.",
+        "Entscheidungsfragen: Schafft das Fahrzeug die Strecke? Kommt es rechtzeitig an? Ist Route A schneller als Route B? Diese Fragen verbinden Kinematik mit Planung.",
+      ],
+      formula: "\\(t_{\\text{ges}} = \\sum t_i\\)  ·  \\(s_{\\text{ges}} = \\sum s_i\\)  ·  \\(s = v \\cdot t\\)  ·  \\(s = \\tfrac{1}{2} a t^2\\)  ·  \\(v = a \\cdot t\\)",
+      example: "Anfahren 5 s (a = 4 m/s²): s₁ = 50 m, v₁ = 20 m/s. Dann 10 s gleichförmig: s₂ = 200 m. Total: 250 m in 15 s.",
+    },
+    question: {
+      type: "mc",
+      basis: [
+        { text: "Rettungsdrohne: Phase 1 – Beschleunigung a = 4 m/s² für 5 s (v₀ = 0). Phase 2 – gleichförmig v = 20 m/s für 10 s. Gesamtstrecke?", options: ["250 m (s₁ = 50 m + s₂ = 200 m)", "200 m (nur Phase 2)", "120 m", "300 m"], correct: 0, explanation: "s₁ = ½·4·5² = 50 m. v₁ = 4·5 = 20 m/s. s₂ = 20·10 = 200 m. s_ges = 250 m.", hint: "Phase 1: s = ½·a·t². Phase 2: s = v·t. Dann addieren." },
+        { text: "Wie viel Zeit braucht die Drohne für die verbleibenden 200 m (Phase 2) bei v = 20 m/s?", options: ["10 s", "200 s", "4 s", "20 s"], correct: 0, explanation: "t = s/v = 200/20 = 10 s.", hint: "t = s / v" },
+      ],
+      challenge: [
+        { text: "Drohnen-Mission in 3 Phasen: Phase 1 – 5 s Anfahren (a = 4 m/s², v₀ = 0). Phase 2 – 10 s gleichförmig. Phase 3 – 4 s Bremsen (a = −5 m/s²). Gesamtstrecke?", options: ["290 m (s₁ = 50 + s₂ = 200 + s₃ = 40)", "250 m", "330 m", "240 m"], correct: 0, explanation: "s₁ = ½·4·25 = 50 m, v₁ = 20 m/s. s₂ = 20·10 = 200 m. s₃ = 20·4 + ½·(−5)·16 = 80 − 40 = 40 m. Total: 290 m.", hint: "s₃ = v₀·t + ½·a·t². Achtung: a ist negativ." },
+        { text: "Route A: 290 m gleichförmig mit v = 20 m/s. Route B: dieselbe Mission mit 3 Phasen (t_ges = 19 s). Welche ist schneller, um wie viel?", options: ["Route A: t = 14,5 s → 4,5 s schneller als Route B", "Route B wegen Beschleunigung schneller", "Beide gleich schnell", "Route A: t = 20 s → Route B schneller"], correct: 0, explanation: "t_A = 290/20 = 14,5 s. t_B = 5 + 10 + 4 = 19 s. Route A ist 4,5 s schneller.", hint: "t_A = s/v. t_B aus den drei Phasen addieren." },
+      ],
+    },
+  },
+
+  "Beschleunigungsphase": {
+    theory: {
+      kicker: "Modul 7 · Level 3",
+      heading: "Beschleunigungsphase: v-t-Diagramm und Flächen",
+      paragraphs: [
+        "Im v-t-Diagramm sieht man alle drei Bewegungsphasen: Ansteigende Gerade (a > 0, Beschleunigung), horizontale Linie (a = 0, gleichförmig), fallende Gerade (a < 0, Bremsen).",
+        "Die Fläche unter der v-t-Kurve ergibt den zurückgelegten Weg. Für ein Dreieck (Anfahren aus Ruhe): \\(s = \\frac{1}{2} v \\cdot t\\). Für ein Rechteck (gleichförmig): \\(s = v \\cdot t\\).",
+        "Die Steigung der Geraden im v-t-Diagramm ist die Beschleunigung: \\(a = \\Delta v / \\Delta t\\). Eine steilere Gerade bedeutet grössere Beschleunigung.",
+      ],
+      formula: "\\(a = \\dfrac{\\Delta v}{\\Delta t}\\) (Steigung)  ·  \\(s = \\text{Fläche unter v-t}\\)  ·  Dreieck: \\(\\tfrac{1}{2}\\,t\\,v_{\\max}\\)  ·  Rechteck: \\(v \\cdot \\Delta t\\)",
+      example: "v: 0 → 8 m/s in 4 s → a = 2 m/s². Fläche (Dreieck) = ½·4·8 = 16 m. Dann 6 s bei 8 m/s: 48 m.",
+    },
+    question: {
+      type: "chart",
+      chartConfig: {
+        chartType: "line",
+        xLabel: "Zeit t (s)",
+        yLabel: "Geschwindigkeit v (m/s)",
+        xData: [0, 4, 10, 14],
+        datasets: [
+          { label: "v(t)", data: [0, 8, 8, 0], color: "#7a62ff", tension: 0, fill: false },
+        ],
+      },
+      tasks: [
+        { text: "Was ist die Beschleunigung in Phase 1 (t = 0 bis 4 s)?", options: ["a = 2 m/s² (Steigung: Δv/Δt = 8/4)", "a = 8 m/s²", "a = 4 m/s²", "a = 0 m/s²"], correct: 0, explanation: "a = Δv/Δt = (8 − 0)/(4 − 0) = 2 m/s². Die Steigung der Geraden im v-t-Diagramm.", hint: "a = Δv / Δt = (v_end − v_start) / Δt" },
+        { type: "calc", text: "Wie weit fährt das Objekt in Phase 1 (t = 0–4 s)? Tipp: Dreiecksfläche = ½ · Basis · Höhe.", answer: 16, unit: "m", tolerance: 0.5, explanation: "s₁ = ½ · t · v = ½ · 4 · 8 = 16 m.", hint: "Fläche Dreieck = ½ · 4 s · 8 m/s" },
+        { type: "calc", text: "Wie weit in Phase 2 (t = 4 bis 10 s, v = 8 m/s, Rechteck)?", answer: 48, unit: "m", tolerance: 0.5, explanation: "s₂ = v · Δt = 8 · 6 = 48 m.", hint: "Phase 2: v = const. → Fläche = Rechteck: v · Δt = 8 · 6" },
+        { type: "calc", text: "Was ist der Gesamtweg über alle drei Phasen (t = 0 bis 14 s)?", answer: 80, unit: "m", tolerance: 0.5, explanation: "Phase 3 (Bremsung, Dreieck): s₃ = ½·4·8 = 16 m. s_ges = 16 + 48 + 16 = 80 m.", hint: "Phase 3 ist wie Phase 1 (Dreieck, symmetrisch). Alle drei Phasen addieren." },
+      ],
+    },
+  },
+
+  "Verkehrsunfall vermeiden": {
+    theory: {
+      kicker: "Modul 7 · Level 4",
+      heading: "Anhalteweg und Sicherheitsentscheidung",
+      paragraphs: [
+        "Der Anhalteweg setzt sich aus Reaktionsweg und Bremsweg zusammen: \\(s_A = s_R + s_B\\). Während der Reaktionszeit \\(t_R\\) fährt das Fahrzeug unverändert: \\(s_R = v \\cdot t_R\\).",
+        "Den Bremsweg kann man direkt ohne die Bremszeit berechnen: \\(s_B = v^2 / (2 \\cdot |a|)\\). Diese Formel kommt aus \\(v^2 = v_0^2 + 2 a s\\) mit \\(v = 0\\).",
+        "Entscheidung: Ist \\(s_A < \\text{Abstand}\\), kann man rechtzeitig stoppen. Bei doppelter Geschwindigkeit: \\(s_R\\) verdoppelt sich, aber \\(s_B\\) vervierfacht sich – der Anhalteweg wächst stark überproportional.",
+      ],
+      formula: "\\(s_A = s_R + s_B\\)  ·  \\(s_R = v \\cdot t_R\\)  ·  \\(s_B = \\dfrac{v^2}{2\\,|a|}\\)",
+      example: "v = 20 m/s, t_R = 1 s, |a| = 8 m/s²: s_R = 20 m, s_B = 400/16 = 25 m, s_A = 45 m.",
+    },
+    question: {
+      type: "mc",
+      basis: [
+        { text: "Fahrzeug: v = 20 m/s, Reaktionszeit t_R = 1 s, |a| = 8 m/s². Berechne den Anhalteweg s_A.", options: ["45 m (s_R = 20 m + s_B = 25 m)", "25 m (nur Bremsweg)", "20 m (nur Reaktionsweg)", "65 m"], correct: 0, explanation: "s_R = 20·1 = 20 m. s_B = 20²/(2·8) = 400/16 = 25 m. s_A = 20 + 25 = 45 m.", hint: "s_R = v·t_R, s_B = v²/(2·|a|), s_A = s_R + s_B" },
+        { text: "Abstand zum Hindernis: 40 m. Anhalteweg: 45 m. Was passiert?", options: ["Kollision – Anhalteweg überschreitet den Abstand um 5 m.", "Sicherer Halt – 40 m reicht.", "Knapp genug.", "Nicht bestimmbar ohne Masse."], correct: 0, explanation: "s_A = 45 m > 40 m → Das Fahrzeug hält erst nach 45 m → Kollision.", hint: "Vergleiche s_A mit dem vorhandenen Abstand." },
+      ],
+      challenge: [
+        { text: "v = 72 km/h, t_R = 1,2 s, |a| = 8 m/s². Wie gross ist s_A? (Tipp: v = 72/3,6 = 20 m/s)", options: ["49 m (s_R = 24 m + s_B = 25 m)", "24 m", "45 m", "56 m"], correct: 0, explanation: "v = 72/3,6 = 20 m/s. s_R = 20·1,2 = 24 m. s_B = 400/16 = 25 m. s_A = 49 m.", hint: "Zuerst km/h in m/s: v = 72/3,6. Dann s_R und s_B berechnen." },
+        { text: "Bei v = 20 m/s: s_A = 45 m. Bei v = 10 m/s (gleiche t_R = 1 s, |a| = 8 m/s²): s_A = 10 + 6,25 = 16,25 m. Welches Verhältnis gilt?", options: ["Etwa 2,8-fach – doppelte v macht nicht doppelten, aber deutlich grösseren Anhalteweg.", "Exakt doppelt.", "Viermal so gross.", "Fast gleich."], correct: 0, explanation: "Bei v=20: s_A=45 m. Bei v=10: s_R=10, s_B=100/16=6,25, s_A=16,25 m. Verhältnis: 45/16,25 ≈ 2,77. Wegen quadratischem s_B ist der Zusammenhang nichtlinear.", hint: "Berechne s_A für v=10 m/s und vergleiche mit v=20 m/s." },
+      ],
+    },
+  },
+
+  "Freier Fall komplett": {
+    theory: {
+      kicker: "Modul 7 · Level 5",
+      heading: "Freier Fall: alle Formeln auf einmal",
+      paragraphs: [
+        "Beim freien Fall (ohne Luftwiderstand) gilt: \\(a = g \\approx 9{,}81\\) m/s² ≈ 10 m/s² (Schulnäherung). Die Bewegung ist gleichmässig beschleunigt aus der Ruhe: \\(v = g \\cdot t\\) und \\(s = \\frac{1}{2} g t^2\\).",
+        "Wichtig: Die Masse hat keinen Einfluss auf die Fallbeschleunigung. Ein schwerer und ein leichter Körper fallen gleich schnell (Galilei). Unterschiede im Alltag entstehen nur durch Luftwiderstand.",
+        "Beim senkrechten Wurf nach oben verlangsamt g den Körper: \\(v(t) = v_0 - g \\cdot t\\). Am höchsten Punkt gilt v = 0, aber \\(a = g \\neq 0\\) – eine häufige Fehlvorstellung!",
+      ],
+      formula: "\\(v = g \\cdot t\\)  ·  \\(s = \\tfrac{1}{2} g t^2\\)  ·  \\(g \\approx 10\\) m/s²  ·  Am höchsten Punkt: v = 0, aber \\(a = g\\)",
+      example: "g = 10 m/s²: nach 2 s → v = 20 m/s, s = ½·10·4 = 20 m. Nach 3 s → v = 30 m/s, s = 45 m.",
+    },
+    question: {
+      type: "chart",
+      chartConfig: {
+        chartType: "line",
+        xLabel: "Zeit t (s)",
+        yLabel: "Fallhöhe s (m)",
+        xData: [0, 1, 2, 3],
+        datasets: [
+          { label: "s(t) = ½·g·t²", data: [0, 5, 20, 45], color: "#24b7d8", tension: 0.3, fill: false },
+        ],
+      },
+      tasks: [
+        { text: "Was zeigt die Kurvenform im s-t-Diagramm des freien Falls?", options: ["Parabelförmiger Anstieg → gleichmässig beschleunigt mit a = g.", "Lineare Zunahme → gleichförmige Bewegung.", "Keine Aussage möglich.", "Abnehmende Beschleunigung."], correct: 0, explanation: "s = ½·g·t² ist eine Parabel. Parabelform im s-t → konstante Beschleunigung a = g.", hint: "Was bedeutet eine Parabel im s-t-Diagramm?" },
+        { type: "calc", text: "Wie gross ist die Fallgeschwindigkeit nach t = 2 s? (g = 10 m/s²)", answer: 20, unit: "m/s", tolerance: 0.5, explanation: "v = g·t = 10·2 = 20 m/s.", hint: "v = g · t (Start aus Ruhe)" },
+        { type: "calc", text: "Wie weit fällt der Körper in t = 3 s? (g = 10 m/s²)", answer: 45, unit: "m", tolerance: 0.5, explanation: "s = ½·g·t² = ½·10·9 = 45 m.", hint: "s = ½ · g · t² = ½ · 10 · 3²" },
+        { text: "Ein Stein (100 g) und ein Stein (1 kg) werden gleichzeitig fallen gelassen (kein Luftwiderstand). Was gilt?", options: ["Beide landen gleichzeitig – g ist massenunabhängig.", "Der schwerere Stein landet zuerst.", "Der leichtere Stein landet zuerst.", "Es kommt auf die Form an."], correct: 0, explanation: "g ≈ 9,81 m/s² gilt für alle Körper (Galilei). Ohne Luftwiderstand ist die Masse irrelevant.", hint: "Wovon hängt g ab?" },
+      ],
+    },
+  },
+
+  "Fehlerhafte Lösung": {
+    theory: {
+      kicker: "Modul 7 · Level 6",
+      heading: "Fehler in Lösungen erkennen und korrigieren",
+      paragraphs: [
+        "Typische Fehler in Kinematik-Aufgaben: (1) Einheitenfehler (km/h statt m/s). (2) t nicht quadriert in \\(s = \\frac{1}{2}at^2\\). (3) Formel falsch umgestellt. (4) Konzept verwechselt (v = 0 bedeutet nicht a = 0).",
+        "Beim Analysieren einer Lösung: Zuerst Einheiten prüfen. Dann die Formel – passt sie zu den gegebenen Grössen? Dann den Rechenweg – wurde richtig eingesetzt? Zuletzt: Ist das Ergebnis physikalisch plausibel?",
+        "Fehler-Checkliste: Einheit des Ergebnisses korrekt? Ist t² korrekt angewandt? Sind Vorzeichen richtig? Wurden Δ-Werte korrekt berechnet? Gibt es irrelevante Grössen, die fälschlich verwendet wurden?",
+      ],
+      formula: "Checkliste: Einheiten? · Formel? · \\(t^2\\) nicht vergessen · Vorzeichen · Plausibilität",
+      example: "Fehler: s = ½·3·4 = 6 m. Korrekt: s = ½·3·4² = ½·3·16 = 24 m. (t wurde nicht quadriert!)",
+    },
+    question: {
+      type: "mc",
+      basis: [
+        { text: "Schüler löst: 'v₀ = 0, a = 3 m/s², t = 4 s → s = ½·3·4 = 6 m.' Was ist der Fehler?", options: ["t wurde nicht quadriert. Korrekt: s = ½·3·4² = ½·3·16 = 24 m.", "a muss durch 2 dividiert werden.", "v₀ = 0 muss addiert werden.", "Keine Fehler – 6 m ist korrekt."], correct: 0, explanation: "In s = ½·a·t² muss t quadriert werden. t = 4 → t² = 16. s = ½·3·16 = 24 m, nicht 6 m.", hint: "In s = ½·a·t²: Was ist t²? 4² = ?" },
+        { text: "Schüler rechnet: v = 90 km/h, t = 30 s → s = 90 · 30 = 2700 m. Was ist falsch?", options: ["v muss in m/s umgerechnet werden: 25 m/s. s = 25·30 = 750 m.", "t muss in Minuten umgerechnet werden.", "Die Formel s = v·t ist falsch.", "2700 m ist korrekt."], correct: 0, explanation: "v = 90/3,6 = 25 m/s. s = 25·30 = 750 m. Einheitenfehler: km/h × s ≠ m.", hint: "Welche Einheit braucht v in der Formel s = v·t (t in s, s in m)?" },
+      ],
+      challenge: [
+        { text: "Lösung: 'v₀ = 5 m/s, a = 2 m/s², t = 3 s → v = v₀ + a = 5 + 2 = 7 m/s.' Korrekter Wert?", options: ["v = 5 + 2·3 = 11 m/s (t wurde vergessen)", "7 m/s – korrekt", "v = 5·2·3 = 30 m/s", "v = 5 + 6 = 11 m/s – nicht wie angegeben"], correct: 0, explanation: "v = v₀ + a·t = 5 + 2·3 = 11 m/s. Der Schüler hat t vergessen und a·t = a gerechnet.", hint: "Formel: v = v₀ + a·t. Was ist a·t?" },
+        { text: "Schüler: 'Ball am höchsten Punkt: v = 0, also auch a = 0 – Ball hängt kurz in der Luft.' Fehler?", options: ["Ja – a = g ≠ 0 immer. v = 0 bedeutet Umkehrpunkt, nicht Kraftlosigkeit.", "Nein – bei v = 0 muss a = 0 sein.", "Ja – der Ball hat keine Energie mehr.", "Nein – am höchsten Punkt ist a kurz 0."], correct: 0, explanation: "v und a sind unabhängige Grössen. Am höchsten Punkt: v = 0, aber die Schwerkraft wirkt weiter → a = g = 9,81 m/s² nach unten.", hint: "Können v und a gleichzeitig verschiedene Werte haben?" },
+      ],
+    },
+  },
+
+  "Bewegung rekonstruieren": {
+    theory: {
+      kicker: "Modul 7 · Level 7",
+      heading: "Bewegung aus Daten rekonstruieren",
+      paragraphs: [
+        "Aus einem v-t-Diagramm oder einer Messtabelle kann man die vollständige Bewegungsgeschichte rekonstruieren: Welche Phasen liegen vor? Welche Beschleunigungen? Welche Strecken wurden zurückgelegt?",
+        "Strategie: (1) Phasen identifizieren – wo ändert sich die Steigung? (2) Für jede Phase Typ bestimmen. (3) Beschleunigung aus Steigung berechnen: \\(a = \\Delta v / \\Delta t\\). (4) Weg als Fläche berechnen.",
+        "Die Fläche unter dem v-t-Graphen ist der zurückgelegte Weg: Dreieck für Anfahren/Bremsen, Rechteck für gleichförmige Abschnitte. Die Summe aller Flächen ist die Gesamtstrecke.",
+      ],
+      formula: "Dreieck: \\(s = \\tfrac{1}{2} v_{\\max} \\cdot t\\)  ·  Rechteck: \\(s = v \\cdot \\Delta t\\)  ·  \\(a = \\Delta v / \\Delta t\\)",
+      example: "v: 0→6 in 3 s, dann 6 m/s für 5 s, dann 6→0 in 4 s. s = 9 + 30 + 12 = 51 m total.",
+    },
+    question: {
+      type: "chart",
+      chartConfig: {
+        chartType: "line",
+        xLabel: "Zeit t (s)",
+        yLabel: "Geschwindigkeit v (m/s)",
+        xData: [0, 3, 8, 12],
+        datasets: [
+          { label: "v(t)", data: [0, 6, 6, 0], color: "#3dd18d", tension: 0, fill: false },
+        ],
+      },
+      tasks: [
+        { text: "Was passiert in Phase 1 (t = 0 bis 3 s)?", options: ["Gleichmässige Beschleunigung (v steigt linear).", "Gleichförmige Bewegung.", "Bremsung.", "Ruhe."], correct: 0, explanation: "v steigt von 0 auf 6 m/s → Beschleunigung. Lineare Zunahme → a = konst. → gleichmässig beschleunigt.", hint: "Was zeigt eine steigende Gerade im v-t-Diagramm?" },
+        { type: "calc", text: "Berechne die Beschleunigung in Phase 1 (Δv/Δt).", answer: 2, unit: "m/s²", tolerance: 0.1, explanation: "a = Δv/Δt = (6 − 0)/(3 − 0) = 2 m/s².", hint: "a = Δv / Δt" },
+        { type: "calc", text: "Wie weit fährt das Objekt in Phase 2 (t = 3 bis 8 s, v = 6 m/s)?", answer: 30, unit: "m", tolerance: 0.5, explanation: "s₂ = v · Δt = 6 · 5 = 30 m.", hint: "Phase 2: v = const. → s = v · Δt = 6 · (8 − 3)" },
+        { type: "calc", text: "Gesamtstrecke über alle drei Phasen (t = 0 bis 12 s)?", answer: 51, unit: "m", tolerance: 0.5, explanation: "s₁ = ½·3·6 = 9 m. s₂ = 6·5 = 30 m. s₃ = ½·4·6 = 12 m. Total = 51 m.", hint: "s₁ und s₃ sind Dreiecke, s₂ ist ein Rechteck. Alle Flächen addieren." },
+      ],
+    },
+  },
+
+  "Kinematik-Mix": {
+    theory: {
+      kicker: "Modul 7 · Level 8",
+      heading: "Das richtige Modell für jede Situation",
+      paragraphs: [
+        "Die wichtigste Fähigkeit: Nicht nur rechnen, sondern zuerst das richtige Modell erkennen. Ist die Geschwindigkeit konstant (gleichförmig)? Ändert sie sich konstant (gleichmässig beschleunigt)? Gibt es mehrere Phasen?",
+        "Entscheidungsbaum: (1) v = konst.? → \\(s = v \\cdot t\\). (2) a = konst. ≠ 0? → \\(v = v_0 + at\\), \\(s = v_0 t + \\frac{1}{2}at^2\\). (3) Senkrechter Wurf? → a = ±g. (4) Mehrere Phasen? → jede einzeln analysieren.",
+        "Typische Fehlvorstellungen: Bremsen ist Beschleunigung (negativ). Hohe Geschwindigkeit ≠ hohe Beschleunigung. Am Umkehrpunkt ist \\(a \\neq 0\\). Durchschnitt ≠ Mittelwert der Einzelgeschwindigkeiten.",
+      ],
+      formula: "\\(v = \\text{konst.}\\) → \\(s = vt\\)  ·  \\(a = \\text{konst.}\\) → \\(v = v_0 + at\\)  ·  \\(g = 9{,}81\\) m/s² ↓",
+      example: "Ball nach oben: v₀ = 15 m/s, a = −10 m/s². Umkehrpunkt: 0 = 15 − 10t → t = 1,5 s.",
+    },
+    question: {
+      type: "mc",
+      basis: [
+        { text: "Szenario A: s = 5·t (t in s, s in m). Welches Modell passt?", options: ["Gleichförmig – v = 5 m/s = konst.", "Gleichmässig beschleunigt – a = 5 m/s².", "Freier Fall.", "Bremsung."], correct: 0, explanation: "s = 5t → v = 5 m/s = konst. Das ist die Formel gleichförmiger Bewegung: s = v·t.", hint: "Was bedeutet ein lineares s-t-Zusammenhang?" },
+        { text: "Ein Ball wird nach oben geworfen. Am höchsten Punkt gilt:", options: ["v = 0, a = g ≈ 9,81 m/s² (nach unten)", "v = 0, a = 0", "v > 0, a = 0", "v = 0, kurz a = 0"], correct: 0, explanation: "Am höchsten Punkt stoppt die Aufwärtsbewegung → v = 0. Aber die Schwerkraft wirkt immer → a = g. v = 0 bedeutet nicht a = 0!", hint: "Sind v und a am höchsten Punkt voneinander unabhängig?" },
+      ],
+      challenge: [
+        { text: "Auto: gleichförmig 25 m/s für 3 s, dann Vollbremsung mit |a| = 6,25 m/s². Wann steht es nach Bremsbeginn still?", options: ["4 s (v₀/|a| = 25/6,25 = 4 s)", "3 s", "6,25 s", "25 s"], correct: 0, explanation: "Bremsung: v = v₀ + a·t → 0 = 25 − 6,25·t → t = 25/6,25 = 4 s.", hint: "Setze v = 0 in v = v₀ + a·t (mit a < 0). Löse nach t." },
+        { text: "Ball senkrecht nach oben geworfen mit v₀ = 20 m/s (g = 10 m/s²). Wann und wo ist der höchste Punkt?", options: ["t = 2 s, h = 20 m", "t = 2 s, h = 40 m", "t = 4 s, h = 20 m", "t = 1 s, h = 10 m"], correct: 0, explanation: "v = 0: 0 = 20 − 10t → t = 2 s. h = v₀t − ½gt² = 20·2 − ½·10·4 = 40 − 20 = 20 m.", hint: "Erst t aus v = 0 = v₀ − g·t. Dann h = v₀t − ½gt²." },
+      ],
+    },
+  },
+
+  "Mega-Boss: Station": {
+    theory: {
+      kicker: "Modul 7 · Level 9",
+      heading: "Mega-Boss: Vollständige Kinematik-Analyse",
+      paragraphs: [
+        "Dieser Boss vernetzt alle Konzepte: Modell erkennen, Formeln anwenden, Diagramme deuten, Phasen analysieren, Durchschnitt berechnen. Im Diagramm siehst du eine vollständige Fahrt mit drei Phasen.",
+        "Strategie: (1) Phasen identifizieren und benennen. (2) Für jede Phase Beschleunigung und Strecke berechnen. (3) Gesamtstrecke addieren. (4) Mittlere Geschwindigkeit = Gesamtweg/Gesamtzeit. (5) Plausibilitätsprüfung.",
+        "Die mittlere Geschwindigkeit \\(\\bar{v}\\) ist nicht der Mittelwert der Geschwindigkeiten, sondern \\(\\bar{v} = s_{\\text{ges}} / t_{\\text{ges}}\\). Hier ein klassisches Missverständnis!",
+      ],
+      formula: "\\(s_{\\text{ges}} = \\sum s_i\\)  ·  \\(\\bar{v} = s_{\\text{ges}} / t_{\\text{ges}}\\)  ·  Dreieck: \\(\\tfrac{1}{2} t\\, v_{\\max}\\)  ·  Rechteck: \\(v \\cdot \\Delta t\\)",
+      example: "Diagramm: 0→5 s (0→10 m/s), 5→15 s (10 m/s), 15→20 s (10→0). s = 25+100+25 = 150 m. v̄ = 7,5 m/s.",
+    },
+    question: {
+      type: "chart",
+      chartConfig: {
+        chartType: "line",
+        xLabel: "Zeit t (s)",
+        yLabel: "Geschwindigkeit v (m/s)",
+        xData: [0, 5, 15, 20],
+        datasets: [
+          { label: "v(t)", data: [0, 10, 10, 0], color: "#ff8753", tension: 0, fill: false },
+        ],
+      },
+      tasks: [
+        { text: "Was ist die Beschleunigung in Phase 1 (t = 0 bis 5 s)?", options: ["a = 2 m/s² (Δv/Δt = 10/5)", "a = 10 m/s²", "a = 5 m/s²", "a = 0"], correct: 0, explanation: "a = Δv/Δt = (10 − 0)/(5 − 0) = 2 m/s².", hint: "a = Δv / Δt" },
+        { type: "calc", text: "Zurückgelegter Weg in Phase 1 (Dreieck: ½ · 5 · 10)?", answer: 25, unit: "m", tolerance: 0.5, explanation: "s₁ = ½ · 5 · 10 = 25 m.", hint: "Fläche Dreieck = ½ · Basis · Höhe = ½ · 5 s · 10 m/s" },
+        { type: "calc", text: "Zurückgelegter Weg in Phase 2 (Rechteck, t = 5–15 s, v = 10 m/s)?", answer: 100, unit: "m", tolerance: 0.5, explanation: "s₂ = 10 · 10 = 100 m.", hint: "Phase 2: v = 10 m/s konstant über Δt = 10 s" },
+        { type: "calc", text: "Gesamtweg über alle drei Phasen (t = 0 bis 20 s)?", answer: 150, unit: "m", tolerance: 0.5, explanation: "s₃ = ½ · 5 · 10 = 25 m (symmetrisch zu Phase 1). s_ges = 25 + 100 + 25 = 150 m.", hint: "Phase 3 ist wie Phase 1 (Dreieck). Alle drei addieren." },
+        { type: "calc", text: "Mittlere Geschwindigkeit v̄ über die gesamten 20 s?", answer: 7.5, unit: "m/s", tolerance: 0.1, explanation: "v̄ = s_ges/t_ges = 150/20 = 7,5 m/s.", hint: "v̄ = Gesamtweg / Gesamtzeit = 150 / 20" },
+      ],
+    },
+  },
+
+  "Final Boss": {
+    theory: {
+      kicker: "Modul 7 · Final Boss",
+      heading: "Final Boss: Meister der Kinematik",
+      paragraphs: [
+        "Du hast alle sieben Module durchgespielt. Jetzt kommt der Final Boss: Fünf Arenen, jede prüft einen anderen Bereich der Kinematik. Nicht nur rechnen – auch erklären, deuten, Fehler finden und entscheiden.",
+        "Arena 1: Grundbegriffe und Bezugssysteme. Arena 2: Formeln und Rechnen. Arena 3: Diagramme lesen. Arena 4: Freier Fall und Aufwärtswurf. Arena 5: Transfer und Entscheidung.",
+        "Boss-Strategie: Lies jede Frage zweimal. Prüfe Einheiten. Entscheide erst, welche Formel oder welches Modell passt. Dann rechne oder begründe.",
+      ],
+      formula: "\\(s = vt\\)  ·  \\(a = \\Delta v/\\Delta t\\)  ·  \\(v = v_0 + at\\)  ·  \\(s = \\tfrac{1}{2}at^2\\)  ·  \\(s_A = s_R + s_B\\)  ·  \\(s_B = v^2/(2|a|)\\)",
+      example: "Final Boss: Alle Kinematik-Konzepte – Beschreibung, Berechnung, Diagramm, Fehlererkennung und Transfer.",
+    },
+    question: {
+      type: "mc",
+      basis: [
+        { text: "Arena 1 – Bezugssystem: Du sitzt im Zug (120 km/h). Wie schnell siehst du dich selbst?", options: ["0 m/s – im Bezugssystem des Zuges ruhst du.", "120 km/h = 33,3 m/s.", "Es gibt keine Ruhe.", "Hängt von der Richtung ab."], correct: 0, explanation: "Im Bezugssystem des Zuges: v = 0. Im Bahnsteig-System: v = 120 km/h. Beide sind korrekt – Bewegung ist relativ.", hint: "In welchem Bezugssystem beobachtest du dich?" },
+        { text: "Arena 2 – Rechnen: Auto: v₀ = 0, a = 3 m/s², t = 6 s. Welche Angaben sind korrekt?", options: ["v = 18 m/s und s = 54 m", "v = 18 m/s und s = 18 m", "v = 9 m/s und s = 54 m", "v = 3 m/s und s = 6 m"], correct: 0, explanation: "v = v₀ + at = 0 + 3·6 = 18 m/s. s = ½·at² = ½·3·36 = 54 m.", hint: "v = v₀ + a·t und s = ½·a·t². Beide Formeln anwenden." },
+        { text: "Arena 3 – Diagramm: Ein v-t-Diagramm zeigt eine horizontale Linie bei v = 15 m/s. Was folgt?", options: ["a = 0 (gleichförmige Bewegung), s wächst linear.", "a = 15 m/s², s wächst quadratisch.", "Der Körper ruht.", "Die Steigung ergibt den Weg."], correct: 0, explanation: "Horizontale Linie im v-t → keine Steigung → a = 0. v = 15 m/s = konst. → s = v·t (linear).", hint: "Steigung im v-t = a. Was bedeutet horizontale Linie?" },
+        { text: "Arena 4 – Freier Fall: Ball nach oben geworfen. Am höchsten Punkt gilt:", options: ["v = 0, a = g = 9,81 m/s² (nach unten)", "v = 0, a = 0", "v > 0, a = g", "v = g, a = 0"], correct: 0, explanation: "v = 0 am Umkehrpunkt. Aber a = g immer (Schwerkraft wirkt ununterbrochen). v = 0 bedeutet nicht a = 0!", hint: "Sind v und a am höchsten Punkt voneinander unabhängig?" },
+        { text: "Arena 5 – Transfer: v = 25 m/s, t_R = 0,8 s, |a| = 6,25 m/s². Reicht Abstand 60 m?", options: ["Nein – s_A = 70 m (s_R = 20 + s_B = 50) > 60 m.", "Ja – 60 m reicht.", "Nein – s_A = 45 m.", "Ja – s_B = 50 m ≤ 60 m."], correct: 0, explanation: "s_R = 25·0,8 = 20 m. s_B = 25²/(2·6,25) = 625/12,5 = 50 m. s_A = 70 m > 60 m → Kollision!", hint: "s_R = v·t_R, s_B = v²/(2·|a|), s_A = s_R + s_B" },
+      ],
+      challenge: [
+        { text: "Arena 1 (Challenge) – Strecke vs. Verschiebung: Körper geht 300 m vorwärts, dann 120 m rückwärts. Zurückgelegte Strecke und Verschiebung?", options: ["Strecke = 420 m, Δs = +180 m (vorwärts)", "Strecke = 180 m, Δs = 420 m", "Strecke = 420 m, Δs = 0 m", "Strecke = 300 m, Δs = 300 m"], correct: 0, explanation: "Strecke = 300 + 120 = 420 m (zurückgelegter Weg). Verschiebung Δs = 300 − 120 = 180 m vorwärts.", hint: "Strecke = Summe aller Wege. Verschiebung = Endposition − Startposition." },
+        { text: "Arena 2 (Challenge) – Bremsung: v₀ = 8 m/s, a = −2 m/s², t = 3 s. v und s?", options: ["v = 2 m/s, s = 15 m", "v = 2 m/s, s = 24 m", "v = 14 m/s, s = 15 m", "v = 6 m/s, s = 18 m"], correct: 0, explanation: "v = 8 + (−2)·3 = 2 m/s. s = 8·3 + ½·(−2)·9 = 24 − 9 = 15 m.", hint: "v = v₀ + a·t und s = v₀·t + ½·a·t². a ist negativ!" },
+        { text: "Arena 3 (Challenge) – Diagramm: Im s-t-Diagramm zeigt Abschnitt AB eine Gerade mit negativer Steigung. Was bedeutet das?", options: ["Körper bewegt sich rückwärts (v < 0).", "Körper bremst ab.", "Körper ruht.", "Körper beschleunigt vorwärts."], correct: 0, explanation: "Negative Steigung im s-t → s nimmt ab → Körper bewegt sich in die Ausgangsrichtung zurück → v < 0.", hint: "Was bedeutet die Steigung im s-t-Diagramm?" },
+        { text: "Arena 4 (Challenge) – Aufwärtswurf: v₀ = 15 m/s, g = 10 m/s². Maximale Höhe?", options: ["11,25 m (h = v₀t − ½gt² mit t = 1,5 s)", "22,5 m", "15 m", "7,5 m"], correct: 0, explanation: "t_max: 0 = 15 − 10t → t = 1,5 s. h = 15·1,5 − ½·10·2,25 = 22,5 − 11,25 = 11,25 m.", hint: "Erst t aus v = 0 = v₀ − g·t. Dann h = v₀t − ½gt²." },
+        { text: "Arena 5 (Challenge) – Zug: v = 30 m/s, t_R = 2 s, |a| = 3 m/s². Hindernisabstand: 200 m. Kollision?", options: ["Ja – s_A = 210 m (s_R = 60 + s_B = 150) > 200 m.", "Nein – 200 m reicht.", "Nein – s_A = 150 m.", "Ja – s_A = 260 m."], correct: 0, explanation: "s_R = 30·2 = 60 m. s_B = 30²/(2·3) = 900/6 = 150 m. s_A = 210 m > 200 m → Kollision.", hint: "s_R = v·t_R, s_B = v²/(2·|a|), s_A = s_R + s_B. Dann mit 200 m vergleichen." },
+      ],
+    },
+  },
+
+};
+
+
+// ─── merge step with STEP_CONTENT ──────────────────────────────────────────
+const getStepContent = (step) => {
+  const extra = STEP_CONTENT[step.title];
+  if (!extra) return step;
+  return { ...step, ...extra };
 };
 
 const moduleOrder = Object.keys(MODULE_CONTENT).sort((a, b) => {
@@ -433,6 +2513,111 @@ if (title && frame && pencilLayer instanceof HTMLCanvasElement) {
     kmh: 37.6,
     xp: 100,
   };
+  const freeFallState = {
+    running: false,
+    rafId: 0,
+    canvas: null,
+    ctx: null,
+    heightInput: null,
+    heightValue: null,
+    timeValue: null,
+    answerInput: null,
+    feedbackEl: null,
+    taskMetaEl: null,
+    taskTextEl: null,
+    nextButton: null,
+    ballY: 0,
+    lastTime: 0,
+    flashTimer: 0,
+    questionIndex: 0,
+    questionSolved: false,
+  };
+  const FREE_FALL_TASKS = [
+    { height: 20, answer: 2.02, xp: 100 },
+    { height: 45, answer: 3.03, xp: 100 },
+    { height: 5, answer: 1.01, xp: 100 },
+    { height: 80, answer: 4.04, xp: 100 },
+  ];
+  const brakingState = {
+    running: false,
+    rafId: 0,
+    canvas: null,
+    ctx: null,
+    speedInput: null,
+    decelerationInput: null,
+    speedValue: null,
+    decelerationValue: null,
+    distanceValue: null,
+    answerInput: null,
+    feedbackEl: null,
+    taskMetaEl: null,
+    taskTextEl: null,
+    nextButton: null,
+    carX: 0,
+    lastTime: 0,
+    flashTimer: 0,
+    questionIndex: 0,
+    questionSolved: false,
+  };
+  const BRAKING_TASKS = [
+    { speed: 20, deceleration: 4, answer: 50, xp: 100 },
+    { speed: 15, deceleration: 3, answer: 37.5, xp: 100 },
+    { speed: 10, deceleration: 5, answer: 10, xp: 100 },
+    { speed: 25, deceleration: 5, answer: 62.5, xp: 100 },
+  ];
+  const distanceAccState = {
+    running: false,
+    rafId: 0,
+    canvas: null,
+    ctx: null,
+    accelerationInput: null,
+    timeInput: null,
+    accelerationValue: null,
+    timeValue: null,
+    distanceValue: null,
+    answerInput: null,
+    feedbackEl: null,
+    taskMetaEl: null,
+    taskTextEl: null,
+    nextButton: null,
+    carX: 0,
+    lastTime: 0,
+    flashTimer: 0,
+    questionIndex: 0,
+    questionSolved: false,
+  };
+  const DISTANCE_ACC_TASKS = [
+    { acceleration: 3, time: 6, answer: 54, xp: 100 },
+    { acceleration: 2, time: 5, answer: 25, xp: 100 },
+    { acceleration: 4, time: 3, answer: 18, xp: 100 },
+    { acceleration: 1.5, time: 4, answer: 12, xp: 100 },
+  ];
+  const MC_CONCEPT_QUESTIONS = [
+    {
+      text: "Was beschreibt die Steigung in einem v-t-Diagramm?",
+      options: ["Zurückgelegte Strecke", "Beschleunigung", "Zeit", "Kraft"],
+      correct: 1,
+      explanation: "Die Steigung im v-t-Diagramm gibt an, wie schnell sich die Geschwindigkeit ändert – das ist genau die Beschleunigung: a = Δv / Δt.",
+    },
+    {
+      text: "Ein Objekt bewegt sich gleichförmig. Welches Diagramm zeigt eine schräge Gerade?",
+      options: ["a-t-Diagramm", "v-t-Diagramm", "s-t-Diagramm", "Alle drei"],
+      correct: 2,
+      explanation: "Bei gleichförmiger Bewegung wächst der Ort proportional zur Zeit: s = v · t. Das ergibt im s-t-Diagramm eine schräge Gerade durch den Ursprung.",
+    },
+    {
+      text: "Was bedeutet negative Beschleunigung bei positiver Geschwindigkeit?",
+      options: ["Das Objekt steht still", "Das Objekt bewegt sich rückwärts", "Das Objekt wird langsamer", "Die Kraft hat keine Richtung"],
+      correct: 2,
+      explanation: "Negative Beschleunigung bei positiver Geschwindigkeit heißt: Das Objekt bremst und wird langsamer. Erst wenn v = 0 ist, steht es still.",
+    },
+    {
+      text: "Welche Formel beschreibt den Bremsweg (v₀ = Startgeschwindigkeit, a = Bremsbeschleunigung)?",
+      options: ["s = v₀ · a", "s = v₀ / a", "s = v₀² / (2a)", "s = ½ · a · t"],
+      correct: 2,
+      explanation: "Aus v² = v₀² − 2as folgt bei Stillstand (v = 0): s = v₀² / (2a). Der Bremsweg wächst quadratisch mit der Anfangsgeschwindigkeit.",
+    },
+  ];
 
   const getModulePercent = (moduleId) => {
     const state = moduleState[moduleId];
@@ -664,6 +2849,10 @@ if (title && frame && pencilLayer instanceof HTMLCanvasElement) {
     stopCatchUpGame();
     stopAccelerationGame();
     stopSprintGame();
+    stopFreeFallGame();
+    stopBrakingGame();
+    stopDistanceAccGame();
+    stopModuleGame();
     sidePanelHidden = false;
     applySidePanelVisibility();
     document.body.classList.remove("module0-open", "module0-zooming", "si-game-open");
@@ -743,6 +2932,39 @@ if (title && frame && pencilLayer instanceof HTMLCanvasElement) {
     if (siGameStage instanceof HTMLElement) {
       siGameStage.classList.remove("test-motion-flash");
     }
+    document.body.classList.remove("test-motion-page-flash");
+  };
+
+  const stopFreeFallGame = () => {
+    freeFallState.running = false;
+    if (freeFallState.rafId) { window.cancelAnimationFrame(freeFallState.rafId); }
+    if (freeFallState.flashTimer) { window.clearTimeout(freeFallState.flashTimer); }
+    freeFallState.rafId = 0;
+    freeFallState.flashTimer = 0;
+    freeFallState.lastTime = 0;
+    if (siGameStage instanceof HTMLElement) { siGameStage.classList.remove("test-motion-flash"); }
+    document.body.classList.remove("test-motion-page-flash");
+  };
+
+  const stopBrakingGame = () => {
+    brakingState.running = false;
+    if (brakingState.rafId) { window.cancelAnimationFrame(brakingState.rafId); }
+    if (brakingState.flashTimer) { window.clearTimeout(brakingState.flashTimer); }
+    brakingState.rafId = 0;
+    brakingState.flashTimer = 0;
+    brakingState.lastTime = 0;
+    if (siGameStage instanceof HTMLElement) { siGameStage.classList.remove("test-motion-flash"); }
+    document.body.classList.remove("test-motion-page-flash");
+  };
+
+  const stopDistanceAccGame = () => {
+    distanceAccState.running = false;
+    if (distanceAccState.rafId) { window.cancelAnimationFrame(distanceAccState.rafId); }
+    if (distanceAccState.flashTimer) { window.clearTimeout(distanceAccState.flashTimer); }
+    distanceAccState.rafId = 0;
+    distanceAccState.flashTimer = 0;
+    distanceAccState.lastTime = 0;
+    if (siGameStage instanceof HTMLElement) { siGameStage.classList.remove("test-motion-flash"); }
     document.body.classList.remove("test-motion-page-flash");
   };
 
@@ -2362,6 +4584,2533 @@ if (title && frame && pencilLayer instanceof HTMLCanvasElement) {
     }
   };
 
+  // ─── K3: Freier Fall ─────────────────────────────────────────────────────
+
+  const getFreeFallValues = () => {
+    const height = Number(freeFallState.heightInput?.value || 0);
+    return { height, time: height > 0 ? Math.sqrt(2 * height / 9.81) : 0 };
+  };
+
+  const updateFreeFallLabels = () => {
+    const { height, time } = getFreeFallValues();
+    if (freeFallState.heightValue instanceof HTMLElement) freeFallState.heightValue.textContent = `${formatTestDecimal(height)} m`;
+    if (freeFallState.timeValue instanceof HTMLElement) freeFallState.timeValue.textContent = `${formatTestDecimal(time)} s`;
+  };
+
+  const resizeFreeFallCanvas = () => {
+    const canvas = freeFallState.canvas;
+    if (!(canvas instanceof HTMLCanvasElement)) return;
+    const rect = canvas.getBoundingClientRect();
+    const ratio = Math.min(window.devicePixelRatio || 1, 2);
+    canvas.width = Math.max(1, Math.floor(rect.width * ratio));
+    canvas.height = Math.max(1, Math.floor(rect.height * ratio));
+    if (freeFallState.ctx) freeFallState.ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
+  };
+
+  const drawFreeFallGame = (now = 0) => {
+    if (!freeFallState.running || !(freeFallState.canvas instanceof HTMLCanvasElement) || !freeFallState.ctx) return;
+    const canvas = freeFallState.canvas;
+    const context = freeFallState.ctx;
+    const rect = canvas.getBoundingClientRect();
+    const width = rect.width;
+    const height = rect.height;
+    const { height: h } = getFreeFallValues();
+    const maxHeight = Number(freeFallState.heightInput?.max || 100);
+    const left = 62;
+    const groundY = height - 42;
+    const topY = 28;
+    const deltaSeconds = freeFallState.lastTime ? Math.min(0.05, (now - freeFallState.lastTime) / 1000) : 0.016;
+    const smoothing = 1 - Math.pow(0.001, deltaSeconds);
+    freeFallState.lastTime = now;
+
+    const targetBallY = topY + (1 - Math.min(h, maxHeight) / maxHeight) * (groundY - topY);
+    if (!freeFallState.ballY) freeFallState.ballY = groundY;
+    freeFallState.ballY += (targetBallY - freeFallState.ballY) * smoothing;
+
+    context.clearRect(0, 0, width, height);
+    context.fillStyle = "rgba(255, 255, 255, 0.96)";
+    context.fillRect(0, 0, width, height);
+
+    context.strokeStyle = "rgba(96, 111, 128, 0.22)";
+    context.lineWidth = 1;
+    const gridStep = (groundY - topY) / 10;
+    for (let x = left; x <= width - 28; x += gridStep) {
+      context.beginPath(); context.moveTo(x, topY); context.lineTo(x, groundY); context.stroke();
+    }
+    for (let y = topY; y <= groundY + 0.5; y += gridStep) {
+      context.beginPath(); context.moveTo(left, y); context.lineTo(width - 28, y); context.stroke();
+    }
+
+    context.strokeStyle = "#171b21";
+    context.lineWidth = 4;
+    context.beginPath();
+    context.moveTo(left, topY);
+    context.lineTo(left, groundY);
+    context.lineTo(width - 28, groundY);
+    context.stroke();
+
+    context.fillStyle = "#384858";
+    context.font = "700 12px Space Grotesk, sans-serif";
+    context.textAlign = "right";
+    context.textBaseline = "middle";
+    const labelStep = maxHeight > 60 ? 20 : 10;
+    for (let m = 0; m <= maxHeight; m += labelStep) {
+      const y = groundY - (m / maxHeight) * (groundY - topY);
+      context.fillText(`${m} m`, left - 8, y);
+      context.strokeStyle = "rgba(23, 27, 33, 0.38)";
+      context.lineWidth = 1.5;
+      context.beginPath(); context.moveTo(left - 4, y); context.lineTo(left + 8, y); context.stroke();
+    }
+
+    context.fillStyle = "#3dd18d";
+    context.strokeStyle = "#171b21";
+    context.lineWidth = 2.5;
+    context.beginPath();
+    context.roundRect(left + 4, topY - 8, 50, 10, 3);
+    context.fill(); context.stroke();
+
+    context.strokeStyle = "#ff8d47";
+    context.lineWidth = 2.5;
+    context.setLineDash([5, 5]);
+    context.beginPath();
+    context.moveTo(left + 29, topY + 2);
+    context.lineTo(left + 29, freeFallState.ballY - 14);
+    context.stroke();
+    context.setLineDash([]);
+
+    context.strokeStyle = "rgba(100, 120, 140, 0.35)";
+    context.lineWidth = 1;
+    context.beginPath();
+    context.moveTo(left, freeFallState.ballY);
+    context.lineTo(width - 28, freeFallState.ballY);
+    context.stroke();
+
+    context.fillStyle = "#ff8d47";
+    context.strokeStyle = "#171b21";
+    context.lineWidth = 2.5;
+    context.beginPath();
+    context.arc(left + 29, freeFallState.ballY, 13, 0, Math.PI * 2);
+    context.fill(); context.stroke();
+
+    context.fillStyle = "#101418";
+    context.font = "800 13px Space Grotesk, sans-serif";
+    context.textAlign = "left";
+    context.textBaseline = "middle";
+    context.fillText(`${formatTestDecimal(h)} m`, left + 50, freeFallState.ballY);
+
+    context.fillStyle = "#101418";
+    context.textBaseline = "top";
+    context.fillText("Freier Fall  (g = 9,81 m/s²)", left + 18, topY + 10);
+
+    freeFallState.rafId = window.requestAnimationFrame(drawFreeFallGame);
+  };
+
+  const flashFreeFallSuccess = () => {
+    if (!(siGameStage instanceof HTMLElement)) return;
+    siGameStage.classList.remove("test-motion-flash");
+    window.requestAnimationFrame(() => {
+      siGameStage.classList.add("test-motion-flash");
+      document.body.classList.add("test-motion-page-flash");
+    });
+    if (freeFallState.flashTimer) window.clearTimeout(freeFallState.flashTimer);
+    freeFallState.flashTimer = window.setTimeout(() => {
+      siGameStage.classList.remove("test-motion-flash");
+      document.body.classList.remove("test-motion-page-flash");
+      freeFallState.flashTimer = 0;
+    }, 760);
+  };
+
+  const getCurrentFreeFallTask = () => FREE_FALL_TASKS[freeFallState.questionIndex] || FREE_FALL_TASKS[0];
+
+  const renderCurrentFreeFallTask = () => {
+    const task = getCurrentFreeFallTask();
+    freeFallState.questionSolved = false;
+    if (freeFallState.heightInput instanceof HTMLInputElement) freeFallState.heightInput.value = "0";
+    freeFallState.ballY = 0;
+    freeFallState.lastTime = 0;
+    updateFreeFallLabels();
+
+    if (freeFallState.taskMetaEl instanceof HTMLElement) {
+      freeFallState.taskMetaEl.innerHTML = `
+        <span>Aufgabe ${freeFallState.questionIndex + 1} von ${FREE_FALL_TASKS.length}</span>
+        <strong>Mittel · ${task.xp} XP</strong>
+      `;
+    }
+    if (freeFallState.taskTextEl instanceof HTMLElement) {
+      freeFallState.taskTextEl.innerHTML = `
+        Ein Ball fällt aus einer Höhe von <strong>${formatTestDecimal(task.height)} m</strong>
+        aus der Ruhe. Wie lange dauert der Fall? (g = 9,81 m/s²)
+      `;
+    }
+    if (freeFallState.answerInput instanceof HTMLInputElement) {
+      freeFallState.answerInput.value = "";
+      freeFallState.answerInput.disabled = false;
+      freeFallState.answerInput.focus();
+    }
+    if (freeFallState.feedbackEl instanceof HTMLElement) {
+      freeFallState.feedbackEl.className = "test-motion-feedback";
+      freeFallState.feedbackEl.textContent = "";
+    }
+    if (freeFallState.nextButton instanceof HTMLButtonElement) {
+      freeFallState.nextButton.hidden = true;
+      freeFallState.nextButton.textContent =
+        freeFallState.questionIndex === FREE_FALL_TASKS.length - 1 ? "Fertig" : "Nächste Frage";
+    }
+  };
+
+  const goToNextFreeFallTask = () => {
+    if (!freeFallState.questionSolved) return;
+    if (freeFallState.questionIndex >= FREE_FALL_TASKS.length - 1) {
+      stopFreeFallGame();
+      if (siGameStage instanceof HTMLElement) {
+        siGameStage.innerHTML = `
+          <section class="test-motion-complete">
+            <h3>Freier Fall – geschafft!</h3>
+            <p>Du hast alle Fallzeit-Aufgaben korrekt gelöst.</p>
+            <div class="test-motion-complete-actions">
+              <button class="si-jumpgame-button" id="freefall-back-final" type="button">Zurück zum Pfad</button>
+              <button class="si-jumpgame-button" id="freefall-repeat-final" type="button">Nochmal spielen</button>
+            </div>
+          </section>
+        `;
+        siGameStage.querySelector("#freefall-back-final")?.addEventListener("click", closeSIGame);
+        siGameStage.querySelector("#freefall-repeat-final")?.addEventListener("click", () => renderFreeFallGame());
+      }
+      return;
+    }
+    freeFallState.questionIndex += 1;
+    renderCurrentFreeFallTask();
+  };
+
+  const checkFreeFallAnswer = () => {
+    const feedbackEl = freeFallState.feedbackEl;
+    if (!(feedbackEl instanceof HTMLElement)) return;
+    const answer = freeFallState.answerInput instanceof HTMLInputElement ? freeFallState.answerInput.valueAsNumber : Number.NaN;
+    const task = getCurrentFreeFallTask();
+    feedbackEl.className = "test-motion-feedback";
+
+    if (!Number.isFinite(answer)) {
+      feedbackEl.textContent = "Gib zuerst eine Zahl ein.";
+      feedbackEl.classList.add("is-hint");
+      return;
+    }
+    if (Math.abs(answer - task.answer) <= 0.05) {
+      freeFallState.questionSolved = true;
+      feedbackEl.textContent = `Richtig! Die Fallzeit beträgt ${formatTestDecimal(task.answer)} s. +${task.xp} XP`;
+      feedbackEl.classList.add("is-correct");
+      if (freeFallState.answerInput instanceof HTMLInputElement) freeFallState.answerInput.disabled = true;
+      if (freeFallState.nextButton instanceof HTMLButtonElement) freeFallState.nextButton.hidden = false;
+      if (freeFallState.heightInput instanceof HTMLInputElement) freeFallState.heightInput.value = String(task.height);
+      updateFreeFallLabels();
+      flashFreeFallSuccess();
+      return;
+    }
+    feedbackEl.textContent = `Fast: Forme h = ½ · g · t² um: t = √(2h / g). Mit h = ${formatTestDecimal(task.height)} m und g = 9,81 m/s².`;
+    feedbackEl.classList.add("is-hint");
+  };
+
+  const startFreeFallQuestion = () => {
+    if (!(siGameStage instanceof HTMLElement)) return;
+    stopFreeFallGame();
+
+    siGameStage.innerHTML = `
+      <section class="test-motion-game">
+        <div class="test-motion-sim">
+          <canvas class="test-motion-canvas" id="freefall-canvas" aria-label="Ball fällt aus einer Höhe"></canvas>
+        </div>
+        <div class="test-motion-controls">
+          <label class="test-motion-control">
+            <span>Höhe erkunden</span>
+            <input id="freefall-height" type="range" min="0" max="100" step="1" value="0">
+            <strong id="freefall-height-value">0 m</strong>
+          </label>
+          <div class="test-motion-readout">
+            <span>Fallzeit</span>
+            <strong id="freefall-time-value">0 s</strong>
+          </div>
+        </div>
+        <article class="test-motion-task">
+          <div class="test-motion-task-meta" id="freefall-task-meta"></div>
+          <h3>Freier Fall</h3>
+          <p id="freefall-task-text"></p>
+          <label class="test-motion-answer-label" for="freefall-answer">Antwort in Sekunden</label>
+          <div class="test-motion-answer-row">
+            <input id="freefall-answer" type="number" inputmode="decimal" placeholder="Antwort">
+            <button class="si-jumpgame-button" id="freefall-check" type="button">Prüfen</button>
+          </div>
+          <p class="test-motion-feedback" id="freefall-feedback" aria-live="polite"></p>
+          <button class="si-jumpgame-button test-motion-next" id="freefall-next" type="button" hidden>Nächste Frage</button>
+        </article>
+      </section>
+    `;
+
+    freeFallState.canvas = siGameStage.querySelector("#freefall-canvas");
+    freeFallState.ctx = freeFallState.canvas instanceof HTMLCanvasElement ? freeFallState.canvas.getContext("2d") : null;
+    freeFallState.heightInput = siGameStage.querySelector("#freefall-height");
+    freeFallState.heightValue = siGameStage.querySelector("#freefall-height-value");
+    freeFallState.timeValue = siGameStage.querySelector("#freefall-time-value");
+    freeFallState.answerInput = siGameStage.querySelector("#freefall-answer");
+    freeFallState.feedbackEl = siGameStage.querySelector("#freefall-feedback");
+    freeFallState.taskMetaEl = siGameStage.querySelector("#freefall-task-meta");
+    freeFallState.taskTextEl = siGameStage.querySelector("#freefall-task-text");
+    freeFallState.nextButton = siGameStage.querySelector("#freefall-next");
+    freeFallState.ballY = 0;
+    freeFallState.lastTime = 0;
+    freeFallState.questionIndex = 0;
+    freeFallState.questionSolved = false;
+
+    if (freeFallState.heightInput instanceof HTMLInputElement) {
+      freeFallState.heightInput.addEventListener("input", updateFreeFallLabels);
+    }
+    siGameStage.querySelector("#freefall-check")?.addEventListener("click", checkFreeFallAnswer);
+    if (freeFallState.answerInput instanceof HTMLInputElement) {
+      freeFallState.answerInput.addEventListener("keydown", (e) => { if (e.key === "Enter") checkFreeFallAnswer(); });
+      freeFallState.answerInput.focus();
+    }
+    if (freeFallState.nextButton instanceof HTMLButtonElement) {
+      freeFallState.nextButton.addEventListener("click", goToNextFreeFallTask);
+    }
+
+    renderCurrentFreeFallTask();
+    resizeFreeFallCanvas();
+    freeFallState.running = true;
+    freeFallState.rafId = window.requestAnimationFrame(drawFreeFallGame);
+  };
+
+  const renderFreeFallGame = () => {
+    if (!(siGameStage instanceof HTMLElement)) return;
+    stopSIUnitsJumpGame(); stopTestMotionGame(); stopCatchUpGame();
+    stopAccelerationGame(); stopSprintGame(); stopFreeFallGame();
+    stopBrakingGame(); stopDistanceAccGame();
+
+    siGameStage.innerHTML = `
+      <section class="test-theory-page">
+        <div class="test-theory-copy">
+          <p class="test-theory-kicker">K3 · Freier Fall</p>
+          <h3>Was ist freier Fall?</h3>
+          <p>Wenn ein Objekt nur durch die Schwerkraft fällt – ohne Luftwiderstand, ohne Antrieb – spricht man von freiem Fall. Die Erde beschleunigt alles gleich stark, egal ob schwer oder leicht.</p>
+          <p>Die Fallbeschleunigung ist überall auf der Erde annähernd gleich: <strong>g ≈ 9,81 m/s²</strong>. Jede Sekunde nimmt die Fallgeschwindigkeit um 9,81 m/s zu.</p>
+          <p>Fällt ein Objekt aus der Ruhe, wächst der Weg quadratisch mit der Zeit – deshalb fällt man die letzten Meter viel schneller als die ersten.</p>
+        </div>
+        <div class="test-theory-formula" aria-label="Wichtige Formel">
+          <span>t = √(2h / g)</span>
+        </div>
+        <div class="test-theory-example">
+          <p><strong>Beispiel:</strong> Ball fällt aus h = 20 m.</p>
+          <p>t = √(2 · 20 / 9,81) = √(4,08) ≈ 2,02 s</p>
+        </div>
+        <button class="si-jumpgame-button test-theory-start" id="freefall-start" type="button">Zur Frage</button>
+      </section>
+    `;
+
+    siGameStage.querySelector("#freefall-start")?.addEventListener("click", startFreeFallQuestion);
+  };
+
+
+  // ─── K4: Bremsweg ────────────────────────────────────────────────────────
+
+  const getBrakingValues = () => {
+    const speed = Number(brakingState.speedInput?.value || 0);
+    const deceleration = Number(brakingState.decelerationInput?.value || 1);
+    return {
+      speed,
+      deceleration,
+      distance: deceleration > 0 ? (speed * speed) / (2 * deceleration) : 0,
+    };
+  };
+
+  const updateBrakingLabels = () => {
+    const { speed, deceleration, distance } = getBrakingValues();
+    if (brakingState.speedValue instanceof HTMLElement) brakingState.speedValue.textContent = `${formatTestDecimal(speed)} m/s`;
+    if (brakingState.decelerationValue instanceof HTMLElement) brakingState.decelerationValue.textContent = `${formatTestDecimal(deceleration)} m/s²`;
+    if (brakingState.distanceValue instanceof HTMLElement) brakingState.distanceValue.textContent = `${formatTestDecimal(distance)} m`;
+  };
+
+  const resizeBrakingCanvas = () => {
+    const canvas = brakingState.canvas;
+    if (!(canvas instanceof HTMLCanvasElement)) return;
+    const rect = canvas.getBoundingClientRect();
+    const ratio = Math.min(window.devicePixelRatio || 1, 2);
+    canvas.width = Math.max(1, Math.floor(rect.width * ratio));
+    canvas.height = Math.max(1, Math.floor(rect.height * ratio));
+    if (brakingState.ctx) brakingState.ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
+  };
+
+  const drawBrakingGame = (now = 0) => {
+    if (!brakingState.running || !(brakingState.canvas instanceof HTMLCanvasElement) || !brakingState.ctx) return;
+    const canvas = brakingState.canvas;
+    const context = brakingState.ctx;
+    const rect = canvas.getBoundingClientRect();
+    const width = rect.width;
+    const height = rect.height;
+    const { distance } = getBrakingValues();
+    const maxDistance = 80;
+    const left = 54;
+    const right = width - 58;
+    const trackY = height * 0.63;
+    const deltaSeconds = brakingState.lastTime ? Math.min(0.05, (now - brakingState.lastTime) / 1000) : 0.016;
+    const smoothing = 1 - Math.pow(0.001, deltaSeconds);
+    brakingState.lastTime = now;
+
+    const targetX = left + Math.min(distance, maxDistance) / maxDistance * (right - left);
+    if (!brakingState.carX) brakingState.carX = left;
+    brakingState.carX += (targetX - brakingState.carX) * smoothing;
+
+    context.clearRect(0, 0, width, height);
+    context.fillStyle = "rgba(255, 255, 255, 0.96)";
+    context.fillRect(0, 0, width, height);
+
+    const gridStep = (right - left) / (maxDistance / 10);
+    context.strokeStyle = "rgba(96, 111, 128, 0.22)";
+    context.lineWidth = 1;
+    for (let x = left; x <= right + 0.5; x += gridStep) {
+      context.beginPath(); context.moveTo(x, 18); context.lineTo(x, height - 30); context.stroke();
+    }
+    for (let y = trackY; y >= 22; y -= gridStep) {
+      context.beginPath(); context.moveTo(left, y); context.lineTo(right, y); context.stroke();
+    }
+
+    context.strokeStyle = "#171b21";
+    context.lineWidth = 4;
+    context.lineCap = "round";
+    context.beginPath(); context.moveTo(left, trackY); context.lineTo(right, trackY); context.stroke();
+
+    context.strokeStyle = "#f86785";
+    context.lineWidth = 7;
+    context.beginPath(); context.moveTo(left, trackY); context.lineTo(brakingState.carX, trackY); context.stroke();
+
+    context.fillStyle = "#384858";
+    context.font = "700 12px Space Grotesk, sans-serif";
+    context.textAlign = "center";
+    context.textBaseline = "top";
+    for (let m = 0; m <= maxDistance; m += 10) {
+      const x = left + (m / maxDistance) * (right - left);
+      context.strokeStyle = "rgba(23, 27, 33, 0.42)";
+      context.lineWidth = m % 20 === 0 ? 2 : 1;
+      context.beginPath(); context.moveTo(x, trackY - 8); context.lineTo(x, trackY + 8); context.stroke();
+      if (m % 20 === 0) context.fillText(`${m} m`, x, trackY + 16);
+    }
+
+    context.strokeStyle = "#171b21";
+    context.lineWidth = 2;
+    context.setLineDash([4, 4]);
+    context.beginPath(); context.moveTo(left, trackY - 44); context.lineTo(left, trackY + 4); context.stroke();
+    context.setLineDash([]);
+    context.fillStyle = "#384858";
+    context.font = "700 11px Space Grotesk, sans-serif";
+    context.textAlign = "center";
+    context.textBaseline = "bottom";
+    context.fillText("Start", left, trackY - 46);
+
+    const carX = brakingState.carX;
+    const carY = trackY - 24;
+    context.fillStyle = "#f86785";
+    context.strokeStyle = "#171b21";
+    context.lineWidth = 2.2;
+    context.beginPath();
+    context.roundRect(carX - 31, carY - 15, 62, 26, 7);
+    context.fill(); context.stroke();
+    context.fillStyle = "#f9a8bd";
+    context.beginPath();
+    context.roundRect(carX - 14, carY - 33, 31, 20, 5);
+    context.fill(); context.stroke();
+    context.fillStyle = "#171b21";
+    context.beginPath();
+    context.arc(carX - 20, carY + 12, 8, 0, Math.PI * 2);
+    context.arc(carX + 20, carY + 12, 8, 0, Math.PI * 2);
+    context.fill();
+    context.fillStyle = "#f8fbff";
+    context.beginPath();
+    context.arc(carX - 20, carY + 12, 3.2, 0, Math.PI * 2);
+    context.arc(carX + 20, carY + 12, 3.2, 0, Math.PI * 2);
+    context.fill();
+
+    context.fillStyle = "#101418";
+    context.font = "800 13px Space Grotesk, sans-serif";
+    context.textAlign = "left";
+    context.textBaseline = "top";
+    context.fillText("Bremsweg-Analyse", left, 18);
+
+    brakingState.rafId = window.requestAnimationFrame(drawBrakingGame);
+  };
+
+  const flashBrakingSuccess = () => {
+    if (!(siGameStage instanceof HTMLElement)) return;
+    siGameStage.classList.remove("test-motion-flash");
+    window.requestAnimationFrame(() => {
+      siGameStage.classList.add("test-motion-flash");
+      document.body.classList.add("test-motion-page-flash");
+    });
+    if (brakingState.flashTimer) window.clearTimeout(brakingState.flashTimer);
+    brakingState.flashTimer = window.setTimeout(() => {
+      siGameStage.classList.remove("test-motion-flash");
+      document.body.classList.remove("test-motion-page-flash");
+      brakingState.flashTimer = 0;
+    }, 760);
+  };
+
+  const getCurrentBrakingTask = () => BRAKING_TASKS[brakingState.questionIndex] || BRAKING_TASKS[0];
+
+  const renderCurrentBrakingTask = () => {
+    const task = getCurrentBrakingTask();
+    brakingState.questionSolved = false;
+    if (brakingState.speedInput instanceof HTMLInputElement) brakingState.speedInput.value = "0";
+    if (brakingState.decelerationInput instanceof HTMLInputElement) brakingState.decelerationInput.value = "1";
+    brakingState.carX = 0;
+    brakingState.lastTime = 0;
+    updateBrakingLabels();
+
+    if (brakingState.taskMetaEl instanceof HTMLElement) {
+      brakingState.taskMetaEl.innerHTML = `
+        <span>Aufgabe ${brakingState.questionIndex + 1} von ${BRAKING_TASKS.length}</span>
+        <strong>Mittel · ${task.xp} XP</strong>
+      `;
+    }
+    if (brakingState.taskTextEl instanceof HTMLElement) {
+      brakingState.taskTextEl.innerHTML = `
+        Ein Auto fährt mit <strong>${formatTestDecimal(task.speed)} m/s</strong>
+        und bremst mit <strong>${formatTestDecimal(task.deceleration)} m/s²</strong>.
+        Wie lang ist der Bremsweg bis zum Stillstand?
+      `;
+    }
+    if (brakingState.answerInput instanceof HTMLInputElement) {
+      brakingState.answerInput.value = "";
+      brakingState.answerInput.disabled = false;
+      brakingState.answerInput.focus();
+    }
+    if (brakingState.feedbackEl instanceof HTMLElement) {
+      brakingState.feedbackEl.className = "test-motion-feedback";
+      brakingState.feedbackEl.textContent = "";
+    }
+    if (brakingState.nextButton instanceof HTMLButtonElement) {
+      brakingState.nextButton.hidden = true;
+      brakingState.nextButton.textContent =
+        brakingState.questionIndex === BRAKING_TASKS.length - 1 ? "Fertig" : "Nächste Frage";
+    }
+  };
+
+  const goToNextBrakingTask = () => {
+    if (!brakingState.questionSolved) return;
+    if (brakingState.questionIndex >= BRAKING_TASKS.length - 1) {
+      stopBrakingGame();
+      if (siGameStage instanceof HTMLElement) {
+        siGameStage.innerHTML = `
+          <section class="test-motion-complete">
+            <h3>Bremsweg – geschafft!</h3>
+            <p>Du hast alle Bremsweg-Aufgaben korrekt gelöst.</p>
+            <div class="test-motion-complete-actions">
+              <button class="si-jumpgame-button" id="braking-back-final" type="button">Zurück zum Pfad</button>
+              <button class="si-jumpgame-button" id="braking-repeat-final" type="button">Nochmal spielen</button>
+            </div>
+          </section>
+        `;
+        siGameStage.querySelector("#braking-back-final")?.addEventListener("click", closeSIGame);
+        siGameStage.querySelector("#braking-repeat-final")?.addEventListener("click", () => renderBrakingGame());
+      }
+      return;
+    }
+    brakingState.questionIndex += 1;
+    renderCurrentBrakingTask();
+  };
+
+  const checkBrakingAnswer = () => {
+    const feedbackEl = brakingState.feedbackEl;
+    if (!(feedbackEl instanceof HTMLElement)) return;
+    const answer = brakingState.answerInput instanceof HTMLInputElement ? brakingState.answerInput.valueAsNumber : Number.NaN;
+    const task = getCurrentBrakingTask();
+    feedbackEl.className = "test-motion-feedback";
+
+    if (!Number.isFinite(answer)) {
+      feedbackEl.textContent = "Gib zuerst eine Zahl ein.";
+      feedbackEl.classList.add("is-hint");
+      return;
+    }
+    if (Math.abs(answer - task.answer) <= 0.1) {
+      brakingState.questionSolved = true;
+      feedbackEl.textContent = `Richtig! Der Bremsweg beträgt ${formatTestDecimal(task.answer)} m. +${task.xp} XP`;
+      feedbackEl.classList.add("is-correct");
+      if (brakingState.answerInput instanceof HTMLInputElement) brakingState.answerInput.disabled = true;
+      if (brakingState.nextButton instanceof HTMLButtonElement) brakingState.nextButton.hidden = false;
+      if (brakingState.speedInput instanceof HTMLInputElement) brakingState.speedInput.value = String(task.speed);
+      if (brakingState.decelerationInput instanceof HTMLInputElement) brakingState.decelerationInput.value = String(task.deceleration);
+      updateBrakingLabels();
+      flashBrakingSuccess();
+      return;
+    }
+    feedbackEl.textContent = `Fast: Nutze s = v₀² / (2 · a). Mit v₀ = ${formatTestDecimal(task.speed)} m/s und a = ${formatTestDecimal(task.deceleration)} m/s².`;
+    feedbackEl.classList.add("is-hint");
+  };
+
+  const startBrakingQuestion = () => {
+    if (!(siGameStage instanceof HTMLElement)) return;
+    stopBrakingGame();
+
+    siGameStage.innerHTML = `
+      <section class="test-motion-game">
+        <div class="test-motion-sim">
+          <canvas class="test-motion-canvas" id="braking-canvas" aria-label="Auto bremst auf einer Strecke"></canvas>
+        </div>
+        <div class="test-motion-controls">
+          <label class="test-motion-control">
+            <span>Startgeschwindigkeit</span>
+            <input id="braking-speed" type="range" min="0" max="30" step="1" value="0">
+            <strong id="braking-speed-value">0 m/s</strong>
+          </label>
+          <label class="test-motion-control">
+            <span>Bremsbeschleunigung</span>
+            <input id="braking-deceleration" type="range" min="1" max="10" step="0.5" value="1">
+            <strong id="braking-deceleration-value">1 m/s²</strong>
+          </label>
+          <div class="test-motion-readout">
+            <span>Bremsweg</span>
+            <strong id="braking-distance-value">0 m</strong>
+          </div>
+        </div>
+        <article class="test-motion-task">
+          <div class="test-motion-task-meta" id="braking-task-meta"></div>
+          <h3>Bremsweg</h3>
+          <p id="braking-task-text"></p>
+          <label class="test-motion-answer-label" for="braking-answer">Antwort in Metern</label>
+          <div class="test-motion-answer-row">
+            <input id="braking-answer" type="number" inputmode="decimal" placeholder="Antwort">
+            <button class="si-jumpgame-button" id="braking-check" type="button">Prüfen</button>
+          </div>
+          <p class="test-motion-feedback" id="braking-feedback" aria-live="polite"></p>
+          <button class="si-jumpgame-button test-motion-next" id="braking-next" type="button" hidden>Nächste Frage</button>
+        </article>
+      </section>
+    `;
+
+    brakingState.canvas = siGameStage.querySelector("#braking-canvas");
+    brakingState.ctx = brakingState.canvas instanceof HTMLCanvasElement ? brakingState.canvas.getContext("2d") : null;
+    brakingState.speedInput = siGameStage.querySelector("#braking-speed");
+    brakingState.decelerationInput = siGameStage.querySelector("#braking-deceleration");
+    brakingState.speedValue = siGameStage.querySelector("#braking-speed-value");
+    brakingState.decelerationValue = siGameStage.querySelector("#braking-deceleration-value");
+    brakingState.distanceValue = siGameStage.querySelector("#braking-distance-value");
+    brakingState.answerInput = siGameStage.querySelector("#braking-answer");
+    brakingState.feedbackEl = siGameStage.querySelector("#braking-feedback");
+    brakingState.taskMetaEl = siGameStage.querySelector("#braking-task-meta");
+    brakingState.taskTextEl = siGameStage.querySelector("#braking-task-text");
+    brakingState.nextButton = siGameStage.querySelector("#braking-next");
+    brakingState.carX = 0;
+    brakingState.lastTime = 0;
+    brakingState.questionIndex = 0;
+    brakingState.questionSolved = false;
+
+    [brakingState.speedInput, brakingState.decelerationInput].forEach((input) => {
+      if (input instanceof HTMLInputElement) input.addEventListener("input", updateBrakingLabels);
+    });
+    siGameStage.querySelector("#braking-check")?.addEventListener("click", checkBrakingAnswer);
+    if (brakingState.answerInput instanceof HTMLInputElement) {
+      brakingState.answerInput.addEventListener("keydown", (e) => { if (e.key === "Enter") checkBrakingAnswer(); });
+      brakingState.answerInput.focus();
+    }
+    if (brakingState.nextButton instanceof HTMLButtonElement) {
+      brakingState.nextButton.addEventListener("click", goToNextBrakingTask);
+    }
+
+    renderCurrentBrakingTask();
+    resizeBrakingCanvas();
+    brakingState.running = true;
+    brakingState.rafId = window.requestAnimationFrame(drawBrakingGame);
+  };
+
+  const renderBrakingGame = () => {
+    if (!(siGameStage instanceof HTMLElement)) return;
+    stopSIUnitsJumpGame(); stopTestMotionGame(); stopCatchUpGame();
+    stopAccelerationGame(); stopSprintGame(); stopFreeFallGame();
+    stopBrakingGame(); stopDistanceAccGame();
+
+    siGameStage.innerHTML = `
+      <section class="test-theory-page">
+        <div class="test-theory-copy">
+          <p class="test-theory-kicker">K4 · Bremsweg</p>
+          <h3>Wie weit bremst ein Auto?</h3>
+          <p>Beim Bremsen verzögert ein Fahrzeug gleichmäßig – das ist eine gleichmäßig gebremste Bewegung mit negativer Beschleunigung.</p>
+          <p>Entscheidend ist: Doppelte Anfangsgeschwindigkeit bedeutet <strong>viermal längeren Bremsweg</strong>, weil v₀ im Quadrat in die Formel eingeht.</p>
+          <p>Das erklärt, warum auf Autobahnen die Unfallgefahr bei höheren Geschwindigkeiten so dramatisch ansteigt.</p>
+        </div>
+        <div class="test-theory-formula" aria-label="Wichtige Formel">
+          <span>s = v₀² / (2 · a)</span>
+        </div>
+        <div class="test-theory-example">
+          <p><strong>Beispiel:</strong> v₀ = 20 m/s, a = 4 m/s²</p>
+          <p>s = 20² / (2 · 4) = 400 / 8 = 50 m</p>
+        </div>
+        <button class="si-jumpgame-button test-theory-start" id="braking-start" type="button">Zur Frage</button>
+      </section>
+    `;
+
+    siGameStage.querySelector("#braking-start")?.addEventListener("click", startBrakingQuestion);
+  };
+
+
+  // ─── K5: Beschleunigungsweg ───────────────────────────────────────────────
+
+  const getDistanceAccValues = () => {
+    const acceleration = Number(distanceAccState.accelerationInput?.value || 0);
+    const time = Number(distanceAccState.timeInput?.value || 0);
+    return { acceleration, time, distance: 0.5 * acceleration * time * time };
+  };
+
+  const updateDistanceAccLabels = () => {
+    const { acceleration, time, distance } = getDistanceAccValues();
+    if (distanceAccState.accelerationValue instanceof HTMLElement) distanceAccState.accelerationValue.textContent = `${formatTestDecimal(acceleration)} m/s²`;
+    if (distanceAccState.timeValue instanceof HTMLElement) distanceAccState.timeValue.textContent = `${formatTestDecimal(time)} s`;
+    if (distanceAccState.distanceValue instanceof HTMLElement) distanceAccState.distanceValue.textContent = `${formatTestDecimal(distance)} m`;
+  };
+
+  const resizeDistanceAccCanvas = () => {
+    const canvas = distanceAccState.canvas;
+    if (!(canvas instanceof HTMLCanvasElement)) return;
+    const rect = canvas.getBoundingClientRect();
+    const ratio = Math.min(window.devicePixelRatio || 1, 2);
+    canvas.width = Math.max(1, Math.floor(rect.width * ratio));
+    canvas.height = Math.max(1, Math.floor(rect.height * ratio));
+    if (distanceAccState.ctx) distanceAccState.ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
+  };
+
+  const drawDistanceAccGame = (now = 0) => {
+    if (!distanceAccState.running || !(distanceAccState.canvas instanceof HTMLCanvasElement) || !distanceAccState.ctx) return;
+    const canvas = distanceAccState.canvas;
+    const context = distanceAccState.ctx;
+    const rect = canvas.getBoundingClientRect();
+    const width = rect.width;
+    const height = rect.height;
+    const { distance } = getDistanceAccValues();
+    const maxDistance = 80;
+    const left = 54;
+    const right = width - 58;
+    const trackY = height * 0.63;
+    const deltaSeconds = distanceAccState.lastTime ? Math.min(0.05, (now - distanceAccState.lastTime) / 1000) : 0.016;
+    const smoothing = 1 - Math.pow(0.001, deltaSeconds);
+    distanceAccState.lastTime = now;
+
+    const targetX = left + Math.min(distance, maxDistance) / maxDistance * (right - left);
+    if (!distanceAccState.carX) distanceAccState.carX = left;
+    distanceAccState.carX += (targetX - distanceAccState.carX) * smoothing;
+
+    context.clearRect(0, 0, width, height);
+    context.fillStyle = "rgba(255, 255, 255, 0.96)";
+    context.fillRect(0, 0, width, height);
+
+    const gridStep = (right - left) / (maxDistance / 10);
+    context.strokeStyle = "rgba(96, 111, 128, 0.22)";
+    context.lineWidth = 1;
+    for (let x = left; x <= right + 0.5; x += gridStep) {
+      context.beginPath(); context.moveTo(x, 18); context.lineTo(x, height - 30); context.stroke();
+    }
+    for (let y = trackY; y >= 22; y -= gridStep) {
+      context.beginPath(); context.moveTo(left, y); context.lineTo(right, y); context.stroke();
+    }
+
+    context.strokeStyle = "#171b21";
+    context.lineWidth = 4;
+    context.lineCap = "round";
+    context.beginPath(); context.moveTo(left, trackY); context.lineTo(right, trackY); context.stroke();
+
+    context.strokeStyle = "#8f73ff";
+    context.lineWidth = 7;
+    context.beginPath(); context.moveTo(left, trackY); context.lineTo(distanceAccState.carX, trackY); context.stroke();
+
+    context.fillStyle = "#384858";
+    context.font = "700 12px Space Grotesk, sans-serif";
+    context.textAlign = "center";
+    context.textBaseline = "top";
+    for (let m = 0; m <= maxDistance; m += 10) {
+      const x = left + (m / maxDistance) * (right - left);
+      context.strokeStyle = "rgba(23, 27, 33, 0.42)";
+      context.lineWidth = m % 20 === 0 ? 2 : 1;
+      context.beginPath(); context.moveTo(x, trackY - 8); context.lineTo(x, trackY + 8); context.stroke();
+      if (m % 20 === 0) context.fillText(`${m} m`, x, trackY + 16);
+    }
+
+    const carX = distanceAccState.carX;
+    const carY = trackY - 24;
+    context.fillStyle = "#8f73ff";
+    context.strokeStyle = "#171b21";
+    context.lineWidth = 2.2;
+    context.beginPath();
+    context.roundRect(carX - 31, carY - 15, 62, 26, 7);
+    context.fill(); context.stroke();
+    context.fillStyle = "#c2b6ff";
+    context.beginPath();
+    context.roundRect(carX - 14, carY - 33, 31, 20, 5);
+    context.fill(); context.stroke();
+    context.fillStyle = "#171b21";
+    context.beginPath();
+    context.arc(carX - 20, carY + 12, 8, 0, Math.PI * 2);
+    context.arc(carX + 20, carY + 12, 8, 0, Math.PI * 2);
+    context.fill();
+    context.fillStyle = "#f8fbff";
+    context.beginPath();
+    context.arc(carX - 20, carY + 12, 3.2, 0, Math.PI * 2);
+    context.arc(carX + 20, carY + 12, 3.2, 0, Math.PI * 2);
+    context.fill();
+
+    context.fillStyle = "#101418";
+    context.font = "800 13px Space Grotesk, sans-serif";
+    context.textAlign = "left";
+    context.textBaseline = "top";
+    context.fillText("Beschleunigungsweg (Start aus Ruhe)", left, 18);
+
+    distanceAccState.rafId = window.requestAnimationFrame(drawDistanceAccGame);
+  };
+
+  const flashDistanceAccSuccess = () => {
+    if (!(siGameStage instanceof HTMLElement)) return;
+    siGameStage.classList.remove("test-motion-flash");
+    window.requestAnimationFrame(() => {
+      siGameStage.classList.add("test-motion-flash");
+      document.body.classList.add("test-motion-page-flash");
+    });
+    if (distanceAccState.flashTimer) window.clearTimeout(distanceAccState.flashTimer);
+    distanceAccState.flashTimer = window.setTimeout(() => {
+      siGameStage.classList.remove("test-motion-flash");
+      document.body.classList.remove("test-motion-page-flash");
+      distanceAccState.flashTimer = 0;
+    }, 760);
+  };
+
+  const getCurrentDistanceAccTask = () => DISTANCE_ACC_TASKS[distanceAccState.questionIndex] || DISTANCE_ACC_TASKS[0];
+
+  const renderCurrentDistanceAccTask = () => {
+    const task = getCurrentDistanceAccTask();
+    distanceAccState.questionSolved = false;
+    if (distanceAccState.accelerationInput instanceof HTMLInputElement) distanceAccState.accelerationInput.value = "0";
+    if (distanceAccState.timeInput instanceof HTMLInputElement) distanceAccState.timeInput.value = "0";
+    distanceAccState.carX = 0;
+    distanceAccState.lastTime = 0;
+    updateDistanceAccLabels();
+
+    if (distanceAccState.taskMetaEl instanceof HTMLElement) {
+      distanceAccState.taskMetaEl.innerHTML = `
+        <span>Aufgabe ${distanceAccState.questionIndex + 1} von ${DISTANCE_ACC_TASKS.length}</span>
+        <strong>Mittel · ${task.xp} XP</strong>
+      `;
+    }
+    if (distanceAccState.taskTextEl instanceof HTMLElement) {
+      distanceAccState.taskTextEl.innerHTML = `
+        Ein Fahrzeug startet aus der Ruhe und beschleunigt gleichmäßig mit
+        <strong>a = ${formatTestDecimal(task.acceleration)} m/s²</strong>
+        für <strong>t = ${formatTestDecimal(task.time)} s</strong>.
+        Wie weit ist es gefahren?
+      `;
+    }
+    if (distanceAccState.answerInput instanceof HTMLInputElement) {
+      distanceAccState.answerInput.value = "";
+      distanceAccState.answerInput.disabled = false;
+      distanceAccState.answerInput.focus();
+    }
+    if (distanceAccState.feedbackEl instanceof HTMLElement) {
+      distanceAccState.feedbackEl.className = "test-motion-feedback";
+      distanceAccState.feedbackEl.textContent = "";
+    }
+    if (distanceAccState.nextButton instanceof HTMLButtonElement) {
+      distanceAccState.nextButton.hidden = true;
+      distanceAccState.nextButton.textContent =
+        distanceAccState.questionIndex === DISTANCE_ACC_TASKS.length - 1 ? "Fertig" : "Nächste Frage";
+    }
+  };
+
+  const goToNextDistanceAccTask = () => {
+    if (!distanceAccState.questionSolved) return;
+    if (distanceAccState.questionIndex >= DISTANCE_ACC_TASKS.length - 1) {
+      stopDistanceAccGame();
+      if (siGameStage instanceof HTMLElement) {
+        siGameStage.innerHTML = `
+          <section class="test-motion-complete">
+            <h3>Beschleunigungsweg – geschafft!</h3>
+            <p>Du hast alle Aufgaben zum Weg beim Anfahren korrekt gelöst.</p>
+            <div class="test-motion-complete-actions">
+              <button class="si-jumpgame-button" id="distacc-back-final" type="button">Zurück zum Pfad</button>
+              <button class="si-jumpgame-button" id="distacc-repeat-final" type="button">Nochmal spielen</button>
+            </div>
+          </section>
+        `;
+        siGameStage.querySelector("#distacc-back-final")?.addEventListener("click", closeSIGame);
+        siGameStage.querySelector("#distacc-repeat-final")?.addEventListener("click", () => renderDistanceAccGame());
+      }
+      return;
+    }
+    distanceAccState.questionIndex += 1;
+    renderCurrentDistanceAccTask();
+  };
+
+  const checkDistanceAccAnswer = () => {
+    const feedbackEl = distanceAccState.feedbackEl;
+    if (!(feedbackEl instanceof HTMLElement)) return;
+    const answer = distanceAccState.answerInput instanceof HTMLInputElement ? distanceAccState.answerInput.valueAsNumber : Number.NaN;
+    const task = getCurrentDistanceAccTask();
+    feedbackEl.className = "test-motion-feedback";
+
+    if (!Number.isFinite(answer)) {
+      feedbackEl.textContent = "Gib zuerst eine Zahl ein.";
+      feedbackEl.classList.add("is-hint");
+      return;
+    }
+    if (Math.abs(answer - task.answer) <= 0.5) {
+      distanceAccState.questionSolved = true;
+      feedbackEl.textContent = `Richtig! Das Fahrzeug hat ${formatTestDecimal(task.answer)} m zurückgelegt. +${task.xp} XP`;
+      feedbackEl.classList.add("is-correct");
+      if (distanceAccState.answerInput instanceof HTMLInputElement) distanceAccState.answerInput.disabled = true;
+      if (distanceAccState.nextButton instanceof HTMLButtonElement) distanceAccState.nextButton.hidden = false;
+      if (distanceAccState.accelerationInput instanceof HTMLInputElement) distanceAccState.accelerationInput.value = String(task.acceleration);
+      if (distanceAccState.timeInput instanceof HTMLInputElement) distanceAccState.timeInput.value = String(task.time);
+      updateDistanceAccLabels();
+      flashDistanceAccSuccess();
+      return;
+    }
+    feedbackEl.textContent = `Fast: Bei Start aus der Ruhe gilt s = ½ · a · t². Mit a = ${formatTestDecimal(task.acceleration)} m/s² und t = ${formatTestDecimal(task.time)} s.`;
+    feedbackEl.classList.add("is-hint");
+  };
+
+  const startDistanceAccQuestion = () => {
+    if (!(siGameStage instanceof HTMLElement)) return;
+    stopDistanceAccGame();
+
+    siGameStage.innerHTML = `
+      <section class="test-motion-game">
+        <div class="test-motion-sim">
+          <canvas class="test-motion-canvas" id="distacc-canvas" aria-label="Fahrzeug beschleunigt aus dem Stand"></canvas>
+        </div>
+        <div class="test-motion-controls">
+          <label class="test-motion-control">
+            <span>Beschleunigung</span>
+            <input id="distacc-acceleration" type="range" min="0" max="6" step="0.5" value="0">
+            <strong id="distacc-acceleration-value">0 m/s²</strong>
+          </label>
+          <label class="test-motion-control">
+            <span>Zeit</span>
+            <input id="distacc-time" type="range" min="0" max="8" step="0.5" value="0">
+            <strong id="distacc-time-value">0 s</strong>
+          </label>
+          <div class="test-motion-readout">
+            <span>Zurückgelegter Weg</span>
+            <strong id="distacc-distance-value">0 m</strong>
+          </div>
+        </div>
+        <article class="test-motion-task">
+          <div class="test-motion-task-meta" id="distacc-task-meta"></div>
+          <h3>Beschleunigungsweg</h3>
+          <p id="distacc-task-text"></p>
+          <label class="test-motion-answer-label" for="distacc-answer">Antwort in Metern</label>
+          <div class="test-motion-answer-row">
+            <input id="distacc-answer" type="number" inputmode="decimal" placeholder="Antwort">
+            <button class="si-jumpgame-button" id="distacc-check" type="button">Prüfen</button>
+          </div>
+          <p class="test-motion-feedback" id="distacc-feedback" aria-live="polite"></p>
+          <button class="si-jumpgame-button test-motion-next" id="distacc-next" type="button" hidden>Nächste Frage</button>
+        </article>
+      </section>
+    `;
+
+    distanceAccState.canvas = siGameStage.querySelector("#distacc-canvas");
+    distanceAccState.ctx = distanceAccState.canvas instanceof HTMLCanvasElement ? distanceAccState.canvas.getContext("2d") : null;
+    distanceAccState.accelerationInput = siGameStage.querySelector("#distacc-acceleration");
+    distanceAccState.timeInput = siGameStage.querySelector("#distacc-time");
+    distanceAccState.accelerationValue = siGameStage.querySelector("#distacc-acceleration-value");
+    distanceAccState.timeValue = siGameStage.querySelector("#distacc-time-value");
+    distanceAccState.distanceValue = siGameStage.querySelector("#distacc-distance-value");
+    distanceAccState.answerInput = siGameStage.querySelector("#distacc-answer");
+    distanceAccState.feedbackEl = siGameStage.querySelector("#distacc-feedback");
+    distanceAccState.taskMetaEl = siGameStage.querySelector("#distacc-task-meta");
+    distanceAccState.taskTextEl = siGameStage.querySelector("#distacc-task-text");
+    distanceAccState.nextButton = siGameStage.querySelector("#distacc-next");
+    distanceAccState.carX = 0;
+    distanceAccState.lastTime = 0;
+    distanceAccState.questionIndex = 0;
+    distanceAccState.questionSolved = false;
+
+    [distanceAccState.accelerationInput, distanceAccState.timeInput].forEach((input) => {
+      if (input instanceof HTMLInputElement) input.addEventListener("input", updateDistanceAccLabels);
+    });
+    siGameStage.querySelector("#distacc-check")?.addEventListener("click", checkDistanceAccAnswer);
+    if (distanceAccState.answerInput instanceof HTMLInputElement) {
+      distanceAccState.answerInput.addEventListener("keydown", (e) => { if (e.key === "Enter") checkDistanceAccAnswer(); });
+      distanceAccState.answerInput.focus();
+    }
+    if (distanceAccState.nextButton instanceof HTMLButtonElement) {
+      distanceAccState.nextButton.addEventListener("click", goToNextDistanceAccTask);
+    }
+
+    renderCurrentDistanceAccTask();
+    resizeDistanceAccCanvas();
+    distanceAccState.running = true;
+    distanceAccState.rafId = window.requestAnimationFrame(drawDistanceAccGame);
+  };
+
+  const renderDistanceAccGame = () => {
+    if (!(siGameStage instanceof HTMLElement)) return;
+    stopSIUnitsJumpGame(); stopTestMotionGame(); stopCatchUpGame();
+    stopAccelerationGame(); stopSprintGame(); stopFreeFallGame();
+    stopBrakingGame(); stopDistanceAccGame();
+
+    siGameStage.innerHTML = `
+      <section class="test-theory-page">
+        <div class="test-theory-copy">
+          <p class="test-theory-kicker">K5 · Beschleunigungsweg</p>
+          <h3>Wie weit kommt man beim Anfahren?</h3>
+          <p>Ein Fahrzeug, das aus der Ruhe gleichmäßig beschleunigt, legt in den ersten Sekunden wenig zurück – aber der Weg wächst sehr schnell, weil die Geschwindigkeit zunimmt.</p>
+          <p>Der zurückgelegte Weg hängt vom <strong>Quadrat der Zeit</strong> ab: Doppelte Zeit bedeutet viermal mehr Weg. Das nennt man quadratisches Wachstum.</p>
+          <p>Diese Formel gilt nur, wenn das Fahrzeug aus der Ruhe startet (v₀ = 0). Ansonsten kommt noch ein v₀ · t-Term hinzu.</p>
+        </div>
+        <div class="test-theory-formula" aria-label="Wichtige Formel">
+          <span>s = ½ · a · t²</span>
+        </div>
+        <div class="test-theory-example">
+          <p><strong>Beispiel:</strong> a = 3 m/s², t = 6 s</p>
+          <p>s = ½ · 3 · 6² = ½ · 3 · 36 = 54 m</p>
+        </div>
+        <button class="si-jumpgame-button test-theory-start" id="distacc-start" type="button">Zur Frage</button>
+      </section>
+    `;
+
+    siGameStage.querySelector("#distacc-start")?.addEventListener("click", startDistanceAccQuestion);
+  };
+
+
+  // ─── K6: Konzept-Quiz (Multiple Choice) ──────────────────────────────────
+
+  const startMCConceptQuestion = (index) => {
+    if (!(siGameStage instanceof HTMLElement)) return;
+    const question = MC_CONCEPT_QUESTIONS[index];
+
+    if (!question) {
+      siGameStage.innerHTML = `
+        <section class="test-motion-complete">
+          <h3>Konzept-Quiz geschafft!</h3>
+          <p>Du hast alle vier Konzeptfragen beantwortet. Sehr gut!</p>
+          <div class="test-motion-complete-actions">
+            <button class="si-jumpgame-button" id="mc-back-final" type="button">Zurück zum Pfad</button>
+            <button class="si-jumpgame-button" id="mc-repeat-final" type="button">Nochmal spielen</button>
+          </div>
+        </section>
+      `;
+      siGameStage.querySelector("#mc-back-final")?.addEventListener("click", closeSIGame);
+      siGameStage.querySelector("#mc-repeat-final")?.addEventListener("click", () => renderMCConceptGame());
+      return;
+    }
+
+    const optionsHTML = question.options.map((option, i) => `
+      <button class="mc-option-btn" type="button" data-index="${i}">${option}</button>
+    `).join("");
+
+    siGameStage.innerHTML = `
+      <section class="test-theory-page mc-quiz-page">
+        <div class="test-theory-copy">
+          <p class="test-theory-kicker">Frage ${index + 1} von ${MC_CONCEPT_QUESTIONS.length}</p>
+          <h3>${question.text}</h3>
+        </div>
+        <div class="mc-options-grid" id="mc-options-grid">
+          ${optionsHTML}
+        </div>
+        <p class="test-motion-feedback mc-feedback" id="mc-feedback" aria-live="polite"></p>
+        <button class="si-jumpgame-button test-motion-next" id="mc-next" type="button" hidden>
+          ${index + 1 < MC_CONCEPT_QUESTIONS.length ? "Nächste Frage" : "Fertig"}
+        </button>
+      </section>
+    `;
+
+    const optionsGrid = siGameStage.querySelector("#mc-options-grid");
+    const feedbackEl = siGameStage.querySelector("#mc-feedback");
+    const nextBtn = siGameStage.querySelector("#mc-next");
+
+    optionsGrid?.querySelectorAll(".mc-option-btn").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const chosen = Number(btn.getAttribute("data-index"));
+        optionsGrid.querySelectorAll(".mc-option-btn").forEach((b) => {
+          b.disabled = true;
+          const idx = Number(b.getAttribute("data-index"));
+          if (idx === question.correct) b.classList.add("mc-correct");
+          else if (idx === chosen && chosen !== question.correct) b.classList.add("mc-wrong");
+        });
+
+        if (feedbackEl instanceof HTMLElement) {
+          feedbackEl.className = "test-motion-feedback mc-feedback";
+          if (chosen === question.correct) {
+            feedbackEl.textContent = `Richtig! ${question.explanation}`;
+            feedbackEl.classList.add("is-correct");
+          } else {
+            feedbackEl.textContent = `Nicht ganz. ${question.explanation}`;
+            feedbackEl.classList.add("is-hint");
+          }
+        }
+        if (nextBtn instanceof HTMLButtonElement) nextBtn.hidden = false;
+      });
+    });
+
+    if (nextBtn instanceof HTMLButtonElement) {
+      nextBtn.addEventListener("click", () => startMCConceptQuestion(index + 1));
+    }
+  };
+
+  const renderMCConceptGame = () => {
+    if (!(siGameStage instanceof HTMLElement)) return;
+    stopSIUnitsJumpGame(); stopTestMotionGame(); stopCatchUpGame();
+    stopAccelerationGame(); stopSprintGame(); stopFreeFallGame();
+    stopBrakingGame(); stopDistanceAccGame();
+
+    siGameStage.innerHTML = `
+      <section class="test-theory-page">
+        <div class="test-theory-copy">
+          <p class="test-theory-kicker">K6 · Konzept-Quiz</p>
+          <h3>Was hast du wirklich verstanden?</h3>
+          <p>Rechenaufgaben lösen ist wichtig – aber genauso wichtig ist das konzeptuelle Verständnis. Kannst du erklären, was die Physik bedeutet?</p>
+          <p>In diesem Quiz gibt es <strong>vier Konzeptfragen</strong> mit je vier Antwortmöglichkeiten. Genau eine Antwort ist richtig. Nach deiner Wahl siehst du sofort eine Erklärung.</p>
+          <p>Lies alle Optionen, bevor du klickst – oft klingt mehr als eine Antwort plausibel.</p>
+        </div>
+        <div class="test-theory-formula" aria-label="Tipp">
+          <span>Denk – dann klick!</span>
+        </div>
+        <div class="test-theory-example">
+          <p><strong>Themen:</strong> v-t-Diagramm, gleichförmige Bewegung, Bremsbeschleunigung, Bremsweg.</p>
+        </div>
+        <button class="si-jumpgame-button test-theory-start" id="mc-concept-start" type="button">Quiz starten</button>
+      </section>
+    `;
+
+    siGameStage.querySelector("#mc-concept-start")?.addEventListener("click", () => startMCConceptQuestion(0));
+  };
+
+
+  // ─── Module Game Engine ─────────────────────────────────────────────────────
+
+  let _matterEngine = null;
+  let _matterRender = null;
+  let _matterRunner = null;
+  let _activeChart = null;
+  let _moduleEngineRaf = null;
+
+  const stopModuleGame = () => {
+    if (_moduleEngineRaf) { cancelAnimationFrame(_moduleEngineRaf); _moduleEngineRaf = null; }
+    if (_matterRunner) { try { Matter.Runner.stop(_matterRunner); } catch (_) {} _matterRunner = null; }
+    if (_matterRender) { try { Matter.Render.stop(_matterRender); } catch (_) {} _matterRender = null; }
+    if (_matterEngine) { try { Matter.Engine.clear(_matterEngine); } catch (_) {} _matterEngine = null; }
+    if (_activeChart) { try { _activeChart.destroy(); } catch (_) {} _activeChart = null; }
+    if (siGameStage instanceof HTMLElement) {
+      siGameStage.classList.remove("test-motion-flash");
+    }
+    document.body.classList.remove("test-motion-page-flash");
+  };
+
+  const _flashCorrect = () => {
+    if (!(siGameStage instanceof HTMLElement)) return;
+    siGameStage.classList.remove("test-motion-flash");
+    requestAnimationFrame(() => {
+      siGameStage.classList.add("test-motion-flash");
+      document.body.classList.add("test-motion-page-flash");
+    });
+    setTimeout(() => {
+      siGameStage.classList.remove("test-motion-flash");
+      document.body.classList.remove("test-motion-page-flash");
+    }, 760);
+  };
+
+  // Anime.js entrance for theory page
+  const animateModuleTheory = () => {
+    if (!(siGameStage instanceof HTMLElement)) return;
+    const items = siGameStage.querySelectorAll(".theory-anim");
+    if (typeof anime !== "undefined") {
+      anime({
+        targets: items,
+        opacity: [0, 1],
+        translateY: [20, 0],
+        delay: anime.stagger(80, { start: 60 }),
+        duration: 440,
+        easing: "easeOutCubic",
+      });
+    } else {
+      items.forEach(el => {
+        el.style.opacity = "1";
+        el.style.transform = "translateY(0)";
+      });
+    }
+  };
+
+  // Show theory page then hand off to question
+  const showModuleTheory = (step, onStart) => {
+    if (!(siGameStage instanceof HTMLElement)) return;
+    const t = step.theory;
+    if (!t) { onStart(); return; }
+    const accent = step.colorA || "#59a3ff";
+
+    siGameStage.innerHTML = `
+      <section class="mod-theory-page">
+        <div class="mod-theory-body">
+          <p class="theory-anim mod-theory-kicker" style="color:${accent}">${t.kicker}</p>
+          <h3 class="theory-anim mod-theory-heading">${t.heading}</h3>
+          ${t.paragraphs.map(p => `<p class="theory-anim mod-theory-para">${p}</p>`).join("")}
+          ${t.formula ? `<div class="theory-anim mod-theory-formula"><span>${t.formula}</span></div>` : ""}
+          ${t.example ? `<div class="theory-anim mod-theory-example">${t.example}</div>` : ""}
+          <button class="theory-anim si-jumpgame-button mod-theory-cta" type="button">Zur Aufgabe →</button>
+        </div>
+      </section>
+    `;
+    siGameStage.querySelector(".mod-theory-cta")?.addEventListener("click", onStart);
+    animateModuleTheory();
+    if (window.MathJax && typeof window.MathJax.typesetPromise === "function") {
+      window.setTimeout(() => { window.MathJax.typesetPromise([siGameStage]).catch(() => {}); }, 60);
+    }
+  };
+
+  // Multiple-Choice engine
+  const runMCEngine = (tasks, onComplete) => {
+    if (!(siGameStage instanceof HTMLElement)) return;
+    let idx = 0;
+
+    const render = () => {
+      const task = tasks[idx];
+      if (!task) { onComplete?.(); return; }
+
+      siGameStage.innerHTML = `
+        <section class="mod-question-page mc-page">
+          <p class="mod-q-meta">Frage ${idx + 1} von ${tasks.length}</p>
+          <h3 class="mod-q-text">${task.text}</h3>
+          <div class="mc-options-grid" id="eng-mc-grid">
+            ${task.options.map((o, i) => `<button class="mc-option-btn" type="button" data-i="${i}">${o}</button>`).join("")}
+          </div>
+          <p class="test-motion-feedback" id="eng-mc-fb" aria-live="polite"></p>
+          ${task.hint ? `<button class="mc-hint-btn" id="eng-mc-hint" type="button">💡 Tipp anzeigen</button><p class="mc-hint-text" id="eng-mc-hint-text" hidden>${task.hint}</p>` : ""}
+          <button class="si-jumpgame-button mod-q-next" id="eng-mc-next" type="button" hidden>
+            ${idx === tasks.length - 1 ? "Fertig →" : "Weiter →"}
+          </button>
+        </section>
+      `;
+
+      if (typeof anime !== "undefined") {
+        anime({ targets: "#eng-mc-grid .mc-option-btn", opacity:[0,1], translateY:[12,0], delay: anime.stagger(55), duration: 300, easing:"easeOutCubic" });
+      }
+
+      const grid = siGameStage.querySelector("#eng-mc-grid");
+      const fb = siGameStage.querySelector("#eng-mc-fb");
+      const next = siGameStage.querySelector("#eng-mc-next");
+      const hintBtn = siGameStage.querySelector("#eng-mc-hint");
+      const hintText = siGameStage.querySelector("#eng-mc-hint-text");
+      let done = false;
+      hintBtn?.addEventListener("click", () => {
+        if (hintText) { hintText.hidden = false; hintBtn.hidden = true; }
+      });
+
+      grid?.querySelectorAll(".mc-option-btn").forEach(btn => {
+        btn.addEventListener("click", () => {
+          if (done) return;
+          done = true;
+          const chosen = Number(btn.getAttribute("data-i"));
+          grid.querySelectorAll(".mc-option-btn").forEach(b => {
+            b.disabled = true;
+            const i = Number(b.getAttribute("data-i"));
+            if (i === task.correct) b.classList.add("mc-correct");
+            else if (i === chosen) b.classList.add("mc-wrong");
+          });
+          if (fb) {
+            fb.className = `test-motion-feedback ${chosen === task.correct ? "is-correct" : "is-hint"}`;
+            fb.textContent = chosen === task.correct
+              ? `Richtig! ${task.explanation}`
+              : `Nicht ganz. ${task.explanation}`;
+          }
+          if (next) next.hidden = false;
+          if (chosen === task.correct) _flashCorrect();
+        });
+      });
+
+      next?.addEventListener("click", () => { idx++; render(); });
+    };
+    render();
+  };
+
+  // Calculation engine
+  const runCalcEngine = (tasks, cfg, onComplete) => {
+    if (!(siGameStage instanceof HTMLElement)) return;
+    let idx = 0;
+
+    const render = () => {
+      const task = tasks[idx];
+      if (!task) { onComplete?.(); return; }
+
+      siGameStage.innerHTML = `
+        <section class="mod-question-page calc-page">
+          <div class="mod-q-meta">
+            <span>Aufgabe ${idx + 1} von ${tasks.length}</span>
+            <strong>${task.xp ?? 100} XP</strong>
+          </div>
+          <h3 class="mod-q-heading">${cfg.questionTitle ?? "Berechne"}</h3>
+          <p class="mod-q-text">${task.description}</p>
+          <div class="calc-formula-chip"><span>${cfg.formulaDisplay ?? cfg.formula ?? ""}</span></div>
+          <label class="test-motion-answer-label" for="eng-calc-input">Antwort in ${cfg.answerUnit}</label>
+          <div class="test-motion-answer-row">
+            <input id="eng-calc-input" type="number" inputmode="decimal" placeholder="…" autocomplete="off">
+            <button class="si-jumpgame-button" id="eng-calc-check">Prüfen</button>
+          </div>
+          <p class="test-motion-feedback" id="eng-calc-fb" aria-live="polite"></p>
+          <button class="si-jumpgame-button test-motion-next" id="eng-calc-next" hidden>
+            ${idx === tasks.length - 1 ? "Fertig →" : "Nächste Aufgabe →"}
+          </button>
+        </section>
+      `;
+
+      const inp = siGameStage.querySelector("#eng-calc-input");
+      const fb  = siGameStage.querySelector("#eng-calc-fb");
+      const nxt = siGameStage.querySelector("#eng-calc-next");
+      inp?.focus();
+
+      const check = () => {
+        const val = inp instanceof HTMLInputElement ? inp.valueAsNumber : NaN;
+        if (!Number.isFinite(val)) { fb.textContent = "Gib zuerst eine Zahl ein."; fb.className = "test-motion-feedback is-hint"; return; }
+        const tol = cfg.tolerance ?? 0.05;
+        const ok = Math.abs(val - task.answer) <= Math.max(tol, Math.abs(task.answer) * tol);
+        if (ok) {
+          fb.className = "test-motion-feedback is-correct";
+          fb.textContent = task.successFeedback ?? `Richtig! Ergebnis: ${task.answer} ${cfg.answerUnit}. +${task.xp ?? 100} XP`;
+          if (inp) inp.disabled = true;
+          if (nxt) nxt.hidden = false;
+          _flashCorrect();
+        } else {
+          fb.className = "test-motion-feedback is-hint";
+          fb.textContent = task.hint ?? `Überprüfe deine Rechnung. Formel: ${cfg.formula}`;
+        }
+      };
+      siGameStage.querySelector("#eng-calc-check")?.addEventListener("click", check);
+      inp?.addEventListener("keydown", e => { if (e.key === "Enter") check(); });
+      nxt?.addEventListener("click", () => { idx++; render(); });
+    };
+    render();
+  };
+
+  // Chart.js engine
+  const runChartEngine = (chartCfg, tasks, onComplete) => {
+    if (!(siGameStage instanceof HTMLElement)) return;
+
+    siGameStage.innerHTML = `
+      <section class="mod-question-page chart-page">
+        <div class="mod-chart-wrap">
+          <canvas id="eng-chart-canvas" class="mod-chart-canvas"></canvas>
+        </div>
+        <div class="mod-chart-questions" id="eng-chart-q"></div>
+      </section>
+    `;
+
+    const canvas = siGameStage.querySelector("#eng-chart-canvas");
+    if (canvas instanceof HTMLCanvasElement && typeof Chart !== "undefined") {
+      _activeChart = new Chart(canvas.getContext("2d"), {
+        type: chartCfg.chartType ?? "line",
+        data: {
+          labels: chartCfg.xData,
+          datasets: chartCfg.datasets.map(d => ({
+            label: d.label,
+            data: d.data,
+            borderColor: d.color,
+            backgroundColor: d.color + "22",
+            borderWidth: 2.5,
+            pointRadius: 3,
+            tension: d.tension ?? 0,
+            fill: d.fill ?? false,
+          })),
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          animation: { duration: 600, easing: "easeOutQuart" },
+          plugins: {
+            legend: { labels: { font: { family: "Space Grotesk", size: 13 }, color: "#17212b" } },
+            tooltip: { bodyFont: { family: "Space Grotesk" }, titleFont: { family: "Space Grotesk" } },
+          },
+          scales: {
+            x: {
+              title: { display: true, text: chartCfg.xLabel ?? "Zeit t (s)", color: "#384858", font: { family: "Space Grotesk", size: 12 } },
+              grid: { color: "rgba(96,111,128,0.14)" },
+              ticks: { color: "#384858", font: { family: "Space Grotesk" } },
+            },
+            y: {
+              title: { display: true, text: chartCfg.yLabel ?? "s (m)", color: "#384858", font: { family: "Space Grotesk", size: 12 } },
+              grid: { color: "rgba(96,111,128,0.14)" },
+              ticks: { color: "#384858", font: { family: "Space Grotesk" } },
+            },
+          },
+        },
+      });
+    }
+
+    const qContainer = siGameStage.querySelector("#eng-chart-q");
+    let taskIdx = 0;
+
+    const renderQ = () => {
+      const task = tasks[taskIdx];
+      if (!task || !qContainer) { onComplete?.(); return; }
+
+      if (task.type === "calc") {
+        qContainer.innerHTML = `
+          <p class="mod-q-meta">Frage ${taskIdx + 1} von ${tasks.length}</p>
+          <p class="mod-q-text">${task.text}</p>
+          <div class="test-motion-answer-row">
+            <input id="eng-cq-input" type="number" inputmode="decimal" placeholder="Antwort in ${task.unit}">
+            <button class="si-jumpgame-button" id="eng-cq-check">Prüfen</button>
+          </div>
+          <p class="test-motion-feedback" id="eng-cq-fb" aria-live="polite"></p>
+          <button class="si-jumpgame-button mod-q-next" id="eng-cq-next" hidden>${taskIdx === tasks.length - 1 ? "Fertig →" : "Weiter →"}</button>
+        `;
+        const inp = qContainer.querySelector("#eng-cq-input");
+        const fb = qContainer.querySelector("#eng-cq-fb");
+        const nxt = qContainer.querySelector("#eng-cq-next");
+        inp?.focus();
+        const check = () => {
+          const v = inp instanceof HTMLInputElement ? inp.valueAsNumber : NaN;
+          if (!Number.isFinite(v)) return;
+          const tol = task.tolerance ?? 0.1;
+          if (Math.abs(v - task.answer) <= Math.max(tol, Math.abs(task.answer) * tol)) {
+            fb.className = "test-motion-feedback is-correct";
+            fb.textContent = `Richtig! ${task.explanation ?? ""}`;
+            inp.disabled = true; nxt.hidden = false; _flashCorrect();
+          } else {
+            fb.className = "test-motion-feedback is-hint";
+            fb.textContent = task.hint ?? "Lies den Graphen nochmals sorgfältig ab.";
+          }
+        };
+        qContainer.querySelector("#eng-cq-check")?.addEventListener("click", check);
+        inp?.addEventListener("keydown", e => { if (e.key === "Enter") check(); });
+        nxt?.addEventListener("click", () => { taskIdx++; renderQ(); });
+      } else {
+        qContainer.innerHTML = `
+          <p class="mod-q-meta">Frage ${taskIdx + 1} von ${tasks.length}</p>
+          <p class="mod-q-text">${task.text}</p>
+          <div class="mc-options-grid" id="eng-cq-grid">
+            ${task.options.map((o, i) => `<button class="mc-option-btn" type="button" data-i="${i}">${o}</button>`).join("")}
+          </div>
+          <p class="test-motion-feedback" id="eng-cq-fb" aria-live="polite"></p>
+          <button class="si-jumpgame-button mod-q-next" id="eng-cq-next" hidden>${taskIdx === tasks.length - 1 ? "Fertig →" : "Weiter →"}</button>
+        `;
+        const grid = qContainer.querySelector("#eng-cq-grid");
+        const fb = qContainer.querySelector("#eng-cq-fb");
+        const nxt = qContainer.querySelector("#eng-cq-next");
+        let done = false;
+        grid?.querySelectorAll(".mc-option-btn").forEach(btn => {
+          btn.addEventListener("click", () => {
+            if (done) return; done = true;
+            const chosen = Number(btn.getAttribute("data-i"));
+            grid.querySelectorAll(".mc-option-btn").forEach(b => {
+              b.disabled = true;
+              const i = Number(b.getAttribute("data-i"));
+              if (i === task.correct) b.classList.add("mc-correct");
+              else if (i === chosen) b.classList.add("mc-wrong");
+            });
+            fb.className = `test-motion-feedback ${chosen === task.correct ? "is-correct" : "is-hint"}`;
+            fb.textContent = chosen === task.correct ? `Richtig! ${task.explanation}` : `Nicht ganz. ${task.explanation}`;
+            nxt.hidden = false;
+            if (chosen === task.correct) _flashCorrect();
+          });
+        });
+        nxt?.addEventListener("click", () => { taskIdx++; renderQ(); });
+      }
+    };
+    renderQ();
+  };
+
+  // Matter.js engine (free-fall simulation)
+  const runMatterEngine = (scene, tasks, onComplete) => {
+    if (!(siGameStage instanceof HTMLElement)) return;
+    siGameStage.innerHTML = `
+      <section class="mod-question-page matter-page">
+        <div class="mod-matter-wrap">
+          <canvas id="eng-matter-canvas" class="mod-matter-canvas"></canvas>
+          <div class="mod-matter-controls">
+            <button class="si-jumpgame-button" id="eng-matter-drop" type="button">Fallen lassen</button>
+            <button class="si-jumpgame-button mod-matter-reset" id="eng-matter-reset" type="button">Nochmal</button>
+          </div>
+        </div>
+        <div class="mod-matter-questions" id="eng-matter-q"></div>
+      </section>
+    `;
+
+    const canvas = siGameStage.querySelector("#eng-matter-canvas");
+    if (!(canvas instanceof HTMLCanvasElement) || typeof Matter === "undefined") {
+      runMCEngine(tasks, onComplete); return;
+    }
+
+    const W = canvas.offsetWidth || 420;
+    const H = canvas.offsetHeight || 280;
+
+    const engine = Matter.Engine.create({ gravity: { y: 1.8 } });
+    const render = Matter.Render.create({
+      canvas,
+      engine,
+      options: { width: W, height: H, wireframes: false, background: "#f4f8ff" },
+    });
+
+    const ballColors = ["#59a3ff", "#f86785", "#3dd18d"];
+    const ballSizes = scene === "freeFall" ? [16, 10, 24] : [14, 14, 14];
+    const positions = [W * 0.25, W * 0.5, W * 0.75];
+
+    const balls = positions.map((x, i) => Matter.Bodies.circle(x, 40, ballSizes[i], {
+      restitution: 0.25,
+      isStatic: true,
+      render: { fillStyle: ballColors[i], strokeStyle: "#17212b", lineWidth: 2 },
+    }));
+
+    const ground = Matter.Bodies.rectangle(W / 2, H - 10, W, 20, {
+      isStatic: true,
+      render: { fillStyle: "#c8d8ea" },
+    });
+
+    Matter.Composite.add(engine.world, [...balls, ground]);
+    const runner = Matter.Runner.create();
+    Matter.Runner.run(runner, engine);
+    Matter.Render.run(render);
+
+    _matterEngine = engine;
+    _matterRender = render;
+    _matterRunner = runner;
+
+    const dropBtn = siGameStage.querySelector("#eng-matter-drop");
+    const resetBtn = siGameStage.querySelector("#eng-matter-reset");
+    let dropped = false;
+
+    const dropAll = () => {
+      if (dropped) return;
+      dropped = true;
+      balls.forEach(b => Matter.Body.setStatic(b, false));
+      if (dropBtn) dropBtn.disabled = true;
+      setTimeout(() => {
+        const qContainer = siGameStage.querySelector("#eng-matter-q");
+        if (!qContainer) return;
+        runMCEngineInEl(qContainer, tasks, onComplete);
+      }, 2200);
+    };
+
+    dropBtn?.addEventListener("click", dropAll);
+    resetBtn?.addEventListener("click", () => {
+      dropped = false;
+      if (dropBtn) dropBtn.disabled = false;
+      balls.forEach((b, i) => {
+        Matter.Body.setStatic(b, true);
+        Matter.Body.setPosition(b, { x: positions[i], y: 40 });
+        Matter.Body.setVelocity(b, { x: 0, y: 0 });
+      });
+    });
+  };
+
+  // MC rendered inside a given container element (used by matter engine)
+  const runMCEngineInEl = (container, tasks, onComplete) => {
+    let idx = 0;
+    const render = () => {
+      const task = tasks[idx];
+      if (!task) { onComplete?.(); return; }
+      container.innerHTML = `
+        <p class="mod-q-meta">Frage ${idx + 1} von ${tasks.length}</p>
+        <p class="mod-q-text">${task.text}</p>
+        <div class="mc-options-grid" id="eng-mel-grid">
+          ${task.options.map((o, i) => `<button class="mc-option-btn" type="button" data-i="${i}">${o}</button>`).join("")}
+        </div>
+        <p class="test-motion-feedback" id="eng-mel-fb" aria-live="polite"></p>
+        <button class="si-jumpgame-button mod-q-next" id="eng-mel-next" hidden>${idx === tasks.length - 1 ? "Fertig →" : "Weiter →"}</button>
+      `;
+      const grid = container.querySelector("#eng-mel-grid");
+      const fb = container.querySelector("#eng-mel-fb");
+      const nxt = container.querySelector("#eng-mel-next");
+      let done = false;
+      grid?.querySelectorAll(".mc-option-btn").forEach(btn => {
+        btn.addEventListener("click", () => {
+          if (done) return; done = true;
+          const chosen = Number(btn.getAttribute("data-i"));
+          grid.querySelectorAll(".mc-option-btn").forEach(b => {
+            b.disabled = true;
+            const i = Number(b.getAttribute("data-i"));
+            if (i === task.correct) b.classList.add("mc-correct");
+            else if (i === chosen) b.classList.add("mc-wrong");
+          });
+          fb.className = `test-motion-feedback ${chosen === task.correct ? "is-correct" : "is-hint"}`;
+          fb.textContent = chosen === task.correct ? `Richtig! ${task.explanation}` : `Nicht ganz. ${task.explanation}`;
+          nxt.hidden = false;
+          if (chosen === task.correct) _flashCorrect();
+        });
+      });
+      nxt?.addEventListener("click", () => { idx++; render(); });
+    };
+    render();
+  };
+
+  // Completion screen
+  const showModuleComplete = (step) => {
+    if (!(siGameStage instanceof HTMLElement)) return;
+    const accent = step.colorA || "#59a3ff";
+    siGameStage.innerHTML = `
+      <section class="mod-complete-page">
+        <div class="mod-complete-icon" style="color:${accent}">
+          <svg viewBox="0 0 48 48" fill="none" width="64" height="64">
+            <circle cx="24" cy="24" r="20" stroke="currentColor" stroke-width="3"/>
+            <path d="M14 24l7 7 13-14" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <h3>${step.title} gemeistert!</h3>
+        <p>Du hast alle Aufgaben zu <strong>${step.title}</strong> erfolgreich abgeschlossen.</p>
+        <div class="mod-complete-actions">
+          <button class="si-jumpgame-button" id="mod-comp-back">Zurück zum Pfad</button>
+          <button class="si-jumpgame-button" id="mod-comp-retry">Nochmal üben</button>
+        </div>
+      </section>
+    `;
+    if (typeof anime !== "undefined") {
+      anime({ targets: ".mod-complete-icon", scale:[0.4,1], opacity:[0,1], duration:560, easing:"easeOutBack" });
+      anime({ targets: ".mod-complete-page h3, .mod-complete-page p, .mod-complete-actions", opacity:[0,1], translateY:[16,0], delay: anime.stagger(80, {start:300}), duration:380, easing:"easeOutCubic" });
+    }
+    siGameStage.querySelector("#mod-comp-back")?.addEventListener("click", closeSIGame);
+    siGameStage.querySelector("#mod-comp-retry")?.addEventListener("click", () => renderModuleGame(step));
+  };
+
+  // Main dispatcher
+  const showDifficultyPicker = (q, onSelect) => {
+    siGameStage.innerHTML = `
+      <div class="diff-picker-page theory-anim">
+        <p class="diff-picker-label">Wähle deinen Schwierigkeitsgrad</p>
+        <div class="diff-picker-grid">
+          <button class="diff-card diff-card-basis" id="diff-basis">
+            <span class="diff-card-icon">⭐</span>
+            <span class="diff-card-title">Basis</span>
+            <span class="diff-card-desc">Grundlegende Fragen – perfekt zum Einstieg</span>
+          </button>
+          <button class="diff-card diff-card-challenge" id="diff-challenge">
+            <span class="diff-card-icon">🔥</span>
+            <span class="diff-card-title">Challenge</span>
+            <span class="diff-card-desc">Anspruchsvollere Fragen – für Profis</span>
+          </button>
+        </div>
+      </div>`;
+    siGameStage.querySelector("#diff-basis").addEventListener("click", () => onSelect(q.basis));
+    siGameStage.querySelector("#diff-challenge").addEventListener("click", () => onSelect(q.challenge));
+    if (typeof anime !== "undefined") {
+      anime({ targets: ".diff-picker-page", opacity: [0, 1], translateY: [16, 0], duration: 400, easing: "easeOutQuart" });
+    } else {
+      const picker = siGameStage.querySelector(".diff-picker-page");
+      if (picker) { picker.style.opacity = "1"; picker.style.transform = "translateY(0)"; }
+    }
+  };
+
+
+  // ── roundRect polyfill for browsers that don't support it ────────────────
+  if (!CanvasRenderingContext2D.prototype.roundRect) {
+    CanvasRenderingContext2D.prototype.roundRect = function (x, y, w, h, r) {
+      const R = Math.min(+r || 0, w / 2, h / 2);
+      this.moveTo(x + R, y);
+      this.lineTo(x + w - R, y);   this.arcTo(x + w, y,     x + w, y + R,     R);
+      this.lineTo(x + w, y + h - R); this.arcTo(x + w, y + h, x + w - R, y + h, R);
+      this.lineTo(x + R, y + h);   this.arcTo(x,     y + h, x,     y + h - R, R);
+      this.lineTo(x, y + R);       this.arcTo(x,     y,     x + R, y,         R);
+      this.closePath();
+    };
+  }
+
+  // ── Interactive Engine 1: Speed Lab PhET (v = s/t, live sliders) ────────
+  const runSpeedLabEngine = (q, onComplete) => {
+    const trackS = q.s ?? 180;
+    const targetV = q.targetV ?? Math.round(trackS / 9);
+    const defS = q.s ?? trackS;
+    const defT = q.defT ?? Math.round(defS / targetV * 10) / 10;
+
+    siGameStage.innerHTML = `
+      <div class="interact-page phet-page">
+        <p class="mod-q-meta">Interaktiv · Speed-Lab</p>
+        <h3 class="interact-heading">v = s ÷ t – live entdecken</h3>
+        <p class="interact-sub">Schiebe die Regler – das Auto fährt sofort! Triff das Ziel!</p>
+        <div class="phet-challenge-badge" id="sl-badge">🎯 Ziel: v = <strong>${targetV}</strong> m/s</div>
+        <div class="interact-canvas-wrap"><canvas id="sl-cv" height="110"></canvas></div>
+        <div class="phet-sliders">
+          <div class="phet-slider-row">
+            <span class="phet-slider-lbl">s</span>
+            <input class="interact-slider" id="sl-s" type="range" min="50" max="300" value="${defS}" step="5">
+            <span class="phet-slider-val"><strong id="sl-sv">${defS}</strong> m</span>
+          </div>
+          <div class="phet-slider-row">
+            <span class="phet-slider-lbl">t</span>
+            <input class="interact-slider" id="sl-t" type="range" min="1" max="30" value="${defT}" step="0.5">
+            <span class="phet-slider-val"><strong id="sl-tv">${defT}</strong> s</span>
+          </div>
+        </div>
+        <div class="interact-formula-box">
+          v = <span class="ilab-hl" id="sl-fs">${defS}</span> m ÷
+          <span class="ilab-hl" id="sl-ft">${defT}</span> s =
+          <span class="ilab-hl ilab-result" id="sl-fv">${(defS / defT).toFixed(1)}</span> m/s
+        </div>
+        <p class="test-motion-feedback" id="sl-fb"></p>
+        <button class="si-jumpgame-button mod-q-next" id="sl-nx">Weiter →</button>
+      </div>`;
+
+    const cv = document.getElementById('sl-cv');
+    cv.width = cv.parentElement?.offsetWidth || 560;
+    const W = cv.width, H = cv.height, ctx = cv.getContext('2d');
+    const TL = 30, TR = W - 30, TW = TR - TL, TY = 60;
+    const slS = document.getElementById('sl-s');
+    const slT = document.getElementById('sl-t');
+    const svEl = document.getElementById('sl-sv'), tvEl = document.getElementById('sl-tv');
+    const fsEl = document.getElementById('sl-fs'), ftEl = document.getElementById('sl-ft');
+    const fvEl = document.getElementById('sl-fv');
+    const badgeEl = document.getElementById('sl-badge');
+    const fb = document.getElementById('sl-fb');
+    let simTime = 0, lastTs = null, wasHit = false;
+
+    const loop = (ts) => {
+      if (lastTs !== null) simTime += Math.min((ts - lastTs) / 1000, 0.05);
+      lastTs = ts;
+      const s = Number(slS?.value ?? defS), t = Number(slT?.value ?? defT);
+      const v = s / t;
+      const lapVis = Math.max(t / 6, 0.3);
+      const prog = (simTime % lapVis) / lapVis;
+      const isHit = Math.abs(v - targetV) <= 0.6;
+
+      if (svEl) svEl.textContent = s;
+      if (tvEl) tvEl.textContent = t.toFixed(1);
+      if (fsEl) fsEl.textContent = s;
+      if (ftEl) ftEl.textContent = t.toFixed(1);
+      if (fvEl) fvEl.textContent = v.toFixed(1);
+      if (badgeEl) badgeEl.className = 'phet-challenge-badge' + (isHit ? ' phet-badge-hit' : '');
+      if (isHit && !wasHit) {
+        wasHit = true;
+        if (fb) { fb.className = 'test-motion-feedback is-correct'; fb.textContent = `✓ v = ${v.toFixed(1)} m/s ≈ ${targetV} m/s – Perfekt!`; }
+        _flashCorrect?.();
+      } else if (!isHit) {
+        wasHit = false;
+        if (fb) { fb.className = ''; fb.textContent = ''; }
+      }
+
+      ctx.clearRect(0, 0, W, H);
+      ctx.fillStyle = '#1e2b3a'; ctx.fillRect(TL, TY - 18, TW, 36);
+      ctx.setLineDash([14, 10]); ctx.strokeStyle = 'rgba(255,255,255,0.2)'; ctx.lineWidth = 2;
+      ctx.beginPath(); ctx.moveTo(TL, TY); ctx.lineTo(TR, TY); ctx.stroke(); ctx.setLineDash([]);
+      for (let i = 1; i < 4; i++) {
+        const mx = TL + TW / 4 * i;
+        ctx.fillStyle = 'rgba(255,255,255,0.08)'; ctx.fillRect(mx, TY - 18, 1, 36);
+        ctx.fillStyle = '#5d7a96'; ctx.font = '9px monospace'; ctx.textAlign = 'center';
+        ctx.fillText((s / 4 * i).toFixed(0) + 'm', mx, TY - 22); ctx.textAlign = 'left';
+      }
+      ctx.fillStyle = 'rgba(255,255,255,0.5)'; ctx.fillRect(TL - 1, TY - 20, 2, 40);
+      ctx.fillStyle = '#7ba8d0'; ctx.font = 'bold 10px monospace'; ctx.fillText('0', TL, TY - 23);
+      for (let r = 0; r < 8; r++) { ctx.fillStyle = r % 2 ? '#333' : '#fff'; ctx.fillRect(TR - 1, TY - 20 + r * 5, 3, 5); }
+      ctx.fillStyle = '#3dd18d'; ctx.fillText(s + ' m', TR - 30, TY - 23);
+      const col = isHit ? '#3dd18d' : '#3f8efc';
+      ctx.fillStyle = col + '33'; ctx.fillRect(TL, TY + 20, TW, 4);
+      ctx.fillStyle = col; ctx.fillRect(TL, TY + 20, TW * prog, 4);
+      const cx = TL + prog * TW;
+      ctx.fillStyle = col; ctx.beginPath(); ctx.roundRect(cx - 22, TY - 24, 44, 16, 5); ctx.fill();
+      ctx.fillStyle = isHit ? '#1a7a4a' : '#1a5ac4';
+      ctx.beginPath(); ctx.roundRect(cx - 13, TY - 32, 26, 10, 3); ctx.fill();
+      ctx.fillStyle = 'rgba(255,255,255,0.5)';
+      ctx.beginPath(); ctx.roundRect(cx - 10, TY - 30, 8, 7, 2); ctx.fill();
+      ctx.beginPath(); ctx.roundRect(cx + 2, TY - 30, 8, 7, 2); ctx.fill();
+      [cx - 14, cx + 14].forEach(wx => {
+        ctx.fillStyle = '#111'; ctx.beginPath(); ctx.arc(wx, TY - 7, 6, 0, Math.PI * 2); ctx.fill();
+        ctx.fillStyle = '#555'; ctx.beginPath(); ctx.arc(wx, TY - 7, 3, 0, Math.PI * 2); ctx.fill();
+      });
+      ctx.fillStyle = 'rgba(20,24,40,0.9)'; ctx.beginPath();
+      ctx.roundRect(W / 2 - 64, 3, 128, 22, 4); ctx.fill();
+      ctx.fillStyle = col; ctx.font = 'bold 12px monospace'; ctx.textAlign = 'center';
+      ctx.fillText('v = ' + v.toFixed(1) + ' m/s', W / 2, 18); ctx.textAlign = 'left';
+
+      _moduleEngineRaf = requestAnimationFrame(loop);
+    };
+
+    document.getElementById('sl-nx')?.addEventListener('click', () => {
+      if (_moduleEngineRaf) { cancelAnimationFrame(_moduleEngineRaf); _moduleEngineRaf = null; }
+      q.followUp?.length ? runMCEngine(q.followUp, onComplete) : onComplete?.();
+    });
+    _moduleEngineRaf = requestAnimationFrame(loop);
+  };
+
+
+  // ── Interactive Engine 2: Two-Car Race PhET (live sliders + race) ───────
+  const runRaceEngine = (q, onComplete) => {
+    const defVA = q.carA?.v ?? 20, defVB = q.carB?.v ?? 14;
+    const colA = q.carA?.color ?? '#5ea3ff', colB = q.carB?.color ?? '#ff8753';
+    const lblA = q.carA?.label ?? 'Auto A', lblB = q.carB?.label ?? 'Auto B';
+    const trackS = q.s ?? 280;
+
+    siGameStage.innerHTML = `
+      <div class="interact-page phet-page">
+        <p class="mod-q-meta">Interaktiv · Rennen</p>
+        <h3 class="interact-heading">Wer ist schneller?</h3>
+        <p class="interact-sub">Stelle die Geschwindigkeiten ein – die Autos fahren sofort. Dann: Rennen starten!</p>
+        <div class="phet-challenge-badge" id="race-badge" style="visibility:hidden">–</div>
+        <div class="interact-canvas-wrap"><canvas id="irace-cv" height="148"></canvas></div>
+        <div class="phet-sliders">
+          <div class="phet-slider-row">
+            <span class="phet-slider-lbl" style="color:${colA}">${lblA}</span>
+            <input class="interact-slider" id="race-va" type="range" min="5" max="40" value="${defVA}" step="1">
+            <span class="phet-slider-val"><strong id="race-vav">${defVA}</strong> m/s</span>
+          </div>
+          <div class="phet-slider-row">
+            <span class="phet-slider-lbl" style="color:${colB}">${lblB}</span>
+            <input class="interact-slider" id="race-vb" type="range" min="5" max="40" value="${defVB}" step="1">
+            <span class="phet-slider-val"><strong id="race-vbv">${defVB}</strong> m/s</span>
+          </div>
+        </div>
+        <div class="phet-btn-row">
+          <button class="si-jumpgame-button phet-btn-race" id="race-go">🏁 Rennen!</button>
+          <button class="si-jumpgame-button phet-btn-reset" id="race-restart" hidden>↺ Nochmal</button>
+          <button class="si-jumpgame-button mod-q-next" id="race-nx" hidden>Weiter →</button>
+        </div>
+        <p class="test-motion-feedback" id="race-fb"></p>
+      </div>`;
+
+    const cv = document.getElementById('irace-cv');
+    cv.width = cv.parentElement?.offsetWidth || 560;
+    const W = cv.width, H = cv.height, ctx = cv.getContext('2d');
+    const TL = 28, TR = W - 28, TW = TR - TL;
+    const LA = 44, LB = 108;
+
+    const slVA = document.getElementById('race-va'), slVB = document.getElementById('race-vb');
+    const vavEl = document.getElementById('race-vav'), vbvEl = document.getElementById('race-vbv');
+    const badgeEl = document.getElementById('race-badge');
+    const fb = document.getElementById('race-fb');
+    const goBtn = document.getElementById('race-go');
+    const restartBtn = document.getElementById('race-restart');
+    const nx = document.getElementById('race-nx');
+
+    const getVA = () => Number(slVA?.value ?? defVA);
+    const getVB = () => Number(slVB?.value ?? defVB);
+
+    const drawLane = (ly, col, lbl, prog) => {
+      ctx.fillStyle = '#1e2b3a'; ctx.fillRect(TL, ly - 20, TW, 40);
+      ctx.setLineDash([12, 10]); ctx.strokeStyle = 'rgba(255,255,255,0.18)'; ctx.lineWidth = 2;
+      ctx.beginPath(); ctx.moveTo(TL, ly); ctx.lineTo(TR, ly); ctx.stroke(); ctx.setLineDash([]);
+      ctx.fillStyle = col; ctx.font = 'bold 10px monospace'; ctx.fillText(lbl, TL + 4, ly - 24);
+      for (let r = 0; r < 8; r++) {
+        ctx.fillStyle = r % 2 ? '#333' : '#fff'; ctx.fillRect(TR - 2, ly - 20 + r * 5, 4, 5);
+      }
+      const p = Math.min(Math.max(prog, 0), 1);
+      ctx.fillStyle = col + '2a'; ctx.fillRect(TL, ly + 20, TW, 3);
+      ctx.fillStyle = col; ctx.fillRect(TL, ly + 20, TW * p, 3);
+      const cx = TL + p * TW;
+      ctx.fillStyle = col; ctx.beginPath(); ctx.roundRect(cx - 20, ly - 20, 40, 15, 4); ctx.fill();
+      ctx.fillStyle = col + 'bb'; ctx.beginPath(); ctx.roundRect(cx - 12, ly - 28, 24, 9, 3); ctx.fill();
+      ctx.fillStyle = 'rgba(255,255,255,0.45)';
+      ctx.beginPath(); ctx.roundRect(cx - 9, ly - 26, 8, 6, 2); ctx.fill();
+      ctx.beginPath(); ctx.roundRect(cx + 1, ly - 26, 8, 6, 2); ctx.fill();
+      [cx - 11, cx + 11].forEach(wx => {
+        ctx.fillStyle = '#111'; ctx.beginPath(); ctx.arc(wx, ly - 5, 5, 0, Math.PI * 2); ctx.fill();
+        ctx.fillStyle = '#555'; ctx.beginPath(); ctx.arc(wx, ly - 5, 2.5, 0, Math.PI * 2); ctx.fill();
+      });
+    };
+
+    let simTime = 0, lastTs = null, racing = false, raceT0 = null, raceEl = 0;
+
+    const loop = (ts) => {
+      if (lastTs !== null) {
+        const dt = Math.min((ts - lastTs) / 1000, 0.05);
+        if (racing) {
+          raceEl = (ts - raceT0) / 1000;
+        } else {
+          simTime += dt;
+        }
+      }
+      lastTs = ts;
+      const vA = getVA(), vB = getVB();
+      if (vavEl) vavEl.textContent = vA;
+      if (vbvEl) vbvEl.textContent = vB;
+      const totalT = Math.max(trackS / vA, trackS / vB);
+
+      let progA, progB;
+      if (racing) {
+        progA = Math.min(vA * raceEl / trackS, 1);
+        progB = Math.min(vB * raceEl / trackS, 1);
+      } else {
+        const lapA = Math.max((trackS / vA) / 6, 0.3);
+        const lapB = Math.max((trackS / vB) / 6, 0.3);
+        progA = (simTime % lapA) / lapA;
+        progB = (simTime % lapB) / lapB;
+      }
+
+      ctx.clearRect(0, 0, W, H);
+      ctx.strokeStyle = '#27a864'; ctx.lineWidth = 2.5;
+      ctx.beginPath(); ctx.moveTo(TR, 2); ctx.lineTo(TR, H - 2); ctx.stroke();
+      ctx.fillStyle = '#27a864'; ctx.font = 'bold 10px monospace'; ctx.textAlign = 'center';
+      ctx.fillText(trackS + ' m', TR, H - 4); ctx.textAlign = 'left';
+      drawLane(LA, colA, lblA, progA);
+      drawLane(LB, colB, lblB, progB);
+
+      if (racing) {
+        ctx.fillStyle = 'rgba(20,24,40,0.9)'; ctx.beginPath();
+        ctx.roundRect(W / 2 - 44, H / 2 - 13, 88, 22, 4); ctx.fill();
+        ctx.fillStyle = '#fff'; ctx.font = 'bold 12px monospace'; ctx.textAlign = 'center';
+        ctx.fillText('t = ' + raceEl.toFixed(1) + ' s', W / 2, H / 2 + 3); ctx.textAlign = 'left';
+        if (raceEl >= totalT) {
+          racing = false;
+          const tA = +(trackS / vA).toFixed(2), tB = +(trackS / vB).toFixed(2);
+          const winner = vA > vB ? lblA : vA < vB ? lblB : 'Unentschieden';
+          const winT = Math.min(tA, tB), loseT = Math.max(tA, tB);
+          if (badgeEl) { badgeEl.style.visibility = 'visible'; badgeEl.className = 'phet-challenge-badge phet-badge-hit'; badgeEl.innerHTML = `🏁 ${winner} gewinnt!`; }
+          if (fb) { fb.className = 'test-motion-feedback is-correct'; fb.textContent = `${vA > vB ? lblA : lblB}: ${winT} s  ·  ${vA > vB ? lblB : lblA}: ${loseT} s  →  Δt = ${(loseT - winT).toFixed(2)} s`; }
+          if (restartBtn) restartBtn.hidden = false;
+          if (nx) nx.hidden = false;
+          _flashCorrect?.();
+        }
+      }
+
+      _moduleEngineRaf = requestAnimationFrame(loop);
+    };
+
+    goBtn?.addEventListener('click', () => {
+      racing = true; raceT0 = performance.now(); raceEl = 0; simTime = 0; lastTs = null;
+      if (badgeEl) badgeEl.style.visibility = 'hidden';
+      if (fb) { fb.className = ''; fb.textContent = ''; }
+      if (restartBtn) restartBtn.hidden = true;
+      if (nx) nx.hidden = true;
+    });
+    restartBtn?.addEventListener('click', () => {
+      racing = false; simTime = 0; lastTs = null;
+      if (badgeEl) badgeEl.style.visibility = 'hidden';
+      if (fb) { fb.className = ''; fb.textContent = ''; }
+      if (restartBtn) restartBtn.hidden = true;
+      if (nx) nx.hidden = true;
+    });
+    nx?.addEventListener('click', () => {
+      if (_moduleEngineRaf) { cancelAnimationFrame(_moduleEngineRaf); _moduleEngineRaf = null; }
+      q.followUp?.length ? runMCEngine(q.followUp, onComplete) : onComplete?.();
+    });
+    _moduleEngineRaf = requestAnimationFrame(loop);
+  };
+
+
+  // ── Interactive Engine 3: s-t Live PhET (velocity slider, live trace) ───
+  const runSTLiveEngine = (q, onComplete) => {
+    const maxS = q.s ?? 160;
+    const defV = q.v ?? 8, maxVSlider = q.maxV ?? 25;
+
+    siGameStage.innerHTML = `
+      <div class="interact-page phet-page">
+        <p class="mod-q-meta">Interaktiv · s-t-Diagramm live</p>
+        <h3 class="interact-heading">s-t-Diagramm in Echtzeit</h3>
+        <p class="interact-sub">Stelle v ein – Körper und Diagramm reagieren sofort. Achte auf die Steigung!</p>
+        <div class="interact-canvas-wrap"><canvas id="ist-cv" height="260"></canvas></div>
+        <div class="phet-sliders">
+          <div class="phet-slider-row">
+            <span class="phet-slider-lbl">v</span>
+            <input class="interact-slider" id="ist-v" type="range" min="${-maxVSlider}" max="${maxVSlider}" value="${defV}" step="0.5">
+            <span class="phet-slider-val"><strong id="ist-vv">${defV}</strong> m/s</span>
+          </div>
+        </div>
+        <div class="interact-formula-box">
+          Steigung s-t = v = <span class="ilab-hl ilab-result" id="ist-fv">${defV}</span> m/s
+        </div>
+        <div class="phet-btn-row">
+          <button class="si-jumpgame-button phet-btn-reset" id="ist-reset">↺ Zurücksetzen</button>
+          <button class="si-jumpgame-button mod-q-next" id="ist-nx">Weiter →</button>
+        </div>
+        <p class="test-motion-feedback" id="ist-fb"></p>
+      </div>`;
+
+    const cv = document.getElementById('ist-cv');
+    cv.width = cv.parentElement?.offsetWidth || 560;
+    const W = cv.width, H = cv.height, ctx = cv.getContext('2d');
+    const SPLIT = 100, TL = 22, TR = W - 22, TW = TR - TL, TY = SPLIT / 2 + 8;
+    const GP = { x0: 46, x1: W - 18, y0: SPLIT + 16, y1: H - 18 };
+    GP.w = GP.x1 - GP.x0; GP.h = GP.y1 - GP.y0;
+    const tWindow = 10;
+    const slV = document.getElementById('ist-v');
+    const vvEl = document.getElementById('ist-vv'), fvEl = document.getElementById('ist-fv');
+    const fb = document.getElementById('ist-fb');
+    const getV = () => Number(slV?.value ?? defV);
+
+    let simPos = 0, simT = 0, pts = [], lastTs = null;
+
+    const resetSim = () => {
+      simPos = 0; simT = 0; pts.length = 0;
+      if (fb) { fb.className = ''; fb.textContent = ''; }
+    };
+
+    const loop = (ts) => {
+      if (lastTs !== null) {
+        const dt = Math.min((ts - lastTs) / 1000, 0.05);
+        const v = getV();
+        simPos += v * dt * 5;
+        simT += dt * 5;
+        if (simPos >= maxS) { simPos = 0; pts.length = 0; simT = 0; }
+        else if (simPos < 0) { simPos = maxS; pts.length = 0; simT = 0; }
+        pts.push({ t: simT, s: simPos });
+        if (pts.length > 400) pts.shift();
+      }
+      lastTs = ts;
+      const v = getV();
+      const prog = Math.max(0, Math.min(simPos / maxS, 1));
+      if (vvEl) vvEl.textContent = v.toFixed(1);
+      if (fvEl) fvEl.textContent = v.toFixed(1);
+
+      ctx.clearRect(0, 0, W, H);
+      ctx.fillStyle = '#1e2b3a'; ctx.fillRect(TL, TY - 16, TW, 32);
+      ctx.setLineDash([12, 10]); ctx.strokeStyle = 'rgba(255,255,255,0.2)'; ctx.lineWidth = 2;
+      ctx.beginPath(); ctx.moveTo(TL, TY); ctx.lineTo(TR, TY); ctx.stroke(); ctx.setLineDash([]);
+      ctx.fillStyle = 'rgba(255,255,255,0.5)'; ctx.fillRect(TL - 1, TY - 18, 2, 36);
+      ctx.fillStyle = '#7ba8d0'; ctx.font = 'bold 10px monospace'; ctx.fillText('s=0', TL, TY - 21);
+      for (let r = 0; r < 8; r++) { ctx.fillStyle = r % 2 ? '#333' : '#fff'; ctx.fillRect(TR - 2, TY - 18 + r * 4.5, 4, 4.5); }
+      ctx.fillStyle = '#3dd18d'; ctx.fillText(maxS + ' m', TR - 22, TY - 21);
+      const col = v >= 0 ? '#7c5cf5' : '#f86785';
+      ctx.fillStyle = col + '22'; ctx.fillRect(TL, TY + 18, TW, 3);
+      ctx.fillStyle = col; ctx.fillRect(TL, TY + 18, TW * prog, 3);
+      const cx = TL + prog * TW;
+      ctx.fillStyle = col; ctx.beginPath(); ctx.roundRect(cx - 20, TY - 23, 40, 16, 5); ctx.fill();
+      ctx.fillStyle = v >= 0 ? '#5a3fd4' : '#c0204a';
+      ctx.beginPath(); ctx.roundRect(cx - 12, TY - 31, 24, 10, 3); ctx.fill();
+      ctx.fillStyle = 'rgba(255,255,255,0.5)';
+      ctx.beginPath(); ctx.roundRect(cx - 9, TY - 29, 8, 7, 2); ctx.fill();
+      ctx.beginPath(); ctx.roundRect(cx + 1, TY - 29, 8, 7, 2); ctx.fill();
+      [cx - 12, cx + 12].forEach(wx => {
+        ctx.fillStyle = '#111'; ctx.beginPath(); ctx.arc(wx, TY - 6, 6, 0, Math.PI * 2); ctx.fill();
+        ctx.fillStyle = '#555'; ctx.beginPath(); ctx.arc(wx, TY - 6, 3, 0, Math.PI * 2); ctx.fill();
+      });
+      ctx.fillStyle = 'rgba(20,24,40,0.9)'; ctx.beginPath();
+      ctx.roundRect(W / 2 - 64, 2, 128, 22, 4); ctx.fill();
+      ctx.fillStyle = col; ctx.font = 'bold 12px monospace'; ctx.textAlign = 'center';
+      ctx.fillText('v = ' + v.toFixed(1) + ' m/s', W / 2, 17); ctx.textAlign = 'left';
+      ctx.fillStyle = 'rgba(0,0,0,0.1)'; ctx.fillRect(0, SPLIT, W, 1);
+
+      const tMin = pts.length > 0 ? Math.max(0, pts[pts.length - 1].t - tWindow) : 0;
+      const tMax = pts.length > 0 ? Math.max(pts[pts.length - 1].t, tWindow) : tWindow;
+      const tRange = tMax - tMin;
+      ctx.setLineDash([3, 6]); ctx.strokeStyle = 'rgba(0,0,0,0.08)'; ctx.lineWidth = 1;
+      for (let i = 1; i <= 4; i++) {
+        const gx = GP.x0 + GP.w / 4 * i, gy = GP.y1 - GP.h / 4 * i;
+        ctx.beginPath(); ctx.moveTo(gx, GP.y0); ctx.lineTo(gx, GP.y1); ctx.stroke();
+        ctx.beginPath(); ctx.moveTo(GP.x0, gy); ctx.lineTo(GP.x1, gy); ctx.stroke();
+        ctx.fillStyle = '#4d6070'; ctx.font = '9px monospace'; ctx.textAlign = 'center';
+        ctx.fillText((tMin + tRange / 4 * i).toFixed(1) + 's', gx, GP.y1 + 13);
+        ctx.textAlign = 'right'; ctx.fillText((maxS / 4 * i).toFixed(0) + 'm', GP.x0 - 3, gy + 4);
+      }
+      ctx.setLineDash([]); ctx.textAlign = 'left';
+      ctx.strokeStyle = 'rgba(0,0,0,0.28)'; ctx.lineWidth = 1.5;
+      ctx.beginPath(); ctx.moveTo(GP.x0, GP.y0 - 6); ctx.lineTo(GP.x0, GP.y1); ctx.lineTo(GP.x1 + 6, GP.y1); ctx.stroke();
+      ctx.fillStyle = '#2d3a48'; ctx.font = '10px monospace';
+      ctx.fillText('s (m)', GP.x0 - 38, GP.y0 + 4);
+      ctx.fillText('t (s)', GP.x1 - 8, GP.y1 + 14);
+      ctx.fillText('0', GP.x0 - 8, GP.y1 + 13);
+
+      if (pts.length > 1) {
+        ctx.strokeStyle = col; ctx.lineWidth = 2.5; ctx.beginPath();
+        let first = true;
+        for (const p of pts) {
+          const px = GP.x0 + ((p.t - tMin) / tRange) * GP.w;
+          const py = GP.y1 - (p.s / maxS) * GP.h;
+          first ? ctx.moveTo(px, py) : ctx.lineTo(px, py);
+          first = false;
+        }
+        ctx.stroke();
+      }
+
+      _moduleEngineRaf = requestAnimationFrame(loop);
+    };
+
+    document.getElementById('ist-reset')?.addEventListener('click', resetSim);
+    document.getElementById('ist-nx')?.addEventListener('click', () => {
+      if (_moduleEngineRaf) { cancelAnimationFrame(_moduleEngineRaf); _moduleEngineRaf = null; }
+      q.followUp?.length ? runMCEngine(q.followUp, onComplete) : onComplete?.();
+    });
+    _moduleEngineRaf = requestAnimationFrame(loop);
+  };
+
+
+  // ── Interactive Engine 4: Accel-Lab PhET (live graph preview + play) ────
+  const runAccelLabEngine = (q, onComplete) => {
+    const v0 = q.v0 ?? 0;
+    const defV0 = q.defV0 ?? v0, maxV0 = q.maxV0 ?? 20;
+    const minA = q.minA ?? 0.5, maxA = q.maxA ?? 10, defA = q.defA ?? 3;
+    const maxT = q.maxT ?? 8, defT = q.defT ?? 4;
+    const showV0Slider = maxV0 > 0 && defV0 !== v0;
+
+    siGameStage.innerHTML = `
+      <div class="interact-page phet-page">
+        <p class="mod-q-meta">Interaktiv · Beschleunigungs-Labor</p>
+        <h3 class="interact-heading">v = v₀ + a · t – live</h3>
+        <p class="interact-sub">Schiebe die Regler – das v-t-Diagramm reagiert sofort. Dann animieren!</p>
+        <div class="interact-canvas-wrap"><canvas id="iacc-cv" height="248"></canvas></div>
+        <div class="phet-sliders">
+          ${showV0Slider ? `<div class="phet-slider-row">
+            <span class="phet-slider-lbl">v₀</span>
+            <input class="interact-slider" id="iacc-v0" type="range" min="0" max="${maxV0}" value="${defV0}" step="0.5">
+            <span class="phet-slider-val"><strong id="iacc-v0v">${defV0}</strong> m/s</span>
+          </div>` : ''}
+          <div class="phet-slider-row">
+            <span class="phet-slider-lbl">a</span>
+            <input class="interact-slider" id="iacc-sl-a" type="range" min="${minA}" max="${maxA}" step="0.5" value="${defA}">
+            <span class="phet-slider-val"><strong id="iacc-av">${defA}</strong> m/s²</span>
+          </div>
+          <div class="phet-slider-row">
+            <span class="phet-slider-lbl">t</span>
+            <input class="interact-slider" id="iacc-sl-t" type="range" min="1" max="${maxT}" step="0.5" value="${defT}">
+            <span class="phet-slider-val"><strong id="iacc-tv">${defT}</strong> s</span>
+          </div>
+        </div>
+        <div class="interact-formula-box">
+          v = <span class="ilab-hl" id="iacc-fv0">${defV0}</span> + <span class="ilab-hl" id="iacc-fa">${defA}</span> ×
+          <span class="ilab-hl" id="iacc-ft">${defT}</span> =
+          <span class="ilab-hl ilab-result" id="iacc-fv">${(defV0 + defA * defT).toFixed(1)}</span> m/s
+        </div>
+        <div class="phet-btn-row">
+          <button class="si-jumpgame-button phet-btn-play" id="iacc-go">▶ Animieren</button>
+          <button class="si-jumpgame-button phet-btn-reset" id="iacc-restart" hidden>↺ Nochmal</button>
+          <button class="si-jumpgame-button mod-q-next" id="iacc-nx" hidden>Weiter →</button>
+        </div>
+        <p class="test-motion-feedback" id="iacc-fb"></p>
+      </div>`;
+
+    const cv = document.getElementById('iacc-cv');
+    cv.width = cv.parentElement?.offsetWidth || 560;
+    const W = cv.width, H = cv.height, ctx = cv.getContext('2d');
+    const SPLIT = 96;
+    const TL = 26, TR = W - 26, TW = TR - TL, TY = SPLIT / 2 + 8;
+    const GP = { x0: 50, x1: W - 18, y0: SPLIT + 14, y1: H - 20 };
+    GP.w = GP.x1 - GP.x0; GP.h = GP.y1 - GP.y0;
+
+    const slA = document.getElementById('iacc-sl-a');
+    const slT = document.getElementById('iacc-sl-t');
+    const slV0 = document.getElementById('iacc-v0');
+    const avEl = document.getElementById('iacc-av'), tvEl = document.getElementById('iacc-tv');
+    const fv0El = document.getElementById('iacc-fv0'), v0vEl = document.getElementById('iacc-v0v');
+    const faEl = document.getElementById('iacc-fa'), ftEl = document.getElementById('iacc-ft');
+    const fvEl = document.getElementById('iacc-fv');
+    const fb = document.getElementById('iacc-fb');
+    const goBtn = document.getElementById('iacc-go');
+    const restartBtn = document.getElementById('iacc-restart');
+    const nx = document.getElementById('iacc-nx');
+
+    const getCurV0 = () => slV0 ? Number(slV0.value) : defV0;
+    const getA = () => Number(slA?.value ?? defA);
+    const getT = () => Number(slT?.value ?? defT);
+
+    let animT = null, animStart = null, animating = false, animated = false;
+    const animPts = [];
+
+    const drawScene = () => {
+      const curV0 = getCurV0(), a = getA(), t = getT();
+      const vFinal = curV0 + a * t;
+      const vMax = Math.max(vFinal, curV0) * 1.1 || 10;
+
+      if (avEl) avEl.textContent = a;
+      if (tvEl) tvEl.textContent = t;
+      if (fv0El) fv0El.textContent = curV0;
+      if (v0vEl) v0vEl.textContent = curV0;
+      if (faEl) faEl.textContent = a;
+      if (ftEl) ftEl.textContent = t;
+      if (fvEl) fvEl.textContent = vFinal.toFixed(1);
+
+      ctx.clearRect(0, 0, W, H);
+      const animFrac = animating && animT !== null ? Math.min(animT / t, 1) : (animated ? 1 : 0);
+      const dist = curV0 * (animT ?? 0) + 0.5 * a * (animT ?? 0) ** 2;
+      const maxDist = curV0 * t + 0.5 * a * t * t;
+      const carFrac = animated ? 1 : (animating ? Math.min(dist / (maxDist || 1), 1) : 0);
+      const curV = curV0 + a * (animT ?? 0);
+      const cx = TL + Math.min(carFrac, 1) * TW;
+
+      ctx.fillStyle = '#1e2b3a'; ctx.fillRect(TL, TY - 17, TW, 34);
+      ctx.setLineDash([12, 10]); ctx.strokeStyle = 'rgba(255,255,255,0.18)'; ctx.lineWidth = 2;
+      ctx.beginPath(); ctx.moveTo(TL, TY); ctx.lineTo(TR, TY); ctx.stroke(); ctx.setLineDash([]);
+      ctx.fillStyle = 'rgba(255,255,255,0.5)'; ctx.fillRect(TL - 1, TY - 20, 2, 40);
+      ctx.fillStyle = '#7ba8d0'; ctx.font = 'bold 9px monospace';
+      ctx.fillText('v₀=' + curV0, TL, TY - 23);
+      for (let r = 0; r < 8; r++) { ctx.fillStyle = r % 2 ? '#333' : '#fff'; ctx.fillRect(TR - 1, TY - 20 + r * 5, 3, 5); }
+      ctx.fillStyle = 'rgba(143,115,255,0.18)'; ctx.fillRect(TL, TY + 20, TW, 3);
+      ctx.fillStyle = '#8f73ff'; ctx.fillRect(TL, TY + 20, TW * carFrac, 3);
+      ctx.fillStyle = '#8f73ff'; ctx.beginPath(); ctx.roundRect(cx - 22, TY - 23, 44, 16, 5); ctx.fill();
+      ctx.fillStyle = '#5a3fd4'; ctx.beginPath(); ctx.roundRect(cx - 13, TY - 31, 26, 10, 3); ctx.fill();
+      ctx.fillStyle = 'rgba(255,255,255,0.5)';
+      ctx.beginPath(); ctx.roundRect(cx - 10, TY - 29, 8, 7, 2); ctx.fill();
+      ctx.beginPath(); ctx.roundRect(cx + 2, TY - 29, 8, 7, 2); ctx.fill();
+      [cx - 14, cx + 14].forEach(wx => {
+        ctx.fillStyle = '#111'; ctx.beginPath(); ctx.arc(wx, TY - 7, 6, 0, Math.PI * 2); ctx.fill();
+        ctx.fillStyle = '#555'; ctx.beginPath(); ctx.arc(wx, TY - 7, 3, 0, Math.PI * 2); ctx.fill();
+      });
+      if (animating || animated) {
+        ctx.fillStyle = 'rgba(20,24,40,0.9)'; ctx.beginPath();
+        ctx.roundRect(W / 2 - 64, 2, 128, 22, 4); ctx.fill();
+        ctx.fillStyle = '#8f73ff'; ctx.font = 'bold 12px monospace'; ctx.textAlign = 'center';
+        ctx.fillText('v = ' + (animated ? vFinal : curV).toFixed(1) + ' m/s', W / 2, 17); ctx.textAlign = 'left';
+      }
+
+      ctx.fillStyle = 'rgba(0,0,0,0.1)'; ctx.fillRect(0, SPLIT, W, 1);
+
+      ctx.setLineDash([3, 6]); ctx.strokeStyle = 'rgba(0,0,0,0.1)'; ctx.lineWidth = 1;
+      const steps = 4;
+      for (let i = 1; i <= steps; i++) {
+        const gx = GP.x0 + GP.w / steps * i, gy = GP.y1 - GP.h / steps * i;
+        ctx.beginPath(); ctx.moveTo(gx, GP.y0); ctx.lineTo(gx, GP.y1); ctx.stroke();
+        ctx.beginPath(); ctx.moveTo(GP.x0, gy); ctx.lineTo(GP.x1, gy); ctx.stroke();
+        ctx.fillStyle = '#4d6070'; ctx.font = '9px monospace'; ctx.textAlign = 'center';
+        ctx.fillText((t / steps * i).toFixed(1) + 's', gx, GP.y1 + 13);
+        ctx.textAlign = 'right'; ctx.fillText((vMax / steps * i).toFixed(1), GP.x0 - 3, GP.y1 - GP.h / steps * i + 4);
+      }
+      ctx.setLineDash([]); ctx.textAlign = 'left';
+      ctx.strokeStyle = 'rgba(0,0,0,0.3)'; ctx.lineWidth = 1.5;
+      ctx.beginPath(); ctx.moveTo(GP.x0, GP.y0 - 6); ctx.lineTo(GP.x0, GP.y1); ctx.lineTo(GP.x1 + 6, GP.y1); ctx.stroke();
+      ctx.fillStyle = '#2d3a48'; ctx.font = '10px monospace';
+      ctx.fillText('v (m/s)', GP.x0 - 48, GP.y0 + 4);
+      ctx.fillText('t (s)', GP.x1 - 8, GP.y1 + 15);
+      ctx.fillText('0', GP.x0 - 10, GP.y1 + 13);
+
+      const x0px = GP.x0, y0px = GP.y1 - (curV0 / vMax) * GP.h;
+      const x1px = GP.x0 + GP.w, y1px = GP.y1 - (vFinal / vMax) * GP.h;
+      ctx.setLineDash([8, 6]); ctx.strokeStyle = '#8f73ff55'; ctx.lineWidth = 2;
+      ctx.beginPath(); ctx.moveTo(x0px, y0px); ctx.lineTo(x1px, y1px); ctx.stroke();
+      ctx.setLineDash([]);
+
+      if (animPts.length > 1) {
+        ctx.strokeStyle = '#8f73ff'; ctx.lineWidth = 2.5; ctx.beginPath();
+        animPts.forEach(({ t: pt, v: pv }, i) => {
+          const px = GP.x0 + (pt / t) * GP.w;
+          const py = GP.y1 - (pv / vMax) * GP.h;
+          i === 0 ? ctx.moveTo(px, py) : ctx.lineTo(px, py);
+        });
+        ctx.stroke();
+        const last = animPts[animPts.length - 1];
+        const lx = GP.x0 + (last.t / t) * GP.w, ly = GP.y1 - (last.v / vMax) * GP.h;
+        ctx.fillStyle = '#8f73ff'; ctx.beginPath(); ctx.arc(lx, ly, 5, 0, Math.PI * 2); ctx.fill();
+      }
+
+      if (animated) {
+        const ax = GP.x0 + GP.w * 0.1, ay = GP.y1 - (curV0 / vMax) * GP.h * 1.05;
+        const bx = GP.x0 + GP.w * 0.5, by = GP.y1 - (curV0 + a * (t / 2)) / vMax * GP.h;
+        ctx.strokeStyle = '#ffd164'; ctx.lineWidth = 1.5; ctx.setLineDash([5, 5]);
+        ctx.beginPath(); ctx.moveTo(ax, ay); ctx.lineTo(bx, ay); ctx.lineTo(bx, by); ctx.stroke();
+        ctx.setLineDash([]);
+        ctx.fillStyle = 'rgba(20,24,40,0.9)'; ctx.beginPath();
+        ctx.roundRect(bx + 6, Math.min(ay, by) - 14, 172, 22, 4); ctx.fill();
+        ctx.fillStyle = '#ffd164'; ctx.font = 'bold 11px monospace';
+        ctx.fillText('Steigung = Δv/Δt = ' + a + ' m/s² = a', bx + 10, Math.min(ay, by) + 3);
+      }
+    };
+
+    const updateLoop = () => { drawScene(); _moduleEngineRaf = requestAnimationFrame(updateLoop); };
+
+    const startUpdate = () => { _moduleEngineRaf = requestAnimationFrame(updateLoop); };
+    const stopUpdate = () => { if (_moduleEngineRaf) { cancelAnimationFrame(_moduleEngineRaf); _moduleEngineRaf = null; } };
+
+    slA?.addEventListener('input', () => { if (!animating) drawScene(); });
+    slT?.addEventListener('input', () => { if (!animating) drawScene(); });
+    slV0?.addEventListener('input', () => { if (!animating) drawScene(); });
+
+    drawScene();
+
+    goBtn?.addEventListener('click', () => {
+      if (animating) return;
+      animating = true; animated = false; animPts.length = 0; animT = 0;
+      if (slA) slA.disabled = true;
+      if (slT) slT.disabled = true;
+      if (slV0) slV0.disabled = true;
+      goBtn.disabled = true;
+      stopUpdate();
+      const curV0 = getCurV0(), a = getA(), totalT = getT();
+      const t0 = performance.now();
+      const anim = (now) => {
+        animT = Math.min((now - t0) / 1000, totalT);
+        animPts.push({ t: animT, v: curV0 + a * animT });
+        drawScene();
+        if (animT < totalT) {
+          _moduleEngineRaf = requestAnimationFrame(anim);
+        } else {
+          animating = false; animated = true;
+          const vF = curV0 + a * totalT;
+          if (fb) { fb.className = 'test-motion-feedback is-correct'; fb.textContent = `✓ v = ${curV0} + ${a} × ${totalT} = ${vF.toFixed(1)} m/s`; }
+          if (restartBtn) restartBtn.hidden = false;
+          if (nx) nx.hidden = false;
+          _flashCorrect?.();
+        }
+      };
+      _moduleEngineRaf = requestAnimationFrame(anim);
+    });
+
+    restartBtn?.addEventListener('click', () => {
+      animating = false; animated = false; animT = null; animPts.length = 0;
+      if (slA) slA.disabled = false;
+      if (slT) slT.disabled = false;
+      if (slV0) slV0.disabled = false;
+      goBtn.disabled = false;
+      if (restartBtn) restartBtn.hidden = true;
+      if (nx) nx.hidden = true;
+      if (fb) { fb.className = ''; fb.textContent = ''; }
+      drawScene();
+      startUpdate();
+    });
+
+    nx?.addEventListener('click', () => {
+      stopUpdate();
+      q.followUp?.length ? runMCEngine(q.followUp, onComplete) : onComplete?.();
+    });
+
+    startUpdate();
+  };
+
+  // ── v-t Live Engine PhET (a/v₀ sliders, live area, play + restart) ───────
+  const runVTLiveEngine = (q, onComplete) => {
+    const defA = q.a ?? 4, maxA = q.maxA ?? 10;
+    const defV0 = q.v0 ?? 0, maxV0 = q.maxV0 ?? 15;
+    const defT = q.maxT ?? 5, maxT = q.maxT ?? 8;
+
+    siGameStage.innerHTML = `
+      <div class="interact-page phet-page">
+        <p class="mod-q-meta">Interaktiv · v-t-Diagramm live</p>
+        <h3 class="interact-heading">Fläche unter v-t = Weg</h3>
+        <p class="interact-sub">Schiebe a und v₀ – die Fläche zeigt dir s sofort. Dann animieren!</p>
+        <div class="interact-canvas-wrap"><canvas id="ivt-cv" height="280"></canvas></div>
+        <div class="phet-sliders">
+          <div class="phet-slider-row">
+            <span class="phet-slider-lbl">a</span>
+            <input class="interact-slider" id="ivt-a" type="range" min="0" max="${maxA}" value="${defA}" step="0.5">
+            <span class="phet-slider-val"><strong id="ivt-av">${defA}</strong> m/s²</span>
+          </div>
+          <div class="phet-slider-row">
+            <span class="phet-slider-lbl">v₀</span>
+            <input class="interact-slider" id="ivt-v0" type="range" min="0" max="${maxV0}" value="${defV0}" step="0.5">
+            <span class="phet-slider-val"><strong id="ivt-v0v">${defV0}</strong> m/s</span>
+          </div>
+        </div>
+        <div class="interact-formula-box">
+          s = <span class="ilab-hl" id="ivt-fv0">${defV0}</span> · <span class="ilab-hl" id="ivt-ft">${defT}</span> + ½ ·
+          <span class="ilab-hl" id="ivt-fa">${defA}</span> · <span id="ivt-ft2">${defT}</span>² =
+          <span class="ilab-hl ilab-result" id="ivt-fs">${(defV0 * defT + 0.5 * defA * defT * defT).toFixed(1)}</span> m
+        </div>
+        <div class="phet-btn-row">
+          <button class="si-jumpgame-button phet-btn-play" id="ivt-go">▶ Animieren</button>
+          <button class="si-jumpgame-button phet-btn-reset" id="ivt-restart" hidden>↺ Nochmal</button>
+          <button class="si-jumpgame-button mod-q-next" id="ivt-nx" hidden>Weiter →</button>
+        </div>
+        <p class="test-motion-feedback" id="ivt-fb"></p>
+      </div>`;
+
+    const cv = document.getElementById('ivt-cv');
+    cv.width = cv.parentElement?.offsetWidth || 560;
+    const W = cv.width, H = cv.height, ctx = cv.getContext('2d');
+    const SPLIT = 100;
+    const TL = 24, TR = W - 24, TW = TR - TL, TY = SPLIT / 2 + 8;
+    const GP = { x0: 52, x1: W - 18, y0: SPLIT + 14, y1: H - 22 };
+    GP.w = GP.x1 - GP.x0; GP.h = GP.y1 - GP.y0;
+
+    const slA = document.getElementById('ivt-a');
+    const slV0 = document.getElementById('ivt-v0');
+    const avEl = document.getElementById('ivt-av'), v0vEl = document.getElementById('ivt-v0v');
+    const fv0El = document.getElementById('ivt-fv0'), ftEl = document.getElementById('ivt-ft');
+    const ft2El = document.getElementById('ivt-ft2'), faEl = document.getElementById('ivt-fa');
+    const fsEl = document.getElementById('ivt-fs');
+    const fb = document.getElementById('ivt-fb');
+    const goBtn = document.getElementById('ivt-go');
+    const restartBtn = document.getElementById('ivt-restart');
+    const nx = document.getElementById('ivt-nx');
+
+    const getA = () => Number(slA?.value ?? defA);
+    const getV0 = () => Number(slV0?.value ?? defV0);
+
+    let animT = null, animating = false, animated = false;
+    const animPts = [];
+
+    const drawScene = () => {
+      const a = getA(), curV0 = getV0(), t = defT;
+      const vFinal = curV0 + a * t;
+      const vMax = Math.max(vFinal, curV0, 1) * 1.15;
+      const dist = curV0 * t + 0.5 * a * t * t;
+      const maxDist = dist;
+
+      if (avEl) avEl.textContent = a;
+      if (v0vEl) v0vEl.textContent = curV0;
+      if (fv0El) fv0El.textContent = curV0;
+      if (ftEl) ftEl.textContent = t;
+      if (ft2El) ft2El.textContent = t;
+      if (faEl) faEl.textContent = a;
+      if (fsEl) fsEl.textContent = dist.toFixed(1);
+
+      ctx.clearRect(0, 0, W, H);
+      const animFrac = animating && animT !== null ? Math.min(animT / t, 1) : (animated ? 1 : 0);
+      const animDist = curV0 * (animT ?? 0) + 0.5 * a * (animT ?? 0) ** 2;
+      const carFrac = animated ? 1 : (animating ? Math.min(animDist / (maxDist || 1), 1) : 0);
+      const animV = curV0 + a * (animT ?? 0);
+      const cx = TL + Math.min(carFrac, 1) * TW;
+
+      ctx.fillStyle = '#1e2b3a'; ctx.fillRect(TL, TY - 18, TW, 36);
+      ctx.setLineDash([12, 10]); ctx.strokeStyle = 'rgba(255,255,255,0.18)'; ctx.lineWidth = 2;
+      ctx.beginPath(); ctx.moveTo(TL, TY); ctx.lineTo(TR, TY); ctx.stroke(); ctx.setLineDash([]);
+      ctx.fillStyle = 'rgba(255,255,255,0.5)'; ctx.fillRect(TL - 1, TY - 20, 2, 40);
+      ctx.fillStyle = '#7ba8d0'; ctx.font = 'bold 9px monospace';
+      ctx.fillText('v₀=' + curV0, TL, TY - 23);
+      ctx.textAlign = 'right'; ctx.fillStyle = '#4cffa0';
+      ctx.fillText('a=' + a + ' m/s²', TR, TY - 23); ctx.textAlign = 'left';
+      for (let r = 0; r < 8; r++) { ctx.fillStyle = r % 2 ? '#333' : '#fff'; ctx.fillRect(TR - 2, TY - 20 + r * 5, 4, 5); }
+      ctx.fillStyle = 'rgba(255,135,83,0.2)'; ctx.fillRect(TL, TY + 20, TW, 3);
+      ctx.fillStyle = '#ff8753'; ctx.fillRect(TL, TY + 20, TW * carFrac, 3);
+      ctx.fillStyle = '#ff8753'; ctx.beginPath(); ctx.roundRect(cx - 22, TY - 24, 44, 17, 5); ctx.fill();
+      ctx.fillStyle = '#c85a1a'; ctx.beginPath(); ctx.roundRect(cx - 13, TY - 32, 26, 10, 3); ctx.fill();
+      ctx.fillStyle = 'rgba(255,255,255,0.5)';
+      ctx.beginPath(); ctx.roundRect(cx - 10, TY - 30, 8, 7, 2); ctx.fill();
+      ctx.beginPath(); ctx.roundRect(cx + 2, TY - 30, 8, 7, 2); ctx.fill();
+      [cx - 14, cx + 14].forEach(wx => {
+        ctx.fillStyle = '#111'; ctx.beginPath(); ctx.arc(wx, TY - 7, 6, 0, Math.PI * 2); ctx.fill();
+        ctx.fillStyle = '#555'; ctx.beginPath(); ctx.arc(wx, TY - 7, 3, 0, Math.PI * 2); ctx.fill();
+      });
+      if (animating || animated) {
+        ctx.fillStyle = 'rgba(20,24,40,0.9)'; ctx.beginPath();
+        ctx.roundRect(W / 2 - 64, 2, 128, 22, 4); ctx.fill();
+        ctx.fillStyle = '#ff8753'; ctx.font = 'bold 12px monospace'; ctx.textAlign = 'center';
+        ctx.fillText('v = ' + (animated ? vFinal : animV).toFixed(1) + ' m/s', W / 2, 17); ctx.textAlign = 'left';
+      }
+
+      ctx.fillStyle = 'rgba(0,0,0,0.1)'; ctx.fillRect(0, SPLIT, W, 1);
+
+      const steps = 5;
+      ctx.setLineDash([3, 6]); ctx.strokeStyle = 'rgba(0,0,0,0.08)'; ctx.lineWidth = 1;
+      for (let i = 1; i <= steps; i++) {
+        const gx = GP.x0 + GP.w / steps * i, gy = GP.y1 - GP.h / steps * i;
+        ctx.beginPath(); ctx.moveTo(gx, GP.y0); ctx.lineTo(gx, GP.y1); ctx.stroke();
+        ctx.beginPath(); ctx.moveTo(GP.x0, gy); ctx.lineTo(GP.x1, gy); ctx.stroke();
+        ctx.fillStyle = '#4d6070'; ctx.font = '9px monospace'; ctx.textAlign = 'center';
+        ctx.fillText((t / steps * i).toFixed(1), gx, GP.y1 + 13);
+        ctx.textAlign = 'right'; ctx.fillText((vMax / steps * i).toFixed(1), GP.x0 - 3, gy + 4);
+      }
+      ctx.setLineDash([]); ctx.textAlign = 'left';
+      ctx.strokeStyle = 'rgba(0,0,0,0.3)'; ctx.lineWidth = 1.5;
+      ctx.beginPath(); ctx.moveTo(GP.x0, GP.y0 - 6); ctx.lineTo(GP.x0, GP.y1); ctx.lineTo(GP.x1 + 6, GP.y1); ctx.stroke();
+      ctx.fillStyle = '#2d3a48'; ctx.font = '10px monospace';
+      ctx.fillText('v (m/s)', GP.x0 - 50, GP.y0 + 4);
+      ctx.fillText('t (s)', GP.x1 - 8, GP.y1 + 16);
+      ctx.fillText('0', GP.x0 - 10, GP.y1 + 13);
+
+      const x0px = GP.x0, y0px = GP.y1 - (curV0 / vMax) * GP.h;
+      const xTpx = GP.x0 + GP.w, yTpx = GP.y1 - (vFinal / vMax) * GP.h;
+      ctx.fillStyle = '#ff875322';
+      ctx.beginPath(); ctx.moveTo(x0px, GP.y1); ctx.lineTo(x0px, y0px); ctx.lineTo(xTpx, yTpx); ctx.lineTo(xTpx, GP.y1); ctx.closePath(); ctx.fill();
+      ctx.setLineDash([8, 6]); ctx.strokeStyle = '#ff875377'; ctx.lineWidth = 2;
+      ctx.beginPath(); ctx.moveTo(x0px, y0px); ctx.lineTo(xTpx, yTpx); ctx.stroke();
+      ctx.setLineDash([]);
+      const midX = (x0px + xTpx) / 2, midY = GP.y1 - (curV0 + vFinal) / 2 / vMax * GP.h / 2 + 8;
+      ctx.fillStyle = 'rgba(20,24,40,0.88)'; ctx.beginPath();
+      ctx.roundRect(midX - 38, midY - 12, 76, 20, 4); ctx.fill();
+      ctx.fillStyle = '#ff8753'; ctx.font = 'bold 11px monospace'; ctx.textAlign = 'center';
+      ctx.fillText('s = ' + dist.toFixed(1) + ' m', midX, midY + 3); ctx.textAlign = 'left';
+
+      if (animPts.length > 1) {
+        ctx.strokeStyle = '#ff8753'; ctx.lineWidth = 2.5; ctx.beginPath();
+        animPts.forEach(({ t: pt, v: pv }, i) => {
+          const px = GP.x0 + (pt / t) * GP.w, py = GP.y1 - (pv / vMax) * GP.h;
+          i === 0 ? ctx.moveTo(px, py) : ctx.lineTo(px, py);
+        });
+        ctx.stroke();
+        const last = animPts[animPts.length - 1];
+        const lx = GP.x0 + (last.t / t) * GP.w, ly = GP.y1 - (last.v / vMax) * GP.h;
+        ctx.fillStyle = '#ff8753'; ctx.beginPath(); ctx.arc(lx, ly, 5, 0, Math.PI * 2); ctx.fill();
+      }
+
+      if (animated) {
+        const midT = t * 0.5;
+        const ax = GP.x0 + (midT * 0.2 / t) * GP.w, ay2 = GP.y1 - ((curV0 + a * midT * 0.2) / vMax) * GP.h;
+        const bx = GP.x0 + (midT / t) * GP.w, by2 = GP.y1 - ((curV0 + a * midT) / vMax) * GP.h;
+        ctx.strokeStyle = '#ffd164'; ctx.lineWidth = 1.5; ctx.setLineDash([5, 5]);
+        ctx.beginPath(); ctx.moveTo(ax, ay2); ctx.lineTo(bx, ay2); ctx.lineTo(bx, by2); ctx.stroke();
+        ctx.setLineDash([]);
+        ctx.fillStyle = 'rgba(20,24,40,0.9)'; ctx.beginPath();
+        ctx.roundRect(bx + 6, Math.min(ay2, by2) - 14, 192, 22, 4); ctx.fill();
+        ctx.fillStyle = '#ffd164'; ctx.font = 'bold 11px monospace';
+        ctx.fillText('Steigung = Δv/Δt = ' + a + ' m/s² = a', bx + 10, Math.min(ay2, by2) + 3);
+      }
+    };
+
+    const updateLoop = () => { drawScene(); _moduleEngineRaf = requestAnimationFrame(updateLoop); };
+    const stopUpdate = () => { if (_moduleEngineRaf) { cancelAnimationFrame(_moduleEngineRaf); _moduleEngineRaf = null; } };
+
+    slA?.addEventListener('input', () => { if (!animating) drawScene(); });
+    slV0?.addEventListener('input', () => { if (!animating) drawScene(); });
+    drawScene();
+
+    goBtn?.addEventListener('click', () => {
+      if (animating) return;
+      animating = true; animated = false; animPts.length = 0; animT = 0;
+      if (slA) slA.disabled = true;
+      if (slV0) slV0.disabled = true;
+      goBtn.disabled = true;
+      stopUpdate();
+      const a = getA(), curV0 = getV0(), t = defT;
+      const t0 = performance.now();
+      const anim = (now) => {
+        animT = Math.min((now - t0) / 1000, t);
+        animPts.push({ t: animT, v: curV0 + a * animT });
+        drawScene();
+        if (animT < t) {
+          _moduleEngineRaf = requestAnimationFrame(anim);
+        } else {
+          animating = false; animated = true;
+          const s = curV0 * t + 0.5 * a * t * t;
+          if (fb) { fb.className = 'test-motion-feedback is-correct'; fb.textContent = `✓ Fläche = s = ${curV0}·${t} + ½·${a}·${t}² = ${s.toFixed(1)} m`; }
+          if (restartBtn) restartBtn.hidden = false;
+          if (nx) nx.hidden = false;
+          _flashCorrect?.();
+        }
+      };
+      _moduleEngineRaf = requestAnimationFrame(anim);
+    });
+
+    restartBtn?.addEventListener('click', () => {
+      animating = false; animated = false; animT = null; animPts.length = 0;
+      if (slA) slA.disabled = false;
+      if (slV0) slV0.disabled = false;
+      goBtn.disabled = false;
+      if (restartBtn) restartBtn.hidden = true;
+      if (nx) nx.hidden = true;
+      if (fb) { fb.className = ''; fb.textContent = ''; }
+      drawScene();
+      _moduleEngineRaf = requestAnimationFrame(updateLoop);
+    });
+
+    nx?.addEventListener('click', () => {
+      stopUpdate();
+      q.followUp?.length ? runMCEngine(q.followUp, onComplete) : onComplete?.();
+    });
+
+    _moduleEngineRaf = requestAnimationFrame(updateLoop);
+  };
+
+  const renderModuleGame = (step) => {
+    if (!(siGameStage instanceof HTMLElement) || !step) return;
+    stopModuleGame();
+    stopSIUnitsJumpGame(); stopTestMotionGame(); stopCatchUpGame();
+    stopAccelerationGame(); stopSprintGame(); stopFreeFallGame();
+    stopBrakingGame(); stopDistanceAccGame();
+
+    // Enrich step with STEP_CONTENT data
+    const enriched = getStepContent(step);
+
+    if (!enriched.theory && !enriched.question) {
+      renderGenericGame(step); return;
+    }
+
+    step = enriched;
+
+    const startQuestion = () => {
+      stopModuleGame();
+      if (!step.question) { showModuleComplete(step); return; }
+      const q = step.question;
+      const done = () => showModuleComplete(step);
+
+      // Interactive engines bypass the difficulty picker
+      if (q.type === "speed-lab") { runSpeedLabEngine(q, done); return; }
+      if (q.type === "race")      { runRaceEngine(q, done);      return; }
+      if (q.type === "st-live")   { runSTLiveEngine(q, done);    return; }
+      if (q.type === "accel-lab") { runAccelLabEngine(q, done);  return; }
+      if (q.type === "vt-live")   { runVTLiveEngine(q, done);    return; }
+
+      const runQ = (tasks) => {
+        if (q.type === "mc") {
+          runMCEngine(tasks, done);
+        } else if (q.type === "calc") {
+          runCalcEngine(tasks, q.config, done);
+        } else if (q.type === "chart") {
+          runChartEngine(q.chartConfig, tasks, done);
+        } else if (q.type === "matter") {
+          runMatterEngine(q.scene, tasks, done);
+        } else {
+          showModuleComplete(step);
+        }
+      };
+
+      if (q.basis && q.challenge) {
+        showDifficultyPicker(q, runQ);
+      } else {
+        runQ(q.tasks || []);
+      }
+    };
+
+    showModuleTheory(step, startQuestion);
+  };
+
+
   const renderGenericGame = (step) => {
     if (!(siGameStage instanceof HTMLElement)) {
       return;
@@ -3230,8 +7979,8 @@ if (title && frame && pencilLayer instanceof HTMLCanvasElement) {
     const isTestUniformMotion = moduleId === "TEST" && step.title === "Gleichförmige Bewegung";
     const isCatchUpMotion = moduleId === "TEST" && step.title === "Aufholen";
     const isAccelerationMotion = moduleId === "TEST" && step.title === "Beschleunigung";
-    const isSprintScanner = moduleId === "TEST" && step.title === "K1 - Sprint-Scanner";
-    const isOvertakeDuel = moduleId === "TEST" && step.title === "K2 - Überhol-Duell";
+    const isSprintScanner = moduleId === "TEST" && step.title === "K1 – Sprint-Scanner";
+    const isOvertakeDuel = moduleId === "TEST" && step.title === "K2 – Überhol-Duell";
 
     if (isTestUniformMotion) {
       siSideContent.innerHTML = `
@@ -3451,13 +8200,79 @@ if (title && frame && pencilLayer instanceof HTMLCanvasElement) {
       return;
     }
 
+    const extra = STEP_CONTENT[step.title];
+    const formula = extra?.theory?.formula ?? "";
+    const example = extra?.theory?.example ?? "";
     siSideContent.innerHTML = `
+      ${formula || example ? `<article class="side-card">
+        <h3 class="side-title">Formelblatt</h3>
+        ${formula ? `<div class="side-eq sc-formula-ref">${formula}</div>` : ""}
+        ${example ? `<p class="side-text">${example}</p>` : ""}
+      </article>` : ""}
       <article class="side-card">
-        <h3 class="side-title"><strong>${step.title}</strong></h3>
-        <p class="side-text">Zusammenfassung folgt hier.</p>
+        <h3 class="side-title">Taschenrechner</h3>
+        <div class="side-calc-display" id="sc-display">0</div>
+        <div class="side-calc-grid">
+          <button data-sc="C" class="sc-clear">C</button>
+          <button data-sc="back">&#8676;</button>
+          <button data-sc="sqrt">&#8730;</button>
+          <button data-sc="/" class="sc-op">÷</button>
+          <button data-sc="7">7</button>
+          <button data-sc="8">8</button>
+          <button data-sc="9">9</button>
+          <button data-sc="*" class="sc-op">×</button>
+          <button data-sc="4">4</button>
+          <button data-sc="5">5</button>
+          <button data-sc="6">6</button>
+          <button data-sc="-" class="sc-op">−</button>
+          <button data-sc="1">1</button>
+          <button data-sc="2">2</button>
+          <button data-sc="3">3</button>
+          <button data-sc="+" class="sc-op">+</button>
+          <button data-sc="0" class="sc-zero">0</button>
+          <button data-sc=".">.</button>
+          <button data-sc="=" class="sc-eq">=</button>
+        </div>
       </article>
     `;
     typesetSidePanelMath();
+    initSideCalc();
+  };
+
+  const initSideCalc = () => {
+    const display = document.getElementById("sc-display");
+    if (!display) return;
+    let expr = "";
+    let justEvaled = false;
+    const update = () => { display.textContent = expr || "0"; };
+    siSideContent.querySelectorAll("[data-sc]").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const sc = btn.dataset.sc;
+        if (sc === "C") { expr = ""; justEvaled = false; }
+        else if (sc === "back") { expr = expr.slice(0, -1); justEvaled = false; }
+        else if (sc === "=") {
+          try {
+            const safe = expr.replace(/[^0-9+\-*/().e ]/g, "");
+            const result = Function(`"use strict"; return (${safe})`)();
+            expr = String(isFinite(result) ? +result.toPrecision(10) : "Fehler");
+          } catch { expr = "Fehler"; }
+          justEvaled = true;
+        } else if (sc === "sqrt") {
+          try {
+            const safe = expr.replace(/[^0-9+\-*/().e ]/g, "");
+            const val = Function(`"use strict"; return (${safe})`)();
+            expr = String(+Math.sqrt(val).toPrecision(10));
+          } catch { expr = "Fehler"; }
+          justEvaled = true;
+        } else {
+          if (justEvaled && /[0-9.]/.test(sc)) { expr = ""; }
+          if (expr === "Fehler") expr = "";
+          justEvaled = false;
+          expr += sc;
+        }
+        update();
+      });
+    });
   };
 
   const openSIGame = (stepIndex) => {
@@ -3481,8 +8296,12 @@ if (title && frame && pencilLayer instanceof HTMLCanvasElement) {
     const isTestUniformMotion = activeModuleId === "TEST" && step.title === "Gleichförmige Bewegung";
     const isCatchUpMotion = activeModuleId === "TEST" && step.title === "Aufholen";
     const isAccelerationMotion = activeModuleId === "TEST" && step.title === "Beschleunigung";
-    const isSprintScanner = activeModuleId === "TEST" && step.title === "K1 - Sprint-Scanner";
-    const isOvertakeDuel = activeModuleId === "TEST" && step.title === "K2 - Überhol-Duell";
+    const isSprintScanner = activeModuleId === "TEST" && step.title === "K1 – Sprint-Scanner";
+    const isOvertakeDuel = activeModuleId === "TEST" && step.title === "K2 – Überhol-Duell";
+    const isFreeFall = activeModuleId === "TEST" && step.title === "K3 – Freier Fall";
+    const isBraking = activeModuleId === "TEST" && step.title === "K4 – Bremsweg";
+    const isDistanceAcc = activeModuleId === "TEST" && step.title === "K5 – Beschleunigungsweg";
+    const isMCConcept = activeModuleId === "TEST" && step.title === "K6 – Konzept-Quiz";
     if (isSIUnits) {
       renderSIUnitsTutorial();
     } else if (isTestUniformMotion) {
@@ -3495,12 +8314,26 @@ if (title && frame && pencilLayer instanceof HTMLCanvasElement) {
       renderSprintGame();
     } else if (isOvertakeDuel) {
       renderCatchUpGame(K2_OVERTAKE_TASK);
+    } else if (isFreeFall) {
+      renderFreeFallGame();
+    } else if (isBraking) {
+      renderBrakingGame();
+    } else if (isDistanceAcc) {
+      renderDistanceAccGame();
+    } else if (isMCConcept) {
+      renderMCConceptGame();
+    } else if (step.theory || step.question || STEP_CONTENT[step.title]) {
+      renderModuleGame(step);
     } else {
       stopSIUnitsJumpGame();
       stopTestMotionGame();
       stopCatchUpGame();
       stopAccelerationGame();
       stopSprintGame();
+      stopFreeFallGame();
+      stopBrakingGame();
+      stopDistanceAccGame();
+      stopModuleGame();
       renderGenericGame(step);
     }
     renderSidePanel(activeModuleId, step);
@@ -3514,6 +8347,10 @@ if (title && frame && pencilLayer instanceof HTMLCanvasElement) {
     stopCatchUpGame();
     stopAccelerationGame();
     stopSprintGame();
+    stopFreeFallGame();
+    stopBrakingGame();
+    stopDistanceAccGame();
+    stopModuleGame();
     sidePanelHidden = false;
     applySidePanelVisibility();
     document.body.classList.remove("si-game-open");
@@ -3699,6 +8536,15 @@ if (title && frame && pencilLayer instanceof HTMLCanvasElement) {
     }
     if (sprintState.running) {
       resizeSprintCanvas();
+    }
+    if (freeFallState.running) {
+      resizeFreeFallCanvas();
+    }
+    if (brakingState.running) {
+      resizeBrakingCanvas();
+    }
+    if (distanceAccState.running) {
+      resizeDistanceAccCanvas();
     }
     if (siJumpState.running) {
       layoutSIJumpWorld();
