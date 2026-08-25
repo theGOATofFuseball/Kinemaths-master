@@ -2357,6 +2357,34 @@ if (title && frame && pencilLayer instanceof HTMLCanvasElement) {
     acc[moduleId] = { current: reached, maxReached: reached };
     return acc;
   }, {});
+    // Gesamt-XP des aktuellen Spielers – wird beim Login aus Firestore geladen
+  let totalXp = 0;
+
+  const awardXp = (amount) => {
+    totalXp += amount;
+  };
+
+  const persistProgress = () => {
+    if (typeof saveProgressToFirestore === "function") {
+      saveProgressToFirestore(moduleState, totalXp);
+    }
+  };
+
+  // Überschreibt moduleState + totalXp mit den geladenen Firestore-Daten
+  const applyLoadedProgress = (data) => {
+    if (!data) return;
+    if (data.moduleState) {
+      Object.keys(data.moduleState).forEach((moduleId) => {
+        if (moduleState[moduleId]) {
+          moduleState[moduleId] = data.moduleState[moduleId];
+        }
+      });
+    }
+    if (typeof data.totalXp === "number") {
+      totalXp = data.totalXp;
+    }
+    applyModuleStates();
+  };
   const siJumpState = {
     running: false,
     rafId: 0,
@@ -2749,6 +2777,8 @@ if (title && frame && pencilLayer instanceof HTMLCanvasElement) {
     const state = moduleState[activeModuleId];
     const nextStep = clampStep(step, activeModuleId);
 
+        const isNewProgress = nextStep > state.maxReached;
+
     state.current = nextStep;
     state.maxReached = Math.max(state.maxReached, nextStep);
 
@@ -2766,6 +2796,11 @@ if (title && frame && pencilLayer instanceof HTMLCanvasElement) {
       if (activeNode instanceof HTMLElement) {
         activeNode.scrollIntoView({ behavior: "smooth", block: "center" });
       }
+    }
+
+    if (isNewProgress) {
+      awardXp(10);
+      persistProgress();
     }
   };
 
@@ -8518,22 +8553,38 @@ if (title && frame && pencilLayer instanceof HTMLCanvasElement) {
     lastPoint = null;
   });
 
+    const beginGame = () => {
+    gameStarted = true;
+    document.body.classList.add("game-started");
+    title.style.transform = "";
+    lastPoint = null;
+    if (ctx) {
+      ctx.clearRect(0, 0, cssWidth, cssHeight);
+    }
+  };
+
   if (startButton instanceof HTMLButtonElement) {
     startButton.addEventListener("click", () => {
-      if (gameStarted) {
+      if (gameStarted) return;
+
+      if (auth.currentUser) {
+        beginGame();
         return;
       }
 
-      gameStarted = true;
-      document.body.classList.add("game-started");
-      title.style.transform = "";
-      lastPoint = null;
-
-      if (ctx) {
-        ctx.clearRect(0, 0, cssWidth, cssHeight);
-      }
+      showLoginOverlay(() => {
+        beginGame();
+      });
     });
   }
+
+  auth.onAuthStateChanged(async (user) => {
+    if (user) {
+      const data = await loadProgressFromFirestore();
+      applyLoadedProgress(data);
+    }
+  }
+  );
 
   moduleCards.forEach((card) => {
     card.addEventListener("click", () => {
