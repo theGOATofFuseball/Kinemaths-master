@@ -178,7 +178,7 @@ const STEP_CONTENT = {
         "Die Schlüsselfrage lautet: Hat sich die Position zwischen zwei Zeitpunkten verändert? Δs = s₂ − s₁. Wenn Δs ≠ 0, liegt Bewegung vor. Wenn Δs = 0, ruht der Körper.",
         "Bewegung braucht immer zwei Angaben zusammen: Ort und Zeit. Nur ein Ort allein sagt nichts. Erst 'der Ort verändert sich mit der Zeit' macht Bewegung messbar.",
       ],
-      formula: "Δs = s₂ − s₁  (Δs ≠ 0 → Bewegung)",
+      formula: "\\(\\Delta s = s_2 - s_1 \\quad (\\Delta s \\neq 0 \\Rightarrow \\text{Bewegung})\\)",
       example: "Ball bei t₁ = 0 s an s₁ = 2 m. Bei t₂ = 3 s an s₂ = 11 m → Δs = 9 m → Bewegung.",
     },
     question: {
@@ -203,7 +203,7 @@ const STEP_CONTENT = {
         "Beispiel Zug: Jemand sitzt im fahrenden Zug und hält eine Tasse. Relativ zum Zug ruht die Tasse. Relativ zum Bahnhof bewegt sie sich mit 80 km/h. Beide Aussagen sind gleichzeitig korrekt.",
         "In der Schulphysik wählt man meist die Erde als ruhendes Bezugssystem. Das ist bequem und für alltägliche Situationen genau genug.",
       ],
-      formula: "v_rel = v_A − v_B  (Geschwindigkeit von A relativ zu B)",
+      formula: "\\(v_{\\text{rel}} = v_A - v_B\\)  (Geschwindigkeit von A relativ zu B)",
       example: "Auto A bei 10 m, Auto B bei 4 m. Im Bezugssystem von B: s_A = 10 − 4 = +6 m.",
     },
     question: {
@@ -228,7 +228,7 @@ const STEP_CONTENT = {
         "Das Vorzeichen enthält die Richtungsinformation: s = +3 m und s = −3 m liegen gleich weit vom Ursprung entfernt, aber auf verschiedenen Seiten. Die positive Richtung wird zu Beginn der Aufgabe frei gewählt.",
         "Wichtig: Ort ist eine Momentaufnahme. s(t₀) = 5 m sagt nur, wo der Körper zum Zeitpunkt t₀ ist. Wie er dorthin kam, zeigt erst die Funktion s(t).",
       ],
-      formula: "s(t₀) = Ort zum Zeitpunkt t₀ | Δs = s₂ − s₁",
+      formula: "\\(s(t_0)\\) = Ort zum Zeitpunkt \\(t_0\\)  ·  \\(\\Delta s = s_2 - s_1\\)",
       example: "Messung bei t = 2 s: s = −4 m → 4 Meter links vom Ursprung (wenn positiv = rechts).",
     },
     question: {
@@ -253,7 +253,7 @@ const STEP_CONTENT = {
         "Die SI-Einheit der Zeit ist die Sekunde (Abkürzung: s). Häufige Umrechnungen: 1 min = 60 s, 1 h = 3600 s. In Formeln immer Sekunden verwenden, wenn die Geschwindigkeit in m/s gefragt ist.",
         "Erst mit zwei Zeitpunkten kann man Bewegung beschreiben: Wie hat sich der Ort von t₁ zu t₂ verändert? Ohne Zeitbezug ist Kinematik unmöglich.",
       ],
-      formula: "Δt = t₂ − t₁  (Zeitintervall, immer ≥ 0)",
+      formula: "\\(\\Delta t = t_2 - t_1\\)  (Zeitintervall, immer ≥ 0)",
       example: "t₁ = 2 s, t₂ = 7 s → Δt = 5 s. In dieser Zeit legt das Auto eine Strecke zurück.",
     },
     question: {
@@ -278,7 +278,7 @@ const STEP_CONTENT = {
         "Die Verschiebung Δs ist die Netto-Ortsänderung: Δs = s₂ − s₁. Wenn du am Startpunkt endest, ist Δs = 0 – egal wie weit du gelaufen bist. Verschiebung kann negativ sein.",
         "Diese Unterscheidung ist fundamental: Formelgrösse s meint oft die Verschiebung (inkl. Vorzeichen). Umgangssprache 'Strecke' meint oft den Gesamtweg. Achte immer genau auf den Kontext.",
       ],
-      formula: "Verschiebung: Δs = s₂ − s₁  |  Strecke = |Weg insgesamt|",
+      formula: "Verschiebung: \\(\\Delta s = s_2 - s_1\\)  ·  Strecke = |Weg insgesamt|",
       example: "Start s₁ = 0, läuft 8 m vor (s = 8), 3 m zurück (s₂ = 5). Strecke = 11 m. Δs = +5 m.",
     },
     question: {
@@ -303,7 +303,7 @@ const STEP_CONTENT = {
         "Häufige Untereinheiten: 1 km = 1000 m, 1 dm = 0,1 m, 1 cm = 0,01 m, 1 mm = 0,001 m. Für Berechnungen immer zuerst in Meter umrechnen.",
         "Beispiele vollständiger Angaben: s = 250 m (korrekt), s = 250 (falsch – Einheit fehlt), s = 0,25 km (korrekt – aber für Rechnungen umrechnen).",
       ],
-      formula: "s [m]: 1 km = 1000 m | 1 cm = 0,01 m | 1 mm = 0,001 m",
+      formula: "\\(s\\) [m]: 1 km = 1000 m  ·  1 cm = 0,01 m  ·  1 mm = 0,001 m",
       example: "s = 2,4 km = 2400 m = 240 000 cm.",
     },
     question: {
@@ -328,7 +328,7 @@ const STEP_CONTENT = {
         "Aus dem Kontext erkennt man den Unterschied: '20 s' bedeutet 20 Sekunden. 's = 20 m' bedeutet die Strecke beträgt 20 Meter. In Formeln steht s immer für die Strecke, in Einheiten immer für Sekunde.",
         "Umrechnungen: 1 min = 60 s, 1 h = 3600 s. Für alle Kinematik-Rechnungen mit m/s immer zuerst in Sekunden umrechnen.",
       ],
-      formula: "t [s]: 1 min = 60 s | 1 h = 3600 s  ⚠ s [m] ≠ s [Einheit Sekunde]",
+      formula: "\\(t\\) [s]: 1 min = 60 s  ·  1 h = 3600 s  ·  ⚠ \\(s\\) [m] ≠ s [Sekunde]",
       example: "Formel v = s/t. Hier ist s die Strecke (m) und t die Zeit (s = Sekunden). v hat Einheit m/s.",
     },
     question: {
@@ -378,7 +378,7 @@ const STEP_CONTENT = {
         "Alltagssprache ist oft ungenau. 'Das Auto ist schnell' – relativ wozu? Physikalische Beschreibung ersetzt vage Worte durch Grössen: s, t, Δs, v.",
         "Wichtige Grundtypen: Körper ruht (Δs = 0), Körper bewegt sich gleichförmig (konstante v), Körper wird schneller oder langsamer (Beschleunigung). Diese drei Typen sind der Anfang aller Kinematik.",
       ],
-      formula: "Ruhe: Δs = 0 | Gleichförmig: v = konst. | Beschleunigt: v ändert sich",
+      formula: "Ruhe: \\(\\Delta s = 0\\)  ·  Gleichförmig: \\(v = \\text{konst.}\\)  ·  Beschleunigt: v ändert sich",
       example: "'Das Taxi steht 5 Minuten an der Ampel.' → Δs = 0, t = 300 s, v = 0.",
     },
     question: {
@@ -403,7 +403,7 @@ const STEP_CONTENT = {
         "Jetzt kommen diese Konzepte zusammen. Der Boss prüft, ob du sie nicht nur einzeln, sondern auch vernetzt anwenden kannst – wie es in echten Physikaufgaben nötig ist.",
         "Boss-Strategie: 1) Situation verstehen. 2) Gegeben/Gesucht aufschreiben. 3) Den richtigen Begriff wählen. 4) Rechnen oder begründen.",
       ],
-      formula: "Δs = s₂ − s₁  |  Δt = t₂ − t₁  |  1 km = 1000 m  |  1 min = 60 s",
+      formula: "\\(\\Delta s = s_2 - s_1\\)  ·  \\(\\Delta t = t_2 - t_1\\)  ·  1 km = 1000 m  ·  1 min = 60 s",
       example: "Erst lesen, dann verstehen – erst dann rechnen. Kein blindes Formeleinsetzen!",
     },
     question: {
@@ -432,7 +432,7 @@ const STEP_CONTENT = {
         "Wichtig ist der Unterschied zwischen Durchschnittsgeschwindigkeit und Momentangeschwindigkeit. Die Durchschnittsgeschwindigkeit gilt für ein ganzes Zeitintervall: v = Δs / Δt. Die Momentangeschwindigkeit beschreibt den Augenblick.",
         "Geschwindigkeit ist eine gerichtete Grösse (Vektor). In einer Dimension reicht aber oft ein Vorzeichen: positiv = vorwärts, negativ = rückwärts.",
       ],
-      formula: "v = Δs / Δt  (Durchschnittsgeschwindigkeit)",
+      formula: "\\(v = \\dfrac{\\Delta s}{\\Delta t}\\)  (Durchschnittsgeschwindigkeit)",
       example: "Auto fährt 120 m in 8 s → v = 120 / 8 = 15 m/s.",
     },
     question: {
@@ -457,15 +457,14 @@ const STEP_CONTENT = {
         "Aus dieser Formel lassen sich die anderen Grössen durch Umstellen berechnen: s = v · t (Weg) und t = s / v (Zeit). Das sogenannte 'Dreiecks-Mnemonic' hilft beim Merken: decke die gesuchte Grösse ab.",
         "Achtung: Die Formel gilt exakt nur für gleichförmige Bewegung. Bei nicht konstanter Geschwindigkeit liefert v = s/t nur den Durchschnittswert.",
       ],
-      formula: "v = s / t  ↔  s = v · t  ↔  t = s / v",
+      formula: "\\(v = \\dfrac{s}{t}\\)  ↔  \\(s = v \\cdot t\\)  ↔  \\(t = \\dfrac{s}{v}\\)",
       example: "v = 25 m/s, t = 12 s → s = 25 · 12 = 300 m.",
     },
     question: {
       type: "speed-lab",
       s: 180,
-      minV: 5,
-      maxV: 30,
-      defaultV: 12,
+      targetV: 20,
+      defT: 9,
       followUp: [
         { text: "Du hast gerade beobachtet: Auto legt 180 m zurück. Wenn es 9 Sekunden braucht – was ist v?", options: ["20 m/s", "9 m/s", "180 m/s", "0,05 m/s"], correct: 0, explanation: "v = s/t = 180/9 = 20 m/s. Die Formel v = s ÷ t gibt dir die Geschwindigkeit.", hint: "v = s / t" },
       ],
@@ -481,7 +480,7 @@ const STEP_CONTENT = {
         "Umrechnungsfaktoren: 1 m/s = 3,6 km/h. Merkhilfe: 1 m/s bedeutet 1 Meter in 1 Sekunde. In 1 Stunde (3600 s) legt man damit 3600 m = 3,6 km zurück → 1 m/s = 3,6 km/h.",
         "Für Berechnungen mit Formeln (v = s/t mit s in m, t in s) muss die Geschwindigkeit immer in m/s angegeben sein. Wenn km/h gegeben ist, zuerst umrechnen!",
       ],
-      formula: "1 m/s = 3,6 km/h  |  v [km/h] ÷ 3,6 = v [m/s]",
+      formula: "1 m/s = 3,6 km/h  ·  \\(v\\) [km/h] ÷ 3,6 = \\(v\\) [m/s]",
       example: "72 km/h ÷ 3,6 = 20 m/s.  |  5 m/s × 3,6 = 18 km/h.",
     },
     question: {
@@ -506,7 +505,7 @@ const STEP_CONTENT = {
         "Einheiten immer zuerst vereinheitlichen: s in Meter (m) und t in Sekunden (s), bevor man rechnet. Ergebnis trägt die Einheit m/s.",
         "Typische Fehlerquellen: Einheit vergessen, km und m verwechseln, min statt s einsetzen. Checke am Ende: Ist das Ergebnis plausibel? Ein Fussgänger mit 500 m/s wäre unphysikalisch.",
       ],
-      formula: "v = s / t  (s in m, t in s → v in m/s)",
+      formula: "\\(v = \\dfrac{s}{t}\\)  (s in m, t in s → v in m/s)",
       example: "s = 5 km = 5000 m, t = 4 min = 240 s → v = 5000/240 ≈ 20,8 m/s.",
     },
     question: {
@@ -531,7 +530,7 @@ const STEP_CONTENT = {
         "Schema der Umstellung: Gegebene Grössen identifizieren → unbekannte Grösse bestimmen → passende Formel wählen → Einheiten prüfen → rechnen → Plausibilitätscheck.",
         "Merkhilfe: Im 'vst-Dreieck' decke die gesuchte Grösse ab. Was übrig bleibt, ist die Rechenoperation: v oben → dividieren. s und t unten → multiplizieren oder dividieren.",
       ],
-      formula: "s = v · t  |  t = s / v  |  v = s / t",
+      formula: "\\(s = v \\cdot t\\)  ·  \\(t = \\dfrac{s}{v}\\)  ·  \\(v = \\dfrac{s}{t}\\)",
       example: "v = 30 m/s, t = 4 s → s = 30 · 4 = 120 m. | v = 20 m/s, s = 300 m → t = 300/20 = 15 s.",
     },
     question: {
@@ -556,7 +555,7 @@ const STEP_CONTENT = {
         "Erkennungszeichen: Im s-t-Diagramm ist die Kurve eine Gerade mit konstanter Steigung (Steigung = v). Im v-t-Diagramm ist die Kurve eine horizontale Gerade.",
         "In der Natur gibt es keine perfekt gleichförmige Bewegung – Reibung und andere Kräfte ändern die Geschwindigkeit immer leicht. Aber als Modell ist sie unverzichtbar für die ersten Berechnungen.",
       ],
-      formula: "v = konst.  →  s = v · t  (lineare Funktion von t)",
+      formula: "\\(v = \\text{konst.}\\)  →  \\(s = v \\cdot t\\)  (lineare Funktion von t)",
       example: "Auto mit v = 20 m/s: nach 1 s → 20 m, nach 2 s → 40 m, nach 3 s → 60 m.",
     },
     question: {
@@ -579,7 +578,7 @@ const STEP_CONTENT = {
         "Bei gleichförmiger Bewegung ist Δs/Δt in jeder Zeile gleich. Bei nicht gleichförmiger Bewegung ändert sich v von Abschnitt zu Abschnitt – man berechnet dann Abschnittsgeschwindigkeiten.",
         "Tabellen aufstellen: Für gegebene v und Start-s berechnet man s(t) = s₀ + v · t. Erst t-Werte in die erste Spalte schreiben, dann s-Werte berechnen und eintragen.",
       ],
-      formula: "v = Δs / Δt  (aus benachbarten Tabellenzeilen)",
+      formula: "\\(v = \\dfrac{\\Delta s}{\\Delta t}\\)  (aus benachbarten Tabellenzeilen)",
       example: "t: 0 | 2 | 4 | 6 s  →  s: 0 | 10 | 20 | 30 m → v = 10/2 = 5 m/s (konstant).",
     },
     question: {
@@ -604,7 +603,7 @@ const STEP_CONTENT = {
         "Die Steigung der Kurve im s-t-Diagramm ist die Geschwindigkeit: v = Δs / Δt = tan(α). Steilere Gerade = höhere Geschwindigkeit. Horizontale Linie = Ruhe (v = 0). Fallende Linie = Bewegung in negativer Richtung (v < 0).",
         "Bei gleichförmiger Bewegung ist die s-t-Kurve eine Gerade. Schneidet die Gerade die s-Achse nicht im Ursprung, hat der Körper einen Startort s₀ ≠ 0.",
       ],
-      formula: "Steigung im s-t-Diagramm = v = Δs / Δt",
+      formula: "Steigung im s-t-Diagramm = \\(v = \\dfrac{\\Delta s}{\\Delta t}\\)",
       example: "Gerade von (0; 0) bis (5; 25) → Steigung = 25/5 = 5 m/s.",
     },
     question: {
@@ -626,7 +625,7 @@ const STEP_CONTENT = {
         "Richtige Formel: v_Ø = Gesamtstrecke / Gesamtzeit = (s₁ + s₂ + ...) / (t₁ + t₂ + ...). Zuerst Strecke und Zeit jedes Abschnitts berechnen, dann alles addieren.",
         "Beispiel für den Fehler: Auto A fährt 1 km mit 10 m/s, dann 1 km mit 20 m/s. Durchschnitt ≠ 15 m/s! Korrekte Rechnung: t₁ = 100 s, t₂ = 50 s → v_Ø = 2000/150 ≈ 13,3 m/s.",
       ],
-      formula: "v_Ø = s_ges / t_ges = (s₁+s₂) / (t₁+t₂)",
+      formula: "\\(\\bar{v} = \\dfrac{s_{\\text{ges}}}{t_{\\text{ges}}} = \\dfrac{s_1 + s_2}{t_1 + t_2}\\)",
       example: "s₁ = 300 m, v₁ = 15 m/s → t₁ = 20 s. s₂ = 200 m, v₂ = 10 m/s → t₂ = 20 s. v_Ø = 500/40 = 12,5 m/s.",
     },
     question: {
@@ -652,7 +651,7 @@ const STEP_CONTENT = {
         "Der Boss prüft, ob du diese Konzepte in ungewohnten Situationen richtig kombinierst. Lies jede Frage genau und entscheide, welches Werkzeug passt.",
         "Strategie: 1) Gegeben/Gesucht. 2) Einheiten prüfen. 3) Richtige Formel. 4) Plausibilität.",
       ],
-      formula: "v = s/t  |  s = v·t  |  t = s/v  |  v_Ø = s_ges/t_ges  |  m/s × 3,6 = km/h",
+      formula: "\\(v = \\dfrac{s}{t}\\)  ·  \\(s = v \\cdot t\\)  ·  \\(t = \\dfrac{s}{v}\\)  ·  \\(\\bar{v} = \\dfrac{s_{\\text{ges}}}{t_{\\text{ges}}}\\)  ·  m/s × 3,6 = km/h",
       example: "Boss-Aufgaben verbinden mehrere Abschnitte, verschiedene Einheiten und Diagramm-Lesekompetenz.",
     },
     question: {
@@ -681,7 +680,7 @@ const STEP_CONTENT = {
         "Die Formel lautet: a = Δv / Δt. Das Δ-Zeichen bedeutet 'Änderung von'. Also: Beschleunigung = Geschwindigkeitsänderung geteilt durch die dafür benötigte Zeit.",
         "Entscheidend ist: Beschleunigung erfordert keine hohe Geschwindigkeit – nur eine Änderung. Ein Körper, der mit 100 m/s gleichförmig fährt, hat a = 0. Ein Körper der von 0 auf 2 m/s hochfährt, beschleunigt.",
       ],
-      formula: "a = Δv / Δt = (v₂ − v₁) / (t₂ − t₁)  [m/s²]",
+      formula: "\\(a = \\dfrac{\\Delta v}{\\Delta t} = \\dfrac{v_2 - v_1}{t_2 - t_1}\\)  [m/s²]",
       example: "Auto: v₁ = 0, v₂ = 20 m/s, Δt = 4 s → a = 20/4 = 5 m/s².",
     },
     question: {
@@ -706,7 +705,7 @@ const STEP_CONTENT = {
         "Umstellungen: Δv = a · Δt (Geschwindigkeitsänderung berechnen) und Δt = Δv / a (Zeit berechnen). Das 'Beschleunigungs-Dreieck' hilft: decke die gesuchte Grösse ab.",
         "Wichtig: a ist die Durchschnittsbeschleunigung über das Intervall Δt. Bei gleichmässiger Beschleunigung ist das gleichzeitig die momentane Beschleunigung an jedem Zeitpunkt.",
       ],
-      formula: "a = Δv / Δt  |  Δv = a · Δt  |  Δt = Δv / a",
+      formula: "\\(a = \\dfrac{\\Delta v}{\\Delta t}\\)  ·  \\(\\Delta v = a \\cdot \\Delta t\\)  ·  \\(\\Delta t = \\dfrac{\\Delta v}{a}\\)",
       example: "Fahrrad: von 0 auf 6 m/s in 3 s → a = 6/3 = 2 m/s². | a = 4 m/s², Δt = 5 s → Δv = 4·5 = 20 m/s.",
     },
     question: {
@@ -729,7 +728,7 @@ const STEP_CONTENT = {
         "Beispiel a = 5 m/s²: Nach 1 s hat sich v um 5 m/s erhöht. Nach 2 s um 10 m/s. Nach 3 s um 15 m/s. Die Geschwindigkeit wächst linear mit der Zeit.",
         "Vergleich: g ≈ 9,81 m/s² ist die Fallbeschleunigung. Ein starkes Auto erreicht 0–100 km/h in 3 s → a ≈ 9,3 m/s². Ein Formel-1-Auto: bis zu 30 m/s²!",
       ],
-      formula: "1 m/s² = 1 (m/s) / s = Geschwindigkeitszunahme von 1 m/s pro Sekunde",
+      formula: "\\(1\\,\\text{m/s}^2 = \\dfrac{1\\,\\text{m/s}}{\\text{s}}\\)  = Geschwindigkeitszunahme von 1 m/s pro Sekunde",
       example: "a = 2 m/s²: nach 1 s → v = 2 m/s, nach 3 s → v = 6 m/s, nach 5 s → v = 10 m/s.",
     },
     question: {
@@ -754,7 +753,7 @@ const STEP_CONTENT = {
         "Achtung: a < 0 bedeutet nicht immer 'bremsen'! Wenn ein Körper in negativer Richtung fährt (v < 0) und a < 0 ist, wird er rückwärts immer schneller. Vorzeichen von a und v zusammen bestimmen, ob der Körper beschleunigt oder verzögert.",
         "Alltagssprache vs. Physik: 'Verzögerung' oder 'Abbremsung' ist im Alltag üblich. In der Physik sagt man präziser: negative Beschleunigung a < 0 (in der gewählten Richtung).",
       ],
-      formula: "a > 0: schneller in positiver Richtung | a < 0: langsamer (oder rückwärts schneller)",
+      formula: "\\(a > 0\\): schneller in positiver Richtung  ·  \\(a < 0\\): langsamer (oder rückwärts schneller)",
       example: "Auto bremst: v von 20 m/s auf 0 in 4 s → a = (0−20)/4 = −5 m/s².",
     },
     question: {
@@ -779,7 +778,7 @@ const STEP_CONTENT = {
         "Im v-t-Diagramm ist gleichmässige Beschleunigung eine Gerade mit der Steigung a. Je steiler die Gerade, desto grösser die Beschleunigung. Eine horizontale Gerade (Steigung 0) bedeutet: keine Beschleunigung, also gleichförmige Bewegung.",
         "Wichtige Eigenschaft: Der zurückgelegte Weg wächst quadratisch mit der Zeit (s ~ t²). In der zweiten Sekunde legt man 3-mal mehr zurück als in der ersten, in der dritten 5-mal mehr – dieses Muster stammt von Galileo Galilei.",
       ],
-      formula: "a = konst. → v(t) = v₀ + a·t (lineare Funktion der Zeit)",
+      formula: "\\(a = \\text{konst.}\\) → \\(v(t) = v_0 + a \\cdot t\\)  (lineare Funktion der Zeit)",
       example: "a = 2 m/s², v₀ = 0: t=1 → v=2, t=2 → v=4, t=3 → v=6 m/s. Zunahme konstant: +2 m/s pro Sekunde.",
     },
     question: {
@@ -802,7 +801,7 @@ const STEP_CONTENT = {
         "Die Formel stammt direkt aus a = Δv/Δt: Wenn a konstant ist und bei t=0 die Geschwindigkeit v₀ war, dann ist v nach Zeit t: v = v₀ + a·t. Man kann sie als 'Startgeschwindigkeit + Zuwachs durch Beschleunigung' lesen.",
         "Umstellungen: t = (v − v₀) / a (wie lange bis zu Geschwindigkeit v?) und a = (v − v₀) / t (welche Beschleunigung war nötig?).",
       ],
-      formula: "v = v₀ + a · t  (gilt nur bei konstanter Beschleunigung!)",
+      formula: "\\(v = v_0 + a \\cdot t\\)  (gilt nur bei konstanter Beschleunigung!)",
       example: "v₀ = 5 m/s, a = 3 m/s², t = 4 s → v = 5 + 3·4 = 17 m/s.",
     },
     question: {
@@ -826,7 +825,7 @@ const STEP_CONTENT = {
         "Warum quadratisch? Weil v selbst mit der Zeit steigt (v = a·t), und der Weg die 'Fläche unter v' ist. Die Fläche unter einer linear steigenden Geraden ist ein Dreieck: ½ · Basis · Höhe = ½ · t · (a·t) = ½·a·t².",
         "Wichtig: Diese Formel gilt nur für Start aus der Ruhe (v₀ = 0). Bei v₀ ≠ 0 lautet die allgemeine Formel: s = v₀·t + ½·a·t².",
       ],
-      formula: "s = ½ · a · t²  (nur für v₀ = 0)",
+      formula: "\\(s = \\tfrac{1}{2}\\,a\\,t^2\\)  (nur für v₀ = 0)",
       example: "a = 4 m/s², t = 3 s → s = ½ · 4 · 9 = 18 m.",
     },
     question: {
@@ -850,7 +849,7 @@ const STEP_CONTENT = {
         "Der Bremsweg folgt aus s = v₀² / (2·|a|). Je höher die Ausgangsgeschwindigkeit v₀ oder je schwächer die Bremsverzögerung |a|, desto länger der Bremsweg. Das v₀² erklärt, warum doppelte Geschwindigkeit zu viermal längerem Bremsweg führt.",
         "Praktische Richtwerte: PKW auf trockener Strasse: |a| ≈ 7−9 m/s². Auf nasser Fahrbahn: |a| ≈ 4−5 m/s². Auf Eis: |a| ≈ 1−2 m/s².",
       ],
-      formula: "s_B = v₀² / (2 · |a|)  (Bremsweg aus v₀, Verzögerung |a|)",
+      formula: "\\(s_B = \\dfrac{v_0^2}{2\\,|a|}\\)  (Bremsweg aus v₀, Verzögerung |a|)",
       example: "v₀ = 20 m/s, |a| = 5 m/s² → s_B = 400/10 = 40 m.",
     },
     question: {
@@ -875,7 +874,7 @@ const STEP_CONTENT = {
         "Die Steigung im v-t-Diagramm ist die Beschleunigung: a = Δv / Δt = tan(α). Steigende Gerade → a > 0. Fallende Gerade → a < 0 (Bremsen). Horizontale Linie → a = 0 (gleichförmig).",
         "Die Fläche unter dem v-t-Graphen (zwischen Kurve und t-Achse) entspricht dem zurückgelegten Weg. Dreieck bei Beschleunigung aus v₀ = 0: Fläche = ½·v_max·t = ½·a·t².",
       ],
-      formula: "Steigung v-t = a | Fläche unter v-t = s",
+      formula: "Steigung v-t = \\(a\\)  ·  Fläche unter v-t = \\(s\\)",
       example: "Gerade von (0; 0) bis (5 s; 20 m/s) → a = 20/5 = 4 m/s². Fläche (Dreieck) = ½·20·5 = 50 m.",
     },
     question: {
@@ -899,7 +898,7 @@ const STEP_CONTENT = {
         "Strategie: 1. Was ist gegeben? 2. Was ist gesucht? 3. Welche Formel verbindet diese Grössen? 4. Einheiten prüfen! 5. Plausibilitäts-Check (ist das Ergebnis physikalisch sinnvoll?).",
         "Besonders tückisch: Die Formel s = ½·a·t² gilt nur für v₀ = 0. Bei v₀ ≠ 0 lautet sie s = v₀·t + ½·a·t². Und der Bremsweg s_B = v₀²/(2·a) gilt nur für gleichmässige Verzögerung bis zum Stillstand.",
       ],
-      formula: "v = v₀+a·t | s = v₀·t+½·a·t² | a = Δv/Δt | s_B = v₀²/(2·a)",
+      formula: "\\(v = v_0 + at\\)  ·  \\(s = v_0 t + \\tfrac{1}{2}at^2\\)  ·  \\(a = \\dfrac{\\Delta v}{\\Delta t}\\)  ·  \\(s_B = \\dfrac{v_0^2}{2a}\\)",
       example: "Gegeben: v₀=10 m/s, a=2 m/s², t=3 s → v=16 m/s, s=10·3+½·2·9=30+9=39 m.",
     },
     question: {
@@ -926,7 +925,7 @@ const STEP_CONTENT = {
         "Die Diagramme sind mathematisch verknüpft: Die Steigung des s-t-Diagramms ergibt v. Die Steigung des v-t-Diagramms ergibt a. Umgekehrt ist die Fläche unter dem v-t-Graphen der zurückgelegte Weg s, und die Fläche unter dem a-t-Graphen ergibt die Geschwindigkeitsänderung Δv.",
         "Zusammenfassung: s-t → Steigung = v | v-t → Steigung = a, Fläche = s | a-t → Fläche = Δv. Diese Zusammenhänge gelten immer – egal wie die Bewegung aussieht.",
       ],
-      formula: "Steigung s-t = v  |  Steigung v-t = a  |  Fläche v-t = s  |  Fläche a-t = Δv",
+      formula: "Steigung s-t = \\(v\\)  ·  Steigung v-t = \\(a\\)  ·  Fläche v-t = \\(s\\)  ·  Fläche a-t = \\(\\Delta v\\)",
       example: "Gleichförmige Bewegung v=5 m/s: s-t ist Gerade (Steigung=5), v-t ist horizontale Linie bei 5, a-t liegt auf 0.",
     },
     question: {
@@ -951,7 +950,7 @@ const STEP_CONTENT = {
         "Negative Steigung bedeutet, dass der Körper sich in die negative Richtung bewegt – er kehrt zum Startpunkt zurück oder bewegt sich rückwärts. Das ist kein Fehler, sondern Physik: s kann sinken, wenn der Körper zurückgeht.",
         "Eine Parabel im s-t-Diagramm (gleichmässig steigende Steigung) entspricht gleichmässiger Beschleunigung. Die Steigung wird mit der Zeit immer grösser, weil v zunimmt.",
       ],
-      formula: "v = Δs / Δt  (Steigung im s-t-Diagramm)",
+      formula: "\\(v = \\dfrac{\\Delta s}{\\Delta t}\\)  (Steigung im s-t-Diagramm)",
       example: "s geht von 0 auf 20 m in 5 s → v = 20/5 = 4 m/s. Dann bleibt s=20 m → Körper steht still.",
     },
     question: {
@@ -982,7 +981,7 @@ const STEP_CONTENT = {
         "Eine horizontale Linie im v-t-Diagramm (Steigung 0) bedeutet a = 0 – der Körper bewegt sich gleichförmig. Der y-Achsenabschnitt (bei t = 0) ist die Anfangsgeschwindigkeit v₀.",
         "Wichtige Ablese-Technik: Zwei Punkte auf der Geraden wählen, Steigung = Δv / Δt berechnen. Das ist die Beschleunigung im gewählten Abschnitt.",
       ],
-      formula: "a = Δv / Δt  (Steigung im v-t-Diagramm)",
+      formula: "\\(a = \\dfrac{\\Delta v}{\\Delta t}\\)  (Steigung im v-t-Diagramm)",
       example: "Gerade von (2 s; 4 m/s) bis (6 s; 12 m/s) → a = (12−4)/(6−2) = 8/4 = 2 m/s².",
     },
     question: {
@@ -1013,7 +1012,7 @@ const STEP_CONTENT = {
         "Bei beliebiger Kurve ist es das Integral ∫v dt. Für den Schulgebrauch reichen Dreiecke und Rechtecke: Die Gesamtfläche kann in einfache geometrische Formen zerlegt werden – das ist die Grundidee der Integralrechnung.",
         "Achtung: Die Fläche unter der t-Achse (wenn v < 0) entspricht einem negativen Weg – der Körper bewegt sich rückwärts. Für den Gesamtweg (Pfadlänge) wird der Betrag genommen.",
       ],
-      formula: "s = Fläche unter v-t  |  Dreieck: s = ½ · v_max · t  |  Rechteck: s = v · t",
+      formula: "\\(s\\) = Fläche unter v-t  ·  Dreieck: \\(s = \\tfrac{1}{2}\\,v_{\\max}\\,t\\)  ·  Rechteck: \\(s = v \\cdot t\\)",
       example: "v-t: Gerade von (0; 0) nach (6 s; 18 m/s). Fläche = ½ · 6 · 18 = 54 m.",
     },
     question: {
@@ -1044,7 +1043,7 @@ const STEP_CONTENT = {
         "Die Fläche unter dem a-t-Graphen ergibt die Geschwindigkeitsänderung Δv. Zum Beispiel: a = 3 m/s² für 4 Sekunden → Fläche = Rechteck: 3 · 4 = 12 m/s → Δv = 12 m/s. War v₀ = 0, so ist v nach 4 s = 12 m/s.",
         "Im a-t-Diagramm kann man direkt erkennen, wann ein Körper beschleunigt (a > 0), verzögert (a < 0) oder gleichförmig fährt (a = 0). Es ist das einfachste Diagramm zu lesen – aber das seltenste im Alltag.",
       ],
-      formula: "Fläche unter a-t = Δv  |  a = konst. → horizontale Linie im a-t-Diagramm",
+      formula: "Fläche unter a-t = \\(\\Delta v\\)  ·  \\(a = \\text{konst.}\\) → horizontale Linie im a-t-Diagramm",
       example: "a = 5 m/s² für 4 s → Δv = 5·4 = 20 m/s. Danach a = 0 → v bleibt konstant.",
     },
     question: {
@@ -1075,7 +1074,7 @@ const STEP_CONTENT = {
         "Strategie: 1. Welche Grössen werden beschrieben (s, v, a)? 2. Wie ändern sie sich mit der Zeit? 3. Welche geometrische Form ergibt das? Konstant → Horizontale. Linear zunehmend → Gerade. Quadratisch zunehmend → Parabel.",
         "Häufiger Fehler: Im s-t-Diagramm für gleichmässige Beschleunigung eine Gerade einzeichnen. Aber s = ½at² ist quadratisch – das ergibt eine Parabel, keine Gerade!",
       ],
-      formula: "Stehenbleiben → s=const | Gleichförmig → s-t: Gerade | Beschleunigt → s-t: Parabel",
+      formula: "Stehenbleiben → \\(s = \\text{konst.}\\)  ·  Gleichförmig → s-t: Gerade  ·  Beschleunigt → s-t: Parabel",
       example: "Text: 'Körper startet aus Ruhe und beschleunigt 4 s lang.' → s-t: nach oben öffnende Parabel. v-t: Gerade durch Ursprung.",
     },
     question: {
@@ -1100,7 +1099,7 @@ const STEP_CONTENT = {
         "Bei s-t-Diagrammen: Steigung ablesen = Geschwindigkeit. Steigende Steigung (Parabel) = Beschleunigung. Konstante Steigung = konstante Geschwindigkeit. Nullsteigung = Stillstand. Negative Steigung = Rückwärtsbewegung.",
         "Mehrphasige Bewegungen: Ein Diagramm kann mehrere Phasen enthalten. Jede Phase wird separat beschrieben. Wichtig: die Übergangspunkte (Knickstellen) markieren Änderungen in der Bewegung.",
       ],
-      formula: "Gerade im v-t: a = const. | Horizontal im v-t: v = const. | Negative Steigung im v-t: Bremsung",
+      formula: "Gerade im v-t: \\(a = \\text{konst.}\\)  ·  Horizontal im v-t: \\(v = \\text{konst.}\\)  ·  Negative Steigung im v-t: Bremsung",
       example: "v-t: steigt 3 s von 0 auf 6 m/s → bleibt 2 s bei 6 m/s → fällt 3 s auf 0. Beschreibung: erst gleichmässig beschleunigt, dann gleichförmig, dann gleichmässig gebremst.",
     },
     question: {
@@ -1125,7 +1124,7 @@ const STEP_CONTENT = {
         "Weiterer Fehler: Im s-t-Diagramm eine Gerade zeichnen für gleichmässige Beschleunigung. Korrekt wäre eine Parabel – denn s = ½at² ist quadratisch. Die Steigung einer Parabel nimmt zu, die einer Geraden ist konstant.",
         "Auch häufig: Im v-t-Diagramm negative Werte für v einzeichnen, obwohl der Körper laut Text 'vorwärts fährt'. Negative v bedeutet Bewegung in die entgegengesetzte Richtung – das ist kein 'Fehler' per se, aber eine Fehlinterpretation der Aufgabe.",
       ],
-      formula: "Senkrechte Linie im s-t oder v-t = unphysikalisch | Gerade statt Parabel bei Beschleunigung = falsch",
+      formula: "Senkrechte Linie im s-t oder v-t = unphysikalisch  ·  Gerade statt Parabel bei Beschleunigung = falsch",
       example: "Fehler: s-t zeigt Gerade, obwohl Körper gleichmässig aus Ruhe beschleunigt. Korrekt: Parabel (s ~ t²).",
     },
     question: {
@@ -1182,7 +1181,7 @@ const STEP_CONTENT = {
         "Strategie: 1. Welche Grössen sind gesucht? 2. In welchem Diagramm lese ich was ab? 3. Einheiten kontrollieren. 4. Phasen einzeln analysieren, dann addieren.",
         "Besonders tückisch: Verwechseln von s-t und v-t. Im s-t zeigt die Steigung v; im v-t zeigt die Steigung a. Ein 'steiles s-t' heisst schnell – ein 'steiles v-t' heisst hohe Beschleunigung.",
       ],
-      formula: "s-t: Stg=v | v-t: Stg=a, Fl=s | a-t: Fl=Δv",
+      formula: "s-t: Stg = \\(v\\)  ·  v-t: Stg = \\(a\\), Fl = \\(s\\)  ·  a-t: Fl = \\(\\Delta v\\)",
       example: "v-t: Dreieck mit Basis 5 s, Höhe 20 m/s → s = ½·5·20 = 50 m, a = 20/5 = 4 m/s².",
     },
     question: {
@@ -1209,7 +1208,7 @@ const STEP_CONTENT = {
         "Typische Reaktionszeiten: Ausgeruhter Fahrer ≈ 0,5–0,8 s. Normaler Verkehr ≈ 1 s. Müdigkeit, Ablenkung, Alkohol können t_R auf über 2 s erhöhen – eine Verdopplung bedeutet doppelten Reaktionsweg!",
         "Wichtig: Während der Reaktionszeit ändert sich die Geschwindigkeit nicht. Das Fahrzeug bewegt sich gleichförmig. Erst danach beginnt die Bremsung.",
       ],
-      formula: "s_R = v · t_R  (Reaktionsweg; v = konstant während t_R)",
+      formula: "\\(s_R = v \\cdot t_R\\)  (Reaktionsweg; v = konstant während t_R)",
       example: "v = 20 m/s (72 km/h), t_R = 1 s → s_R = 20 · 1 = 20 m.",
     },
     question: {
@@ -1234,15 +1233,14 @@ const STEP_CONTENT = {
         "Die Formel s_R = v · t_R ist die gleiche wie s = v · t aus der gleichförmigen Bewegung – angewendet auf das Zeitintervall der Reaktion. Alle drei Grössen lassen sich berechnen, wenn zwei bekannt sind.",
         "Praxistipp: Bei 50 km/h (≈ 14 m/s) und t_R = 1 s beträgt s_R ≈ 14 m – fast die Länge dreier PKW! In diesem Abstand muss das Auto bereits vollständig gestoppt haben, wenn ein Hindernis auftaucht.",
       ],
-      formula: "s_R = v · t_R  |  t_R = s_R / v  |  v = s_R / t_R",
+      formula: "\\(s_R = v \\cdot t_R\\)  ·  \\(t_R = \\dfrac{s_R}{v}\\)  ·  \\(v = \\dfrac{s_R}{t_R}\\)",
       example: "v = 30 m/s (108 km/h), t_R = 1,2 s → s_R = 36 m (fast zwei Buslängen!).",
     },
     question: {
       type: "speed-lab",
       s: 140,
-      minV: 5,
-      maxV: 28,
-      defaultV: 14,
+      targetV: 14,
+      defT: 10,
       followUp: [
         { text: "Auto fährt 14 m/s (50 km/h). Reaktionszeit 1 s. Welcher Reaktionsweg?", options: ["14 m", "50 m", "1 m", "7 m"], correct: 0, explanation: "s_R = v · t_R = 14 · 1 = 14 m. Gleichförmige Bewegung während t_R.", hint: "s_R = v · t_R" },
       ],
@@ -1258,7 +1256,7 @@ const STEP_CONTENT = {
         "Der Bremsweg s_B ist der Weg vom Beginn der Bremsung bis zum Stillstand. Er hängt quadratisch von der Ausgangsgeschwindigkeit ab: s_B = v₀² / (2 · |a|). Das bedeutet: doppelte Geschwindigkeit → vierfacher Bremsweg!",
         "Typische Bremsverzögerungen: Trockene Strasse: |a| ≈ 8 m/s². Nasse Strasse: |a| ≈ 4 m/s². Eis: |a| ≈ 1,5 m/s². Werte schwanken je nach Fahrzeug, Reifen und Belag.",
       ],
-      formula: "s_B = v₀² / (2 · |a|)  (Bremsweg; Stillstand am Ende)",
+      formula: "\\(s_B = \\dfrac{v_0^2}{2\\,|a|}\\)  (Bremsweg; Stillstand am Ende)",
       example: "v₀ = 20 m/s, |a| = 8 m/s² → s_B = 400/16 = 25 m.",
     },
     question: {
@@ -1283,7 +1281,7 @@ const STEP_CONTENT = {
         "Formel vollständig: s_A = v·t_R + v²/(2·|a|). In dieser Formel kommt v linear vor (im Reaktionsweg) und quadratisch (im Bremsweg). Bei hohen Geschwindigkeiten dominiert der quadratische Term.",
         "Faustregel (ungenau, aber praktisch): Anhalteweg in m ≈ (v in km/h) / 10 · ((v in km/h) / 10 + 1). Genauer: Nutz die Formel mit t_R = 1 s und |a| = 8 m/s².",
       ],
-      formula: "s_A = s_R + s_B = v·t_R + v²/(2·|a|)",
+      formula: "\\(s_A = s_R + s_B = v \\cdot t_R + \\dfrac{v^2}{2\\,|a|}\\)",
       example: "v = 20 m/s, t_R = 1 s, |a| = 8 m/s² → s_A = 20·1 + 400/16 = 20 + 25 = 45 m.",
     },
     question: {
@@ -1308,7 +1306,7 @@ const STEP_CONTENT = {
         "Dieser Effekt kommt allein aus der Physik, unabhängig von Fahrstil oder Fahrzeug. Er ist der Hauptgrund, warum Tempolimits Leben retten: 30 km/h statt 50 km/h reduziert den Bremsweg um den Faktor 50²/30² ≈ 2,8.",
         "Der Reaktionsweg steigt dagegen nur linear mit v. Bei hohen Geschwindigkeiten ist der Bremsweg der dominant gefährliche Teil des Anhaltewegs.",
       ],
-      formula: "s_B = v²/(2·a) → doppeltes v → 4-faches s_B",
+      formula: "\\(s_B = \\dfrac{v^2}{2a}\\) → doppeltes v → 4-faches \\(s_B\\)",
       example: "30 km/h = 8,3 m/s: s_B ≈ 4,3 m. 60 km/h = 16,7 m/s: s_B ≈ 17,4 m (4×!).",
     },
     question: {
@@ -1333,7 +1331,7 @@ const STEP_CONTENT = {
         "Faustregel: 2-Sekunden-Regel – der Abstand soll mindestens so gross sein, dass man 2 Sekunden braucht, um den Punkt zu erreichen, wo das Vorausfahrzeug gerade war. Bei 50 km/h ≈ 28 m.",
         "Auf der Autobahn (120 km/h = 33,3 m/s): 2-Sekunden-Abstand = 66,7 m. Viele Unfälle entstehen durch zu geringen Abstand – das Unfallrisiko steigt mit der zweiten Potenz der Geschwindigkeit.",
       ],
-      formula: "Mindestabstand ≥ s_A = v·t_R + v²/(2·|a|)",
+      formula: "Mindestabstand \\(\\geq s_A = v \\cdot t_R + \\dfrac{v^2}{2\\,|a|}\\)",
       example: "v = 33,3 m/s (120 km/h), t_R = 1 s, |a| = 8 m/s² → s_A ≈ 33,3 + 69,4 ≈ 103 m.",
     },
     question: {
@@ -1358,7 +1356,7 @@ const STEP_CONTENT = {
         "Bei 80 km/h (22,2 m/s): t_R = 0,8 s → s_R ≈ 18 m. t_R = 2 s → s_R = 44,4 m. Allein durch Müdigkeit werden 26 m mehr Weg zurückgelegt, bevor die Bremse betätigt wird!",
         "Andere Faktoren die t_R erhöhen: Alkohol und Drogen, Ablenkung (Handy), hohe Umgebungstemperaturen, monotone Strecken (Autobahn). Jede Sekunde mehr Reaktionszeit bedeutet bei 100 km/h = 27,8 m mehr Reaktionsweg.",
       ],
-      formula: "s_R = v · t_R → Müdigkeit erhöht t_R → s_R steigt proportional",
+      formula: "\\(s_R = v \\cdot t_R\\) → Müdigkeit erhöht \\(t_R\\) → \\(s_R\\) steigt proportional",
       example: "22,2 m/s, t_R verdoppelt von 1 auf 2 s → s_R verdoppelt von 22,2 auf 44,4 m.",
     },
     question: {
@@ -1383,7 +1381,7 @@ const STEP_CONTENT = {
         "Zahlen (t_R = 1 s, |a| = 8 m/s²): 30 km/h → s_A ≈ 21 m. 50 km/h → s_A ≈ 38 m. 80 km/h → s_A ≈ 82 m. 120 km/h → s_A ≈ 103 m. Die Verdopplung von 30 auf 60 km/h verdreifacht den Anhalteweg.",
         "Fussgas vs. Bremspedal: Die einzige Möglichkeit, den Anhalteweg zu reduzieren, ist niedrigere Geschwindigkeit. Bessere Bremsen helfen kaum – der Reaktionsweg dominiert im Stadtverkehr.",
       ],
-      formula: "s_A = v·t_R + v²/(2·a). Bei 30 vs. 50 km/h: Faktor s_A ≈ 1,8",
+      formula: "\\(s_A = v \\cdot t_R + \\dfrac{v^2}{2a}\\).  Bei 30 vs. 50 km/h: Faktor \\(s_A \\approx 1{,}8\\)",
       example: "50 km/h = 13,9 m/s: s_A = 13,9 + 9,6 = 23,5 m. 80 km/h = 22,2 m/s: s_A = 22,2 + 30,9 = 53,1 m.",
     },
     question: {
@@ -1408,7 +1406,7 @@ const STEP_CONTENT = {
         "Die Fläche unter dem v-t-Graphen entspricht dem zurückgelegten Weg. Reaktionsphase: Rechteck (Fläche = v · t_R = s_R). Bremsphase: Dreieck (Fläche = ½ · v · t_B = s_B). Gesamt: s_A = s_R + s_B.",
         "Bremszeit t_B berechnen: t_B = v₀ / |a| (Zeit bis v = 0 bei gleichmässiger Verzögerung). Diese Zeit ist das 'Dreieck' im v-t-Diagramm.",
       ],
-      formula: "Rechteck (Reaktion): s_R = v·t_R | Dreieck (Bremsung): s_B = ½·v·t_B = v²/(2·a)",
+      formula: "Rechteck (Reaktion): \\(s_R = v \\cdot t_R\\)  ·  Dreieck (Bremsung): \\(s_B = \\tfrac{1}{2}\\,v \\cdot t_B = \\dfrac{v^2}{2a}\\)",
       example: "v=20 m/s, t_R=1s, |a|=5m/s²: t_B=4s. s_R=20m (Rechteck), s_B=40m (Dreieck), s_A=60m.",
     },
     question: {
@@ -1430,7 +1428,7 @@ const STEP_CONTENT = {
         "Checkliste: 1. Geschwindigkeit in m/s umrechnen. 2. s_R = v·t_R. 3. s_B = v²/(2·|a|). 4. s_A = s_R + s_B. 5. Mit dem Hindernis-Abstand vergleichen – wenn s_A > Abstand: Kollision!",
         "Varianten: Was wenn t_R grösser wird? Was wenn |a| kleiner wird (nasse Strasse)? Was wenn v 20% höher war? Diese Fragen prüfen ob du die Zusammenhänge wirklich verstehst.",
       ],
-      formula: "s_A = v·t_R + v²/(2·|a|)",
+      formula: "\\(s_A = v \\cdot t_R + \\dfrac{v^2}{2\\,|a|}\\)",
       example: "v=25 m/s, t_R=1s, |a|=8m/s²: s_A = 25 + 39 = 64 m. Hindernis in 60 m → Kollision!",
     },
     question: {
@@ -1457,7 +1455,7 @@ const STEP_CONTENT = {
         "Entscheidend: Alle Körper fallen gleich schnell, unabhängig von ihrer Masse! Galileo bewies das durch Experimente. Das Geheimnis: Grössere Masse → grössere Schwerkraft, aber auch grössere Trägheit – beides hebt sich auf.",
         "Die Fallbeschleunigung g ≈ 9,81 m/s² ist überall auf der Erdoberfläche annähernd konstant (kleine Schwankungen je nach Breite und Höhe). Auf dem Mond: g_Mond ≈ 1,62 m/s².",
       ],
-      formula: "g ≈ 9,81 m/s²  (Fallbeschleunigung an der Erdoberfläche)",
+      formula: "\\(g \\approx 9{,}81\\,\\text{m/s}^2\\)  (Fallbeschleunigung an der Erdoberfläche)",
       example: "Ball und Stein fallen aus gleicher Höhe → kommen gleichzeitig an (ohne Luftwiderstand).",
     },
     question: {
@@ -1478,7 +1476,7 @@ const STEP_CONTENT = {
         "g ist eine Naturkonstante auf der Erdoberfläche, die von der Schwerkraft der Erde bestimmt wird. Für Berechnungen in der Schule wird oft g = 10 m/s² als Näherung verwendet – das vereinfacht Rechnungen ohne grosse Ungenauigkeit.",
         "Auf dem Mond (g_M ≈ 1,62 m/s²) fiele ein Körper nach 3 s nur etwa 7,3 m weit statt 44 m auf der Erde. Das zeigt: g bestimmt direkt alle Bewegungsgrössen beim freien Fall.",
       ],
-      formula: "g ≈ 9,81 m/s² ≈ 10 m/s² (Näherung)",
+      formula: "\\(g \\approx 9{,}81\\,\\text{m/s}^2 \\approx 10\\,\\text{m/s}^2\\)  (Näherung)",
       example: "Nach 4 s: v = g·t = 9,81·4 = 39,24 m/s ≈ 141 km/h. Das ist fast Autobahngeschwindigkeit!",
     },
     question: {
@@ -1503,7 +1501,7 @@ const STEP_CONTENT = {
         "Da g eine Konstante ist, wächst v proportional zu t. Die Geschwindigkeit ist nach 1 s: g m/s, nach 2 s: 2g m/s, nach t Sekunden: g·t m/s. Im v-t-Diagramm ist das eine Gerade durch den Ursprung mit Steigung g.",
         "Wichtig: Diese Formel gilt nur ohne Luftwiderstand. In der Realität begrenzt der Luftwiderstand die Fallgeschwindigkeit (Endgeschwindigkeit / Terminal velocity). Ein Fallschirmspringer erreicht etwa 50–60 m/s.",
       ],
-      formula: "v = g · t = 9,81 · t  (bei v₀ = 0, kein Luftwiderstand)",
+      formula: "\\(v = g \\cdot t = 9{,}81 \\cdot t\\)  (bei v₀ = 0, kein Luftwiderstand)",
       example: "t = 3 s → v = 9,81 · 3 = 29,43 m/s ≈ 106 km/h.",
     },
     question: {
@@ -1526,7 +1524,7 @@ const STEP_CONTENT = {
         "Vergleich: In der ersten Sekunde: s(1) = ½·9,81·1 ≈ 4,9 m. In der zweiten Sekunde: s(2)−s(1) = ½·9,81·4 − 4,9 ≈ 14,7 m. In der dritten: s(3)−s(2) ≈ 24,5 m. Verhältnis: 1 : 3 : 5 – Galileos Zahlen!",
         "Umkehrformel: Aus der Fallstrecke h berechnet man die Fallzeit t = √(2h/g). Das ist die Formel, die im Sprint-Test (K3 – Freier Fall) benutzt wird.",
       ],
-      formula: "s = ½ · g · t²  |  t = √(2s / g)",
+      formula: "\\(s = \\tfrac{1}{2}\\,g\\,t^2\\)  ·  \\(t = \\sqrt{\\dfrac{2s}{g}}\\)",
       example: "t = 3 s → s = ½·9,81·9 ≈ 44 m. | h = 80 m → t = √(160/9,81) ≈ 4 s.",
     },
     question: {
@@ -1551,7 +1549,7 @@ const STEP_CONTENT = {
         "Physikalische Erklärung: Grössere Masse → grössere Schwerkraft F_g = m·g. Aber auch grössere Trägheit (F = m·a). Beide Faktoren heben sich in a = F_g/m = g genau auf. Ergebnis: a = g für jede Masse.",
         "Demonstration: Apollo 15 (1971) – Astronaut David Scott liess auf dem Mond einen Hammer und eine Feder fallen. Ohne Atmosphäre landen beide gleichzeitig. Das Experiment beweist Galileos Erkenntnis eindrucksvoll.",
       ],
-      formula: "a = g für alle Massen (im Vakuum)",
+      formula: "\\(a = g\\) für alle Massen (im Vakuum)",
       example: "1 kg Ball und 10 kg Ball aus 20 m Höhe: t = √(2·20/9,81) ≈ 2,02 s – beide gleichzeitig!",
     },
     question: {
@@ -1576,7 +1574,7 @@ const STEP_CONTENT = {
         "Am höchsten Punkt ist momentan v = 0 – aber die Beschleunigung ist immer noch g = 9,81 m/s² nach unten! Das ist eine klassische Fehlvorstellung: Oben hört die Schwerkraft nicht auf.",
         "Formeln: t_oben = v₀ / g (Zeit bis zum höchsten Punkt). h_max = v₀² / (2·g) (maximale Höhe). Für den vollständigen Flug (zurück zum Startpunkt): t_gesamt = 2·v₀ / g.",
       ],
-      formula: "v(t) = v₀ − g·t | t_top = v₀/g | h_max = v₀²/(2g)",
+      formula: "\\(v(t) = v_0 - g \\cdot t\\)  ·  \\(t_{\\text{top}} = \\dfrac{v_0}{g}\\)  ·  \\(h_{\\max} = \\dfrac{v_0^2}{2g}\\)",
       example: "v₀ = 20 m/s → t_top = 20/9,81 ≈ 2,04 s. h_max = 400/19,62 ≈ 20,4 m.",
     },
     question: {
@@ -1601,7 +1599,7 @@ const STEP_CONTENT = {
         "Diese Fehlvorstellung ist extrem häufig: 'Wenn v = 0, dann a = 0.' Das verwechselt Geschwindigkeit und Beschleunigung. Beschleunigung ist die Änderung der Geschwindigkeit – und die ändert sich am höchsten Punkt von 'positiv' zu 'negativ'.",
         "Analogie: Ein Ball, den du hochwirfst, kehrt um, weil g ihn die ganze Zeit nach unten zieht – auch im Moment wo er kurz 'steht'. Wenn g am höchsten Punkt null wäre, würde der Ball dort für immer schweben.",
       ],
-      formula: "Am höchsten Punkt: v = 0, aber a = g ≠ 0",
+      formula: "Am höchsten Punkt: \\(v = 0\\), aber \\(a = g \\neq 0\\)",
       example: "Ball mit v₀=10 m/s: bei t≈1,02s ist v=0 und a=−9,81 m/s² (nach unten). Dann beginnt Abstieg.",
     },
     question: {
@@ -1626,7 +1624,7 @@ const STEP_CONTENT = {
         "Warum Symmetrie? Weil a = −g (konstant) ist. Das v-t-Diagramm ist eine Gerade mit negativer Steigung g. Der Nulldurchgang (v = 0) liegt exakt in der Mitte des Zeitintervalls. Auf beiden Seiten des Nulldurchgangs sind Betrag und Verlauf spiegelbildlich.",
         "Wichtig: Symmetrie gilt nur für Start und Rückkehr zur gleichen Höhe ohne Luftwiderstand. Mit Luftwiderstand ist der Abstieg langsamer als der Aufstieg (Energie geht verloren).",
       ],
-      formula: "t_auf = t_ab = v₀/g | |v_start| = |v_rückkehr| = v₀",
+      formula: "\\(t_{\\text{auf}} = t_{\\text{ab}} = \\dfrac{v_0}{g}\\)  ·  \\(|v_{\\text{start}}| = |v_{\\text{rückkehr}}| = v_0\\)",
       example: "v₀ = 20 m/s → t_top = 2,04 s (Aufstieg). t_rückkehr = 4,08 s. |v_rückkehr| = 20 m/s (nach unten).",
     },
     question: {
@@ -1651,7 +1649,7 @@ const STEP_CONTENT = {
         "Im v-t-Diagramm ist der freie Fall eine Gerade durch den Ursprung mit der Steigung g: v = g·t. Das ist typisch für gleichmässige Beschleunigung mit v₀ = 0.",
         "Beim Aufwärtswurf: v-t ist eine Gerade mit Steigung −g (fallend, Nulldurchgang beim höchsten Punkt). Das s-t-Diagramm zeigt eine nach unten geöffnete Parabel.",
       ],
-      formula: "Freier Fall: s(t) = ½·g·t² (Parabel) | v(t) = g·t (Gerade)",
+      formula: "Freier Fall: \\(s(t) = \\tfrac{1}{2}\\,g\\,t^2\\) (Parabel)  ·  \\(v(t) = g \\cdot t\\) (Gerade)",
       example: "Bei t=0: s=0, v=0. Bei t=2: s≈19,6 m, v≈19,6 m/s. Bei t=4: s≈78,5 m, v≈39,2 m/s.",
     },
     question: {
@@ -1673,7 +1671,7 @@ const STEP_CONTENT = {
         "Strategie für Textaufgaben: Skizze zeichnen! Koordinatensystem festlegen (positive Richtung = nach oben). Dann v₀, g, t und s/h klar beschriften. Vorzeichen von g beachten (−g wenn positiv = oben).",
         "Typische Aufgabentypen: Ball fällt von einem Turm (h gegeben → t und v berechnen). Ball wird von Turm geworfen (v₀ und h gegeben → Flugzeit, Landegeschwindigkeit).",
       ],
-      formula: "Freier Fall: t = √(2h/g) | Aufwärtswurf: h_max = v₀²/(2g), t_top = v₀/g",
+      formula: "Freier Fall: \\(t = \\sqrt{\\dfrac{2h}{g}}\\)  ·  Aufwärtswurf: \\(h_{\\max} = \\dfrac{v_0^2}{2g}\\), \\(t_{\\text{top}} = \\dfrac{v_0}{g}\\)",
       example: "Turm h = 122,5 m: t = √(245/9,81) ≈ 5 s. v_Landung = g·t = 49,1 m/s ≈ 177 km/h!",
     },
     question: {
@@ -1700,7 +1698,7 @@ const STEP_CONTENT = {
         "Wichtige kinematische Symbole: s = Weg/Ort, v = Geschwindigkeit (mit v₀ = Anfangs-, v = Endgeschwindigkeit), a = Beschleunigung, t = Zeit. Auch t_R = Reaktionszeit und |a| = Betrag der Verzögerung kommen vor.",
         "Wenn du weisst, was gegeben und was gesucht ist, findest du die passende Formel viel schneller. Aufgaben geben manchmal mehr Daten als nötig – dann musst du die relevanten herausfiltern.",
       ],
-      formula: "Schritt 1: Gegeben: … | Schritt 2: Gesucht: … | Schritt 3: Formel wählen",
+      formula: "Schritt 1: Gegeben: …  ·  Schritt 2: Gesucht: …  ·  Schritt 3: Formel wählen",
       example: "'Auto fährt 120 km in 2 h.' → Gegeben: s=120 km, t=2 h. Gesucht: v. → v = s/t = 60 km/h.",
     },
     question: {
@@ -1725,7 +1723,7 @@ const STEP_CONTENT = {
         "Formeln der Kinematik im Überblick: s = v·t (gleichförmig) | v = v₀+a·t (Endgeschwindigkeit) | s = v₀·t + ½·a·t² (allgemeiner Weg) | s = ½·a·t² (Weg aus Ruhe) | s_B = v₀²/(2·|a|) (Bremsweg) | v² = v₀² + 2·a·s (ohne Zeit).",
         "Tipp: Wenn du zwei verschiedene Formeln beide anwenden kannst, ist das eine Kontrolle! Stimmen die Ergebnisse überein? Wenn nicht – Fehler suchen.",
       ],
-      formula: "a=0: s=v·t | a≠0: v=v₀+at, s=v₀t+½at² | Bremsen: s_B=v₀²/2a",
+      formula: "\\(a=0\\): \\(s = v \\cdot t\\)  ·  \\(a \\neq 0\\): \\(v = v_0 + at\\), \\(s = v_0 t + \\tfrac{1}{2}at^2\\)  ·  Bremsen: \\(s_B = \\dfrac{v_0^2}{2a}\\)",
       example: "Gegeben: v₀=0, s=100m, a=2m/s². Gesucht: t → s=½at² → t=√(2s/a)=√100=10 s.",
     },
     question: {
@@ -1750,7 +1748,7 @@ const STEP_CONTENT = {
         "Für kinematische Formeln (s, v, a, t) braucht man keine Masse! s = v·t, v = v₀+at, s_B = v₀²/(2a) – Masse taucht nirgends auf. Die Masse wird erst bei Newton (Kraft = Masse × Beschleunigung) relevant.",
         "Beim Lesen einer Aufgabe: Unterstreiche zuerst die physikalisch relevanten Grössen (mit Symbol). Streiche irrelevante durch. So wird das Wesentliche sichtbar.",
       ],
-      formula: "Kinematik: s, v, a, t. Masse m ist überflüssig (für reine Kinematik).",
+      formula: "Kinematik: \\(s,\\, v,\\, a,\\, t\\). Masse \\(m\\) ist überflüssig (für reine Kinematik).",
       example: "'PKW (1500 kg, blau) fährt 90 km/h für 3 min.' → Relevant: v=25 m/s, t=180 s. Überflüssig: 1500 kg, blau.",
     },
     question: {
@@ -1775,7 +1773,7 @@ const STEP_CONTENT = {
         "Tipps: Immer in SI-Einheiten (m, m/s, m/s², s) umrechnen bevor du rechnest. Nach der Berechnung: Welche Einheit hat das Ergebnis? Einheitencheck: m/s² × s = m/s (Beschleunigung × Zeit = Geschwindigkeit). ✓",
         "Typischer Fehler: km/h direkt in s = v·t einsetzen, t in Minuten. Dann erhält man km/h · min – eine falsche Mischeinheit, kein Weg in m oder km.",
       ],
-      formula: "1 km/h = 1/3,6 m/s | 1 m/s = 3,6 km/h | 1 min = 60 s | 1 km = 1000 m",
+      formula: "\\(1\\,\\text{km/h} = \\tfrac{1}{3{,}6}\\,\\text{m/s}\\)  ·  \\(1\\,\\text{m/s} = 3{,}6\\,\\text{km/h}\\)  ·  1 min = 60 s  ·  1 km = 1000 m",
       example: "v = 72 km/h = 72/3,6 = 20 m/s. In 15 s: s = 20·15 = 300 m.",
     },
     question: {
@@ -1800,7 +1798,7 @@ const STEP_CONTENT = {
         "Beispiel: 100 km bei 100 km/h, dann 100 km bei 50 km/h. t₁ = 1 h, t₂ = 2 h. v̄ = 200/3 ≈ 66,7 km/h. Nicht (100+50)/2 = 75 km/h! Weil der zweite Abschnitt länger dauert, zieht er den Mittelwert nach unten.",
         "Sonderfall: Hin- und Rückweg gleicher Länge, verschiedene Geschwindigkeiten v₁ und v₂: v̄ = 2·v₁·v₂ / (v₁+v₂). Das ist das harmonische Mittel – immer kleiner als das arithmetische Mittel!",
       ],
-      formula: "v̄ = s_gesamt / t_gesamt  (NICHT (v₁+v₂)/2 bei ungleichen Zeiten!)",
+      formula: "\\(\\bar{v} = \\dfrac{s_{\\text{gesamt}}}{t_{\\text{gesamt}}}\\)  (NICHT \\(\\tfrac{v_1+v_2}{2}\\) bei ungleichen Zeiten!)",
       example: "50 km bei 50 km/h (1 h) + 50 km bei 25 km/h (2 h): v̄ = 100/3 ≈ 33,3 km/h (nicht 37,5!).",
     },
     question: {
@@ -1825,7 +1823,7 @@ const STEP_CONTENT = {
         "Im v-t-Diagramm erkennst du die Phasen an Knickpunkten. Phase 1: steigende Gerade. Phase 2: horizontale Linie. Phase 3: fallende Gerade. Die Fläche jeder Phase ergibt den Teilweg.",
         "Wichtig: Am Phasenübergang ist die Endgeschwindigkeit von Phase 1 gleich der Anfangsgeschwindigkeit von Phase 2. Die Zeiten addieren sich zur Gesamtzeit.",
       ],
-      formula: "s_total = s₁ + s₂ + s₃  |  t_total = t₁ + t₂ + t₃  |  v am Übergang stetig",
+      formula: "\\(s_{\\text{total}} = s_1 + s_2 + s_3\\)  ·  \\(t_{\\text{total}} = t_1 + t_2 + t_3\\)  ·  v am Übergang stetig",
       example: "a=2 m/s² für 4 s → v=8 m/s | gleichförmig 4 s | Bremsung 4 s. s = 16+32+16 = 64 m.",
     },
     question: {
@@ -1857,7 +1855,7 @@ const STEP_CONTENT = {
         "Fehlvorstellung 2: 'Beschleunigung bedeutet immer schneller werden.' FALSCH! a < 0 bedeutet Verlangsamung (wenn Körper in positive Richtung fährt). a kann auch entgegengesetzt zu v zeigen.",
         "Fehlvorstellung 3: 'Wenn v gross ist, muss a gross sein.' FALSCH! Flugzeug bei 800 km/h im Reiseflug: a = 0 (gleichförmig). Fussgänger beim Anfahren: a > 0 bei v ≈ 0.",
       ],
-      formula: "v = 0 ≠ a = 0 | Beschleunigung und Geschwindigkeit sind unabhängige Grössen!",
+      formula: "\\(v = 0\\) bedeutet nicht \\(a = 0\\)  ·  Beschleunigung und Geschwindigkeit sind unabhängige Grössen!",
       example: "Ball am höchsten Punkt: v=0, aber a=g=9,81 m/s² (fällt direkt danach wieder nach unten).",
     },
     question: {
@@ -1882,7 +1880,7 @@ const STEP_CONTENT = {
         "Text vs. Tabelle: Sagt der Text 'gleichförmig', aber die Tabelle zeigt ungleichmässige s-Zuwächse? Dann stimmt etwas nicht. Gleichförmig → s wächst in gleichen Zeitschritten um gleich viel.",
         "Tabelle vs. Formel: Berechne a aus den Tabellenwerten (a = Δv/Δt) und vergleiche mit der Behauptung. Tabelle vs. Diagramm: Entsprechen die Kurvenform und die Tabellenwerte einander?",
       ],
-      formula: "Kontrollformel: a = Δv/Δt aus Tabelle berechnen, mit Behauptung vergleichen",
+      formula: "Kontrollformel: \\(a = \\dfrac{\\Delta v}{\\Delta t}\\) aus Tabelle berechnen, mit Behauptung vergleichen",
       example: "Tabelle: v = 5, 10, 15, 20 bei t = 0, 1, 2, 3. Behauptung: 'a = 3 m/s²'. Kontrolle: Δv/Δt = 5 m/s². Widerspruch!",
     },
     question: {
@@ -1932,7 +1930,7 @@ const STEP_CONTENT = {
         "Typische Boss-Fragen: 'Wo liegt der Fehler in dieser Lösung?', 'Welche Formel passt und welche nicht?', 'Ist dieses Ergebnis physikalisch sinnvoll?'. Du musst argumentieren, nicht nur rechnen.",
         "Strategie: Erst lesen, dann skizzieren, dann systematisch analysieren. Nicht auf den ersten Blick antworten – bei Boss-Fragen lauert der Fehler meistens genau da, wo man schnell übersehen würde.",
       ],
-      formula: "Analyse-Checkliste: Gegeben? | Formel? | Einheiten? | Plausibel? | Widerspruch?",
+      formula: "Analyse-Checkliste: Gegeben?  ·  Formel?  ·  Einheiten?  ·  Plausibel?  ·  Widerspruch?",
       example: "Fehleraufgabe: v=144 km/h=40 m/s, t=5 s → s=40·5=200 m. Prüfung: Einheiten ok. Formel ok. Korrekt!",
     },
     question: {
@@ -1944,6 +1942,301 @@ const STEP_CONTENT = {
       challenge: [
         { text: "Lösung: 'v₀=15 m/s, bremst mit a=−5 m/s² → t_B=v₀/a=15/(−5)=−3 s.' Ist −3 s korrekt?", options: ["Nein – Zeit ist immer positiv. t_B = v₀/|a| = 3 s.", "Ja – negatives Vorzeichen zeigt Richtung.", "Ja – a ist negativ, also t negativ.", "Nein – t_B = v₀·|a| = 75 s."], correct: 0, explanation: "t_B = v₀/|a| = 15/5 = 3 s (positiv). Das Vorzeichen von a zeigt Richtung, nicht Zeitvorzeichen.", hint: "Zeit ist immer positiv. Wie wird t aus v=v₀+a·t mit v=0 korrekt berechnet?" },
         { text: "'Person geht 3 km mit 6 km/h, dann 3 km mit 4 km/h. Durchschnitt = (6+4)/2 = 5 km/h.' Korrekt?", options: ["Nein – v̄ = 6/(0,5+0,75) ≈ 4,8 km/h. Arithmetisches Mittel gilt nicht bei gleichen Strecken.", "Ja – 5 km/h stimmt.", "Nein – v̄ = 4 km/h.", "Ja – Mittelwert von 2 Werten ist immer korrekt."], correct: 0, explanation: "t₁=3/6=0,5 h, t₂=3/4=0,75 h. v̄=6/1,25=4,8 km/h. Arithmetisches Mittel 5 gilt nur bei gleichen Zeiten.", hint: "v̄ = Gesamtstrecke / Gesamtzeit. Berechne t₁ und t₂ zuerst." },
+      ],
+    },
+  },
+
+  // ── MODULE 7 · Boss-Kapitel ──────────────────────────────────────────────
+
+  "Bewegungsmodell erkennen": {
+    theory: {
+      kicker: "Modul 7 · Level 1",
+      heading: "Bewegungsmodell aus Daten erkennen",
+      paragraphs: [
+        "Der erste Schritt jeder Analyse: Welches Modell liegt vor? Im s-t-Diagramm verrät die Kurvenform alles. Eine Gerade zeigt gleichförmige Bewegung (v = konst., a = 0). Eine Parabel zeigt gleichmässig beschleunigte Bewegung (a = konst.).",
+        "Im v-t-Diagramm gilt: Eine horizontale Gerade bedeutet v = konst. (a = 0). Eine schräge Gerade bedeutet konstante Beschleunigung \\(a = \\Delta v / \\Delta t\\) – die Steigung der Geraden.",
+        "Aus einer Tabelle: Berechne \\(\\Delta s / \\Delta t\\) für jedes Intervall. Sind alle \\(\\Delta s\\) gleich, liegt gleichförmige Bewegung vor. Wachsen sie, liegt Beschleunigung vor.",
+      ],
+      formula: "\\(v = \\text{konst.}\\) → Gerade im s-t  ·  \\(a = \\text{konst.}\\) → Parabel im s-t  ·  \\(a = \\dfrac{\\Delta v}{\\Delta t}\\) = Steigung im v-t",
+      example: "Tabelle: v = 0, 3, 6, 9 m/s bei t = 0, 1, 2, 3 s → \\(\\Delta v / \\Delta t = 3\\) m/s² = konst. → gleichmässig beschleunigt.",
+    },
+    question: {
+      type: "chart",
+      chartConfig: {
+        chartType: "line",
+        xLabel: "Zeit t (s)",
+        yLabel: "Ort s (m)",
+        xData: [0, 1, 2, 3, 4, 5],
+        datasets: [
+          { label: "Objekt A", data: [0, 5, 10, 15, 20, 25], color: "#5ca2ff", tension: 0, fill: false },
+          { label: "Objekt B", data: [0, 0.5, 2, 4.5, 8, 12.5], color: "#f86785", tension: 0.3, fill: false },
+        ],
+      },
+      tasks: [
+        { text: "Welches Objekt zeigt gleichförmige Bewegung?", options: ["Objekt A – gerade Linie bedeutet v = konst.", "Objekt B – die Kurve beschreibt gleichförmige Bewegung.", "Beide – beide ändern ihren Ort.", "Keines – Ruhe ist das Standardmodell."], correct: 0, explanation: "Eine gerade Linie im s-t-Diagramm bedeutet konstante Steigung = konstante Geschwindigkeit = gleichförmige Bewegung.", hint: "Was bedeutet eine gerade Linie im s-t-Diagramm?" },
+        { text: "Was beschreibt die Kurve von Objekt B?", options: ["Gleichmässig beschleunigte Bewegung – Parabelform zeigt s ∝ t².", "Gleichförmige Bewegung – B ist schnell.", "Unregelmässige Bewegung.", "Freier Fall mit Luftwiderstand."], correct: 0, explanation: "Die Parabelform im s-t zeigt: s wächst quadratisch mit t → s = ½·a·t². Das kennzeichnet gleichmässige Beschleunigung.", hint: "s wächst schneller als linear – welche Formel hat t²?" },
+        { type: "calc", text: "Berechne v von Objekt A: Von t = 0 bis t = 5 s legt es s = 25 m zurück.", answer: 5, unit: "m/s", tolerance: 0.1, explanation: "v = s/t = 25/5 = 5 m/s. Gleichförmig → v bleibt konstant.", hint: "v = s / t" },
+        { type: "calc", text: "Objekt B: Bei t = 4 s ist s = 8 m. Berechne a mit s = ½·a·t².", answer: 1, unit: "m/s²", tolerance: 0.05, explanation: "a = 2s/t² = 2·8/(4²) = 16/16 = 1 m/s².", hint: "Forme s = ½·a·t² nach a um: a = 2·s / t²" },
+      ],
+    },
+  },
+
+  "Ankunftszeit planen": {
+    theory: {
+      kicker: "Modul 7 · Level 2",
+      heading: "Routen und Ankunftszeiten berechnen",
+      paragraphs: [
+        "Reale Bewegungen bestehen aus mehreren Phasen: Beschleunigung, gleichförmige Fahrt, Bremsung. Jede Phase wird mit ihrer eigenen Formel berechnet – dann summiert man Wege und Zeiten.",
+        "Wichtig: Die Endgeschwindigkeit einer Phase ist die Startgeschwindigkeit der nächsten. Phasenübergänge müssen stimmig sein. Plane deshalb Strecken und Zeiten immer Schritt für Schritt.",
+        "Entscheidungsfragen: Schafft das Fahrzeug die Strecke? Kommt es rechtzeitig an? Ist Route A schneller als Route B? Diese Fragen verbinden Kinematik mit Planung.",
+      ],
+      formula: "\\(t_{\\text{ges}} = \\sum t_i\\)  ·  \\(s_{\\text{ges}} = \\sum s_i\\)  ·  \\(s = v \\cdot t\\)  ·  \\(s = \\tfrac{1}{2} a t^2\\)  ·  \\(v = a \\cdot t\\)",
+      example: "Anfahren 5 s (a = 4 m/s²): s₁ = 50 m, v₁ = 20 m/s. Dann 10 s gleichförmig: s₂ = 200 m. Total: 250 m in 15 s.",
+    },
+    question: {
+      type: "mc",
+      basis: [
+        { text: "Rettungsdrohne: Phase 1 – Beschleunigung a = 4 m/s² für 5 s (v₀ = 0). Phase 2 – gleichförmig v = 20 m/s für 10 s. Gesamtstrecke?", options: ["250 m (s₁ = 50 m + s₂ = 200 m)", "200 m (nur Phase 2)", "120 m", "300 m"], correct: 0, explanation: "s₁ = ½·4·5² = 50 m. v₁ = 4·5 = 20 m/s. s₂ = 20·10 = 200 m. s_ges = 250 m.", hint: "Phase 1: s = ½·a·t². Phase 2: s = v·t. Dann addieren." },
+        { text: "Wie viel Zeit braucht die Drohne für die verbleibenden 200 m (Phase 2) bei v = 20 m/s?", options: ["10 s", "200 s", "4 s", "20 s"], correct: 0, explanation: "t = s/v = 200/20 = 10 s.", hint: "t = s / v" },
+      ],
+      challenge: [
+        { text: "Drohnen-Mission in 3 Phasen: Phase 1 – 5 s Anfahren (a = 4 m/s², v₀ = 0). Phase 2 – 10 s gleichförmig. Phase 3 – 4 s Bremsen (a = −5 m/s²). Gesamtstrecke?", options: ["290 m (s₁ = 50 + s₂ = 200 + s₃ = 40)", "250 m", "330 m", "240 m"], correct: 0, explanation: "s₁ = ½·4·25 = 50 m, v₁ = 20 m/s. s₂ = 20·10 = 200 m. s₃ = 20·4 + ½·(−5)·16 = 80 − 40 = 40 m. Total: 290 m.", hint: "s₃ = v₀·t + ½·a·t². Achtung: a ist negativ." },
+        { text: "Route A: 290 m gleichförmig mit v = 20 m/s. Route B: dieselbe Mission mit 3 Phasen (t_ges = 19 s). Welche ist schneller, um wie viel?", options: ["Route A: t = 14,5 s → 4,5 s schneller als Route B", "Route B wegen Beschleunigung schneller", "Beide gleich schnell", "Route A: t = 20 s → Route B schneller"], correct: 0, explanation: "t_A = 290/20 = 14,5 s. t_B = 5 + 10 + 4 = 19 s. Route A ist 4,5 s schneller.", hint: "t_A = s/v. t_B aus den drei Phasen addieren." },
+      ],
+    },
+  },
+
+  "Beschleunigungsphase": {
+    theory: {
+      kicker: "Modul 7 · Level 3",
+      heading: "Beschleunigungsphase: v-t-Diagramm und Flächen",
+      paragraphs: [
+        "Im v-t-Diagramm sieht man alle drei Bewegungsphasen: Ansteigende Gerade (a > 0, Beschleunigung), horizontale Linie (a = 0, gleichförmig), fallende Gerade (a < 0, Bremsen).",
+        "Die Fläche unter der v-t-Kurve ergibt den zurückgelegten Weg. Für ein Dreieck (Anfahren aus Ruhe): \\(s = \\frac{1}{2} v \\cdot t\\). Für ein Rechteck (gleichförmig): \\(s = v \\cdot t\\).",
+        "Die Steigung der Geraden im v-t-Diagramm ist die Beschleunigung: \\(a = \\Delta v / \\Delta t\\). Eine steilere Gerade bedeutet grössere Beschleunigung.",
+      ],
+      formula: "\\(a = \\dfrac{\\Delta v}{\\Delta t}\\) (Steigung)  ·  \\(s = \\text{Fläche unter v-t}\\)  ·  Dreieck: \\(\\tfrac{1}{2}\\,t\\,v_{\\max}\\)  ·  Rechteck: \\(v \\cdot \\Delta t\\)",
+      example: "v: 0 → 8 m/s in 4 s → a = 2 m/s². Fläche (Dreieck) = ½·4·8 = 16 m. Dann 6 s bei 8 m/s: 48 m.",
+    },
+    question: {
+      type: "chart",
+      chartConfig: {
+        chartType: "line",
+        xLabel: "Zeit t (s)",
+        yLabel: "Geschwindigkeit v (m/s)",
+        xData: [0, 4, 10, 14],
+        datasets: [
+          { label: "v(t)", data: [0, 8, 8, 0], color: "#7a62ff", tension: 0, fill: false },
+        ],
+      },
+      tasks: [
+        { text: "Was ist die Beschleunigung in Phase 1 (t = 0 bis 4 s)?", options: ["a = 2 m/s² (Steigung: Δv/Δt = 8/4)", "a = 8 m/s²", "a = 4 m/s²", "a = 0 m/s²"], correct: 0, explanation: "a = Δv/Δt = (8 − 0)/(4 − 0) = 2 m/s². Die Steigung der Geraden im v-t-Diagramm.", hint: "a = Δv / Δt = (v_end − v_start) / Δt" },
+        { type: "calc", text: "Wie weit fährt das Objekt in Phase 1 (t = 0–4 s)? Tipp: Dreiecksfläche = ½ · Basis · Höhe.", answer: 16, unit: "m", tolerance: 0.5, explanation: "s₁ = ½ · t · v = ½ · 4 · 8 = 16 m.", hint: "Fläche Dreieck = ½ · 4 s · 8 m/s" },
+        { type: "calc", text: "Wie weit in Phase 2 (t = 4 bis 10 s, v = 8 m/s, Rechteck)?", answer: 48, unit: "m", tolerance: 0.5, explanation: "s₂ = v · Δt = 8 · 6 = 48 m.", hint: "Phase 2: v = const. → Fläche = Rechteck: v · Δt = 8 · 6" },
+        { type: "calc", text: "Was ist der Gesamtweg über alle drei Phasen (t = 0 bis 14 s)?", answer: 80, unit: "m", tolerance: 0.5, explanation: "Phase 3 (Bremsung, Dreieck): s₃ = ½·4·8 = 16 m. s_ges = 16 + 48 + 16 = 80 m.", hint: "Phase 3 ist wie Phase 1 (Dreieck, symmetrisch). Alle drei Phasen addieren." },
+      ],
+    },
+  },
+
+  "Verkehrsunfall vermeiden": {
+    theory: {
+      kicker: "Modul 7 · Level 4",
+      heading: "Anhalteweg und Sicherheitsentscheidung",
+      paragraphs: [
+        "Der Anhalteweg setzt sich aus Reaktionsweg und Bremsweg zusammen: \\(s_A = s_R + s_B\\). Während der Reaktionszeit \\(t_R\\) fährt das Fahrzeug unverändert: \\(s_R = v \\cdot t_R\\).",
+        "Den Bremsweg kann man direkt ohne die Bremszeit berechnen: \\(s_B = v^2 / (2 \\cdot |a|)\\). Diese Formel kommt aus \\(v^2 = v_0^2 + 2 a s\\) mit \\(v = 0\\).",
+        "Entscheidung: Ist \\(s_A < \\text{Abstand}\\), kann man rechtzeitig stoppen. Bei doppelter Geschwindigkeit: \\(s_R\\) verdoppelt sich, aber \\(s_B\\) vervierfacht sich – der Anhalteweg wächst stark überproportional.",
+      ],
+      formula: "\\(s_A = s_R + s_B\\)  ·  \\(s_R = v \\cdot t_R\\)  ·  \\(s_B = \\dfrac{v^2}{2\\,|a|}\\)",
+      example: "v = 20 m/s, t_R = 1 s, |a| = 8 m/s²: s_R = 20 m, s_B = 400/16 = 25 m, s_A = 45 m.",
+    },
+    question: {
+      type: "mc",
+      basis: [
+        { text: "Fahrzeug: v = 20 m/s, Reaktionszeit t_R = 1 s, |a| = 8 m/s². Berechne den Anhalteweg s_A.", options: ["45 m (s_R = 20 m + s_B = 25 m)", "25 m (nur Bremsweg)", "20 m (nur Reaktionsweg)", "65 m"], correct: 0, explanation: "s_R = 20·1 = 20 m. s_B = 20²/(2·8) = 400/16 = 25 m. s_A = 20 + 25 = 45 m.", hint: "s_R = v·t_R, s_B = v²/(2·|a|), s_A = s_R + s_B" },
+        { text: "Abstand zum Hindernis: 40 m. Anhalteweg: 45 m. Was passiert?", options: ["Kollision – Anhalteweg überschreitet den Abstand um 5 m.", "Sicherer Halt – 40 m reicht.", "Knapp genug.", "Nicht bestimmbar ohne Masse."], correct: 0, explanation: "s_A = 45 m > 40 m → Das Fahrzeug hält erst nach 45 m → Kollision.", hint: "Vergleiche s_A mit dem vorhandenen Abstand." },
+      ],
+      challenge: [
+        { text: "v = 72 km/h, t_R = 1,2 s, |a| = 8 m/s². Wie gross ist s_A? (Tipp: v = 72/3,6 = 20 m/s)", options: ["49 m (s_R = 24 m + s_B = 25 m)", "24 m", "45 m", "56 m"], correct: 0, explanation: "v = 72/3,6 = 20 m/s. s_R = 20·1,2 = 24 m. s_B = 400/16 = 25 m. s_A = 49 m.", hint: "Zuerst km/h in m/s: v = 72/3,6. Dann s_R und s_B berechnen." },
+        { text: "Bei v = 20 m/s: s_A = 45 m. Bei v = 10 m/s (gleiche t_R = 1 s, |a| = 8 m/s²): s_A = 10 + 6,25 = 16,25 m. Welches Verhältnis gilt?", options: ["Etwa 2,8-fach – doppelte v macht nicht doppelten, aber deutlich grösseren Anhalteweg.", "Exakt doppelt.", "Viermal so gross.", "Fast gleich."], correct: 0, explanation: "Bei v=20: s_A=45 m. Bei v=10: s_R=10, s_B=100/16=6,25, s_A=16,25 m. Verhältnis: 45/16,25 ≈ 2,77. Wegen quadratischem s_B ist der Zusammenhang nichtlinear.", hint: "Berechne s_A für v=10 m/s und vergleiche mit v=20 m/s." },
+      ],
+    },
+  },
+
+  "Freier Fall komplett": {
+    theory: {
+      kicker: "Modul 7 · Level 5",
+      heading: "Freier Fall: alle Formeln auf einmal",
+      paragraphs: [
+        "Beim freien Fall (ohne Luftwiderstand) gilt: \\(a = g \\approx 9{,}81\\) m/s² ≈ 10 m/s² (Schulnäherung). Die Bewegung ist gleichmässig beschleunigt aus der Ruhe: \\(v = g \\cdot t\\) und \\(s = \\frac{1}{2} g t^2\\).",
+        "Wichtig: Die Masse hat keinen Einfluss auf die Fallbeschleunigung. Ein schwerer und ein leichter Körper fallen gleich schnell (Galilei). Unterschiede im Alltag entstehen nur durch Luftwiderstand.",
+        "Beim senkrechten Wurf nach oben verlangsamt g den Körper: \\(v(t) = v_0 - g \\cdot t\\). Am höchsten Punkt gilt v = 0, aber \\(a = g \\neq 0\\) – eine häufige Fehlvorstellung!",
+      ],
+      formula: "\\(v = g \\cdot t\\)  ·  \\(s = \\tfrac{1}{2} g t^2\\)  ·  \\(g \\approx 10\\) m/s²  ·  Am höchsten Punkt: v = 0, aber \\(a = g\\)",
+      example: "g = 10 m/s²: nach 2 s → v = 20 m/s, s = ½·10·4 = 20 m. Nach 3 s → v = 30 m/s, s = 45 m.",
+    },
+    question: {
+      type: "chart",
+      chartConfig: {
+        chartType: "line",
+        xLabel: "Zeit t (s)",
+        yLabel: "Fallhöhe s (m)",
+        xData: [0, 1, 2, 3],
+        datasets: [
+          { label: "s(t) = ½·g·t²", data: [0, 5, 20, 45], color: "#24b7d8", tension: 0.3, fill: false },
+        ],
+      },
+      tasks: [
+        { text: "Was zeigt die Kurvenform im s-t-Diagramm des freien Falls?", options: ["Parabelförmiger Anstieg → gleichmässig beschleunigt mit a = g.", "Lineare Zunahme → gleichförmige Bewegung.", "Keine Aussage möglich.", "Abnehmende Beschleunigung."], correct: 0, explanation: "s = ½·g·t² ist eine Parabel. Parabelform im s-t → konstante Beschleunigung a = g.", hint: "Was bedeutet eine Parabel im s-t-Diagramm?" },
+        { type: "calc", text: "Wie gross ist die Fallgeschwindigkeit nach t = 2 s? (g = 10 m/s²)", answer: 20, unit: "m/s", tolerance: 0.5, explanation: "v = g·t = 10·2 = 20 m/s.", hint: "v = g · t (Start aus Ruhe)" },
+        { type: "calc", text: "Wie weit fällt der Körper in t = 3 s? (g = 10 m/s²)", answer: 45, unit: "m", tolerance: 0.5, explanation: "s = ½·g·t² = ½·10·9 = 45 m.", hint: "s = ½ · g · t² = ½ · 10 · 3²" },
+        { text: "Ein Stein (100 g) und ein Stein (1 kg) werden gleichzeitig fallen gelassen (kein Luftwiderstand). Was gilt?", options: ["Beide landen gleichzeitig – g ist massenunabhängig.", "Der schwerere Stein landet zuerst.", "Der leichtere Stein landet zuerst.", "Es kommt auf die Form an."], correct: 0, explanation: "g ≈ 9,81 m/s² gilt für alle Körper (Galilei). Ohne Luftwiderstand ist die Masse irrelevant.", hint: "Wovon hängt g ab?" },
+      ],
+    },
+  },
+
+  "Fehlerhafte Lösung": {
+    theory: {
+      kicker: "Modul 7 · Level 6",
+      heading: "Fehler in Lösungen erkennen und korrigieren",
+      paragraphs: [
+        "Typische Fehler in Kinematik-Aufgaben: (1) Einheitenfehler (km/h statt m/s). (2) t nicht quadriert in \\(s = \\frac{1}{2}at^2\\). (3) Formel falsch umgestellt. (4) Konzept verwechselt (v = 0 bedeutet nicht a = 0).",
+        "Beim Analysieren einer Lösung: Zuerst Einheiten prüfen. Dann die Formel – passt sie zu den gegebenen Grössen? Dann den Rechenweg – wurde richtig eingesetzt? Zuletzt: Ist das Ergebnis physikalisch plausibel?",
+        "Fehler-Checkliste: Einheit des Ergebnisses korrekt? Ist t² korrekt angewandt? Sind Vorzeichen richtig? Wurden Δ-Werte korrekt berechnet? Gibt es irrelevante Grössen, die fälschlich verwendet wurden?",
+      ],
+      formula: "Checkliste: Einheiten? · Formel? · \\(t^2\\) nicht vergessen · Vorzeichen · Plausibilität",
+      example: "Fehler: s = ½·3·4 = 6 m. Korrekt: s = ½·3·4² = ½·3·16 = 24 m. (t wurde nicht quadriert!)",
+    },
+    question: {
+      type: "mc",
+      basis: [
+        { text: "Schüler löst: 'v₀ = 0, a = 3 m/s², t = 4 s → s = ½·3·4 = 6 m.' Was ist der Fehler?", options: ["t wurde nicht quadriert. Korrekt: s = ½·3·4² = ½·3·16 = 24 m.", "a muss durch 2 dividiert werden.", "v₀ = 0 muss addiert werden.", "Keine Fehler – 6 m ist korrekt."], correct: 0, explanation: "In s = ½·a·t² muss t quadriert werden. t = 4 → t² = 16. s = ½·3·16 = 24 m, nicht 6 m.", hint: "In s = ½·a·t²: Was ist t²? 4² = ?" },
+        { text: "Schüler rechnet: v = 90 km/h, t = 30 s → s = 90 · 30 = 2700 m. Was ist falsch?", options: ["v muss in m/s umgerechnet werden: 25 m/s. s = 25·30 = 750 m.", "t muss in Minuten umgerechnet werden.", "Die Formel s = v·t ist falsch.", "2700 m ist korrekt."], correct: 0, explanation: "v = 90/3,6 = 25 m/s. s = 25·30 = 750 m. Einheitenfehler: km/h × s ≠ m.", hint: "Welche Einheit braucht v in der Formel s = v·t (t in s, s in m)?" },
+      ],
+      challenge: [
+        { text: "Lösung: 'v₀ = 5 m/s, a = 2 m/s², t = 3 s → v = v₀ + a = 5 + 2 = 7 m/s.' Korrekter Wert?", options: ["v = 5 + 2·3 = 11 m/s (t wurde vergessen)", "7 m/s – korrekt", "v = 5·2·3 = 30 m/s", "v = 5 + 6 = 11 m/s – nicht wie angegeben"], correct: 0, explanation: "v = v₀ + a·t = 5 + 2·3 = 11 m/s. Der Schüler hat t vergessen und a·t = a gerechnet.", hint: "Formel: v = v₀ + a·t. Was ist a·t?" },
+        { text: "Schüler: 'Ball am höchsten Punkt: v = 0, also auch a = 0 – Ball hängt kurz in der Luft.' Fehler?", options: ["Ja – a = g ≠ 0 immer. v = 0 bedeutet Umkehrpunkt, nicht Kraftlosigkeit.", "Nein – bei v = 0 muss a = 0 sein.", "Ja – der Ball hat keine Energie mehr.", "Nein – am höchsten Punkt ist a kurz 0."], correct: 0, explanation: "v und a sind unabhängige Grössen. Am höchsten Punkt: v = 0, aber die Schwerkraft wirkt weiter → a = g = 9,81 m/s² nach unten.", hint: "Können v und a gleichzeitig verschiedene Werte haben?" },
+      ],
+    },
+  },
+
+  "Bewegung rekonstruieren": {
+    theory: {
+      kicker: "Modul 7 · Level 7",
+      heading: "Bewegung aus Daten rekonstruieren",
+      paragraphs: [
+        "Aus einem v-t-Diagramm oder einer Messtabelle kann man die vollständige Bewegungsgeschichte rekonstruieren: Welche Phasen liegen vor? Welche Beschleunigungen? Welche Strecken wurden zurückgelegt?",
+        "Strategie: (1) Phasen identifizieren – wo ändert sich die Steigung? (2) Für jede Phase Typ bestimmen. (3) Beschleunigung aus Steigung berechnen: \\(a = \\Delta v / \\Delta t\\). (4) Weg als Fläche berechnen.",
+        "Die Fläche unter dem v-t-Graphen ist der zurückgelegte Weg: Dreieck für Anfahren/Bremsen, Rechteck für gleichförmige Abschnitte. Die Summe aller Flächen ist die Gesamtstrecke.",
+      ],
+      formula: "Dreieck: \\(s = \\tfrac{1}{2} v_{\\max} \\cdot t\\)  ·  Rechteck: \\(s = v \\cdot \\Delta t\\)  ·  \\(a = \\Delta v / \\Delta t\\)",
+      example: "v: 0→6 in 3 s, dann 6 m/s für 5 s, dann 6→0 in 4 s. s = 9 + 30 + 12 = 51 m total.",
+    },
+    question: {
+      type: "chart",
+      chartConfig: {
+        chartType: "line",
+        xLabel: "Zeit t (s)",
+        yLabel: "Geschwindigkeit v (m/s)",
+        xData: [0, 3, 8, 12],
+        datasets: [
+          { label: "v(t)", data: [0, 6, 6, 0], color: "#3dd18d", tension: 0, fill: false },
+        ],
+      },
+      tasks: [
+        { text: "Was passiert in Phase 1 (t = 0 bis 3 s)?", options: ["Gleichmässige Beschleunigung (v steigt linear).", "Gleichförmige Bewegung.", "Bremsung.", "Ruhe."], correct: 0, explanation: "v steigt von 0 auf 6 m/s → Beschleunigung. Lineare Zunahme → a = konst. → gleichmässig beschleunigt.", hint: "Was zeigt eine steigende Gerade im v-t-Diagramm?" },
+        { type: "calc", text: "Berechne die Beschleunigung in Phase 1 (Δv/Δt).", answer: 2, unit: "m/s²", tolerance: 0.1, explanation: "a = Δv/Δt = (6 − 0)/(3 − 0) = 2 m/s².", hint: "a = Δv / Δt" },
+        { type: "calc", text: "Wie weit fährt das Objekt in Phase 2 (t = 3 bis 8 s, v = 6 m/s)?", answer: 30, unit: "m", tolerance: 0.5, explanation: "s₂ = v · Δt = 6 · 5 = 30 m.", hint: "Phase 2: v = const. → s = v · Δt = 6 · (8 − 3)" },
+        { type: "calc", text: "Gesamtstrecke über alle drei Phasen (t = 0 bis 12 s)?", answer: 51, unit: "m", tolerance: 0.5, explanation: "s₁ = ½·3·6 = 9 m. s₂ = 6·5 = 30 m. s₃ = ½·4·6 = 12 m. Total = 51 m.", hint: "s₁ und s₃ sind Dreiecke, s₂ ist ein Rechteck. Alle Flächen addieren." },
+      ],
+    },
+  },
+
+  "Kinematik-Mix": {
+    theory: {
+      kicker: "Modul 7 · Level 8",
+      heading: "Das richtige Modell für jede Situation",
+      paragraphs: [
+        "Die wichtigste Fähigkeit: Nicht nur rechnen, sondern zuerst das richtige Modell erkennen. Ist die Geschwindigkeit konstant (gleichförmig)? Ändert sie sich konstant (gleichmässig beschleunigt)? Gibt es mehrere Phasen?",
+        "Entscheidungsbaum: (1) v = konst.? → \\(s = v \\cdot t\\). (2) a = konst. ≠ 0? → \\(v = v_0 + at\\), \\(s = v_0 t + \\frac{1}{2}at^2\\). (3) Senkrechter Wurf? → a = ±g. (4) Mehrere Phasen? → jede einzeln analysieren.",
+        "Typische Fehlvorstellungen: Bremsen ist Beschleunigung (negativ). Hohe Geschwindigkeit ≠ hohe Beschleunigung. Am Umkehrpunkt ist \\(a \\neq 0\\). Durchschnitt ≠ Mittelwert der Einzelgeschwindigkeiten.",
+      ],
+      formula: "\\(v = \\text{konst.}\\) → \\(s = vt\\)  ·  \\(a = \\text{konst.}\\) → \\(v = v_0 + at\\)  ·  \\(g = 9{,}81\\) m/s² ↓",
+      example: "Ball nach oben: v₀ = 15 m/s, a = −10 m/s². Umkehrpunkt: 0 = 15 − 10t → t = 1,5 s.",
+    },
+    question: {
+      type: "mc",
+      basis: [
+        { text: "Szenario A: s = 5·t (t in s, s in m). Welches Modell passt?", options: ["Gleichförmig – v = 5 m/s = konst.", "Gleichmässig beschleunigt – a = 5 m/s².", "Freier Fall.", "Bremsung."], correct: 0, explanation: "s = 5t → v = 5 m/s = konst. Das ist die Formel gleichförmiger Bewegung: s = v·t.", hint: "Was bedeutet ein lineares s-t-Zusammenhang?" },
+        { text: "Ein Ball wird nach oben geworfen. Am höchsten Punkt gilt:", options: ["v = 0, a = g ≈ 9,81 m/s² (nach unten)", "v = 0, a = 0", "v > 0, a = 0", "v = 0, kurz a = 0"], correct: 0, explanation: "Am höchsten Punkt stoppt die Aufwärtsbewegung → v = 0. Aber die Schwerkraft wirkt immer → a = g. v = 0 bedeutet nicht a = 0!", hint: "Sind v und a am höchsten Punkt voneinander unabhängig?" },
+      ],
+      challenge: [
+        { text: "Auto: gleichförmig 25 m/s für 3 s, dann Vollbremsung mit |a| = 6,25 m/s². Wann steht es nach Bremsbeginn still?", options: ["4 s (v₀/|a| = 25/6,25 = 4 s)", "3 s", "6,25 s", "25 s"], correct: 0, explanation: "Bremsung: v = v₀ + a·t → 0 = 25 − 6,25·t → t = 25/6,25 = 4 s.", hint: "Setze v = 0 in v = v₀ + a·t (mit a < 0). Löse nach t." },
+        { text: "Ball senkrecht nach oben geworfen mit v₀ = 20 m/s (g = 10 m/s²). Wann und wo ist der höchste Punkt?", options: ["t = 2 s, h = 20 m", "t = 2 s, h = 40 m", "t = 4 s, h = 20 m", "t = 1 s, h = 10 m"], correct: 0, explanation: "v = 0: 0 = 20 − 10t → t = 2 s. h = v₀t − ½gt² = 20·2 − ½·10·4 = 40 − 20 = 20 m.", hint: "Erst t aus v = 0 = v₀ − g·t. Dann h = v₀t − ½gt²." },
+      ],
+    },
+  },
+
+  "Mega-Boss: Station": {
+    theory: {
+      kicker: "Modul 7 · Level 9",
+      heading: "Mega-Boss: Vollständige Kinematik-Analyse",
+      paragraphs: [
+        "Dieser Boss vernetzt alle Konzepte: Modell erkennen, Formeln anwenden, Diagramme deuten, Phasen analysieren, Durchschnitt berechnen. Im Diagramm siehst du eine vollständige Fahrt mit drei Phasen.",
+        "Strategie: (1) Phasen identifizieren und benennen. (2) Für jede Phase Beschleunigung und Strecke berechnen. (3) Gesamtstrecke addieren. (4) Mittlere Geschwindigkeit = Gesamtweg/Gesamtzeit. (5) Plausibilitätsprüfung.",
+        "Die mittlere Geschwindigkeit \\(\\bar{v}\\) ist nicht der Mittelwert der Geschwindigkeiten, sondern \\(\\bar{v} = s_{\\text{ges}} / t_{\\text{ges}}\\). Hier ein klassisches Missverständnis!",
+      ],
+      formula: "\\(s_{\\text{ges}} = \\sum s_i\\)  ·  \\(\\bar{v} = s_{\\text{ges}} / t_{\\text{ges}}\\)  ·  Dreieck: \\(\\tfrac{1}{2} t\\, v_{\\max}\\)  ·  Rechteck: \\(v \\cdot \\Delta t\\)",
+      example: "Diagramm: 0→5 s (0→10 m/s), 5→15 s (10 m/s), 15→20 s (10→0). s = 25+100+25 = 150 m. v̄ = 7,5 m/s.",
+    },
+    question: {
+      type: "chart",
+      chartConfig: {
+        chartType: "line",
+        xLabel: "Zeit t (s)",
+        yLabel: "Geschwindigkeit v (m/s)",
+        xData: [0, 5, 15, 20],
+        datasets: [
+          { label: "v(t)", data: [0, 10, 10, 0], color: "#ff8753", tension: 0, fill: false },
+        ],
+      },
+      tasks: [
+        { text: "Was ist die Beschleunigung in Phase 1 (t = 0 bis 5 s)?", options: ["a = 2 m/s² (Δv/Δt = 10/5)", "a = 10 m/s²", "a = 5 m/s²", "a = 0"], correct: 0, explanation: "a = Δv/Δt = (10 − 0)/(5 − 0) = 2 m/s².", hint: "a = Δv / Δt" },
+        { type: "calc", text: "Zurückgelegter Weg in Phase 1 (Dreieck: ½ · 5 · 10)?", answer: 25, unit: "m", tolerance: 0.5, explanation: "s₁ = ½ · 5 · 10 = 25 m.", hint: "Fläche Dreieck = ½ · Basis · Höhe = ½ · 5 s · 10 m/s" },
+        { type: "calc", text: "Zurückgelegter Weg in Phase 2 (Rechteck, t = 5–15 s, v = 10 m/s)?", answer: 100, unit: "m", tolerance: 0.5, explanation: "s₂ = 10 · 10 = 100 m.", hint: "Phase 2: v = 10 m/s konstant über Δt = 10 s" },
+        { type: "calc", text: "Gesamtweg über alle drei Phasen (t = 0 bis 20 s)?", answer: 150, unit: "m", tolerance: 0.5, explanation: "s₃ = ½ · 5 · 10 = 25 m (symmetrisch zu Phase 1). s_ges = 25 + 100 + 25 = 150 m.", hint: "Phase 3 ist wie Phase 1 (Dreieck). Alle drei addieren." },
+        { type: "calc", text: "Mittlere Geschwindigkeit v̄ über die gesamten 20 s?", answer: 7.5, unit: "m/s", tolerance: 0.1, explanation: "v̄ = s_ges/t_ges = 150/20 = 7,5 m/s.", hint: "v̄ = Gesamtweg / Gesamtzeit = 150 / 20" },
+      ],
+    },
+  },
+
+  "Final Boss": {
+    theory: {
+      kicker: "Modul 7 · Final Boss",
+      heading: "Final Boss: Meister der Kinematik",
+      paragraphs: [
+        "Du hast alle sieben Module durchgespielt. Jetzt kommt der Final Boss: Fünf Arenen, jede prüft einen anderen Bereich der Kinematik. Nicht nur rechnen – auch erklären, deuten, Fehler finden und entscheiden.",
+        "Arena 1: Grundbegriffe und Bezugssysteme. Arena 2: Formeln und Rechnen. Arena 3: Diagramme lesen. Arena 4: Freier Fall und Aufwärtswurf. Arena 5: Transfer und Entscheidung.",
+        "Boss-Strategie: Lies jede Frage zweimal. Prüfe Einheiten. Entscheide erst, welche Formel oder welches Modell passt. Dann rechne oder begründe.",
+      ],
+      formula: "\\(s = vt\\)  ·  \\(a = \\Delta v/\\Delta t\\)  ·  \\(v = v_0 + at\\)  ·  \\(s = \\tfrac{1}{2}at^2\\)  ·  \\(s_A = s_R + s_B\\)  ·  \\(s_B = v^2/(2|a|)\\)",
+      example: "Final Boss: Alle Kinematik-Konzepte – Beschreibung, Berechnung, Diagramm, Fehlererkennung und Transfer.",
+    },
+    question: {
+      type: "mc",
+      basis: [
+        { text: "Arena 1 – Bezugssystem: Du sitzt im Zug (120 km/h). Wie schnell siehst du dich selbst?", options: ["0 m/s – im Bezugssystem des Zuges ruhst du.", "120 km/h = 33,3 m/s.", "Es gibt keine Ruhe.", "Hängt von der Richtung ab."], correct: 0, explanation: "Im Bezugssystem des Zuges: v = 0. Im Bahnsteig-System: v = 120 km/h. Beide sind korrekt – Bewegung ist relativ.", hint: "In welchem Bezugssystem beobachtest du dich?" },
+        { text: "Arena 2 – Rechnen: Auto: v₀ = 0, a = 3 m/s², t = 6 s. Welche Angaben sind korrekt?", options: ["v = 18 m/s und s = 54 m", "v = 18 m/s und s = 18 m", "v = 9 m/s und s = 54 m", "v = 3 m/s und s = 6 m"], correct: 0, explanation: "v = v₀ + at = 0 + 3·6 = 18 m/s. s = ½·at² = ½·3·36 = 54 m.", hint: "v = v₀ + a·t und s = ½·a·t². Beide Formeln anwenden." },
+        { text: "Arena 3 – Diagramm: Ein v-t-Diagramm zeigt eine horizontale Linie bei v = 15 m/s. Was folgt?", options: ["a = 0 (gleichförmige Bewegung), s wächst linear.", "a = 15 m/s², s wächst quadratisch.", "Der Körper ruht.", "Die Steigung ergibt den Weg."], correct: 0, explanation: "Horizontale Linie im v-t → keine Steigung → a = 0. v = 15 m/s = konst. → s = v·t (linear).", hint: "Steigung im v-t = a. Was bedeutet horizontale Linie?" },
+        { text: "Arena 4 – Freier Fall: Ball nach oben geworfen. Am höchsten Punkt gilt:", options: ["v = 0, a = g = 9,81 m/s² (nach unten)", "v = 0, a = 0", "v > 0, a = g", "v = g, a = 0"], correct: 0, explanation: "v = 0 am Umkehrpunkt. Aber a = g immer (Schwerkraft wirkt ununterbrochen). v = 0 bedeutet nicht a = 0!", hint: "Sind v und a am höchsten Punkt voneinander unabhängig?" },
+        { text: "Arena 5 – Transfer: v = 25 m/s, t_R = 0,8 s, |a| = 6,25 m/s². Reicht Abstand 60 m?", options: ["Nein – s_A = 70 m (s_R = 20 + s_B = 50) > 60 m.", "Ja – 60 m reicht.", "Nein – s_A = 45 m.", "Ja – s_B = 50 m ≤ 60 m."], correct: 0, explanation: "s_R = 25·0,8 = 20 m. s_B = 25²/(2·6,25) = 625/12,5 = 50 m. s_A = 70 m > 60 m → Kollision!", hint: "s_R = v·t_R, s_B = v²/(2·|a|), s_A = s_R + s_B" },
+      ],
+      challenge: [
+        { text: "Arena 1 (Challenge) – Strecke vs. Verschiebung: Körper geht 300 m vorwärts, dann 120 m rückwärts. Zurückgelegte Strecke und Verschiebung?", options: ["Strecke = 420 m, Δs = +180 m (vorwärts)", "Strecke = 180 m, Δs = 420 m", "Strecke = 420 m, Δs = 0 m", "Strecke = 300 m, Δs = 300 m"], correct: 0, explanation: "Strecke = 300 + 120 = 420 m (zurückgelegter Weg). Verschiebung Δs = 300 − 120 = 180 m vorwärts.", hint: "Strecke = Summe aller Wege. Verschiebung = Endposition − Startposition." },
+        { text: "Arena 2 (Challenge) – Bremsung: v₀ = 8 m/s, a = −2 m/s², t = 3 s. v und s?", options: ["v = 2 m/s, s = 15 m", "v = 2 m/s, s = 24 m", "v = 14 m/s, s = 15 m", "v = 6 m/s, s = 18 m"], correct: 0, explanation: "v = 8 + (−2)·3 = 2 m/s. s = 8·3 + ½·(−2)·9 = 24 − 9 = 15 m.", hint: "v = v₀ + a·t und s = v₀·t + ½·a·t². a ist negativ!" },
+        { text: "Arena 3 (Challenge) – Diagramm: Im s-t-Diagramm zeigt Abschnitt AB eine Gerade mit negativer Steigung. Was bedeutet das?", options: ["Körper bewegt sich rückwärts (v < 0).", "Körper bremst ab.", "Körper ruht.", "Körper beschleunigt vorwärts."], correct: 0, explanation: "Negative Steigung im s-t → s nimmt ab → Körper bewegt sich in die Ausgangsrichtung zurück → v < 0.", hint: "Was bedeutet die Steigung im s-t-Diagramm?" },
+        { text: "Arena 4 (Challenge) – Aufwärtswurf: v₀ = 15 m/s, g = 10 m/s². Maximale Höhe?", options: ["11,25 m (h = v₀t − ½gt² mit t = 1,5 s)", "22,5 m", "15 m", "7,5 m"], correct: 0, explanation: "t_max: 0 = 15 − 10t → t = 1,5 s. h = 15·1,5 − ½·10·2,25 = 22,5 − 11,25 = 11,25 m.", hint: "Erst t aus v = 0 = v₀ − g·t. Dann h = v₀t − ½gt²." },
+        { text: "Arena 5 (Challenge) – Zug: v = 30 m/s, t_R = 2 s, |a| = 3 m/s². Hindernisabstand: 200 m. Kollision?", options: ["Ja – s_A = 210 m (s_R = 60 + s_B = 150) > 200 m.", "Nein – 200 m reicht.", "Nein – s_A = 150 m.", "Ja – s_A = 260 m."], correct: 0, explanation: "s_R = 30·2 = 60 m. s_B = 30²/(2·3) = 900/6 = 150 m. s_A = 210 m > 200 m → Kollision.", hint: "s_R = v·t_R, s_B = v²/(2·|a|), s_A = s_R + s_B. Dann mit 200 m vergleichen." },
       ],
     },
   },
@@ -2572,6 +2865,16 @@ if (title && frame && pencilLayer instanceof HTMLCanvasElement) {
       [result[i], result[j]] = [result[j], result[i]];
     }
     return result;
+  };
+
+  const shuffleQuestion = (q) => {
+    if (!q || !q.options) return q;
+    const order = q.options.map((_, i) => i);
+    for (let i = order.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [order[i], order[j]] = [order[j], order[i]];
+    }
+    return { ...q, options: order.map(i => q.options[i]), correct: order.indexOf(q.correct) };
   };
 
   const stopTestMotionGame = () => {
@@ -5282,7 +5585,7 @@ if (title && frame && pencilLayer instanceof HTMLCanvasElement) {
 
   const startMCConceptQuestion = (index) => {
     if (!(siGameStage instanceof HTMLElement)) return;
-    const question = MC_CONCEPT_QUESTIONS[index];
+    const question = MC_CONCEPT_QUESTIONS[index] ? shuffleQuestion(MC_CONCEPT_QUESTIONS[index]) : undefined;
 
     if (!question) {
       siGameStage.innerHTML = `
@@ -5388,8 +5691,10 @@ if (title && frame && pencilLayer instanceof HTMLCanvasElement) {
   let _matterRender = null;
   let _matterRunner = null;
   let _activeChart = null;
+  let _moduleEngineRaf = null;
 
   const stopModuleGame = () => {
+    if (_moduleEngineRaf) { cancelAnimationFrame(_moduleEngineRaf); _moduleEngineRaf = null; }
     if (_matterRunner) { try { Matter.Runner.stop(_matterRunner); } catch (_) {} _matterRunner = null; }
     if (_matterRender) { try { Matter.Render.stop(_matterRender); } catch (_) {} _matterRender = null; }
     if (_matterEngine) { try { Matter.Engine.clear(_matterEngine); } catch (_) {} _matterEngine = null; }
@@ -5399,6 +5704,8 @@ if (title && frame && pencilLayer instanceof HTMLCanvasElement) {
     }
     document.body.classList.remove("test-motion-page-flash");
   };
+
+  let _lvlScore = { correct: 0, total: 0 };
 
   const _flashCorrect = () => {
     if (!(siGameStage instanceof HTMLElement)) return;
@@ -5455,16 +5762,20 @@ if (title && frame && pencilLayer instanceof HTMLCanvasElement) {
     `;
     siGameStage.querySelector(".mod-theory-cta")?.addEventListener("click", onStart);
     animateModuleTheory();
+    if (window.MathJax && typeof window.MathJax.typesetPromise === "function") {
+      window.setTimeout(() => { window.MathJax.typesetPromise([siGameStage]).catch(() => {}); }, 60);
+    }
   };
 
   // Multiple-Choice engine
   const runMCEngine = (tasks, onComplete) => {
     if (!(siGameStage instanceof HTMLElement)) return;
+    _lvlScore.total += tasks.length;
     let idx = 0;
 
     const render = () => {
-      const task = tasks[idx];
-      if (!task) { onComplete?.(); return; }
+      const task = shuffleQuestion(tasks[idx]);
+      if (!tasks[idx]) { onComplete?.(); return; }
 
       siGameStage.innerHTML = `
         <section class="mod-question-page mc-page">
@@ -5513,7 +5824,7 @@ if (title && frame && pencilLayer instanceof HTMLCanvasElement) {
               : `Nicht ganz. ${task.explanation}`;
           }
           if (next) next.hidden = false;
-          if (chosen === task.correct) _flashCorrect();
+          if (chosen === task.correct) { _flashCorrect(); _lvlScore.correct++; }
         });
       });
 
@@ -5525,6 +5836,7 @@ if (title && frame && pencilLayer instanceof HTMLCanvasElement) {
   // Calculation engine
   const runCalcEngine = (tasks, cfg, onComplete) => {
     if (!(siGameStage instanceof HTMLElement)) return;
+    _lvlScore.total += tasks.length;
     let idx = 0;
 
     const render = () => {
@@ -5567,7 +5879,7 @@ if (title && frame && pencilLayer instanceof HTMLCanvasElement) {
           fb.textContent = task.successFeedback ?? `Richtig! Ergebnis: ${task.answer} ${cfg.answerUnit}. +${task.xp ?? 100} XP`;
           if (inp) inp.disabled = true;
           if (nxt) nxt.hidden = false;
-          _flashCorrect();
+          _flashCorrect(); _lvlScore.correct++;
         } else {
           fb.className = "test-motion-feedback is-hint";
           fb.textContent = task.hint ?? `Überprüfe deine Rechnung. Formel: ${cfg.formula}`;
@@ -5636,10 +5948,11 @@ if (title && frame && pencilLayer instanceof HTMLCanvasElement) {
 
     const qContainer = siGameStage.querySelector("#eng-chart-q");
     let taskIdx = 0;
+    _lvlScore.total += tasks.length;
 
     const renderQ = () => {
-      const task = tasks[taskIdx];
-      if (!task || !qContainer) { onComplete?.(); return; }
+      const task = shuffleQuestion(tasks[taskIdx]);
+      if (!tasks[taskIdx] || !qContainer) { onComplete?.(); return; }
 
       if (task.type === "calc") {
         qContainer.innerHTML = `
@@ -5663,7 +5976,7 @@ if (title && frame && pencilLayer instanceof HTMLCanvasElement) {
           if (Math.abs(v - task.answer) <= Math.max(tol, Math.abs(task.answer) * tol)) {
             fb.className = "test-motion-feedback is-correct";
             fb.textContent = `Richtig! ${task.explanation ?? ""}`;
-            inp.disabled = true; nxt.hidden = false; _flashCorrect();
+            inp.disabled = true; nxt.hidden = false; _flashCorrect(); _lvlScore.correct++;
           } else {
             fb.className = "test-motion-feedback is-hint";
             fb.textContent = task.hint ?? "Lies den Graphen nochmals sorgfältig ab.";
@@ -5699,7 +6012,7 @@ if (title && frame && pencilLayer instanceof HTMLCanvasElement) {
             fb.className = `test-motion-feedback ${chosen === task.correct ? "is-correct" : "is-hint"}`;
             fb.textContent = chosen === task.correct ? `Richtig! ${task.explanation}` : `Nicht ganz. ${task.explanation}`;
             nxt.hidden = false;
-            if (chosen === task.correct) _flashCorrect();
+            if (chosen === task.correct) { _flashCorrect(); _lvlScore.correct++; }
           });
         });
         nxt?.addEventListener("click", () => { taskIdx++; renderQ(); });
@@ -5793,10 +6106,11 @@ if (title && frame && pencilLayer instanceof HTMLCanvasElement) {
 
   // MC rendered inside a given container element (used by matter engine)
   const runMCEngineInEl = (container, tasks, onComplete) => {
+    _lvlScore.total += tasks.length;
     let idx = 0;
     const render = () => {
-      const task = tasks[idx];
-      if (!task) { onComplete?.(); return; }
+      const task = shuffleQuestion(tasks[idx]);
+      if (!tasks[idx]) { onComplete?.(); return; }
       container.innerHTML = `
         <p class="mod-q-meta">Frage ${idx + 1} von ${tasks.length}</p>
         <p class="mod-q-text">${task.text}</p>
@@ -5823,7 +6137,7 @@ if (title && frame && pencilLayer instanceof HTMLCanvasElement) {
           fb.className = `test-motion-feedback ${chosen === task.correct ? "is-correct" : "is-hint"}`;
           fb.textContent = chosen === task.correct ? `Richtig! ${task.explanation}` : `Nicht ganz. ${task.explanation}`;
           nxt.hidden = false;
-          if (chosen === task.correct) _flashCorrect();
+          if (chosen === task.correct) { _flashCorrect(); _lvlScore.correct++; }
         });
       });
       nxt?.addEventListener("click", () => { idx++; render(); });
@@ -5834,27 +6148,64 @@ if (title && frame && pencilLayer instanceof HTMLCanvasElement) {
   // Completion screen
   const showModuleComplete = (step) => {
     if (!(siGameStage instanceof HTMLElement)) return;
-    const accent = step.colorA || "#59a3ff";
+    const { correct, total } = _lvlScore;
+    const hasScore = total > 0;
+    const fraction = hasScore ? correct / total : 1;
+    const ringColor = fraction === 1 ? "#22c55e" : fraction > 0 ? "#f97316" : "#ef4444";
+    const message = fraction === 1
+      ? "Ausgezeichnet! Alles richtig!"
+      : fraction > 0
+      ? "Fast geschafft – du bist auf dem richtigen Weg!"
+      : "Nicht aufgeben – beim nächsten Mal klappt es!";
+    const r = 52, cx = 70, cy = 70;
+    const circ = +(2 * Math.PI * r).toFixed(2);
+    const targetOffset = +(circ * (1 - fraction)).toFixed(2);
+
     siGameStage.innerHTML = `
       <section class="mod-complete-page">
-        <div class="mod-complete-icon" style="color:${accent}">
+        ${hasScore ? `
+        <div class="score-ring-wrap">
+          <svg class="score-ring-svg" viewBox="0 0 140 140" width="140" height="140" aria-hidden="true">
+            <circle cx="${cx}" cy="${cy}" r="${r}" fill="none" stroke="#e2e8f0" stroke-width="10"/>
+            <circle class="score-ring-arc" cx="${cx}" cy="${cy}" r="${r}" fill="none"
+              stroke="${ringColor}" stroke-width="10"
+              stroke-dasharray="${circ}" stroke-dashoffset="${circ}"
+              stroke-linecap="round"
+              transform="rotate(-90 ${cx} ${cy})"/>
+            <text x="${cx}" y="${cy}" text-anchor="middle" dominant-baseline="central"
+              font-size="26" font-weight="900" fill="${ringColor}"
+              font-family="Nunito, sans-serif">${correct}/${total}</text>
+          </svg>
+        </div>
+        <p class="score-ring-message" style="color:${ringColor}">${message}</p>
+        ` : `
+        <div class="mod-complete-icon" style="color:${step.colorA || "#59a3ff"}">
           <svg viewBox="0 0 48 48" fill="none" width="64" height="64">
             <circle cx="24" cy="24" r="20" stroke="currentColor" stroke-width="3"/>
             <path d="M14 24l7 7 13-14" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
         </div>
+        `}
         <h3>${step.title} gemeistert!</h3>
-        <p>Du hast alle Aufgaben zu <strong>${step.title}</strong> erfolgreich abgeschlossen.</p>
         <div class="mod-complete-actions">
           <button class="si-jumpgame-button" id="mod-comp-back">Zurück zum Pfad</button>
           <button class="si-jumpgame-button" id="mod-comp-retry">Nochmal üben</button>
         </div>
       </section>
     `;
-    if (typeof anime !== "undefined") {
-      anime({ targets: ".mod-complete-icon", scale:[0.4,1], opacity:[0,1], duration:560, easing:"easeOutBack" });
-      anime({ targets: ".mod-complete-page h3, .mod-complete-page p, .mod-complete-actions", opacity:[0,1], translateY:[16,0], delay: anime.stagger(80, {start:300}), duration:380, easing:"easeOutCubic" });
+
+    const arc = siGameStage.querySelector(".score-ring-arc");
+    if (arc && typeof anime !== "undefined") {
+      anime({ targets: ".score-ring-wrap", scale: [0.5, 1], opacity: [0, 1], duration: 600, delay: 80, easing: "easeOutBack" });
+      anime({ targets: arc, strokeDashoffset: [circ, targetOffset], duration: 900, delay: 350, easing: "easeOutCubic" });
+      anime({ targets: ".score-ring-message, .mod-complete-page h3, .mod-complete-actions", opacity: [0, 1], translateY: [14, 0], delay: anime.stagger(80, { start: 450 }), duration: 360, easing: "easeOutCubic" });
+    } else if (arc) {
+      arc.setAttribute("stroke-dashoffset", String(targetOffset));
+    } else if (typeof anime !== "undefined") {
+      anime({ targets: ".mod-complete-icon", scale: [0.4, 1], opacity: [0, 1], duration: 560, easing: "easeOutBack" });
+      anime({ targets: ".mod-complete-page h3, .mod-complete-actions", opacity: [0, 1], translateY: [16, 0], delay: anime.stagger(80, { start: 300 }), duration: 380, easing: "easeOutCubic" });
     }
+
     siGameStage.querySelector("#mod-comp-back")?.addEventListener("click", closeSIGame);
     siGameStage.querySelector("#mod-comp-retry")?.addEventListener("click", () => renderModuleGame(step));
   };
@@ -5901,59 +6252,99 @@ if (title && frame && pencilLayer instanceof HTMLCanvasElement) {
     };
   }
 
-  // ── Interactive Engine 1: Speed Lab (v = s/t) ──────────────────────────
+  // ── Interactive Engine 1: Speed Lab PhET (v = s/t, live sliders) ────────
   const runSpeedLabEngine = (q, onComplete) => {
-    const trackS = q.s ?? 160;
-    const minV = q.minV ?? 5, maxV = q.maxV ?? 30, defV = q.defaultV ?? 12;
+    const trackS = q.s ?? 180;
+    const targetV = q.targetV ?? Math.round(trackS / 9);
+    const defS = q.s ?? trackS;
+    const defT = q.defT ?? Math.round(defS / targetV * 10) / 10;
 
     siGameStage.innerHTML = `
-      <div class="interact-page">
-        <p class="mod-q-meta">Interaktiv · Geschwindigkeits-Labor</p>
-        <h3 class="interact-heading">v = s ÷ t – selbst erleben</h3>
-        <p class="interact-sub">Stelle die Geschwindigkeit ein, starte das Auto und beobachte, wie v = s/t live berechnet wird.</p>
-        <div class="interact-canvas-wrap"><canvas id="ilab-cv" height="110"></canvas></div>
-        <div class="interact-ctrl-row">
-          <span class="interact-v-label">v = <strong id="ilab-vv">${defV}</strong> m/s</span>
-          <input class="interact-slider" id="ilab-sl" type="range" min="${minV}" max="${maxV}" value="${defV}" step="1">
-          <button class="si-jumpgame-button" id="ilab-go">▶ Start</button>
+      <div class="interact-page phet-page">
+        <p class="mod-q-meta">Interaktiv · Speed-Lab</p>
+        <h3 class="interact-heading">v = s ÷ t – live entdecken</h3>
+        <p class="interact-sub">Schiebe die Regler – das Auto fährt sofort! Triff das Ziel!</p>
+        <div class="phet-challenge-badge" id="sl-badge">🎯 Ziel: v = <strong>${targetV}</strong> m/s</div>
+        <div class="interact-canvas-wrap"><canvas id="sl-cv" height="110"></canvas></div>
+        <div class="phet-sliders">
+          <div class="phet-slider-row">
+            <span class="phet-slider-lbl">s</span>
+            <input class="interact-slider" id="sl-s" type="range" min="50" max="300" value="${defS}" step="5">
+            <span class="phet-slider-val"><strong id="sl-sv">${defS}</strong> m</span>
+          </div>
+          <div class="phet-slider-row">
+            <span class="phet-slider-lbl">t</span>
+            <input class="interact-slider" id="sl-t" type="range" min="1" max="30" value="${defT}" step="0.5">
+            <span class="phet-slider-val"><strong id="sl-tv">${defT}</strong> s</span>
+          </div>
         </div>
         <div class="interact-formula-box">
-          v = <span class="ilab-hl" id="ilab-fs">${trackS}</span> m ÷
-          <span class="ilab-hl" id="ilab-ft">—</span> s =
-          <span class="ilab-hl ilab-result" id="ilab-fv">—</span> m/s
+          v = <span class="ilab-hl" id="sl-fs">${defS}</span> m ÷
+          <span class="ilab-hl" id="sl-ft">${defT}</span> s =
+          <span class="ilab-hl ilab-result" id="sl-fv">${(defS / defT).toFixed(1)}</span> m/s
         </div>
-        <p class="test-motion-feedback" id="ilab-fb"></p>
-        <button class="si-jumpgame-button mod-q-next" id="ilab-nx" hidden>Weiter →</button>
+        <p class="test-motion-feedback" id="sl-fb"></p>
+        <button class="si-jumpgame-button mod-q-next" id="sl-nx">Weiter →</button>
       </div>`;
 
-    const cv = document.getElementById('ilab-cv');
-    cv.width = cv.parentElement.offsetWidth || cv.parentElement.clientWidth || 560;
+    const cv = document.getElementById('sl-cv');
+    cv.width = cv.parentElement?.offsetWidth || 560;
     const W = cv.width, H = cv.height, ctx = cv.getContext('2d');
     const TL = 30, TR = W - 30, TW = TR - TL, TY = 60;
+    const slS = document.getElementById('sl-s');
+    const slT = document.getElementById('sl-t');
+    const svEl = document.getElementById('sl-sv'), tvEl = document.getElementById('sl-tv');
+    const fsEl = document.getElementById('sl-fs'), ftEl = document.getElementById('sl-ft');
+    const fvEl = document.getElementById('sl-fv');
+    const badgeEl = document.getElementById('sl-badge');
+    const fb = document.getElementById('sl-fb');
+    let simTime = 0, lastTs = null, wasHit = false;
 
-    const paint = (prog, elapsed) => {
-      ctx.clearRect(0, 0, W, H);
-      // road (dark on white page bg)
-      ctx.fillStyle = '#2c3a4a'; ctx.fillRect(TL, TY - 16, TW, 32);
-      ctx.setLineDash([14, 10]); ctx.strokeStyle = 'rgba(255,255,255,0.25)'; ctx.lineWidth = 2;
-      ctx.beginPath(); ctx.moveTo(TL, TY); ctx.lineTo(TR, TY); ctx.stroke(); ctx.setLineDash([]);
-      // start post
-      ctx.fillStyle = 'rgba(255,255,255,0.6)'; ctx.fillRect(TL - 1, TY - 20, 2, 40);
-      ctx.fillStyle = '#2d3a48'; ctx.font = 'bold 10px monospace';
-      ctx.fillText('0', TL - 2, TY - 24);
-      // finish (checkered)
-      for (let r = 0; r < 8; r++) {
-        ctx.fillStyle = r % 2 ? '#333' : '#fff'; ctx.fillRect(TR - 1, TY - 20 + r * 5, 3, 5);
+    const loop = (ts) => {
+      if (lastTs !== null) simTime += Math.min((ts - lastTs) / 1000, 0.05);
+      lastTs = ts;
+      const s = Number(slS?.value ?? defS), t = Number(slT?.value ?? defT);
+      const v = s / t;
+      const lapVis = Math.max(t / 6, 0.3);
+      const prog = (simTime % lapVis) / lapVis;
+      const isHit = Math.abs(v - targetV) <= 0.6;
+
+      if (svEl) svEl.textContent = s;
+      if (tvEl) tvEl.textContent = t.toFixed(1);
+      if (fsEl) fsEl.textContent = s;
+      if (ftEl) ftEl.textContent = t.toFixed(1);
+      if (fvEl) fvEl.textContent = v.toFixed(1);
+      if (badgeEl) badgeEl.className = 'phet-challenge-badge' + (isHit ? ' phet-badge-hit' : '');
+      if (isHit && !wasHit) {
+        wasHit = true;
+        if (fb) { fb.className = 'test-motion-feedback is-correct'; fb.textContent = `✓ v = ${v.toFixed(1)} m/s ≈ ${targetV} m/s – Perfekt!`; }
+        _flashCorrect?.();
+      } else if (!isHit) {
+        wasHit = false;
+        if (fb) { fb.className = ''; fb.textContent = ''; }
       }
-      ctx.fillStyle = '#1a7a50'; ctx.font = 'bold 10px monospace';
-      ctx.fillText(trackS + ' m', TR - 26, TY - 24);
-      // progress bar
-      ctx.fillStyle = 'rgba(63,142,252,0.15)'; ctx.fillRect(TL, TY + 18, TW, 3);
-      ctx.fillStyle = '#3f8efc'; ctx.fillRect(TL, TY + 18, TW * Math.min(prog, 1), 3);
-      // car
-      const cx = TL + Math.min(prog, 1) * TW;
-      ctx.fillStyle = '#3f8efc'; ctx.beginPath(); ctx.roundRect(cx - 22, TY - 23, 44, 16, 5); ctx.fill();
-      ctx.fillStyle = '#1a62d4'; ctx.beginPath(); ctx.roundRect(cx - 13, TY - 32, 26, 11, 3); ctx.fill();
+
+      ctx.clearRect(0, 0, W, H);
+      ctx.fillStyle = '#1e2b3a'; ctx.fillRect(TL, TY - 18, TW, 36);
+      ctx.setLineDash([14, 10]); ctx.strokeStyle = 'rgba(255,255,255,0.2)'; ctx.lineWidth = 2;
+      ctx.beginPath(); ctx.moveTo(TL, TY); ctx.lineTo(TR, TY); ctx.stroke(); ctx.setLineDash([]);
+      for (let i = 1; i < 4; i++) {
+        const mx = TL + TW / 4 * i;
+        ctx.fillStyle = 'rgba(255,255,255,0.08)'; ctx.fillRect(mx, TY - 18, 1, 36);
+        ctx.fillStyle = '#5d7a96'; ctx.font = '9px monospace'; ctx.textAlign = 'center';
+        ctx.fillText((s / 4 * i).toFixed(0) + 'm', mx, TY - 22); ctx.textAlign = 'left';
+      }
+      ctx.fillStyle = 'rgba(255,255,255,0.5)'; ctx.fillRect(TL - 1, TY - 20, 2, 40);
+      ctx.fillStyle = '#7ba8d0'; ctx.font = 'bold 10px monospace'; ctx.fillText('0', TL, TY - 23);
+      for (let r = 0; r < 8; r++) { ctx.fillStyle = r % 2 ? '#333' : '#fff'; ctx.fillRect(TR - 1, TY - 20 + r * 5, 3, 5); }
+      ctx.fillStyle = '#3dd18d'; ctx.fillText(s + ' m', TR - 30, TY - 23);
+      const col = isHit ? '#3dd18d' : '#3f8efc';
+      ctx.fillStyle = col + '33'; ctx.fillRect(TL, TY + 20, TW, 4);
+      ctx.fillStyle = col; ctx.fillRect(TL, TY + 20, TW * prog, 4);
+      const cx = TL + prog * TW;
+      ctx.fillStyle = col; ctx.beginPath(); ctx.roundRect(cx - 22, TY - 24, 44, 16, 5); ctx.fill();
+      ctx.fillStyle = isHit ? '#1a7a4a' : '#1a5ac4';
+      ctx.beginPath(); ctx.roundRect(cx - 13, TY - 32, 26, 10, 3); ctx.fill();
       ctx.fillStyle = 'rgba(255,255,255,0.5)';
       ctx.beginPath(); ctx.roundRect(cx - 10, TY - 30, 8, 7, 2); ctx.fill();
       ctx.beginPath(); ctx.roundRect(cx + 2, TY - 30, 8, 7, 2); ctx.fill();
@@ -5961,321 +6352,637 @@ if (title && frame && pencilLayer instanceof HTMLCanvasElement) {
         ctx.fillStyle = '#111'; ctx.beginPath(); ctx.arc(wx, TY - 7, 6, 0, Math.PI * 2); ctx.fill();
         ctx.fillStyle = '#555'; ctx.beginPath(); ctx.arc(wx, TY - 7, 3, 0, Math.PI * 2); ctx.fill();
       });
-      // timer overlay (dark pill, white text — visible on both backgrounds)
-      if (elapsed !== null) {
-        ctx.fillStyle = 'rgba(20,24,40,0.88)'; ctx.beginPath();
-        ctx.roundRect(W / 2 - 46, 4, 92, 22, 4); ctx.fill();
-        ctx.fillStyle = '#fff'; ctx.font = 'bold 13px monospace'; ctx.textAlign = 'center';
-        ctx.fillText('t = ' + elapsed.toFixed(1) + ' s', W / 2, 19); ctx.textAlign = 'left';
-      }
+      ctx.fillStyle = 'rgba(20,24,40,0.9)'; ctx.beginPath();
+      ctx.roundRect(W / 2 - 64, 3, 128, 22, 4); ctx.fill();
+      ctx.fillStyle = col; ctx.font = 'bold 12px monospace'; ctx.textAlign = 'center';
+      ctx.fillText('v = ' + v.toFixed(1) + ' m/s', W / 2, 18); ctx.textAlign = 'left';
+
+      _moduleEngineRaf = requestAnimationFrame(loop);
     };
 
-    paint(0, null);
-
-    const sl = document.getElementById('ilab-sl'), vv = document.getElementById('ilab-vv');
-    const ftEl = document.getElementById('ilab-ft'), fvEl = document.getElementById('ilab-fv');
-    const fb = document.getElementById('ilab-fb'), nx = document.getElementById('ilab-nx');
-    let raf = null;
-
-    sl.addEventListener('input', () => { vv.textContent = sl.value; });
-
-    document.getElementById('ilab-go').addEventListener('click', function () {
-      if (raf) return;
-      this.disabled = true; sl.disabled = true;
-      const v = Number(sl.value), totalT = trackS / v;
-      const t0 = performance.now();
-      const loop = (now) => {
-        const el = Math.min((now - t0) / 1000, totalT);
-        paint(el / totalT, el);
-        ftEl.textContent = el.toFixed(1);
-        fvEl.textContent = (trackS / Math.max(el, 0.01)).toFixed(1);
-        if (el < totalT) { raf = requestAnimationFrame(loop); }
-        else {
-          raf = null; ftEl.textContent = totalT.toFixed(1); fvEl.textContent = String(v);
-          fb.className = 'test-motion-feedback is-correct';
-          fb.textContent = '✓  v = ' + trackS + ' m ÷ ' + totalT.toFixed(1) + ' s = ' + v + ' m/s';
-          nx.hidden = false; _flashCorrect?.();
-        }
-      };
-      raf = requestAnimationFrame(loop);
-    });
-
-    nx.addEventListener('click', () => {
-      if (raf) { cancelAnimationFrame(raf); raf = null; }
+    document.getElementById('sl-nx')?.addEventListener('click', () => {
+      if (_moduleEngineRaf) { cancelAnimationFrame(_moduleEngineRaf); _moduleEngineRaf = null; }
       q.followUp?.length ? runMCEngine(q.followUp, onComplete) : onComplete?.();
     });
+    _moduleEngineRaf = requestAnimationFrame(loop);
   };
 
 
-  // ── Interactive Engine 2: Two-Car Race ──────────────────────────────────
+  // ── Interactive Engine 2: Two-Car Race PhET (live sliders + race) ───────
   const runRaceEngine = (q, onComplete) => {
-    const cA = q.carA ?? { v: 20, color: '#5ea3ff', label: 'Auto A' };
-    const cB = q.carB ?? { v: 14, color: '#ff8753', label: 'Auto B' };
+    const defVA = q.carA?.v ?? 20, defVB = q.carB?.v ?? 14;
+    const colA = q.carA?.color ?? '#5ea3ff', colB = q.carB?.color ?? '#ff8753';
+    const lblA = q.carA?.label ?? 'Auto A', lblB = q.carB?.label ?? 'Auto B';
     const trackS = q.s ?? 280;
-    const totalT = Math.max(trackS / cA.v, trackS / cB.v);
 
     siGameStage.innerHTML = `
-      <div class="interact-page">
-        <p class="mod-q-meta">Interaktiv · Gleichförmige Bewegung</p>
-        <h3 class="interact-heading">Das Rennen – wer ist schneller?</h3>
-        <p class="interact-sub">Beide Autos starten gleichzeitig mit konstanter Geschwindigkeit. Beobachte genau!</p>
-        <div class="interact-canvas-wrap"><canvas id="irace-cv" height="150"></canvas></div>
-        <div class="interact-race-info">
-          <span style="color:${cA.color}">■ ${cA.label}</span><span id="ira-sa">0 m</span>
-          <span style="color:${cB.color}">■ ${cB.label}</span><span id="ira-sb">0 m</span>
-          <span class="interact-timer">⏱ <span id="ira-t">0,0</span> s</span>
+      <div class="interact-page phet-page">
+        <p class="mod-q-meta">Interaktiv · Rennen</p>
+        <h3 class="interact-heading">Wer ist schneller?</h3>
+        <p class="interact-sub">Stelle die Geschwindigkeiten ein – die Autos fahren sofort. Dann: Rennen starten!</p>
+        <div class="phet-challenge-badge" id="race-badge" style="visibility:hidden">–</div>
+        <div class="interact-canvas-wrap"><canvas id="irace-cv" height="148"></canvas></div>
+        <div class="phet-sliders">
+          <div class="phet-slider-row">
+            <span class="phet-slider-lbl" style="color:${colA}">${lblA}</span>
+            <input class="interact-slider" id="race-va" type="range" min="5" max="40" value="${defVA}" step="1">
+            <span class="phet-slider-val"><strong id="race-vav">${defVA}</strong> m/s</span>
+          </div>
+          <div class="phet-slider-row">
+            <span class="phet-slider-lbl" style="color:${colB}">${lblB}</span>
+            <input class="interact-slider" id="race-vb" type="range" min="5" max="40" value="${defVB}" step="1">
+            <span class="phet-slider-val"><strong id="race-vbv">${defVB}</strong> m/s</span>
+          </div>
         </div>
-        <button class="si-jumpgame-button" id="irace-go" style="margin:1rem auto;display:block">▶ Rennen starten</button>
-        <p class="test-motion-feedback" id="irace-fb"></p>
+        <div class="phet-btn-row">
+          <button class="si-jumpgame-button phet-btn-race" id="race-go">🏁 Rennen!</button>
+          <button class="si-jumpgame-button phet-btn-reset" id="race-restart" hidden>↺ Nochmal</button>
+          <button class="si-jumpgame-button mod-q-next" id="race-nx" hidden>Weiter →</button>
+        </div>
+        <p class="test-motion-feedback" id="race-fb"></p>
       </div>`;
 
     const cv = document.getElementById('irace-cv');
-    cv.width = cv.parentElement.offsetWidth || cv.parentElement.clientWidth || 560;
+    cv.width = cv.parentElement?.offsetWidth || 560;
     const W = cv.width, H = cv.height, ctx = cv.getContext('2d');
     const TL = 28, TR = W - 28, TW = TR - TL;
-    const LA = 46, LB = 104;
+    const LA = 44, LB = 108;
 
-    const drawLane = (ly, car, prog) => {
-      ctx.fillStyle = '#2c3a4a'; ctx.fillRect(TL, ly - 20, TW, 40);
-      ctx.setLineDash([14, 10]); ctx.strokeStyle = 'rgba(255,255,255,0.25)'; ctx.lineWidth = 2;
+    const slVA = document.getElementById('race-va'), slVB = document.getElementById('race-vb');
+    const vavEl = document.getElementById('race-vav'), vbvEl = document.getElementById('race-vbv');
+    const badgeEl = document.getElementById('race-badge');
+    const fb = document.getElementById('race-fb');
+    const goBtn = document.getElementById('race-go');
+    const restartBtn = document.getElementById('race-restart');
+    const nx = document.getElementById('race-nx');
+
+    const getVA = () => Number(slVA?.value ?? defVA);
+    const getVB = () => Number(slVB?.value ?? defVB);
+
+    const drawLane = (ly, col, lbl, prog) => {
+      ctx.fillStyle = '#1e2b3a'; ctx.fillRect(TL, ly - 20, TW, 40);
+      ctx.setLineDash([12, 10]); ctx.strokeStyle = 'rgba(255,255,255,0.18)'; ctx.lineWidth = 2;
       ctx.beginPath(); ctx.moveTo(TL, ly); ctx.lineTo(TR, ly); ctx.stroke(); ctx.setLineDash([]);
-      ctx.fillStyle = car.color; ctx.font = 'bold 11px monospace'; ctx.fillText(car.label, TL + 2, ly - 25);
+      ctx.fillStyle = col; ctx.font = 'bold 10px monospace'; ctx.fillText(lbl, TL + 4, ly - 24);
       for (let r = 0; r < 8; r++) {
-        ctx.fillStyle = r % 2 ? '#333' : '#fff'; ctx.fillRect(TR - 2, ly - 18 + r * 4.5, 4, 4.5);
+        ctx.fillStyle = r % 2 ? '#333' : '#fff'; ctx.fillRect(TR - 2, ly - 20 + r * 5, 4, 5);
       }
-      const p = Math.min(prog, 1);
-      ctx.fillStyle = car.color + '33'; ctx.fillRect(TL, ly + 21, TW, 3);
-      ctx.fillStyle = car.color; ctx.fillRect(TL, ly + 21, TW * p, 3);
+      const p = Math.min(Math.max(prog, 0), 1);
+      ctx.fillStyle = col + '2a'; ctx.fillRect(TL, ly + 20, TW, 3);
+      ctx.fillStyle = col; ctx.fillRect(TL, ly + 20, TW * p, 3);
       const cx = TL + p * TW;
-      ctx.fillStyle = car.color; ctx.beginPath(); ctx.roundRect(cx - 20, ly - 20, 40, 15, 4); ctx.fill();
-      ctx.fillStyle = car.color + 'cc'; ctx.beginPath(); ctx.roundRect(cx - 12, ly - 28, 24, 10, 3); ctx.fill();
+      ctx.fillStyle = col; ctx.beginPath(); ctx.roundRect(cx - 20, ly - 20, 40, 15, 4); ctx.fill();
+      ctx.fillStyle = col + 'bb'; ctx.beginPath(); ctx.roundRect(cx - 12, ly - 28, 24, 9, 3); ctx.fill();
+      ctx.fillStyle = 'rgba(255,255,255,0.45)';
+      ctx.beginPath(); ctx.roundRect(cx - 9, ly - 26, 8, 6, 2); ctx.fill();
+      ctx.beginPath(); ctx.roundRect(cx + 1, ly - 26, 8, 6, 2); ctx.fill();
       [cx - 11, cx + 11].forEach(wx => {
         ctx.fillStyle = '#111'; ctx.beginPath(); ctx.arc(wx, ly - 5, 5, 0, Math.PI * 2); ctx.fill();
-        ctx.fillStyle = '#666'; ctx.beginPath(); ctx.arc(wx, ly - 5, 2.5, 0, Math.PI * 2); ctx.fill();
+        ctx.fillStyle = '#555'; ctx.beginPath(); ctx.arc(wx, ly - 5, 2.5, 0, Math.PI * 2); ctx.fill();
       });
     };
 
-    const paint = (el) => {
+    let simTime = 0, lastTs = null, racing = false, raceT0 = null, raceEl = 0;
+
+    const loop = (ts) => {
+      if (lastTs !== null) {
+        const dt = Math.min((ts - lastTs) / 1000, 0.05);
+        if (racing) {
+          raceEl = (ts - raceT0) / 1000;
+        } else {
+          simTime += dt;
+        }
+      }
+      lastTs = ts;
+      const vA = getVA(), vB = getVB();
+      if (vavEl) vavEl.textContent = vA;
+      if (vbvEl) vbvEl.textContent = vB;
+      const totalT = Math.max(trackS / vA, trackS / vB);
+
+      let progA, progB;
+      if (racing) {
+        progA = Math.min(vA * raceEl / trackS, 1);
+        progB = Math.min(vB * raceEl / trackS, 1);
+      } else {
+        const lapA = Math.max((trackS / vA) / 6, 0.3);
+        const lapB = Math.max((trackS / vB) / 6, 0.3);
+        progA = (simTime % lapA) / lapA;
+        progB = (simTime % lapB) / lapB;
+      }
+
       ctx.clearRect(0, 0, W, H);
-      // finish line
-      ctx.strokeStyle = '#1a7a50'; ctx.lineWidth = 2.5;
-      ctx.beginPath(); ctx.moveTo(TR, 4); ctx.lineTo(TR, H - 4); ctx.stroke();
-      ctx.fillStyle = '#1a7a50'; ctx.font = 'bold 11px monospace'; ctx.textAlign = 'center';
-      ctx.fillText(trackS + ' m', TR, H - 6); ctx.textAlign = 'left';
-      drawLane(LA, cA, cA.v * el / trackS);
-      drawLane(LB, cB, cB.v * el / trackS);
-      // timer pill
-      ctx.fillStyle = 'rgba(20,24,40,0.88)'; ctx.beginPath();
-      ctx.roundRect(W / 2 - 42, H / 2 - 13, 84, 22, 4); ctx.fill();
-      ctx.fillStyle = '#fff'; ctx.font = 'bold 12px monospace'; ctx.textAlign = 'center';
-      ctx.fillText('t = ' + el.toFixed(1) + ' s', W / 2, H / 2 + 3); ctx.textAlign = 'left';
+      ctx.strokeStyle = '#27a864'; ctx.lineWidth = 2.5;
+      ctx.beginPath(); ctx.moveTo(TR, 2); ctx.lineTo(TR, H - 2); ctx.stroke();
+      ctx.fillStyle = '#27a864'; ctx.font = 'bold 10px monospace'; ctx.textAlign = 'center';
+      ctx.fillText(trackS + ' m', TR, H - 4); ctx.textAlign = 'left';
+      drawLane(LA, colA, lblA, progA);
+      drawLane(LB, colB, lblB, progB);
+
+      if (racing) {
+        ctx.fillStyle = 'rgba(20,24,40,0.9)'; ctx.beginPath();
+        ctx.roundRect(W / 2 - 44, H / 2 - 13, 88, 22, 4); ctx.fill();
+        ctx.fillStyle = '#fff'; ctx.font = 'bold 12px monospace'; ctx.textAlign = 'center';
+        ctx.fillText('t = ' + raceEl.toFixed(1) + ' s', W / 2, H / 2 + 3); ctx.textAlign = 'left';
+        if (raceEl >= totalT) {
+          racing = false;
+          const tA = +(trackS / vA).toFixed(2), tB = +(trackS / vB).toFixed(2);
+          const winner = vA > vB ? lblA : vA < vB ? lblB : 'Unentschieden';
+          const winT = Math.min(tA, tB), loseT = Math.max(tA, tB);
+          if (badgeEl) { badgeEl.style.visibility = 'visible'; badgeEl.className = 'phet-challenge-badge phet-badge-hit'; badgeEl.innerHTML = `🏁 ${winner} gewinnt!`; }
+          if (fb) { fb.className = 'test-motion-feedback is-correct'; fb.textContent = `${vA > vB ? lblA : lblB}: ${winT} s  ·  ${vA > vB ? lblB : lblA}: ${loseT} s  →  Δt = ${(loseT - winT).toFixed(2)} s`; }
+          if (restartBtn) restartBtn.hidden = false;
+          if (nx) nx.hidden = false;
+          _flashCorrect?.();
+        }
+      }
+
+      _moduleEngineRaf = requestAnimationFrame(loop);
     };
 
-    paint(0);
-
-    const saEl = document.getElementById('ira-sa'), sbEl = document.getElementById('ira-sb');
-    const tEl = document.getElementById('ira-t'), fb = document.getElementById('irace-fb');
-    let raf = null;
-
-    document.getElementById('irace-go').addEventListener('click', function () {
-      if (raf) return; this.disabled = true;
-      const t0 = performance.now();
-      const loop = (now) => {
-        const el = Math.min((now - t0) / 1000, totalT);
-        paint(el);
-        saEl.textContent = Math.min(cA.v * el, trackS).toFixed(0) + ' m';
-        sbEl.textContent = Math.min(cB.v * el, trackS).toFixed(0) + ' m';
-        tEl.textContent = el.toFixed(1);
-        if (el < totalT) { raf = requestAnimationFrame(loop); }
-        else {
-          raf = null;
-          const winner = cA.v > cB.v ? cA : cB, loser = cA.v > cB.v ? cB : cA;
-          fb.className = 'test-motion-feedback is-correct';
-          fb.textContent = '🏁 ' + winner.label + ' gewinnt! Ankunft nach ' +
-            (trackS / winner.v).toFixed(1) + ' s vs. ' + (trackS / loser.v).toFixed(1) + ' s.';
-          if (q.followUp?.length) setTimeout(() => runMCEngine(q.followUp, onComplete), 1600);
-          else setTimeout(() => onComplete?.(), 1800);
-        }
-      };
-      raf = requestAnimationFrame(loop);
+    goBtn?.addEventListener('click', () => {
+      racing = true; raceT0 = performance.now(); raceEl = 0; simTime = 0; lastTs = null;
+      if (badgeEl) badgeEl.style.visibility = 'hidden';
+      if (fb) { fb.className = ''; fb.textContent = ''; }
+      if (restartBtn) restartBtn.hidden = true;
+      if (nx) nx.hidden = true;
     });
+    restartBtn?.addEventListener('click', () => {
+      racing = false; simTime = 0; lastTs = null;
+      if (badgeEl) badgeEl.style.visibility = 'hidden';
+      if (fb) { fb.className = ''; fb.textContent = ''; }
+      if (restartBtn) restartBtn.hidden = true;
+      if (nx) nx.hidden = true;
+    });
+    nx?.addEventListener('click', () => {
+      if (_moduleEngineRaf) { cancelAnimationFrame(_moduleEngineRaf); _moduleEngineRaf = null; }
+      q.followUp?.length ? runMCEngine(q.followUp, onComplete) : onComplete?.();
+    });
+    _moduleEngineRaf = requestAnimationFrame(loop);
   };
 
 
-  // ── Interactive Engine 3: Live s-t Graph ────────────────────────────────
+  // ── Interactive Engine 3: s-t Live PhET (velocity slider, live trace) ───
   const runSTLiveEngine = (q, onComplete) => {
-    const movV = q.v ?? 8, movS = q.s ?? 160;
-    const dur = movS / movV;
+    const maxS = q.s ?? 160;
+    const defV = q.v ?? 8, maxVSlider = q.maxV ?? 25;
 
     siGameStage.innerHTML = `
-      <div class="interact-page">
+      <div class="interact-page phet-page">
         <p class="mod-q-meta">Interaktiv · s-t-Diagramm live</p>
         <h3 class="interact-heading">s-t-Diagramm in Echtzeit</h3>
-        <p class="interact-sub">Oben bewegt sich der Körper. Unten entsteht simultan das s-t-Diagramm. Achte auf die Steigung!</p>
+        <p class="interact-sub">Stelle v ein – Körper und Diagramm reagieren sofort. Achte auf die Steigung!</p>
         <div class="interact-canvas-wrap"><canvas id="ist-cv" height="260"></canvas></div>
-        <button class="si-jumpgame-button" id="ist-go" style="margin:1rem auto;display:block">▶ Animation starten</button>
+        <div class="phet-sliders">
+          <div class="phet-slider-row">
+            <span class="phet-slider-lbl">v</span>
+            <input class="interact-slider" id="ist-v" type="range" min="${-maxVSlider}" max="${maxVSlider}" value="${defV}" step="0.5">
+            <span class="phet-slider-val"><strong id="ist-vv">${defV}</strong> m/s</span>
+          </div>
+        </div>
+        <div class="interact-formula-box">
+          Steigung s-t = v = <span class="ilab-hl ilab-result" id="ist-fv">${defV}</span> m/s
+        </div>
+        <div class="phet-btn-row">
+          <button class="si-jumpgame-button phet-btn-reset" id="ist-reset">↺ Zurücksetzen</button>
+          <button class="si-jumpgame-button mod-q-next" id="ist-nx">Weiter →</button>
+        </div>
         <p class="test-motion-feedback" id="ist-fb"></p>
       </div>`;
 
     const cv = document.getElementById('ist-cv');
-    cv.width = cv.parentElement.offsetWidth || cv.parentElement.clientWidth || 560;
+    cv.width = cv.parentElement?.offsetWidth || 560;
     const W = cv.width, H = cv.height, ctx = cv.getContext('2d');
     const SPLIT = 100, TL = 22, TR = W - 22, TW = TR - TL, TY = SPLIT / 2 + 8;
     const GP = { x0: 46, x1: W - 18, y0: SPLIT + 16, y1: H - 18 };
     GP.w = GP.x1 - GP.x0; GP.h = GP.y1 - GP.y0;
-    const pts = [];
+    const tWindow = 10;
+    const slV = document.getElementById('ist-v');
+    const vvEl = document.getElementById('ist-vv'), fvEl = document.getElementById('ist-fv');
+    const fb = document.getElementById('ist-fb');
+    const getV = () => Number(slV?.value ?? defV);
 
-    const paintAll = (elapsed, finished) => {
-      ctx.clearRect(0, 0, W, H);
-      const prog = Math.min(elapsed / dur, 1);
+    let simPos = 0, simT = 0, pts = [], lastTs = null;
 
-      // Track
-      ctx.fillStyle = '#2c3a4a'; ctx.fillRect(TL, TY - 16, TW, 32);
-      ctx.setLineDash([12, 10]); ctx.strokeStyle = 'rgba(255,255,255,0.25)'; ctx.lineWidth = 2;
-      ctx.beginPath(); ctx.moveTo(TL, TY); ctx.lineTo(TR, TY); ctx.stroke(); ctx.setLineDash([]);
-      ctx.fillStyle = 'rgba(255,255,255,0.6)'; ctx.fillRect(TL - 1, TY - 18, 2, 36);
-      ctx.fillStyle = '#2d3a48'; ctx.font = 'bold 10px monospace'; ctx.fillText('s=0', TL, TY - 22);
-      for (let r = 0; r < 8; r++) {
-        ctx.fillStyle = r % 2 ? '#333' : '#fff'; ctx.fillRect(TR - 2, TY - 18 + r * 4.5, 4, 4.5);
+    const resetSim = () => {
+      simPos = 0; simT = 0; pts.length = 0;
+      if (fb) { fb.className = ''; fb.textContent = ''; }
+    };
+
+    const loop = (ts) => {
+      if (lastTs !== null) {
+        const dt = Math.min((ts - lastTs) / 1000, 0.05);
+        const v = getV();
+        simPos += v * dt * 5;
+        simT += dt * 5;
+        if (simPos >= maxS) { simPos = 0; pts.length = 0; simT = 0; }
+        else if (simPos < 0) { simPos = maxS; pts.length = 0; simT = 0; }
+        pts.push({ t: simT, s: simPos });
+        if (pts.length > 400) pts.shift();
       }
-      ctx.fillStyle = '#1a7a50'; ctx.font = 'bold 10px monospace'; ctx.fillText(movS + ' m', TR - 22, TY - 22);
-      ctx.fillStyle = 'rgba(138,115,255,0.2)'; ctx.fillRect(TL, TY + 18, TW, 3);
-      ctx.fillStyle = '#7c5cf5'; ctx.fillRect(TL, TY + 18, TW * prog, 3);
+      lastTs = ts;
+      const v = getV();
+      const prog = Math.max(0, Math.min(simPos / maxS, 1));
+      if (vvEl) vvEl.textContent = v.toFixed(1);
+      if (fvEl) fvEl.textContent = v.toFixed(1);
+
+      ctx.clearRect(0, 0, W, H);
+      ctx.fillStyle = '#1e2b3a'; ctx.fillRect(TL, TY - 16, TW, 32);
+      ctx.setLineDash([12, 10]); ctx.strokeStyle = 'rgba(255,255,255,0.2)'; ctx.lineWidth = 2;
+      ctx.beginPath(); ctx.moveTo(TL, TY); ctx.lineTo(TR, TY); ctx.stroke(); ctx.setLineDash([]);
+      ctx.fillStyle = 'rgba(255,255,255,0.5)'; ctx.fillRect(TL - 1, TY - 18, 2, 36);
+      ctx.fillStyle = '#7ba8d0'; ctx.font = 'bold 10px monospace'; ctx.fillText('s=0', TL, TY - 21);
+      for (let r = 0; r < 8; r++) { ctx.fillStyle = r % 2 ? '#333' : '#fff'; ctx.fillRect(TR - 2, TY - 18 + r * 4.5, 4, 4.5); }
+      ctx.fillStyle = '#3dd18d'; ctx.fillText(maxS + ' m', TR - 22, TY - 21);
+      const col = v >= 0 ? '#7c5cf5' : '#f86785';
+      ctx.fillStyle = col + '22'; ctx.fillRect(TL, TY + 18, TW, 3);
+      ctx.fillStyle = col; ctx.fillRect(TL, TY + 18, TW * prog, 3);
       const cx = TL + prog * TW;
-      ctx.fillStyle = '#7c5cf5'; ctx.beginPath(); ctx.roundRect(cx - 20, TY - 23, 40, 16, 5); ctx.fill();
-      ctx.fillStyle = '#5a3fd4'; ctx.beginPath(); ctx.roundRect(cx - 12, TY - 31, 24, 10, 3); ctx.fill();
-      ctx.fillStyle = 'rgba(255,255,255,0.55)';
+      ctx.fillStyle = col; ctx.beginPath(); ctx.roundRect(cx - 20, TY - 23, 40, 16, 5); ctx.fill();
+      ctx.fillStyle = v >= 0 ? '#5a3fd4' : '#c0204a';
+      ctx.beginPath(); ctx.roundRect(cx - 12, TY - 31, 24, 10, 3); ctx.fill();
+      ctx.fillStyle = 'rgba(255,255,255,0.5)';
       ctx.beginPath(); ctx.roundRect(cx - 9, TY - 29, 8, 7, 2); ctx.fill();
       ctx.beginPath(); ctx.roundRect(cx + 1, TY - 29, 8, 7, 2); ctx.fill();
       [cx - 12, cx + 12].forEach(wx => {
         ctx.fillStyle = '#111'; ctx.beginPath(); ctx.arc(wx, TY - 6, 6, 0, Math.PI * 2); ctx.fill();
         ctx.fillStyle = '#555'; ctx.beginPath(); ctx.arc(wx, TY - 6, 3, 0, Math.PI * 2); ctx.fill();
       });
-      // divider
-      ctx.fillStyle = 'rgba(0,0,0,0.08)'; ctx.fillRect(0, SPLIT, W, 1);
+      ctx.fillStyle = 'rgba(20,24,40,0.9)'; ctx.beginPath();
+      ctx.roundRect(W / 2 - 64, 2, 128, 22, 4); ctx.fill();
+      ctx.fillStyle = col; ctx.font = 'bold 12px monospace'; ctx.textAlign = 'center';
+      ctx.fillText('v = ' + v.toFixed(1) + ' m/s', W / 2, 17); ctx.textAlign = 'left';
+      ctx.fillStyle = 'rgba(0,0,0,0.1)'; ctx.fillRect(0, SPLIT, W, 1);
 
-      // Graph grid
-      ctx.strokeStyle = 'rgba(0,0,0,0.08)'; ctx.lineWidth = 1; ctx.setLineDash([3, 6]);
+      const tMin = pts.length > 0 ? Math.max(0, pts[pts.length - 1].t - tWindow) : 0;
+      const tMax = pts.length > 0 ? Math.max(pts[pts.length - 1].t, tWindow) : tWindow;
+      const tRange = tMax - tMin;
+      ctx.setLineDash([3, 6]); ctx.strokeStyle = 'rgba(0,0,0,0.08)'; ctx.lineWidth = 1;
       for (let i = 1; i <= 4; i++) {
-        const gx = GP.x0 + (GP.w / 4) * i, gy = GP.y1 - (GP.h / 4) * i;
+        const gx = GP.x0 + GP.w / 4 * i, gy = GP.y1 - GP.h / 4 * i;
         ctx.beginPath(); ctx.moveTo(gx, GP.y0); ctx.lineTo(gx, GP.y1); ctx.stroke();
         ctx.beginPath(); ctx.moveTo(GP.x0, gy); ctx.lineTo(GP.x1, gy); ctx.stroke();
-        ctx.fillStyle = '#4d6070'; ctx.font = '10px monospace';
-        ctx.textAlign = 'center'; ctx.fillText((dur / 4 * i).toFixed(1), gx, GP.y1 + 14);
-        ctx.textAlign = 'right'; ctx.fillText((movS / 4 * i).toFixed(0), GP.x0 - 4, gy + 4);
+        ctx.fillStyle = '#4d6070'; ctx.font = '9px monospace'; ctx.textAlign = 'center';
+        ctx.fillText((tMin + tRange / 4 * i).toFixed(1) + 's', gx, GP.y1 + 13);
+        ctx.textAlign = 'right'; ctx.fillText((maxS / 4 * i).toFixed(0) + 'm', GP.x0 - 3, gy + 4);
       }
       ctx.setLineDash([]); ctx.textAlign = 'left';
-      ctx.strokeStyle = 'rgba(0,0,0,0.3)'; ctx.lineWidth = 1.5;
+      ctx.strokeStyle = 'rgba(0,0,0,0.28)'; ctx.lineWidth = 1.5;
       ctx.beginPath(); ctx.moveTo(GP.x0, GP.y0 - 6); ctx.lineTo(GP.x0, GP.y1); ctx.lineTo(GP.x1 + 6, GP.y1); ctx.stroke();
-      ctx.fillStyle = '#2d3a48'; ctx.font = '11px monospace';
-      ctx.fillText('s (m)', GP.x0 - 40, GP.y0 + 2);
-      ctx.fillText('t (s)', GP.x1, GP.y1 + 14);
-      ctx.fillText('0', GP.x0 - 8, GP.y1 + 14);
+      ctx.fillStyle = '#2d3a48'; ctx.font = '10px monospace';
+      ctx.fillText('s (m)', GP.x0 - 38, GP.y0 + 4);
+      ctx.fillText('t (s)', GP.x1 - 8, GP.y1 + 14);
+      ctx.fillText('0', GP.x0 - 8, GP.y1 + 13);
 
-      // Plotted line
       if (pts.length > 1) {
-        ctx.strokeStyle = '#8a73ff'; ctx.lineWidth = 2.5; ctx.beginPath();
-        pts.forEach(({ t, s: ps }, i) => {
-          const px = GP.x0 + (t / dur) * GP.w, py = GP.y1 - (ps / movS) * GP.h;
-          i === 0 ? ctx.moveTo(px, py) : ctx.lineTo(px, py);
-        });
+        ctx.strokeStyle = col; ctx.lineWidth = 2.5; ctx.beginPath();
+        let first = true;
+        for (const p of pts) {
+          const px = GP.x0 + ((p.t - tMin) / tRange) * GP.w;
+          const py = GP.y1 - (p.s / maxS) * GP.h;
+          first ? ctx.moveTo(px, py) : ctx.lineTo(px, py);
+          first = false;
+        }
         ctx.stroke();
-        const last = pts[pts.length - 1];
-        const lx = GP.x0 + (last.t / dur) * GP.w, ly = GP.y1 - (last.s / movS) * GP.h;
-        ctx.fillStyle = '#8a73ff'; ctx.beginPath(); ctx.arc(lx, ly, 5, 0, Math.PI * 2); ctx.fill();
       }
 
-      // Slope annotation when done
-      if (finished) {
-        const ax = GP.x0 + GP.w * 0.1, ay = GP.y1 - GP.h * 0.1;
-        const bx = GP.x0 + GP.w * 0.5, by = GP.y1 - GP.h * 0.5;
-        ctx.strokeStyle = '#ffd164'; ctx.lineWidth = 1.5; ctx.setLineDash([5, 5]);
-        ctx.beginPath(); ctx.moveTo(ax, ay); ctx.lineTo(bx, ay); ctx.lineTo(bx, by); ctx.stroke();
-        ctx.setLineDash([]);
-        ctx.fillStyle = 'rgba(20,24,40,0.85)'; ctx.beginPath();
-        ctx.roundRect(bx + 5, (ay + by) / 2 - 14, 162, 22, 4); ctx.fill();
-        ctx.fillStyle = '#ffd164'; ctx.font = 'bold 11px monospace';
-        ctx.fillText('Steigung = ' + movV + ' m/s', bx + 9, (ay + by) / 2 + 3);
-      }
+      _moduleEngineRaf = requestAnimationFrame(loop);
     };
 
-    paintAll(0, false);
-    const fb = document.getElementById('ist-fb');
-    let raf = null;
-
-    document.getElementById('ist-go').addEventListener('click', function () {
-      if (raf) return; this.disabled = true; pts.length = 0;
-      const t0 = performance.now();
-      const loop = (now) => {
-        const el = Math.min((now - t0) / 1000, dur);
-        pts.push({ t: el, s: Math.min(movV * el, movS) });
-        const done = el >= dur;
-        paintAll(el, done);
-        if (!done) { raf = requestAnimationFrame(loop); }
-        else {
-          raf = null;
-          fb.className = 'test-motion-feedback is-correct';
-          fb.textContent = 'Steigung = Δs/Δt = ' + movS + ' m / ' + dur.toFixed(1) + ' s = ' + movV + ' m/s';
-          if (q.followUp?.length) setTimeout(() => runMCEngine(q.followUp, onComplete), 1800);
-          else setTimeout(() => onComplete?.(), 2200);
-        }
-      };
-      raf = requestAnimationFrame(loop);
+    document.getElementById('ist-reset')?.addEventListener('click', resetSim);
+    document.getElementById('ist-nx')?.addEventListener('click', () => {
+      if (_moduleEngineRaf) { cancelAnimationFrame(_moduleEngineRaf); _moduleEngineRaf = null; }
+      q.followUp?.length ? runMCEngine(q.followUp, onComplete) : onComplete?.();
     });
+    _moduleEngineRaf = requestAnimationFrame(loop);
   };
 
 
-  // ── Interactive Engine 4: Acceleration Lab ─────────────────────────────
+  // ── Interactive Engine 4: Accel-Lab PhET (live graph preview + play) ────
   const runAccelLabEngine = (q, onComplete) => {
     const v0 = q.v0 ?? 0;
-    const minA = q.minA ?? 1, maxA = q.maxA ?? 10, defA = q.defA ?? 3;
+    const defV0 = q.defV0 ?? v0, maxV0 = q.maxV0 ?? 20;
+    const minA = q.minA ?? 0.5, maxA = q.maxA ?? 10, defA = q.defA ?? 3;
     const maxT = q.maxT ?? 8, defT = q.defT ?? 4;
+    const showV0Slider = maxV0 > 0 && defV0 !== v0;
 
     siGameStage.innerHTML = `
-      <div class="interact-page">
+      <div class="interact-page phet-page">
         <p class="mod-q-meta">Interaktiv · Beschleunigungs-Labor</p>
-        <h3 class="interact-heading">v = v₀ + a · t – selbst erleben</h3>
-        <p class="interact-sub">Stelle Beschleunigung und Zeit ein. Die Endgeschwindigkeit wird live berechnet und animiert.</p>
-        <div class="interact-canvas-wrap"><canvas id="iacc-cv" height="120"></canvas></div>
-        <div class="interact-ctrl-row">
-          <span class="interact-v-label">a = <strong id="iacc-av">${defA}</strong> m/s²</span>
-          <input class="interact-slider" id="iacc-sl-a" type="range" min="${minA}" max="${maxA}" step="0.5" value="${defA}">
-        </div>
-        <div class="interact-ctrl-row">
-          <span class="interact-v-label">t = <strong id="iacc-tv">${defT}</strong> s</span>
-          <input class="interact-slider" id="iacc-sl-t" type="range" min="1" max="${maxT}" step="0.5" value="${defT}">
+        <h3 class="interact-heading">v = v₀ + a · t – live</h3>
+        <p class="interact-sub">Schiebe die Regler – das v-t-Diagramm reagiert sofort. Dann animieren!</p>
+        <div class="interact-canvas-wrap"><canvas id="iacc-cv" height="248"></canvas></div>
+        <div class="phet-sliders">
+          ${showV0Slider ? `<div class="phet-slider-row">
+            <span class="phet-slider-lbl">v₀</span>
+            <input class="interact-slider" id="iacc-v0" type="range" min="0" max="${maxV0}" value="${defV0}" step="0.5">
+            <span class="phet-slider-val"><strong id="iacc-v0v">${defV0}</strong> m/s</span>
+          </div>` : ''}
+          <div class="phet-slider-row">
+            <span class="phet-slider-lbl">a</span>
+            <input class="interact-slider" id="iacc-sl-a" type="range" min="${minA}" max="${maxA}" step="0.5" value="${defA}">
+            <span class="phet-slider-val"><strong id="iacc-av">${defA}</strong> m/s²</span>
+          </div>
+          <div class="phet-slider-row">
+            <span class="phet-slider-lbl">t</span>
+            <input class="interact-slider" id="iacc-sl-t" type="range" min="1" max="${maxT}" step="0.5" value="${defT}">
+            <span class="phet-slider-val"><strong id="iacc-tv">${defT}</strong> s</span>
+          </div>
         </div>
         <div class="interact-formula-box">
-          v = ${v0} + <span class="ilab-hl" id="iacc-fa">${defA}</span> ×
+          v = <span class="ilab-hl" id="iacc-fv0">${defV0}</span> + <span class="ilab-hl" id="iacc-fa">${defA}</span> ×
           <span class="ilab-hl" id="iacc-ft">${defT}</span> =
-          <span class="ilab-hl ilab-result" id="iacc-fv">${(v0 + defA * defT).toFixed(1)}</span> m/s
+          <span class="ilab-hl ilab-result" id="iacc-fv">${(defV0 + defA * defT).toFixed(1)}</span> m/s
         </div>
-        <button class="si-jumpgame-button" id="iacc-go">▶ Starten</button>
+        <div class="phet-btn-row">
+          <button class="si-jumpgame-button phet-btn-play" id="iacc-go">▶ Animieren</button>
+          <button class="si-jumpgame-button phet-btn-reset" id="iacc-restart" hidden>↺ Nochmal</button>
+          <button class="si-jumpgame-button mod-q-next" id="iacc-nx" hidden>Weiter →</button>
+        </div>
         <p class="test-motion-feedback" id="iacc-fb"></p>
-        <button class="si-jumpgame-button mod-q-next" id="iacc-nx" hidden>Weiter →</button>
       </div>`;
 
     const cv = document.getElementById('iacc-cv');
     cv.width = cv.parentElement?.offsetWidth || 560;
     const W = cv.width, H = cv.height, ctx = cv.getContext('2d');
-    const TL = 30, TR = W - 30, TW = TR - TL, TY = 62;
+    const SPLIT = 96;
+    const TL = 26, TR = W - 26, TW = TR - TL, TY = SPLIT / 2 + 8;
+    const GP = { x0: 50, x1: W - 18, y0: SPLIT + 14, y1: H - 20 };
+    GP.w = GP.x1 - GP.x0; GP.h = GP.y1 - GP.y0;
 
-    const getA = () => Number(document.getElementById('iacc-sl-a')?.value ?? defA);
-    const getT = () => Number(document.getElementById('iacc-sl-t')?.value ?? defT);
+    const slA = document.getElementById('iacc-sl-a');
+    const slT = document.getElementById('iacc-sl-t');
+    const slV0 = document.getElementById('iacc-v0');
+    const avEl = document.getElementById('iacc-av'), tvEl = document.getElementById('iacc-tv');
+    const fv0El = document.getElementById('iacc-fv0'), v0vEl = document.getElementById('iacc-v0v');
+    const faEl = document.getElementById('iacc-fa'), ftEl = document.getElementById('iacc-ft');
+    const fvEl = document.getElementById('iacc-fv');
+    const fb = document.getElementById('iacc-fb');
+    const goBtn = document.getElementById('iacc-go');
+    const restartBtn = document.getElementById('iacc-restart');
+    const nx = document.getElementById('iacc-nx');
 
-    const paintAccel = (prog, currentV) => {
+    const getCurV0 = () => slV0 ? Number(slV0.value) : defV0;
+    const getA = () => Number(slA?.value ?? defA);
+    const getT = () => Number(slT?.value ?? defT);
+
+    let animT = null, animStart = null, animating = false, animated = false;
+    const animPts = [];
+
+    const drawScene = () => {
+      const curV0 = getCurV0(), a = getA(), t = getT();
+      const vFinal = curV0 + a * t;
+      const vMax = Math.max(vFinal, curV0) * 1.1 || 10;
+
+      if (avEl) avEl.textContent = a;
+      if (tvEl) tvEl.textContent = t;
+      if (fv0El) fv0El.textContent = curV0;
+      if (v0vEl) v0vEl.textContent = curV0;
+      if (faEl) faEl.textContent = a;
+      if (ftEl) ftEl.textContent = t;
+      if (fvEl) fvEl.textContent = vFinal.toFixed(1);
+
       ctx.clearRect(0, 0, W, H);
-      ctx.fillStyle = '#2c3a4a'; ctx.fillRect(TL, TY - 16, TW, 32);
-      ctx.setLineDash([14, 10]); ctx.strokeStyle = 'rgba(255,255,255,0.25)'; ctx.lineWidth = 2;
+      const animFrac = animating && animT !== null ? Math.min(animT / t, 1) : (animated ? 1 : 0);
+      const dist = curV0 * (animT ?? 0) + 0.5 * a * (animT ?? 0) ** 2;
+      const maxDist = curV0 * t + 0.5 * a * t * t;
+      const carFrac = animated ? 1 : (animating ? Math.min(dist / (maxDist || 1), 1) : 0);
+      const curV = curV0 + a * (animT ?? 0);
+      const cx = TL + Math.min(carFrac, 1) * TW;
+
+      ctx.fillStyle = '#1e2b3a'; ctx.fillRect(TL, TY - 17, TW, 34);
+      ctx.setLineDash([12, 10]); ctx.strokeStyle = 'rgba(255,255,255,0.18)'; ctx.lineWidth = 2;
       ctx.beginPath(); ctx.moveTo(TL, TY); ctx.lineTo(TR, TY); ctx.stroke(); ctx.setLineDash([]);
-      ctx.fillStyle = 'rgba(255,255,255,0.6)'; ctx.fillRect(TL - 1, TY - 20, 2, 40);
-      ctx.fillStyle = '#2d3a48'; ctx.font = 'bold 10px monospace';
-      ctx.fillText('v₀=' + v0, TL, TY - 24);
-      ctx.fillStyle = 'rgba(143,115,255,0.2)'; ctx.fillRect(TL, TY + 18, TW, 3);
-      ctx.fillStyle = '#8f73ff'; ctx.fillRect(TL, TY + 18, TW * Math.min(prog, 1), 3);
-      const cx = TL + Math.min(prog, 1) * TW;
+      ctx.fillStyle = 'rgba(255,255,255,0.5)'; ctx.fillRect(TL - 1, TY - 20, 2, 40);
+      ctx.fillStyle = '#7ba8d0'; ctx.font = 'bold 9px monospace';
+      ctx.fillText('v₀=' + curV0, TL, TY - 23);
+      for (let r = 0; r < 8; r++) { ctx.fillStyle = r % 2 ? '#333' : '#fff'; ctx.fillRect(TR - 1, TY - 20 + r * 5, 3, 5); }
+      ctx.fillStyle = 'rgba(143,115,255,0.18)'; ctx.fillRect(TL, TY + 20, TW, 3);
+      ctx.fillStyle = '#8f73ff'; ctx.fillRect(TL, TY + 20, TW * carFrac, 3);
       ctx.fillStyle = '#8f73ff'; ctx.beginPath(); ctx.roundRect(cx - 22, TY - 23, 44, 16, 5); ctx.fill();
-      ctx.fillStyle = '#6248d4'; ctx.beginPath(); ctx.roundRect(cx - 13, TY - 32, 26, 11, 3); ctx.fill();
+      ctx.fillStyle = '#5a3fd4'; ctx.beginPath(); ctx.roundRect(cx - 13, TY - 31, 26, 10, 3); ctx.fill();
+      ctx.fillStyle = 'rgba(255,255,255,0.5)';
+      ctx.beginPath(); ctx.roundRect(cx - 10, TY - 29, 8, 7, 2); ctx.fill();
+      ctx.beginPath(); ctx.roundRect(cx + 2, TY - 29, 8, 7, 2); ctx.fill();
+      [cx - 14, cx + 14].forEach(wx => {
+        ctx.fillStyle = '#111'; ctx.beginPath(); ctx.arc(wx, TY - 7, 6, 0, Math.PI * 2); ctx.fill();
+        ctx.fillStyle = '#555'; ctx.beginPath(); ctx.arc(wx, TY - 7, 3, 0, Math.PI * 2); ctx.fill();
+      });
+      if (animating || animated) {
+        ctx.fillStyle = 'rgba(20,24,40,0.9)'; ctx.beginPath();
+        ctx.roundRect(W / 2 - 64, 2, 128, 22, 4); ctx.fill();
+        ctx.fillStyle = '#8f73ff'; ctx.font = 'bold 12px monospace'; ctx.textAlign = 'center';
+        ctx.fillText('v = ' + (animated ? vFinal : curV).toFixed(1) + ' m/s', W / 2, 17); ctx.textAlign = 'left';
+      }
+
+      ctx.fillStyle = 'rgba(0,0,0,0.1)'; ctx.fillRect(0, SPLIT, W, 1);
+
+      ctx.setLineDash([3, 6]); ctx.strokeStyle = 'rgba(0,0,0,0.1)'; ctx.lineWidth = 1;
+      const steps = 4;
+      for (let i = 1; i <= steps; i++) {
+        const gx = GP.x0 + GP.w / steps * i, gy = GP.y1 - GP.h / steps * i;
+        ctx.beginPath(); ctx.moveTo(gx, GP.y0); ctx.lineTo(gx, GP.y1); ctx.stroke();
+        ctx.beginPath(); ctx.moveTo(GP.x0, gy); ctx.lineTo(GP.x1, gy); ctx.stroke();
+        ctx.fillStyle = '#4d6070'; ctx.font = '9px monospace'; ctx.textAlign = 'center';
+        ctx.fillText((t / steps * i).toFixed(1) + 's', gx, GP.y1 + 13);
+        ctx.textAlign = 'right'; ctx.fillText((vMax / steps * i).toFixed(1), GP.x0 - 3, GP.y1 - GP.h / steps * i + 4);
+      }
+      ctx.setLineDash([]); ctx.textAlign = 'left';
+      ctx.strokeStyle = 'rgba(0,0,0,0.3)'; ctx.lineWidth = 1.5;
+      ctx.beginPath(); ctx.moveTo(GP.x0, GP.y0 - 6); ctx.lineTo(GP.x0, GP.y1); ctx.lineTo(GP.x1 + 6, GP.y1); ctx.stroke();
+      ctx.fillStyle = '#2d3a48'; ctx.font = '10px monospace';
+      ctx.fillText('v (m/s)', GP.x0 - 48, GP.y0 + 4);
+      ctx.fillText('t (s)', GP.x1 - 8, GP.y1 + 15);
+      ctx.fillText('0', GP.x0 - 10, GP.y1 + 13);
+
+      const x0px = GP.x0, y0px = GP.y1 - (curV0 / vMax) * GP.h;
+      const x1px = GP.x0 + GP.w, y1px = GP.y1 - (vFinal / vMax) * GP.h;
+      ctx.setLineDash([8, 6]); ctx.strokeStyle = '#8f73ff55'; ctx.lineWidth = 2;
+      ctx.beginPath(); ctx.moveTo(x0px, y0px); ctx.lineTo(x1px, y1px); ctx.stroke();
+      ctx.setLineDash([]);
+
+      if (animPts.length > 1) {
+        ctx.strokeStyle = '#8f73ff'; ctx.lineWidth = 2.5; ctx.beginPath();
+        animPts.forEach(({ t: pt, v: pv }, i) => {
+          const px = GP.x0 + (pt / t) * GP.w;
+          const py = GP.y1 - (pv / vMax) * GP.h;
+          i === 0 ? ctx.moveTo(px, py) : ctx.lineTo(px, py);
+        });
+        ctx.stroke();
+        const last = animPts[animPts.length - 1];
+        const lx = GP.x0 + (last.t / t) * GP.w, ly = GP.y1 - (last.v / vMax) * GP.h;
+        ctx.fillStyle = '#8f73ff'; ctx.beginPath(); ctx.arc(lx, ly, 5, 0, Math.PI * 2); ctx.fill();
+      }
+
+      if (animated) {
+        const ax = GP.x0 + GP.w * 0.1, ay = GP.y1 - (curV0 / vMax) * GP.h * 1.05;
+        const bx = GP.x0 + GP.w * 0.5, by = GP.y1 - (curV0 + a * (t / 2)) / vMax * GP.h;
+        ctx.strokeStyle = '#ffd164'; ctx.lineWidth = 1.5; ctx.setLineDash([5, 5]);
+        ctx.beginPath(); ctx.moveTo(ax, ay); ctx.lineTo(bx, ay); ctx.lineTo(bx, by); ctx.stroke();
+        ctx.setLineDash([]);
+        ctx.fillStyle = 'rgba(20,24,40,0.9)'; ctx.beginPath();
+        ctx.roundRect(bx + 6, Math.min(ay, by) - 14, 172, 22, 4); ctx.fill();
+        ctx.fillStyle = '#ffd164'; ctx.font = 'bold 11px monospace';
+        ctx.fillText('Steigung = Δv/Δt = ' + a + ' m/s² = a', bx + 10, Math.min(ay, by) + 3);
+      }
+    };
+
+    const updateLoop = () => { drawScene(); _moduleEngineRaf = requestAnimationFrame(updateLoop); };
+
+    const startUpdate = () => { _moduleEngineRaf = requestAnimationFrame(updateLoop); };
+    const stopUpdate = () => { if (_moduleEngineRaf) { cancelAnimationFrame(_moduleEngineRaf); _moduleEngineRaf = null; } };
+
+    slA?.addEventListener('input', () => { if (!animating) drawScene(); });
+    slT?.addEventListener('input', () => { if (!animating) drawScene(); });
+    slV0?.addEventListener('input', () => { if (!animating) drawScene(); });
+
+    drawScene();
+
+    goBtn?.addEventListener('click', () => {
+      if (animating) return;
+      animating = true; animated = false; animPts.length = 0; animT = 0;
+      if (slA) slA.disabled = true;
+      if (slT) slT.disabled = true;
+      if (slV0) slV0.disabled = true;
+      goBtn.disabled = true;
+      stopUpdate();
+      const curV0 = getCurV0(), a = getA(), totalT = getT();
+      const t0 = performance.now();
+      const anim = (now) => {
+        animT = Math.min((now - t0) / 1000, totalT);
+        animPts.push({ t: animT, v: curV0 + a * animT });
+        drawScene();
+        if (animT < totalT) {
+          _moduleEngineRaf = requestAnimationFrame(anim);
+        } else {
+          animating = false; animated = true;
+          const vF = curV0 + a * totalT;
+          if (fb) { fb.className = 'test-motion-feedback is-correct'; fb.textContent = `✓ v = ${curV0} + ${a} × ${totalT} = ${vF.toFixed(1)} m/s`; }
+          if (restartBtn) restartBtn.hidden = false;
+          if (nx) nx.hidden = false;
+          _flashCorrect?.();
+        }
+      };
+      _moduleEngineRaf = requestAnimationFrame(anim);
+    });
+
+    restartBtn?.addEventListener('click', () => {
+      animating = false; animated = false; animT = null; animPts.length = 0;
+      if (slA) slA.disabled = false;
+      if (slT) slT.disabled = false;
+      if (slV0) slV0.disabled = false;
+      goBtn.disabled = false;
+      if (restartBtn) restartBtn.hidden = true;
+      if (nx) nx.hidden = true;
+      if (fb) { fb.className = ''; fb.textContent = ''; }
+      drawScene();
+      startUpdate();
+    });
+
+    nx?.addEventListener('click', () => {
+      stopUpdate();
+      q.followUp?.length ? runMCEngine(q.followUp, onComplete) : onComplete?.();
+    });
+
+    startUpdate();
+  };
+
+  // ── v-t Live Engine PhET (a/v₀ sliders, live area, play + restart) ───────
+  const runVTLiveEngine = (q, onComplete) => {
+    const defA = q.a ?? 4, maxA = q.maxA ?? 10;
+    const defV0 = q.v0 ?? 0, maxV0 = q.maxV0 ?? 15;
+    const defT = q.maxT ?? 5, maxT = q.maxT ?? 8;
+
+    siGameStage.innerHTML = `
+      <div class="interact-page phet-page">
+        <p class="mod-q-meta">Interaktiv · v-t-Diagramm live</p>
+        <h3 class="interact-heading">Fläche unter v-t = Weg</h3>
+        <p class="interact-sub">Schiebe a und v₀ – die Fläche zeigt dir s sofort. Dann animieren!</p>
+        <div class="interact-canvas-wrap"><canvas id="ivt-cv" height="280"></canvas></div>
+        <div class="phet-sliders">
+          <div class="phet-slider-row">
+            <span class="phet-slider-lbl">a</span>
+            <input class="interact-slider" id="ivt-a" type="range" min="0" max="${maxA}" value="${defA}" step="0.5">
+            <span class="phet-slider-val"><strong id="ivt-av">${defA}</strong> m/s²</span>
+          </div>
+          <div class="phet-slider-row">
+            <span class="phet-slider-lbl">v₀</span>
+            <input class="interact-slider" id="ivt-v0" type="range" min="0" max="${maxV0}" value="${defV0}" step="0.5">
+            <span class="phet-slider-val"><strong id="ivt-v0v">${defV0}</strong> m/s</span>
+          </div>
+        </div>
+        <div class="interact-formula-box">
+          s = <span class="ilab-hl" id="ivt-fv0">${defV0}</span> · <span class="ilab-hl" id="ivt-ft">${defT}</span> + ½ ·
+          <span class="ilab-hl" id="ivt-fa">${defA}</span> · <span id="ivt-ft2">${defT}</span>² =
+          <span class="ilab-hl ilab-result" id="ivt-fs">${(defV0 * defT + 0.5 * defA * defT * defT).toFixed(1)}</span> m
+        </div>
+        <div class="phet-btn-row">
+          <button class="si-jumpgame-button phet-btn-play" id="ivt-go">▶ Animieren</button>
+          <button class="si-jumpgame-button phet-btn-reset" id="ivt-restart" hidden>↺ Nochmal</button>
+          <button class="si-jumpgame-button mod-q-next" id="ivt-nx" hidden>Weiter →</button>
+        </div>
+        <p class="test-motion-feedback" id="ivt-fb"></p>
+      </div>`;
+
+    const cv = document.getElementById('ivt-cv');
+    cv.width = cv.parentElement?.offsetWidth || 560;
+    const W = cv.width, H = cv.height, ctx = cv.getContext('2d');
+    const SPLIT = 100;
+    const TL = 24, TR = W - 24, TW = TR - TL, TY = SPLIT / 2 + 8;
+    const GP = { x0: 52, x1: W - 18, y0: SPLIT + 14, y1: H - 22 };
+    GP.w = GP.x1 - GP.x0; GP.h = GP.y1 - GP.y0;
+
+    const slA = document.getElementById('ivt-a');
+    const slV0 = document.getElementById('ivt-v0');
+    const avEl = document.getElementById('ivt-av'), v0vEl = document.getElementById('ivt-v0v');
+    const fv0El = document.getElementById('ivt-fv0'), ftEl = document.getElementById('ivt-ft');
+    const ft2El = document.getElementById('ivt-ft2'), faEl = document.getElementById('ivt-fa');
+    const fsEl = document.getElementById('ivt-fs');
+    const fb = document.getElementById('ivt-fb');
+    const goBtn = document.getElementById('ivt-go');
+    const restartBtn = document.getElementById('ivt-restart');
+    const nx = document.getElementById('ivt-nx');
+
+    const getA = () => Number(slA?.value ?? defA);
+    const getV0 = () => Number(slV0?.value ?? defV0);
+
+    let animT = null, animating = false, animated = false;
+    const animPts = [];
+
+    const drawScene = () => {
+      const a = getA(), curV0 = getV0(), t = defT;
+      const vFinal = curV0 + a * t;
+      const vMax = Math.max(vFinal, curV0, 1) * 1.15;
+      const dist = curV0 * t + 0.5 * a * t * t;
+      const maxDist = dist;
+
+      if (avEl) avEl.textContent = a;
+      if (v0vEl) v0vEl.textContent = curV0;
+      if (fv0El) fv0El.textContent = curV0;
+      if (ftEl) ftEl.textContent = t;
+      if (ft2El) ft2El.textContent = t;
+      if (faEl) faEl.textContent = a;
+      if (fsEl) fsEl.textContent = dist.toFixed(1);
+
+      ctx.clearRect(0, 0, W, H);
+      const animFrac = animating && animT !== null ? Math.min(animT / t, 1) : (animated ? 1 : 0);
+      const animDist = curV0 * (animT ?? 0) + 0.5 * a * (animT ?? 0) ** 2;
+      const carFrac = animated ? 1 : (animating ? Math.min(animDist / (maxDist || 1), 1) : 0);
+      const animV = curV0 + a * (animT ?? 0);
+      const cx = TL + Math.min(carFrac, 1) * TW;
+
+      ctx.fillStyle = '#1e2b3a'; ctx.fillRect(TL, TY - 18, TW, 36);
+      ctx.setLineDash([12, 10]); ctx.strokeStyle = 'rgba(255,255,255,0.18)'; ctx.lineWidth = 2;
+      ctx.beginPath(); ctx.moveTo(TL, TY); ctx.lineTo(TR, TY); ctx.stroke(); ctx.setLineDash([]);
+      ctx.fillStyle = 'rgba(255,255,255,0.5)'; ctx.fillRect(TL - 1, TY - 20, 2, 40);
+      ctx.fillStyle = '#7ba8d0'; ctx.font = 'bold 9px monospace';
+      ctx.fillText('v₀=' + curV0, TL, TY - 23);
+      ctx.textAlign = 'right'; ctx.fillStyle = '#4cffa0';
+      ctx.fillText('a=' + a + ' m/s²', TR, TY - 23); ctx.textAlign = 'left';
+      for (let r = 0; r < 8; r++) { ctx.fillStyle = r % 2 ? '#333' : '#fff'; ctx.fillRect(TR - 2, TY - 20 + r * 5, 4, 5); }
+      ctx.fillStyle = 'rgba(255,135,83,0.2)'; ctx.fillRect(TL, TY + 20, TW, 3);
+      ctx.fillStyle = '#ff8753'; ctx.fillRect(TL, TY + 20, TW * carFrac, 3);
+      ctx.fillStyle = '#ff8753'; ctx.beginPath(); ctx.roundRect(cx - 22, TY - 24, 44, 17, 5); ctx.fill();
+      ctx.fillStyle = '#c85a1a'; ctx.beginPath(); ctx.roundRect(cx - 13, TY - 32, 26, 10, 3); ctx.fill();
       ctx.fillStyle = 'rgba(255,255,255,0.5)';
       ctx.beginPath(); ctx.roundRect(cx - 10, TY - 30, 8, 7, 2); ctx.fill();
       ctx.beginPath(); ctx.roundRect(cx + 2, TY - 30, 8, 7, 2); ctx.fill();
@@ -6283,214 +6990,124 @@ if (title && frame && pencilLayer instanceof HTMLCanvasElement) {
         ctx.fillStyle = '#111'; ctx.beginPath(); ctx.arc(wx, TY - 7, 6, 0, Math.PI * 2); ctx.fill();
         ctx.fillStyle = '#555'; ctx.beginPath(); ctx.arc(wx, TY - 7, 3, 0, Math.PI * 2); ctx.fill();
       });
-      if (currentV !== null) {
-        ctx.fillStyle = 'rgba(20,24,40,0.88)'; ctx.beginPath();
-        ctx.roundRect(W / 2 - 62, 4, 124, 22, 4); ctx.fill();
-        ctx.fillStyle = '#fff'; ctx.font = 'bold 13px monospace'; ctx.textAlign = 'center';
-        ctx.fillText('v = ' + currentV.toFixed(1) + ' m/s', W / 2, 19); ctx.textAlign = 'left';
-      }
-    };
-
-    const slA = document.getElementById('iacc-sl-a');
-    const slT = document.getElementById('iacc-sl-t');
-    const avEl = document.getElementById('iacc-av'), tvEl = document.getElementById('iacc-tv');
-    const faEl = document.getElementById('iacc-fa'), ftEl = document.getElementById('iacc-ft');
-    const fvEl = document.getElementById('iacc-fv');
-    const fb = document.getElementById('iacc-fb'), nx = document.getElementById('iacc-nx');
-    let raf = null;
-
-    const updateFormula = () => {
-      const a = getA(), t = getT(), v = v0 + a * t;
-      if (avEl) avEl.textContent = a;
-      if (tvEl) tvEl.textContent = t;
-      if (faEl) faEl.textContent = a;
-      if (ftEl) ftEl.textContent = t;
-      if (fvEl) fvEl.textContent = v.toFixed(1);
-      paintAccel(0, v0 > 0 ? v0 : null);
-    };
-
-    slA?.addEventListener('input', updateFormula);
-    slT?.addEventListener('input', updateFormula);
-    paintAccel(0, v0 > 0 ? v0 : null);
-
-    document.getElementById('iacc-go')?.addEventListener('click', function () {
-      if (raf) return;
-      this.disabled = true; if (slA) slA.disabled = true; if (slT) slT.disabled = true;
-      const a = getA(), totalT = getT(), vFinal = v0 + a * totalT;
-      const t0 = performance.now();
-      const loop = (now) => {
-        const el = Math.min((now - t0) / 1000, totalT);
-        const currentV = v0 + a * el;
-        paintAccel(el / totalT, currentV);
-        if (el < totalT) { raf = requestAnimationFrame(loop); }
-        else {
-          raf = null;
-          if (fb) { fb.className = 'test-motion-feedback is-correct'; fb.textContent = '✓  v = ' + v0 + ' + ' + a + ' × ' + totalT + ' = ' + vFinal.toFixed(1) + ' m/s'; }
-          if (nx) nx.hidden = false;
-          _flashCorrect?.();
-        }
-      };
-      raf = requestAnimationFrame(loop);
-    });
-
-    nx?.addEventListener('click', () => {
-      if (raf) { cancelAnimationFrame(raf); raf = null; }
-      q.followUp?.length ? runMCEngine(q.followUp, onComplete) : onComplete?.();
-    });
-  };
-
-  // ── v-t live diagram engine ───────────────────────────────────────────────
-  const runVTLiveEngine = (q, onComplete) => {
-    const accel = q.a   ?? 4;
-    const v0    = q.v0  ?? 0;
-    const maxT  = q.maxT ?? 5;
-    const vMax  = v0 + accel * maxT;
-
-    siGameStage.innerHTML = `
-      <div class="interact-page">
-        <p class="mod-q-meta theory-anim">Interaktiv · v-t-Diagramm live</p>
-        <h3 class="interact-heading theory-anim">v-t-Diagramm in Echtzeit</h3>
-        <p class="interact-sub theory-anim">Der Körper beschleunigt gleichmässig. Beobachte die <strong>konstante Steigung</strong> im v-t-Diagramm — das ist a!</p>
-        <div class="interact-canvas-wrap theory-anim"><canvas id="ivt-cv" height="290"></canvas></div>
-        <button class="si-jumpgame-button theory-anim" id="ivt-go" style="margin:1rem auto;display:block">▶ Animation starten</button>
-        <p class="test-motion-feedback" id="ivt-fb"></p>
-      </div>`;
-
-    animateModuleTheory();
-
-    const cv = document.getElementById('ivt-cv');
-    cv.width = cv.parentElement?.offsetWidth || 560;
-    const W = cv.width, H = cv.height, ctx = cv.getContext('2d');
-    const SPLIT = 104;
-    const TL = 24, TR = W - 24, TW = TR - TL, TY = SPLIT / 2 + 8;
-    const GP = { x0: 52, x1: W - 18, y0: SPLIT + 14, y1: H - 22 };
-    GP.w = GP.x1 - GP.x0; GP.h = GP.y1 - GP.y0;
-    const pts = [];
-
-    const paintAll = (elapsed, finished) => {
-      ctx.clearRect(0, 0, W, H);
-      const elClamped = Math.min(elapsed, maxT);
-      const currentV = v0 + accel * elClamped;
-
-      // ── Track section ──
-      ctx.fillStyle = '#2c3a4a'; ctx.fillRect(TL, TY - 18, TW, 36);
-      ctx.setLineDash([12, 10]); ctx.strokeStyle = 'rgba(255,255,255,0.22)'; ctx.lineWidth = 2;
-      ctx.beginPath(); ctx.moveTo(TL, TY); ctx.lineTo(TR, TY); ctx.stroke(); ctx.setLineDash([]);
-      ctx.fillStyle = 'rgba(255,255,255,0.55)'; ctx.fillRect(TL - 1, TY - 20, 2, 40);
-      for (let r = 0; r < 8; r++) {
-        ctx.fillStyle = r % 2 ? '#333' : '#fff'; ctx.fillRect(TR - 2, TY - 20 + r * 5, 4, 5);
-      }
-      ctx.fillStyle = '#fff'; ctx.font = '9px monospace'; ctx.textAlign = 'left';
-      ctx.fillText('v₀=' + v0 + ' m/s', TL, TY - 22);
-      ctx.textAlign = 'right'; ctx.fillStyle = '#4cffa0';
-      ctx.fillText('a=' + accel + ' m/s²', TR, TY - 22); ctx.textAlign = 'left';
-
-      // Car position (quadratic — s = v₀t + ½at²)
-      const dist    = v0 * elClamped + 0.5 * accel * elClamped * elClamped;
-      const maxDist = v0 * maxT      + 0.5 * accel * maxT      * maxT;
-      const carFrac = Math.min(dist / (maxDist || 1), 1);
-      const cx = TL + carFrac * TW;
-
-      ctx.fillStyle = 'rgba(255,135,83,0.2)'; ctx.fillRect(TL, TY + 20, TW, 3);
-      ctx.fillStyle = '#ff8753'; ctx.fillRect(TL, TY + 20, TW * carFrac, 3);
-      ctx.beginPath(); ctx.roundRect(cx - 20, TY - 25, 40, 18, 5); ctx.fill();
-      ctx.fillStyle = '#c85a1a'; ctx.beginPath(); ctx.roundRect(cx - 12, TY - 33, 24, 10, 3); ctx.fill();
-      ctx.fillStyle = 'rgba(255,255,255,0.55)';
-      ctx.beginPath(); ctx.roundRect(cx - 9, TY - 31, 8, 7, 2); ctx.fill();
-      ctx.beginPath(); ctx.roundRect(cx + 1, TY - 31, 8, 7, 2); ctx.fill();
-      [cx - 12, cx + 12].forEach(wx => {
-        ctx.fillStyle = '#111'; ctx.beginPath(); ctx.arc(wx, TY - 6, 6, 0, Math.PI * 2); ctx.fill();
-        ctx.fillStyle = '#555'; ctx.beginPath(); ctx.arc(wx, TY - 6, 3, 0, Math.PI * 2); ctx.fill();
-      });
-
-      // Velocity readout
-      if (elClamped > 0.05) {
-        ctx.fillStyle = 'rgba(20,24,40,0.88)'; ctx.beginPath();
+      if (animating || animated) {
+        ctx.fillStyle = 'rgba(20,24,40,0.9)'; ctx.beginPath();
         ctx.roundRect(W / 2 - 64, 2, 128, 22, 4); ctx.fill();
         ctx.fillStyle = '#ff8753'; ctx.font = 'bold 12px monospace'; ctx.textAlign = 'center';
-        ctx.fillText('v = ' + currentV.toFixed(1) + ' m/s', W / 2, 17); ctx.textAlign = 'left';
+        ctx.fillText('v = ' + (animated ? vFinal : animV).toFixed(1) + ' m/s', W / 2, 17); ctx.textAlign = 'left';
       }
 
-      // Divider
       ctx.fillStyle = 'rgba(0,0,0,0.1)'; ctx.fillRect(0, SPLIT, W, 1);
 
-      // Grid
       const steps = 5;
       ctx.setLineDash([3, 6]); ctx.strokeStyle = 'rgba(0,0,0,0.08)'; ctx.lineWidth = 1;
       for (let i = 1; i <= steps; i++) {
-        const gx = GP.x0 + (GP.w / steps) * i;
-        const gy = GP.y1 - (GP.h / steps) * i;
+        const gx = GP.x0 + GP.w / steps * i, gy = GP.y1 - GP.h / steps * i;
         ctx.beginPath(); ctx.moveTo(gx, GP.y0); ctx.lineTo(gx, GP.y1); ctx.stroke();
         ctx.beginPath(); ctx.moveTo(GP.x0, gy); ctx.lineTo(GP.x1, gy); ctx.stroke();
         ctx.fillStyle = '#4d6070'; ctx.font = '9px monospace'; ctx.textAlign = 'center';
-        ctx.fillText((maxT / steps * i).toFixed(1), gx, GP.y1 + 13);
-        ctx.textAlign = 'right';
-        ctx.fillText((vMax / steps * i).toFixed(1), GP.x0 - 3, GP.y1 - (GP.h / steps) * i + 4);
+        ctx.fillText((t / steps * i).toFixed(1), gx, GP.y1 + 13);
+        ctx.textAlign = 'right'; ctx.fillText((vMax / steps * i).toFixed(1), GP.x0 - 3, gy + 4);
       }
       ctx.setLineDash([]); ctx.textAlign = 'left';
-
-      // Axes
-      ctx.strokeStyle = 'rgba(0,0,0,0.28)'; ctx.lineWidth = 1.5;
+      ctx.strokeStyle = 'rgba(0,0,0,0.3)'; ctx.lineWidth = 1.5;
       ctx.beginPath(); ctx.moveTo(GP.x0, GP.y0 - 6); ctx.lineTo(GP.x0, GP.y1); ctx.lineTo(GP.x1 + 6, GP.y1); ctx.stroke();
       ctx.fillStyle = '#2d3a48'; ctx.font = '10px monospace';
       ctx.fillText('v (m/s)', GP.x0 - 50, GP.y0 + 4);
       ctx.fillText('t (s)', GP.x1 - 8, GP.y1 + 16);
       ctx.fillText('0', GP.x0 - 10, GP.y1 + 13);
 
-      // Live v-t line
-      if (pts.length > 1) {
+      const x0px = GP.x0, y0px = GP.y1 - (curV0 / vMax) * GP.h;
+      const xTpx = GP.x0 + GP.w, yTpx = GP.y1 - (vFinal / vMax) * GP.h;
+      ctx.fillStyle = '#ff875322';
+      ctx.beginPath(); ctx.moveTo(x0px, GP.y1); ctx.lineTo(x0px, y0px); ctx.lineTo(xTpx, yTpx); ctx.lineTo(xTpx, GP.y1); ctx.closePath(); ctx.fill();
+      ctx.setLineDash([8, 6]); ctx.strokeStyle = '#ff875377'; ctx.lineWidth = 2;
+      ctx.beginPath(); ctx.moveTo(x0px, y0px); ctx.lineTo(xTpx, yTpx); ctx.stroke();
+      ctx.setLineDash([]);
+      const midX = (x0px + xTpx) / 2, midY = GP.y1 - (curV0 + vFinal) / 2 / vMax * GP.h / 2 + 8;
+      ctx.fillStyle = 'rgba(20,24,40,0.88)'; ctx.beginPath();
+      ctx.roundRect(midX - 38, midY - 12, 76, 20, 4); ctx.fill();
+      ctx.fillStyle = '#ff8753'; ctx.font = 'bold 11px monospace'; ctx.textAlign = 'center';
+      ctx.fillText('s = ' + dist.toFixed(1) + ' m', midX, midY + 3); ctx.textAlign = 'left';
+
+      if (animPts.length > 1) {
         ctx.strokeStyle = '#ff8753'; ctx.lineWidth = 2.5; ctx.beginPath();
-        pts.forEach(({ t: pt, v: pv }, i) => {
-          const px = GP.x0 + (pt / maxT) * GP.w;
-          const py = GP.y1 - ((pv - v0) / (vMax - v0 || 1)) * GP.h;
+        animPts.forEach(({ t: pt, v: pv }, i) => {
+          const px = GP.x0 + (pt / t) * GP.w, py = GP.y1 - (pv / vMax) * GP.h;
           i === 0 ? ctx.moveTo(px, py) : ctx.lineTo(px, py);
         });
         ctx.stroke();
-        const last = pts[pts.length - 1];
-        const lx = GP.x0 + (last.t / maxT) * GP.w;
-        const ly = GP.y1 - ((last.v - v0) / (vMax - v0 || 1)) * GP.h;
+        const last = animPts[animPts.length - 1];
+        const lx = GP.x0 + (last.t / t) * GP.w, ly = GP.y1 - (last.v / vMax) * GP.h;
         ctx.fillStyle = '#ff8753'; ctx.beginPath(); ctx.arc(lx, ly, 5, 0, Math.PI * 2); ctx.fill();
       }
 
-      // Slope annotation when done
-      if (finished) {
-        const ax = GP.x0 + GP.w * 0.08, ay = GP.y1 - GP.h * 0.08;
-        const bx = GP.x0 + GP.w * 0.52, by = GP.y1 - GP.h * 0.52;
+      if (animated) {
+        const midT = t * 0.5;
+        const ax = GP.x0 + (midT * 0.2 / t) * GP.w, ay2 = GP.y1 - ((curV0 + a * midT * 0.2) / vMax) * GP.h;
+        const bx = GP.x0 + (midT / t) * GP.w, by2 = GP.y1 - ((curV0 + a * midT) / vMax) * GP.h;
         ctx.strokeStyle = '#ffd164'; ctx.lineWidth = 1.5; ctx.setLineDash([5, 5]);
-        ctx.beginPath(); ctx.moveTo(ax, ay); ctx.lineTo(bx, ay); ctx.lineTo(bx, by); ctx.stroke();
+        ctx.beginPath(); ctx.moveTo(ax, ay2); ctx.lineTo(bx, ay2); ctx.lineTo(bx, by2); ctx.stroke();
         ctx.setLineDash([]);
-        const labelW = 196;
         ctx.fillStyle = 'rgba(20,24,40,0.9)'; ctx.beginPath();
-        ctx.roundRect(bx + 6, (ay + by) / 2 - 14, labelW, 22, 4); ctx.fill();
+        ctx.roundRect(bx + 6, Math.min(ay2, by2) - 14, 192, 22, 4); ctx.fill();
         ctx.fillStyle = '#ffd164'; ctx.font = 'bold 11px monospace';
-        ctx.fillText('Steigung = Δv/Δt = ' + accel + ' m/s² = a', bx + 10, (ay + by) / 2 + 3);
+        ctx.fillText('Steigung = Δv/Δt = ' + a + ' m/s² = a', bx + 10, Math.min(ay2, by2) + 3);
       }
     };
 
-    paintAll(0, false);
-    const fb = document.getElementById('ivt-fb');
-    let raf = null;
+    const updateLoop = () => { drawScene(); _moduleEngineRaf = requestAnimationFrame(updateLoop); };
+    const stopUpdate = () => { if (_moduleEngineRaf) { cancelAnimationFrame(_moduleEngineRaf); _moduleEngineRaf = null; } };
 
-    document.getElementById('ivt-go').addEventListener('click', function () {
-      if (raf) return;
-      this.disabled = true; pts.length = 0;
+    slA?.addEventListener('input', () => { if (!animating) drawScene(); });
+    slV0?.addEventListener('input', () => { if (!animating) drawScene(); });
+    drawScene();
+
+    goBtn?.addEventListener('click', () => {
+      if (animating) return;
+      animating = true; animated = false; animPts.length = 0; animT = 0;
+      if (slA) slA.disabled = true;
+      if (slV0) slV0.disabled = true;
+      goBtn.disabled = true;
+      stopUpdate();
+      const a = getA(), curV0 = getV0(), t = defT;
       const t0 = performance.now();
-      const loop = (now) => {
-        const el = (now - t0) / 1000;
-        pts.push({ t: Math.min(el, maxT), v: v0 + accel * Math.min(el, maxT) });
-        const done = el >= maxT;
-        paintAll(el, done);
-        if (!done) { raf = requestAnimationFrame(loop); }
-        else {
-          raf = null;
-          fb.className = 'test-motion-feedback is-correct';
-          fb.textContent = 'Steigung = Δv/Δt = ' + vMax.toFixed(1) + '/' + maxT + ' = ' + accel + ' m/s²  →  Das ist die Beschleunigung a!';
-          if (q.followUp?.length) setTimeout(() => runMCEngine(q.followUp, onComplete), 2000);
-          else setTimeout(() => onComplete?.(), 2400);
+      const anim = (now) => {
+        animT = Math.min((now - t0) / 1000, t);
+        animPts.push({ t: animT, v: curV0 + a * animT });
+        drawScene();
+        if (animT < t) {
+          _moduleEngineRaf = requestAnimationFrame(anim);
+        } else {
+          animating = false; animated = true;
+          const s = curV0 * t + 0.5 * a * t * t;
+          if (fb) { fb.className = 'test-motion-feedback is-correct'; fb.textContent = `✓ Fläche = s = ${curV0}·${t} + ½·${a}·${t}² = ${s.toFixed(1)} m`; }
+          if (restartBtn) restartBtn.hidden = false;
+          if (nx) nx.hidden = false;
+          _flashCorrect?.();
         }
       };
-      raf = requestAnimationFrame(loop);
+      _moduleEngineRaf = requestAnimationFrame(anim);
     });
+
+    restartBtn?.addEventListener('click', () => {
+      animating = false; animated = false; animT = null; animPts.length = 0;
+      if (slA) slA.disabled = false;
+      if (slV0) slV0.disabled = false;
+      goBtn.disabled = false;
+      if (restartBtn) restartBtn.hidden = true;
+      if (nx) nx.hidden = true;
+      if (fb) { fb.className = ''; fb.textContent = ''; }
+      drawScene();
+      _moduleEngineRaf = requestAnimationFrame(updateLoop);
+    });
+
+    nx?.addEventListener('click', () => {
+      stopUpdate();
+      q.followUp?.length ? runMCEngine(q.followUp, onComplete) : onComplete?.();
+    });
+
+    _moduleEngineRaf = requestAnimationFrame(updateLoop);
   };
 
   const renderModuleGame = (step) => {
@@ -6511,6 +7128,7 @@ if (title && frame && pencilLayer instanceof HTMLCanvasElement) {
 
     const startQuestion = () => {
       stopModuleGame();
+      _lvlScore = { correct: 0, total: 0 };
       if (!step.question) { showModuleComplete(step); return; }
       const q = step.question;
       const done = () => showModuleComplete(step);
@@ -7636,13 +8254,79 @@ if (title && frame && pencilLayer instanceof HTMLCanvasElement) {
       return;
     }
 
+    const extra = STEP_CONTENT[step.title];
+    const formula = extra?.theory?.formula ?? "";
+    const example = extra?.theory?.example ?? "";
     siSideContent.innerHTML = `
+      ${formula || example ? `<article class="side-card">
+        <h3 class="side-title">Formelblatt</h3>
+        ${formula ? `<div class="side-eq sc-formula-ref">${formula}</div>` : ""}
+        ${example ? `<p class="side-text">${example}</p>` : ""}
+      </article>` : ""}
       <article class="side-card">
-        <h3 class="side-title"><strong>${step.title}</strong></h3>
-        <p class="side-text">Zusammenfassung folgt hier.</p>
+        <h3 class="side-title">Taschenrechner</h3>
+        <div class="side-calc-display" id="sc-display">0</div>
+        <div class="side-calc-grid">
+          <button data-sc="C" class="sc-clear">C</button>
+          <button data-sc="back">&#8676;</button>
+          <button data-sc="sqrt">&#8730;</button>
+          <button data-sc="/" class="sc-op">÷</button>
+          <button data-sc="7">7</button>
+          <button data-sc="8">8</button>
+          <button data-sc="9">9</button>
+          <button data-sc="*" class="sc-op">×</button>
+          <button data-sc="4">4</button>
+          <button data-sc="5">5</button>
+          <button data-sc="6">6</button>
+          <button data-sc="-" class="sc-op">−</button>
+          <button data-sc="1">1</button>
+          <button data-sc="2">2</button>
+          <button data-sc="3">3</button>
+          <button data-sc="+" class="sc-op">+</button>
+          <button data-sc="0" class="sc-zero">0</button>
+          <button data-sc=".">.</button>
+          <button data-sc="=" class="sc-eq">=</button>
+        </div>
       </article>
     `;
     typesetSidePanelMath();
+    initSideCalc();
+  };
+
+  const initSideCalc = () => {
+    const display = document.getElementById("sc-display");
+    if (!display) return;
+    let expr = "";
+    let justEvaled = false;
+    const update = () => { display.textContent = expr || "0"; };
+    siSideContent.querySelectorAll("[data-sc]").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const sc = btn.dataset.sc;
+        if (sc === "C") { expr = ""; justEvaled = false; }
+        else if (sc === "back") { expr = expr.slice(0, -1); justEvaled = false; }
+        else if (sc === "=") {
+          try {
+            const safe = expr.replace(/[^0-9+\-*/().e ]/g, "");
+            const result = Function(`"use strict"; return (${safe})`)();
+            expr = String(isFinite(result) ? +result.toPrecision(10) : "Fehler");
+          } catch { expr = "Fehler"; }
+          justEvaled = true;
+        } else if (sc === "sqrt") {
+          try {
+            const safe = expr.replace(/[^0-9+\-*/().e ]/g, "");
+            const val = Function(`"use strict"; return (${safe})`)();
+            expr = String(+Math.sqrt(val).toPrecision(10));
+          } catch { expr = "Fehler"; }
+          justEvaled = true;
+        } else {
+          if (justEvaled && /[0-9.]/.test(sc)) { expr = ""; }
+          if (expr === "Fehler") expr = "";
+          justEvaled = false;
+          expr += sc;
+        }
+        update();
+      });
+    });
   };
 
   const openSIGame = (stepIndex) => {

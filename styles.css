@@ -2692,6 +2692,29 @@ body.si-game-open .side-frame-inner::-webkit-scrollbar {
   margin-top: 0.4rem;
 }
 
+.score-ring-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.score-ring-svg {
+  filter: drop-shadow(0 4px 16px rgba(0,0,0,0.10));
+}
+
+.score-ring-arc {
+  transition: stroke-dashoffset 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.score-ring-message {
+  font-family: "Nunito", sans-serif;
+  font-size: 1.1rem;
+  font-weight: 800;
+  text-align: center;
+  max-width: 300px;
+  margin: 0;
+}
+
 .mc-quiz-page h3 {
   font-size: clamp(1.3rem, 2.6vw, 2rem);
 }
@@ -2978,4 +3001,147 @@ body.si-game-open .side-frame-inner::-webkit-scrollbar {
   color: #4d6070;
   font-family: monospace;
   font-weight: 400;
+}
+
+/* ── Side-panel calculator ─────────────────────────────────────────────── */
+.sc-formula-ref {
+  font-size: 0.92rem;
+  line-height: 1.7;
+  word-break: break-word;
+}
+.side-calc-display {
+  font-family: "Space Grotesk", monospace;
+  font-size: 1.35rem;
+  font-weight: 600;
+  text-align: right;
+  background: #101b28;
+  color: #7ee8a2;
+  border-radius: 0.6rem;
+  padding: 0.5rem 0.75rem;
+  margin-bottom: 0.6rem;
+  min-height: 2.4rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  border: 1.5px solid rgba(0, 0, 0, 0.22);
+}
+.side-calc-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.3rem;
+}
+.side-calc-grid button {
+  font-family: "Nunito", sans-serif;
+  font-size: 0.88rem;
+  font-weight: 800;
+  border: none;
+  border-radius: 0.45rem;
+  padding: 0.52rem 0;
+  cursor: pointer;
+  transition: background 0.1s, transform 0.08s;
+  background: #eef2f6;
+  color: #17212b;
+}
+.side-calc-grid button:hover {
+  background: #dde6f0;
+  transform: scale(0.96);
+}
+.side-calc-grid button:active {
+  transform: scale(0.91);
+}
+.side-calc-grid button.sc-op {
+  background: #d8e8ff;
+  color: #1a4fc0;
+}
+.side-calc-grid button.sc-clear {
+  background: #fde8e8;
+  color: #c0301a;
+}
+.side-calc-grid button.sc-zero {
+  grid-column: span 2;
+}
+.side-calc-grid button.sc-eq {
+  background: #3f8efc;
+  color: #fff;
+  grid-column: span 2;
+}
+
+/* ─── PhET-style interactive engine layout ───────────────────────────────── */
+.phet-page {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.phet-challenge-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 0.88rem;
+  font-weight: 600;
+  background: rgba(255, 209, 100, 0.15);
+  border: 1.5px solid #ffd164;
+  color: #c8920a;
+  border-radius: 2rem;
+  padding: 0.3rem 0.9rem;
+  align-self: flex-start;
+  transition: background 0.25s, border-color 0.25s, color 0.25s;
+}
+.phet-challenge-badge.phet-badge-hit {
+  background: rgba(61, 209, 141, 0.18);
+  border-color: #3dd18d;
+  color: #1a7a4a;
+}
+
+.phet-sliders {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+.phet-slider-row {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+.phet-slider-lbl {
+  font-family: "Space Grotesk", monospace;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #5d7a96;
+  min-width: 2.2rem;
+  text-align: right;
+}
+.phet-slider-val {
+  font-family: "Space Grotesk", monospace;
+  font-size: 0.85rem;
+  color: #2d3a48;
+  min-width: 5rem;
+  white-space: nowrap;
+}
+.phet-slider-val strong {
+  color: #1a5ac4;
+}
+
+.phet-btn-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-top: 0.2rem;
+}
+.phet-btn-reset {
+  background: #f0f4f8 !important;
+  color: #4d6070 !important;
+  border: 1.5px solid #ccd8e4 !important;
+}
+.phet-btn-reset:hover {
+  background: #e2eaf2 !important;
+}
+.phet-btn-play {
+  background: #3f8efc !important;
+  color: #fff !important;
+}
+.phet-btn-race {
+  background: #ff8753 !important;
+  color: #fff !important;
 }
