@@ -2358,20 +2358,20 @@ if (title && frame && pencilLayer instanceof HTMLCanvasElement) {
     return acc;
   }, {});
     // Gesamt-XP des aktuellen Spielers – wird beim Login aus Firestore geladen
-  let totalXp = 0;
+  let gesamtXp = 0;
 
-  const awardXp = (amount) => {
-    totalXp += amount;
+  const xpVergeben = (amount) => {
+    gesamtXp += amount;
   };
 
-  const persistProgress = () => {
-    if (typeof saveProgressToFirestore === "function") {
-      saveProgressToFirestore(moduleState, totalXp);
+  const fortschrittSichern = () => {
+    if (typeof fortschrittSpeichern === "function") {
+      fortschrittSpeichern(moduleState, gesamtXp);
     }
   };
 
-  // Überschreibt moduleState + totalXp mit den geladenen Firestore-Daten
-  const applyLoadedProgress = (data) => {
+  // Überschreibt moduleState + gesamtXp mit den geladenen Firestore-Daten
+  const geladenenFortschrittUebernehmen = (data) => {
     if (!data) return;
     if (data.moduleState) {
       Object.keys(data.moduleState).forEach((moduleId) => {
@@ -2380,8 +2380,8 @@ if (title && frame && pencilLayer instanceof HTMLCanvasElement) {
         }
       });
     }
-    if (typeof data.totalXp === "number") {
-      totalXp = data.totalXp;
+    if (typeof data.gesamtXp === "number") {
+      gesamtXp = data.gesamtXp;
     }
     applyModuleStates();
   };
@@ -2777,7 +2777,7 @@ if (title && frame && pencilLayer instanceof HTMLCanvasElement) {
     const state = moduleState[activeModuleId];
     const nextStep = clampStep(step, activeModuleId);
 
-        const isNewProgress = nextStep > state.maxReached;
+        const istNeuerFortschritt = nextStep > state.maxReached;
 
     state.current = nextStep;
     state.maxReached = Math.max(state.maxReached, nextStep);
@@ -2798,9 +2798,9 @@ if (title && frame && pencilLayer instanceof HTMLCanvasElement) {
       }
     }
 
-    if (isNewProgress) {
-      awardXp(10);
-      persistProgress();
+    if (istNeuerFortschritt) {
+      xpVergeben(10);
+      fortschrittSichern();
     }
   };
 
@@ -8553,7 +8553,7 @@ if (title && frame && pencilLayer instanceof HTMLCanvasElement) {
     lastPoint = null;
   });
 
-    const beginGame = () => {
+    const spielStarten = () => {
     gameStarted = true;
     document.body.classList.add("game-started");
     title.style.transform = "";
@@ -8567,21 +8567,21 @@ if (title && frame && pencilLayer instanceof HTMLCanvasElement) {
     startButton.addEventListener("click", () => {
       if (gameStarted) return;
 
-      if (auth.currentUser) {
-        beginGame();
+      if (anmeldedienst.currentUser) {
+        spielStarten();
         return;
       }
 
-      showLoginOverlay(() => {
-        beginGame();
+      anmeldefensterAnzeigen(() => {
+        spielStarten();
       });
     });
   }
 
-  auth.onAuthStateChanged(async (user) => {
+  anmeldedienst.onAuthStateChanged(async (user) => {
     if (user) {
-      const data = await loadProgressFromFirestore();
-      applyLoadedProgress(data);
+      const data = await fortschrittLaden();
+      geladenenFortschrittUebernehmen(data);
     }
   }
   );
