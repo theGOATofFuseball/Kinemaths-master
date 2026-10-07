@@ -12,20 +12,37 @@ firebase.initializeApp(meineFirebaseEinstellungen);
 const anmeldedienst = firebase.auth();
 const datenbank = firebase.firestore();
 
-// Wie viel XP für den nächsten Levelaufstieg nötig ist (steigt pro Level leicht an)
-function xpProLevel(level) {
-  return 100 + (level - 1) * 50;
-}
+// Wie viel XP für jeden Levelaufstieg nötig ist (Index 0 = XP für Level 1 -> 2, usw.)
+// So gewählt, dass die Summe genau der Gesamt-XP entspricht, die man bekommt,
+// wenn man ALLE Aufgaben in allen Modulen mit Challenge-Schwierigkeit löst
+// (56 Aufgaben mit Basis/Challenge-Wahl x 20 XP + 24 interaktive/einfache Aufgaben x 15 XP = 1480 XP).
+// Damit erreicht man exakt Level 25, wenn wirklich JEDE Aufgabe per Challenge gelöst wurde.
+const LEVEL_XP_SCHWELLEN = [
+  24, 27, 30, 35, 38, 41, 44, 47, 51, 54, 57, 60,
+  63, 67, 70, 73, 76, 79, 83, 86, 89, 92, 95, 99,
+];
+const MAX_LEVEL = LEVEL_XP_SCHWELLEN.length + 1; // = 25
 
 // Rechnet aus der Gesamt-XP eines Spielers das aktuelle Level aus
 function levelBerechnen(gesamtXp) {
   let level = 1;
-  let remaining = gesamtXp;
-  while (remaining >= xpProLevel(level)) {
-    remaining -= xpProLevel(level);
+  let rest = gesamtXp;
+  while (level <= LEVEL_XP_SCHWELLEN.length && rest >= LEVEL_XP_SCHWELLEN[level - 1]) {
+    rest -= LEVEL_XP_SCHWELLEN[level - 1];
     level += 1;
   }
-  return { level, xpImAktuellenLevel: remaining, xpFuerNaechstesLevel: xpProLevel(level) };
+  const xpFuerNaechstesLevel = level <= LEVEL_XP_SCHWELLEN.length ? LEVEL_XP_SCHWELLEN[level - 1] : null;
+  return { level, xpImAktuellenLevel: rest, xpFuerNaechstesLevel, istMaxLevel: level >= MAX_LEVEL };
+}
+
+// Gibt die Farbstufe zurück:
+// "gruen" (1-9), "gold" (10-14), "diamant" (15-19), "smaragd" (20-24), "legendaer" (25)
+function levelFarbstufe(level) {
+  if (level >= 25) return "legendaer";
+  if (level >= 20) return "smaragd";
+  if (level >= 15) return "diamant";
+  if (level >= 10) return "gold";
+  return "gruen";
 }
 
 // Speichert Fortschritt + XP des eingeloggten Spielers in der Datenbank
@@ -52,6 +69,25 @@ async function fortschrittLaden() {
   } catch (error) {
     console.error("Fehler beim Laden:", error);
     return null;
+  }
+}
+
+// Speichert Benutzername und/oder Profilbild separat vom Spielfortschritt
+async function profilSpeichern(benutzername, profilbild) {
+  const user = anmeldedienst.currentUser;
+  if (!user) return;
+  const daten = {};
+  if (typeof benutzername === "string") {
+    daten.benutzername = benutzername;
+  }
+  if (typeof profilbild === "string") {
+    daten.profilbild = profilbild;
+  }
+  if (Object.keys(daten).length === 0) return;
+  try {
+    await datenbank.collection("spieler").doc(user.uid).set(daten, { merge: true });
+  } catch (error) {
+    console.error("Fehler beim Speichern des Profils:", error);
   }
 }
 

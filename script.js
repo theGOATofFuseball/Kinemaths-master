@@ -12,6 +12,11 @@ const moduleBack = document.getElementById("m0-back");
 const moduleKicker = document.querySelector(".m0-kicker");
 const moduleTitle = document.querySelector(".m0-title");
 const moduleSteps = document.getElementById("m0-steps");
+const profileChip = document.getElementById("profile-chip");
+const profileAvatarImg = document.getElementById("profile-avatar-img");
+const profileAvatarFallback = document.getElementById("profile-avatar-fallback");
+const profileLevelBadge = document.getElementById("profile-level-badge");
+const profileAvatarInput = document.getElementById("profile-avatar-input");
 const siGameBack = document.getElementById("si-game-back");
 const siSideToggle = document.getElementById("si-side-toggle");
 const siGameKicker = document.getElementById("si-game-kicker");
@@ -47,18 +52,6 @@ const STEP_ICONS = {
 };
 
 const MODULE_CONTENT = {
-  TEST: { title: "Test-Level", steps: [
-    { title: "Gleichförmige Bewegung", text: "Auto fährt mit konstanter Geschwindigkeit.", icon: "car",          colorA: "#ff8d47", colorB: "#ffd164" },
-    { title: "Aufholen",               text: "Wann holt der schnellere Körper den langsameren ein?",        icon: "encounter",  colorA: "#24b7d8", colorB: "#84e1f1" },
-    { title: "Beschleunigung",         text: "Rakete startet aus der Ruhe – Geschwindigkeit berechnen.",    icon: "acceleration",colorA: "#7a62ff", colorB: "#b7a7ff" },
-    { title: "K1 – Sprint-Scanner",    text: "Mittlere Geschwindigkeit eines 100-m-Sprints berechnen.",    icon: "speed",      colorA: "#59a3ff", colorB: "#8ed0ff" },
-    { title: "K2 – Überhol-Duell",     text: "Schnelleres Fahrzeug holt langsameres ein.",                 icon: "encounter",  colorA: "#ff9c58", colorB: "#ffd58a" },
-    { title: "K3 – Freier Fall",       text: "Ball fällt – Fallzeit mit g = 9,81 m/s² berechnen.",        icon: "fall",       colorA: "#3dd18d", colorB: "#94ecb8" },
-    { title: "K4 – Bremsweg",          text: "Auto bremst – wie weit bis zum Stillstand?",                 icon: "brake",      colorA: "#f86785", colorB: "#f9a8bd" },
-    { title: "K5 – Beschleunigungsweg",text: "Fahrzeug beschleunigt aus dem Stand.",                       icon: "acceleration",colorA: "#8f73ff", colorB: "#c2b6ff" },
-    { title: "K6 – Konzept-Quiz",      text: "Konzeptfragen zu Bewegungsdiagrammen und Grössen.",          icon: "chart",      colorA: "#21b7d8", colorB: "#7de1f2" },
-  ]},
-
   "0": { title: "Bewegung verstehen", steps: [
     { title: "Was ist Bewegung?",         text: "Ein Körper bewegt sich, wenn sich sein Ort mit der Zeit ändert.",        icon: "speed",        colorA: "#3f8efc", colorB: "#80c2ff" },
     { title: "Das Bezugssystem",          text: "Ruhe und Bewegung hängen immer vom Bezug des Beobachters ab.",           icon: "frame",        colorA: "#8a73ff", colorB: "#c2b6ff" },
@@ -2251,15 +2244,7 @@ const getStepContent = (step) => {
   return { ...step, ...extra };
 };
 
-const moduleOrder = Object.keys(MODULE_CONTENT).sort((a, b) => {
-  if (a === "TEST") {
-    return 1;
-  }
-  if (b === "TEST") {
-    return -1;
-  }
-  return Number(a) - Number(b);
-});
+const moduleOrder = Object.keys(MODULE_CONTENT).sort((a, b) => Number(a) - Number(b));
 const SI_SCALAR_VALUES = Array.from({ length: 21 }, (_, index) => index - 10);
 const SI_AIR_SLIDERS = [
   {
@@ -2352,16 +2337,215 @@ if (title && frame && pencilLayer instanceof HTMLCanvasElement) {
     const card = moduleCards.find((entry) => entry.dataset.module === moduleId);
     const progress = clampProgress(card?.dataset.progress || "0");
     const steps = MODULE_CONTENT[moduleId].steps.length;
-    const segments = Math.max(1, steps - 1);
-    const reached = Math.max(0, Math.min(segments, Math.round((progress / 100) * segments)));
-    acc[moduleId] = { current: reached, maxReached: reached };
+    // maxReached zählt jetzt, wie viele Aufgaben in diesem Modul TATSÄCHLICH gelöst wurden (0..steps)
+    const reached = Math.max(0, Math.min(steps, Math.round((progress / 100) * steps)));
+    acc[moduleId] = { current: Math.min(reached, steps - 1), maxReached: reached };
     return acc;
   }, {});
     // Gesamt-XP des aktuellen Spielers – wird beim Login aus Firestore geladen
   let gesamtXp = 0;
+  let profilBenutzername = "";
+  let profilBildDatenUrl = "";
+
+  // XP-Beträge je nachdem, wie eine Aufgabe gelöst wurde
+  const XP_BASIS = 10;
+  const XP_CHALLENGE = 20;
+  const XP_INTERAKTIV = 15;
+
+  // Aktualisiert den kleinen Profil-Chip oben links (Avatar, Anfangsbuchstabe, Level-Badge)
+  const profilAnzeigeAktualisieren = () => {
+    const info = levelBerechnen(gesamtXp);
+
+    if (profileLevelBadge instanceof HTMLElement) {
+      profileLevelBadge.textContent = String(info.level);
+      const stufe = levelFarbstufe(info.level);
+      profileLevelBadge.classList.toggle("tier-gold", stufe === "gold");
+      profileLevelBadge.classList.toggle("tier-diamond", stufe === "diamant");
+      profileLevelBadge.classList.toggle("tier-smaragd", stufe === "smaragd");
+      profileLevelBadge.classList.toggle("tier-legendaer", stufe === "legendaer");
+    }
+
+    if (profileAvatarImg instanceof HTMLImageElement && profileAvatarFallback instanceof HTMLElement) {
+      if (profilBildDatenUrl) {
+        profileAvatarImg.src = profilBildDatenUrl;
+        profileAvatarImg.classList.add("is-visible");
+        profileAvatarFallback.classList.add("is-hidden");
+      } else {
+        profileAvatarImg.classList.remove("is-visible");
+        profileAvatarFallback.classList.remove("is-hidden");
+        profileAvatarFallback.textContent = profilBenutzername
+          ? profilBenutzername.trim().charAt(0).toUpperCase()
+          : "?";
+      }
+    }
+
+    aktualisiereProfilfensterFallsOffen();
+    hintergrundFarbeAktualisieren();
+  };
+
+  // Einstellung "Level-Hintergrundfarbe" wird lokal im Browser gespeichert
+  const LEVEL_HINTERGRUND_KEY = "kinemaths-level-hintergrund";
+
+  const levelHintergrundAktiv = () => localStorage.getItem(LEVEL_HINTERGRUND_KEY) !== "aus";
+
+  const levelHintergrundFarbeFuerStufe = (stufe) => {
+    if (stufe === "legendaer") return "#fdeaea";
+    if (stufe === "smaragd") return "#e8fbf1";
+    if (stufe === "diamant") return "#eafcff";
+    if (stufe === "gold") return "#fff8e6";
+    return "#ffffff";
+  };
+
+  const hintergrundFarbeAktualisieren = () => {
+    const info = levelBerechnen(gesamtXp);
+    const stufe = levelFarbstufe(info.level);
+    const farbe = levelHintergrundAktiv() ? levelHintergrundFarbeFuerStufe(stufe) : "#ffffff";
+    document.body.style.setProperty("--level-bg", farbe);
+  };
+
+  // Zeigt die Levelaufstiegs-Animation vollflächig für ca. 3 Sekunden
+  const LEVELUP_FARBEN = {
+    gruen: "#4caf50",
+    gold: "#e6a919",
+    diamant: "#22c3f5",
+    smaragd: "#00a86b",
+    legendaer: "#8b0000",
+  };
+
+  const levelUpAnimationAbspielen = (neuesLevel) => {
+    const vorhanden = document.getElementById("levelup-overlay");
+    if (vorhanden) vorhanden.remove();
+
+    const stufe = levelFarbstufe(neuesLevel);
+    const farbe = LEVELUP_FARBEN[stufe] || LEVELUP_FARBEN.gruen;
+
+    const overlay = document.createElement("div");
+    overlay.id = "levelup-overlay";
+    overlay.style.setProperty("--levelup-color", farbe);
+    overlay.innerHTML = `
+      <div class="levelup-flash"></div>
+      <div class="levelup-rays"></div>
+      <div class="levelup-content">
+        <span class="levelup-label">Level Up!</span>
+        <span class="levelup-number${stufe === "legendaer" ? " is-legendaer" : ""}">${neuesLevel}</span>
+      </div>
+    `;
+    document.body.appendChild(overlay);
+    levelUpStilEinfuegen();
+
+    window.setTimeout(() => {
+      overlay.remove();
+    }, 3000);
+  };
+
+  // Fügt einmalig das CSS für die Levelaufstiegs-Animation ein
+  function levelUpStilEinfuegen() {
+    if (document.getElementById("levelup-styles")) return;
+    const stil = document.createElement("style");
+    stil.id = "levelup-styles";
+    stil.textContent = `
+      #levelup-overlay {
+        position: fixed;
+        inset: 0;
+        z-index: 10000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        pointer-events: auto;
+        animation: levelup-dim 3000ms ease-in-out forwards;
+      }
+      .levelup-flash {
+        position: absolute;
+        inset: 0;
+        background: var(--levelup-color, #4caf50);
+        mix-blend-mode: screen;
+        animation: levelup-flash-anim 3000ms ease-out forwards;
+      }
+      .levelup-rays {
+        position: absolute;
+        inset: -60%;
+        background: repeating-conic-gradient(
+          from 0deg,
+          rgba(255, 255, 255, 0.4) 0deg 3deg,
+          transparent 3deg 16deg
+        );
+        mix-blend-mode: screen;
+        animation: levelup-rays-spin 3000ms linear forwards, levelup-rays-fade 3000ms ease-in-out forwards;
+      }
+      .levelup-content {
+        position: relative;
+        z-index: 2;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        animation: levelup-pop 3000ms cubic-bezier(0.2, 1.8, 0.4, 1) forwards;
+      }
+      .levelup-label {
+        font-family: "Nunito", sans-serif;
+        font-weight: 800;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        font-size: clamp(1rem, 2.4vw, 1.4rem);
+        color: var(--levelup-color, #4caf50);
+        margin-bottom: 0.3rem;
+        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
+      }
+      .levelup-number {
+        font-family: "Nunito", sans-serif;
+        font-weight: 900;
+        font-size: clamp(5rem, 20vw, 11rem);
+        color: #ffffff;
+        text-shadow: 0 0 50px var(--levelup-color, #4caf50), 0 6px 16px rgba(0, 0, 0, 0.4);
+        line-height: 1;
+      }
+      .levelup-number.is-legendaer {
+        color: var(--levelup-color, #8b0000);
+        -webkit-text-stroke: 4px #000000;
+        paint-order: stroke fill;
+        text-shadow: 0 0 55px var(--levelup-color, #8b0000), 0 6px 16px rgba(0, 0, 0, 0.6);
+      }
+      @keyframes levelup-dim {
+        0% { background: rgba(10, 12, 15, 0); }
+        10% { background: rgba(10, 12, 15, 0.5); }
+        85% { background: rgba(10, 12, 15, 0.5); }
+        100% { background: rgba(10, 12, 15, 0); }
+      }
+      @keyframes levelup-flash-anim {
+        0% { opacity: 0; }
+        6% { opacity: 0.5; }
+        20% { opacity: 0.1; }
+        100% { opacity: 0; }
+      }
+      @keyframes levelup-rays-spin {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(30deg); }
+      }
+      @keyframes levelup-rays-fade {
+        0% { opacity: 0; }
+        12% { opacity: 0.85; }
+        80% { opacity: 0.65; }
+        100% { opacity: 0; }
+      }
+      @keyframes levelup-pop {
+        0% { transform: scale(0.3); opacity: 0; }
+        15% { transform: scale(1.15); opacity: 1; }
+        25% { transform: scale(1); opacity: 1; }
+        85% { transform: scale(1); opacity: 1; }
+        100% { transform: scale(1.05); opacity: 0; }
+      }
+    `;
+    document.head.appendChild(stil);
+  }
 
   const xpVergeben = (amount) => {
+    const levelVorher = levelBerechnen(gesamtXp).level;
     gesamtXp += amount;
+    const levelNachher = levelBerechnen(gesamtXp).level;
+    profilAnzeigeAktualisieren();
+    if (levelNachher > levelVorher) {
+      levelUpAnimationAbspielen(levelNachher);
+    }
   };
 
   const fortschrittSichern = () => {
@@ -2383,8 +2567,332 @@ if (title && frame && pencilLayer instanceof HTMLCanvasElement) {
     if (typeof data.gesamtXp === "number") {
       gesamtXp = data.gesamtXp;
     }
+    if (typeof data.benutzername === "string") {
+      profilBenutzername = data.benutzername;
+    }
+    if (typeof data.profilbild === "string") {
+      profilBildDatenUrl = data.profilbild;
+    }
     applyModuleStates();
+    profilAnzeigeAktualisieren();
   };
+
+  // Verkleinert und komprimiert ein hochgeladenes Bild, damit es klein genug
+  // für die Datenbank ist (Firestore erlaubt max. 1 MB pro Dokument).
+  function profilbildKomprimieren(datei) {
+    return new Promise((resolve, reject) => {
+      const leser = new FileReader();
+      leser.onerror = () => reject(new Error("Datei konnte nicht gelesen werden"));
+      leser.onload = () => {
+        const bild = new Image();
+        bild.onerror = () => reject(new Error("Bild konnte nicht geladen werden"));
+        bild.onload = () => {
+          const groesse = 128;
+          const canvas = document.createElement("canvas");
+          canvas.width = groesse;
+          canvas.height = groesse;
+          const ctx2d = canvas.getContext("2d");
+          const kleinsteSeite = Math.min(bild.width, bild.height);
+          const sx = (bild.width - kleinsteSeite) / 2;
+          const sy = (bild.height - kleinsteSeite) / 2;
+          ctx2d.drawImage(bild, sx, sy, kleinsteSeite, kleinsteSeite, 0, 0, groesse, groesse);
+          resolve(canvas.toDataURL("image/jpeg", 0.7));
+        };
+        bild.src = leser.result;
+      };
+      leser.readAsDataURL(datei);
+    });
+  }
+
+  let profilfensterOffenesUpdate = null;
+
+  function aktualisiereProfilfensterFallsOffen() {
+    if (typeof profilfensterOffenesUpdate === "function") {
+      profilfensterOffenesUpdate();
+    }
+  }
+
+  // Zeigt das grosse Profilfenster mit Avatar, Benutzername, XP-Balken und Logout
+  function profilfensterAnzeigen() {
+    const vorhanden = document.getElementById("profile-overlay");
+    if (vorhanden) vorhanden.remove();
+
+    const fenster = document.createElement("div");
+    fenster.id = "profile-overlay";
+    fenster.innerHTML = `
+      <div class="profile-box">
+        <button class="profile-box-close" id="profile-box-close" type="button" aria-label="Schliessen">×</button>
+        <div class="profile-box-avatar-wrap">
+          <img class="profile-box-avatar-img" id="profile-box-avatar-img" alt="" />
+          <span class="profile-box-avatar-fallback" id="profile-box-avatar-fallback">?</span>
+        </div>
+        <button class="profile-box-change-avatar" id="profile-box-change-avatar" type="button">Bild ändern</button>
+        <label class="profile-box-label" for="profile-box-username">Benutzername</label>
+        <input type="text" id="profile-box-username" maxlength="20" placeholder="Dein Name" />
+        <button class="profile-box-save" id="profile-box-save" type="button">Speichern</button>
+        <div class="profile-box-level-row">
+          <span class="profile-box-level-num" id="profile-box-level-num">Level 1</span>
+          <span class="profile-box-xp-text" id="profile-box-xp-text">0 / 20 XP</span>
+        </div>
+        <div class="profile-box-xp-track">
+          <span class="profile-box-xp-fill" id="profile-box-xp-fill" style="width:0%"></span>
+        </div>
+        <label class="profile-box-bg-toggle">
+          <input type="checkbox" id="profile-box-bg-toggle" />
+          Level-Hintergrundfarbe anzeigen
+        </label>
+        <button class="profile-box-logout" id="profile-box-logout" type="button">Ausloggen</button>
+      </div>
+    `;
+    document.body.appendChild(fenster);
+    profilfensterStilEinfuegen();
+
+    const avatarImgGross = document.getElementById("profile-box-avatar-img");
+    const avatarFallbackGross = document.getElementById("profile-box-avatar-fallback");
+    const usernameFeld = document.getElementById("profile-box-username");
+    const levelNumEl = document.getElementById("profile-box-level-num");
+    const xpTextEl = document.getElementById("profile-box-xp-text");
+    const xpFillEl = document.getElementById("profile-box-xp-fill");
+
+    usernameFeld.value = profilBenutzername;
+
+    const anzeigeAktualisieren = () => {
+      const info = levelBerechnen(gesamtXp);
+      const stufe = levelFarbstufe(info.level);
+
+      if (profilBildDatenUrl) {
+        avatarImgGross.src = profilBildDatenUrl;
+        avatarImgGross.classList.add("is-visible");
+        avatarFallbackGross.classList.add("is-hidden");
+      } else {
+        avatarImgGross.classList.remove("is-visible");
+        avatarFallbackGross.classList.remove("is-hidden");
+        avatarFallbackGross.textContent = profilBenutzername ? profilBenutzername.trim().charAt(0).toUpperCase() : "?";
+      }
+
+      levelNumEl.textContent = `Level ${info.level}`;
+      levelNumEl.classList.toggle("tier-gold", stufe === "gold");
+      levelNumEl.classList.toggle("tier-diamond", stufe === "diamant");
+      levelNumEl.classList.toggle("tier-smaragd", stufe === "smaragd");
+      levelNumEl.classList.toggle("tier-legendaer", stufe === "legendaer");
+      xpFillEl.classList.toggle("tier-gold", stufe === "gold");
+      xpFillEl.classList.toggle("tier-diamond", stufe === "diamant");
+      xpFillEl.classList.toggle("tier-smaragd", stufe === "smaragd");
+      xpFillEl.classList.toggle("tier-legendaer", stufe === "legendaer");
+
+      if (info.istMaxLevel) {
+        xpTextEl.textContent = "Maximales Level erreicht!";
+        xpFillEl.style.width = "100%";
+      } else {
+        xpTextEl.textContent = `${info.xpImAktuellenLevel} / ${info.xpFuerNaechstesLevel} XP`;
+        xpFillEl.style.width = `${Math.round((info.xpImAktuellenLevel / info.xpFuerNaechstesLevel) * 100)}%`;
+      }
+    };
+
+    anzeigeAktualisieren();
+    profilfensterOffenesUpdate = anzeigeAktualisieren;
+
+    const bgToggle = document.getElementById("profile-box-bg-toggle");
+    if (bgToggle instanceof HTMLInputElement) {
+      bgToggle.checked = levelHintergrundAktiv();
+      bgToggle.addEventListener("change", () => {
+        localStorage.setItem(LEVEL_HINTERGRUND_KEY, bgToggle.checked ? "an" : "aus");
+        hintergrundFarbeAktualisieren();
+      });
+    }
+
+    document.getElementById("profile-box-close").addEventListener("click", () => {
+      fenster.remove();
+      profilfensterOffenesUpdate = null;
+    });
+
+    document.getElementById("profile-box-change-avatar").addEventListener("click", () => {
+      if (profileAvatarInput instanceof HTMLInputElement) {
+        profileAvatarInput.click();
+      }
+    });
+
+    document.getElementById("profile-box-save").addEventListener("click", async () => {
+      const neuerName = usernameFeld.value.trim();
+      profilBenutzername = neuerName;
+      profilAnzeigeAktualisieren();
+      if (typeof profilSpeichern === "function") {
+        await profilSpeichern(neuerName, undefined);
+      }
+    });
+
+    document.getElementById("profile-box-logout").addEventListener("click", async () => {
+      fenster.remove();
+      profilfensterOffenesUpdate = null;
+      if (typeof spielerAusloggen === "function") {
+        await spielerAusloggen();
+      }
+    });
+  }
+
+  // Fügt einmalig das CSS für das Profilfenster ein
+  function profilfensterStilEinfuegen() {
+    if (document.getElementById("profile-overlay-styles")) return;
+    const stil = document.createElement("style");
+    stil.id = "profile-overlay-styles";
+    stil.textContent = `
+      #profile-overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(15, 17, 19, 0.55);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 9999;
+      }
+      .profile-box {
+        position: relative;
+        background: var(--bg-1, #fdfefe);
+        color: var(--ink, #0f1113);
+        border: 3px solid var(--ink, #0f1113);
+        border-radius: 28px;
+        padding: 40px;
+        width: min(380px, 92vw);
+        box-shadow: 0 20px 50px rgba(8,10,13,0.25);
+        font-family: "Nunito", sans-serif;
+        text-align: center;
+      }
+      .profile-box-close {
+        position: absolute;
+        top: 14px;
+        right: 18px;
+        border: none;
+        background: transparent;
+        font-size: 1.4rem;
+        cursor: pointer;
+        color: var(--ink, #0f1113);
+        line-height: 1;
+      }
+      .profile-box-avatar-wrap {
+        width: 96px;
+        height: 96px;
+        margin: 0 auto 14px;
+        border-radius: 50%;
+        border: 3px solid var(--ink, #0f1113);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        background: rgba(255,255,255,0.9);
+      }
+      .profile-box-avatar-img { width: 100%; height: 100%; object-fit: cover; display: none; }
+      .profile-box-avatar-img.is-visible { display: block; }
+      .profile-box-avatar-fallback { font-size: 2.2rem; font-weight: 900; }
+      .profile-box-avatar-fallback.is-hidden { display: none; }
+      .profile-box-change-avatar {
+        display: inline-block;
+        margin-bottom: 18px;
+        padding: 8px 16px;
+        border-radius: 999px;
+        border: 2px solid var(--ink, #0f1113);
+        background: transparent;
+        font-weight: 800;
+        font-size: 0.85rem;
+        cursor: pointer;
+        color: var(--ink, #0f1113);
+      }
+      .profile-box-label { display: block; text-align: left; font-size: 0.85rem; font-weight: 700; margin-bottom: 6px; color: var(--muted, #3e4b5b); }      #profile-box-username {
+        width: 100%;
+        box-sizing: border-box;
+        padding: 12px 14px;
+        margin-bottom: 12px;
+        border-radius: 14px;
+        border: 2px solid var(--line, rgba(98,106,116,0.24));
+        font-size: 1rem;
+        font-family: "Nunito", sans-serif;
+      }
+      .profile-box-save {
+        width: 100%;
+        padding: 12px;
+        margin-bottom: 22px;
+        border-radius: 14px;
+        border: none;
+        background: #4caf50;
+        color: #fff;
+        font-weight: 800;
+        font-size: 1rem;
+        cursor: pointer;
+      }
+      .profile-box-level-row { display: flex; justify-content: space-between; margin-bottom: 6px; font-weight: 800; }
+      .profile-box-level-num.tier-gold { color: #b5850f; }
+      .profile-box-level-num.tier-diamond { color: #14879e; }
+      .profile-box-level-num.tier-smaragd { color: #00795c; }
+      .profile-box-level-num.tier-legendaer { color: #8b0000; -webkit-text-stroke: 1px #000000; }
+      .profile-box-xp-text { font-size: 0.85rem; color: var(--muted, #3e4b5b); font-weight: 700; }
+      .profile-box-xp-track {
+        width: 100%;
+        height: 10px;
+        border-radius: 999px;
+        background: rgba(148, 160, 172, 0.36);
+        overflow: hidden;
+        margin-bottom: 22px;
+      }
+      .profile-box-xp-fill {
+        display: block;
+        height: 100%;
+        border-radius: 999px;
+        background: linear-gradient(90deg, #4caf50, #8bd17c);
+        transition: width 320ms ease;
+      }
+      .profile-box-xp-fill.tier-gold { background: linear-gradient(90deg, #e6a919, #ffd97a); }
+      .profile-box-xp-fill.tier-diamond { background: linear-gradient(90deg, #22c3f5, #a5f3fc); }
+      .profile-box-xp-fill.tier-smaragd { background: linear-gradient(90deg, #00a86b, #6be0ae); }
+      .profile-box-xp-fill.tier-legendaer { background: linear-gradient(90deg, #8b0000, #d43f3f); box-shadow: inset 0 0 0 1px #000; }
+      .profile-box-bg-toggle {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 0.8rem;
+        font-weight: 700;
+        color: var(--muted, #3e4b5b);
+        margin-bottom: 18px;
+        cursor: pointer;
+        text-align: left;
+      }
+      .profile-box-bg-toggle input { cursor: pointer; }
+      .profile-box-logout {
+        width: 100%;
+        padding: 10px;
+        border-radius: 14px;
+        border: 2px solid rgba(192, 57, 43, 0.6);
+        background: transparent;
+        color: #c0392b;
+        font-weight: 800;
+        cursor: pointer;
+      }
+    `;
+    document.head.appendChild(stil);
+  }
+
+  if (profileChip instanceof HTMLButtonElement) {
+    profileChip.addEventListener("click", () => {
+      profilfensterAnzeigen();
+    });
+  }
+
+  if (profileAvatarInput instanceof HTMLInputElement) {
+    profileAvatarInput.addEventListener("change", async () => {
+      const datei = profileAvatarInput.files && profileAvatarInput.files[0];
+      if (!datei) return;
+      try {
+        const datenUrl = await profilbildKomprimieren(datei);
+        profilBildDatenUrl = datenUrl;
+        profilAnzeigeAktualisieren();
+        if (typeof profilSpeichern === "function") {
+          await profilSpeichern(undefined, datenUrl);
+        }
+      } catch (error) {
+        console.error("Fehler beim Verarbeiten des Profilbilds:", error);
+      }
+      profileAvatarInput.value = "";
+    });
+  }
+
   const siJumpState = {
     running: false,
     rafId: 0,
@@ -2650,20 +3158,16 @@ if (title && frame && pencilLayer instanceof HTMLCanvasElement) {
   const getModulePercent = (moduleId) => {
     const state = moduleState[moduleId];
     const steps = MODULE_CONTENT[moduleId].steps.length;
-    if (!state || steps <= 1) {
+    if (!state || steps <= 0) {
       return 0;
     }
 
-    const segments = steps - 1;
-    return Math.round((state.maxReached / segments) * 100);
+    // maxReached = Anzahl tatsächlich gelöster Aufgaben in diesem Modul
+    return Math.round((state.maxReached / steps) * 100);
   };
 
   const isModuleUnlocked = (moduleId, forceUnlocked = false) => {
     if (forceUnlocked) {
-      return true;
-    }
-
-    if (moduleId === "TEST") {
       return true;
     }
 
@@ -2744,7 +3248,9 @@ if (title && frame && pencilLayer instanceof HTMLCanvasElement) {
     const state = moduleState[activeModuleId];
     const firstCenter = getNodeDotCenter(activeNodes[0]);
     const lastCenter = getNodeDotCenter(activeNodes[activeNodes.length - 1]);
-    const currentCenter = getNodeDotCenter(activeNodes[state.current]);
+    // Die Linie füllt sich nach tatsächlich GELÖSTEN Aufgaben (maxReached), nicht nach der reinen Ansicht
+    const progressIndex = Math.max(0, Math.min(activeNodes.length - 1, state.maxReached));
+    const currentCenter = getNodeDotCenter(activeNodes[progressIndex]);
     const lineHeight = Math.max(0, lastCenter - firstCenter);
     const progressHeight = Math.max(0, currentCenter - firstCenter);
 
@@ -2762,13 +3268,16 @@ if (title && frame && pencilLayer instanceof HTMLCanvasElement) {
     const debugOn = debugToggle instanceof HTMLInputElement && debugToggle.checked;
 
     activeNodes.forEach((node, index) => {
-      const unlocked = debugOn || index <= state.maxReached + 1;
+      // maxReached = Anzahl gelöster Aufgaben -> genau die nächste (noch ungelöste) Aufgabe ist zusätzlich offen
+      const unlocked = debugOn || index <= state.maxReached;
       node.classList.toggle("is-locked", !unlocked);
       node.disabled = !unlocked;
       node.setAttribute("aria-disabled", unlocked ? "false" : "true");
     });
   };
 
+  // Setzt nur, welcher Schritt gerade ANGESCHAUT wird – vergibt keine XP und
+  // verändert den tatsächlichen Lösungsfortschritt (maxReached) nicht.
   const setActiveStep = (step, focusStep = false) => {
     if (!activeModuleId) {
       return;
@@ -2777,14 +3286,11 @@ if (title && frame && pencilLayer instanceof HTMLCanvasElement) {
     const state = moduleState[activeModuleId];
     const nextStep = clampStep(step, activeModuleId);
 
-        const istNeuerFortschritt = nextStep > state.maxReached;
-
     state.current = nextStep;
-    state.maxReached = Math.max(state.maxReached, nextStep);
 
     activeNodes.forEach((node, index) => {
       node.classList.toggle("is-current", index === state.current);
-      node.classList.toggle("is-complete", index < state.current);
+      node.classList.toggle("is-complete", index < state.maxReached);
     });
 
     applyActiveNodeLockState();
@@ -2797,11 +3303,39 @@ if (title && frame && pencilLayer instanceof HTMLCanvasElement) {
         activeNode.scrollIntoView({ behavior: "smooth", block: "center" });
       }
     }
+  };
 
-    if (istNeuerFortschritt) {
-      xpVergeben(10);
-      fortschrittSichern();
+  // Wird NUR aufgerufen, wenn eine Aufgabe (Basis, Challenge oder interaktiv)
+  // wirklich korrekt gelöst wurde. Vergibt XP nur beim allerersten Lösen.
+  const markiereAufgabeGeloest = (stepIndex, schwierigkeit) => {
+    if (!activeModuleId || typeof stepIndex !== "number") {
+      return;
     }
+
+    const state = moduleState[activeModuleId];
+
+    if (stepIndex < state.maxReached) {
+      // Aufgabe war schon vorher gelöst (z. B. "Nochmal üben") -> keine doppelten XP
+      return;
+    }
+
+    state.maxReached = Math.max(state.maxReached, stepIndex + 1);
+
+    activeNodes.forEach((node, index) => {
+      node.classList.toggle("is-complete", index < state.maxReached);
+    });
+
+    applyActiveNodeLockState();
+    updateModuleLine();
+    applyModuleStates();
+
+    const xpBetrag =
+      schwierigkeit === "challenge" ? XP_CHALLENGE :
+      schwierigkeit === "interaktiv" ? XP_INTERAKTIV :
+      XP_BASIS;
+
+    xpVergeben(xpBetrag);
+    fortschrittSichern();
   };
 
   const handleNodeClick = (index) => {
@@ -6181,8 +6715,9 @@ if (title && frame && pencilLayer instanceof HTMLCanvasElement) {
   };
 
   // Completion screen
-  const showModuleComplete = (step) => {
+  const showModuleComplete = (step, stepIndex, schwierigkeit) => {
     if (!(siGameStage instanceof HTMLElement)) return;
+    markiereAufgabeGeloest(stepIndex, schwierigkeit);
     const { correct, total } = _lvlScore;
     const hasScore = total > 0;
     const fraction = hasScore ? correct / total : 1;
@@ -6242,7 +6777,7 @@ if (title && frame && pencilLayer instanceof HTMLCanvasElement) {
     }
 
     siGameStage.querySelector("#mod-comp-back")?.addEventListener("click", closeSIGame);
-    siGameStage.querySelector("#mod-comp-retry")?.addEventListener("click", () => renderModuleGame(step));
+    siGameStage.querySelector("#mod-comp-retry")?.addEventListener("click", () => renderModuleGame(step, stepIndex));
   };
 
   // Main dispatcher
@@ -6263,8 +6798,8 @@ if (title && frame && pencilLayer instanceof HTMLCanvasElement) {
           </button>
         </div>
       </div>`;
-    siGameStage.querySelector("#diff-basis").addEventListener("click", () => onSelect(q.basis));
-    siGameStage.querySelector("#diff-challenge").addEventListener("click", () => onSelect(q.challenge));
+    siGameStage.querySelector("#diff-basis").addEventListener("click", () => onSelect(q.basis, "basis"));
+    siGameStage.querySelector("#diff-challenge").addEventListener("click", () => onSelect(q.challenge, "challenge"));
     if (typeof anime !== "undefined") {
       anime({ targets: ".diff-picker-page", opacity: [0, 1], translateY: [16, 0], duration: 400, easing: "easeOutQuart" });
     } else {
@@ -7145,7 +7680,7 @@ if (title && frame && pencilLayer instanceof HTMLCanvasElement) {
     _moduleEngineRaf = requestAnimationFrame(updateLoop);
   };
 
-  const renderModuleGame = (step) => {
+  const renderModuleGame = (step, stepIndex) => {
     if (!(siGameStage instanceof HTMLElement) || !step) return;
     stopModuleGame();
     stopSIUnitsJumpGame(); stopTestMotionGame(); stopCatchUpGame();
@@ -7164,35 +7699,36 @@ if (title && frame && pencilLayer instanceof HTMLCanvasElement) {
     const startQuestion = () => {
       stopModuleGame();
       _lvlScore = { correct: 0, total: 0 };
-      if (!step.question) { showModuleComplete(step); return; }
+      if (!step.question) { showModuleComplete(step, stepIndex, "basis"); return; }
       const q = step.question;
-      const done = () => showModuleComplete(step);
+      const done = (schwierigkeit) => showModuleComplete(step, stepIndex, schwierigkeit || "basis");
 
-      // Interactive engines bypass the difficulty picker
-      if (q.type === "speed-lab") { runSpeedLabEngine(q, done); return; }
-      if (q.type === "race")      { runRaceEngine(q, done);      return; }
-      if (q.type === "st-live")   { runSTLiveEngine(q, done);    return; }
-      if (q.type === "accel-lab") { runAccelLabEngine(q, done);  return; }
-      if (q.type === "vt-live")   { runVTLiveEngine(q, done);    return; }
+      // Interactive engines bypass the difficulty picker – zählen als "interaktiv"
+      if (q.type === "speed-lab") { runSpeedLabEngine(q, () => done("interaktiv")); return; }
+      if (q.type === "race")      { runRaceEngine(q, () => done("interaktiv"));      return; }
+      if (q.type === "st-live")   { runSTLiveEngine(q, () => done("interaktiv"));    return; }
+      if (q.type === "accel-lab") { runAccelLabEngine(q, () => done("interaktiv"));  return; }
+      if (q.type === "vt-live")   { runVTLiveEngine(q, () => done("interaktiv"));    return; }
 
-      const runQ = (tasks) => {
+      const runQ = (tasks, schwierigkeit) => {
+        const fertig = () => done(schwierigkeit);
         if (q.type === "mc") {
-          runMCEngine(tasks, done);
+          runMCEngine(tasks, fertig);
         } else if (q.type === "calc") {
-          runCalcEngine(tasks, q.config, done);
+          runCalcEngine(tasks, q.config, fertig);
         } else if (q.type === "chart") {
-          runChartEngine(q.chartConfig, tasks, done);
+          runChartEngine(q.chartConfig, tasks, fertig);
         } else if (q.type === "matter") {
-          runMatterEngine(q.scene, tasks, done);
+          runMatterEngine(q.scene, tasks, fertig);
         } else {
-          showModuleComplete(step);
+          showModuleComplete(step, stepIndex, schwierigkeit || "basis");
         }
       };
 
       if (q.basis && q.challenge) {
         showDifficultyPicker(q, runQ);
       } else {
-        runQ(q.tasks || []);
+        runQ(q.tasks || [], "basis");
       }
     };
 
@@ -8412,7 +8948,7 @@ if (title && frame && pencilLayer instanceof HTMLCanvasElement) {
     } else if (isMCConcept) {
       renderMCConceptGame();
     } else if (step.theory || step.question || STEP_CONTENT[step.title]) {
-      renderModuleGame(step);
+      renderModuleGame(step, stepIndex);
     } else {
       stopSIUnitsJumpGame();
       stopTestMotionGame();
@@ -8674,4 +9210,5 @@ if (title && frame && pencilLayer instanceof HTMLCanvasElement) {
 
   applySidePanelVisibility();
   applyModuleStates();
+  profilAnzeigeAktualisieren();
 }

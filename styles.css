@@ -25,7 +25,8 @@ body {
 body {
   font-family: "Space Grotesk", sans-serif;
   color: var(--ink);
-  background: #ffffff;
+  background: var(--level-bg, #ffffff);
+  transition: background 600ms ease;
   height: 100dvh;
 }
 
@@ -441,8 +442,84 @@ body.game-started .content {
 .module-tools {
   width: 100%;
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
+  align-items: center;
   margin-bottom: clamp(0.4rem, 1.1vw, 0.8rem);
+}
+
+.profile-chip {
+  position: relative;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: 2px solid rgba(18, 20, 23, 0.82);
+  background: rgba(255, 255, 255, 0.9);
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.profile-avatar-img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  display: none;
+}
+
+.profile-avatar-img.is-visible {
+  display: block;
+}
+
+.profile-avatar-fallback {
+  font-family: "Nunito", sans-serif;
+  font-weight: 900;
+  font-size: 1.15rem;
+  color: #12141a;
+}
+
+.profile-avatar-fallback.is-hidden {
+  display: none;
+}
+
+.profile-level-badge {
+  position: absolute;
+  bottom: -4px;
+  right: -4px;
+  min-width: 20px;
+  height: 20px;
+  padding: 0 4px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #4caf50, #8bd17c);
+  color: #fff;
+  font-size: 0.68rem;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #fdfefe;
+}
+
+.profile-level-badge.tier-gold {
+  background: linear-gradient(135deg, #e6a919, #ffd97a);
+}
+
+.profile-level-badge.tier-diamond {
+  background: linear-gradient(135deg, #22c3f5, #a5f3fc);
+  box-shadow: 0 0 8px rgba(34, 195, 245, 0.7);
+}
+
+.profile-level-badge.tier-smaragd {
+  background: linear-gradient(135deg, #00a86b, #6be0ae);
+  box-shadow: 0 0 8px rgba(0, 168, 107, 0.6);
+}
+
+.profile-level-badge.tier-legendaer {
+  background: linear-gradient(135deg, #8b0000, #d43f3f);
+  border-color: #000000;
+  box-shadow: 0 0 10px rgba(139, 0, 0, 0.7);
 }
 
 .debug-toggle {
@@ -655,10 +732,6 @@ body.game-started .content {
 
 .module-card[data-module="0"] .module-icon {
   background: linear-gradient(135deg, #3f8efc 0%, #80c2ff 100%);
-}
-
-.module-card[data-module="TEST"] .module-icon {
-  background: linear-gradient(135deg, #ff8d47 0%, #ffd164 100%);
 }
 
 .module-card[data-module="1"] .module-icon {

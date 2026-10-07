@@ -29,6 +29,12 @@
 
         <section class="module-board" id="module-board" aria-label="Module selection">
           <div class="module-tools">
+            <button class="profile-chip" id="profile-chip" type="button" aria-label="Profil öffnen">
+              <img class="profile-avatar-img" id="profile-avatar-img" alt="" />
+              <span class="profile-avatar-fallback" id="profile-avatar-fallback">?</span>
+              <span class="profile-level-badge" id="profile-level-badge">1</span>
+            </button>
+            <input type="file" id="profile-avatar-input" accept="image/*" hidden />
             <label class="debug-toggle" for="debug-toggle">
               <span class="debug-label">dubug</span>
               <input id="debug-toggle" type="checkbox" />
@@ -40,7 +46,7 @@
 
           <div class="modules-scroll" id="modules-scroll">
             <div class="modules-grid">
-              <button class="module-card" type="button" data-module="0" data-base-unlocked="true" data-progress="100">
+              <button class="module-card" type="button" data-module="0" data-base-unlocked="true" data-progress="0">
                 <span class="module-id">Module 0</span>
                 <span class="module-name">Grundlagen der Bewegung</span>
                 <div class="module-progress-stack">
@@ -52,28 +58,6 @@
                       <path d="M10 10L14 9L13 13Z" fill="currentColor" stroke="none"></path>
                     </svg>
                   </span>
-                  <span class="progress-label">18%</span>
-                </div>
-                <div class="module-meta">
-                  <span class="status-badge">Unlocked</span>
-                </div>
-                <div class="progress-track">
-                  <span class="progress-fill" style="width: 18%"></span>
-                </div>
-              </button>
-              <button class="module-card" type="button" data-module="TEST" data-base-unlocked="true" data-progress="0">
-                <span class="module-id">TEST</span>
-                <span class="module-name">Interaktive Test-Level</span>
-                <div class="module-progress-stack">
-                  <span class="module-icon" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" fill="none">
-                      <path d="M4.8 14.8H19.2"></path>
-                      <rect x="5.6" y="9.5" width="8.8" height="4.4" rx="1"></rect>
-                      <path d="M8.1 9.5L10 7.4H13.2L15.1 9.5"></path>
-                      <circle cx="8" cy="15" r="1.4"></circle>
-                      <circle cx="15.4" cy="15" r="1.4"></circle>
-                    </svg>
-                  </span>
                   <span class="progress-label">0%</span>
                 </div>
                 <div class="module-meta">
@@ -83,7 +67,7 @@
                   <span class="progress-fill" style="width: 0%"></span>
                 </div>
               </button>
-              <button class="module-card" type="button" data-module="1" data-base-unlocked="true" data-progress="100">
+              <button class="module-card" type="button" data-module="1" data-base-unlocked="false" data-progress="0">
                 <span class="module-id">Module 1</span>
                 <span class="module-name">Geradlinig gleichförmige Bewegung</span>
                 <div class="module-progress-stack">
@@ -102,7 +86,7 @@
                   <span class="progress-fill" style="width: 0%"></span>
                 </div>
               </button>
-              <button class="module-card" type="button" data-module="2" data-base-unlocked="true" data-progress="100">
+              <button class="module-card" type="button" data-module="2" data-base-unlocked="false" data-progress="0">
                 <span class="module-id">Module 2</span>
                 <span class="module-name">Gleichmäßig beschleunigte Bewegung</span>
                 <div class="module-progress-stack">
@@ -124,7 +108,7 @@
                   <span class="progress-fill" style="width: 0%"></span>
                 </div>
               </button>
-              <button class="module-card" type="button" data-module="3" data-base-unlocked="true" data-progress="100">
+              <button class="module-card" type="button" data-module="3" data-base-unlocked="false" data-progress="0">
                 <span class="module-id">Module 3</span>
                 <span class="module-name">Freier Fall und vertikaler Wurf</span>
                 <div class="module-progress-stack">
@@ -145,7 +129,7 @@
                   <span class="progress-fill" style="width: 0%"></span>
                 </div>
               </button>
-              <button class="module-card" type="button" data-module="4" data-base-unlocked="true" data-progress="100">
+              <button class="module-card" type="button" data-module="4" data-base-unlocked="false" data-progress="0">
                 <span class="module-id">Module 4</span>
                 <span class="module-name">Bewegungsdiagramme</span>
                 <div class="module-progress-stack">
@@ -165,7 +149,7 @@
                   <span class="progress-fill" style="width: 0%"></span>
                 </div>
               </button>
-              <button class="module-card" type="button" data-module="5" data-base-unlocked="true" data-progress="100">
+              <button class="module-card" type="button" data-module="5" data-base-unlocked="false" data-progress="0">
                 <span class="module-id">Module 5</span>
                 <span class="module-name">Bewegungen in zwei Dimensionen</span>
                 <div class="module-progress-stack">
