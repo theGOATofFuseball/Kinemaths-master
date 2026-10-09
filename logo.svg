@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-label="Kinemaths Fuchs">
+  <g stroke="#5a2a14" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+    <!-- Ohren -->
+    <path d="M36 92 Q38 40 54 20 Q78 36 96 62 Z" fill="#f58220"/>
+    <path d="M164 92 Q162 40 146 20 Q122 36 104 62 Z" fill="#f58220"/>
+    <path d="M50 76 Q52 48 58 36 Q72 46 82 62 Z" fill="#fff6ec" stroke="none"/>
+    <path d="M150 76 Q148 48 142 36 Q128 46 118 62 Z" fill="#fff6ec" stroke="none"/>
+    <!-- Kopf mit Wangenbüscheln -->
+    <path d="M28 110 Q28 60 100 58 Q172 60 172 110 L186 130 L162 134 Q142 172 100 174 Q58 172 38 134 L14 130 Z" fill="#f58220"/>
+    <!-- helle Schnauze und Wangen -->
+    <path d="M14 130 L38 120 Q70 114 100 130 Q130 114 162 120 L186 130 L162 134 Q142 172 100 174 Q58 172 38 134 Z" fill="#fff6ec"/>
+  </g>
+  <!-- Augen -->
+  <ellipse cx="72" cy="104" rx="7" ry="9" fill="#2a1a12"/>
+  <ellipse cx="128" cy="104" rx="7" ry="9" fill="#2a1a12"/>
+  <circle cx="75" cy="100" r="2.8" fill="#fff"/>
+  <circle cx="131" cy="100" r="2.8" fill="#fff"/>
+  <!-- Brille -->
+  <g stroke="#2a1a12" stroke-width="5" stroke-linecap="round" fill="none">
+    <circle cx="72" cy="104" r="21" fill="#dff1ff" fill-opacity="0.35"/>
+    <circle cx="128" cy="104" r="21" fill="#dff1ff" fill-opacity="0.35"/>
+    <path d="M93 102 Q100 95 107 102"/>
+    <path d="M51 100 L34 95"/>
+    <path d="M149 100 L166 95"/>
+  </g>
+  <path d="M60 94 Q65 89 71 88" stroke="#fff" stroke-width="3" stroke-linecap="round" fill="none" opacity="0.8"/>
+  <path d="M116 94 Q121 89 127 88" stroke="#fff" stroke-width="3" stroke-linecap="round" fill="none" opacity="0.8"/>
+  <!-- Nase und Lächeln -->
+  <path d="M89 136 Q100 131 111 136 Q107 147 100 149 Q93 147 89 136 Z" fill="#2a1a12" stroke="#2a1a12" stroke-width="2" stroke-linejoin="round"/>
+  <path d="M100 149 L100 154 M86 153 Q100 166 114 153" stroke="#5a2a14" stroke-width="4.5" stroke-linecap="round" fill="none"/>
+</svg>
