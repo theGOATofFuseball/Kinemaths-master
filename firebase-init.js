@@ -13,13 +13,17 @@ const anmeldedienst = firebase.auth();
 const datenbank = firebase.firestore();
 
 // Wie viel XP für jeden Levelaufstieg nötig ist (Index 0 = XP für Level 1 -> 2, usw.)
-// So gewählt, dass die Summe genau der Gesamt-XP entspricht, die man bekommt,
-// wenn man ALLE Aufgaben in allen Modulen mit Challenge-Schwierigkeit löst
-// (56 Aufgaben mit Basis/Challenge-Wahl x 20 XP + 24 interaktive/einfache Aufgaben x 15 XP = 1480 XP).
-// Damit erreicht man exakt Level 25, wenn wirklich JEDE Aufgabe per Challenge gelöst wurde.
+// XP gibt es pro RICHTIG gelöster Teilaufgabe (Basis 5 XP, Challenge 10 XP,
+// Aufgaben ohne Schwierigkeitswahl bzw. interaktive Folgefragen 8 XP).
+// Maximal erreichbar (alles richtig, überall Challenge):
+//   115 Challenge-Fragen x 10 XP = 1150 XP
+//    57 Fragen ohne Wahl/interaktiv x 8 XP = 456 XP
+//   Summe = 1606 XP
+// Die Schwellen sind so gewählt, dass ihre Summe genau 1606 XP ergibt:
+// Level 25 erreicht nur, wer wirklich JEDE Teilaufgabe auf Challenge richtig löst.
 const LEVEL_XP_SCHWELLEN = [
-  24, 27, 30, 35, 38, 41, 44, 47, 51, 54, 57, 60,
-  63, 67, 70, 73, 76, 79, 83, 86, 89, 92, 95, 99,
+  26, 29, 33, 38, 41, 44, 48, 51, 55, 59, 62, 65,
+  68, 73, 76, 79, 82, 86, 90, 93, 97, 100, 103, 108,
 ];
 const MAX_LEVEL = LEVEL_XP_SCHWELLEN.length + 1; // = 25
 
@@ -46,12 +50,14 @@ function levelFarbstufe(level) {
 }
 
 // Speichert Fortschritt + XP des eingeloggten Spielers in der Datenbank
-async function fortschrittSpeichern(moduleState, gesamtXp) {
+// xpProLevel merkt sich pro Level, wie viele XP dort schon verdient wurden
+// (verhindert, dass man durch Wiederholen immer wieder XP sammelt).
+async function fortschrittSpeichern(moduleState, gesamtXp, xpProLevel) {
   const user = anmeldedienst.currentUser;
   if (!user) return;
   try {
     await datenbank.collection("spieler").doc(user.uid).set(
-      { moduleState, gesamtXp, updatedAt: firebase.firestore.FieldValue.serverTimestamp() },
+      { moduleState, gesamtXp, xpProLevel: xpProLevel || {}, updatedAt: firebase.firestore.FieldValue.serverTimestamp() },
       { merge: true }
     );
   } catch (error) {

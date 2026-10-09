@@ -522,60 +522,6 @@ body.game-started .content {
   box-shadow: 0 0 10px rgba(139, 0, 0, 0.7);
 }
 
-.debug-toggle {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.6rem;
-  padding: 0.42rem 0.55rem 0.42rem 0.75rem;
-  border: 2px solid rgba(18, 20, 23, 0.82);
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.9);
-  cursor: pointer;
-}
-
-.debug-label {
-  font-size: 0.78rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: #111317;
-  font-weight: 700;
-}
-
-.debug-toggle input {
-  position: absolute;
-  opacity: 0;
-  pointer-events: none;
-}
-
-.debug-switch {
-  width: 38px;
-  height: 22px;
-  border-radius: 999px;
-  background: #ccd4dd;
-  position: relative;
-  transition: background-color 220ms ease;
-}
-
-.debug-knob {
-  width: 16px;
-  height: 16px;
-  border-radius: 50%;
-  background: #ffffff;
-  position: absolute;
-  top: 3px;
-  left: 3px;
-  box-shadow: 0 1px 3px rgba(10, 12, 16, 0.3);
-  transition: transform 220ms ease;
-}
-
-.debug-toggle input:checked + .debug-switch {
-  background: #111317;
-}
-
-.debug-toggle input:checked + .debug-switch .debug-knob {
-  transform: translateX(16px);
-}
-
 .modules-scroll {
   width: min(100%, 1300px);
   margin: auto;

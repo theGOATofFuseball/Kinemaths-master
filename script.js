@@ -2,7 +2,6 @@ const title = document.getElementById("title");
 const frame = document.querySelector(".frame");
 const pencilLayer = document.getElementById("pencil-layer");
 const startButton = document.getElementById("start-game");
-const debugToggle = document.getElementById("debug-toggle");
 const modulesScroll = document.getElementById("modules-scroll");
 const moduleCards = Array.from(document.querySelectorAll(".module-card"));
 
@@ -2347,10 +2346,20 @@ if (title && frame && pencilLayer instanceof HTMLCanvasElement) {
   let profilBenutzername = "";
   let profilBildDatenUrl = "";
 
-  // XP-Beträge je nachdem, wie eine Aufgabe gelöst wurde
-  const XP_BASIS = 10;
-  const XP_CHALLENGE = 20;
-  const XP_INTERAKTIV = 15;
+  // XP pro RICHTIG gelöster Teilaufgabe (falsche Antworten geben keine XP)
+  const XP_BASIS = 5;        // Basis-Fragen
+  const XP_CHALLENGE = 10;   // Challenge-Fragen
+  const XP_INTERAKTIV = 8;   // Fragen ohne Schwierigkeitswahl und Folgefragen der Simulationen
+
+  // Gibt zurück, wie viele XP eine richtige Teilaufgabe in dieser Schwierigkeit bringt
+  const xpProRichtigeAntwort = (schwierigkeit) =>
+    schwierigkeit === "challenge" ? XP_CHALLENGE :
+    schwierigkeit === "basis" ? XP_BASIS :
+    XP_INTERAKTIV;
+
+  // Merkt sich pro Level ("Modul-Level", z. B. "2-4"), wie viele XP dort schon verdient wurden.
+  // Wer ein Level wiederholt, bekommt nur XP, wenn er MEHR richtig hat als vorher.
+  let xpProLevel = {};
 
   // Aktualisiert den kleinen Profil-Chip oben links (Avatar, Anfangsbuchstabe, Level-Badge)
   const profilAnzeigeAktualisieren = () => {
@@ -2550,7 +2559,7 @@ if (title && frame && pencilLayer instanceof HTMLCanvasElement) {
 
   const fortschrittSichern = () => {
     if (typeof fortschrittSpeichern === "function") {
-      fortschrittSpeichern(moduleState, gesamtXp);
+      fortschrittSpeichern(moduleState, gesamtXp, xpProLevel);
     }
   };
 
@@ -2566,6 +2575,9 @@ if (title && frame && pencilLayer instanceof HTMLCanvasElement) {
     }
     if (typeof data.gesamtXp === "number") {
       gesamtXp = data.gesamtXp;
+    }
+    if (data.xpProLevel && typeof data.xpProLevel === "object") {
+      xpProLevel = data.xpProLevel;
     }
     if (typeof data.benutzername === "string") {
       profilBenutzername = data.benutzername;
@@ -3208,8 +3220,7 @@ if (title && frame && pencilLayer instanceof HTMLCanvasElement) {
   };
 
   const applyModuleStates = () => {
-    const forceUnlocked = debugToggle instanceof HTMLInputElement && debugToggle.checked;
-    moduleCards.forEach((card) => renderCard(card, forceUnlocked));
+    moduleCards.forEach((card) => renderCard(card, false));
   };
 
   const flashModuleCard = (card) => {
@@ -3265,11 +3276,10 @@ if (title && frame && pencilLayer instanceof HTMLCanvasElement) {
     }
 
     const state = moduleState[activeModuleId];
-    const debugOn = debugToggle instanceof HTMLInputElement && debugToggle.checked;
 
     activeNodes.forEach((node, index) => {
       // maxReached = Anzahl gelöster Aufgaben -> genau die nächste (noch ungelöste) Aufgabe ist zusätzlich offen
-      const unlocked = debugOn || index <= state.maxReached;
+      const unlocked = index <= state.maxReached;
       node.classList.toggle("is-locked", !unlocked);
       node.disabled = !unlocked;
       node.setAttribute("aria-disabled", unlocked ? "false" : "true");
@@ -3305,9 +3315,9 @@ if (title && frame && pencilLayer instanceof HTMLCanvasElement) {
     }
   };
 
-  // Wird NUR aufgerufen, wenn eine Aufgabe (Basis, Challenge oder interaktiv)
-  // wirklich korrekt gelöst wurde. Vergibt XP nur beim allerersten Lösen.
-  const markiereAufgabeGeloest = (stepIndex, schwierigkeit) => {
+  // Wird aufgerufen, wenn ein Level abgeschlossen wurde. Schaltet das nächste Level frei.
+  // XP werden hier NICHT mehr vergeben – das macht xpFuerLevelVergeben() anhand der richtigen Antworten.
+  const markiereAufgabeGeloest = (stepIndex) => {
     if (!activeModuleId || typeof stepIndex !== "number") {
       return;
     }
@@ -3315,7 +3325,7 @@ if (title && frame && pencilLayer instanceof HTMLCanvasElement) {
     const state = moduleState[activeModuleId];
 
     if (stepIndex < state.maxReached) {
-      // Aufgabe war schon vorher gelöst (z. B. "Nochmal üben") -> keine doppelten XP
+      // Level war schon vorher abgeschlossen (z. B. "Nochmal üben")
       return;
     }
 
@@ -3328,14 +3338,28 @@ if (title && frame && pencilLayer instanceof HTMLCanvasElement) {
     applyActiveNodeLockState();
     updateModuleLine();
     applyModuleStates();
-
-    const xpBetrag =
-      schwierigkeit === "challenge" ? XP_CHALLENGE :
-      schwierigkeit === "interaktiv" ? XP_INTERAKTIV :
-      XP_BASIS;
-
-    xpVergeben(xpBetrag);
     fortschrittSichern();
+  };
+
+  // Vergibt XP für ein abgeschlossenes Level: Anzahl richtiger Teilaufgaben x XP pro richtige Antwort.
+  // Pro Level zählt nur das beste Ergebnis. Beim Wiederholen gibt es nur die Differenz,
+  // wenn man diesmal besser war (z. B. zuerst Basis, danach Challenge).
+  // Gibt zurück, wie viele XP neu dazugekommen sind.
+  const xpFuerLevelVergeben = (stepIndex, schwierigkeit, anzahlRichtig) => {
+    if (!activeModuleId || typeof stepIndex !== "number") {
+      return 0;
+    }
+    const schluessel = `${activeModuleId}-${stepIndex}`;
+    const verdient = Math.max(0, anzahlRichtig) * xpProRichtigeAntwort(schwierigkeit);
+    const bisher = typeof xpProLevel[schluessel] === "number" ? xpProLevel[schluessel] : 0;
+    const neu = verdient - bisher;
+    if (neu <= 0) {
+      return 0;
+    }
+    xpProLevel[schluessel] = verdient;
+    xpVergeben(neu);
+    fortschrittSichern();
+    return neu;
   };
 
   const handleNodeClick = (index) => {
@@ -6275,6 +6299,8 @@ if (title && frame && pencilLayer instanceof HTMLCanvasElement) {
   };
 
   let _lvlScore = { correct: 0, total: 0 };
+  // XP, die im aktuell laufenden Level pro richtige Teilaufgabe vergeben werden (nur für die Anzeige)
+  let _xpProRichtige = 5;
 
   const _flashCorrect = () => {
     if (!(siGameStage instanceof HTMLElement)) return;
@@ -6416,7 +6442,7 @@ if (title && frame && pencilLayer instanceof HTMLCanvasElement) {
         <section class="mod-question-page calc-page">
           <div class="mod-q-meta">
             <span>Aufgabe ${idx + 1} von ${tasks.length}</span>
-            <strong>${task.xp ?? 100} XP</strong>
+            <strong>${_xpProRichtige} XP</strong>
           </div>
           <h3 class="mod-q-heading">${cfg.questionTitle ?? "Berechne"}</h3>
           <p class="mod-q-text">${task.description}</p>
@@ -6445,7 +6471,7 @@ if (title && frame && pencilLayer instanceof HTMLCanvasElement) {
         const ok = Math.abs(val - task.answer) <= Math.max(tol, Math.abs(task.answer) * tol);
         if (ok) {
           fb.className = "test-motion-feedback is-correct";
-          fb.textContent = task.successFeedback ?? `Richtig! Ergebnis: ${task.answer} ${cfg.answerUnit}. +${task.xp ?? 100} XP`;
+          fb.textContent = task.successFeedback ?? `Richtig! Ergebnis: ${task.answer} ${cfg.answerUnit}.`;
           if (inp) inp.disabled = true;
           if (nxt) nxt.hidden = false;
           _flashCorrect(); _lvlScore.correct++;
@@ -6717,8 +6743,14 @@ if (title && frame && pencilLayer instanceof HTMLCanvasElement) {
   // Completion screen
   const showModuleComplete = (step, stepIndex, schwierigkeit) => {
     if (!(siGameStage instanceof HTMLElement)) return;
-    markiereAufgabeGeloest(stepIndex, schwierigkeit);
+    markiereAufgabeGeloest(stepIndex);
     const { correct, total } = _lvlScore;
+    const neueXp = xpFuerLevelVergeben(stepIndex, schwierigkeit, correct);
+    const xpZeile = neueXp > 0
+      ? `+${neueXp} XP`
+      : correct === 0
+      ? "Keine XP – nur richtige Antworten geben Punkte."
+      : "Keine neuen XP – dein bestes Ergebnis in diesem Level ist schon gespeichert.";
     const hasScore = total > 0;
     const fraction = hasScore ? correct / total : 1;
     const ringColor = fraction === 1 ? "#22c55e" : fraction > 0 ? "#f97316" : "#ef4444";
@@ -6757,6 +6789,7 @@ if (title && frame && pencilLayer instanceof HTMLCanvasElement) {
         </div>
         `}
         <h3>${step.title} gemeistert!</h3>
+        <p class="score-ring-message">${xpZeile}</p>
         <div class="mod-complete-actions">
           <button class="si-jumpgame-button" id="mod-comp-back">Zurück zum Pfad</button>
           <button class="si-jumpgame-button" id="mod-comp-retry">Nochmal üben</button>
@@ -6789,12 +6822,12 @@ if (title && frame && pencilLayer instanceof HTMLCanvasElement) {
           <button class="diff-card diff-card-basis" id="diff-basis">
             <span class="diff-card-icon">⭐</span>
             <span class="diff-card-title">Basis</span>
-            <span class="diff-card-desc">Grundlegende Fragen – perfekt zum Einstieg</span>
+            <span class="diff-card-desc">Grundlegende Fragen – perfekt zum Einstieg · ${XP_BASIS} XP pro richtige Antwort</span>
           </button>
           <button class="diff-card diff-card-challenge" id="diff-challenge">
             <span class="diff-card-icon">🔥</span>
             <span class="diff-card-title">Challenge</span>
-            <span class="diff-card-desc">Anspruchsvollere Fragen – für Profis</span>
+            <span class="diff-card-desc">Anspruchsvollere Fragen – für Profis · ${XP_CHALLENGE} XP pro richtige Antwort</span>
           </button>
         </div>
       </div>`;
@@ -7699,11 +7732,12 @@ if (title && frame && pencilLayer instanceof HTMLCanvasElement) {
     const startQuestion = () => {
       stopModuleGame();
       _lvlScore = { correct: 0, total: 0 };
-      if (!step.question) { showModuleComplete(step, stepIndex, "basis"); return; }
+      if (!step.question) { showModuleComplete(step, stepIndex, "ohne-wahl"); return; }
       const q = step.question;
-      const done = (schwierigkeit) => showModuleComplete(step, stepIndex, schwierigkeit || "basis");
+      const done = (schwierigkeit) => showModuleComplete(step, stepIndex, schwierigkeit || "ohne-wahl");
 
       // Interactive engines bypass the difficulty picker – zählen als "interaktiv"
+      _xpProRichtige = XP_INTERAKTIV;
       if (q.type === "speed-lab") { runSpeedLabEngine(q, () => done("interaktiv")); return; }
       if (q.type === "race")      { runRaceEngine(q, () => done("interaktiv"));      return; }
       if (q.type === "st-live")   { runSTLiveEngine(q, () => done("interaktiv"));    return; }
@@ -7711,6 +7745,7 @@ if (title && frame && pencilLayer instanceof HTMLCanvasElement) {
       if (q.type === "vt-live")   { runVTLiveEngine(q, () => done("interaktiv"));    return; }
 
       const runQ = (tasks, schwierigkeit) => {
+        _xpProRichtige = xpProRichtigeAntwort(schwierigkeit);
         const fertig = () => done(schwierigkeit);
         if (q.type === "mc") {
           runMCEngine(tasks, fertig);
@@ -7728,7 +7763,7 @@ if (title && frame && pencilLayer instanceof HTMLCanvasElement) {
       if (q.basis && q.challenge) {
         showDifficultyPicker(q, runQ);
       } else {
-        runQ(q.tasks || [], "basis");
+        runQ(q.tasks || [], "ohne-wahl");
       }
     };
 
@@ -9133,17 +9168,6 @@ if (title && frame && pencilLayer instanceof HTMLCanvasElement) {
       openModuleView(moduleId);
     });
   });
-
-  if (debugToggle instanceof HTMLInputElement) {
-    debugToggle.addEventListener("change", () => {
-      applyModuleStates();
-      applyActiveNodeLockState();
-
-      if (activeModuleId && !isModuleUnlocked(activeModuleId, false)) {
-        closeModuleView();
-      }
-    });
-  }
 
   if (moduleBack instanceof HTMLButtonElement) {
     moduleBack.addEventListener("click", () => {
